@@ -15842,8 +15842,9 @@
 <p>Dev</p>
 <ul>
 <li><strong><code>/pr-watch-fix-renovate</code></strong> fixes a MegaLinter error shared by several Renovate PRs <strong>once</strong>, in a carrier PR:<ul>
-<li>fingerprints the blocking MegaLinter errors and the CVE/GHSA ids of failing security scans (<code>.claude/skills/pr-watch-fix/fingerprint.py</code>), groups the PRs and picks the carrier (<code>sweep.py</code>)</li>
-<li>after you merge the carrier, asks Renovate to rebase only the group members (<code>/renovate-rebase --branches</code>) and watches them again</li>
+<li>fingerprints the blocking MegaLinter errors, the CVE/GHSA ids of failing security scans and the failing pytest node ids of test jobs (<code>.claude/skills/pr-watch-fix/fingerprint.py</code>), groups the PRs and picks the carrier (<code>sweep.py</code>)</li>
+<li>after you merge the carrier, asks Renovate to rebase only the group members (<code>/renovate-rebase --branches</code>) and watches them again; when Renovate does not run, falls back (with your approval) on <code>gh pr update-branch</code> and flags members superseded by the carrier</li>
+<li><code>renovate/stability-days</code> is never counted as pending CI: such PRs are reported green but not mergeable yet</li>
 <li><code>/pr-watch-fix</code> gains <code>--defer</code> / <code>--must-be-gone</code>, recovers fixes that Renovate force-pushes over, and its commit templates no longer carry any attribution trailer</li>
 </ul>
 </li>
