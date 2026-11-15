@@ -25,7 +25,11 @@ for _stream in (sys.stdout, sys.stderr):
 MAX_LINE_LENGTH = 300
 
 # GitHub prefixes every log line with "<job>\t<step>\t<timestamp> "
-LOG_PREFIX = re.compile(r"^[^\t]*\t[^\t]*\t\d{4}-\d\d-\d\dT[\d:.]+Z ?")
+# `gh run view` prefixes lines with "<job>\t<step>\t<timestamp> ", the jobs logs API
+# with "<timestamp> " only (and a BOM on the first line)
+LOG_PREFIX = re.compile(r"^﻿?(?:[^\t]*\t[^\t]*\t)?\d{4}-\d\d-\d\dT[\d:.]+Z ?")
+# A MegaLinter lint job ("MegaLinter", "MegaLinter for x"), not "mega-linter-runner tests"
+MEGALINTER_CHECK = re.compile(r"mega-?linter(?![-\w])", re.IGNORECASE)
 # The ESC character is dropped by `gh run view`, leaving a bare "[31m"
 ANSI = re.compile(r"\x1b?\[\d+(?:;\d+)*m")
 LINTED = re.compile(r"❌ Linted \[([^\]]+)\] files with \[([^\]]+)\]")
@@ -42,7 +46,7 @@ WORKSPACE_ROOTS = re.compile(
 # Alternatives are tried left to right at each position: ids are kept as they are,
 # so a CVE number or a GHSA id is never replaced by a placeholder.
 TOKEN = re.compile(
-    r"(?P<keep>CVE-\d{4}-\d{4,}|GHSA(?:-[a-z0-9]{4}){3})"
+    r"(?P<keep>CVE-\d{4}-\d{4,}|GHSA(?:-[a-z0-9]{4}){3}|(?-i:\b[A-Z]{1,5}\d{2,5}\b))"
     r"|(?P<ts>\d{4}-\d\d-\d\d[T ][\d:.]+Z?)"
     r"|(?P<loc>(?<=\w):\d+(?::\d+)?(?!\w))"
     r"|(?P<ver>\bv?\d+\.\d+(?:\.\d+)*(?:[-+][\w.]+)?\b)"
@@ -223,13 +227,17 @@ def fingerprint_pr(number, repo):
         if check["bucket"] not in ("fail", "cancel"):
             continue
         job = JOB_LINK.search(check["link"])
-        is_megalinter = re.search(r"mega-?linter", check["name"], re.IGNORECASE)
+        is_megalinter = MEGALINTER_CHECK.match(check["name"])
         sections = []
         reason = "not a MegaLinter check" if not is_megalinter else "cancelled"
         if job and check["bucket"] == "fail" and is_megalinter:
+            # `gh run view --log-failed` returns nothing for many runs, while the
+            # jobs logs API still serves the full log
             log = run_gh(
-                ["run", "view", job.group(1), "--job", job.group(2), "--log-failed"],
-                repo,
+                [
+                    "api",
+                    f"repos/{repo or '{owner}/{repo}'}/actions/jobs/{job.group(2)}/logs",
+                ],
                 required=False,
             )
             sections = blocking_sections(clean_log_lines(log))
@@ -278,6 +286,19 @@ def selftest():
     assert first["linter_key"] == "SPELL_CSPELL", first
     assert first["line"] == "megalinter/Jira.py:<n> - Unknown word (noformat)", first
 
+    # Same log as served by the jobs logs API: BOM, timestamp-only prefix
+    api_log = "﻿" + "\n".join(
+        line.split("\t", 2)[2] for line in SELFTEST_LOG.splitlines()
+    )
+    api_sections = blocking_sections(clean_log_lines(api_log))
+    assert len(api_sections) == 1, api_sections
+    assert section_fingerprint("MegaLinter", api_sections[0], "url") == first
+
+    for name in ("MegaLinter", "MegaLinter for mega-linter-runner", "megalinter"):
+        assert MEGALINTER_CHECK.match(name), name
+    for name in ("mega-linter-runner tests - DEV", "Trivy scan - DEV"):
+        assert not MEGALINTER_CHECK.match(name), name
+
     same = fingerprint_id(
         "C", "K", normalize("a/b.py:12:3 - bad thing v1.2.3 at 2026-11-14T10:00:00Z")
     )
@@ -288,6 +309,10 @@ def selftest():
         "Found CVE-2026-9999 in x 1.2.3"
     )
     assert normalize("/github/workspace/a.py deadbeef12") == "a.py <sha>"
+    # Rule codes identify the error: E501 and E302 must not collide
+    assert normalize("b.py:3:80: E501 line too long (95 > 79)") == (
+        "b.py:<n>: E501 line too long (<n> > <n>)"
+    )
     assert update_type("| x | `1.2.3` -> `2.0.0` |") == "major"
     assert update_type("| x | `1.2.3` -> `1.3.0` |") == "minor"
     assert update_type("| x | `==1.2.3` -> `==1.2.4` |") == "patch"
