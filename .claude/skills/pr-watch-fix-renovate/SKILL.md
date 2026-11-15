@@ -103,7 +103,12 @@ python "$FINGERPRINT" <N> <N> ... > "$TEMP/fp.json"     # read-only, one JSON ob
 python "$SWEEP" plan "$TEMP/fp.json" > "$TEMP/plan.json"
 ```
 
-A **fingerprint** is `check + blocking (❌) linter + normalized first error line` (paths made relative, versions, line numbers, hashes and timestamps replaced). Two PRs with the same fingerprint fail for the same reason. A fingerprint shared by **2 or more** PRs forms a **group**, with no upper bound.
+A **fingerprint** is either:
+
+- for the MegaLinter lint job: `check + blocking (❌) linter + normalized first error line` (paths made relative, versions, line numbers, hashes and timestamps replaced; rule codes like `E501` kept);
+- for a security scan job (check name containing the word `scan`, `audit`, `vulnerability` or `security`, e.g. `Trivy scan - DEV`): `check + the sorted set of CVE/GHSA ids in its log` (`linter_key` `SECURITY_SCAN`).
+
+Two PRs with the same fingerprint fail for the same reason. A fingerprint shared by **2 or more** PRs forms a **group**, with no upper bound. The carrier of a `SECURITY_SCAN` group fixes the advisories by upgrading the dependency (never by adding CVE ignores); when `main` already fixed them, the fix is to bring the branch up to date with `main`.
 
 `plan.json` gives, per group, the carrier and its members, and per PR a `role`:
 

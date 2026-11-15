@@ -30,6 +30,13 @@ MAX_LINE_LENGTH = 300
 LOG_PREFIX = re.compile(r"^﻿?(?:[^\t]*\t[^\t]*\t)?\d{4}-\d\d-\d\dT[\d:.]+Z ?")
 # A MegaLinter lint job ("MegaLinter", "MegaLinter for x"), not "mega-linter-runner tests"
 MEGALINTER_CHECK = re.compile(r"mega-?linter(?![-\w])", re.IGNORECASE)
+# A security scan job ("Trivy scan - DEV"), fingerprinted by the advisories it reports.
+# Whole words only: the "repository_osv_scanner" linter test is not a scan job.
+SECURITY_CHECK = re.compile(
+    r"\b(?:scan|audit|vulnerabilit(?:y|ies)|security)\b", re.IGNORECASE
+)
+SECURITY_KEY = "SECURITY_SCAN"
+ADVISORY = re.compile(r"CVE-\d{4}-\d{4,}|GHSA(?:-[a-z0-9]{4}){3}")
 # The ESC character is dropped by `gh run view`, leaving a bare "[31m"
 ANSI = re.compile(r"\x1b?\[\d+(?:;\d+)*m")
 LINTED = re.compile(r"❌ Linted \[([^\]]+)\] files with \[([^\]]+)\]")
@@ -177,7 +184,36 @@ def update_type(body):
     return best
 
 
+def job_log(job_id, repo):
+    # `gh run view --log-failed` returns nothing for many runs, while the jobs
+    # logs API still serves the full log
+    path = f"repos/{repo or '{owner}/{repo}'}/actions/jobs/{job_id}/logs"
+    return run_gh(["api", path], required=False)
+
+
+def security_fingerprint(check, log, run_url):
+    # The same scan failing on the same advisories is the same failure, whatever
+    # the order or the number of times each id is printed
+    ids = sorted(set(ADVISORY.findall(log)))
+    if not ids:
+        return []
+    line = " ".join(ids)[:MAX_LINE_LENGTH]
+    return [
+        {
+            "id": fingerprint_id(check, SECURITY_KEY, line),
+            "check": check,
+            "linter_key": SECURITY_KEY,
+            "linter": "",
+            "line": line,
+            "raw": line,
+            "run_url": run_url,
+        }
+    ]
+
+
 def is_related(fingerprint, title, branch, files):
+    if not fingerprint["linter"]:
+        return False
     name = fingerprint["linter"].lower()
     variants = {name, name.replace("-", "_"), name.replace("-", "")}
     haystack = f"{title} {branch}".lower()
@@ -227,28 +263,24 @@ def fingerprint_pr(number, repo):
         if check["bucket"] not in ("fail", "cancel"):
             continue
         job = JOB_LINK.search(check["link"])
-        is_megalinter = MEGALINTER_CHECK.match(check["name"])
-        sections = []
-        reason = "not a MegaLinter check" if not is_megalinter else "cancelled"
-        if job and check["bucket"] == "fail" and is_megalinter:
-            # `gh run view --log-failed` returns nothing for many runs, while the
-            # jobs logs API still serves the full log
-            log = run_gh(
-                [
-                    "api",
-                    f"repos/{repo or '{owner}/{repo}'}/actions/jobs/{job.group(2)}/logs",
-                ],
-                required=False,
-            )
-            sections = blocking_sections(clean_log_lines(log))
-            reason = (
-                "log unavailable" if not log.strip() else "no blocking linter in log"
-            )
-        for section in sections:
-            result["fingerprints"].append(
+        failed_job = job if check["bucket"] == "fail" else None
+        found = []
+        reason = "cancelled"
+        if failed_job and MEGALINTER_CHECK.match(check["name"]):
+            log = job_log(failed_job.group(2), repo)
+            found = [
                 section_fingerprint(check["name"], section, check["link"])
-            )
-        if not sections:
+                for section in blocking_sections(clean_log_lines(log))
+            ]
+            reason = "log unavailable" if not log.strip() else "no blocking linter"
+        elif failed_job and SECURITY_CHECK.search(check["name"]):
+            log = job_log(failed_job.group(2), repo)
+            found = security_fingerprint(check["name"], log, check["link"])
+            reason = "log unavailable" if not log.strip() else "no CVE/GHSA id in log"
+        elif failed_job:
+            reason = "not a MegaLinter or security scan check"
+        result["fingerprints"] += found
+        if not found:
             result["other_failures"].append(
                 {
                     "check": check["name"],
@@ -301,6 +333,20 @@ def selftest():
         assert MEGALINTER_CHECK.match(name), name
     for name in ("mega-linter-runner tests - DEV", "Trivy scan - DEV"):
         assert not MEGALINTER_CHECK.match(name), name
+
+    assert SECURITY_CHECK.search("Trivy scan - DEV")
+    assert not SECURITY_CHECK.search("DEV/Linters (repository_osv_scanner, linux)")
+    scan_a = security_fingerprint(
+        "Trivy scan - DEV",
+        "x CVE-2026-2002 GHSA-p3jp-9v83-76w9 CVE-2026-1001 CVE-2026-2002",
+        "u",
+    )
+    scan_b = security_fingerprint(
+        "Trivy scan - DEV", "GHSA-p3jp-9v83-76w9 CVE-2026-1001\nCVE-2026-2002", "v"
+    )
+    assert scan_a[0]["id"] == scan_b[0]["id"], (scan_a, scan_b)
+    assert scan_a[0]["line"] == "CVE-2026-1001 CVE-2026-2002 GHSA-p3jp-9v83-76w9"
+    assert security_fingerprint("Trivy scan - DEV", "no advisory", "u") == []
 
     same = fingerprint_id(
         "C", "K", normalize("a/b.py:12:3 - bad thing v1.2.3 at 2026-11-14T10:00:00Z")

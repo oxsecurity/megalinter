@@ -98,7 +98,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Dev
 
   - **`/pr-watch-fix-renovate`** fixes a MegaLinter error shared by several Renovate PRs **once**, in a carrier PR:
-    - fingerprints the blocking errors (`.claude/skills/pr-watch-fix/fingerprint.py`), groups the PRs and picks the carrier (`sweep.py`)
+    - fingerprints the blocking MegaLinter errors and the CVE/GHSA ids of failing security scans (`.claude/skills/pr-watch-fix/fingerprint.py`), groups the PRs and picks the carrier (`sweep.py`)
     - after you merge the carrier, asks Renovate to rebase only the group members (`/renovate-rebase --branches`) and watches them again
     - `/pr-watch-fix` gains `--defer` / `--must-be-gone`, recovers fixes that Renovate force-pushes over, and its commit templates no longer carry any attribution trailer
   - The release build pins the native pre-commit hooks to the released version. Contributor skills cover native mode: `/prepare-release` (PyPI publish, pinned hooks, smoke test), `/review-descriptor` (`native_install` checklist), `/fix-linter-test` (native test failures), `/diagnose-config` (`NATIVE_*` variables), `/update-linter-version` (lock commits)
