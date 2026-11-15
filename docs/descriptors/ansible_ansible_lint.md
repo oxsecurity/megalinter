@@ -221,13 +221,13 @@ Install it with:
 npx mega-linter-runner@beta --install-linters ANSIBLE_ANSIBLE_LINT --release beta
 ```
 
-| Platform | Support |
-| :------- | :------ |
-| Linux (x86-64) | ✅ |
-| Linux (ARM64) | ✅ |
-| macOS (Intel) | ❌ ansible-lint depends on cryptography, which only publishes Apple Silicon wheels for macOS. Use Docker. |
-| macOS (Apple Silicon) | ✅ |
-| Windows (Git Bash) | ❌ ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker. |
+| Platform              | Support                                                                                                   |
+|:----------------------|:----------------------------------------------------------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                                                                        |
+| Linux (ARM64)         | ✅                                                                                                        |
+| macOS (Intel)         | ❌ ansible-lint depends on cryptography, which only publishes Apple Silicon wheels for macOS. Use Docker. |
+| macOS (Apple Silicon) | ✅                                                                                                        |
+| Windows (Git Bash)    | ❌ ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker.                   |
 
 Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
 

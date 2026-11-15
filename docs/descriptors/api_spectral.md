@@ -178,13 +178,13 @@ Install it with:
 npx mega-linter-runner@beta --install-linters API_SPECTRAL --release beta
 ```
 
-| Platform | Support |
-| :------- | :------ |
-| Linux (x86-64) | ✅ |
-| Linux (ARM64) | ✅ |
-| macOS (Intel) | ✅ |
-| macOS (Apple Silicon) | ✅ |
-| Windows (Git Bash) | ✅ |
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
 
 Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
 

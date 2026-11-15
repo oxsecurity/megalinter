@@ -191,13 +191,13 @@ Install it with:
 npx mega-linter-runner@beta --install-linters ACTION_ACTIONLINT --release beta
 ```
 
-| Platform | Support |
-| :------- | :------ |
-| Linux (x86-64) | ✅ |
-| Linux (ARM64) | ✅ |
-| macOS (Intel) | ✅ |
-| macOS (Apple Silicon) | ✅ |
-| Windows (Git Bash) | ✅ |
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
 
 Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 

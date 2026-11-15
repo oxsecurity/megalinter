@@ -158,13 +158,13 @@ Install it with:
 npx mega-linter-runner@beta --install-linters CLOJURE_CLJSTYLE --release beta
 ```
 
-| Platform | Support |
-| :------- | :------ |
-| Linux (x86-64) | ✅ |
-| Linux (ARM64) | ❌ cljstyle publishes no Linux arm64 build. Use Docker. |
-| macOS (Intel) | ✅ |
-| macOS (Apple Silicon) | ✅ |
-| Windows (Git Bash) | ❌ cljstyle publishes no Windows build. Use Docker. |
+| Platform              | Support                                                 |
+|:----------------------|:--------------------------------------------------------|
+| Linux (x86-64)        | ✅                                                      |
+| Linux (ARM64)         | ❌ cljstyle publishes no Linux arm64 build. Use Docker. |
+| macOS (Intel)         | ✅                                                      |
+| macOS (Apple Silicon) | ✅                                                      |
+| Windows (Git Bash)    | ❌ cljstyle publishes no Windows build. Use Docker.     |
 
 Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 

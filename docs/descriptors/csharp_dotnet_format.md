@@ -152,13 +152,13 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [CSHARP_DOTNET_FORMAT]
 ```
 
-| Platform | Support |
-| :------- | :------ |
-| Linux (x86-64) | ✅ |
-| Linux (ARM64) | ✅ |
-| macOS (Intel) | ✅ |
-| macOS (Apple Silicon) | ✅ |
-| Windows (Git Bash) | ✅ |
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
 
 This tool is not downloaded by MegaLinter, install it yourself:
 
