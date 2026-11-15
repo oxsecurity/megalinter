@@ -828,10 +828,10 @@ RUN --mount=type=secret,id=GITHUB_TOKEN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GI
 # flake8 installation
 # isort installation
 # mypy installation
-ENV MYPY_CACHE_DIR=/tmp
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 # nbqa installation
 # Next line commented because already managed by another linter
-# ENV MYPY_CACHE_DIR=/tmp
+# ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 # pyright installation
 # ruff installation
 # ruff-format installation

@@ -182,7 +182,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # nbqa installation
-ENV MYPY_CACHE_DIR=/tmp
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 #OTHER__END
 
 ################################

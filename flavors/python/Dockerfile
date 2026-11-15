@@ -613,10 +613,10 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
 # isort installation
 # bandit installation
 # mypy installation
-ENV MYPY_CACHE_DIR=/tmp
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 # nbqa installation
 # Next line commented because already managed by another linter
-# ENV MYPY_CACHE_DIR=/tmp
+# ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 # pyright installation
 # ruff installation
 # ruff-format installation
