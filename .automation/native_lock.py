@@ -33,6 +33,7 @@ from megalinter.native.download import build_opener, check_https  # noqa: E402
 from megalinter.native.resolve import (  # noqa: E402
     NATIVE_PLATFORMS,
     platform_native_install,
+    render_asset_template,
     resolve_native_install,
 )
 from megalinter.native.runtimes import load_runtime_catalog  # noqa: E402
@@ -77,15 +78,6 @@ def require_tool(name):
     if found is None:
         raise NativeError(f"{name} is required to generate native locks")
     return found
-
-
-def render(template, version, asset_name=None):
-    value = template.replace("{{VERSION}}", str(version)).replace(
-        "{{VERSION_NO_V}}", str(version).lstrip("v")
-    )
-    if asset_name is not None:
-        value = value.replace("{{ASSET_NAME}}", asset_name)
-    return value
 
 
 def download(url, folder, name=None):
@@ -140,10 +132,10 @@ def verify_cosign(provenance, version, target_file, folder, asset_name):
     cosign = require_tool("cosign")
     cosign_info = provenance["cosign"]
     if cosign_info.get("identity"):
-        identity = render(cosign_info["identity"], version)
+        identity = render_asset_template(cosign_info["identity"], version)
         command = [cosign, "verify-blob", "--certificate-identity", identity]
     else:
-        identity = render(cosign_info["identity_regexp"], version)
+        identity = render_asset_template(cosign_info["identity_regexp"], version)
         command = [cosign, "verify-blob", "--certificate-identity-regexp", identity]
     command += ["--certificate-oidc-issuer", cosign_info["issuer"]]
     for key, option, file_name in (
@@ -153,7 +145,7 @@ def verify_cosign(provenance, version, target_file, folder, asset_name):
     ):
         if cosign_info.get(key):
             downloaded, _, _ = download(
-                render(cosign_info[key], version, asset_name), folder, file_name
+                render_asset_template(cosign_info[key], version, asset_name), folder, file_name
             )
             command += [option, downloaded]
     run_sigstore([*command, target_file])
@@ -164,7 +156,7 @@ def verify_gpg(provenance, version, target_file, folder, asset_name):
     gpg = require_tool("gpg")
     gpg_info = provenance["gpg"]
     signature, _, _ = download(
-        render(gpg_info["signature_url"], version, asset_name), folder, "gpg.sig"
+        render_asset_template(gpg_info["signature_url"], version, asset_name), folder, "gpg.sig"
     )
     keyring = os.path.join(KEYS_DIR, gpg_info["keyring"])
     if not os.path.isfile(keyring):
@@ -240,7 +232,7 @@ def verify_asset(provenance, version, asset_file, asset_url, sha256, folder):
     checksums_file = None
     if provenance.get("checksums_url"):
         checksums_file, _, _ = download(
-            render(provenance["checksums_url"], version, asset_name),
+            render_asset_template(provenance["checksums_url"], version, asset_name),
             folder,
             "checksums.txt",
         )
@@ -282,7 +274,7 @@ def verify_asset(provenance, version, asset_file, asset_url, sha256, folder):
 
 
 def lock_asset(asset, provenance, version, folder):
-    url = render(asset["url"], version)
+    url = render_asset_template(asset["url"], version)
     asset_folder = tempfile.mkdtemp(dir=folder)
     path, sha256, size = download(url, asset_folder)
     verification = verify_asset(provenance, version, path, url, sha256, asset_folder)

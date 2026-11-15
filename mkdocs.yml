@@ -44,6 +44,9 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
   - pymdownx.emoji:
       emoji_index: !!python/name:zensical.extensions.emoji.twemoji
       emoji_generator: !!python/name:zensical.extensions.emoji.to_svg

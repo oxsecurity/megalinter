@@ -43,6 +43,16 @@ def check_lock_fresh(key, resolved_native_install, lock):
         )
 
 
+def load_fresh_lock(key, resolved_native_install, descriptor_dir=None):
+    try:
+        lock = load_lock(key, descriptor_dir)
+    except NativeError:
+        return None
+    if lock.get("spec_hash") != compute_spec_hash(resolved_native_install):
+        return None
+    return lock
+
+
 def runtime_lock_path(name, descriptor_dir=None):
     return os.path.join(locks_dir(descriptor_dir), "runtimes", name + ".json")
 

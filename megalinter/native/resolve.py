@@ -87,6 +87,15 @@ def resolve_native_install(spec):
     return native
 
 
+def render_asset_template(template, version, asset_name=None):
+    value = template.replace("{{VERSION}}", str(version)).replace(
+        "{{VERSION_NO_V}}", str(version).lstrip("v")
+    )
+    if asset_name is not None:
+        value = value.replace("{{ASSET_NAME}}", asset_name)
+    return value
+
+
 def platform_native_install(native, platform):
     if platform == "windows/arm64":
         platform = "windows/amd64"
