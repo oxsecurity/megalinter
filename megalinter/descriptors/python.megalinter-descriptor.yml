@@ -652,7 +652,7 @@ linters:
         message: |-
           mypy crashed with an internal error. This usually indicates a bug in mypy or an interaction with a plugin.
           Resolutions:
-            - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp`, but stale data can persist between runs in long-lived environments).
+            - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp/.mypy_cache`, but stale data can persist between runs in long-lived environments).
             - Disable mypy plugins (`plugins = ...` in your config) one by one to narrow the cause.
             - Report the traceback to https://github.com/python/mypy/issues.
     version_extract_regex: "(?<=mypy )\\d+(\\.\\d+)+"
@@ -664,8 +664,8 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.19.1
-        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
+          ARG PIP_MYPY_VERSION=2.4.1
+        - ENV MYPY_CACHE_DIR=/tmp/.mypy_cache # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
     native_install:
@@ -784,8 +784,8 @@ linters:
           ARG PIP_NBQA_VERSION=1.9.1
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.19.1
-        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
+          ARG PIP_MYPY_VERSION=2.4.1
+        - ENV MYPY_CACHE_DIR=/tmp/.mypy_cache # Avoid mypy cache to mess with other linters
       pip:
         - nbqa==${PIP_NBQA_VERSION}
         - mypy==${PIP_MYPY_VERSION}

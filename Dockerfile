@@ -332,7 +332,7 @@ ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
+ARG PIP_MYPY_VERSION=2.4.1
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
@@ -1157,10 +1157,10 @@ RUN pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSI
 # isort installation
 # bandit installation
 # mypy installation
-ENV MYPY_CACHE_DIR=/tmp
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 # nbqa installation
 # Next line commented because already managed by another linter
-# ENV MYPY_CACHE_DIR=/tmp
+# ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 # pyright installation
 # ruff installation
 # ruff-format installation
