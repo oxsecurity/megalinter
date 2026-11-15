@@ -220,3 +220,6 @@ Tell the user:
 - The push and tag trigger **deploy-RELEASE**, **deploy-RELEASE-linters**, and **deploy-RELEASE-flavors** workflows.
 - Go to **GitHub → Actions** and approve any runs awaiting manual approval.
 - Monitor those three workflows until they all complete green before announcing the release publicly.
+- Publishing the GitHub release also dispatches **Deploy mega-linter-runner** (npm) and **Deploy MegaLinter to PyPI** (`channel: stable`, the `megalinter` package of native mode). Each publish job waits for an approval in the `release-runner` environment, then only ends once the version is downloadable from the registry (with its provenance attestation): a red job there means the package is not available, not a flaky check.
+- The release build pins the native pre-commit hooks (`.pre-commit-hooks.yaml`, `megalinter-native-*`) to `mega-linter-runner@RELEASE_VERSION` and `--release RELEASE_VERSION` (without the `v`): check the release commit contains that change. Users with `rev: RELEASE_VERSION` then run that exact version.
+- Once both packages are published, smoke-test native mode in a throwaway repository: `npx mega-linter-runner@<version> --install-linters --release <version>` with one or two linters in `NATIVE_LINTERS`, then `--native`.

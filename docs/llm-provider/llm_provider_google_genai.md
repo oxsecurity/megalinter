@@ -49,6 +49,9 @@ LLM_MODEL_NAME: gemini-pro          # or gemini-pro-vision
 ```yaml
 # Custom settings (rarely needed)
 GOOGLE_APPLICATION_CREDENTIALS: /path/to/service-account.json
+
+# Custom API endpoint (proxy or gateway), with or without the /v1beta version segment
+GOOGLE_BASE_URL: https://generativelanguage.googleapis.com
 ```
 
 ## Troubleshooting

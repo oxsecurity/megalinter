@@ -47,6 +47,18 @@ linters:
         - FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
         - COPY --link --from=chktex /usr/bin/chktex /usr/bin/
         - RUN cd ~ && touch .chktexrc && cd /
+    native_install:
+      method: runtime_provided
+      suggest:
+        windows: "winget install --id MiKTeX.MiKTeX -e (then: mpm --install=chktex), or install TeX Live from https://tug.org/texlive/windows.html"
+        darwin: "brew install chktex"
+        linux: "Install chktex from your distribution (example: sudo apt install chktex)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

@@ -30,7 +30,7 @@ description: How to use stylua (configure, ignore files, ignore errors, help & v
 - See [How to disable stylua rules in files](https://github.com/JohnnyMorganz/StyLua?tab=readme-ov-file#ignoring-parts-of-a-file){target=_blank}
 - See [Index of problems detected by stylua](https://roblox.github.io/lua-style-guide/){target=_blank}
 
-[![StyLua - GitHub](https://gh-card.dev/repos/JohnnyMorganz/StyLua.svg?fullname=)](https://github.com/JohnnyMorganz/StyLua){target=_blank}
+[![StyLua - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=JohnnyMorganz&repo=StyLua&show_owner=true)](https://github.com/JohnnyMorganz/StyLua){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -73,7 +73,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -238,4 +238,23 @@ RUN set -eu; mkdir -p /out/bin; \
     chmod +x /out/bin/stylua
 COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
 ```
+
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Verified release download
+
+```yaml
+NATIVE_LINTERS: [LUA_STYLUA]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
 

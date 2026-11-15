@@ -70,7 +70,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -182,4 +182,29 @@ FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
 COPY --link --from=chktex /usr/bin/chktex /usr/bin/
 RUN cd ~ && touch .chktexrc && cd /
 ```
+
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [LATEX_CHKTEX]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `winget install --id MiKTeX.MiKTeX -e (then: mpm --install=chktex), or install TeX Live from https://tug.org/texlive/windows.html`
+- darwin: `brew install chktex`
+- linux: `Install chktex from your distribution (example: sudo apt install chktex)`
 

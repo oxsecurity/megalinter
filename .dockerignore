@@ -16,3 +16,6 @@ pids
 *.log
 .venv
 
+
+# Native mode locks are only used outside Docker (they would weigh in the image for nothing)
+megalinter/descriptors/native-locks

@@ -75,3 +75,14 @@ linters:
     supported_platforms:
       platform:
         - linux/amd64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=18.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64

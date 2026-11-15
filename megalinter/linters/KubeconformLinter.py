@@ -12,5 +12,7 @@ class KubeconformLinter(Linter):
             config.set_value(
                 self.request_id,
                 "KUBERNETES_KUBECONFORM_ARGUMENTS",
-                "-ignore-filename-pattern .*/bad/.*",
+                # Both separators: Windows paths use backslashes (native mode).
+                # A list is not split by shlex, which would consume the backslashes
+                ["-ignore-filename-pattern", ".*[/\\\\]bad[/\\\\].*"],
             )

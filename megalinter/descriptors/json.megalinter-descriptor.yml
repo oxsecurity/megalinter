@@ -60,6 +60,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.2.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
   # V8R
   - extends: v8r
     linter_name: v8r
@@ -179,7 +190,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=npm-package-json-lint
-          ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.0
+          ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.1
         - |-
           # renovate: datasource=npm depName=npm-package-json-lint-config-default
           ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
@@ -190,6 +201,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
   # BIOME
   - extends: biome
     linter_name: biome
