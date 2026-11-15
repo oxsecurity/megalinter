@@ -15841,6 +15841,12 @@
 <li>
 <p>Dev</p>
 <ul>
+<li><strong><code>/pr-watch-fix-renovate</code></strong> fixes a MegaLinter error shared by several Renovate PRs <strong>once</strong>, in a carrier PR:<ul>
+<li>fingerprints the blocking MegaLinter errors and the CVE/GHSA ids of failing security scans (<code>.claude/skills/pr-watch-fix/fingerprint.py</code>), groups the PRs and picks the carrier (<code>sweep.py</code>)</li>
+<li>after you merge the carrier, asks Renovate to rebase only the group members (<code>/renovate-rebase --branches</code>) and watches them again</li>
+<li><code>/pr-watch-fix</code> gains <code>--defer</code> / <code>--must-be-gone</code>, recovers fixes that Renovate force-pushes over, and its commit templates no longer carry any attribution trailer</li>
+</ul>
+</li>
 <li>The release build pins the native pre-commit hooks to the released version. Contributor skills cover native mode: <code>/prepare-release</code> (PyPI publish, pinned hooks, smoke test), <code>/review-descriptor</code> (<code>native_install</code> checklist), <code>/fix-linter-test</code> (native test failures), <code>/diagnose-config</code> (<code>NATIVE_*</code> variables), <code>/update-linter-version</code> (lock commits)</li>
 <li>New linter-level descriptor property <strong><code>native_install</code></strong> (how a linter is installed without Docker, per platform), documented in <code>.claude/rules/native-install.md</code>, with the runtime catalog <code>native-runtimes.yml</code> and the generated <code>megalinter/descriptors/native-locks/</code>. The build fails when a linter does not declare it for the 5 native platforms. Generated Dockerfiles are unchanged</li>
 <li>New package <code>megalinter/native/</code> (verified downloads, safe archive extraction, per-method installers, runtime provisioning, environment allowlist, trust gating) and the <code>megalinter</code> command (<code>megalinter/cli.py</code>)</li>
