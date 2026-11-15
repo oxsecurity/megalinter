@@ -185,6 +185,16 @@ def init_config(request_id, workspace=None, params=None):
     set_config(request_id, runtime_config)
 
 
+# Native mode runs on the host: commands, plugins and remote configuration coming from the
+# analyzed repository are only used when the user trusts it explicitly from the environment
+# (never from .mega-linter.yml, which belongs to the analyzed repository)
+def native_repo_untrusted():
+    return (
+        os.environ.get("MEGALINTER_NATIVE", "false") == "true"
+        and os.environ.get("NATIVE_TRUST_REPO_COMMANDS", "false") != "true"
+    )
+
+
 def combine_config(workspace, config, combined_config, config_source):
     config_properties_to_append = []
 
@@ -195,6 +205,13 @@ def combine_config(workspace, config, combined_config, config_source):
     if isinstance(extends, str):
         extends = extends.split(",")
     for extends_item in extends:
+        if extends_item.startswith("http") and native_repo_untrusted():
+            logging.warning(
+                f"[native] Remote EXTENDS {extends_item} ignored: trust the repository "
+                "with --trust-repo-commands (or NATIVE_TRUST_REPO_COMMANDS=true in the "
+                "environment) to use it"
+            )
+            continue
         if extends_item.startswith("http"):
             headers = {}
             if is_github_raw_url(extends_item) and "GITHUB_TOKEN" in os.environ:
@@ -243,6 +260,11 @@ def is_initialized_for(request_id):
     if request_id in RUN_CONFIGS:
         return True
     return False
+
+
+def refresh_env_snapshot():
+    global _ENV_CACHE
+    _ENV_CACHE = None
 
 
 def get_config(request_id=None):

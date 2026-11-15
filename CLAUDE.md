@@ -68,7 +68,7 @@ The core pattern: each linter is defined in a YAML descriptor file (`megalinter/
 - **`megalinter/config.py`** - Hierarchical config: descriptor defaults -> `.mega-linter.yml` -> env vars -> CLI args. Access via `config.get(request_id, "VAR_NAME", default)`
 - **`megalinter/linters/`** - Custom linter subclasses when default `Linter.py` behavior isn't sufficient
 - **`megalinter/reporters/`** - Output formatters (GitHub comments, GitLab, SARIF, etc.)
-- **`megalinter/llm_advisor.py`** - AI-powered fix suggestions via LangChain (multi-provider)
+- **`megalinter/llm_advisor.py`** - AI-powered fix suggestions via direct HTTP calls to the providers' APIs (multi-provider, `megalinter/llm_provider/`)
 
 ### Entrypoint
 

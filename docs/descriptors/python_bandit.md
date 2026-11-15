@@ -52,7 +52,7 @@ Bandit is essential for maintaining secure Python codebases and is widely used i
 - See [How to disable bandit rules in files](https://bandit.readthedocs.io/en/latest/config.html#suppressing-individual-lines){target=_blank}
 - See [Index of problems detected by bandit](https://bandit.readthedocs.io/en/latest/plugins/index.html#complete-test-plugin-listing){target=_blank}
 
-[![bandit - GitHub](https://gh-card.dev/repos/PyCQA/bandit.svg?fullname=)](https://github.com/PyCQA/bandit){target=_blank}
+[![bandit - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=PyCQA&repo=bandit&show_owner=true)](https://github.com/PyCQA/bandit){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -94,8 +94,8 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                   | Description                         | Embedded linters |                                                                                                                                                                                         Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------|:------------------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor           |       133        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)     | Optimized for PYTHON based projects |        69        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)     | Default MegaLinter Flavor           |       134        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)     | Optimized for PYTHON based projects |        70        |     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 |      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/security.ico" alt="" height="32px" class="megalinter-icon"></a>       | [security](https://megalinter.io/beta/flavors/security/) | Optimized for security              |        24        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-security/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-security) |
 
 ## Behind the scenes
@@ -316,6 +316,26 @@ ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
   - [bandit==1.9.4](https://pypi.org/project/bandit/1.9.4)
   - [bandit_sarif_formatter==1.1.1](https://pypi.org/project/bandit_sarif_formatter/1.1.1)
   - [bandit[toml]==1.9.4](https://pypi.org/project/bandit[toml]/1.9.4)
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Python package (isolated virtual environment)
+- Requires the python runtime >=3.10
+
+```yaml
+NATIVE_LINTERS: [PYTHON_BANDIT]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
 
 ## Known errors and resolutions
 

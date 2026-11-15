@@ -35,7 +35,11 @@ class BiomeLinter(Linter):
         ]
         generated_config = {"files": {"includes": includes}}
         if user_config_file is not None:
-            extends_path = os.path.relpath(user_config_file, self.report_folder)
+            try:
+                extends_path = os.path.relpath(user_config_file, self.report_folder)
+            except ValueError:
+                # Windows: the report folder can be on another drive
+                extends_path = os.path.abspath(user_config_file)
             generated_config = {
                 "extends": [extends_path.replace(os.sep, "/")],
                 **generated_config,

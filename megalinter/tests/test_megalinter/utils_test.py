@@ -17,6 +17,7 @@ import git
 from megalinter import config
 from megalinter.logger import fetch_betterleaks_regexes, sanitize_string
 from megalinter.utils import (
+    check_updated_file,
     fix_regex_pattern,
     get_excluded_directories,
     list_updated_files,
@@ -114,6 +115,14 @@ class utils_test(unittest.TestCase):
                 f.write("updated\n")
 
             self.assertEqual(list_updated_files(tmp_dir), ["README.md"])
+
+    # git reports "src/app.py" whatever the OS: a fixed file in a subfolder was never
+    # counted on Windows, where the linted path is "...\src\app.py"
+    def test_check_updated_file_in_subfolder(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            fixed_file = os.path.join(tmp_dir, "src", "app.py")
+            self.assertTrue(check_updated_file(fixed_file, tmp_dir, ["src/app.py"]))
+            self.assertFalse(check_updated_file(fixed_file, tmp_dir, ["src/other.py"]))
 
     def mock_repo_with_failing_diff(self, workspace, diff_err):
         # git_dir must stay inside the workspace, otherwise list_updated_files

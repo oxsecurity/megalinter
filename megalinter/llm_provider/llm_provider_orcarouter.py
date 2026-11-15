@@ -3,16 +3,18 @@
 OrcaRouter LLM Provider for MegaLinter
 """
 
-import logging
 from typing import Any, Dict, Optional
 
-from langchain_openai import ChatOpenAI
 from megalinter import config
 
-from .llm_provider import LLMProvider
+from .llm_provider_openai_compatible import OpenAICompatibleProvider
 
 
-class OrcaRouterProvider(LLMProvider):
+class OrcaRouterProvider(OpenAICompatibleProvider):
+
+    DISPLAY_NAME = "OrcaRouter"
+    API_KEY_VAR_NAME = "ORCAROUTER_API_KEY"
+    DEFAULT_BASE_URL = "https://api.orcarouter.ai/v1"
 
     def get_default_model(self) -> str:
         return "orcarouter/fusion-mini"
@@ -39,30 +41,3 @@ class OrcaRouterProvider(LLMProvider):
                 )
             ),
         }
-
-    def initialize(self) -> bool:
-        try:
-            api_key = self.get_config_value("api_key")
-            if not api_key:
-                raise ValueError("ORCAROUTER_API_KEY is required")
-
-            model_name = self.get_config_value("model_name") or self.get_default_model()
-            base_url = self.get_config_value("base_url", "https://api.orcarouter.ai/v1")
-            temperature = self.get_config_value("temperature")
-            max_tokens = self.get_config_value("max_tokens")
-
-            # OrcaRouter exposes an OpenAI-compatible API
-            self.llm = ChatOpenAI(
-                model=model_name,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                api_key=api_key,
-                base_url=base_url,
-            )
-
-            logging.debug(f"OrcaRouter provider initialized with model {model_name}")
-            return True
-
-        except Exception as e:
-            logging.error(f"Failed to initialize OrcaRouter provider: {str(e)}")
-            return False

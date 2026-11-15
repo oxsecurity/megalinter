@@ -27,7 +27,7 @@ description: How to use raku (configure, ignore files, ignore errors, help & ver
 - See [How to configure raku rules](https://docs.raku.org/language/pragmas){target=_blank}
 - See [How to disable raku rules in files](https://docs.raku.org/language/pragmas#no){target=_blank}
 
-[![rakudo - GitHub](https://gh-card.dev/repos/rakudo/rakudo.svg?fullname=)](https://github.com/rakudo/rakudo){target=_blank}
+[![rakudo - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=rakudo&repo=rakudo&show_owner=true)](https://github.com/rakudo/rakudo){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -67,7 +67,7 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                               | Description               | Embedded linters |                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------|:--------------------------|:----------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       133        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/) | Default MegaLinter Flavor |       134        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 
 ## Behind the scenes
 
@@ -198,4 +198,29 @@ esac \
 
 ENV PATH="~/.raku/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
 ```
+
+
+### Installation without Docker (native mode)
+
+This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
+
+- Install method: Provided by the host
+
+```yaml
+NATIVE_LINTERS: [RAKU_RAKU]
+```
+
+| Platform              | Support |
+|:----------------------|:--------|
+| Linux (x86-64)        | ✅      |
+| Linux (ARM64)         | ✅      |
+| macOS (Intel)         | ✅      |
+| macOS (Apple Silicon) | ✅      |
+| Windows (Git Bash)    | ✅      |
+
+This tool is not downloaded by MegaLinter, install it yourself:
+
+- windows: `Install Rakudo Star with the MSI installer from https://rakudo.org/downloads/star`
+- darwin: `brew install rakudo-star`
+- linux: `Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)`
 

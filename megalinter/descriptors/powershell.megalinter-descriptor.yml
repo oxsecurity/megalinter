@@ -32,6 +32,7 @@ install:
           && curl -L https://github.com/PowerShell/PowerShell/releases/download/v${POWERSHELL_VERSION}/powershell-${POWERSHELL_VERSION}-linux-${POWERSHELL_ARCH}.tar.gz -o /tmp/powershell.tar.gz \
           && mkdir -p /opt/microsoft/powershell/7 \
           && tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7 \
+          && rm -f /tmp/powershell.tar.gz \
           && chmod +x /opt/microsoft/powershell/7/pwsh \
           && ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 linters:
@@ -72,6 +73,22 @@ linters:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Path myfile.ps1"'
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-ScriptAnalyzer -EnableExit -Settings .powershell-psscriptanalyzer.psd1 -Path myfile.ps1"'
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
+    native_install:
+      linter_overrides:
+        cli_executable: pwsh
+      method: powershell_module
+      version: "${PSSA_VERSION}"
+      packages:
+        - PSScriptAnalyzer
+      requires:
+        - runtime: powershell
+          version: ">=7.4"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |
@@ -125,6 +142,22 @@ linters:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition ''write-host Hello World''"'
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -Settings .powershell-psscriptanalyzer.psd1 -ScriptDefinition ''write-host Hello World''"'
     # If changing PWSH_VERSION='latest' to a specific version, use format PWSH_VERSION='tags/v7.0.2'
+    native_install:
+      linter_overrides:
+        cli_executable: pwsh
+      method: powershell_module
+      version: "${PSSA_VERSION}"
+      packages:
+        - PSScriptAnalyzer
+      requires:
+        - runtime: powershell
+          version: ">=7.4"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |

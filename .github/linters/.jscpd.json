@@ -12,6 +12,7 @@
     "**/.venv/**",
     "**/*cache*/**",
     "**/.automation/**",
+    "**/native-locks/**",
     "**/.github/**",
     "**/.idea/**",
     "**/docs/**",
