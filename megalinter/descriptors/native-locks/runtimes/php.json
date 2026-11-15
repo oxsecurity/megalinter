@@ -6,17 +6,17 @@
       "assets": [
         {
           "archive": "zip",
-          "sha256": "dbae154a0a89791f36c3d48e68bae797878333e7d6cb5721e74617de59b63ab7",
-          "size": 35296081,
-          "url": "https://windows.php.net/downloads/releases/php-8.4.27-1-nts-Win32-vs17-x64.zip",
+          "sha256": "2a36a2edcb7a5b9252f638fd5e4cf84d7f6e066092654220dc0b63e5cf4e9723",
+          "size": 36310917,
+          "url": "https://windows.php.net/downloads/releases/php-8.5.12-1-nts-Win32-vs17-x64.zip",
           "verification": [
             "checksums_url"
           ]
         }
       ],
-      "version": "8.4.27"
+      "version": "8.5.12"
     }
   },
   "runtime": "php",
-  "spec_hash": "fb3bebe1b72fb61a17084eb4d2f56f4b1f26004d34d9faf2670ed77266e17065"
+  "spec_hash": "dadda989416fe2d0fd6f5e35a0d01b57c7e2d2ab0d9b75933a25115ccdbfa84e"
 }
