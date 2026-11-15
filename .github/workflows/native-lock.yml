@@ -1,12 +1,13 @@
 ---
 name: "Native locks"
 on:
-  # Locks are regenerated when the descriptors change (linter or runtime version bump, new linter):
-  # - on main: a pull request is opened with the refreshed locks
-  # - on a feature branch of this repository: the locks are committed on the branch
-  # Renovate branches are skipped: their locks are refreshed after merge, on main
+  # Locks are regenerated when the descriptors change (linter or runtime version bump, new linter),
+  # on a feature branch of this repository: the locks are committed on the branch.
+  # On main, the "Auto-Update Linters" workflow refreshes them, in its own pull request: Renovate
+  # branches are skipped here, their locks are refreshed there after the merge
   push:
     branches-ignore:
+      - "main"
       - "renovate/**"
       - "automation/**"
       - "dependabot/**"
@@ -17,7 +18,7 @@ on:
       - ".automation/native_lock.py"
       - ".automation/native-keys/**"
       - ".github/workflows/native-lock.yml"
-  # Manual run (from main, where the workflow exists for workflow_dispatch)
+  # Manual run: from main, a pull request is opened with the refreshed locks (force, accept_changes)
   workflow_dispatch:
     inputs:
       force:

@@ -123,6 +123,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)
   - Dependency updates wait longer: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now propose an upgrade only once the release is **14 days old** (was 7). Security fixes are not delayed and still open immediately
   - **Benchmark native mode**: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems
+  - Stale **native locks** no longer block pull requests (warning only): they block the alpha, beta and release deploys instead (Docker images, mega-linter-runner, PyPI), through the reusable `check-native-locks.yml` workflow
+  - **Auto-Update Linters** now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both. **Native locks** only runs on feature branches and on manual runs
 
 - Linter versions upgrades (N)
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.58.0 to **1.59.0** on 2026-11-09
