@@ -112,13 +112,13 @@ Two PRs with the same fingerprint fail for the same reason. A fingerprint shared
 
 `plan.json` gives, per group, the carrier and its members, and per PR a `role`:
 
-| Role      | Meaning                                                                          | Agent                                      |
-|-----------|----------------------------------------------------------------------------------|--------------------------------------------|
-| `carrier` | Fixes the shared error of its group(s), and everything specific to itself        | yes, `/pr-watch-fix [--defer <ids>]`       |
-| `member`  | Shares an error with a carrier **and** has failures of its own                   | yes, `/pr-watch-fix --defer <ids>`         |
-| `waiting` | Only fails with errors a carrier fixes                                           | **no** — reported `WAITING ON CARRIER #M`  |
-| `unique`  | Fails with errors no other PR has, or a failing non-MegaLinter check             | yes, plain `/pr-watch-fix`                 |
-| `green`   | Nothing failing, nothing pending                                                 | no — reported `GREEN`                      |
+| Role      | Meaning                                                                   | Agent                                     |
+|-----------|---------------------------------------------------------------------------|-------------------------------------------|
+| `carrier` | Fixes the shared error of its group(s), and everything specific to itself | yes, `/pr-watch-fix [--defer <ids>]`      |
+| `member`  | Shares an error with a carrier **and** has failures of its own            | yes, `/pr-watch-fix --defer <ids>`        |
+| `waiting` | Only fails with errors a carrier fixes                                    | **no** — reported `WAITING ON CARRIER #M` |
+| `unique`  | Fails with errors no other PR has, or a failing non-MegaLinter check      | yes, plain `/pr-watch-fix`                |
+| `green`   | Nothing failing, nothing pending                                          | no — reported `GREEN`                     |
 
 Two lists sit outside the roles: PRs in `pending` (checks still running when you stopped waiting) get a plain `/pr-watch-fix` agent; PRs in `no_checks` have no check at all — their CI never started (typically a workflow waiting for approval) — so they get **no** agent and are reported `NO CHECKS — CI never ran, approve the workflow run?`.
 
@@ -222,11 +222,11 @@ For each group whose carrier is **GREEN** (and still `OPEN` — re-check with `g
 
 > Carrier #<M> fixes `<linter_key>` — "<line>" — shared with #a, #b. Merged?
 
-| Option                        | Effect                                                                                                                          |
-|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| Merged — rebase and watch     | Verify `gh pr view <M> --json state,mergeCommit`. If it is not `MERGED`, say so and ask once more; a second miss means "Stop". |
-| Stop for now                  | Update the state, end the sweep. Re-running `/pr-watch-fix-renovate` resumes from **Step 1 → Resume**.                         |
-| Abandon this group            | `python "$SWEEP" state drop <fp_id>`. Its PRs are regrouped on the next run.                                                    |
+| Option                    | Effect                                                                                                                         |
+|---------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Merged — rebase and watch | Verify `gh pr view <M> --json state,mergeCommit`. If it is not `MERGED`, say so and ask once more; a second miss means "Stop". |
+| Stop for now              | Update the state, end the sweep. Re-running `/pr-watch-fix-renovate` resumes from **Step 1 → Resume**.                         |
+| Abandon this group        | `python "$SWEEP" state drop <fp_id>`. Its PRs are regrouped on the next run.                                                   |
 
 A carrier that is STUCK or still RUNNING gets **no** merge question; its members stay `WAITING` and the state is already saved. Mark a green carrier in the state: `python "$SWEEP" state update <fp_id> '{"carrier": {"status": "green"}}'`.
 
