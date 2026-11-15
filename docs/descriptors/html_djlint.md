@@ -7,17 +7,17 @@ description: How to use djlint (configure, ignore files, ignore errors, help & v
 
 <div align="center">
   <a href="https://djlint.com/" target="blank" title="Visit linter Web Site">
-    <img src="https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png" alt="djlint" height="150px" class="megalinter-banner">
+    <img src="https://djlint.com/static/img/icon.png" alt="djlint" height="150px" class="megalinter-banner">
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/Riverside-Healthcare/djlint?cacheSeconds=3600)](https://github.com/Riverside-Healthcare/djlint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Riverside-Healthcare/djlint?sort=semver)](https://github.com/Riverside-Healthcare/djlint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/Riverside-Healthcare/djlint)](https://github.com/Riverside-Healthcare/djlint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/djlint/djLint?sort=semver)](https://github.com/djlint/djLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/djlint/djLint)](https://github.com/djlint/djLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/djlint/djLint)](https://github.com/djlint/djLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/djlint/djLint)](https://github.com/djlint/djLint/graphs/contributors/)
 
 **djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
 **Key Features:**
 
-- **Multi-Language Support**: Supports Django, Jinja, Nunjucks, Twig, Handlebars, Mustache, Golang templates, and Angular
+- **Multi-Language Support**: Supports Django, Jinja, Twig, Nunjucks, Handlebars, Mustache, Liquid, Golang templates, Angular, Tera, Askama and Mako
 - **Comprehensive Rule Set**: 60+ built-in rules covering HTML standards, accessibility, security, and template-specific best practices
 - **Language-Specific Rules**: Specialized rules for Django (D-codes), Jinja (J-codes), HTML (H-codes), and general templates (T-codes)
 - **Auto-Formatting**: Automatically formats and beautifies HTML templates with consistent indentation and structure
@@ -35,7 +35,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
 - See [Index of problems detected by djlint](https://djlint.com/docs/linter/){target=_blank}
 
-[![djlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=Riverside-Healthcare&repo=djlint&show_owner=true)](https://github.com/Riverside-Healthcare/djlint){target=_blank}
+[![djlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=djlint&repo=djLint&show_owner=true)](https://github.com/djlint/djLint){target=_blank}
 
 ## Configuration in MegaLinter
 

@@ -69,6 +69,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
 
+  - **djlint**: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages
+
 - Fixes
 
   - Restore the **GitHub repository cards** on linter documentation pages and on the users page, after the `gh-card.dev` service shut down (#9433)
