@@ -44,7 +44,7 @@ runtimes:
       linux: "Install Node.js LTS from https://nodejs.org/en/download or your distribution"
     provision:
       # renovate: datasource=node-version depName=node
-      version: "24.22.2"
+      version: "26.13.0"
       assets:
         linux/amd64:
           url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-linux-x64.tar.xz"
