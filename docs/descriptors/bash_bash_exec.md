@@ -156,13 +156,13 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install bash from your distribution (example: sudo apt install bash)
+    `Install bash from your distribution (example: sudo apt install bash)`
 
 === "macOS"
 
-    bash is preinstalled on macOS (brew install bash for a recent version)
+    `bash is preinstalled on macOS (brew install bash for a recent version)`
 
 === "Windows (Git Bash)"
 
-    winget install --id Git.Git -e (provides Git Bash: add its bin folder to PATH)
+    `winget install --id Git.Git -e (provides Git Bash: add its bin folder to PATH)`
 

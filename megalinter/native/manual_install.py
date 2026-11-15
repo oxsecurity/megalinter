@@ -1,5 +1,4 @@
 import posixpath
-import re
 from dataclasses import dataclass
 
 from megalinter.native.lock import load_fresh_lock
@@ -10,11 +9,11 @@ from megalinter.native.resolve import (
     render_asset_template,
     resolve_native_install,
 )
+from megalinter.native.runtimes import load_runtime_catalog
 
 INSTALL_DIR_VARIABLE = "$INSTALL_DIR"
 INSTALL_DIR_ASSIGNMENT = 'INSTALL_DIR="$HOME/.local/opt/{folder}"'
 TAR_FLAGS = {"tar.gz": "z", "tar.xz": "J", "tar.bz2": "j"}
-PROSE_REGEX = re.compile(r"^[A-Z]| \(")
 
 
 @dataclass
@@ -45,6 +44,18 @@ def export_path(directories):
 
 def quote(value):
     return '"' + value + '"'
+
+
+def inline_code(value):
+    fence = "``" if "`" in value else "`"
+    return f"{fence}{value}{fence}"
+
+
+def chain(commands):
+    return [
+        ("  " if index else "") + command + (" &&" if index < len(commands) - 1 else "")
+        for index, command in enumerate(commands)
+    ]
 
 
 def pip_commands(effective, platform):
@@ -124,10 +135,11 @@ def powershell_module_commands(effective, platform):
     )
     separator = ";" if is_windows(platform) else ":"
     return [
-        f"pwsh -NoProfile -Command \"Save-Module -Name {package} -RequiredVersion {effective['version']} -Path '{modules_path}'\""
+        f'pwsh -NoProfile -Command "Save-Module -Name {package} '
+        f"-RequiredVersion {effective['version']} -Path '{modules_path}'\""
         for package in effective["packages"]
     ] + [
-        f'export PSModulePath="{INSTALL_DIR_VARIABLE}{separator}$PSModulePath"',
+        f'export PSModulePath="{modules_path}{separator}$PSModulePath"',
     ]
 
 
@@ -145,51 +157,53 @@ def binary_commands(effective, platform, checksums):
     asset = assets.get(platform) or assets["any"]
     url = render_asset_template(asset["url"], effective["version"])
     archive = asset.get("archive", "none")
-    file_name = (
-        asset.get("name") if archive == "none" else None
-    ) or posixpath.basename(url.split("?")[0])
+    url_file_name = posixpath.basename(url.split("?")[0])
+    file_name = (asset.get("name") if archive == "none" else None) or url_file_name
     file_path = f"{INSTALL_DIR_VARIABLE}/{file_name}"
-    commands = [
-        f"mkdir -p {quote(INSTALL_DIR_VARIABLE)}",
-        f"curl -fsSL -o {quote(file_path)} {url}",
-    ]
+    steps = [f"curl -fsSL -o {quote(file_path)} {url}"]
     if url in checksums:
         checker = (
             "shasum -a 256 -c -"
             if os_family(platform) == "darwin"
             else "sha256sum -c -"
         )
-        commands.append(f'echo "{checksums[url]}  {file_path}" | {checker}')
+        steps.append(f'echo "{checksums[url]}  {file_path}" | {checker}')
     strip_components = asset.get("strip_components", 0)
-    if archive in TAR_FLAGS or archive == "gz":
-        if archive == "gz":
-            commands.append(f"gunzip -f {quote(file_path)}")
-        else:
-            commands.append(
-                f"tar -x{TAR_FLAGS[archive]}f {quote(file_path)} -C {quote(INSTALL_DIR_VARIABLE)}"
-                + (
-                    f" --strip-components={strip_components}"
-                    if strip_components
-                    else ""
-                )
-            )
-            commands.append(f"rm {quote(file_path)}")
+    executable = None
+    if archive in TAR_FLAGS:
+        steps.append(
+            f"tar -x{TAR_FLAGS[archive]}f {quote(file_path)} -C {quote(INSTALL_DIR_VARIABLE)}"
+            + (f" --strip-components={strip_components}" if strip_components else "")
+        )
+    elif archive == "gz":
+        executable = f"{INSTALL_DIR_VARIABLE}/" + (
+            asset.get("name") or url_file_name.removesuffix(".gz")
+        )
+        steps.append(f"gunzip -c {quote(file_path)} > {quote(executable)}")
     elif archive == "zip":
         if strip_components:
             extract_folder = f"{INSTALL_DIR_VARIABLE}/extract"
-            commands += [
+            steps += [
                 f"unzip -q {quote(file_path)} -d {quote(extract_folder)}",
                 f'mv "{extract_folder}"/{"*/" * strip_components}* {quote(INSTALL_DIR_VARIABLE)}/',
                 f"rm -r {quote(extract_folder)}",
             ]
         else:
-            commands.append(
+            steps.append(
                 f"unzip -q {quote(file_path)} -d {quote(INSTALL_DIR_VARIABLE)}"
             )
-        commands.append(f"rm {quote(file_path)}")
-    elif not is_windows(platform):
-        commands.append(f"chmod +x {quote(file_path)}")
-    return [*commands, *binary_path_commands(effective)]
+    else:
+        executable = file_path
+    if archive != "none":
+        steps.append(f"rm {quote(file_path)}")
+    if executable is not None and not is_windows(platform):
+        steps.append(f"chmod +x {quote(executable)}")
+    path_export, launchers = binary_path_commands(effective)
+    return [
+        f"mkdir -p {quote(INSTALL_DIR_VARIABLE)}",
+        *chain([*steps, path_export]),
+        *launchers,
+    ]
 
 
 def binary_path_commands(effective):
@@ -220,7 +234,7 @@ def binary_path_commands(effective):
         )
     if not directories:
         directories = [INSTALL_DIR_VARIABLE]
-    return [export_path(directories), *launchers]
+    return export_path(directories), launchers
 
 
 def env_commands(effective):
@@ -233,21 +247,32 @@ def env_commands(effective):
 def runtime_provided_lines(spec, effective, platform):
     family = os_family(platform)
     suggestion = (effective.get("suggest") or {}).get(family)
-    if suggestion is None:
-        requirements = [
-            f"`{requirement['runtime']}`"
-            + (f" {requirement['version']}" if requirement.get("version") else "")
-            for requirement in effective.get("requires", [])
-        ]
-        provider = (
-            "the " + " and ".join(requirements) + " runtime"
-            if requirements
-            else f"`{spec.linter_name}`"
+    if suggestion is not None:
+        return [inline_code(suggestion)]
+    requirements = effective.get("requires", [])
+    if not requirements:
+        return [f"Install `{spec.linter_name}` and add it to `PATH`."]
+    catalog = load_runtime_catalog()
+    lines = []
+    for requirement in requirements:
+        runtime = requirement["runtime"]
+        constraint = f" {requirement['version']}" if requirement.get("version") else ""
+        runtime_suggestion = ((catalog.get(runtime) or {}).get("suggest") or {}).get(
+            family
         )
-        return [f"Provided by {provider}: install it and add it to `PATH`."]
-    if PROSE_REGEX.search(suggestion):
-        return [suggestion]
-    return shell_block([suggestion])
+        if lines:
+            lines.append("")
+        if runtime_suggestion is None:
+            lines.append(
+                f"Provided by the `{runtime}`{constraint} runtime: install it and add it to `PATH`."
+            )
+        else:
+            lines += [
+                f"Provided by the `{runtime}`{constraint} runtime, install it with:",
+                "",
+                inline_code(runtime_suggestion),
+            ]
+    return lines
 
 
 def platform_lines(spec, resolved, platform, checksums):

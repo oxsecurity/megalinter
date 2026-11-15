@@ -196,18 +196,18 @@ npx mega-linter-runner@beta --install-linters TERRAFORM_TOFU_FMT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tofu_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_linux_amd64.zip
-    echo "723bebb0df8411daff1e5fc3862e28ff5581fe5634087f4c29a9aa41d78208b5  $INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_linux_amd64.zip &&
+      echo "723bebb0df8411daff1e5fc3862e28ff5581fe5634087f4c29a9aa41d78208b5  $INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -215,11 +215,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tofu_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_linux_arm64.zip
-    echo "6e815c58a09ee957de606ff48cefad082942e70afc43b737ff975654c54ec453  $INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_linux_arm64.zip &&
+      echo "6e815c58a09ee957de606ff48cefad082942e70afc43b737ff975654c54ec453  $INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -227,11 +227,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tofu_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_darwin_amd64.zip
-    echo "2093d0f881d911eb133cf51d2d7e09f22da71b1e6465c60826a314d217b0b84e  $INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_darwin_amd64.zip &&
+      echo "2093d0f881d911eb133cf51d2d7e09f22da71b1e6465c60826a314d217b0b84e  $INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -239,11 +239,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tofu_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_darwin_arm64.zip
-    echo "cb46112c095f1c4da721b6a18c8368f67341896a62205d1c117299e85993af61  $INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_darwin_arm64.zip &&
+      echo "cb46112c095f1c4da721b6a18c8368f67341896a62205d1c117299e85993af61  $INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -251,10 +251,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tofu_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_windows_amd64.zip
-    echo "88b5cbb12e3a7402b0b1fe148790477fb6193cd8201864fa7fb0bd8e6417ee0e  $INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_windows_amd64.zip &&
+      echo "88b5cbb12e3a7402b0b1fe148790477fb6193cd8201864fa7fb0bd8e6417ee0e  $INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

@@ -180,17 +180,17 @@ npx mega-linter-runner@beta --install-linters BICEP_BICEP_LINTER --release beta
 | macOS (Apple Silicon) | ✅ |
 | Windows (Git Bash) | ✅ |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/bicep_bicep_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-linux-x64
-    echo "b09ec25a9d376c1f8e33ede6ed22b587f915ad68488d5db77a6f9541748c7f6e  $INSTALL_DIR/bicep" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/bicep"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-linux-x64 &&
+      echo "b09ec25a9d376c1f8e33ede6ed22b587f915ad68488d5db77a6f9541748c7f6e  $INSTALL_DIR/bicep" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/bicep" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -198,10 +198,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/bicep_bicep_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-linux-arm64
-    echo "9cbf6a211137e894a863fbc842e355c2197fc2124a7bda902afe1bceffa35245  $INSTALL_DIR/bicep" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/bicep"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-linux-arm64 &&
+      echo "9cbf6a211137e894a863fbc842e355c2197fc2124a7bda902afe1bceffa35245  $INSTALL_DIR/bicep" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/bicep" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -209,10 +209,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/bicep_bicep_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-osx-x64
-    echo "6a8188d521a7c6740c8b58983093dfd9f7897d37bdf1551f775022e22397d7c5  $INSTALL_DIR/bicep" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/bicep"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-osx-x64 &&
+      echo "6a8188d521a7c6740c8b58983093dfd9f7897d37bdf1551f775022e22397d7c5  $INSTALL_DIR/bicep" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/bicep" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -220,10 +220,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/bicep_bicep_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-osx-arm64
-    echo "62cd5958c62fa1b738e9b69f24799fabddb90ed83fdb7d6d2563dde376ce479d  $INSTALL_DIR/bicep" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/bicep"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-osx-arm64 &&
+      echo "62cd5958c62fa1b738e9b69f24799fabddb90ed83fdb7d6d2563dde376ce479d  $INSTALL_DIR/bicep" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/bicep" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -231,8 +231,8 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/bicep_bicep_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep.exe" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-win-x64.exe
-    echo "398af294cf16ac4becdbd008a77d148d0e8e91492309a6b60ec911b7e1cab082  $INSTALL_DIR/bicep.exe" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/bicep.exe" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-win-x64.exe &&
+      echo "398af294cf16ac4becdbd008a77d148d0e8e91492309a6b60ec911b7e1cab082  $INSTALL_DIR/bicep.exe" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

@@ -2741,7 +2741,7 @@ def get_native_install_md(item, linter_key):
             "Install it with:",
             "",
             "```shell",
-            f"npx mega-linter-runner@beta --install-linters {linter_key} --release beta",
+            f"npx mega-linter-runner@{VERSION} --install-linters {linter_key} --release {VERSION}",
             "```",
             "",
         ]
@@ -2760,9 +2760,15 @@ def get_native_install_md(item, linter_key):
         return linter_doc_md + [""]
     supported_platforms = [p for group in groups for p in group.platforms]
     note = (
-        "Equivalent manual commands. The command above is the supported way: "
-        "it also verifies the hashes and signatures of every download."
+        "Manual commands, if you do not use the command above, which also verifies "
+        "the hashes and signatures of every download:"
     )
+    if native["method"] in ["pip", "npm", "gem"]:
+        note = (
+            "Manual commands, if you do not use the command above. They pin the linter "
+            "packages only: the command above also pins all their dependencies, and "
+            "verifies the hash of every package."
+        )
     if native["method"] == "runtime_provided":
         note = "This tool is not downloaded by MegaLinter, install it yourself:"
     linter_doc_md += ["", note, ""]

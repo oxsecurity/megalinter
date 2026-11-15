@@ -167,7 +167,21 @@ NATIVE_LINTERS: [REPOSITORY_GIT_DIFF]
 
 This tool is not downloaded by MegaLinter, install it yourself:
 
-=== "Linux, macOS, Windows (Git Bash)"
+=== "Linux"
 
-    Provided by the `git` runtime: install it and add it to `PATH`.
+    Provided by the `git` runtime, install it with:
+
+    `sudo apt install git`
+
+=== "macOS"
+
+    Provided by the `git` runtime, install it with:
+
+    `brew install git`
+
+=== "Windows (Git Bash)"
+
+    Provided by the `git` runtime, install it with:
+
+    `winget install --id Git.Git -e`
 

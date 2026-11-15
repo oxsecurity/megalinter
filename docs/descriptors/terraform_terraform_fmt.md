@@ -181,18 +181,18 @@ npx mega-linter-runner@beta --install-linters TERRAFORM_TERRAFORM_FMT --release 
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terraform_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_amd64.zip
-    echo "c168cab7c637a8769fdb90089ddd19de701bc6ff8aca64dc2e2185fe46f59f67  $INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_amd64.zip &&
+      echo "c168cab7c637a8769fdb90089ddd19de701bc6ff8aca64dc2e2185fe46f59f67  $INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -200,11 +200,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terraform_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_arm64.zip
-    echo "f32478134ffc6d710eec474bbd316652cdddc0f4e336973a3745e8d3a3309cdf  $INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_arm64.zip &&
+      echo "f32478134ffc6d710eec474bbd316652cdddc0f4e336973a3745e8d3a3309cdf  $INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -212,11 +212,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terraform_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_amd64.zip
-    echo "3773397524196e4ebbf7167e2b9fb478dff1962d555d649f616ba97ca446a143  $INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_amd64.zip &&
+      echo "3773397524196e4ebbf7167e2b9fb478dff1962d555d649f616ba97ca446a143  $INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -224,11 +224,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terraform_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_arm64.zip
-    echo "7472a54cca911d46c0e399a5ebbce44444912d0d4dad7495f37f1fa51e7ca6b7  $INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_arm64.zip &&
+      echo "7472a54cca911d46c0e399a5ebbce44444912d0d4dad7495f37f1fa51e7ca6b7  $INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -236,10 +236,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terraform_fmt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_windows_amd64.zip
-    echo "2948dd7f77dec0f562ec29000103e0441d915be5e5f1a02c1ce23681951cfb19  $INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_windows_amd64.zip &&
+      echo "2948dd7f77dec0f562ec29000103e0441d915be5e5f1a02c1ce23681951cfb19  $INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

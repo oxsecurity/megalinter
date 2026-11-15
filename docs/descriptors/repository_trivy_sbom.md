@@ -222,18 +222,18 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_TRIVY_SBOM --release be
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trivy_sbom"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-64bit.tar.gz
-    echo "c7cbe3137fb8a48a17574bede3dd6beb16742d1e9772929940fc90082c39d9c0  $INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-64bit.tar.gz &&
+      echo "c7cbe3137fb8a48a17574bede3dd6beb16742d1e9772929940fc90082c39d9c0  $INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -241,11 +241,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trivy_sbom"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-ARM64.tar.gz
-    echo "e174dff2a6dba5e3ae41f8d0537a6324405bd08132497340304c6b20e0f16a1f  $INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-ARM64.tar.gz &&
+      echo "e174dff2a6dba5e3ae41f8d0537a6324405bd08132497340304c6b20e0f16a1f  $INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -253,11 +253,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trivy_sbom"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_macOS-64bit.tar.gz
-    echo "7aa762eacd582052d053b62dcf972a1ab058abe39a57ccae234ed8894945b6b7  $INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_macOS-64bit.tar.gz &&
+      echo "7aa762eacd582052d053b62dcf972a1ab058abe39a57ccae234ed8894945b6b7  $INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -265,11 +265,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trivy_sbom"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_macOS-ARM64.tar.gz
-    echo "11a9b6cd2752011b54f01ea4bd0dbfa9f0c41dc6538d5a3f9d23955f471bf4e5  $INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_macOS-ARM64.tar.gz &&
+      echo "11a9b6cd2752011b54f01ea4bd0dbfa9f0c41dc6538d5a3f9d23955f471bf4e5  $INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -277,11 +277,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trivy_sbom"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_windows-64bit.zip
-    echo "1051f49cb22d5284f43425f72aad9cda63ca12ceb92e7caa06903490c82dc9bf  $INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_windows-64bit.zip &&
+      echo "1051f49cb22d5284f43425f72aad9cda63ca12ceb92e7caa06903490c82dc9bf  $INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

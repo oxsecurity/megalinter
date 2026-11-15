@@ -166,7 +166,7 @@ npx mega-linter-runner@beta --install-linters TEKTON_TEKTON_LINT --release beta
 | macOS (Apple Silicon) | ✅                                                                                                                          |
 | Windows (Git Bash)    | ❌ tekton-lint builds the paths of its own files incorrectly on Windows (the drive letter is repeated, ENOENT). Use Docker. |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
 
 === "Linux, macOS"
 

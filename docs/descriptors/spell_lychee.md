@@ -606,18 +606,18 @@ npx mega-linter-runner@beta --install-linters SPELL_LYCHEE --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/spell_lychee"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-unknown-linux-musl.tar.gz
-    echo "73657a111819a30c47c08352896796f23d64e4eb2b3ed39b6d32149241566fc5  $INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-unknown-linux-musl.tar.gz &&
+      echo "73657a111819a30c47c08352896796f23d64e4eb2b3ed39b6d32149241566fc5  $INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/lychee-x86_64-unknown-linux-musl.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -625,11 +625,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/spell_lychee"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-aarch64-unknown-linux-musl.tar.gz
-    echo "5d0b0e3aeab240f41920c633a6eaf97599be6eedda034b36e858ede7dba5e535  $INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-aarch64-unknown-linux-musl.tar.gz &&
+      echo "5d0b0e3aeab240f41920c633a6eaf97599be6eedda034b36e858ede7dba5e535  $INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/lychee-aarch64-unknown-linux-musl.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -637,11 +637,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/spell_lychee"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-apple-darwin.tar.gz
-    echo "887503a9cff667d322b8d0892b40bf49976eb9507af8483220a3706cdad55978  $INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-apple-darwin.tar.gz &&
+      echo "887503a9cff667d322b8d0892b40bf49976eb9507af8483220a3706cdad55978  $INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/lychee-x86_64-apple-darwin.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -649,11 +649,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/spell_lychee"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-aarch64-apple-darwin.tar.gz
-    echo "c9d3740ea2d891854d37116c9fba840f37b6e7c89d330e7db84ac333631c4977  $INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-aarch64-apple-darwin.tar.gz &&
+      echo "c9d3740ea2d891854d37116c9fba840f37b6e7c89d330e7db84ac333631c4977  $INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/lychee-aarch64-apple-darwin.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -661,12 +661,12 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/spell_lychee"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-pc-windows-msvc.zip
-    echo "32975d1493ee1a975d6bb41e4fb56fe419cb442ded628bb772ba2e614acfacad  $INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" -d "$INSTALL_DIR/extract"
-    mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/
-    rm -r "$INSTALL_DIR/extract"
-    rm "$INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" https://github.com/lycheeverse/lychee/releases/download/lychee-v0.24.2/lychee-x86_64-pc-windows-msvc.zip &&
+      echo "32975d1493ee1a975d6bb41e4fb56fe419cb442ded628bb772ba2e614acfacad  $INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" -d "$INSTALL_DIR/extract" &&
+      mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/ &&
+      rm -r "$INSTALL_DIR/extract" &&
+      rm "$INSTALL_DIR/lychee-x86_64-pc-windows-msvc.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

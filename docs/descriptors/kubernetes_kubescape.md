@@ -213,18 +213,18 @@ npx mega-linter-runner@beta --install-linters KUBERNETES_KUBESCAPE --release bet
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_kubescape"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_linux_amd64.tar.gz
-    echo "9ed580e7c9b1e2e5b8f0adcfdf2bf2fd8856e7297125fc9aa10cdcb97813a4fa  $INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_linux_amd64.tar.gz &&
+      echo "9ed580e7c9b1e2e5b8f0adcfdf2bf2fd8856e7297125fc9aa10cdcb97813a4fa  $INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.17_linux_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -232,11 +232,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_kubescape"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_linux_arm64.tar.gz
-    echo "eb9311c3be050361e5d16440fbfd3271b3b6dc03902e23bcab5ed8c438c51f73  $INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_linux_arm64.tar.gz &&
+      echo "eb9311c3be050361e5d16440fbfd3271b3b6dc03902e23bcab5ed8c438c51f73  $INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.17_linux_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -244,11 +244,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_kubescape"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_darwin_amd64.tar.gz
-    echo "f39c9fe034e44d2147a4e0c42328a3aea2977153c51f702692b1dc7a318fb493  $INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_darwin_amd64.tar.gz &&
+      echo "f39c9fe034e44d2147a4e0c42328a3aea2977153c51f702692b1dc7a318fb493  $INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.17_darwin_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -256,11 +256,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_kubescape"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_darwin_arm64.tar.gz
-    echo "a197cf3d3e960fad5d52e10ce866a1cb930d64382d195140cb28617e0d3dde10  $INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_darwin_arm64.tar.gz &&
+      echo "a197cf3d3e960fad5d52e10ce866a1cb930d64382d195140cb28617e0d3dde10  $INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.17_darwin_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -268,10 +268,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_kubescape"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_windows_amd64.tar.gz
-    echo "56b730ab70b4b9e7474b165deee8bad9b1d9efb2392935a78a3469e2ea2a943b  $INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.17/kubescape_4.0.17_windows_amd64.tar.gz &&
+      echo "56b730ab70b4b9e7474b165deee8bad9b1d9efb2392935a78a3469e2ea2a943b  $INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.17_windows_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

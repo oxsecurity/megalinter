@@ -172,17 +172,17 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_LS_LINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_ls_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-linux-amd64
-    echo "571e382a0908fd22393869fd0dff575e6f17a6130211930fc43b37a1e0630068  $INSTALL_DIR/ls-lint" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/ls-lint"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-linux-amd64 &&
+      echo "571e382a0908fd22393869fd0dff575e6f17a6130211930fc43b37a1e0630068  $INSTALL_DIR/ls-lint" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/ls-lint" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -190,10 +190,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_ls_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-linux-arm64
-    echo "b8466eb60200b3bc4d92a3f0710c9adcdc8b9fff5941347b6a2f4ae837ca2015  $INSTALL_DIR/ls-lint" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/ls-lint"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-linux-arm64 &&
+      echo "b8466eb60200b3bc4d92a3f0710c9adcdc8b9fff5941347b6a2f4ae837ca2015  $INSTALL_DIR/ls-lint" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/ls-lint" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -201,10 +201,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_ls_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-darwin-amd64
-    echo "170ba593d732c015942b415101258cdcabf236ab2e569d498e1855823b8247ba  $INSTALL_DIR/ls-lint" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/ls-lint"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-darwin-amd64 &&
+      echo "170ba593d732c015942b415101258cdcabf236ab2e569d498e1855823b8247ba  $INSTALL_DIR/ls-lint" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/ls-lint" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -212,10 +212,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_ls_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-darwin-arm64
-    echo "8ab48bd06886bb0b293d166f3f6cde17f3a5e07b6039bbb935c4e50a07cec727  $INSTALL_DIR/ls-lint" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/ls-lint"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ls-lint" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-darwin-arm64 &&
+      echo "8ab48bd06886bb0b293d166f3f6cde17f3a5e07b6039bbb935c4e50a07cec727  $INSTALL_DIR/ls-lint" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/ls-lint" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -223,9 +223,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_ls_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ls-lint.exe" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-windows-amd64.exe
-    echo "933553d0e359a202a4b44163872fd8b3fdba93f9b17a9be3dc632055f9840b6a  $INSTALL_DIR/ls-lint.exe" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ls-lint.exe" https://github.com/loeffel-io/ls-lint/releases/download/v2.3.2/ls-lint-windows-amd64.exe &&
+      echo "933553d0e359a202a4b44163872fd8b3fdba93f9b17a9be3dc632055f9840b6a  $INSTALL_DIR/ls-lint.exe" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

@@ -199,17 +199,17 @@ npx mega-linter-runner@beta --install-linters TERRAFORM_TERRAGRUNT --release bet
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terragrunt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_linux_amd64
-    echo "1ba4ad11cf6ac277e8ba59a3fdceb8576778e22f6a24bedd542e91bad9f36491  $INSTALL_DIR/terragrunt" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/terragrunt"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_linux_amd64 &&
+      echo "1ba4ad11cf6ac277e8ba59a3fdceb8576778e22f6a24bedd542e91bad9f36491  $INSTALL_DIR/terragrunt" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/terragrunt" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -217,10 +217,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terragrunt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_linux_arm64
-    echo "a730c7daf2fb7dd13e6e7b016b3a89fd4f546bc81a31f8ff19474866c566b755  $INSTALL_DIR/terragrunt" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/terragrunt"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_linux_arm64 &&
+      echo "a730c7daf2fb7dd13e6e7b016b3a89fd4f546bc81a31f8ff19474866c566b755  $INSTALL_DIR/terragrunt" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/terragrunt" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -228,10 +228,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terragrunt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_darwin_amd64
-    echo "bf3ac47b1c773ab67f4a4e761e8db16aa87a2454e12708c3507026dc3bf6cdf9  $INSTALL_DIR/terragrunt" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/terragrunt"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_darwin_amd64 &&
+      echo "bf3ac47b1c773ab67f4a4e761e8db16aa87a2454e12708c3507026dc3bf6cdf9  $INSTALL_DIR/terragrunt" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/terragrunt" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -239,10 +239,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terragrunt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_darwin_arm64
-    echo "7069eec5127f007525b1178a782e801218342cf223633c6e8508762de19166d6  $INSTALL_DIR/terragrunt" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/terragrunt"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terragrunt" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_darwin_arm64 &&
+      echo "7069eec5127f007525b1178a782e801218342cf223633c6e8508762de19166d6  $INSTALL_DIR/terragrunt" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/terragrunt" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -250,9 +250,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_terragrunt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terragrunt.exe" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_windows_amd64.exe
-    echo "b2aae99537724c43782c9977d9615c6276c63248d36b2b0e182d0484a409a9da  $INSTALL_DIR/terragrunt.exe" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/terragrunt.exe" https://github.com/gruntwork-io/terragrunt/releases/download/v1.2.2/terragrunt_windows_amd64.exe &&
+      echo "b2aae99537724c43782c9977d9615c6276c63248d36b2b0e182d0484a409a9da  $INSTALL_DIR/terragrunt.exe" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

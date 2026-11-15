@@ -213,9 +213,9 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)
+    `Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)`
 
 === "macOS"
 
-    xmllint is preinstalled on macOS (brew install libxml2 for a recent version)
+    `xmllint is preinstalled on macOS (brew install libxml2 for a recent version)`
 

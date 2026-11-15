@@ -195,17 +195,17 @@ npx mega-linter-runner@beta --install-linters PHP_PHPCSFIXER --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phpcsfixer"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/php-cs-fixer.phar" https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.27/php-cs-fixer.phar
-    echo "47231757eefdd08778e2bd047d98a63dfaad881006c8c1d1bc870d63be7f6a9b  $INSTALL_DIR/php-cs-fixer.phar" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/php-cs-fixer.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/php-cs-fixer.phar" https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.27/php-cs-fixer.phar &&
+      echo "47231757eefdd08778e2bd047d98a63dfaad881006c8c1d1bc870d63be7f6a9b  $INSTALL_DIR/php-cs-fixer.phar" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/php-cs-fixer.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # php-cs-fixer: run php "$INSTALL_DIR/php-cs-fixer.phar"
     ```
 
@@ -214,10 +214,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phpcsfixer"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/php-cs-fixer.phar" https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.27/php-cs-fixer.phar
-    echo "47231757eefdd08778e2bd047d98a63dfaad881006c8c1d1bc870d63be7f6a9b  $INSTALL_DIR/php-cs-fixer.phar" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/php-cs-fixer.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/php-cs-fixer.phar" https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.27/php-cs-fixer.phar &&
+      echo "47231757eefdd08778e2bd047d98a63dfaad881006c8c1d1bc870d63be7f6a9b  $INSTALL_DIR/php-cs-fixer.phar" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/php-cs-fixer.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # php-cs-fixer: run php "$INSTALL_DIR/php-cs-fixer.phar"
     ```
 
@@ -226,9 +226,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phpcsfixer"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/php-cs-fixer.phar" https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.27/php-cs-fixer.phar
-    echo "47231757eefdd08778e2bd047d98a63dfaad881006c8c1d1bc870d63be7f6a9b  $INSTALL_DIR/php-cs-fixer.phar" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/php-cs-fixer.phar" https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.27/php-cs-fixer.phar &&
+      echo "47231757eefdd08778e2bd047d98a63dfaad881006c8c1d1bc870d63be7f6a9b  $INSTALL_DIR/php-cs-fixer.phar" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # php-cs-fixer: run php "$INSTALL_DIR/php-cs-fixer.phar"
     ```
 

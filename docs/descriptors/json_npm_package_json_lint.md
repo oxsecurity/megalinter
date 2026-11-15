@@ -169,7 +169,7 @@ npx mega-linter-runner@beta --install-linters JSON_NPM_PACKAGE_JSON_LINT --relea
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
 
 === "Linux, macOS, Windows (Git Bash)"
 

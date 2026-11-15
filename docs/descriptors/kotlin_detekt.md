@@ -263,17 +263,17 @@ npx mega-linter-runner@beta --install-linters KOTLIN_DETEKT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kotlin_detekt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/detekt-cli-all.jar" https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/1.23.8/detekt-cli-1.23.8-all.jar
-    echo "3afe89a11120303c73c9bdda3d8fe558dd9070a6937d27819ddc04b275381245  $INSTALL_DIR/detekt-cli-all.jar" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/detekt-cli-all.jar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/detekt-cli-all.jar" https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/1.23.8/detekt-cli-1.23.8-all.jar &&
+      echo "3afe89a11120303c73c9bdda3d8fe558dd9070a6937d27819ddc04b275381245  $INSTALL_DIR/detekt-cli-all.jar" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/detekt-cli-all.jar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # detekt-cli: run java "-jar" "$INSTALL_DIR/detekt-cli-all.jar"
     ```
 
@@ -282,10 +282,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kotlin_detekt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/detekt-cli-all.jar" https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/1.23.8/detekt-cli-1.23.8-all.jar
-    echo "3afe89a11120303c73c9bdda3d8fe558dd9070a6937d27819ddc04b275381245  $INSTALL_DIR/detekt-cli-all.jar" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/detekt-cli-all.jar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/detekt-cli-all.jar" https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/1.23.8/detekt-cli-1.23.8-all.jar &&
+      echo "3afe89a11120303c73c9bdda3d8fe558dd9070a6937d27819ddc04b275381245  $INSTALL_DIR/detekt-cli-all.jar" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/detekt-cli-all.jar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # detekt-cli: run java "-jar" "$INSTALL_DIR/detekt-cli-all.jar"
     ```
 
@@ -294,9 +294,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kotlin_detekt"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/detekt-cli-all.jar" https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/1.23.8/detekt-cli-1.23.8-all.jar
-    echo "3afe89a11120303c73c9bdda3d8fe558dd9070a6937d27819ddc04b275381245  $INSTALL_DIR/detekt-cli-all.jar" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/detekt-cli-all.jar" https://repo1.maven.org/maven2/io/gitlab/arturbosch/detekt/detekt-cli/1.23.8/detekt-cli-1.23.8-all.jar &&
+      echo "3afe89a11120303c73c9bdda3d8fe558dd9070a6937d27819ddc04b275381245  $INSTALL_DIR/detekt-cli-all.jar" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # detekt-cli: run java "-jar" "$INSTALL_DIR/detekt-cli-all.jar"
     ```
 

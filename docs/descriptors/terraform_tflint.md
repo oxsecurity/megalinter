@@ -233,18 +233,18 @@ npx mega-linter-runner@beta --install-linters TERRAFORM_TFLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tflint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tflint_linux_amd64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_linux_amd64.zip
-    echo "d4c545ed2e29d6338604b586f34f544f380f70f243aa72f7b484713835eaec61  $INSTALL_DIR/tflint_linux_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/tflint_linux_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tflint_linux_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tflint_linux_amd64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_linux_amd64.zip &&
+      echo "d4c545ed2e29d6338604b586f34f544f380f70f243aa72f7b484713835eaec61  $INSTALL_DIR/tflint_linux_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/tflint_linux_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tflint_linux_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export TFLINT_PLUGIN_DIR="$INSTALL_DIR/plugins"
     ```
 
@@ -253,11 +253,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tflint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tflint_linux_arm64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_linux_arm64.zip
-    echo "843017c47a98be1de4d88fa038daa293770fe25cd01656c4f08b2e30d1d3b3a0  $INSTALL_DIR/tflint_linux_arm64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/tflint_linux_arm64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tflint_linux_arm64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tflint_linux_arm64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_linux_arm64.zip &&
+      echo "843017c47a98be1de4d88fa038daa293770fe25cd01656c4f08b2e30d1d3b3a0  $INSTALL_DIR/tflint_linux_arm64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/tflint_linux_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tflint_linux_arm64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export TFLINT_PLUGIN_DIR="$INSTALL_DIR/plugins"
     ```
 
@@ -266,11 +266,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tflint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tflint_darwin_amd64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_darwin_amd64.zip
-    echo "27696ea23ed77c1918945147ebfe6485a74f58560b9557ccecc77379205702c5  $INSTALL_DIR/tflint_darwin_amd64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/tflint_darwin_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tflint_darwin_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tflint_darwin_amd64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_darwin_amd64.zip &&
+      echo "27696ea23ed77c1918945147ebfe6485a74f58560b9557ccecc77379205702c5  $INSTALL_DIR/tflint_darwin_amd64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/tflint_darwin_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tflint_darwin_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export TFLINT_PLUGIN_DIR="$INSTALL_DIR/plugins"
     ```
 
@@ -279,11 +279,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tflint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tflint_darwin_arm64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_darwin_arm64.zip
-    echo "5a71c63481ba56760864298011fdb7317a9ae80a0bbaeceefa35883c7f62ac71  $INSTALL_DIR/tflint_darwin_arm64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/tflint_darwin_arm64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tflint_darwin_arm64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tflint_darwin_arm64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_darwin_arm64.zip &&
+      echo "5a71c63481ba56760864298011fdb7317a9ae80a0bbaeceefa35883c7f62ac71  $INSTALL_DIR/tflint_darwin_arm64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/tflint_darwin_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tflint_darwin_arm64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export TFLINT_PLUGIN_DIR="$INSTALL_DIR/plugins"
     ```
 
@@ -292,11 +292,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/terraform_tflint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tflint_windows_amd64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_windows_amd64.zip
-    echo "292e760adf0e9c7e0f10ddeb0f6add67fd6d2c68b5449fdf766ff6ffddce465c  $INSTALL_DIR/tflint_windows_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/tflint_windows_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/tflint_windows_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/tflint_windows_amd64.zip" https://github.com/terraform-linters/tflint/releases/download/v0.65.0/tflint_windows_amd64.zip &&
+      echo "292e760adf0e9c7e0f10ddeb0f6add67fd6d2c68b5449fdf766ff6ffddce465c  $INSTALL_DIR/tflint_windows_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/tflint_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tflint_windows_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export TFLINT_PLUGIN_DIR="$INSTALL_DIR/plugins"
     ```
 

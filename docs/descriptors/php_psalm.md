@@ -349,17 +349,17 @@ npx mega-linter-runner@beta --install-linters PHP_PSALM --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_psalm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar
-    echo "976789b18a68ff6e3b9f4ac50b70a51cd41f7dc30306ef8a549bae0f4a863999  $INSTALL_DIR/psalm.phar" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/psalm.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar &&
+      echo "976789b18a68ff6e3b9f4ac50b70a51cd41f7dc30306ef8a549bae0f4a863999  $INSTALL_DIR/psalm.phar" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/psalm.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # psalm: run php "$INSTALL_DIR/psalm.phar"
     ```
 
@@ -368,10 +368,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_psalm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar
-    echo "976789b18a68ff6e3b9f4ac50b70a51cd41f7dc30306ef8a549bae0f4a863999  $INSTALL_DIR/psalm.phar" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/psalm.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar &&
+      echo "976789b18a68ff6e3b9f4ac50b70a51cd41f7dc30306ef8a549bae0f4a863999  $INSTALL_DIR/psalm.phar" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/psalm.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # psalm: run php "$INSTALL_DIR/psalm.phar"
     ```
 
@@ -380,9 +380,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_psalm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar
-    echo "976789b18a68ff6e3b9f4ac50b70a51cd41f7dc30306ef8a549bae0f4a863999  $INSTALL_DIR/psalm.phar" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar &&
+      echo "976789b18a68ff6e3b9f4ac50b70a51cd41f7dc30306ef8a549bae0f4a863999  $INSTALL_DIR/psalm.phar" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # psalm: run php "$INSTALL_DIR/psalm.phar"
     ```
 

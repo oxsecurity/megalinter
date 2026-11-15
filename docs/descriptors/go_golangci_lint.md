@@ -214,18 +214,18 @@ npx mega-linter-runner@beta --install-linters GO_GOLANGCI_LINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_golangci_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-linux-amd64.tar.gz
-    echo "9b7fe6a6bf6334b98decf8d86b11415ea7889afdabdd1959fdce23af2a9ebcea  $INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-linux-amd64.tar.gz &&
+      echo "9b7fe6a6bf6334b98decf8d86b11415ea7889afdabdd1959fdce23af2a9ebcea  $INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/golangci-lint-2.15.0-linux-amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -233,11 +233,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_golangci_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-linux-arm64.tar.gz
-    echo "b4d8f17068b35ee6060cc2f69a16fb48740d706fbba81661c318649c114a6998  $INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-linux-arm64.tar.gz &&
+      echo "b4d8f17068b35ee6060cc2f69a16fb48740d706fbba81661c318649c114a6998  $INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/golangci-lint-2.15.0-linux-arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -245,11 +245,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_golangci_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-darwin-amd64.tar.gz
-    echo "767b899a28285e88ded2823d5dcc4bc5ef681173eb2d80f029a7b17ee4ece3b8  $INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-darwin-amd64.tar.gz &&
+      echo "767b899a28285e88ded2823d5dcc4bc5ef681173eb2d80f029a7b17ee4ece3b8  $INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/golangci-lint-2.15.0-darwin-amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -257,11 +257,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_golangci_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-darwin-arm64.tar.gz
-    echo "d1e409481a8ca846c4bc97e781eb5cb1bd5c23353a0b3977a1cbda1b1b6447d5  $INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-darwin-arm64.tar.gz &&
+      echo "d1e409481a8ca846c4bc97e781eb5cb1bd5c23353a0b3977a1cbda1b1b6447d5  $INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/golangci-lint-2.15.0-darwin-arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -269,13 +269,13 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_golangci_lint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-windows-amd64.zip
-    echo "cd7ea6063c95de245e17e5246e42bdc14bb221792c429dbd239ab3a6ade6ca6a  $INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" -d "$INSTALL_DIR/extract"
-    mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/
-    rm -r "$INSTALL_DIR/extract"
-    rm "$INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" https://github.com/golangci/golangci-lint/releases/download/v2.15.0/golangci-lint-2.15.0-windows-amd64.zip &&
+      echo "cd7ea6063c95de245e17e5246e42bdc14bb221792c429dbd239ab3a6ade6ca6a  $INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" -d "$INSTALL_DIR/extract" &&
+      mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/ &&
+      rm -r "$INSTALL_DIR/extract" &&
+      rm "$INSTALL_DIR/golangci-lint-2.15.0-windows-amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

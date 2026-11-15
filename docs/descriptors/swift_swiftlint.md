@@ -172,13 +172,11 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install SwiftLint from https://github.com/realm/SwiftLint#installation (Homebrew on Linux: brew install swiftlint, or the swiftlint_linux zip of a release)
+    `Install SwiftLint from https://github.com/realm/SwiftLint#installation (Homebrew on Linux: brew install swiftlint, or the swiftlint_linux zip of a release)`
 
 === "macOS"
 
-    ```shell
-    brew install swiftlint
-    ```
+    `brew install swiftlint`
 
 
 ## Known errors and resolutions

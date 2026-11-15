@@ -248,18 +248,18 @@ npx mega-linter-runner@beta --install-linters KUBERNETES_HELM --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_helm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" https://get.helm.sh/helm-v4.3.1-linux-amd64.tar.gz
-    echo "0403a88ae20913d11b10a2467b50087721fea7581736da6b9d3992f5357fe54b  $INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" https://get.helm.sh/helm-v4.3.1-linux-amd64.tar.gz &&
+      echo "0403a88ae20913d11b10a2467b50087721fea7581736da6b9d3992f5357fe54b  $INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -267,11 +267,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_helm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" https://get.helm.sh/helm-v4.3.1-linux-arm64.tar.gz
-    echo "8cf8f66ecbc252ac8f7f06cca68aba88508ddfde3a6a34feb1678ad1694b4f88  $INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" https://get.helm.sh/helm-v4.3.1-linux-arm64.tar.gz &&
+      echo "8cf8f66ecbc252ac8f7f06cca68aba88508ddfde3a6a34feb1678ad1694b4f88  $INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -279,11 +279,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_helm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" https://get.helm.sh/helm-v4.3.1-darwin-amd64.tar.gz
-    echo "34bec4eba761ba5c16d1965ee6b8f5b0abe5993974a802274e2a4f0418893d89  $INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" https://get.helm.sh/helm-v4.3.1-darwin-amd64.tar.gz &&
+      echo "34bec4eba761ba5c16d1965ee6b8f5b0abe5993974a802274e2a4f0418893d89  $INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -291,11 +291,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_helm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" https://get.helm.sh/helm-v4.3.1-darwin-arm64.tar.gz
-    echo "6b4e61c8cd27d99e5a801e63ff25dd5c70b36875c2cd659d3e9ce6b76fc23198  $INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1
-    rm "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" https://get.helm.sh/helm-v4.3.1-darwin-arm64.tar.gz &&
+      echo "6b4e61c8cd27d99e5a801e63ff25dd5c70b36875c2cd659d3e9ce6b76fc23198  $INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -303,13 +303,13 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kubernetes_helm"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" https://get.helm.sh/helm-v4.3.1-windows-amd64.zip
-    echo "fcfd7b796dcf0f225abc40b5636a3b01f55f3de2fb1dfb18475df94e62c14112  $INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" -d "$INSTALL_DIR/extract"
-    mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/
-    rm -r "$INSTALL_DIR/extract"
-    rm "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" https://get.helm.sh/helm-v4.3.1-windows-amd64.zip &&
+      echo "fcfd7b796dcf0f225abc40b5636a3b01f55f3de2fb1dfb18475df94e62c14112  $INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" -d "$INSTALL_DIR/extract" &&
+      mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/ &&
+      rm -r "$INSTALL_DIR/extract" &&
+      rm "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

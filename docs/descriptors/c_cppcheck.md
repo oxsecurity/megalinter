@@ -473,17 +473,13 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install cppcheck from your distribution (example: sudo apt install cppcheck)
+    `Install cppcheck from your distribution (example: sudo apt install cppcheck)`
 
 === "macOS"
 
-    ```shell
-    brew install cppcheck
-    ```
+    `brew install cppcheck`
 
 === "Windows (Git Bash)"
 
-    ```shell
-    winget install --id Cppcheck.Cppcheck -e
-    ```
+    `winget install --id Cppcheck.Cppcheck -e`
 

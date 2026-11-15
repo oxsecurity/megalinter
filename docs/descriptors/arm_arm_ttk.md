@@ -179,18 +179,18 @@ npx mega-linter-runner@beta --install-linters ARM_ARM_TTK --release beta
 | macOS (Apple Silicon) | ✅ |
 | Windows (Git Bash) | ✅ |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux, Windows (Git Bash)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/arm_arm_ttk"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/arm-ttk.zip" https://github.com/Azure/arm-ttk/releases/download/20250401/arm-ttk.zip
-    echo "8826c26ec122c2fa1f6a6de9c2c8475767e9187ffc1f3b663cec69bdf6c96ee0  $INSTALL_DIR/arm-ttk.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/arm-ttk.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/arm-ttk.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/arm-ttk.zip" https://github.com/Azure/arm-ttk/releases/download/20250401/arm-ttk.zip &&
+      echo "8826c26ec122c2fa1f6a6de9c2c8475767e9187ffc1f3b663cec69bdf6c96ee0  $INSTALL_DIR/arm-ttk.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/arm-ttk.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/arm-ttk.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export ARM_TTK_PSD1="$INSTALL_DIR/arm-ttk/arm-ttk/arm-ttk.psd1"
     ```
 
@@ -199,11 +199,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/arm_arm_ttk"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/arm-ttk.zip" https://github.com/Azure/arm-ttk/releases/download/20250401/arm-ttk.zip
-    echo "8826c26ec122c2fa1f6a6de9c2c8475767e9187ffc1f3b663cec69bdf6c96ee0  $INSTALL_DIR/arm-ttk.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/arm-ttk.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/arm-ttk.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/arm-ttk.zip" https://github.com/Azure/arm-ttk/releases/download/20250401/arm-ttk.zip &&
+      echo "8826c26ec122c2fa1f6a6de9c2c8475767e9187ffc1f3b663cec69bdf6c96ee0  $INSTALL_DIR/arm-ttk.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/arm-ttk.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/arm-ttk.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     export ARM_TTK_PSD1="$INSTALL_DIR/arm-ttk/arm-ttk/arm-ttk.psd1"
     ```
 

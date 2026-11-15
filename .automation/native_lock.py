@@ -145,7 +145,9 @@ def verify_cosign(provenance, version, target_file, folder, asset_name):
     ):
         if cosign_info.get(key):
             downloaded, _, _ = download(
-                render_asset_template(cosign_info[key], version, asset_name), folder, file_name
+                render_asset_template(cosign_info[key], version, asset_name),
+                folder,
+                file_name,
             )
             command += [option, downloaded]
     run_sigstore([*command, target_file])
@@ -156,7 +158,9 @@ def verify_gpg(provenance, version, target_file, folder, asset_name):
     gpg = require_tool("gpg")
     gpg_info = provenance["gpg"]
     signature, _, _ = download(
-        render_asset_template(gpg_info["signature_url"], version, asset_name), folder, "gpg.sig"
+        render_asset_template(gpg_info["signature_url"], version, asset_name),
+        folder,
+        "gpg.sig",
     )
     keyring = os.path.join(KEYS_DIR, gpg_info["keyring"])
     if not os.path.isfile(keyring):

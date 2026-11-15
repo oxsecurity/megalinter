@@ -171,18 +171,18 @@ npx mega-linter-runner@beta --install-linters GO_REVIVE --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_revive"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/revive_linux_amd64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_linux_amd64.tar.gz
-    echo "c3e6f9d9e2cf7c4039ad5b241a01607c6cc6c61f97e267e6acbb2e7beb373f34  $INSTALL_DIR/revive_linux_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/revive_linux_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/revive_linux_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/revive_linux_amd64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_linux_amd64.tar.gz &&
+      echo "c3e6f9d9e2cf7c4039ad5b241a01607c6cc6c61f97e267e6acbb2e7beb373f34  $INSTALL_DIR/revive_linux_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/revive_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/revive_linux_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -190,11 +190,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_revive"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/revive_linux_arm64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_linux_arm64.tar.gz
-    echo "1445dae6c7337593642b8df73ab9f40a61aff04879de1914bb11a07f9511712e  $INSTALL_DIR/revive_linux_arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/revive_linux_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/revive_linux_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/revive_linux_arm64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_linux_arm64.tar.gz &&
+      echo "1445dae6c7337593642b8df73ab9f40a61aff04879de1914bb11a07f9511712e  $INSTALL_DIR/revive_linux_arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/revive_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/revive_linux_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -202,11 +202,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_revive"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/revive_darwin_amd64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_darwin_amd64.tar.gz
-    echo "dad58b913376a5d1cd14f9cea241bbc8b63c8cdae95f85bfe0b569bb8a07f04b  $INSTALL_DIR/revive_darwin_amd64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/revive_darwin_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/revive_darwin_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/revive_darwin_amd64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_darwin_amd64.tar.gz &&
+      echo "dad58b913376a5d1cd14f9cea241bbc8b63c8cdae95f85bfe0b569bb8a07f04b  $INSTALL_DIR/revive_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/revive_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/revive_darwin_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -214,11 +214,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_revive"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/revive_darwin_arm64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_darwin_arm64.tar.gz
-    echo "abdbde1d0e314d9ea7d935eca82dd759e9660fe3b2f1e9157d5357c2ea3b6eb2  $INSTALL_DIR/revive_darwin_arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/revive_darwin_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/revive_darwin_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/revive_darwin_arm64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_darwin_arm64.tar.gz &&
+      echo "abdbde1d0e314d9ea7d935eca82dd759e9660fe3b2f1e9157d5357c2ea3b6eb2  $INSTALL_DIR/revive_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/revive_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/revive_darwin_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -226,10 +226,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/go_revive"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/revive_windows_amd64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_windows_amd64.tar.gz
-    echo "f995fc51d633b663a89eac71ac8340f4d4286f9d75a6aea2bc5d4096f4562e2e  $INSTALL_DIR/revive_windows_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/revive_windows_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/revive_windows_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/revive_windows_amd64.tar.gz" https://github.com/mgechev/revive/releases/download/v1.17.1/revive_windows_amd64.tar.gz &&
+      echo "f995fc51d633b663a89eac71ac8340f4d4286f9d75a6aea2bc5d4096f4562e2e  $INSTALL_DIR/revive_windows_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/revive_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/revive_windows_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

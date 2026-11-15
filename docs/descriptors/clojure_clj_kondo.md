@@ -210,18 +210,18 @@ npx mega-linter-runner@beta --install-linters CLOJURE_CLJ_KONDO --release beta
 | macOS (Apple Silicon) | ✅ |
 | Windows (Git Bash) | ✅ |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/clojure_clj_kondo"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-linux-static-amd64.zip
-    echo "cb56971158407311d469e2a639347efb19b9cc34f07ed9d9b3013fb975cba0a3  $INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-linux-static-amd64.zip &&
+      echo "cb56971158407311d469e2a639347efb19b9cc34f07ed9d9b3013fb975cba0a3  $INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/clj-kondo-2026.10.26-linux-static-amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -229,11 +229,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/clojure_clj_kondo"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-linux-aarch64.zip
-    echo "8825e6bcdc443d222dd86d0167fea7e59342446f31de591e089a04b029fbf352  $INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-linux-aarch64.zip &&
+      echo "8825e6bcdc443d222dd86d0167fea7e59342446f31de591e089a04b029fbf352  $INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/clj-kondo-2026.10.26-linux-aarch64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -241,11 +241,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/clojure_clj_kondo"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-macos-amd64.zip
-    echo "46716b2c4fa250f9c267c8f6d140ef7ed6d5a1c4c3798720c634142b5fa35bf9  $INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-macos-amd64.zip &&
+      echo "46716b2c4fa250f9c267c8f6d140ef7ed6d5a1c4c3798720c634142b5fa35bf9  $INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/clj-kondo-2026.10.26-macos-amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -253,11 +253,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/clojure_clj_kondo"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-macos-aarch64.zip
-    echo "167c9fa6cb7e2b50370e05d9a2dd536fdcec9aa207c94ae82813738894f9580a  $INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" | shasum -a 256 -c -
-    unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-macos-aarch64.zip &&
+      echo "167c9fa6cb7e2b50370e05d9a2dd536fdcec9aa207c94ae82813738894f9580a  $INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" | shasum -a 256 -c - &&
+      unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/clj-kondo-2026.10.26-macos-aarch64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -265,11 +265,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/clojure_clj_kondo"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-windows-amd64.zip
-    echo "fc97b2f72bd3aba45461f47a578cccedcbd31b91ae4023a703818f359595bfb7  $INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" https://github.com/clj-kondo/clj-kondo/releases/download/v2026.10.26/clj-kondo-2026.10.26-windows-amd64.zip &&
+      echo "fc97b2f72bd3aba45461f47a578cccedcbd31b91ae4023a703818f359595bfb7  $INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/clj-kondo-2026.10.26-windows-amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

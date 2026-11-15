@@ -289,17 +289,15 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install Coursier (https://get-coursier.io/docs/cli-installation) then run: cs install scalafix
+    `Install Coursier (https://get-coursier.io/docs/cli-installation) then run: cs install scalafix`
 
 === "macOS"
 
-    ```shell
-    brew install coursier/formulas/coursier && cs setup && cs install scalafix
-    ```
+    `brew install coursier/formulas/coursier && cs setup && cs install scalafix`
 
 === "Windows (Git Bash)"
 
-    Install Coursier (https://get-coursier.io/docs/cli-installation#windows) then run: cs install scalafix
+    `Install Coursier (https://get-coursier.io/docs/cli-installation#windows) then run: cs install scalafix`
 
 
 ## Known errors and resolutions

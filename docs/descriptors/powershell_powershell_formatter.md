@@ -491,7 +491,7 @@ npx mega-linter-runner@beta --install-linters POWERSHELL_POWERSHELL_FORMATTER --
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux, macOS"
 
@@ -506,6 +506,6 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/powershell_powershell_formatter"
     pwsh -NoProfile -Command "Save-Module -Name PSScriptAnalyzer -RequiredVersion 1.25.0 -Path '$(cygpath -w "$INSTALL_DIR")'"
-    export PSModulePath="$INSTALL_DIR;$PSModulePath"
+    export PSModulePath="$(cygpath -w "$INSTALL_DIR");$PSModulePath"
     ```
 

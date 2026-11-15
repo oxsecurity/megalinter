@@ -162,7 +162,21 @@ NATIVE_LINTERS: [CSHARP_DOTNET_FORMAT]
 
 This tool is not downloaded by MegaLinter, install it yourself:
 
-=== "Linux, macOS, Windows (Git Bash)"
+=== "Linux"
 
-    Provided by the `dotnet` >=8 runtime: install it and add it to `PATH`.
+    Provided by the `dotnet` >=8 runtime, install it with:
+
+    `Install the .NET SDK from https://learn.microsoft.com/dotnet/core/install/linux`
+
+=== "macOS"
+
+    Provided by the `dotnet` >=8 runtime, install it with:
+
+    `brew install --cask dotnet-sdk`
+
+=== "Windows (Git Bash)"
+
+    Provided by the `dotnet` >=8 runtime, install it with:
+
+    `winget install --id Microsoft.DotNet.SDK.9 -e`
 

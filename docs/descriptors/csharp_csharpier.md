@@ -177,7 +177,7 @@ npx mega-linter-runner@beta --install-linters CSHARP_CSHARPIER --release beta
 | macOS (Apple Silicon) | ✅ |
 | Windows (Git Bash) | ✅ |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux, macOS, Windows (Git Bash)"
 

@@ -300,18 +300,18 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_TRUFFLEHOG --release be
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trufflehog"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_linux_amd64.tar.gz
-    echo "bdbea0508e439b144f49de14e775908de5f902f3d14ea7ae8354bae72b0b72ef  $INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_linux_amd64.tar.gz &&
+      echo "bdbea0508e439b144f49de14e775908de5f902f3d14ea7ae8354bae72b0b72ef  $INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -319,11 +319,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trufflehog"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_linux_arm64.tar.gz
-    echo "3060f7c9f18c70afdc432984cacabdd1e9103729b5d5fee7fb6755a90d1c59d4  $INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_linux_arm64.tar.gz &&
+      echo "3060f7c9f18c70afdc432984cacabdd1e9103729b5d5fee7fb6755a90d1c59d4  $INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -331,11 +331,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trufflehog"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_darwin_amd64.tar.gz
-    echo "6bdbc7b0aaeefcb50275036b49be1a3561b3c2e5902879300339abf9c64914c0  $INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_darwin_amd64.tar.gz &&
+      echo "6bdbc7b0aaeefcb50275036b49be1a3561b3c2e5902879300339abf9c64914c0  $INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -343,11 +343,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trufflehog"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_darwin_arm64.tar.gz
-    echo "5540ef352fc88b1f580e91603689782c0107ca7d4a96c1aeb2714b3a98c766ce  $INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_darwin_arm64.tar.gz &&
+      echo "5540ef352fc88b1f580e91603689782c0107ca7d4a96c1aeb2714b3a98c766ce  $INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -355,10 +355,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_trufflehog"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_windows_amd64.tar.gz
-    echo "16e85ace8d7724774559d418e1bd876ae410a684321c1c44a34c499b03703d9d  $INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_windows_amd64.tar.gz &&
+      echo "16e85ace8d7724774559d418e1bd876ae410a684321c1c44a34c499b03703d9d  $INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

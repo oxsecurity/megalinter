@@ -295,18 +295,18 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_BETTERLEAKS --release b
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_betterleaks"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_linux_x64.tar.gz
-    echo "9d2ed6fc387bc1c3f95557d5539077b1ce422f0db5ec38db5f14a141ad2947bf  $INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_linux_x64.tar.gz &&
+      echo "9d2ed6fc387bc1c3f95557d5539077b1ce422f0db5ec38db5f14a141ad2947bf  $INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -314,11 +314,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_betterleaks"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_linux_arm64.tar.gz
-    echo "0541cd2980964a6fb8ea768e8b9507c91a3c06229193462f33a3ecd9cb146b99  $INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_linux_arm64.tar.gz &&
+      echo "0541cd2980964a6fb8ea768e8b9507c91a3c06229193462f33a3ecd9cb146b99  $INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -326,11 +326,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_betterleaks"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_darwin_x64.tar.gz
-    echo "2216363235feb5ad3696f6745c40a78156adce0c05dfb06a5eeca6d25e4aeed2  $INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_darwin_x64.tar.gz &&
+      echo "2216363235feb5ad3696f6745c40a78156adce0c05dfb06a5eeca6d25e4aeed2  $INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -338,11 +338,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_betterleaks"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_darwin_arm64.tar.gz
-    echo "068449bf665a07d17389a38ddee749be7d5484254e9262018e138e94b43f10c0  $INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_darwin_arm64.tar.gz &&
+      echo "068449bf665a07d17389a38ddee749be7d5484254e9262018e138e94b43f10c0  $INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -350,10 +350,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_betterleaks"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_windows_x64.zip
-    echo "076497e033d034669416fd926af6fb171ce750112c4c68ed0c708c238d42938a  $INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_windows_x64.zip &&
+      echo "076497e033d034669416fd926af6fb171ce750112c4c68ed0c708c238d42938a  $INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

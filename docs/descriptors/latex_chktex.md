@@ -206,15 +206,13 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install chktex from your distribution (example: sudo apt install chktex)
+    `Install chktex from your distribution (example: sudo apt install chktex)`
 
 === "macOS"
 
-    ```shell
-    brew install chktex
-    ```
+    `brew install chktex`
 
 === "Windows (Git Bash)"
 
-    winget install --id MiKTeX.MiKTeX -e (then: mpm --install=chktex), or install TeX Live from https://tug.org/texlive/windows.html
+    `winget install --id MiKTeX.MiKTeX -e (then: mpm --install=chktex), or install TeX Live from https://tug.org/texlive/windows.html`
 

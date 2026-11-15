@@ -180,17 +180,17 @@ npx mega-linter-runner@beta --install-linters PHP_PHPLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phplint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar
-    echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/phplint.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
+      echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/phplint.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
     export PLINT_MODE="legacy"
     ```
@@ -200,10 +200,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phplint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar
-    echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/phplint.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
+      echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/phplint.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
     export PLINT_MODE="legacy"
     ```
@@ -213,9 +213,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phplint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar
-    echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
+      echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
     export PLINT_MODE="legacy"
     ```

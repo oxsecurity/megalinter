@@ -178,18 +178,18 @@ npx mega-linter-runner@beta --install-linters ENV_DOTENV_LINTER --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/env_dotenv_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-alpine-x86_64.tar.gz
-    echo "88a9f2ccfbfea621e5b4691246c419de71d79c7596def888849496695cd8a082  $INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-alpine-x86_64.tar.gz &&
+      echo "88a9f2ccfbfea621e5b4691246c419de71d79c7596def888849496695cd8a082  $INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/dotenv-linter-alpine-x86_64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -197,11 +197,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/env_dotenv_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-alpine-aarch64.tar.gz
-    echo "819153e4f43ce016ebd076653e611431d5207e4fa5623a83028dfca92b1c3201  $INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-alpine-aarch64.tar.gz &&
+      echo "819153e4f43ce016ebd076653e611431d5207e4fa5623a83028dfca92b1c3201  $INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/dotenv-linter-alpine-aarch64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -209,11 +209,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/env_dotenv_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-darwin-x86_64.tar.gz
-    echo "143361bcd3c859cac0b16a6eaa51f3f69f270f17a55431e2e44d76722a7f0271  $INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-darwin-x86_64.tar.gz &&
+      echo "143361bcd3c859cac0b16a6eaa51f3f69f270f17a55431e2e44d76722a7f0271  $INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/dotenv-linter-darwin-x86_64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -221,11 +221,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/env_dotenv_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-darwin-arm64.tar.gz
-    echo "430ed45983cfc1d242cae959ec4b3b2df43fa1aff07d7750cc836d2f6479799a  $INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-darwin-arm64.tar.gz &&
+      echo "430ed45983cfc1d242cae959ec4b3b2df43fa1aff07d7750cc836d2f6479799a  $INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/dotenv-linter-darwin-arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -233,10 +233,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/env_dotenv_linter"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-win-x64.zip" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-win-x64.zip
-    echo "771214659b86d2de5c8c5214e6d59484ceb0de8a87037d488ce37d6ca6f6cc1a  $INSTALL_DIR/dotenv-linter-win-x64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/dotenv-linter-win-x64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/dotenv-linter-win-x64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/dotenv-linter-win-x64.zip" https://github.com/dotenv-linter/dotenv-linter/releases/download/v4.0.0/dotenv-linter-win-x64.zip &&
+      echo "771214659b86d2de5c8c5214e6d59484ceb0de8a87037d488ce37d6ca6f6cc1a  $INSTALL_DIR/dotenv-linter-win-x64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/dotenv-linter-win-x64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/dotenv-linter-win-x64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 

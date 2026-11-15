@@ -158,18 +158,18 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_KINGFISHER --release be
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_kingfisher"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kingfisher-linux-x64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-linux-x64.tgz
-    echo "97cdbe7706a722ea085d1e83a00a98b0e9432fc58b21c9a3e36f591b5c1446d7  $INSTALL_DIR/kingfisher-linux-x64.tgz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/kingfisher-linux-x64.tgz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kingfisher-linux-x64.tgz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kingfisher-linux-x64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-linux-x64.tgz &&
+      echo "97cdbe7706a722ea085d1e83a00a98b0e9432fc58b21c9a3e36f591b5c1446d7  $INSTALL_DIR/kingfisher-linux-x64.tgz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/kingfisher-linux-x64.tgz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kingfisher-linux-x64.tgz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -177,11 +177,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_kingfisher"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kingfisher-linux-arm64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-linux-arm64.tgz
-    echo "fece052a018c127f664e96f76c1ad6be39fe3d4df71db91caaa462e92a99aed1  $INSTALL_DIR/kingfisher-linux-arm64.tgz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/kingfisher-linux-arm64.tgz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kingfisher-linux-arm64.tgz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kingfisher-linux-arm64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-linux-arm64.tgz &&
+      echo "fece052a018c127f664e96f76c1ad6be39fe3d4df71db91caaa462e92a99aed1  $INSTALL_DIR/kingfisher-linux-arm64.tgz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/kingfisher-linux-arm64.tgz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kingfisher-linux-arm64.tgz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -189,11 +189,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_kingfisher"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kingfisher-darwin-x64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-darwin-x64.tgz
-    echo "6b9a9bfbc6afb1c2256d16c01e61db8d803fe4b00394cfa1d7be65a6d29aff53  $INSTALL_DIR/kingfisher-darwin-x64.tgz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/kingfisher-darwin-x64.tgz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kingfisher-darwin-x64.tgz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kingfisher-darwin-x64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-darwin-x64.tgz &&
+      echo "6b9a9bfbc6afb1c2256d16c01e61db8d803fe4b00394cfa1d7be65a6d29aff53  $INSTALL_DIR/kingfisher-darwin-x64.tgz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/kingfisher-darwin-x64.tgz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kingfisher-darwin-x64.tgz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -201,11 +201,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_kingfisher"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kingfisher-darwin-arm64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-darwin-arm64.tgz
-    echo "72c0af86a00a13091ed4a4997cd344e3383ff1ad364cd2d600c9efd1949acf4a  $INSTALL_DIR/kingfisher-darwin-arm64.tgz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/kingfisher-darwin-arm64.tgz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kingfisher-darwin-arm64.tgz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kingfisher-darwin-arm64.tgz" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-darwin-arm64.tgz &&
+      echo "72c0af86a00a13091ed4a4997cd344e3383ff1ad364cd2d600c9efd1949acf4a  $INSTALL_DIR/kingfisher-darwin-arm64.tgz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/kingfisher-darwin-arm64.tgz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kingfisher-darwin-arm64.tgz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -213,11 +213,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_kingfisher"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kingfisher-windows-x64.zip" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-windows-x64.zip
-    echo "81e5529eea96d441b75eb34b02222386f5b66506fb9cf1c97968716962c445f8  $INSTALL_DIR/kingfisher-windows-x64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/kingfisher-windows-x64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/kingfisher-windows-x64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/kingfisher-windows-x64.zip" https://github.com/mongodb/kingfisher/releases/download/v2.16.0/kingfisher-windows-x64.zip &&
+      echo "81e5529eea96d441b75eb34b02222386f5b66506fb9cf1c97968716962c445f8  $INSTALL_DIR/kingfisher-windows-x64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/kingfisher-windows-x64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kingfisher-windows-x64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 

@@ -205,9 +205,23 @@ NATIVE_LINTERS: [DART_DARTANALYZER]
 
 This tool is not downloaded by MegaLinter, install it yourself:
 
-=== "Linux, macOS, Windows (Git Bash)"
+=== "Linux"
 
-    Provided by the `dart` >=3 runtime: install it and add it to `PATH`.
+    Provided by the `dart` >=3 runtime, install it with:
+
+    `Install the Dart SDK from https://dart.dev/get-dart`
+
+=== "macOS"
+
+    Provided by the `dart` >=3 runtime, install it with:
+
+    `brew install dart-sdk`
+
+=== "Windows (Git Bash)"
+
+    Provided by the `dart` >=3 runtime, install it with:
+
+    `winget install --id Google.DartSDK -e`
 
 
 ## Known errors and resolutions

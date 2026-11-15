@@ -160,13 +160,11 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    cpan -T Perl::Critic (or, on Debian/Ubuntu: sudo apt install libperl-critic-perl)
+    `cpan -T Perl::Critic (or, on Debian/Ubuntu: sudo apt install libperl-critic-perl)`
 
 === "macOS, Windows (Git Bash)"
 
-    ```shell
-    cpan -T Perl::Critic
-    ```
+    `cpan -T Perl::Critic`
 
 
 ## Known errors and resolutions

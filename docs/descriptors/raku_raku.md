@@ -222,15 +222,13 @@ This tool is not downloaded by MegaLinter, install it yourself:
 
 === "Linux"
 
-    Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)
+    `Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)`
 
 === "macOS"
 
-    ```shell
-    brew install rakudo-star
-    ```
+    `brew install rakudo-star`
 
 === "Windows (Git Bash)"
 
-    Install Rakudo Star with the MSI installer from https://rakudo.org/downloads/star
+    `Install Rakudo Star with the MSI installer from https://rakudo.org/downloads/star`
 

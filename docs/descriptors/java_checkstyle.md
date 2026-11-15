@@ -252,17 +252,17 @@ npx mega-linter-runner@beta --install-linters JAVA_CHECKSTYLE --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/java_checkstyle"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar
-    echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/checkstyle-all.jar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar &&
+      echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/checkstyle-all.jar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # checkstyle: run java "-jar" "$INSTALL_DIR/checkstyle-all.jar"
     ```
 
@@ -271,10 +271,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/java_checkstyle"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar
-    echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/checkstyle-all.jar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar &&
+      echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/checkstyle-all.jar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # checkstyle: run java "-jar" "$INSTALL_DIR/checkstyle-all.jar"
     ```
 
@@ -283,9 +283,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/java_checkstyle"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar
-    echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar &&
+      echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # checkstyle: run java "-jar" "$INSTALL_DIR/checkstyle-all.jar"
     ```
 

@@ -270,17 +270,17 @@ npx mega-linter-runner@beta --install-linters KOTLIN_KTLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kotlin_ktlint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ktlint" https://github.com/pinterest/ktlint/releases/download/1.8.0/ktlint
-    echo "a3fd620207d5c40da6ca789b95e7f823c54e854b7fade7f613e91096a3706d75  $INSTALL_DIR/ktlint" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/ktlint"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ktlint" https://github.com/pinterest/ktlint/releases/download/1.8.0/ktlint &&
+      echo "a3fd620207d5c40da6ca789b95e7f823c54e854b7fade7f613e91096a3706d75  $INSTALL_DIR/ktlint" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/ktlint" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # ktlint: run java "-jar" "$INSTALL_DIR/ktlint"
     ```
 
@@ -289,10 +289,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kotlin_ktlint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ktlint" https://github.com/pinterest/ktlint/releases/download/1.8.0/ktlint
-    echo "a3fd620207d5c40da6ca789b95e7f823c54e854b7fade7f613e91096a3706d75  $INSTALL_DIR/ktlint" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/ktlint"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ktlint" https://github.com/pinterest/ktlint/releases/download/1.8.0/ktlint &&
+      echo "a3fd620207d5c40da6ca789b95e7f823c54e854b7fade7f613e91096a3706d75  $INSTALL_DIR/ktlint" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/ktlint" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # ktlint: run java "-jar" "$INSTALL_DIR/ktlint"
     ```
 
@@ -301,9 +301,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/kotlin_ktlint"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/ktlint" https://github.com/pinterest/ktlint/releases/download/1.8.0/ktlint
-    echo "a3fd620207d5c40da6ca789b95e7f823c54e854b7fade7f613e91096a3706d75  $INSTALL_DIR/ktlint" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/ktlint" https://github.com/pinterest/ktlint/releases/download/1.8.0/ktlint &&
+      echo "a3fd620207d5c40da6ca789b95e7f823c54e854b7fade7f613e91096a3706d75  $INSTALL_DIR/ktlint" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # ktlint: run java "-jar" "$INSTALL_DIR/ktlint"
     ```
 

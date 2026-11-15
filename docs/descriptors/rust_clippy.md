@@ -159,7 +159,21 @@ NATIVE_LINTERS: [RUST_CLIPPY]
 
 This tool is not downloaded by MegaLinter, install it yourself:
 
-=== "Linux, macOS, Windows (Git Bash)"
+=== "Linux"
 
-    Provided by the `rust` runtime: install it and add it to `PATH`.
+    Provided by the `rust` runtime, install it with:
+
+    `Install rustup from https://rustup.rs (download the installer, review it, then run it)`
+
+=== "macOS"
+
+    Provided by the `rust` runtime, install it with:
+
+    `brew install rustup && rustup-init`
+
+=== "Windows (Git Bash)"
+
+    Provided by the `rust` runtime, install it with:
+
+    `winget install --id Rustlang.Rustup -e`
 

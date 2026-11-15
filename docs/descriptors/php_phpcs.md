@@ -293,17 +293,17 @@ npx mega-linter-runner@beta --install-linters PHP_PHPCS --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phpcs"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar
-    echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | sha256sum -c -
-    chmod +x "$INSTALL_DIR/phpcs.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar &&
+      echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | sha256sum -c - &&
+      chmod +x "$INSTALL_DIR/phpcs.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # phpcs: run php "$INSTALL_DIR/phpcs.phar"
     ```
 
@@ -312,10 +312,10 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phpcs"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar
-    echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | shasum -a 256 -c -
-    chmod +x "$INSTALL_DIR/phpcs.phar"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar &&
+      echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | shasum -a 256 -c - &&
+      chmod +x "$INSTALL_DIR/phpcs.phar" &&
+      export PATH="$INSTALL_DIR:$PATH"
     # phpcs: run php "$INSTALL_DIR/phpcs.phar"
     ```
 
@@ -324,9 +324,9 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/php_phpcs"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar
-    echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | sha256sum -c -
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar &&
+      echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | sha256sum -c - &&
+      export PATH="$INSTALL_DIR:$PATH"
     # phpcs: run php "$INSTALL_DIR/phpcs.phar"
     ```
 

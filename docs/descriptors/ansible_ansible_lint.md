@@ -229,7 +229,7 @@ npx mega-linter-runner@beta --install-linters ANSIBLE_ANSIBLE_LINT --release bet
 | macOS (Apple Silicon) | ✅ |
 | Windows (Git Bash) | ❌ ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker. |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
 
 === "Linux, macOS"
 

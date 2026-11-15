@@ -212,18 +212,18 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_GRYPE --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Equivalent manual commands. The command above is the supported way: it also verifies the hashes and signatures of every download.
+Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
 
 === "Linux (x86-64)"
 
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_grype"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_amd64.tar.gz
-    echo "64e07133d3486115de647a66581461dccf5c732748a0a3119077395565f15519  $INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_amd64.tar.gz &&
+      echo "64e07133d3486115de647a66581461dccf5c732748a0a3119077395565f15519  $INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Linux (ARM64)"
@@ -231,11 +231,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_grype"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_arm64.tar.gz
-    echo "86f570f75ca947ea3dd6486309232bcff6d78e44ba081ae75ab14eab72be3dae  $INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" | sha256sum -c -
-    tar -xzf "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_arm64.tar.gz &&
+      echo "86f570f75ca947ea3dd6486309232bcff6d78e44ba081ae75ab14eab72be3dae  $INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" | sha256sum -c - &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Intel)"
@@ -243,11 +243,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_grype"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_darwin_amd64.tar.gz
-    echo "27eef17e42f0340af6582cdbc33ad18faf9f601c613ab81d2e1658a94cbc357f  $INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_darwin_amd64.tar.gz &&
+      echo "27eef17e42f0340af6582cdbc33ad18faf9f601c613ab81d2e1658a94cbc357f  $INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "macOS (Apple Silicon)"
@@ -255,11 +255,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_grype"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_darwin_arm64.tar.gz
-    echo "7be39d3a0428c664ce0183e4aba31ed9accffce9eda7e7f6fa84e9c512285f27  $INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" | shasum -a 256 -c -
-    tar -xzf "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR"
-    rm "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_darwin_arm64.tar.gz &&
+      echo "7be39d3a0428c664ce0183e4aba31ed9accffce9eda7e7f6fa84e9c512285f27  $INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 === "Windows (Git Bash)"
@@ -267,11 +267,11 @@ Equivalent manual commands. The command above is the supported way: it also veri
     ```shell
     INSTALL_DIR="$HOME/.local/opt/repository_grype"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_windows_amd64.zip
-    echo "f867bbdc14bd8b0d99b3fc47d839af07480a540072b16896373a8ba32b76f588  $INSTALL_DIR/grype_0.121.0_windows_amd64.zip" | sha256sum -c -
-    unzip -q "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" -d "$INSTALL_DIR"
-    rm "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip"
-    export PATH="$INSTALL_DIR:$PATH"
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_windows_amd64.zip &&
+      echo "f867bbdc14bd8b0d99b3fc47d839af07480a540072b16896373a8ba32b76f588  $INSTALL_DIR/grype_0.121.0_windows_amd64.zip" | sha256sum -c - &&
+      unzip -q "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" &&
+      export PATH="$INSTALL_DIR:$PATH"
     ```
 
 
