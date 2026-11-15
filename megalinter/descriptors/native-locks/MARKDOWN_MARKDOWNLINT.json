@@ -3,7 +3,7 @@
   "common": {
     "package_json": {
       "dependencies": {
-        "markdownlint-cli": "0.49.1"
+        "markdownlint-cli": "0.50.0"
       },
       "name": "megalinter-native-markdown_markdownlint",
       "private": true,
@@ -15,7 +15,7 @@
       "packages": {
         "": {
           "dependencies": {
-            "markdownlint-cli": "0.49.1"
+            "markdownlint-cli": "0.50.0"
           },
           "name": "megalinter-native-markdown_markdownlint",
           "version": "0.0.0"
@@ -60,10 +60,20 @@
           "version": "6.6.0"
         },
         "node_modules/argparse": {
-          "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
-          "license": "Python-2.0",
-          "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
-          "version": "2.0.1"
+          "funding": [
+            {
+              "type": "github",
+              "url": "https://github.com/sponsors/puzrin"
+            },
+            {
+              "type": "github",
+              "url": "https://github.com/sponsors/nodeca"
+            }
+          ],
+          "integrity": "sha512-fwWK3Zq22l4XJJjx5mcBHGikIk+hJqO+32dPm0Jur7+rtG5x1scOjSfdT9ZKeWHPpsya/l0HHK4tDImBkTrtvA==",
+          "license": "PSF-2.0",
+          "resolved": "https://registry.npmjs.org/argparse/-/argparse-3.0.4.tgz",
+          "version": "3.0.4"
         },
         "node_modules/balanced-match": {
           "engines": {
@@ -188,15 +198,15 @@
         },
         "node_modules/entities": {
           "engines": {
-            "node": ">=0.12"
+            "node": ">=20.19.0"
           },
           "funding": {
             "url": "https://github.com/fb55/entities?sponsor=1"
           },
-          "integrity": "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==",
+          "integrity": "sha512-kxL7msIffSuh9aaFAMD7rxAIuTRMAHMeBtgHW2yUdWw732ZNh4MehkF2gdjvtdmikkaIP9bFDDJOPlsvm7avrA==",
           "license": "BSD-2-Clause",
-          "resolved": "https://registry.npmjs.org/entities/-/entities-4.5.0.tgz",
-          "version": "4.5.0"
+          "resolved": "https://registry.npmjs.org/entities/-/entities-8.1.0.tgz",
+          "version": "8.1.0"
         },
         "node_modules/fdir": {
           "engines": {
@@ -294,7 +304,7 @@
             "js-yaml": "bin/js-yaml.mjs"
           },
           "dependencies": {
-            "argparse": "^2.0.1"
+            "argparse": "^3.0.3"
           },
           "funding": [
             {
@@ -306,10 +316,10 @@
               "url": "https://github.com/sponsors/nodeca"
             }
           ],
-          "integrity": "sha512-n+mUVyUX5bVv7G/G2zyIHOhdxfuU1dY2NOFzTQUWiMUbFss8b57NFlgCCaggU78wSw5KVS9cllzeLyzyR+n5nw==",
+          "integrity": "sha512-paNr4LFIFPjeeSmwNYdrb8FafLLG/Cr2Af3GjbsHJ5CxIjH4r0c2emlmRdAtpPAieP1gRVzk6buBbVP5gBMGAg==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-5.2.3.tgz",
-          "version": "5.2.3"
+          "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-5.5.0.tgz",
+          "version": "5.5.0"
         },
         "node_modules/jsonc-parser": {
           "integrity": "sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==",
@@ -353,7 +363,7 @@
         },
         "node_modules/linkify-it": {
           "dependencies": {
-            "uc.micro": "^2.0.0"
+            "uc.micro": "^3.0.0"
           },
           "funding": [
             {
@@ -365,22 +375,22 @@
               "url": "https://github.com/sponsors/markdown-it"
             }
           ],
-          "integrity": "sha512-ONTm2jCMAVZjgQa/Fy1kScXsuOoF5NPTsoFBdE1KVIZ2vAh/r9+Bqo+0jINCBYnavTPQZz38QzFTme79ENoN3Q==",
+          "integrity": "sha512-wJ/TwpSDTLepCrQoYWYIExIKg5Zchex2Nn5yk2mFnB+6PtdkHtyLx742md9csRjjOnGkKIS/RrbY7l8D6gT9Vw==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/linkify-it/-/linkify-it-5.0.2.tgz",
-          "version": "5.0.2"
+          "resolved": "https://registry.npmjs.org/linkify-it/-/linkify-it-6.1.0.tgz",
+          "version": "6.1.0"
         },
         "node_modules/markdown-it": {
           "bin": {
             "markdown-it": "bin/markdown-it.mjs"
           },
           "dependencies": {
-            "argparse": "^2.0.1",
-            "entities": "^4.5.0",
-            "linkify-it": "^5.0.2",
-            "mdurl": "^2.0.0",
+            "argparse": "^3.0.3",
+            "entities": "^8.1.0",
+            "linkify-it": "^6.1.0",
+            "mdurl": "^2.1.0",
             "punycode.js": "^2.3.1",
-            "uc.micro": "^2.1.0"
+            "uc.micro": "^3.0.0"
           },
           "funding": [
             {
@@ -392,22 +402,23 @@
               "url": "https://github.com/sponsors/markdown-it"
             }
           ],
-          "integrity": "sha512-L//tDAkjTjJCU6pBUSBTgs3Kg4InVaZuUZog/b6V12UKhcDQ7S78877ibbCanRExwPuYP1CZD7Gd2dxSy1GXRg==",
+          "integrity": "sha512-+Az7Ojz3iRGu8KYMvJ6xVhvrxP3eE+vEtJX75Ow88XBpcQNV/0lGX5ZynIIBftREo4DC2jsveAMDaeltmm8QvQ==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-14.3.3.tgz",
-          "version": "14.3.3"
+          "resolved": "https://registry.npmjs.org/markdown-it/-/markdown-it-15.0.3.tgz",
+          "version": "15.0.3"
         },
         "node_modules/markdownlint": {
           "dependencies": {
-            "micromark": "4.0.2",
-            "micromark-core-commonmark": "2.0.3",
+            "micromark": "4.0.3",
+            "micromark-core-commonmark": "2.0.4",
             "micromark-extension-directive": "4.0.0",
             "micromark-extension-gfm-autolink-literal": "2.1.0",
             "micromark-extension-gfm-footnote": "2.1.0",
-            "micromark-extension-gfm-table": "2.1.1",
+            "micromark-extension-gfm-table": "2.1.2",
             "micromark-extension-math": "3.1.0",
-            "micromark-util-types": "2.0.2",
-            "string-width": "8.2.1"
+            "micromark-util-types": "2.0.3",
+            "re2js": "2.9.1",
+            "string-width": "8.3.0"
           },
           "engines": {
             "node": ">=22"
@@ -415,10 +426,10 @@
           "funding": {
             "url": "https://github.com/sponsors/DavidAnson"
           },
-          "integrity": "sha512-qHKeU2E1bdyNAT077go2FVTNXvYcktN5IHtF6XyeD1l0PClxzSp2tUApAV14ORI8DGX4H9bNKZEzelZp4qn8IA==",
+          "integrity": "sha512-Otolm9JX12iO2NG5cetlKfzGygpiLSlHuqXKxoT6HGhN5HtbxprJPicKZqqCQd88qOvUi/TEs3o1AmcYioVscA==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/markdownlint/-/markdownlint-0.41.1.tgz",
-          "version": "0.41.1"
+          "resolved": "https://registry.npmjs.org/markdownlint/-/markdownlint-0.42.1.tgz",
+          "version": "0.42.1"
         },
         "node_modules/markdownlint-cli": {
           "bin": {
@@ -427,24 +438,24 @@
           "dependencies": {
             "commander": "~15.0.0",
             "deep-extend": "~0.6.0",
-            "ignore": "~7.0.6",
-            "js-yaml": "~5.2.1",
+            "ignore": "~7.0.13",
+            "js-yaml": "~5.5.0",
             "jsonc-parser": "~3.3.1",
             "jsonpointer": "~5.0.1",
-            "markdown-it": "~14.3.0",
-            "markdownlint": "~0.41.1",
-            "minimatch": "~10.2.5",
+            "markdown-it": "~15.0.3",
+            "markdownlint": "~0.42.0",
+            "minimatch": "~10.2.6",
             "run-con": "~1.3.3",
-            "smol-toml": "~1.7.0",
+            "smol-toml": "~1.9.1",
             "tinyglobby": "~0.2.17"
           },
           "engines": {
             "node": ">=22"
           },
-          "integrity": "sha512-qpYqJbSYf3jv57bdnFmCaZ/Wlu6IYHp2b6SOKrKBJ7OnPrDHIKmx4NERWH49QH9viTI6yO6raVDDn5nrf60VQQ==",
+          "integrity": "sha512-4GqP/CqpF74ihrlLTOPc3I5b/tZabiiKnIVQ27xTzsS4hjU3oIHKg1YBzWP7fsa9AH48LPF0KcmCqDccpSeMEg==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/markdownlint-cli/-/markdownlint-cli-0.49.1.tgz",
-          "version": "0.49.1"
+          "resolved": "https://registry.npmjs.org/markdownlint-cli/-/markdownlint-cli-0.50.0.tgz",
+          "version": "0.50.0"
         },
         "node_modules/mdurl": {
           "integrity": "sha512-1+HBaOx0zi/dQWht8rNv9MYf9qqpqL/kxI0hXImU6Y547zM6Sni8BQibt7ifgMcYtQg41ao3Ivd6cnSM86inpg==",
@@ -464,6 +475,7 @@
             "micromark-util-chunked": "^2.0.0",
             "micromark-util-combine-extensions": "^2.0.0",
             "micromark-util-decode-numeric-character-reference": "^2.0.0",
+            "micromark-util-edit-map": "^1.0.0",
             "micromark-util-encode": "^2.0.0",
             "micromark-util-normalize-identifier": "^2.0.0",
             "micromark-util-resolve-all": "^2.0.0",
@@ -482,10 +494,10 @@
               "url": "https://opencollective.com/unified"
             }
           ],
-          "integrity": "sha512-zpe98Q6kvavpCr1NPVSCMebCKfD7CA2NqZ+rykeNhONIJBpc1tFKt9hucLGwha3jNTNI8lHpctWJWoimVF4PfA==",
+          "integrity": "sha512-oGYfQzHSG5dOMovQcJ3fyTmZlWAWpi0XA0sJwJs+i6OT88o1+Jtw/8z0CmdowSLxGhhFK89rQ/oXph/wN02PNw==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/micromark/-/micromark-4.0.2.tgz",
-          "version": "4.0.2"
+          "resolved": "https://registry.npmjs.org/micromark/-/micromark-4.0.3.tgz",
+          "version": "4.0.3"
         },
         "node_modules/micromark-core-commonmark": {
           "dependencies": {
@@ -493,18 +505,19 @@
             "devlop": "^1.0.0",
             "micromark-factory-destination": "^2.0.0",
             "micromark-factory-label": "^2.0.0",
-            "micromark-factory-space": "^2.0.0",
+            "micromark-factory-space": "^2.1.0",
             "micromark-factory-title": "^2.0.0",
             "micromark-factory-whitespace": "^2.0.0",
             "micromark-util-character": "^2.0.0",
             "micromark-util-chunked": "^2.0.0",
             "micromark-util-classify-character": "^2.0.0",
+            "micromark-util-edit-map": "^1.0.0",
             "micromark-util-html-tag-name": "^2.0.0",
             "micromark-util-normalize-identifier": "^2.0.0",
             "micromark-util-resolve-all": "^2.0.0",
             "micromark-util-subtokenize": "^2.0.0",
             "micromark-util-symbol": "^2.0.0",
-            "micromark-util-types": "^2.0.0"
+            "micromark-util-types": "^2.0.3"
           },
           "funding": [
             {
@@ -516,10 +529,10 @@
               "url": "https://opencollective.com/unified"
             }
           ],
-          "integrity": "sha512-RDBrHEMSxVFLg6xvnXmb1Ayr2WzLAWjeSATAoxwKYJV94TeNavgoIdA0a9ytzDSVzBy2YKFK+emCPOEibLeCrg==",
+          "integrity": "sha512-wxEeE8v8XVvOrxn1TZj74qYhAtTQsSqufHVS3uNVyT1MupXxhyaHk8/9xDNPh9BmL77QNDgWTkZ3RsYHB2ry7w==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/micromark-core-commonmark/-/micromark-core-commonmark-2.0.3.tgz",
-          "version": "2.0.3"
+          "resolved": "https://registry.npmjs.org/micromark-core-commonmark/-/micromark-core-commonmark-2.0.4.tgz",
+          "version": "2.0.4"
         },
         "node_modules/micromark-extension-directive": {
           "dependencies": {
@@ -588,10 +601,10 @@
             "type": "opencollective",
             "url": "https://opencollective.com/unified"
           },
-          "integrity": "sha512-t2OU/dXXioARrC6yWfJ4hqB7rct14e8f7m0cbI5hUmDyyIlwv5vEtooptH8INkbLzOatzKuVbQmAYcbWoyz6Dg==",
+          "integrity": "sha512-pRzm4kDTu0MjlmBkxmS9yYhw60nncfcEwu9NNdPFSQEFXS95ZKyIIyTSHu/o3ReBUrLKYEq+7YaXCRn/bPB4MA==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-2.1.1.tgz",
-          "version": "2.1.1"
+          "resolved": "https://registry.npmjs.org/micromark-extension-gfm-table/-/micromark-extension-gfm-table-2.1.2.tgz",
+          "version": "2.1.2"
         },
         "node_modules/micromark-extension-math": {
           "dependencies": {
@@ -818,6 +831,25 @@
           "resolved": "https://registry.npmjs.org/micromark-util-decode-numeric-character-reference/-/micromark-util-decode-numeric-character-reference-2.0.2.tgz",
           "version": "2.0.2"
         },
+        "node_modules/micromark-util-edit-map": {
+          "dependencies": {
+            "micromark-util-types": "^2.0.0"
+          },
+          "funding": [
+            {
+              "type": "GitHub Sponsors",
+              "url": "https://github.com/sponsors/unifiedjs"
+            },
+            {
+              "type": "OpenCollective",
+              "url": "https://opencollective.com/unified"
+            }
+          ],
+          "integrity": "sha512-Pa2ljlsEL6sVwFaYeyrOLSYbQt73JvGbPOYFq+9AElXiSnfI5Q4465RRZ1sHv7lDjDOnGRDDaqPXqClqWK/q1Q==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/micromark-util-edit-map/-/micromark-util-edit-map-1.0.0.tgz",
+          "version": "1.0.0"
+        },
         "node_modules/micromark-util-encode": {
           "funding": [
             {
@@ -958,10 +990,10 @@
               "url": "https://opencollective.com/unified"
             }
           ],
-          "integrity": "sha512-Yw0ECSpJoViF1qTU4DC6NwtC4aWGt1EkzaQB8KPPyCRR8z9TWeV0HbEFGTO+ZY1wB22zmxnJqhPyTpOVCpeHTA==",
+          "integrity": "sha512-oxB2Ik03hI0gv+VNn9tnh1t1YEe9MDPptViAEgfdf3YQHsn0pzGTgCdlSCJXcwhqm8phaEuM7zeEu3QQzVBrPg==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/micromark-util-types/-/micromark-util-types-2.0.2.tgz",
-          "version": "2.0.2"
+          "resolved": "https://registry.npmjs.org/micromark-util-types/-/micromark-util-types-2.0.3.tgz",
+          "version": "2.0.3"
         },
         "node_modules/minimatch": {
           "dependencies": {
@@ -1033,6 +1065,15 @@
           "resolved": "https://registry.npmjs.org/punycode.js/-/punycode.js-2.3.1.tgz",
           "version": "2.3.1"
         },
+        "node_modules/re2js": {
+          "engines": {
+            "node": ">=20.0.0"
+          },
+          "integrity": "sha512-JIT3bEEUZTOR2YS1walNEIfH4cF/cQeZcBUFq7ldqO6lR6g0X5CBq/S8rsa9omzZcsNf8qc36jCkWpKKtncrZg==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/re2js/-/re2js-2.9.1.tgz",
+          "version": "2.9.1"
+        },
         "node_modules/run-con": {
           "bin": {
             "run-con": "cli.js"
@@ -1055,10 +1096,10 @@
           "funding": {
             "url": "https://github.com/sponsors/cyyynthia"
           },
-          "integrity": "sha512-pXFZ9B2WinEPzxWkMmlYE/oYx2BP+qLrE95wP8tCuK901uLSMGdCb6QSr82z+wnhXkG4+cO+OMLbZB2Cn+97zw==",
+          "integrity": "sha512-j7WyPdf0CJoutMzMoPLF/bVXHtKZIT9Rb4eGeEbWw8X2t5oirjPgpL+OpaENZrILYaXqYwnVH+qgUwVbl+pUJQ==",
           "license": "BSD-3-Clause",
-          "resolved": "https://registry.npmjs.org/smol-toml/-/smol-toml-1.7.2.tgz",
-          "version": "1.7.2"
+          "resolved": "https://registry.npmjs.org/smol-toml/-/smol-toml-1.9.1.tgz",
+          "version": "1.9.1"
         },
         "node_modules/string-width": {
           "dependencies": {
@@ -1071,10 +1112,10 @@
           "funding": {
             "url": "https://github.com/sponsors/sindresorhus"
           },
-          "integrity": "sha512-IIaP0g3iy9Cyy18w3M9YcaDudujEAVHKt3a3QJg1+sr/oX96TbaGUubG0hJyCjCBThFH+tFpcIyoUHUn1ogaLA==",
+          "integrity": "sha512-ZbmZM0JCihQN91dWnxoipT2KOEyHqEyfRXUyjuRhW8b/xnqPDoq4gWEVApTVa9db2wN8mmoikgFBbjh71+cGeQ==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/string-width/-/string-width-8.2.1.tgz",
-          "version": "8.2.1"
+          "resolved": "https://registry.npmjs.org/string-width/-/string-width-8.3.0.tgz",
+          "version": "8.3.0"
         },
         "node_modules/strip-ansi": {
           "dependencies": {
@@ -1120,10 +1161,10 @@
           "version": "0.2.17"
         },
         "node_modules/uc.micro": {
-          "integrity": "sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==",
+          "integrity": "sha512-U3PppEkleoTnIfi8BozMx3yju3qc/L6SwqWo2Sw+54PX+PX0q9I+r1Um5HCmqD7n9VDX5/v3vQH/AjA6deDdtw==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/uc.micro/-/uc.micro-2.1.0.tgz",
-          "version": "2.1.0"
+          "resolved": "https://registry.npmjs.org/uc.micro/-/uc.micro-3.0.0.tgz",
+          "version": "3.0.0"
         }
       },
       "requires": true,
@@ -1134,5 +1175,5 @@
   "generator": 2,
   "linter": "MARKDOWN_MARKDOWNLINT",
   "method": "npm",
-  "spec_hash": "7c7777499ad54205a976d91187170accd815389bc93d8ffa4af6671f7aa68aa2"
+  "spec_hash": "2c27fbea2a30506caee3ae0644610270618a7de93b59ceb474c13c5a86b2e9fd"
 }
