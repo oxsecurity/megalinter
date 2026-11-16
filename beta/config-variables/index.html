@@ -12430,6 +12430,11 @@
 <td>Comma-separated list of files to analyze. Using this variable will bypass other file listing methods</td>
 </tr>
 <tr>
+<td><strong>NATIVE_SUGGESTIONS</strong></td>
+<td><code>true</code></td>
+<td>Suggests trying native mode (MegaLinter without Docker) when it runs in Docker and <code>NATIVE_LINTERS</code> is not defined</td>
+</tr>
+<tr>
 <td><strong>PARALLEL</strong></td>
 <td><code>true</code></td>
 <td>Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files</td>

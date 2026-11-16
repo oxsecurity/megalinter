@@ -15720,6 +15720,7 @@
 <li>Linters installed by MegaLinter always run the version of its Docker image. For <strong>tools provided by your machine</strong> (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image</li>
 <li>New <code>megalinter</code> command on PyPI: <code>run</code>, <code>install-linters</code>, <code>list-linters</code>, <code>doctor</code></li>
 <li>Docker runs whose <code>.mega-linter.yml</code> has no <code>NATIVE_LINTERS</code> now <strong>suggest trying native mode</strong> on your machine, in the console log and in the summary posted to pull requests, with a link to the documentation and to the <a href="https://megalinter.io/latest/agent-plugins/">MegaLinter agent plugin</a>, whose <code>megalinter-setup</code> skill sets it up. Hide it with <strong><code>NATIVE_SUGGESTIONS: false</code></strong></li>
+<li>Each linter page of the documentation now shows, for information, the <strong>commands that install it</strong> on each platform, in tabs (section "Installation without Docker (native mode)")</li>
 <li>Not available on <strong>Intel Macs</strong>: <code>cryptography</code>, needed to verify the MegaLinter package, no longer publishes builds for them, and <code>mega-linter-runner --native</code> says so instead of failing during the install. Use Docker there</li>
 </ul>
 </li>
@@ -15787,7 +15788,12 @@
 <li>Media</li>
 </ul>
 <ul>
-<li>Linters enhancements</li>
+<li>
+<p>Linters enhancements</p>
+<ul>
+<li><strong>djlint</strong>: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>
@@ -15906,6 +15912,11 @@
 <li><a href="https://phpstan.org/">phpstan</a> from 2.3.2 to <strong>2.3.5</strong> on 2026-11-11</li>
 <li><a href="https://git-scm.com">git_diff</a> from 2.54.0 to <strong>2.54.1</strong> on 2026-11-11</li>
 <li><a href="https://github.com/rvben/rumdl">rumdl</a> from 0.3.0 to <strong>0.3.2</strong> on 2026-11-13</li>
+<li><a href="https://biomejs.dev">biome</a> from 2.6.3 to <strong>2.6.4</strong> on 2026-11-16</li>
+<li><a href="https://github.com/DavidAnson/markdownlint">markdownlint</a> from 0.49.1 to <strong>0.50.0</strong> on 2026-11-16</li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.6.20.1@ to <strong>Psalm.6.20.5@</strong> on 2026-11-16</li>
+<li><a href="https://mypy.readthedocs.io/en/stable/">mypy</a> from 1.19.1 to <strong>2.4.1</strong> on 2026-11-16</li>
+<li><a href="https://github.com/mongodb/kingfisher">kingfisher</a> from 2.14.0 to <strong>2.16.0</strong> on 2026-11-16</li>
 </ul>
 </li>
 </ul>
