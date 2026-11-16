@@ -1,0 +1,8 @@
+---
+app:
+  name: demo
+  name: duplicate
+  servers:
+    -   alpha
+    -    beta
+  timeout: 30

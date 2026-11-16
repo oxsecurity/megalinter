@@ -15,7 +15,7 @@ linters:
 
       **Key Features:**
 
-      - **Multi-Language Support**: Supports Django, Jinja, Nunjucks, Twig, Handlebars, Mustache, Golang templates, and Angular
+      - **Multi-Language Support**: Supports Django, Jinja, Twig, Nunjucks, Handlebars, Mustache, Liquid, Golang templates, Angular, Tera, Askama and Mako
       - **Comprehensive Rule Set**: 60+ built-in rules covering HTML standards, accessibility, security, and template-specific best practices
       - **Language-Specific Rules**: Specialized rules for Django (D-codes), Jinja (J-codes), HTML (H-codes), and general templates (T-codes)
       - **Auto-Formatting**: Automatically formats and beautifies HTML templates with consistent indentation and structure
@@ -25,10 +25,10 @@ linters:
 
       For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select django format
     linter_url: https://djlint.com/
-    linter_repo: https://github.com/Riverside-Healthcare/djlint
-    linter_spdx_license: GPL-3.0-only
+    linter_repo: https://github.com/djlint/djLint
+    linter_spdx_license: GPL-3.0-or-later
     linter_rules_url: https://djlint.com/docs/linter/
-    linter_banner_image_url: https://raw.githubusercontent.com/Riverside-Healthcare/djLint/master/docs/src/static/img/icon.png
+    linter_banner_image_url: https://djlint.com/static/img/icon.png
     linter_rules_configuration_url: https://djlint.com/docs/configuration/
     linter_rules_inline_disable_url: https://djlint.com/docs/ignoring-code/
     linter_megalinter_ref_url: https://djlint.com/docs/integrations/#megalinter
@@ -51,13 +51,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=djlint
-          ARG PIP_DJLINT_VERSION=1.47.0
+          ARG PIP_DJLINT_VERSION=1.49.2
       pip:
         - djlint==${PIP_DJLINT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.11"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       sublime:
         - name: SublimeLinter-contrib-djlint
@@ -121,6 +132,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=18.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       brackets:
         - name: brackets-htmlhint

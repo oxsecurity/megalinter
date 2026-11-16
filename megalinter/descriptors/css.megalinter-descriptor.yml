@@ -115,7 +115,7 @@ linters:
           ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
         - |-
           # renovate: datasource=npm depName=stylelint-scss
-          ARG NPM_STYLELINT_SCSS_VERSION=7.3.0
+          ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
       npm:
         - stylelint@${NPM_STYLELINT_VERSION}
         - stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION}
@@ -125,6 +125,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=20.19.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       emacs:
         - name: flycheck

@@ -1,0 +1,169 @@
+---
+title: Run MegaLinter without Docker (native mode, beta)
+description: Run MegaLinter directly on your machine, without Docker, with the linters you choose
+---
+<!-- markdownlint-disable MD013 -->
+
+# Native mode (without Docker)
+
+> **Beta:** native mode is in beta. [Docker](install-docker.md) remains the default and the recommended way to run MegaLinter, especially on code you do not fully trust: linters (and the configuration files they load) can execute the code of the analyzed repository, and in Docker this happens inside a container.
+
+MegaLinter can run directly on your machine, without a container engine and without downloading a multi-GB image. Only the linters you list are installed, so a run starts in seconds.
+
+Supported platforms: Linux (x86-64 and ARM64), macOS (Apple Silicon), Windows with Git Bash, and WSL (Linux). Intel Macs are not supported: `cryptography`, needed to verify the MegaLinter package, no longer publishes builds for them. Use Docker there.
+
+## Quick start
+
+Requirements:
+
+- [uv](https://docs.astral.sh/uv/getting-started/installation/) (Windows: `winget install --id astral-sh.uv -e`, macOS: `brew install uv`)
+- Node.js, to run `mega-linter-runner`
+- Windows only: [Git for Windows](https://git-scm.com/download/win) (Git Bash), `winget install --id Git.Git -e`
+
+1. List the linters allowed to run natively in your `.mega-linter.yml`:
+
+    ```yaml
+    NATIVE_LINTERS:
+      - PYTHON_BLACK
+      - JAVASCRIPT_ES
+      - MARKDOWN_MARKDOWNLINT
+    ```
+
+2. Install them, then run:
+
+    ```shell
+    npx mega-linter-runner@beta --install-linters --release beta
+    npx mega-linter-runner@beta --native --release beta
+    ```
+
+While native mode is in beta, use the beta of `mega-linter-runner` (`@beta`): released versions older than native mode do not know these options.
+
+The linter keys are the ones used everywhere else in MegaLinter (`ENABLE_LINTERS`, `DISABLE_LINTERS`...). Each [linter page](supported-linters.md) has a "native mode" section with its key and the platforms it supports.
+
+> **Note:** `--install-linters` installs linters for native mode. It is not `--install`, which sets up MegaLinter in your repository (configuration and CI files).
+
+## NATIVE_LINTERS: explicit opt-in
+
+Nothing runs natively unless it is listed in `NATIVE_LINTERS`. A linter that is activated by your configuration but not listed is skipped, so you can keep running a larger set of linters in Docker or in CI.
+
+The special value `all` means every linter matching your configuration:
+
+```yaml
+NATIVE_LINTERS:
+  - all
+```
+
+**Using `all` is discouraged.** It installs many linters, which is slow, and you must fully trust the security of every one of them. Prefer listing the linters you need.
+
+## What is installed, and how
+
+Linters are installed in `~/.megalinter` (change it with `MEGALINTER_HOME`), without administrator rights and without touching your system:
+
+| Kind of linter             | Installation                                                                           |
+|:---------------------------|:---------------------------------------------------------------------------------------|
+| Python tools               | A virtual environment per linter, from pinned packages with hashes                     |
+| Node.js tools              | A folder per linter, from a pinned lock file, without running install scripts          |
+| Binaries and jars          | The official release asset, checked against a pinned sha256                            |
+| Tools provided by the host | Not downloaded: MegaLinter looks for them on your `PATH` and shows how to install them |
+
+Every download is verified. Upstream signatures and checksums (GitHub attestations, cosign, GPG, release checksum files) are checked when the pinned versions are generated in CI, and the installer only downloads files whose sha256 is pinned in the lock files shipped with MegaLinter. A file that does not match is refused.
+
+## Language runtimes
+
+Some linters need a runtime (Node.js, Java, .NET, Go, PowerShell, Dart, PHP...). MegaLinter uses the one installed on your machine when its version is suitable. Otherwise, `NATIVE_INSTALL_RUNTIMES` decides:
+
+| Value           | Behavior                                                                                 |
+|:----------------|:-----------------------------------------------------------------------------------------|
+| `ask` (default) | Proposes to install the runtime in `~/.megalinter/runtimes` (interactive terminals only) |
+| `auto`          | Installs it without asking                                                               |
+| `never`         | Prints how to install it yourself                                                        |
+
+Ruby, R and Rust have no portable, verifiable download: install them with your package manager.
+
+## Corporate proxies
+
+Downloads go through `HTTP_PROXY` / `HTTPS_PROXY`. When your network or antivirus inspects HTTPS connections (uv fails with `invalid peer certificate: UnknownIssuer`), tell the installers to trust the certificates of your system:
+
+```shell
+export UV_NATIVE_TLS=1             # uv (MegaLinter itself and Python linters)
+export NODE_USE_SYSTEM_CA=1        # Node.js linters
+```
+
+`SSL_CERT_FILE`, `REQUESTS_CA_BUNDLE`, `NODE_EXTRA_CA_CERTS`, `PIP_CERT` and `NPM_CONFIG_CAFILE` are given to the installers too.
+
+## Security model
+
+- Commands declared by the analyzed repository (`PRE_COMMANDS`, `POST_COMMANDS`), `PLUGINS` and remote `EXTENDS` are **ignored** in native mode, because they would run on your machine with your privileges. Use `--trust-repo-commands` (or `NATIVE_TRUST_REPO_COMMANDS=true` in the environment, never in `.mega-linter.yml`) only for a repository you fully trust.
+- Linters only receive an allowlist of system environment variables, so the secrets of your machine (cloud credentials, tokens...) do not leak to them. Add more with `NATIVE_ENV_ALLOWLIST`.
+- Native mode refuses to run when `MEGALINTER_HOME` belongs to another user or is writable by others.
+- The `megalinter` Python package is installed by `mega-linter-runner` after checking its PyPI attestation: it must have been published by the release workflow of the MegaLinter repository.
+
+## Commands
+
+`mega-linter-runner` forwards to the `megalinter` command that you can also use directly (`uv tool install megalinter --pre`):
+
+| Command                               | Purpose                                                      |
+|:--------------------------------------|:-------------------------------------------------------------|
+| `megalinter run`                      | Lint the current folder with the linters of `NATIVE_LINTERS` |
+| `megalinter install-linters [KEY...]` | Install the given linters, or the ones of `NATIVE_LINTERS`   |
+| `megalinter uninstall-linters KEY...` | Remove installed linters                                     |
+| `megalinter list-linters`             | Show the native status of every linter                       |
+| `megalinter doctor`                   | Check Git Bash, uv, runtimes and the install folder          |
+| `megalinter cache prune`              | Empty the download cache                                     |
+
+### Faster commands
+
+`npx` checks its copy of `mega-linter-runner` and of its dependencies on each call, which adds several seconds to every run. When you run MegaLinter often, install the runner once:
+
+```shell
+npm install -g mega-linter-runner@beta
+mega-linter-runner --native --release beta
+```
+
+Upgrade it with the same `npm install -g` command.
+
+On Windows and macOS, each parallel worker process starts by loading MegaLinter (about a second). With a few fast linters, fewer workers are quicker: set `PARALLEL_PROCESS_NUMBER` (for example `2`) in your environment, not in `.mega-linter.yml`, where it would also apply to CI. Measured on a 4-core Windows laptop with 6 linters: 5.0–5.7 s with 2 workers, 9.2–9.9 s with 6.
+
+## Pre-commit hook
+
+Native mode makes MegaLinter fast enough to run on each commit with [pre-commit](https://pre-commit.com/):
+
+```yaml
+repos:
+  - repo: https://github.com/oxsecurity/megalinter
+    rev: vX.Y.Z # Git tag of a MegaLinter version that includes native mode
+    hooks:
+      - id: megalinter-native-incremental # Changed files only, skips the linters that run in project mode
+        stages:
+          - pre-commit
+      - id: megalinter-native-full # Also runs the linters that run in project mode
+        stages:
+          - pre-push
+```
+
+- Only the linters of `NATIVE_LINTERS` run, on the files of the commit, and their fixes are applied
+- The hooks of `rev: vX.Y.Z` run version X.Y.Z of `mega-linter-runner` and of MegaLinter. pre-commit installs the runner once (Node.js is required), instead of resolving it with npx on each commit
+- Install the linters once with the same version: `npx mega-linter-runner@X.Y.Z --install-linters --release X.Y.Z`, as a hook can not ask whether to install a missing language runtime
+- `megalinter-incremental` and `megalinter-full` are the same hooks with Docker
+
+## Configuration
+
+| Variable                      | Default         | Description                                                           |
+|:------------------------------|:----------------|:----------------------------------------------------------------------|
+| `NATIVE_LINTERS`              | empty           | Linters allowed to run natively (keys, or `all`)                      |
+| `NATIVE_INSTALL_RUNTIMES`     | `ask`           | `ask`, `auto` or `never`                                              |
+| `NATIVE_MISSING_LINTERS`      | `install`       | `install`, `skip` or `fail` for a listed linter that is not installed |
+| `NATIVE_ENV_ALLOWLIST`        | empty           | Extra environment variables given to the linters                      |
+| `NATIVE_IGNORE_HOST_RUNTIMES` | `false`         | Ignore the runtimes installed on the host                             |
+| `NATIVE_OFFLINE`              | `false`         | Install only from the local download cache                            |
+| `MEGALINTER_HOME`             | `~/.megalinter` | Where linters, runtimes and downloads are stored                      |
+
+When MegaLinter runs in Docker and your `.mega-linter.yml` has no `NATIVE_LINTERS`, its reports suggest trying native mode. Define `NATIVE_SUGGESTIONS: false` to hide this suggestion.
+
+## Differences with Docker
+
+- Results can differ from Docker: operating system, tool versions provided by the host, file system case sensitivity and path separators.
+- Linters installed by MegaLinter always run the version pinned for your MegaLinter version, as in its Docker image. After a MegaLinter upgrade, they are reinstalled at their new version on the next run.
+- Tools provided by the host (SwiftLint, Raku, scalafix, xmllint, cppcheck...) run the version installed on your machine. When MegaLinter's Docker image pins a different version, a warning shows both versions. `megalinter list-linters` shows which linters use the version installed on your machine.
+- Some linters are not available natively on every platform, with the reason shown in their documentation page and by `megalinter list-linters`. Use Docker for those.
+- Flavors do not apply: you choose the linters one by one.

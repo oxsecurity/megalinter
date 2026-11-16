@@ -3,16 +3,18 @@
 Grok (xAI) LLM Provider for MegaLinter
 """
 
-import logging
 from typing import Any, Dict, Optional
 
-from langchain_openai import ChatOpenAI
 from megalinter import config
 
-from .llm_provider import LLMProvider
+from .llm_provider_openai_compatible import OpenAICompatibleProvider
 
 
-class GrokProvider(LLMProvider):
+class GrokProvider(OpenAICompatibleProvider):
+
+    DISPLAY_NAME = "Grok"
+    API_KEY_VAR_NAME = "GROK_API_KEY"
+    DEFAULT_BASE_URL = "https://api.x.ai/v1"
 
     def get_default_model(self) -> str:
         return "grok-3-mini"
@@ -37,30 +39,3 @@ class GrokProvider(LLMProvider):
                 )
             ),
         }
-
-    def initialize(self) -> bool:
-        try:
-            api_key = self.get_config_value("api_key")
-            if not api_key:
-                raise ValueError("GROK_API_KEY is required")
-
-            model_name = self.get_config_value("model_name") or self.get_default_model()
-            base_url = self.get_config_value("base_url", "https://api.x.ai/v1")
-            temperature = self.get_config_value("temperature")
-            max_tokens = self.get_config_value("max_tokens")
-
-            # Grok uses OpenAI-compatible API
-            self.llm = ChatOpenAI(
-                model=model_name,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                api_key=api_key,
-                base_url=base_url,
-            )
-
-            logging.debug(f"Grok provider initialized with model {model_name}")
-            return True
-
-        except Exception as e:
-            logging.error(f"Failed to initialize Grok provider: {str(e)}")
-            return False

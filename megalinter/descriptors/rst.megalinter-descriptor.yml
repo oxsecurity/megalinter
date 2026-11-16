@@ -57,6 +57,17 @@ linters:
       pip:
         - Pygments==${PIP_PYGMENTS_VERSION}
         - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -109,6 +120,17 @@ linters:
       pip:
         - click==${PIP_RSTCHECK_CLICK_VERSION} # Downgrade click as 8.2.0 triggers and error
         - rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -162,6 +184,17 @@ linters:
       pip:
         - rstfmt==${PIP_RSTFMT_VERSION}
     version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

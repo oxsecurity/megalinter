@@ -62,12 +62,16 @@ Each provider must implement:
 - `get_default_model() -> str`: Return the default model name
 - `initialize() -> bool`: Initialize the provider (return success status)
 - `load_config(request_id) -> Dict[str, Any]`: Load provider-specific configuration
+- `generate(prompt, system_prompt=None) -> str`: Call the model and return the answer text
+
+Providers call the LLM APIs with plain HTTP requests (`requests`), no LLM SDK is needed. Providers exposing an OpenAI-compatible `/chat/completions` API extend `OpenAICompatibleProvider` (`llm_provider_openai_compatible.py`) and only declare class attributes (API key variable, default base URL, max tokens field...).
 
 Base class provides:
 
 - `is_available() -> bool`: Check if provider is ready
 - `invoke(prompt, system_prompt=None) -> str`: Generate response
 - `get_config_value(key, default=None)`: Access configuration with centralized defaults
+- `post_json(url, payload, headers=None, stream=False)`: HTTP POST with timeouts, retries on connection errors, HTTP 429 and 5xx (honoring `Retry-After`), proxy and CA bundle support (`REQUESTS_CA_BUNDLE`, `CURL_CA_BUNDLE`, `SSL_CERT_FILE`, `SSL_CERT_DIR`), and error messages that never contain the API key
 - `get_default_config_value(key)`: Access centralized default values
 - `requires_api_key() -> bool`: Check if API key needed
 
@@ -79,8 +83,9 @@ The base class defines common default values that apply to all providers:
 DEFAULT_CONFIG = {
     "temperature": 0.1,
     "max_tokens": 1000,
-    "timeout": 30,
-    "retry_attempts": 3
+    "timeout": 30,  # connection timeout (seconds)
+    "read_timeout": 600,  # max wait between two received bytes (seconds)
+    "retry_attempts": 3  # total attempts, including the first one
 }
 ```
 
