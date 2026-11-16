@@ -22,7 +22,7 @@ description: How to use kingfisher (configure, ignore files, ignore errors, help
 
 ## kingfisher documentation
 
-- Version in MegaLinter: **2.14.0**
+- Version in MegaLinter: **2.16.0**
 - Visit [Official Web Site](https://github.com/mongodb/kingfisher#readme){target=_blank}
 - See [How to disable kingfisher rules in files](https://mongodb.github.io/kingfisher/usage/advanced/?h=inline#inline-ignore-directives){target=_blank}
 - See [Index of problems detected by kingfisher](https://mongodb.github.io/kingfisher/rules/builtin-rules){target=_blank}
@@ -96,8 +96,8 @@ Commands:
   validate      Directly validate a known secret against a rule's validator (bypasses pattern
                 matching)
   revoke        Directly revoke a known secret against a rule's revocation config
-  blast-radius  Directly map a known secret to its identity, permissions, and blast radius [alias:
-                access-map]
+  blast-radius  Map a credential's identity, permissions, and blast radius, including risk and
+                coverage [alias: access-map]
   view          View JSON, JSONL, and SARIF reports in a local web UI
   config        Generate a reusable `kingfisher.yaml` project config
   update        Update the Kingfisher binary
@@ -113,6 +113,10 @@ Global Options:
       --tls-mode <TLS_MODE>         TLS certificate validation mode for secret validation requests
                                     [default: strict] [possible values: strict, lax, off]
       --allow-internal-ips          Allow validation requests to internal/private IP addresses
+      --fallbacks                   Enable configured fallback environments; revoke validates first
+                                    and acts only on the verified environment. Primary only by
+                                    default; scan/validate never revoke automatically, and
+                                    revocation never fails over mutations
       --self-update                 Update the Kingfisher binary to the latest release
       --no-update-check             Disable automatic update checks
       --user-agent-suffix <SUFFIX>  Append a custom suffix to the default Kingfisher user-agent
@@ -128,7 +132,7 @@ Global Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=2.14.0
+ARG REPOSITORY_KINGFISHER_VERSION=2.16.0
 RUN curl --silent --location https://raw.githubusercontent.com/mongodb/kingfisher/main/scripts/install-kingfisher.sh | bash -s -- /usr/local/bin --tag "v${REPOSITORY_KINGFISHER_VERSION}"
 
 ```
