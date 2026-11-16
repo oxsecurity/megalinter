@@ -189,7 +189,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=nuget depName=roslynator.dotnet.cli
-          ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
+          ARG CSHARP_ROSLYNATOR_VERSION=1.0.1
         # Delete the tool nupkg archives and the target framework folders the
         # tool shim does not load (it loads the newest one supported by the SDK)
         - |-
