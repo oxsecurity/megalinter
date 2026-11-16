@@ -14,6 +14,7 @@ import os from "os";
 import { which } from "./which.js";
 import { default as fs } from "fs";
 import { MegaLinterUpgrader } from "./upgrade.js";
+import { NativeRunner } from "./native.js";
 import { CodeTotalRunner } from "./codetotal.js";
 import {
   DashboardUploader,
@@ -144,6 +145,11 @@ export class MegaLinterRunner {
       const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
       return { status: 0 };
+    }
+
+    // Run without Docker (beta): hand over to the `megalinter` Python command
+    if (options.native === true || options.installLinters === true) {
+      return await new NativeRunner().run(options);
     }
 
     // Build MegaLinter docker image name with flavor and release version

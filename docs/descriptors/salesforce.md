@@ -36,18 +36,19 @@ description: code-analyzer-apex, code-analyzer-apexguru, code-analyzer-aura, cod
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@salesforce/cli
-ARG NPM_SALESFORCE_CLI_VERSION=2.156.7
+ARG NPM_SALESFORCE_CLI_VERSION=2.157.7
 # renovate: datasource=npm depName=@salesforce/plugin-packaging
-ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.14
+ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.17
 # renovate: datasource=npm depName=sfdx-hardis
-ARG SFDX_HARDIS_VERSION=8.20.1
+ARG SFDX_HARDIS_VERSION=8.21.0
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 ENV XDG_DATA_HOME=/usr/local/share
 RUN sf plugins install @salesforce/plugin-packaging@${NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION} \
     && echo y|sf plugins install sfdx-hardis@${SFDX_HARDIS_VERSION} \
     && (npm cache clean --force || true) \
-    && rm -rf /root/.npm/_cacache
+    && find /usr/local/share/sf/node_modules -type f \( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts" -o -name "*.d.cts" \) -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete \
+    && rm -rf /root/.npm /root/.cache/sf /tmp/v8-compile-cache-*
 ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
 ```
 
@@ -55,4 +56,4 @@ ENV SF_AUTOUPDATE_DISABLE=true SF_CLI_DISABLE_AUTOUPDATE=true
   - [coreutils](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=coreutils)
   - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
-  - [@salesforce/cli@2.156.7](https://www.npmjs.com/package/@salesforce/cli/v/2.156.7)
+  - [@salesforce/cli@2.157.7](https://www.npmjs.com/package/@salesforce/cli/v/2.157.7)

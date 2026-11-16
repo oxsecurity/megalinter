@@ -61,6 +61,6 @@ Contains only formatters
 
 ### Other
 
-| <!-- --> | Code quality checker | Linter | Additional  |
-| :---: | ----------------- | -------------- | :-----:  |
+| <!-- --> | Code quality checker | Linter | Additional |
+|:--------:|----------------------|--------|:----------:|
 

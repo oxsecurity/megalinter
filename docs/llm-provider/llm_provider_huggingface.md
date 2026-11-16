@@ -14,7 +14,7 @@ Hugging Face models require additional dependencies:
 
 ```bash
 # Install as PRE_COMMAND in .mega-linter.yml
-pip install langchain-huggingface transformers torch
+pip install transformers torch
 ```
 
 ### Configuration
@@ -88,7 +88,7 @@ HUGGINGFACE_USE_API: true
 
    - Install required dependencies:
      ```bash
-     pip install langchain-huggingface transformers torch
+     pip install transformers torch
      ```
 
 4. **"Slow inference"**

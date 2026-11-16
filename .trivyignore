@@ -168,6 +168,15 @@ CVE-2026-42502
 CVE-2026-42508
 CVE-2026-46595
 CVE-2026-46597
+# CVE-2026-78661 (golang.org/x/net/html, HIGH, fixed in x/net 0.62.0): quadratic CPU and
+# memory use when html.Parse coalesces text nodes of crafted HTML, so a service parsing
+# attacker-controlled HTML can be taken down. Only terraform 1.17.1, tflint 0.66.0 and
+# trivy 0.76.2 ship x/net 0.62.0; the latest opentofu (0.57), grype and syft (0.61),
+# protolint (0.58), vale (0.57) and terragrunt (0.61) do not, so bumping pins cannot clear
+# the finding. None of these CLIs renders or serves HTML from untrusted sources: they read
+# the user's own workspace, and the worst case is a CPU-bound CI step, not a service outage.
+# Remove once opentofu, grype, syft, protolint, vale and terragrunt release with x/net >= 0.62.0.
+CVE-2026-78661
 
 # --- Go modules embedded in scanner / k8s / IaC linters ---
 # Library CVEs in Go modules that trivy, grype, syft, terragrunt and tflint statically

@@ -48,13 +48,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=@coffeelint/cli
-          ARG NPM_COFFEELINT_CLI_VERSION=5.2.12
+          ARG NPM_COFFEELINT_CLI_VERSION=5.2.15
       npm:
         - "@coffeelint/cli@${NPM_COFFEELINT_CLI_VERSION}"
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=20.19.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       idea:
         - name: coffeelint

@@ -21,8 +21,15 @@ class CljKondoLinter(Linter):
         # character. The backslashes are doubled because the regex travels
         # inside an EDN string, whose reader only accepts a short list of
         # escape sequences
+        # [/\\] matches both separators: Windows paths use backslashes (native mode)
+        separator = "[/\\\\\\\\]"
         exclude_regexes = " ".join(
-            '"(^|/)' + re.escape(excluded_dir).replace("\\", "\\\\") + '/"'
+            '"(^|'
+            + separator
+            + ")"
+            + re.escape(excluded_dir).replace("\\", "\\\\")
+            + separator
+            + '"'
             for excluded_dir in self.get_project_exclude_directories()
         )
         cmd += ["--config", "{:output {:exclude-files [" + exclude_regexes + "]}}"]

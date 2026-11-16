@@ -1,4 +1,9 @@
+import yaml
 from megalinter import config
+
+# MegaLinter's own YAML files (descriptors, native runtimes) are parsed on each run: the C
+# parser of PyYAML (libyaml, shipped in its wheels) is about 10 times faster, same results
+DESCRIPTOR_YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 ML_REPO_OWNER = "oxsecurity"
 ML_REPO_NAME = "megalinter"
@@ -98,7 +103,7 @@ DEFAULT_DOCKERFILE_PIP_ARGS = [
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.14.13",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.15.2",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [

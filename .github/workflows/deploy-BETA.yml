@@ -40,8 +40,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Nothing is published while the native install locks are stale
+  native_locks:
+    name: Check native locks
+    uses: ./.github/workflows/check-native-locks.yml
+    permissions:
+      contents: read
+
   publish_runner:
     name: Publish mega-linter-runner (beta)
+    needs: native_locks
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
     runs-on: ubuntu-latest
     permissions:
@@ -65,9 +73,35 @@ jobs:
               },
             });
 
+  # Native mode: pre-release of the megalinter Python package, like mega-linter-runner (manual approval)
+  publish_pypi:
+    name: Publish megalinter to PyPI (beta)
+    needs: native_locks
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy') && !contains(github.event.head_commit.message, 'Release MegaLinter v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Trigger deploy-megalinter-pypi workflow
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: ".github/workflows/deploy-megalinter-pypi.yml",
+              ref: "main",
+              inputs: {
+                channel: "beta"
+              },
+            });
+
   build:
     # Name the Job
     name: Deploy Docker Image - BETA
+    needs: native_locks
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
@@ -281,6 +315,7 @@ jobs:
 
     # Name the Job
     name: Deploy Docker Image (Custom Flavor Builder) - BETA
+    needs: native_locks
     # Set the agent to run on
     runs-on: ${{ matrix.runner }}
     permissions:
@@ -361,7 +396,7 @@ jobs:
 
     steps:
       - name: Download digests
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           path: ${{ runner.temp }}/digests
           pattern: custom-flavor-builder-digests-*

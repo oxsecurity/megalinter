@@ -60,7 +60,7 @@ RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=@coffeelint/cli
-ARG NPM_COFFEELINT_CLI_VERSION=5.2.12
+ARG NPM_COFFEELINT_CLI_VERSION=5.2.15
 #ARG__END
 
 ####################
@@ -241,6 +241,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=COFFEE_COFFEELINT \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=COFFEE_COFFEELINT \
     PRINT_ALPACA=false \
     LOG_FILE=none \

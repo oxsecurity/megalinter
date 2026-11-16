@@ -57,11 +57,9 @@ class AnalysisRequestOutput(BaseModel):
     class Config:
         arbitrary_types_allowed = True
 
-    request_id: str | None = (
-        Field(  # type: ignore
-            description="Unique identifier of the request",
-            example="",
-        ),
+    request_id: str | None = Field(
+        description="Unique identifier of the request",
+        example="",
     )
     server_id: str | None = Field(
         description="Unique identifier of the server",

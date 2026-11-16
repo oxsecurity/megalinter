@@ -8,10 +8,19 @@ from typing import Any, Dict, Optional
 
 from megalinter import config
 
-from .llm_provider import LLMProvider
+from .llm_provider import LLMProvider, LLMProviderError
 
 
 class HuggingFaceProvider(LLMProvider):
+
+    # Response key holding the generated text, by pipeline task
+    TASK_TEXT_KEYS = {
+        "text-generation": "generated_text",
+        "text2text-generation": "generated_text",
+        "image-text-to-text": "generated_text",
+        "summarization": "summary_text",
+        "translation": "translation_text",
+    }
 
     def get_default_model(self) -> str:
         return "microsoft/DialoGPT-medium"
@@ -42,46 +51,49 @@ class HuggingFaceProvider(LLMProvider):
 
     def initialize(self) -> bool:
         try:
-            # Check for required optional dependencies
+            # Optional dependencies, not installed in MegaLinter images (local inference)
             try:
-                from langchain_huggingface import HuggingFacePipeline
                 from transformers import pipeline
             except ImportError as e:
                 logging.error(
                     f"Hugging Face dependencies not found: {str(e)}. "
-                    f"Install in PRE_COMMANDS with: pip install langchain-huggingface transformers torch"
+                    f"Install in PRE_COMMANDS with: pip install transformers torch"
                 )
                 return False
 
-            model_name = self.get_config_value("model_name") or self.get_default_model()
+            model_name = self.get_model_name()
             task = self.get_config_value("task", "text-generation")
             device = self.get_config_value("device", -1)
             api_key = self.get_config_value("api_key")
-            temperature = self.get_config_value("temperature")
-            max_tokens = self.get_config_value("max_tokens")
 
-            # Create Hugging Face pipeline
-            hf_pipeline = pipeline(
+            self.llm = pipeline(
                 task=task,
                 model=model_name,
                 device=device,
                 token=api_key if api_key else None,
             )
 
-            self.llm = HuggingFacePipeline(
-                pipeline=hf_pipeline,
-                model_kwargs={"temperature": temperature, "max_length": max_tokens},
-            )
-
             logging.debug(f"Hugging Face provider initialized with model {model_name}")
             return True
 
-        except ImportError:
-            logging.error(
-                "transformers library is required for Hugging Face integration. Install with: "
-                "pip install langchain-huggingface transformers torch"
-            )
-            return False
         except Exception as e:
             logging.error(f"Failed to initialize Hugging Face provider: {str(e)}")
             return False
+
+    def generate(self, prompt: str, system_prompt: Optional[str] = None) -> str:
+        responses = self.llm([self.build_text_prompt(prompt, system_prompt)])
+        if not responses:
+            raise LLMProviderError("Hugging Face pipeline returned no result")
+        response = responses[0]
+        # The pipeline returns a list when the model produces several generations
+        if isinstance(response, list):
+            response = response[0]
+        task = getattr(self.llm, "task", None) or self.get_config_value(
+            "task", "text-generation"
+        )
+        if task not in self.TASK_TEXT_KEYS:
+            raise LLMProviderError(
+                f"Unsupported Hugging Face task {task}, supported tasks: "
+                f"{', '.join(self.TASK_TEXT_KEYS.keys())}"
+            )
+        return response[self.TASK_TEXT_KEYS[task]]
