@@ -25,9 +25,17 @@ on:
 permissions: {}
 
 jobs:
+  # Nothing is published while the native install locks are stale
+  native_locks:
+    name: Check native locks
+    uses: ./.github/workflows/check-native-locks.yml
+    permissions:
+      contents: read
+
   build:
     # Name the Job
     name: Deploy Docker Image - RELEASE - Flavors
+    needs: native_locks
     # Set the agent to run on
     runs-on: ${{ matrix.os }}
     permissions:

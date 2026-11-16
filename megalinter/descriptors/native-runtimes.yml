@@ -44,7 +44,7 @@ runtimes:
       linux: "Install Node.js LTS from https://nodejs.org/en/download or your distribution"
     provision:
       # renovate: datasource=node-version depName=node
-      version: "24.22.2"
+      version: "26.13.0"
       assets:
         linux/amd64:
           url: "https://nodejs.org/dist/v{{VERSION}}/node-v{{VERSION}}-linux-x64.tar.xz"
@@ -294,7 +294,7 @@ runtimes:
       # Windows only (windows.php.net publishes no other platform): Linux and macOS use the distribution or Homebrew PHP.
       # "-1" is the build revision of the Windows packages. windows.php.net moves superseded builds to /releases/archives/
       # renovate: datasource=github-tags depName=php/php-src extractVersion=^php-(?<version>\d+\.\d+\.\d+)$
-      version: "8.4.27"
+      version: "8.5.12"
       assets:
         windows/amd64:
           url: "https://windows.php.net/downloads/releases/php-{{VERSION}}-1-nts-Win32-vs17-x64.zip"

@@ -28,18 +28,18 @@ jobs:
     name: Auto-Update Linters
     # Set the agent to run on
     runs-on: ubuntu-latest
+    # Read-only: the token goes into the container that runs every linter. The pull_request job
+    # writes the changes
     permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push, comment issues & post new PR
-      # Remove the ones you do not need
-      contents: write
-      issues: write
-      pull-requests: write
+      contents: read
     environment:
       name: auto-update
     # Prevent duplicate run from happening when a forked push is committed
     if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter'
     # Set max build time for the job
     timeout-minutes: 60
+    outputs:
+      has_updated_versions: ${{ steps.compute_versions.outputs.has_updated_versions }}
     ##################
     # Load all steps #
     ##################
@@ -128,17 +128,112 @@ jobs:
         shell: bash
         run: python3 .automation/agent_plugin_manifests.py --bump
 
-      # Track generated files so branch switches in create-pull-request do not fail on untracked outputs
-      - name: Stage generated changes
+      # The pull_request job applies these changes together with the native locks. Without a new
+      # linter version they are dropped, as the agent plugin version is not bumped
+      - name: Export generated changes
         if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
         run: |
           git add -A
+          git status --short
+          git diff --cached --binary > "${RUNNER_TEMP}/auto-update.patch"
+      - name: Upload generated changes
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: auto-update-patch
+          path: ${{ runner.temp }}/auto-update.patch
+          if-no-files-found: error
+
+  # Runs in parallel with build_help_versions: the locks only depend on the descriptors, which the
+  # auto-update run does not change. Renovate branches skip the "Native locks" workflow, so this job
+  # refreshes their locks after the merge, in the same pull request as the versions and docs
+  native_locks:
+    name: Generate native locks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter'
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      # Same toolchain as native-lock.yml (feature branches and manual runs)
+      - name: Setup the native lock toolchain
+        uses: ./.github/actions/native-lock-setup
+      # Every download is verified (GitHub attestation, cosign, GPG or upstream checksums) before its
+      # sha256 is pinned. A re-tagged release fails here: run the "Native locks" workflow manually
+      # with accept_changes after reviewing it
+      - name: Generate locks
+        run: python .automation/native_lock.py --runtimes --verify-signatures
+      # Locks generated successfully are kept even when some linters failed (the run stays red)
+      - name: Upload locks
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: native-locks
+          path: megalinter/descriptors/native-locks/
+          if-no-files-found: error
+
+  pull_request:
+    name: Create the auto-update pull request
+    needs: [build_help_versions, native_locks]
+    # One failing job must not hold back the other one's changes
+    if: ${{ !cancelled() && (needs.build_help_versions.result == 'success' || needs.native_locks.result == 'success') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    environment:
+      name: auto-update
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Download generated changes
+        id: download_patch
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: auto-update-patch
+          path: ${{ runner.temp }}/auto-update
+      - name: Download native locks
+        id: download_locks
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: native-locks
+          path: ${{ runner.temp }}/native-locks
+      # Track generated files so branch switches in create-pull-request do not fail on untracked outputs
+      - name: Stage generated changes
+        id: stage
+        env:
+          PATCH_DOWNLOADED: ${{ steps.download_patch.outcome == 'success' }}
+          LOCKS_DOWNLOADED: ${{ steps.download_locks.outcome == 'success' }}
+        run: |
+          if [ "${PATCH_DOWNLOADED}" = "true" ] && [ -s "${RUNNER_TEMP}/auto-update/auto-update.patch" ]; then
+            git apply --index --binary "${RUNNER_TEMP}/auto-update/auto-update.patch"
+          fi
+          if [ "${LOCKS_DOWNLOADED}" = "true" ]; then
+            rsync -a --delete "${RUNNER_TEMP}/native-locks/" megalinter/descriptors/native-locks/
+            git add -A megalinter/descriptors/native-locks
+            if ! git diff --cached --quiet -- megalinter/descriptors/native-locks; then
+              echo "locks_changed=1" >> "${GITHUB_OUTPUT}"
+            fi
+          else
+            echo "::warning::No native locks generated, the pull request does not refresh them"
+          fi
           git status --short
 
       # Create pull request if there are updates or if the workflow has been launched manually
       - name: Create Pull Request
         id: cpr
-        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        if: (github.event_name == 'workflow_dispatch' || needs.build_help_versions.outputs.has_updated_versions == '1' || steps.stage.outputs.locks_changed == '1')
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
           # SECURITY NOTE: A Personal Access Token (PAT) is used here so the
@@ -152,13 +247,17 @@ jobs:
           # the branch instead of configuring a PAT.
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
           author: "Nicolas Vuillamy <nicolas.vuillamy@gmail.com>"
-          commit-message: "[automation] Auto-update linters version, help and documentation"
+          commit-message: "[automation] Auto-update linters version, help, documentation and native locks"
           delete-branch: true
-          title: "[automation] Auto-update linters version, help and documentation"
-          body: "[automation] Auto-update linters version, help and documentation"
-          labels: dependencies,automerge
+          title: "[automation] Auto-update linters version, help, documentation and native locks"
+          body: |
+            [automation] Auto-update linters version, help, documentation and native locks
+            ${{ steps.stage.outputs.locks_changed == '1' && '
+            Native install locks changed: review the diff of `megalinter/descriptors/native-locks/` before merging (no automerge). Every artifact was verified with its declared provenance before being pinned, except the `unverified` ones, pinned on first download.' || '' }}
+          # Pinned hashes are reviewed by a maintainer: no automerge when the locks changed
+          labels: ${{ steps.stage.outputs.locks_changed == '1' && 'dependencies' || 'dependencies,automerge' }}
       - name: Display Pull Request Info
-        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        if: steps.cpr.outcome == 'success'
         run: |
           echo "Pull Request Number - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_NUMBER}"
           echo "Pull Request URL - ${STEPS_CPR_OUTPUTS_PULL_REQUEST_URL}"

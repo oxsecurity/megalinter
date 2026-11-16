@@ -100,8 +100,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Dev
 
   - **`/pr-watch-fix-renovate`** fixes a MegaLinter error shared by several Renovate PRs **once**, in a carrier PR:
-    - fingerprints the blocking MegaLinter errors and the CVE/GHSA ids of failing security scans (`.claude/skills/pr-watch-fix/fingerprint.py`), groups the PRs and picks the carrier (`sweep.py`)
-    - after you merge the carrier, asks Renovate to rebase only the group members (`/renovate-rebase --branches`) and watches them again
+    - fingerprints the blocking MegaLinter errors, the CVE/GHSA ids of failing security scans and the failing pytest node ids of test jobs (`.claude/skills/pr-watch-fix/fingerprint.py`), groups the PRs and picks the carrier (`sweep.py`)
+    - after you merge the carrier, asks Renovate to rebase only the group members (`/renovate-rebase --branches`) and watches them again; when Renovate does not run, falls back (with your approval) on `gh pr update-branch` and flags members superseded by the carrier
+    - `renovate/stability-days` is never counted as pending CI: such PRs are reported green but not mergeable yet
     - `/pr-watch-fix` gains `--defer` / `--must-be-gone`, recovers fixes that Renovate force-pushes over, and its commit templates no longer carry any attribution trailer
   - The release build pins the native pre-commit hooks to the released version. Contributor skills cover native mode: `/prepare-release` (PyPI publish, pinned hooks, smoke test), `/review-descriptor` (`native_install` checklist), `/fix-linter-test` (native test failures), `/diagnose-config` (`NATIVE_*` variables), `/update-linter-version` (lock commits)
   - New linter-level descriptor property **`native_install`** (how a linter is installed without Docker, per platform), documented in `.claude/rules/native-install.md`, with the runtime catalog `native-runtimes.yml` and the generated `megalinter/descriptors/native-locks/`. The build fails when a linter does not declare it for the 5 native platforms. Generated Dockerfiles are unchanged
@@ -124,6 +125,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)
   - Dependency updates wait longer: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now propose an upgrade only once the release is **14 days old** (was 7). Security fixes are not delayed and still open immediately
   - **Benchmark native mode**: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems
+  - Stale **native locks** no longer fail pull requests: a warning, and the native install tests are skipped until the locks are refreshed. They block the alpha, beta and release deploys instead (Docker images, mega-linter-runner, PyPI), through the reusable `check-native-locks.yml` workflow, and `/prepare-release` checks them before tagging
+  - `native_lock.py --check` also checks the **runtime locks** (`native-locks/runtimes/`), shipped in the PyPI package too
+  - **Auto-Update Linters** now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both (without automerge when the locks changed, so pinned hashes are reviewed). **Native locks** only runs on feature branches and on manual runs; both share the `native-lock-setup` composite action
+  - The Auto-Update Linters container now gets a read-only token: only the pull request job writes
 
 - Linter versions upgrades (N)
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.58.0 to **1.59.0** on 2026-11-09

@@ -28,8 +28,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Nothing is published while the native install locks are stale
+  native_locks:
+    name: Check native locks
+    uses: ./.github/workflows/check-native-locks.yml
+    permissions:
+      contents: read
+
   build:
     name: Build the wheel (${{ inputs.channel }})
+    needs: native_locks
     if: github.repository == 'oxsecurity/megalinter'
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -122,7 +130,7 @@ jobs:
       id-token: write
     steps:
       - name: Download the wheel
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: megalinter-wheel
           path: dist/

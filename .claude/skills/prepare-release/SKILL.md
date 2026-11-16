@@ -133,6 +133,17 @@ If **No / not sure**: stop. Guide the user:
 2. Wait for it to finish green.
 3. Re-invoke `/prepare-release RELEASE_VERSION`.
 
+## Step 4b — Check the native locks
+
+Every release deploy (Docker images, flavors, linters, mega-linter-runner, PyPI) needs the `check-native-locks.yml` job, which checks the **tagged commit**. A stale lock found after tagging can only be fixed with a new tag, so check before tagging:
+
+```bash
+python .automation/native_lock.py --check
+```
+
+- Exit 0: continue.
+- Any `native lock missing or stale` line: **stop**. Tell the user to merge the open "[automation] Auto-update linters version, help, documentation and native locks" pull request (or run the **Native locks** workflow manually from main), then re-invoke `/prepare-release RELEASE_VERSION`.
+
 ## Step 5 — Run the release build (manual, in a separate terminal)
 
 **Do not run this build yourself.** It regenerates all documentation and Dockerfiles and can take several minutes — run it in a dedicated terminal so its output stays visible and interruptible.

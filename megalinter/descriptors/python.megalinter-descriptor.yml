@@ -672,7 +672,7 @@ linters:
       method: pip
       requires:
         - runtime: python
-          version: ">=3.9"
+          version: ">=3.10"
       env:
         MYPY_CACHE_DIR: "{{NATIVE_INSTALL_DIR}}/mypy-cache"
       platforms:
@@ -793,7 +793,7 @@ linters:
       method: pip
       requires:
         - runtime: python
-          version: ">=3.9"
+          version: ">=3.10"
       env:
         MYPY_CACHE_DIR: "{{NATIVE_INSTALL_DIR}}/mypy-cache"
       platforms:

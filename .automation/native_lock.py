@@ -681,6 +681,24 @@ def check_locks(specs):
     return stale
 
 
+def check_runtime_locks():
+    stale = []
+    for name, definition in load_runtime_catalog().items():
+        if not (definition.get("provision") or {}).get("assets"):
+            continue
+        path = native_lock.runtime_lock_path(name)
+        spec_hash = native_lock.compute_spec_hash(
+            runtime_provision_resolved(definition)
+        )
+        if not os.path.isfile(path):
+            stale.append(f"runtime {name}")
+            continue
+        with open(path, "r", encoding="utf-8") as f:
+            if json.load(f).get("spec_hash") != spec_hash:
+                stale.append(f"runtime {name}")
+    return stale
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Generate native install locks")
     parser.add_argument(
@@ -714,6 +732,9 @@ def main(argv=None):
     specs = load_native_specs(only=set(options.only) or None)
     if options.check:
         stale = check_locks(specs)
+        # The runtime locks ship in the PyPI package too: check them unless linters were selected
+        if not options.only:
+            stale += check_runtime_locks()
         for key in stale:
             logging.error(f"{key}: native lock missing or stale")
         return 1 if stale else 0
