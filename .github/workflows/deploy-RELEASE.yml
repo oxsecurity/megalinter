@@ -25,8 +25,16 @@ on:
 permissions: {}
 
 jobs:
+  # Nothing is published while the native install locks are stale
+  native_locks:
+    name: Check native locks
+    uses: ./.github/workflows/check-native-locks.yml
+    permissions:
+      contents: read
+
   publish_runner:
     name: Publish mega-linter-runner (release)
+    needs: native_locks
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     runs-on: ubuntu-latest
     permissions:
@@ -50,9 +58,35 @@ jobs:
               },
             });
 
+  # Native mode: release of the megalinter Python package, like mega-linter-runner (manual approval)
+  publish_pypi:
+    name: Publish megalinter to PyPI (release)
+    needs: native_locks
+    if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - name: Trigger deploy-megalinter-pypi workflow
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: ".github/workflows/deploy-megalinter-pypi.yml",
+              ref: "main",
+              inputs: {
+                channel: "stable"
+              },
+            });
+
   build:
     # Name the Job
     name: Deploy Docker Image - RELEASE
+    needs: native_locks
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Only run on main repo
@@ -190,6 +224,7 @@ jobs:
 
     # Name the Job
     name: Deploy Docker Image (Custom Flavor Builder) - RELEASE
+    needs: native_locks
     # Set the agent to run on
     runs-on: ${{ matrix.runner }}
     # Only run on main repo

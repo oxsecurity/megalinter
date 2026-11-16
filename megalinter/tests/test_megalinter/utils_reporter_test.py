@@ -17,6 +17,7 @@ from megalinter.utils_reporter import (
     _sort_linters_by_icon_severity,
     build_markdown_summary,
     build_markdown_summary_header,
+    build_native_suggestion,
     get_linter_status_icon,
     get_linter_summary_data,
 )
@@ -86,6 +87,7 @@ class MarkdownSummaryTest(unittest.TestCase):
             result_message="",
             validate_all_code_base=True,
             flavor_suggestions=None,
+            native_suggestion=None,
             linters=[FakeLinter()],
             show_elapsed_time=False,
             user_notifications={},
@@ -128,6 +130,32 @@ class MarkdownSummaryTest(unittest.TestCase):
                 self.assertMultiLineEqual(
                     expected.strip(), "\n".join(summary.splitlines()).strip()
                 )
+
+    def test_native_suggestion(self):
+        self.assertNotIn("NATIVE_SUGGESTIONS", build_markdown_summary(self.reporter))
+        self.master.native_suggestion = build_native_suggestion(self.request_id, False)
+        summary = build_markdown_summary(self.reporter)
+        self.assertIn("`NATIVE_SUGGESTIONS: false`", summary)
+        self.assertIn(
+            "[Native mode](https://megalinter.io/latest/install-native/)", summary
+        )
+        self.assertIn(
+            "[MegaLinter agent plugin](https://megalinter.io/latest/agent-plugins/)",
+            summary,
+        )
+        self.assertIn("`megalinter-setup` skill", summary)
+
+    def test_native_suggestion_conditions(self):
+        self.assertIsNotNone(build_native_suggestion(self.request_id, False))
+        # Already running natively
+        self.assertIsNone(build_native_suggestion(self.request_id, True))
+        # Native mode already set up for this repository
+        config.set(self.request_id, "NATIVE_LINTERS", "PYTHON_BLACK")
+        self.assertIsNone(build_native_suggestion(self.request_id, False))
+        config.set(self.request_id, "NATIVE_LINTERS", "")
+        self.assertIsNotNone(build_native_suggestion(self.request_id, False))
+        config.set(self.request_id, "NATIVE_SUGGESTIONS", "false")
+        self.assertIsNone(build_native_suggestion(self.request_id, False))
 
 
 class utils_reporter_test(unittest.TestCase):

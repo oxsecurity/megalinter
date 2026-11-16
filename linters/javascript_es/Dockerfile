@@ -82,7 +82,7 @@ ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.7
 # renovate: datasource=npm depName=eslint-plugin-promise
 ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
 # renovate: datasource=npm depName=eslint-plugin-vue
-ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.11.1
+ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.12.0
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 #ARG__END
@@ -272,6 +272,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=JAVASCRIPT_ES \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=JAVASCRIPT_ES \
     PRINT_ALPACA=false \
     LOG_FILE=none \

@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.20.1
+ARG PHP_VIMEO_PSALM_VERSION=6.20.5
 #ARG__END
 
 ####################
@@ -252,6 +252,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=PHP_PSALM \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=PHP_PSALM \
     PRINT_ALPACA=false \
     LOG_FILE=none \

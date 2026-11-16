@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2885,
+    "variable_count": 2918,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -55,7 +55,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 15,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 58,
+      "GENERAL": 66,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 17,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -98,7 +98,7 @@
       "KUBERNETES_KUBESCAPE": 16,
       "LATEX": 4,
       "LATEX_CHKTEX": 16,
-      "LLM": 10,
+      "LLM": 18,
       "LUA": 4,
       "LUA_LUACHECK": 17,
       "LUA_SELENE": 15,
@@ -136,6 +136,7 @@
       "PYTHON_PYRIGHT": 17,
       "PYTHON_RUFF": 17,
       "PYTHON_RUFF_FORMAT": 17,
+      "PYTHON_TY": 17,
       "R": 4,
       "RAKU": 4,
       "RAKU_RAKU": 16,
@@ -880,6 +881,25 @@
       ],
       "category": "ANSIBLE",
       "section": "PREPOSTCOMMANDS"
+    },
+    "ANTHROPIC_API_VERSION": {
+      "name": "ANTHROPIC_API_VERSION",
+      "type": "string",
+      "title": "ANTHROPIC: API version",
+      "description": "Value of the anthropic-version header sent to the Anthropic API. With 2026-10-21 or later, LLM_TEMPERATURE is not sent (removed from the API)",
+      "default": "2023-06-01",
+      "category": "LLM",
+      "section": "MISC"
+    },
+    "ANTHROPIC_BASE_URL": {
+      "name": "ANTHROPIC_BASE_URL",
+      "type": "string",
+      "title": "ANTHROPIC: Base URL",
+      "description": "Base URL of the Anthropic API, without the version segment (a trailing /v1 is accepted). /v1/messages is appended to it",
+      "default": "https://api.anthropic.com",
+      "examples": ["https://api.anthropic.com"],
+      "category": "LLM",
+      "section": "MISC"
     },
     "API_FILTER_REGEX_EXCLUDE": {
       "name": "API_FILTER_REGEX_EXCLUDE",
@@ -5919,6 +5939,16 @@
       "category": "DART",
       "section": "PREPOSTCOMMANDS"
     },
+    "DEEPSEEK_BASE_URL": {
+      "name": "DEEPSEEK_BASE_URL",
+      "type": "string",
+      "title": "DEEPSEEK: Base URL",
+      "description": "Base URL of the DeepSeek API. /chat/completions is appended to it",
+      "default": "https://api.deepseek.com/v1",
+      "examples": ["https://api.deepseek.com/v1"],
+      "category": "LLM",
+      "section": "MISC"
+    },
     "DEFAULT_BRANCH": {
       "name": "DEFAULT_BRANCH",
       "type": "string",
@@ -8067,6 +8097,16 @@
       "category": "GITLAB_COMMENT_REPORTER",
       "section": "GENERAL"
     },
+    "GOOGLE_BASE_URL": {
+      "name": "GOOGLE_BASE_URL",
+      "type": "string",
+      "title": "GOOGLE: Base URL",
+      "description": "Base URL of the Google Gemini API. /v1beta is appended when the URL has no version segment, then /models/{model}:generateContent",
+      "default": "https://generativelanguage.googleapis.com",
+      "examples": ["https://generativelanguage.googleapis.com"],
+      "category": "LLM",
+      "section": "MISC"
+    },
     "GO_FILTER_REGEX_EXCLUDE": {
       "name": "GO_FILTER_REGEX_EXCLUDE",
       "type": ["string", "array"],
@@ -8861,6 +8901,16 @@
       ],
       "category": "GRAPHQL",
       "section": "PREPOSTCOMMANDS"
+    },
+    "GROK_BASE_URL": {
+      "name": "GROK_BASE_URL",
+      "type": "string",
+      "title": "GROK: Base URL",
+      "description": "Base URL of the Grok (xAI) API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.x.ai/v1",
+      "examples": ["https://api.x.ai/v1"],
+      "category": "LLM",
+      "section": "MISC"
     },
     "GROOVY_FILTER_REGEX_EXCLUDE": {
       "name": "GROOVY_FILTER_REGEX_EXCLUDE",
@@ -15628,6 +15678,14 @@
       "category": "GENERAL",
       "section": "GENERAL"
     },
+    "MEGALINTER_HOME": {
+      "name": "MEGALINTER_HOME",
+      "type": "string",
+      "title": "Native mode home folder",
+      "description": "Native mode (MegaLinter without Docker): folder where linters, language runtimes and downloads are installed. Defaults to ~/.megalinter",
+      "category": "GENERAL",
+      "section": "MISC"
+    },
     "MEGALINTER_VERSION": {
       "name": "MEGALINTER_VERSION",
       "type": "string",
@@ -15638,6 +15696,16 @@
       "category": "GENERAL",
       "section": "GENERAL"
     },
+    "MISTRAL_BASE_URL": {
+      "name": "MISTRAL_BASE_URL",
+      "type": "string",
+      "title": "MISTRAL: Base URL",
+      "description": "Base URL of the Mistral AI API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.mistral.ai/v1",
+      "examples": ["https://api.mistral.ai/v1"],
+      "category": "LLM",
+      "section": "MISC"
+    },
     "MULTI_STATUS": {
       "name": "MULTI_STATUS",
       "type": "boolean",
@@ -15647,12 +15715,98 @@
       "category": "GENERAL",
       "section": "OUTPUT"
     },
+    "NATIVE_ENV_ALLOWLIST": {
+      "name": "NATIVE_ENV_ALLOWLIST",
+      "type": "array",
+      "title": "Native mode environment allowlist",
+      "description": "Native mode: additional host environment variables given to the linters. By default linters only receive an allowlist of system variables, so that secrets of the host do not leak to them",
+      "category": "GENERAL",
+      "section": "MISC",
+      "items_type": "string"
+    },
+    "NATIVE_IGNORE_HOST_RUNTIMES": {
+      "name": "NATIVE_IGNORE_HOST_RUNTIMES",
+      "type": "boolean",
+      "title": "Native mode ignore host runtimes",
+      "description": "Native mode: ignore the language runtimes (node, java, dotnet...) already installed on the host, and use the ones installed by MegaLinter in MEGALINTER_HOME",
+      "default": false,
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_INSTALL_RUNTIMES": {
+      "name": "NATIVE_INSTALL_RUNTIMES",
+      "type": "string",
+      "title": "Native mode runtimes installation",
+      "description": "Native mode: what to do when a language runtime required by a linter is missing. ask: propose to install it in MEGALINTER_HOME (interactive terminals only), auto: install it without asking, never: only print how to install it",
+      "default": "ask",
+      "enum": ["ask", "auto", "never"],
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_LINTERS": {
+      "name": "NATIVE_LINTERS",
+      "type": "array",
+      "title": "Native mode linters",
+      "description": "Native mode (MegaLinter without Docker): linters allowed to run on this machine, one by linter key (example: [PYTHON_BLACK, JAVASCRIPT_ES]). Nothing runs natively without being listed. The value 'all' means every linter matching your configuration, it is discouraged: it installs many linters (slow) and you must fully trust the security of all of them",
+      "examples": [["PYTHON_BLACK", "JAVASCRIPT_ES"], ["all"]],
+      "category": "GENERAL",
+      "section": "MISC",
+      "items_type": "string"
+    },
+    "NATIVE_MISSING_LINTERS": {
+      "name": "NATIVE_MISSING_LINTERS",
+      "type": "string",
+      "title": "Native mode missing linters",
+      "description": "Native mode: what to do with a linter listed in NATIVE_LINTERS that is not installed. install: install it, skip: skip it, fail: stop with an error",
+      "default": "install",
+      "enum": ["install", "skip", "fail"],
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_OFFLINE": {
+      "name": "NATIVE_OFFLINE",
+      "type": "boolean",
+      "title": "Native mode offline",
+      "description": "Native mode: never download anything, install only from the local download cache",
+      "default": false,
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_SUGGESTIONS": {
+      "name": "NATIVE_SUGGESTIONS",
+      "type": "boolean",
+      "title": "Native mode suggestions",
+      "description": "When MegaLinter runs in Docker and NATIVE_LINTERS is not defined, suggests trying native mode (MegaLinter without Docker) to lint faster on your machine. Set to false to hide the suggestion",
+      "default": true,
+      "category": "GENERAL",
+      "section": "OUTPUT"
+    },
     "OLLAMA_BASE_URL": {
       "name": "OLLAMA_BASE_URL",
       "type": "string",
       "title": "OLLAMA: Base URL",
-      "description": "Base URL to connect to Ollama server",
+      "description": "Base URL to connect to Ollama server, with or without the /api segment. /api/generate is appended to it",
       "default": "http://localhost:11434",
+      "category": "LLM",
+      "section": "MISC"
+    },
+    "OPENAI_BASE_URL": {
+      "name": "OPENAI_BASE_URL",
+      "type": "string",
+      "title": "OPENAI: Base URL",
+      "description": "Base URL of the OpenAI (or OpenAI-compatible) API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.openai.com/v1",
+      "examples": ["https://api.openai.com/v1"],
+      "category": "LLM",
+      "section": "MISC"
+    },
+    "ORCAROUTER_BASE_URL": {
+      "name": "ORCAROUTER_BASE_URL",
+      "type": "string",
+      "title": "ORCAROUTER: Base URL",
+      "description": "Base URL of the OrcaRouter API, including the version segment. /chat/completions is appended to it",
+      "default": "https://api.orcarouter.ai/v1",
+      "examples": ["https://api.orcarouter.ai/v1"],
       "category": "LLM",
       "section": "MISC"
     },
@@ -19687,6 +19841,181 @@
       "description": "List of env variables explicitly not filtered before calling PYTHON_RUFF and its pre/post commands",
       "default": [],
       "category": "PYTHON_RUFF",
+      "section": "SECURITY",
+      "items_type": "string"
+    },
+    "PYTHON_TY_ARGUMENTS": {
+      "name": "PYTHON_TY_ARGUMENTS",
+      "type": ["array", "string"],
+      "title": "PYTHON_TY: Custom arguments",
+      "description": "PYTHON_TY: User custom arguments to add in linter CLI call",
+      "category": "PYTHON_TY",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "PYTHON_TY_CLI_EXECUTABLE": {
+      "name": "PYTHON_TY_CLI_EXECUTABLE",
+      "type": "array",
+      "title": "PYTHON_TY: CLI Executable",
+      "description": "PYTHON_TY: Override CLI executable used to build the linter command line (rarely needed)",
+      "default": [["ty"]],
+      "category": "PYTHON_TY",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "PYTHON_TY_CLI_LINT_MODE": {
+      "name": "PYTHON_TY_CLI_LINT_MODE",
+      "type": "string",
+      "title": "PYTHON_TY: CLI lint mode",
+      "description": "PYTHON_TY: Override default CLI lint mode used to call the linter (rarely needed)",
+      "default": "list_of_files",
+      "enum": ["file", "list_of_files", "project"],
+      "category": "PYTHON_TY",
+      "section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_COMMAND_REMOVE_ARGUMENTS": {
+      "name": "PYTHON_TY_COMMAND_REMOVE_ARGUMENTS",
+      "type": ["array", "string"],
+      "title": "PYTHON_TY: Custom remove arguments",
+      "description": "PYTHON_TY: User custom arguments to remove before calling linter",
+      "category": "PYTHON_TY",
+      "section": "LINTER_COMMAND",
+      "items_type": "string"
+    },
+    "PYTHON_TY_CONFIG_FILE": {
+      "name": "PYTHON_TY_CONFIG_FILE",
+      "type": "string",
+      "title": "PYTHON_TY: Custom config file name",
+      "description": "PYTHON_TY: User custom config file name if different from default",
+      "default": "ty.toml",
+      "category": "PYTHON_TY",
+      "section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_DISABLE_ERRORS": {
+      "name": "PYTHON_TY_DISABLE_ERRORS",
+      "type": "boolean",
+      "title": "PYTHON_TY: Disable errors",
+      "description": "PYTHON_TY: If true, PYTHON_TY doesn't make MegaLinter fail even if errors are found",
+      "default": false,
+      "category": "PYTHON_TY",
+      "section": "ERRORS"
+    },
+    "PYTHON_TY_DISABLE_ERRORS_IF_LESS_THAN": {
+      "name": "PYTHON_TY_DISABLE_ERRORS_IF_LESS_THAN",
+      "type": "number",
+      "title": "PYTHON_TY: Maximum number of errors allowed",
+      "description": "PYTHON_TY: If the number of errors found is less than this value, PYTHON_TY doesn't make MegaLinter fail",
+      "default": 0,
+      "category": "PYTHON_TY",
+      "section": "ERRORS"
+    },
+    "PYTHON_TY_FILE_EXTENSIONS": {
+      "name": "PYTHON_TY_FILE_EXTENSIONS",
+      "type": "array",
+      "title": "PYTHON_TY: Matching files extensions",
+      "description": "PYTHON_TY: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "default": [".py", ".pyi"],
+      "examples": [".py", ".myext"],
+      "category": "PYTHON_TY",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "PYTHON_TY_FILE_NAMES_REGEX": {
+      "name": "PYTHON_TY_FILE_NAMES_REGEX",
+      "type": "array",
+      "title": "PYTHON_TY: Matching file name regexes",
+      "description": "PYTHON_TY: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "default": [],
+      "examples": ["Dockerfile(-.+)?", "Jenkinsfile"],
+      "category": "PYTHON_TY",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "PYTHON_TY_FILTER_REGEX_EXCLUDE": {
+      "name": "PYTHON_TY_FILTER_REGEX_EXCLUDE",
+      "type": ["string", "array"],
+      "title": "PYTHON_TY: Excluding Regex",
+      "description": "PYTHON_TY: Custom regex excluding filter: files matching this regex will NOT be linted. ⚠️ Not available with PYTHON_TY_CLI_LINT_MODE = project",
+      "category": "PYTHON_TY",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "PYTHON_TY_FILTER_REGEX_INCLUDE": {
+      "name": "PYTHON_TY_FILTER_REGEX_INCLUDE",
+      "type": ["string", "array"],
+      "title": "PYTHON_TY: Including Regex",
+      "description": "PYTHON_TY: Custom regex including filter: only files matching this regex will be linted. ⚠️ Not available with PYTHON_TY_CLI_LINT_MODE = project",
+      "category": "PYTHON_TY",
+      "section": "SCOPE",
+      "items_type": "string"
+    },
+    "PYTHON_TY_FORWARD_EXCLUDED_DIRECTORIES": {
+      "name": "PYTHON_TY_FORWARD_EXCLUDED_DIRECTORIES",
+      "type": "boolean",
+      "title": "PYTHON_TY: Forward excluded directories in project lint mode",
+      "description": "PYTHON_TY: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "default": true,
+      "category": "PYTHON_TY",
+      "section": "GENERAL"
+    },
+    "PYTHON_TY_POST_COMMANDS": {
+      "name": "PYTHON_TY_POST_COMMANDS",
+      "type": "array",
+      "title": "PYTHON_TY: Post-run commands",
+      "description": "PYTHON_TY: Define bash commands to run after running PYTHON_TY",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "PYTHON_TY",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "PYTHON_TY_PRE_COMMANDS": {
+      "name": "PYTHON_TY_PRE_COMMANDS",
+      "type": "array",
+      "title": "PYTHON_TY: Pre-run commands",
+      "description": "PYTHON_TY: Define bash commands to run before running PYTHON_TY",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "category": "PYTHON_TY",
+      "section": "PREPOSTCOMMANDS"
+    },
+    "PYTHON_TY_RULES_PATH": {
+      "name": "PYTHON_TY_RULES_PATH",
+      "type": "string",
+      "title": "PYTHON_TY: Custom config file path",
+      "description": "PYTHON_TY: Path where to find linter configuration file",
+      "category": "PYTHON_TY",
+      "section": "LINTER_COMMAND"
+    },
+    "PYTHON_TY_TIMEOUT_SECONDS": {
+      "name": "PYTHON_TY_TIMEOUT_SECONDS",
+      "type": "integer",
+      "title": "PYTHON_TY: Timeout in seconds",
+      "description": "PYTHON_TY: Maximum duration in seconds of the PYTHON_TY run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [3600, 0],
+      "category": "PYTHON_TY",
+      "section": "GENERAL"
+    },
+    "PYTHON_TY_UNSECURED_ENV_VARIABLES": {
+      "name": "PYTHON_TY_UNSECURED_ENV_VARIABLES",
+      "type": "array",
+      "title": "PYTHON_TY: Unsecured env variables",
+      "description": "List of env variables explicitly not filtered before calling PYTHON_TY and its pre/post commands",
+      "default": [],
+      "category": "PYTHON_TY",
       "section": "SECURITY",
       "items_type": "string"
     },

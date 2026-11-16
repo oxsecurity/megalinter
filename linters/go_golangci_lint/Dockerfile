@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=repology depName=alpine_3_24/go versioning=loose
-ARG GO_ALPINE_VERSION=1.26.10-r0
+ARG GO_ALPINE_VERSION=1.26.11-r0
 # renovate: datasource=github-tags depName=golangci/golangci-lint
 ARG GO_GOLANGCI_LINT_VERSION=2.15.0
 #ARG__END
@@ -238,6 +238,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=GO_GOLANGCI_LINT \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=GO_GOLANGCI_LINT \
     PRINT_ALPACA=false \
     LOG_FILE=none \

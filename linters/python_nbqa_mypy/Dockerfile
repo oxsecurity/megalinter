@@ -68,7 +68,7 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
+ARG PIP_MYPY_VERSION=2.4.1
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.2.2
 # renovate: datasource=pypi depName=virtualenv
@@ -182,7 +182,7 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # nbqa installation
-ENV MYPY_CACHE_DIR=/tmp
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 #OTHER__END
 
 ################################
@@ -247,6 +247,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=PYTHON_NBQA_MYPY \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=PYTHON_NBQA_MYPY \
     PRINT_ALPACA=false \
     LOG_FILE=none \

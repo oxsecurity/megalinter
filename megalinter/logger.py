@@ -6,8 +6,10 @@ import sys
 import tomllib
 
 from megalinter import config, utils
+from megalinter.__about__ import __version__
 from megalinter.constants import BETTERLEAKS_RULESET_FILE_NAME, ML_DOC_URL
 from megalinter.flavor_factory import is_custom_flavor
+from megalinter.native.context import current_platform
 from megalinter.utils_reporter import log_section_start
 
 
@@ -120,6 +122,10 @@ def display_header(mega_linter):
         logging.info(
             " - Flavor Builder Image Version: "
             + config.get(None, "BUILD_VERSION", "No docker image")
+        )
+    elif mega_linter.native_mode is True:
+        logging.info(
+            f" - Native mode (without Docker): MegaLinter {__version__} on {current_platform()}"
         )
     else:
         logging.info(

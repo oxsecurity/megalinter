@@ -46,6 +46,15 @@ class CiProvider:
     def get_pr_commit_shas_hint(self) -> str:
         return "this CI platform is not auto-detected: define the SHAs manually"
 
+    # Labels of the current Pull Request, or None when the platform has no
+    # labels or they can not be read
+    def get_pr_labels(self):
+        return None
+
+    # Human readable reference of the current Pull Request (repo and number)
+    def get_pr_reference(self) -> str:
+        return ""
+
     # ----------------------------------------------------------------------
     # Repository / branch / job context
     # ----------------------------------------------------------------------
@@ -61,6 +70,10 @@ class CiProvider:
     # URL of the running job/pipeline, or an empty string when unavailable
     def get_job_url(self) -> str:
         return ""
+
+    # URL where reporters link the detailed results: the job page by default
+    def get_report_url(self) -> str:
+        return self.get_job_url()
 
     # Keeps only the last segment of a slug or URL (owner/repo -> repo)
     @staticmethod

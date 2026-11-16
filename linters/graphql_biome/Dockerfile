@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.6.3
+ARG NPM_BIOMEJS_BIOME_VERSION=2.6.4
 #ARG__END
 
 ####################
@@ -245,6 +245,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=GRAPHQL_BIOME \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=GRAPHQL_BIOME \
     PRINT_ALPACA=false \
     LOG_FILE=none \

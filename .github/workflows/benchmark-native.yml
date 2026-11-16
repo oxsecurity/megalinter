@@ -1,0 +1,194 @@
+---
+name: "Benchmark native mode"
+# Compares MegaLinter native mode (without Docker, beta) with Docker on a demo repository with planted
+# problems (.automation/test/benchmark_native), using the published packages a user would run:
+# - native: mega-linter-runner@beta (npm) and the megalinter beta (PyPI) on the 5 native platforms
+# - Docker: the beta images of ghcr.io on the Linux runners (macOS and Windows runners have no Docker).
+#   The images are linux/amd64 only: on the ARM64 runner they run emulated by QEMU
+# The measures are published as Markdown tables in the summary of the run (benchmark-native artifact)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/benchmark-native.yml"
+      - ".automation/benchmark_native.py"
+      - ".automation/test/benchmark_native/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  native:
+    name: Native (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux/amd64
+          - os: ubuntu-24.04-arm
+            platform: linux/arm64
+          - os: macos-15-intel
+            platform: darwin/amd64
+          - os: macos-latest
+            platform: darwin/arm64
+          - os: windows-latest
+            platform: windows/amd64
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUTF8: "1"
+      PLATFORM: ${{ matrix.platform }}
+      RUNNER_LABEL: ${{ matrix.os }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      # No cache: the install of MegaLinter and of the linters is measured from scratch
+      - name: Setup uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: false
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.x"
+          package-manager-cache: false
+      - name: Create the demo repository
+        run: python .automation/benchmark_native.py prepare --dest "${RUNNER_TEMP}/benchmark-demo"
+      - name: Benchmark native mode
+        run: |
+          python .automation/benchmark_native.py native \
+            --demo "${RUNNER_TEMP}/benchmark-demo" \
+            --platform "${PLATFORM}" \
+            --runner "${RUNNER_LABEL}" \
+            --output-dir benchmark-results \
+            --logs benchmark-logs
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-results-native-${{ strategy.job-index }}
+          path: benchmark-results
+          if-no-files-found: ignore
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-logs-native-${{ strategy.job-index }}
+          path: benchmark-logs
+          if-no-files-found: ignore
+
+  docker:
+    name: Docker (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux/amd64
+          - os: ubuntu-24.04-arm
+            platform: linux/arm64
+    env:
+      PLATFORM: ${{ matrix.platform }}
+      RUNNER_LABEL: ${{ matrix.os }}
+    steps:
+      # The full image takes more than 10 GB once extracted
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          df -h /
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.x"
+          package-manager-cache: false
+      # The MegaLinter images are published for linux/amd64 only
+      - name: Setup QEMU
+        if: matrix.platform != 'linux/amd64'
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
+        with:
+          platforms: amd64
+      - name: Create the demo repository
+        run: python .automation/benchmark_native.py prepare --dest "${RUNNER_TEMP}/benchmark-demo"
+      - name: Benchmark Docker mode
+        run: |
+          python .automation/benchmark_native.py docker \
+            --demo "${RUNNER_TEMP}/benchmark-demo" \
+            --platform "${PLATFORM}" \
+            --runner "${RUNNER_LABEL}" \
+            --image-platform linux/amd64 \
+            --output-dir benchmark-results \
+            --logs benchmark-logs
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-results-docker-${{ strategy.job-index }}
+          path: benchmark-results
+          if-no-files-found: ignore
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-logs-docker-${{ strategy.job-index }}
+          path: benchmark-logs
+          if-no-files-found: ignore
+
+  summary:
+    name: Benchmark summary
+    needs: [native, docker]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Download results
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: benchmark-results-*
+          path: benchmark-results
+          merge-multiple: true
+      - name: Write the summary
+        run: |
+          python .automation/benchmark_native.py summary --input benchmark-results --output benchmark-native.md
+          cat benchmark-native.md >> "${GITHUB_STEP_SUMMARY}"
+      - name: Upload summary
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-native
+          path: |
+            benchmark-native.md
+            benchmark-results

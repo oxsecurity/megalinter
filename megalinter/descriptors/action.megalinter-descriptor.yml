@@ -59,6 +59,33 @@ linters:
           COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+    native_install:
+      method: binary
+      version: "${ACTION_ACTIONLINT_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      provenance:
+        github_attestation: rhysd/actionlint
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -135,6 +162,19 @@ linters:
               cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}" && \
               chmod +x /out/bin/zizmor
         - COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
+    native_install:
+      method: pip
+      packages:
+        - "zizmor==${CARGO_ZIZMOR_VERSION}"
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

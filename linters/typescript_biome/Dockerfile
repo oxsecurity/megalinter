@@ -68,7 +68,7 @@ ARG TARGETARCH
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.6.3
+ARG NPM_BIOMEJS_BIOME_VERSION=2.6.4
 #ARG__END
 
 ####################
@@ -249,6 +249,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=TYPESCRIPT_BIOME \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=TYPESCRIPT_BIOME \
     PRINT_ALPACA=false \
     LOG_FILE=none \

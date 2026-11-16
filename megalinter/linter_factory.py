@@ -5,6 +5,13 @@ import os
 
 import yaml
 from megalinter import Linter, flavor_factory
+from megalinter.constants import DESCRIPTOR_YAML_LOADER
+from megalinter.native.context import (
+    current_platform,
+    is_native_mode,
+    megalinter_home,
+)
+from megalinter.native.resolve import apply_native_overrides
 from megalinter.utils import get_descriptor_dir
 
 
@@ -78,7 +85,9 @@ def resolve_linter_extends(linter_descriptor):
             f"(referenced by extends: {shared_name})"
         )
         with open(shared_file, "r", encoding="utf-8") as f:
-            shared_linter_definitions_cache[shared_file] = yaml.safe_load(f)
+            shared_linter_definitions_cache[shared_file] = yaml.load(
+                f, Loader=DESCRIPTOR_YAML_LOADER
+            )
     shared_definition = shared_linter_definitions_cache[shared_file]
     resolved = {
         **shared_definition,
@@ -105,7 +114,7 @@ def list_descriptor_files():
 # Extract descriptor info from descriptor file
 def build_descriptor_info(file):
     with open(file, "r", encoding="utf-8") as f:
-        language_descriptor = yaml.safe_load(f)
+        language_descriptor = yaml.load(f, Loader=DESCRIPTOR_YAML_LOADER)
     language_descriptor["linters"] = [
         resolve_linter_extends(linter_descriptor)
         for linter_descriptor in language_descriptor.get("linters", [])
@@ -120,7 +129,7 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
     linters = []
     # Dynamic generation from yaml
     with open(file, "r", encoding="utf-8") as f:
-        language_descriptor = yaml.safe_load(f)
+        language_descriptor = yaml.load(f, Loader=DESCRIPTOR_YAML_LOADER)
 
         # Build common attributes
         common_attributes = {}
@@ -138,6 +147,14 @@ def build_descriptor_linters(file, linter_init_params=None, linter_names=None):
             ):
                 continue
             linter_descriptor = resolve_linter_extends(linter_descriptor)
+            if is_native_mode():
+                linter_descriptor = apply_native_overrides(
+                    linter_descriptor,
+                    current_platform(),
+                    language_descriptor["descriptor_id"],
+                    language_descriptor.get("install"),
+                    megalinter_home(),
+                )
 
             # Use custom class if defined in file
             linter_class = Linter

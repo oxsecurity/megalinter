@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=mongodb/kingfisher
-ARG REPOSITORY_KINGFISHER_VERSION=2.14.0
+ARG REPOSITORY_KINGFISHER_VERSION=2.16.0
 #ARG__END
 
 ####################
@@ -232,6 +232,7 @@ LABEL com.github.actions.name="MegaLinter" \
 #EXTRA_DOCKERFILE_LINES__START
 ENV ENABLE_LINTERS=REPOSITORY_KINGFISHER \
     FLAVOR_SUGGESTIONS=false \
+    NATIVE_SUGGESTIONS=false \
     SINGLE_LINTER=REPOSITORY_KINGFISHER \
     PRINT_ALPACA=false \
     LOG_FILE=none \

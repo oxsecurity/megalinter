@@ -55,6 +55,7 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_URL,
 )
+from megalinter.native.spec import validate_all
 from megalinter.removed_linters import (
     REMOVED_DESCRIPTORS,
     REMOVED_LINTER_ALIASES,
@@ -834,6 +835,7 @@ def generate_linter_dockerfiles():
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 "    FLAVOR_SUGGESTIONS=false \\",
+                "    NATIVE_SUGGESTIONS=false \\",
                 f"    SINGLE_LINTER={linter.name} \\",
                 "    PRINT_ALPACA=false \\",
                 "    LOG_FILE=none \\",
@@ -2225,6 +2227,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
+        linter_doc_md += ["", "### Installation without Docker (native mode)", ""]
+        linter_doc_md += get_native_install_md(item, linter.name)
         # Example log files
         test_report_folder = (
             REPO_HOME
@@ -2665,6 +2669,65 @@ def get_install_md(item):
             item["install"]["gem"], "gem", "  ", "https://rubygems.org/gems/"
         )
     return linter_doc_md
+
+
+NATIVE_PLATFORM_LABELS = {
+    "linux/amd64": "Linux (x86-64)",
+    "linux/arm64": "Linux (ARM64)",
+    "darwin/amd64": "macOS (Intel)",
+    "darwin/arm64": "macOS (Apple Silicon)",
+    "windows/amd64": "Windows (Git Bash)",
+}
+NATIVE_METHOD_LABELS = {
+    "pip": "Python package (isolated virtual environment)",
+    "npm": "npm packages (isolated folder)",
+    "gem": "Ruby gems",
+    "go": "Go module",
+    "dotnet_tool": ".NET tool",
+    "powershell_module": "PowerShell module",
+    "binary": "Verified release download",
+    "runtime_provided": "Provided by the host",
+}
+
+
+def get_native_install_md(item, linter_key):
+    native = item.get("native_install")
+    if not native:
+        return ["Not available."]
+    linter_doc_md = [
+        "This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).",
+        "",
+        f"- Install method: {NATIVE_METHOD_LABELS.get(native['method'], native['method'])}",
+    ]
+    for requirement in native.get("requires", []):
+        constraint = f" {requirement['version']}" if requirement.get("version") else ""
+        linter_doc_md += [
+            f"- Requires the {requirement['runtime']} runtime{constraint}"
+        ]
+    linter_doc_md += [
+        "",
+        "```yaml",
+        f"NATIVE_LINTERS: [{linter_key}]",
+        "```",
+        "",
+        "| Platform | Support |",
+        "| :------- | :------ |",
+    ]
+    for platform, label in NATIVE_PLATFORM_LABELS.items():
+        if platform in native.get("platforms", []):
+            support = "✅"
+        else:
+            support = "❌ " + (native.get("unsupported") or {}).get(platform, "")
+        linter_doc_md += [f"| {label} | {support} |"]
+    if native["method"] == "runtime_provided" and native.get("suggest"):
+        linter_doc_md += [
+            "",
+            "This tool is not downloaded by MegaLinter, install it yourself:",
+            "",
+        ]
+        for system, command in native["suggest"].items():
+            linter_doc_md += [f"- {system}: `{command}`"]
+    return linter_doc_md + [""]
 
 
 def doc_url(href):
@@ -3525,6 +3588,17 @@ def validate_descriptors():
             )
 
 
+# Every linter must declare its native install on every native platform
+def validate_native_install():
+    _specs, native_errors = validate_all()
+    for native_error in native_errors:
+        logging.error(native_error)
+    if len(native_errors) > 0:
+        raise ValueError(
+            "Errors have been found in native_install declarations, please check logs"
+        )
+
+
 def finalize_doc_build():
     # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
@@ -3611,7 +3685,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-29.3M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-29.4M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
@@ -4417,6 +4491,22 @@ def generate_json_schema_docs():
     )
 
 
+# The native pre-commit hooks of a release run that version of mega-linter-runner (installed
+# once by pre-commit) and of MegaLinter: `rev: vX.Y.Z` gives the same results everywhere
+def pin_native_pre_commit_hooks(version):
+    hooks_file = f"{REPO_HOME}/.pre-commit-hooks.yaml"
+    content = Path(hooks_file).read_text(encoding="utf-8")
+    pinned = re.sub(
+        r"mega-linter-runner@(beta|\d+\.\d+\.\d+)",
+        f"mega-linter-runner@{version}",
+        content,
+    )
+    pinned = re.sub(
+        r"(--release(?:\n\s+- |\s+))(beta|\d+\.\d+\.\d+)", rf"\g<1>{version}", pinned
+    )
+    Path(hooks_file).write_text(pinned, encoding="utf-8", newline="\n")
+
+
 def generate_version():
     # npm version
     logging.info("Updating npm package version…")
@@ -4445,6 +4535,7 @@ def generate_version():
         shell=True,
         check=True,
     )
+    pin_native_pre_commit_hooks(VERSION)
     # Update changelog
     if UPDATE_CHANGELOG is True:
         changelog_file = f"{REPO_HOME}/CHANGELOG.md"
@@ -4650,6 +4741,7 @@ if __name__ == "__main__":
         ensure_removed_linters_flagged_in_config_schema()
         generate_documentation_removed_linters()
         validate_descriptors()
+        validate_native_install()
         if UPDATE_DEPENDENTS is True:
             update_dependents_info()
         generate_all_flavors()

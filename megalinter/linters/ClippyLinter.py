@@ -13,6 +13,9 @@ from megalinter import config
 class ClippyLinter(megalinter.Linter):
     # To execute before linting files
     def before_lint_files(self):
+        # Native mode: never change the default toolchain of the user's rustup
+        if self.native_toolchain is not None:
+            return
         # The image installs a single pinned toolchain and makes it the default
         # in RUSTUP_HOME: switching to "stable" there would download a second one
         rustup_home = config.get(

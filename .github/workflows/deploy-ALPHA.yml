@@ -41,9 +41,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Nothing is published while the native install locks are stale
+  native_locks:
+    name: Check native locks
+    uses: ./.github/workflows/check-native-locks.yml
+    permissions:
+      contents: read
 
   publish_runner:
     name: Publish mega-linter-runner (alpha)
+    needs: native_locks
     if: github.repository == 'oxsecurity/megalinter' && !contains(github.event.head_commit.message, 'skip deploy')
     runs-on: ubuntu-latest
     permissions:
@@ -70,6 +77,7 @@ jobs:
   build:
     # Name the Job
     name: Deploy Docker Image - ALPHA
+    needs: native_locks
     # Set the agent to run on
     runs-on: ubuntu-latest
     permissions:
@@ -168,6 +176,7 @@ jobs:
 
     # Name the Job
     name: Deploy Docker Image (Custom Flavor Builder) - ALPHA
+    needs: native_locks
     # Set the agent to run on
     runs-on: ${{ matrix.runner }}
     permissions:

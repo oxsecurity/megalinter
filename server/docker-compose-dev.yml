@@ -35,6 +35,7 @@ services:
     environment:
       # Megalinter variables
       - FLAVOR_SUGGESTIONS=false
+      - NATIVE_SUGGESTIONS=false
       - REPOSITORY_TRUFFLEHOG_ARGUMENTS=--json
       # Worker variables
       - MEGALINTER_SERVER=true
