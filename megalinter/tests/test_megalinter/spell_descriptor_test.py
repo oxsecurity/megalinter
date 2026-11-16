@@ -110,12 +110,31 @@ class SpellDescriptorTest(unittest.TestCase):
         self.assertEqual(
             typos["test_format_fix_file_extensions"], [".md", ".py", ".txt"]
         )
+        self.assertEqual(
+            typos["active_only_if_file_found"],
+            ["typos.toml", "_typos.toml", ".typos.toml"],
+        )
         self.assertIn("--format", typos["cli_lint_extra_args"])
         self.assertIn("json", typos["cli_lint_extra_args"])
         self.assertIn("--force-exclude", typos["cli_lint_extra_args"])
         self.assertEqual(
             typos["supported_platforms"]["platform"], ["linux/amd64", "linux/arm64"]
         )
+        self.assertIn("native_install", typos)
+        native = typos["native_install"]
+        self.assertEqual(native["method"], "binary")
+        self.assertEqual(native["version"], "${SPELL_TYPOS_VERSION}")
+        self.assertEqual(
+            native["platforms"],
+            [
+                "linux/amd64",
+                "linux/arm64",
+                "darwin/amd64",
+                "darwin/arm64",
+                "windows/amd64",
+            ],
+        )
+        self.assertIn("unverified", native["provenance"])
         dockerfile_block = "\n".join(typos["install"]["dockerfile"])
         self.assertIn(
             "# renovate: datasource=github-releases depName=crate-ci/typos",
@@ -127,6 +146,20 @@ class SpellDescriptorTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp_workspace:
             rules_dir = os.path.join(tmp_workspace, ".github", "linters")
             os.makedirs(rules_dir, exist_ok=True)
+            # Without a typos configuration file, the linter should remain inactive
+            typos_inactive = linter_factory.build_linter(
+                "SPELL", "typos", self._build_params(tmp_workspace, rules_dir)
+            )
+            self.assertEqual(typos_inactive.name, "SPELL_TYPOS")
+            self.assertEqual(typos_inactive.linter_name, "typos")
+            self.assertFalse(typos_inactive.is_active)
+
+            # When typos.toml exists in workspace, the linter should activate
+            with open(
+                os.path.join(tmp_workspace, "typos.toml"), "w", encoding="utf-8"
+            ) as f:
+                f.write("")
+
             typos = linter_factory.build_linter(
                 "SPELL", "typos", self._build_params(tmp_workspace, rules_dir)
             )

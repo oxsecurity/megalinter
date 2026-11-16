@@ -534,6 +534,8 @@ linters:
       - **Opt-In Auto-Fix Support**: Auto-fix (`--write-changes`) is disabled by default (`APPLY_FIXES` defaults to `none`), even when `SPELL_TYPOS` is active; when explicitly enabled via `APPLY_FIXES`, it corrects unambiguous typos in-place while reporting ambiguous cases (review identifier fixes carefully if code defines external API contracts)
       - **Blazing Fast**: Built in Rust for monorepo-scale repositories with negligible CI overhead
       - **Flexible Configuration**: Supports `typos.toml`, `_typos.toml`, `.typos.toml`, `pyproject.toml`, and `Cargo.toml`
+
+      To be active within MegaLinter, a configuration file (`typos.toml`, `_typos.toml`, or `.typos.toml`) must be present in your repository or in `LINTER_RULES_PATH`.
     test_folder: spell_typos
     test_format_fix_file_extensions:
       - ".md"
@@ -550,6 +552,10 @@ linters:
     linter_rules_configuration_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md#configuration
     linter_rules_inline_disable_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md#defaultextend-ignore-re
     linter_rules_ignore_config_url: https://github.com/crate-ci/typos/blob/main/docs/reference.md#filesextend-exclude
+    active_only_if_file_found:
+      - typos.toml
+      - _typos.toml
+      - .typos.toml
     config_file_name: typos.toml
     cli_config_arg_name: --config
     cli_help_arg_name: --help
@@ -599,6 +605,33 @@ linters:
               curl -fsSL "https://github.com/crate-ci/typos/releases/download/v${SPELL_TYPOS_VERSION}/typos-v${SPELL_TYPOS_VERSION}-${TYPOS_ARCH}-unknown-linux-musl.tar.gz" \
               | tar -xz -C /usr/local/bin ./typos && \
               chmod +x /usr/local/bin/typos
+    native_install:
+      method: binary
+      version: "${SPELL_TYPOS_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/crate-ci/typos/releases/download/v{{VERSION}}/typos-v{{VERSION}}-x86_64-unknown-linux-musl.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/crate-ci/typos/releases/download/v{{VERSION}}/typos-v{{VERSION}}-aarch64-unknown-linux-musl.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/crate-ci/typos/releases/download/v{{VERSION}}/typos-v{{VERSION}}-x86_64-apple-darwin.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/crate-ci/typos/releases/download/v{{VERSION}}/typos-v{{VERSION}}-aarch64-apple-darwin.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/crate-ci/typos/releases/download/v{{VERSION}}/typos-v{{VERSION}}-x86_64-pc-windows-msvc.zip
+          archive: zip
+      provenance:
+        unverified: "crate-ci/typos publishes release archives without a checksum file, signature or attestation: the sha256 is pinned on first download by the lock"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

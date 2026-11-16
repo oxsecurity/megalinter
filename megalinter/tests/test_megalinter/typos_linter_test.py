@@ -560,15 +560,25 @@ class TyposLinterTest(unittest.TestCase):
         config.init_config(e2e_request_id, self.workspace, cfg)
         return Megalinter({"request_id": e2e_request_id, "workspace": self.workspace})
 
-    def test_default_config_active_without_autofix(self):
+    def _collect_active_linters(self):
         target_file = os.path.join(self.workspace, "guide.md")
         with open(target_file, "w", encoding="utf-8") as handle:
             handle.write("Follow teh checklist.\n")
 
         mega_linter = self._create_megalinter_for_workspace({})
-        active_linters = [
-            linter for linter in mega_linter.linters if linter.is_active is True
-        ]
+        active = [linter for linter in mega_linter.linters if linter.is_active is True]
+        return mega_linter, active, target_file
+
+    def test_inactive_without_config_file(self):
+        _, active_linters, _ = self._collect_active_linters()
+        self.assertEqual(active_linters, [])
+
+    def test_default_config_active_without_autofix(self):
+        config_file = os.path.join(self.workspace, "typos.toml")
+        with open(config_file, "w", encoding="utf-8") as handle:
+            handle.write("")
+
+        mega_linter, active_linters, target_file = self._collect_active_linters()
         self.assertEqual([linter.name for linter in active_linters], ["SPELL_TYPOS"])
         typos_linter = active_linters[0]
         self.assertEqual(mega_linter.apply_fixes, "none")
@@ -579,6 +589,10 @@ class TyposLinterTest(unittest.TestCase):
     def _run_megalinter_end_to_end(self, extra_config, content, filename="guide.md"):
         if shutil.which("typos") is None:
             self.skipTest("typos binary not available on PATH")
+
+        config_file = os.path.join(self.workspace, "typos.toml")
+        with open(config_file, "w", encoding="utf-8") as handle:
+            handle.write("")
 
         target_file = os.path.join(self.workspace, filename)
         with open(target_file, "w", encoding="utf-8") as handle:
