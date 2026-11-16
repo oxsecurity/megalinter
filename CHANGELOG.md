@@ -153,6 +153,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [phpstan](https://phpstan.org/) from 2.3.2 to **2.3.5** on 2026-11-11
   - [git_diff](https://git-scm.com) from 2.54.0 to **2.54.1** on 2026-11-11
   - [rumdl](https://github.com/rvben/rumdl) from 0.3.0 to **0.3.2** on 2026-11-13
+  - [biome](https://biomejs.dev) from 2.6.3 to **2.6.4** on 2026-11-16
+  - [markdownlint](https://github.com/DavidAnson/markdownlint) from 0.49.1 to **0.50.0** on 2026-11-16
+  - [psalm](https://psalm.dev) from Psalm.6.20.1@ to **Psalm.6.20.5@** on 2026-11-16
+  - [mypy](https://mypy.readthedocs.io/en/stable/) from 1.19.1 to **2.4.1** on 2026-11-16
+  - [kingfisher](https://github.com/mongodb/kingfisher) from 2.14.0 to **2.16.0** on 2026-11-16
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

@@ -30,7 +30,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
 
 ## mypy documentation
 
-- Version in MegaLinter: **1.19.1**
+- Version in MegaLinter: **2.4.1**
 - Visit [Official Web Site](https://mypy.readthedocs.io/en/stable/){target=_blank}
 - See [How to configure mypy rules](https://mypy.readthedocs.io/en/stable/config_file.html){target=_blank}
   - If custom `.mypy.ini` config file isn't found, [.mypy.ini](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.mypy.ini){target=_blank} will be used
@@ -140,9 +140,11 @@ command line flags. For more details, see:
 - https://mypy.readthedocs.io/en/stable/config_file.html
 
 options:
-  --enable-incomplete-feature {InlineTypedDict,PreciseTupleTypes,TypeForm}
+  --enable-incomplete-feature {InlineTypedDict,PreciseTupleTypes}
                             Enable support of incomplete/experimental features
                             for early preview
+  --no-native-parser        Do not use faster parser that parses directly to
+                            mypy AST (inverse: --native-parser)
 
 Optional arguments:
   -h, --help                Show this help message and exit
@@ -273,12 +275,13 @@ Configuring warnings:
 Miscellaneous strictness flags:
   --allow-untyped-globals   Suppress toplevel errors caused by missing
                             annotations (inverse: --disallow-untyped-globals)
-  --allow-redefinition      Allow restricted, unconditional variable
+  --allow-redefinition      Allow flexible variable redefinition with a new
+                            type (inverse: --disallow-redefinition)
+  --allow-redefinition-old  Allow restricted, unconditional variable
                             redefinition with a new type (inverse: --disallow-
-                            redefinition)
-  --allow-redefinition-new  Allow more flexible variable redefinition
-                            semantics (experimental) (inverse: --disallow-
-                            redefinition-new)
+                            redefinition-old)
+  --allow-redefinition-new  Deprecated alias for --allow-redefinition
+                            (inverse: --disallow-redefinition-new)
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
@@ -287,23 +290,22 @@ Miscellaneous strictness flags:
   --strict-equality-for-none
                             Extend `--strict-equality` for `None` checks
                             (inverse: --no-strict-equality-for-none)
-  --strict-bytes            Disable treating bytearray and memoryview as
-                            subtypes of bytes (inverse: --no-strict-bytes)
+  --no-strict-bytes         Treat bytearray and memoryview as subtypes of
+                            bytes (inverse: --strict-bytes)
   --extra-checks            Enable additional checks that are technically
                             correct but may be impractical in real code. For
                             example, this prohibits partial overlap in
                             TypedDict updates, and makes arguments prepended
                             via Concatenate positional-only (inverse: --no-
                             extra-checks)
-  --strict                  Strict mode; enables the following flags: --warn-
-                            unused-configs, --disallow-any-generics,
-                            --disallow-subclassing-any, --disallow-untyped-
-                            calls, --disallow-untyped-defs, --disallow-
-                            incomplete-defs, --check-untyped-defs, --disallow-
-                            untyped-decorators, --warn-redundant-casts,
-                            --warn-unused-ignores, --warn-return-any, --no-
-                            implicit-reexport, --strict-equality, --strict-
-                            bytes, --extra-checks
+  --strict                  Strict mode; enables the following flags:
+                            --disallow-any-generics, --disallow-subclassing-
+                            any, --disallow-untyped-calls, --disallow-untyped-
+                            defs, --disallow-incomplete-defs, --check-untyped-
+                            defs, --disallow-untyped-decorators, --warn-
+                            redundant-casts, --warn-unused-ignores, --warn-
+                            return-any, --no-implicit-reexport, --strict-
+                            equality, --extra-checks
   --disable-error-code NAME
                             Disable a specific error code
   --enable-error-code NAME  Enable a specific error code
@@ -345,7 +347,8 @@ Incremental mode:
                             --no-sqlite-cache)
   --cache-fine-grained      Include fine-grained dependency information in the
                             cache for the mypy daemon
-  --fixed-format-cache      Use new fast and compact fixed format cache
+  --no-fixed-format-cache   Do not use new fixed format cache (inverse:
+                            --fixed-format-cache)
   --skip-version-check      Allow using cache written by older mypy version
   --skip-cache-mtime-checks
                             Skip cache internal consistency checks based on
@@ -368,6 +371,8 @@ Advanced options:
   --shadow-file SOURCE_FILE SHADOW_FILE
                             When encountering SOURCE_FILE, read and type check
                             the contents of SHADOW_FILE instead.
+  -n, --num-workers VALUE   Number of separate mypy worker processes, or
+                            'auto'
 
 Report generation:
   Generate a report in the specified format.
@@ -425,6 +430,7 @@ Running code:
 Environment variables:
   Define MYPYPATH for additional module search path entries.
   Define MYPY_CACHE_DIR to override configuration cache_dir path.
+  Define MYPY_NUM_WORKERS to override configuration num_workers value.
 ```
 
 ### Installation on mega-linter Docker image
@@ -432,19 +438,19 @@ Environment variables:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
-ENV MYPY_CACHE_DIR=/tmp
+ARG PIP_MYPY_VERSION=2.4.1
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 ```
 
 - PIP packages (Python):
-  - [mypy==1.19.1](https://pypi.org/project/mypy/1.19.1)
+  - [mypy==2.4.1](https://pypi.org/project/mypy/2.4.1)
 
 ### Installation without Docker (native mode)
 
 This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
 
 - Install method: Python package (isolated virtual environment)
-- Requires the python runtime >=3.9
+- Requires the python runtime >=3.10
 
 ```yaml
 NATIVE_LINTERS: [PYTHON_MYPY]
@@ -516,7 +522,7 @@ Resolutions:
 ```text
 mypy crashed with an internal error. This usually indicates a bug in mypy or an interaction with a plugin.
 Resolutions:
-  - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp`, but stale data can persist between runs in long-lived environments).
+  - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp/.mypy_cache`, but stale data can persist between runs in long-lived environments).
   - Disable mypy plugins (`plugins = ...` in your config) one by one to narrow the cause.
   - Report the traceback to https://github.com/python/mypy/issues.
 ```

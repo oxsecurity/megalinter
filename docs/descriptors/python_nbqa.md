@@ -148,20 +148,20 @@ options:
 # renovate: datasource=pypi depName=nbqa
 ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=pypi depName=mypy
-ARG PIP_MYPY_VERSION=1.19.1
-ENV MYPY_CACHE_DIR=/tmp
+ARG PIP_MYPY_VERSION=2.4.1
+ENV MYPY_CACHE_DIR=/tmp/.mypy_cache
 ```
 
 - PIP packages (Python):
   - [nbqa==1.9.1](https://pypi.org/project/nbqa/1.9.1)
-  - [mypy==1.19.1](https://pypi.org/project/mypy/1.19.1)
+  - [mypy==2.4.1](https://pypi.org/project/mypy/2.4.1)
 
 ### Installation without Docker (native mode)
 
 This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).
 
 - Install method: Python package (isolated virtual environment)
-- Requires the python runtime >=3.9
+- Requires the python runtime >=3.10
 
 ```yaml
 NATIVE_LINTERS: [PYTHON_NBQA_MYPY]
