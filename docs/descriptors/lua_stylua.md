@@ -250,12 +250,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [LUA_STYLUA]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters LUA_STYLUA --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -264,15 +258,12 @@ npx mega-linter-runner@beta --install-linters LUA_STYLUA --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_stylua"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_STYLUA"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/stylua-linux-x86_64-musl.zip" https://github.com/JohnnyMorganz/StyLua/releases/download/v2.6.0/stylua-linux-x86_64-musl.zip &&
-      echo "48ee7db28346f96f4bd545e190ab080a88a7b5a664e97649cf5d5c60426f402d  $INSTALL_DIR/stylua-linux-x86_64-musl.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/stylua-linux-x86_64-musl.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/stylua-linux-x86_64-musl.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -281,10 +272,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_stylua"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_STYLUA"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/stylua-linux-aarch64-musl.zip" https://github.com/JohnnyMorganz/StyLua/releases/download/v2.6.0/stylua-linux-aarch64-musl.zip &&
-      echo "278495597e3827417f3af7b9ad38011ad4a5ec725503553160ab69b7301059bb  $INSTALL_DIR/stylua-linux-aarch64-musl.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/stylua-linux-aarch64-musl.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/stylua-linux-aarch64-musl.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -293,10 +283,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_stylua"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_STYLUA"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/stylua-macos-x86_64.zip" https://github.com/JohnnyMorganz/StyLua/releases/download/v2.6.0/stylua-macos-x86_64.zip &&
-      echo "90779aa873837b2dff8eb3361bd27950303914c24265a59cae0a0d0629d71585  $INSTALL_DIR/stylua-macos-x86_64.zip" | shasum -a 256 -c - &&
       unzip -q "$INSTALL_DIR/stylua-macos-x86_64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/stylua-macos-x86_64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -305,10 +294,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_stylua"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_STYLUA"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/stylua-macos-aarch64.zip" https://github.com/JohnnyMorganz/StyLua/releases/download/v2.6.0/stylua-macos-aarch64.zip &&
-      echo "dab9b66d340ca5ffc8225211f1dcf89b84783e09b8cbec8c518497eba81f3c42  $INSTALL_DIR/stylua-macos-aarch64.zip" | shasum -a 256 -c - &&
       unzip -q "$INSTALL_DIR/stylua-macos-aarch64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/stylua-macos-aarch64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -317,10 +305,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_stylua"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_STYLUA"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/stylua-windows-x86_64.zip" https://github.com/JohnnyMorganz/StyLua/releases/download/v2.6.0/stylua-windows-x86_64.zip &&
-      echo "fd13b4014e3b779c244bbc03f2c282e357f15bc526de6a6fa5ecbc447538313c  $INSTALL_DIR/stylua-windows-x86_64.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/stylua-windows-x86_64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/stylua-windows-x86_64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

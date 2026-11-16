@@ -152,8 +152,6 @@ NATIVE_LINTERS: [BASH_EXEC]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install bash from your distribution (example: sudo apt install bash)`

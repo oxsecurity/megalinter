@@ -529,12 +529,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [SALESFORCE_CODE_ANALYZER_APEX]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters SALESFORCE_CODE_ANALYZER_APEX --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -543,12 +537,10 @@ npx mega-linter-runner@beta --install-linters SALESFORCE_CODE_ANALYZER_APEX --re
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/salesforce_code_analyzer_apex"
+    INSTALL_DIR="$HOME/.megalinter/linters/SALESFORCE_CODE_ANALYZER_APEX"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@salesforce/cli@2.157.7" "@salesforce/plugin-code-analyzer@5.16.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

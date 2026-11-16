@@ -35,7 +35,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Linters installed by MegaLinter always run the version of its Docker image. For **tools provided by your machine** (SwiftLint, Raku, scalafix...), a warning shows when their version differs from the Docker image
     - New `megalinter` command on PyPI: `run`, `install-linters`, `list-linters`, `doctor`
     - Docker runs whose `.mega-linter.yml` has no `NATIVE_LINTERS` now **suggest trying native mode** on your machine, in the console log and in the summary posted to pull requests, with a link to the documentation and to the [MegaLinter agent plugin](https://megalinter.io/latest/agent-plugins/), whose `megalinter-setup` skill sets it up. Hide it with **`NATIVE_SUGGESTIONS: false`**
-    - Each linter page of the documentation now shows its **install command** and the **equivalent manual commands** for every platform, in tabs (section "Installation without Docker (native mode)")
+    - Each linter page of the documentation now shows, for information, the **commands that install it** on each platform, in tabs (section "Installation without Docker (native mode)")
     - Not available on **Intel Macs**: `cryptography`, needed to verify the MegaLinter package, no longer publishes builds for them, and `mega-linter-runner --native` says so instead of failing during the install. Use Docker there
   - **Lighter Docker images**: the main image download shrinks by **21%**, with the same linters and the same behavior (#9497)
     - The Rust toolchain used by `RUST_CLIPPY` is now installed once instead of twice

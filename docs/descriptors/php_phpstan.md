@@ -171,12 +171,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [PHP_PHPSTAN]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters PHP_PHPSTAN --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -185,27 +179,12 @@ npx mega-linter-runner@beta --install-linters PHP_PHPSTAN --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
-=== "Linux"
+=== "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phpstan"
+    INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPSTAN"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/phpstan.phar" https://github.com/phpstan/phpstan/releases/download/2.3.5/phpstan.phar &&
-      echo "4b3ed7850a20b092331bd1040e4f54a1d3c0559b4cf006431073997ebcb4324b  $INSTALL_DIR/phpstan.phar" | sha256sum -c - &&
-      chmod +x "$INSTALL_DIR/phpstan.phar" &&
-      export PATH="$INSTALL_DIR:$PATH"
-    # phpstan: run php "$INSTALL_DIR/phpstan.phar"
-    ```
-
-=== "macOS"
-
-    ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phpstan"
-    mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phpstan.phar" https://github.com/phpstan/phpstan/releases/download/2.3.5/phpstan.phar &&
-      echo "4b3ed7850a20b092331bd1040e4f54a1d3c0559b4cf006431073997ebcb4324b  $INSTALL_DIR/phpstan.phar" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/phpstan.phar" &&
       export PATH="$INSTALL_DIR:$PATH"
     # phpstan: run php "$INSTALL_DIR/phpstan.phar"
@@ -214,10 +193,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phpstan"
+    INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPSTAN"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/phpstan.phar" https://github.com/phpstan/phpstan/releases/download/2.3.5/phpstan.phar &&
-      echo "4b3ed7850a20b092331bd1040e4f54a1d3c0559b4cf006431073997ebcb4324b  $INSTALL_DIR/phpstan.phar" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     # phpstan: run php "$INSTALL_DIR/phpstan.phar"
     ```

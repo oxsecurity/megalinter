@@ -135,12 +135,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [GHERKIN_GHERKIN_LINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters GHERKIN_GHERKIN_LINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -149,12 +143,10 @@ npx mega-linter-runner@beta --install-linters GHERKIN_GHERKIN_LINT --release bet
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/gherkin_gherkin_lint"
+    INSTALL_DIR="$HOME/.megalinter/linters/GHERKIN_GHERKIN_LINT"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "gherkin-lint@4.2.4"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

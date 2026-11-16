@@ -136,12 +136,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [GRAPHQL_GRAPHQL_SCHEMA_LINTER]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters GRAPHQL_GRAPHQL_SCHEMA_LINTER --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -150,12 +144,10 @@ npx mega-linter-runner@beta --install-linters GRAPHQL_GRAPHQL_SCHEMA_LINTER --re
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/graphql_graphql_schema_linter"
+    INSTALL_DIR="$HOME/.megalinter/linters/GRAPHQL_GRAPHQL_SCHEMA_LINTER"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "graphql@17.0.2" "graphql-schema-linter@3.0.1"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

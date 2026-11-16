@@ -165,8 +165,6 @@ NATIVE_LINTERS: [REPOSITORY_GIT_DIFF]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     Provided by the `git` runtime, install it with:

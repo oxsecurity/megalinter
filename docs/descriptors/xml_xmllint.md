@@ -209,8 +209,6 @@ NATIVE_LINTERS: [XML_XMLLINT]
 | macOS (Apple Silicon) | ✅                                                                     |
 | Windows (Git Bash)    | ❌ xmllint (libxml2) has no official Windows distribution. Use Docker. |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)`

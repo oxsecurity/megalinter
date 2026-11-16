@@ -333,12 +333,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [LUA_LUACHECK]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters LUA_LUACHECK --release beta
-```
-
 | Platform              | Support                                                                                                  |
 |:----------------------|:---------------------------------------------------------------------------------------------------------|
 | Linux (x86-64)        | ✅                                                                                                       |
@@ -347,15 +341,12 @@ npx mega-linter-runner@beta --install-linters LUA_LUACHECK --release beta
 | macOS (Apple Silicon) | ❌ luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker. |
 | Windows (Git Bash)    | ✅                                                                                                       |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_luacheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_LUACHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/luacheck" https://github.com/lunarmodules/luacheck/releases/download/v1.2.0/luacheck &&
-      echo "d68da17fca0697d9e2fb04201f3884abd259fa558b3a449bccaed47f1390defc  $INSTALL_DIR/luacheck" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/luacheck" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -363,10 +354,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/lua_luacheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/LUA_LUACHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/luacheck.exe" https://github.com/lunarmodules/luacheck/releases/download/v1.2.0/luacheck.exe &&
-      echo "0f1c69c4d09f1ebb4d8df14c215e4553e2e639bd4cb7bf3c639b0daa6198317b  $INSTALL_DIR/luacheck.exe" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

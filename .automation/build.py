@@ -2735,17 +2735,6 @@ def get_native_install_md(item, linter_key):
         f"NATIVE_LINTERS: [{linter_key}]",
         "```",
         "",
-    ]
-    if native["method"] != "runtime_provided":
-        linter_doc_md += [
-            "Install it with:",
-            "",
-            "```shell",
-            f"npx mega-linter-runner@{VERSION} --install-linters {linter_key} --release {VERSION}",
-            "```",
-            "",
-        ]
-    linter_doc_md += [
         "| Platform | Support |",
         "| :------- | :------ |",
     ]
@@ -2759,19 +2748,7 @@ def get_native_install_md(item, linter_key):
     if not groups:
         return linter_doc_md + [""]
     supported_platforms = [p for group in groups for p in group.platforms]
-    note = (
-        "Manual commands, if you do not use the command above, which also verifies "
-        "the hashes and signatures of every download:"
-    )
-    if native["method"] in ["pip", "npm", "gem"]:
-        note = (
-            "Manual commands, if you do not use the command above. They pin the linter "
-            "packages only: the command above also pins all their dependencies, and "
-            "verifies the hash of every package."
-        )
-    if native["method"] == "runtime_provided":
-        note = "This tool is not downloaded by MegaLinter, install it yourself:"
-    linter_doc_md += ["", note, ""]
+    linter_doc_md += [""]
     for group in groups:
         linter_doc_md += [
             f'=== "{native_tab_label(group.platforms, supported_platforms)}"',
@@ -2886,9 +2863,10 @@ def get_repo(linter, check_github=True):
 def merge_install_attr(item):
     if "descriptor_install" not in item:
         return
+    # Linters extending the same shared definition share its install dict: copy it, so the
+    # packages of one descriptor are not added to the pages of the others
+    item["install"] = dict(item.get("install") or {})
     for elt, elt_val in item["descriptor_install"].items():
-        if "install" not in item:
-            item["install"] = {}
         if elt in item["install"]:
             if elt == "dockerfile":
                 item["install"][elt] = (

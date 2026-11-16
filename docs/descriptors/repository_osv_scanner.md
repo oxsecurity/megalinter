@@ -166,12 +166,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [REPOSITORY_OSV_SCANNER]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters REPOSITORY_OSV_SCANNER --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -180,15 +174,12 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_OSV_SCANNER --release b
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_osv_scanner"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_OSV_SCANNER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/osv-scanner" https://github.com/google/osv-scanner/releases/download/v2.7.1/osv-scanner_linux_amd64 &&
-      echo "fb7dab19a8bd9bbe5c3189f09d4b7ee1820c9553a23bac202648a56efd2f6ee8  $INSTALL_DIR/osv-scanner" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/osv-scanner" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -196,10 +187,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_osv_scanner"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_OSV_SCANNER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/osv-scanner" https://github.com/google/osv-scanner/releases/download/v2.7.1/osv-scanner_linux_arm64 &&
-      echo "983d22fbad9724514e3fcc6acc83b5fa64c5ffa6b0d9f510028f22c1b223ff81  $INSTALL_DIR/osv-scanner" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/osv-scanner" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -207,10 +197,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_osv_scanner"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_OSV_SCANNER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/osv-scanner" https://github.com/google/osv-scanner/releases/download/v2.7.1/osv-scanner_darwin_amd64 &&
-      echo "b8420d5485ba792626315f1bf9a5a2046e971d38eea75bf9090c38852dbc3b1b  $INSTALL_DIR/osv-scanner" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/osv-scanner" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -218,10 +207,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_osv_scanner"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_OSV_SCANNER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/osv-scanner" https://github.com/google/osv-scanner/releases/download/v2.7.1/osv-scanner_darwin_arm64 &&
-      echo "b22c02877a811c8f78956e8643efa554932b7378f590d13f8e97d4e9448a29f3  $INSTALL_DIR/osv-scanner" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/osv-scanner" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -229,10 +217,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_osv_scanner"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_OSV_SCANNER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/osv-scanner.exe" https://github.com/google/osv-scanner/releases/download/v2.7.1/osv-scanner_windows_amd64.exe &&
-      echo "7121dcf420aefbbf89a7f0050c4d3094e079ff93afd334dfc96f16b02ec85800  $INSTALL_DIR/osv-scanner.exe" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

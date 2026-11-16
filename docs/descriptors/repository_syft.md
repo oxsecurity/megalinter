@@ -199,12 +199,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [REPOSITORY_SYFT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters REPOSITORY_SYFT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -213,15 +207,12 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_SYFT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_syft"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz &&
-      echo "bb65249542db5fedeeb4d3f9b018b75e7264dbfbbb10486f044581a92f90490d  $INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -230,10 +221,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_syft"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_arm64.tar.gz &&
-      echo "929bd163db2d7cd2255d3bcb8967208079813d7b46b0c952f7b794d8e2c7d304  $INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -242,10 +232,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_syft"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_darwin_amd64.tar.gz &&
-      echo "e2e5831cbabaec9a36fe65c34755c1113982c842a685edce3ce0b54a0ded8003  $INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -254,10 +243,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_syft"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_darwin_arm64.tar.gz &&
-      echo "1217c258bd5eb91ef3189cf22a82e02f9cac07e4ce934350f428e93aff674625  $INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -266,10 +254,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_syft"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_windows_amd64.zip" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_windows_amd64.zip &&
-      echo "ada4c9b93af575f479ce80fce6629897272a2d41f300a14bc49bace020767ca2  $INSTALL_DIR/syft_1.55.0_windows_amd64.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/syft_1.55.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/syft_1.55.0_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

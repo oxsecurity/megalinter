@@ -198,12 +198,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [SPELL_VALE]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters SPELL_VALE --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -212,15 +206,12 @@ npx mega-linter-runner@beta --install-linters SPELL_VALE --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/spell_vale"
+    INSTALL_DIR="$HOME/.megalinter/linters/SPELL_VALE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/vale_3.26.0_Linux_64-bit.tar.gz" https://github.com/vale-cli/vale/releases/download/v3.26.0/vale_3.26.0_Linux_64-bit.tar.gz &&
-      echo "22aa69a556558e4a9dfc63c17030777383d8d3c48dcdfad655fa98e839d666ed  $INSTALL_DIR/vale_3.26.0_Linux_64-bit.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/vale_3.26.0_Linux_64-bit.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/vale_3.26.0_Linux_64-bit.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -229,10 +220,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/spell_vale"
+    INSTALL_DIR="$HOME/.megalinter/linters/SPELL_VALE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/vale_3.26.0_Linux_arm64.tar.gz" https://github.com/vale-cli/vale/releases/download/v3.26.0/vale_3.26.0_Linux_arm64.tar.gz &&
-      echo "3154179f4611140c9af54a8b3bc6a90bc02b73fe6c1f635369604dde0490406d  $INSTALL_DIR/vale_3.26.0_Linux_arm64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/vale_3.26.0_Linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/vale_3.26.0_Linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -241,10 +231,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/spell_vale"
+    INSTALL_DIR="$HOME/.megalinter/linters/SPELL_VALE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/vale_3.26.0_macOS_64-bit.tar.gz" https://github.com/vale-cli/vale/releases/download/v3.26.0/vale_3.26.0_macOS_64-bit.tar.gz &&
-      echo "df42b317be6ece6a6a70d06b952deec581d047046eb93ea4632f58da56a86ff9  $INSTALL_DIR/vale_3.26.0_macOS_64-bit.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/vale_3.26.0_macOS_64-bit.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/vale_3.26.0_macOS_64-bit.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -253,10 +242,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/spell_vale"
+    INSTALL_DIR="$HOME/.megalinter/linters/SPELL_VALE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/vale_3.26.0_macOS_arm64.tar.gz" https://github.com/vale-cli/vale/releases/download/v3.26.0/vale_3.26.0_macOS_arm64.tar.gz &&
-      echo "a6c3370f53bad93086c6b85f3163676e44e08049d69743afdcc13f3aab5b7482  $INSTALL_DIR/vale_3.26.0_macOS_arm64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/vale_3.26.0_macOS_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/vale_3.26.0_macOS_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -265,10 +253,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/spell_vale"
+    INSTALL_DIR="$HOME/.megalinter/linters/SPELL_VALE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/vale_3.26.0_Windows_64-bit.zip" https://github.com/vale-cli/vale/releases/download/v3.26.0/vale_3.26.0_Windows_64-bit.zip &&
-      echo "c42f4b413aa29b6b36fa4e3ac0c18322588a54ac860db4c84b8255997f7d1ec2  $INSTALL_DIR/vale_3.26.0_Windows_64-bit.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/vale_3.26.0_Windows_64-bit.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/vale_3.26.0_Windows_64-bit.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

@@ -171,12 +171,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [BASH_SHELLCHECK]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters BASH_SHELLCHECK --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -185,15 +179,12 @@ npx mega-linter-runner@beta --install-linters BASH_SHELLCHECK --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shellcheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHELLCHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shellcheck-v0.11.0.linux.x86_64.tar.gz" https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.gz &&
-      echo "b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6  $INSTALL_DIR/shellcheck-v0.11.0.linux.x86_64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/shellcheck-v0.11.0.linux.x86_64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
       rm "$INSTALL_DIR/shellcheck-v0.11.0.linux.x86_64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -202,10 +193,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shellcheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHELLCHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shellcheck-v0.11.0.linux.aarch64.tar.gz" https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.aarch64.tar.gz &&
-      echo "68a8133197a50beb8803f8d42f9908d1af1c5540d4bb05fdfca8c1fa47decefc  $INSTALL_DIR/shellcheck-v0.11.0.linux.aarch64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/shellcheck-v0.11.0.linux.aarch64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
       rm "$INSTALL_DIR/shellcheck-v0.11.0.linux.aarch64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -214,10 +204,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shellcheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHELLCHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shellcheck-v0.11.0.darwin.x86_64.tar.gz" https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.x86_64.tar.gz &&
-      echo "c2c15e08df0e8fbc374c335b230a7ee958c313fa5714817a59aa59f1aa594f51  $INSTALL_DIR/shellcheck-v0.11.0.darwin.x86_64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/shellcheck-v0.11.0.darwin.x86_64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
       rm "$INSTALL_DIR/shellcheck-v0.11.0.darwin.x86_64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -226,10 +215,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shellcheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHELLCHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shellcheck-v0.11.0.darwin.aarch64.tar.gz" https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.darwin.aarch64.tar.gz &&
-      echo "339b930feb1ea764467013cc1f72d09cd6b869ebf1013296ba9055ab2ffbd26f  $INSTALL_DIR/shellcheck-v0.11.0.darwin.aarch64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/shellcheck-v0.11.0.darwin.aarch64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
       rm "$INSTALL_DIR/shellcheck-v0.11.0.darwin.aarch64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -238,10 +226,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shellcheck"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHELLCHECK"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shellcheck-v0.11.0.zip" https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.zip &&
-      echo "8a4e35ab0b331c85d73567b12f2a444df187f483e5079ceffa6bda1faa2e740e  $INSTALL_DIR/shellcheck-v0.11.0.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/shellcheck-v0.11.0.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/shellcheck-v0.11.0.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

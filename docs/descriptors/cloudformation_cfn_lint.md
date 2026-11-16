@@ -225,12 +225,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [CLOUDFORMATION_CFN_LINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters CLOUDFORMATION_CFN_LINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -239,12 +233,10 @@ npx mega-linter-runner@beta --install-linters CLOUDFORMATION_CFN_LINT --release 
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/cloudformation_cfn_lint"
+    INSTALL_DIR="$HOME/.megalinter/linters/CLOUDFORMATION_CFN_LINT"
     uv venv "$INSTALL_DIR" --python ">=3.10"
     uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "cfn-lint[sarif]==1.59.0"
     export PATH="$INSTALL_DIR/bin:$PATH"
@@ -253,7 +245,7 @@ Manual commands, if you do not use the command above. They pin the linter packag
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/cloudformation_cfn_lint"
+    INSTALL_DIR="$HOME/.megalinter/linters/CLOUDFORMATION_CFN_LINT"
     uv venv "$INSTALL_DIR" --python ">=3.10"
     uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "cfn-lint[sarif]==1.59.0"
     export PATH="$INSTALL_DIR/Scripts:$PATH"

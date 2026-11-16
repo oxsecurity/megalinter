@@ -166,12 +166,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [PHP_PHPLINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters PHP_PHPLINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -180,28 +174,12 @@ npx mega-linter-runner@beta --install-linters PHP_PHPLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
-=== "Linux"
+=== "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phplint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
-      echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | sha256sum -c - &&
-      chmod +x "$INSTALL_DIR/phplint.phar" &&
-      export PATH="$INSTALL_DIR:$PATH"
-    # phplint: run php "$INSTALL_DIR/phplint.phar"
-    export PLINT_MODE="legacy"
-    ```
-
-=== "macOS"
-
-    ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phplint"
-    mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
-      echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/phplint.phar" &&
       export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
@@ -211,10 +189,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phplint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
-      echo "d4a2b44d197666313d24bf60d69f9a4b6289f6457c4b5b2e612f768e7f104548  $INSTALL_DIR/phplint.phar" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
     export PLINT_MODE="legacy"

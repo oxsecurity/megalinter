@@ -209,12 +209,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [CPP_CLANG_FORMAT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters CPP_CLANG_FORMAT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -223,12 +217,10 @@ npx mega-linter-runner@beta --install-linters CPP_CLANG_FORMAT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/cpp_clang_format"
+    INSTALL_DIR="$HOME/.megalinter/linters/CPP_CLANG_FORMAT"
     uv venv "$INSTALL_DIR" --python ">=3.7"
     uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "clang-format==23.1.3"
     export PATH="$INSTALL_DIR/bin:$PATH"
@@ -237,7 +229,7 @@ Manual commands, if you do not use the command above. They pin the linter packag
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/cpp_clang_format"
+    INSTALL_DIR="$HOME/.megalinter/linters/CPP_CLANG_FORMAT"
     uv venv "$INSTALL_DIR" --python ">=3.7"
     uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "clang-format==23.1.3"
     export PATH="$INSTALL_DIR/Scripts:$PATH"

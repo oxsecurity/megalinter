@@ -1163,12 +1163,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [SNAKEMAKE_LINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters SNAKEMAKE_LINT --release beta
-```
-
 | Platform              | Support                                                                                            |
 |:----------------------|:---------------------------------------------------------------------------------------------------|
 | Linux (x86-64)        | ✅                                                                                                 |
@@ -1177,12 +1171,10 @@ npx mega-linter-runner@beta --install-linters SNAKEMAKE_LINT --release beta
 | macOS (Apple Silicon) | ✅                                                                                                 |
 | Windows (Git Bash)    | ❌ Snakemake does not run natively on Windows (upstream only supports it through WSL). Use Docker. |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/snakemake_lint"
+    INSTALL_DIR="$HOME/.megalinter/linters/SNAKEMAKE_LINT"
     uv venv "$INSTALL_DIR" --python ">=3.11"
     uv pip install --python "$INSTALL_DIR/bin/python" "snakemake==9.27.1"
     export PATH="$INSTALL_DIR/bin:$PATH"

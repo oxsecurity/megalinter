@@ -481,12 +481,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [POWERSHELL_POWERSHELL]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters POWERSHELL_POWERSHELL --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -495,12 +489,10 @@ npx mega-linter-runner@beta --install-linters POWERSHELL_POWERSHELL --release be
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/powershell_powershell"
+    INSTALL_DIR="$HOME/.megalinter/linters/POWERSHELL_POWERSHELL"
     pwsh -NoProfile -Command "Save-Module -Name PSScriptAnalyzer -RequiredVersion 1.25.0 -Path '$INSTALL_DIR'"
     export PSModulePath="$INSTALL_DIR:$PSModulePath"
     ```
@@ -508,7 +500,7 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/powershell_powershell"
+    INSTALL_DIR="$HOME/.megalinter/linters/POWERSHELL_POWERSHELL"
     pwsh -NoProfile -Command "Save-Module -Name PSScriptAnalyzer -RequiredVersion 1.25.0 -Path '$(cygpath -w "$INSTALL_DIR")'"
     export PSModulePath="$(cygpath -w "$INSTALL_DIR");$PSModulePath"
     ```

@@ -285,8 +285,6 @@ NATIVE_LINTERS: [SCALA_SCALAFIX]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install Coursier (https://get-coursier.io/docs/cli-installation) then run: cs install scalafix`

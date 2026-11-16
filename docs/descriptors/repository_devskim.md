@@ -169,12 +169,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [REPOSITORY_DEVSKIM]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters REPOSITORY_DEVSKIM --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -183,12 +177,10 @@ npx mega-linter-runner@beta --install-linters REPOSITORY_DEVSKIM --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/repository_devskim"
+    INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_DEVSKIM"
     dotnet tool install Microsoft.CST.DevSkim.CLI --version 1.0.70 --tool-path "$INSTALL_DIR"
     export PATH="$INSTALL_DIR:$PATH"
     ```

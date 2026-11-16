@@ -159,8 +159,6 @@ NATIVE_LINTERS: [VBDOTNET_DOTNET_FORMAT]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     Provided by the `dotnet` >=8 runtime, install it with:

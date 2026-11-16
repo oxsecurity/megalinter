@@ -238,12 +238,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [JAVA_CHECKSTYLE]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters JAVA_CHECKSTYLE --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -252,27 +246,12 @@ npx mega-linter-runner@beta --install-linters JAVA_CHECKSTYLE --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
-=== "Linux"
+=== "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/java_checkstyle"
+    INSTALL_DIR="$HOME/.megalinter/linters/JAVA_CHECKSTYLE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar &&
-      echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | sha256sum -c - &&
-      chmod +x "$INSTALL_DIR/checkstyle-all.jar" &&
-      export PATH="$INSTALL_DIR:$PATH"
-    # checkstyle: run java "-jar" "$INSTALL_DIR/checkstyle-all.jar"
-    ```
-
-=== "macOS"
-
-    ```shell
-    INSTALL_DIR="$HOME/.local/opt/java_checkstyle"
-    mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar &&
-      echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/checkstyle-all.jar" &&
       export PATH="$INSTALL_DIR:$PATH"
     # checkstyle: run java "-jar" "$INSTALL_DIR/checkstyle-all.jar"
@@ -281,10 +260,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/java_checkstyle"
+    INSTALL_DIR="$HOME/.megalinter/linters/JAVA_CHECKSTYLE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/checkstyle-all.jar" https://github.com/checkstyle/checkstyle/releases/download/checkstyle-12.1.0/checkstyle-12.1.0-all.jar &&
-      echo "b88646a3bf32840d8c33f196fec89d7a379c8a142014206444d0aa0092fdb06e  $INSTALL_DIR/checkstyle-all.jar" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     # checkstyle: run java "-jar" "$INSTALL_DIR/checkstyle-all.jar"
     ```

@@ -1,5 +1,4 @@
 import unittest
-from unittest import mock
 
 from megalinter.native.catalog import load_native_specs
 from megalinter.native.manual_install import manual_install_groups
@@ -23,18 +22,11 @@ def make_spec(native_install, install=None):
     return NativeLinterSpec("TEST", {}, linter, None)
 
 
-def groups_of(spec, lock=None):
-    with mock.patch(
-        "megalinter.native.manual_install.load_fresh_lock", return_value=lock
-    ):
-        return {
-            tuple(group.platforms): "\n".join(group.lines)
-            for group in manual_install_groups(spec)
-        }
-
-
-def lock_for(url, sha256="ab" * 32):
-    return {"platforms": {"linux/amd64": {"assets": [{"url": url, "sha256": sha256}]}}}
+def groups_of(spec):
+    return {
+        tuple(group.platforms): "\n".join(group.lines)
+        for group in manual_install_groups(spec)
+    }
 
 
 class ManualInstallTest(unittest.TestCase):
@@ -52,6 +44,14 @@ class ManualInstallTest(unittest.TestCase):
         self.assertIn('"tool==1.2.3"', groups[POSIX])
         self.assertIn("$INSTALL_DIR/bin/python", groups[POSIX])
         self.assertIn("$INSTALL_DIR/Scripts/python.exe", groups[WINDOWS])
+
+    def test_install_dir_is_in_megalinter_home(self):
+        spec = make_spec({"method": "npm", "packages": ["tool@1.0.0"]})
+        self.assertTrue(
+            groups_of(spec)[ALL].startswith(
+                '```shell\nINSTALL_DIR="$HOME/.megalinter/linters/TEST_TOOL"\n'
+            )
+        )
 
     def test_unsupported_platforms_have_no_tab(self):
         spec = make_spec(
@@ -86,7 +86,7 @@ class ManualInstallTest(unittest.TestCase):
             'export PSModulePath="$(cygpath -w "$INSTALL_DIR");$PSModulePath"', windows
         )
 
-    def test_binary_checksum_stops_the_install_on_mismatch(self):
+    def test_binary_steps_are_chained_without_checksum(self):
         spec = make_spec(
             {
                 "method": "binary",
@@ -95,27 +95,16 @@ class ManualInstallTest(unittest.TestCase):
                 "platforms": ["linux/amd64"],
             }
         )
-        url = "https://example.com/v2.0.0/tool_2.0.0_linux_amd64.tar.gz"
-        lines = groups_of(spec, lock_for(url))[("linux/amd64",)].splitlines()
-        checksum = next(line for line in lines if "sha256sum -c -" in line)
-        self.assertTrue(checksum.endswith(" &&"))
-        self.assertTrue(
-            lines[lines.index(checksum) + 1].lstrip().startswith("tar -xzf")
-        )
+        text = groups_of(spec)[("linux/amd64",)]
+        self.assertNotIn("sha256", text)
+        lines = text.splitlines()
+        curl = next(line for line in lines if line.startswith("curl "))
+        self.assertIn("v2.0.0/tool_2.0.0_linux_amd64.tar.gz", curl)
+        self.assertTrue(curl.endswith(" &&"))
+        self.assertTrue(lines[lines.index(curl) + 1].lstrip().startswith("tar -xzf"))
         self.assertTrue(any(line.lstrip().startswith("export PATH=") for line in lines))
 
-    def test_binary_without_fresh_lock_has_no_checksum(self):
-        spec = make_spec(
-            {
-                "method": "binary",
-                "version": "2.0.0",
-                "assets": {"linux/amd64": {"url": TOOL_URL, "archive": "tar.gz"}},
-                "platforms": ["linux/amd64"],
-            }
-        )
-        self.assertNotIn("sha256sum", groups_of(spec)[("linux/amd64",)])
-
-    def test_binary_same_asset_merges_platforms_with_same_checker(self):
+    def test_binary_same_asset_merges_all_platforms(self):
         spec = make_spec(
             {
                 "method": "binary",
@@ -129,10 +118,9 @@ class ManualInstallTest(unittest.TestCase):
                 },
             }
         )
-        groups = groups_of(spec, lock_for("https://example.com/2.0.0/tool.zip"))
-        self.assertEqual(list(groups), [LINUX + WINDOWS, DARWIN])
-        self.assertIn("shasum -a 256 -c -", groups[DARWIN])
-        self.assertIn('export PATH="$INSTALL_DIR/bin:$PATH"', groups[LINUX + WINDOWS])
+        groups = groups_of(spec)
+        self.assertEqual(list(groups), [ALL])
+        self.assertIn('export PATH="$INSTALL_DIR/bin:$PATH"', groups[ALL])
 
     def test_binary_gz_asset_is_named_and_executable(self):
         spec = make_spec(

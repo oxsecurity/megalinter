@@ -148,12 +148,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [JAVA_PMD]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters JAVA_PMD --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -162,29 +156,12 @@ npx mega-linter-runner@beta --install-linters JAVA_PMD --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
-=== "Linux, Windows (Git Bash)"
+=== "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/java_pmd"
+    INSTALL_DIR="$HOME/.megalinter/linters/JAVA_PMD"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/pmd-dist-7.29.0-bin.zip" https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.29.0/pmd-dist-7.29.0-bin.zip &&
-      echo "d27177c185b837fa57f097e482d1253468aa035379c5eb2671fa0a279109b179  $INSTALL_DIR/pmd-dist-7.29.0-bin.zip" | sha256sum -c - &&
-      unzip -q "$INSTALL_DIR/pmd-dist-7.29.0-bin.zip" -d "$INSTALL_DIR/extract" &&
-      mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/ &&
-      rm -r "$INSTALL_DIR/extract" &&
-      rm "$INSTALL_DIR/pmd-dist-7.29.0-bin.zip" &&
-      export PATH="$INSTALL_DIR/bin:$PATH"
-    ```
-
-=== "macOS"
-
-    ```shell
-    INSTALL_DIR="$HOME/.local/opt/java_pmd"
-    mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/pmd-dist-7.29.0-bin.zip" https://github.com/pmd/pmd/releases/download/pmd_releases%2F7.29.0/pmd-dist-7.29.0-bin.zip &&
-      echo "d27177c185b837fa57f097e482d1253468aa035379c5eb2671fa0a279109b179  $INSTALL_DIR/pmd-dist-7.29.0-bin.zip" | shasum -a 256 -c - &&
       unzip -q "$INSTALL_DIR/pmd-dist-7.29.0-bin.zip" -d "$INSTALL_DIR/extract" &&
       mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/ &&
       rm -r "$INSTALL_DIR/extract" &&

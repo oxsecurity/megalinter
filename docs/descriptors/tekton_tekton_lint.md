@@ -152,12 +152,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [TEKTON_TEKTON_LINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters TEKTON_TEKTON_LINT --release beta
-```
-
 | Platform              | Support                                                                                                                     |
 |:----------------------|:----------------------------------------------------------------------------------------------------------------------------|
 | Linux (x86-64)        | ✅                                                                                                                          |
@@ -166,12 +160,10 @@ npx mega-linter-runner@beta --install-linters TEKTON_TEKTON_LINT --release beta
 | macOS (Apple Silicon) | ✅                                                                                                                          |
 | Windows (Git Bash)    | ❌ tekton-lint builds the paths of its own files incorrectly on Windows (the drive letter is repeated, ENOENT). Use Docker. |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/tekton_tekton_lint"
+    INSTALL_DIR="$HOME/.megalinter/linters/TEKTON_TEKTON_LINT"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@ibm/tekton-lint@1.2.4"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

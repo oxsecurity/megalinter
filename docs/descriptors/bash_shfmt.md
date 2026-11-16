@@ -182,12 +182,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [BASH_SHFMT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters BASH_SHFMT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -196,15 +190,12 @@ npx mega-linter-runner@beta --install-linters BASH_SHFMT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHFMT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shfmt" https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_amd64 &&
-      echo "76e77641faa025814b77f153b29796b8e6fa2fca03e0c76a691608b86c7ea7bf  $INSTALL_DIR/shfmt" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/shfmt" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -212,10 +203,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHFMT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shfmt" https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_linux_arm64 &&
-      echo "5f2db09dae91fca848f7adbdd014632e921a383863a2ad7e0450ad3aba0c6489  $INSTALL_DIR/shfmt" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/shfmt" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -223,10 +213,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHFMT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shfmt" https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_darwin_amd64 &&
-      echo "d33eee0da0f92835b3562e9767a05cee7e4eaeef47daa03bfd09da17b4b590a6  $INSTALL_DIR/shfmt" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/shfmt" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -234,10 +223,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHFMT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shfmt" https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_darwin_arm64 &&
-      echo "b7c872db63553ccffc7253aba3ed7d4885a27d83f1ba567b1138c6315a5847e5  $INSTALL_DIR/shfmt" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/shfmt" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -245,10 +233,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/bash_shfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/BASH_SHFMT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/shfmt.exe" https://github.com/mvdan/sh/releases/download/v3.14.1/shfmt_v3.14.1_windows_amd64.exe &&
-      echo "13629ce28442ca80b6b5a819f7574ab39e1c28c6e26734ca816c9714e04851df  $INSTALL_DIR/shfmt.exe" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

@@ -279,12 +279,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [PHP_PHPCS]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters PHP_PHPCS --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -293,27 +287,12 @@ npx mega-linter-runner@beta --install-linters PHP_PHPCS --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
-=== "Linux"
+=== "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phpcs"
+    INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPCS"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar &&
-      echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | sha256sum -c - &&
-      chmod +x "$INSTALL_DIR/phpcs.phar" &&
-      export PATH="$INSTALL_DIR:$PATH"
-    # phpcs: run php "$INSTALL_DIR/phpcs.phar"
-    ```
-
-=== "macOS"
-
-    ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phpcs"
-    mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar &&
-      echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/phpcs.phar" &&
       export PATH="$INSTALL_DIR:$PATH"
     # phpcs: run php "$INSTALL_DIR/phpcs.phar"
@@ -322,10 +301,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/php_phpcs"
+    INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPCS"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/phpcs.phar" https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar &&
-      echo "4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9  $INSTALL_DIR/phpcs.phar" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     # phpcs: run php "$INSTALL_DIR/phpcs.phar"
     ```

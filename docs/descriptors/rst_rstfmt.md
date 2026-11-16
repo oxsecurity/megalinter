@@ -136,12 +136,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [RST_RSTFMT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters RST_RSTFMT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -150,12 +144,10 @@ npx mega-linter-runner@beta --install-linters RST_RSTFMT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/rst_rstfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/RST_RSTFMT"
     uv venv "$INSTALL_DIR" --python ">=3.10"
     uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "rstfmt==0.0.14"
     export PATH="$INSTALL_DIR/bin:$PATH"
@@ -164,7 +156,7 @@ Manual commands, if you do not use the command above. They pin the linter packag
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/rst_rstfmt"
+    INSTALL_DIR="$HOME/.megalinter/linters/RST_RSTFMT"
     uv venv "$INSTALL_DIR" --python ">=3.10"
     uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "rstfmt==0.0.14"
     export PATH="$INSTALL_DIR/Scripts:$PATH"

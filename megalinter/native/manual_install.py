@@ -1,7 +1,6 @@
 import posixpath
 from dataclasses import dataclass
 
-from megalinter.native.lock import load_fresh_lock
 from megalinter.native.methods import executable_basename
 from megalinter.native.resolve import (
     NATIVE_PLATFORMS,
@@ -12,7 +11,7 @@ from megalinter.native.resolve import (
 from megalinter.native.runtimes import load_runtime_catalog
 
 INSTALL_DIR_VARIABLE = "$INSTALL_DIR"
-INSTALL_DIR_ASSIGNMENT = 'INSTALL_DIR="$HOME/.local/opt/{folder}"'
+INSTALL_DIR_ASSIGNMENT = 'INSTALL_DIR="$HOME/.megalinter/linters/{key}"'
 TAR_FLAGS = {"tar.gz": "z", "tar.xz": "J", "tar.bz2": "j"}
 
 
@@ -143,16 +142,7 @@ def powershell_module_commands(effective, platform):
     ]
 
 
-def asset_checksums(spec, resolved):
-    lock = load_fresh_lock(spec.key, resolved)
-    checksums = {}
-    for platform_entry in ((lock or {}).get("platforms") or {}).values():
-        for asset in platform_entry.get("assets", []):
-            checksums[asset["url"]] = asset["sha256"]
-    return checksums
-
-
-def binary_commands(effective, platform, checksums):
+def binary_commands(effective, platform):
     assets = effective["assets"]
     asset = assets.get(platform) or assets["any"]
     url = render_asset_template(asset["url"], effective["version"])
@@ -161,13 +151,6 @@ def binary_commands(effective, platform, checksums):
     file_name = (asset.get("name") if archive == "none" else None) or url_file_name
     file_path = f"{INSTALL_DIR_VARIABLE}/{file_name}"
     steps = [f"curl -fsSL -o {quote(file_path)} {url}"]
-    if url in checksums:
-        checker = (
-            "shasum -a 256 -c -"
-            if os_family(platform) == "darwin"
-            else "sha256sum -c -"
-        )
-        steps.append(f'echo "{checksums[url]}  {file_path}" | {checker}')
     strip_components = asset.get("strip_components", 0)
     executable = None
     if archive in TAR_FLAGS:
@@ -275,13 +258,13 @@ def runtime_provided_lines(spec, effective, platform):
     return lines
 
 
-def platform_lines(spec, resolved, platform, checksums):
+def platform_lines(spec, resolved, platform):
     effective = platform_native_install(resolved, platform)
     method = effective["method"]
     if method == "runtime_provided":
         return runtime_provided_lines(spec, effective, platform)
     if method == "binary":
-        commands = binary_commands(effective, platform, checksums)
+        commands = binary_commands(effective, platform)
     else:
         commands = {
             "pip": pip_commands,
@@ -293,7 +276,7 @@ def platform_lines(spec, resolved, platform, checksums):
         }[method](effective, platform)
     return shell_block(
         [
-            INSTALL_DIR_ASSIGNMENT.format(folder=spec.key.lower()),
+            INSTALL_DIR_ASSIGNMENT.format(key=spec.key),
             *commands,
             *env_commands(effective),
         ]
@@ -302,14 +285,11 @@ def platform_lines(spec, resolved, platform, checksums):
 
 def manual_install_groups(spec):
     resolved = resolve_native_install(spec)
-    checksums = (
-        asset_checksums(spec, resolved) if resolved["method"] == "binary" else {}
-    )
     groups = []
     for platform in NATIVE_PLATFORMS:
         if platform not in resolved.get("platforms", []):
             continue
-        lines = platform_lines(spec, resolved, platform, checksums)
+        lines = platform_lines(spec, resolved, platform)
         for group in groups:
             if group.lines == lines:
                 group.platforms.append(platform)

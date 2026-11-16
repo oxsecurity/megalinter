@@ -172,12 +172,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [API_SPECTRAL]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters API_SPECTRAL --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -186,12 +180,10 @@ npx mega-linter-runner@beta --install-linters API_SPECTRAL --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/api_spectral"
+    INSTALL_DIR="$HOME/.megalinter/linters/API_SPECTRAL"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@stoplight/spectral-cli@6.17.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

@@ -376,12 +376,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [RUBY_RUBOCOP]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters RUBY_RUBOCOP --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -390,12 +384,10 @@ npx mega-linter-runner@beta --install-linters RUBY_RUBOCOP --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/ruby_rubocop"
+    INSTALL_DIR="$HOME/.megalinter/linters/RUBY_RUBOCOP"
     gem install --no-document --install-dir "$INSTALL_DIR" "rubocop:1.92.2" "rubocop-github:0.29.0" "rubocop-performance:1.27.0" "rubocop-rails:2.38.0" "rubocop-rake:0.7.1" "rubocop-rspec:3.10.2"
     export GEM_HOME="$INSTALL_DIR"
     export PATH="$INSTALL_DIR/bin:$PATH"

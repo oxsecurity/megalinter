@@ -218,8 +218,6 @@ NATIVE_LINTERS: [RAKU_RAKU]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)`

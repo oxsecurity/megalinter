@@ -152,12 +152,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [CLOJURE_CLJSTYLE]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters CLOJURE_CLJSTYLE --release beta
-```
-
 | Platform              | Support                                                 |
 |:----------------------|:--------------------------------------------------------|
 | Linux (x86-64)        | ✅                                                      |
@@ -166,15 +160,12 @@ npx mega-linter-runner@beta --install-linters CLOJURE_CLJSTYLE --release beta
 | macOS (Apple Silicon) | ✅                                                      |
 | Windows (Git Bash)    | ❌ cljstyle publishes no Windows build. Use Docker.     |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/clojure_cljstyle"
+    INSTALL_DIR="$HOME/.megalinter/linters/CLOJURE_CLJSTYLE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/cljstyle_0.17.642_linux_amd64_static.zip" https://github.com/greglook/cljstyle/releases/download/0.17.642/cljstyle_0.17.642_linux_amd64_static.zip &&
-      echo "913e8985588aea63e49bdc697c9b54e82a170b08424167a725001324fe810621  $INSTALL_DIR/cljstyle_0.17.642_linux_amd64_static.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/cljstyle_0.17.642_linux_amd64_static.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/cljstyle_0.17.642_linux_amd64_static.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -183,10 +174,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/clojure_cljstyle"
+    INSTALL_DIR="$HOME/.megalinter/linters/CLOJURE_CLJSTYLE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/cljstyle_0.17.642_macos_amd64.zip" https://github.com/greglook/cljstyle/releases/download/0.17.642/cljstyle_0.17.642_macos_amd64.zip &&
-      echo "fa0226a3bad13f9b76fb797b0c0771d10e7ee6adc871e1d43841281046293117  $INSTALL_DIR/cljstyle_0.17.642_macos_amd64.zip" | shasum -a 256 -c - &&
       unzip -q "$INSTALL_DIR/cljstyle_0.17.642_macos_amd64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/cljstyle_0.17.642_macos_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -195,10 +185,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/clojure_cljstyle"
+    INSTALL_DIR="$HOME/.megalinter/linters/CLOJURE_CLJSTYLE"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/cljstyle_0.17.642_macos_arm64.zip" https://github.com/greglook/cljstyle/releases/download/0.17.642/cljstyle_0.17.642_macos_arm64.zip &&
-      echo "34d7798e94a63fac46c85c66cd3a1e6132ce06e369eab7ffbf0212ae8bbf8c85  $INSTALL_DIR/cljstyle_0.17.642_macos_arm64.zip" | shasum -a 256 -c - &&
       unzip -q "$INSTALL_DIR/cljstyle_0.17.642_macos_arm64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/cljstyle_0.17.642_macos_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

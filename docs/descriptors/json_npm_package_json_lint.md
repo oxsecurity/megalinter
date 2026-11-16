@@ -155,12 +155,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [JSON_NPM_PACKAGE_JSON_LINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters JSON_NPM_PACKAGE_JSON_LINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -169,12 +163,10 @@ npx mega-linter-runner@beta --install-linters JSON_NPM_PACKAGE_JSON_LINT --relea
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/json_npm_package_json_lint"
+    INSTALL_DIR="$HOME/.megalinter/linters/JSON_NPM_PACKAGE_JSON_LINT"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "npm-package-json-lint@11.0.1" "npm-package-json-lint-config-default@10.0.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

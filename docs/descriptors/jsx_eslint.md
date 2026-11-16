@@ -274,12 +274,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [JSX_ESLINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters JSX_ESLINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -288,12 +282,10 @@ npx mega-linter-runner@beta --install-linters JSX_ESLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/jsx_eslint"
+    INSTALL_DIR="$HOME/.megalinter/linters/JSX_ESLINT"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "eslint@10.14.0" "@eslint-react/eslint-plugin@5.28.8" "@microsoft/eslint-formatter-sarif@3.1.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

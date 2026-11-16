@@ -469,8 +469,6 @@ NATIVE_LINTERS: [C_CPPCHECK]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install cppcheck from your distribution (example: sudo apt install cppcheck)`

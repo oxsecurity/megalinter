@@ -349,12 +349,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [TYPESCRIPT_ES]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters TYPESCRIPT_ES --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -363,12 +357,10 @@ npx mega-linter-runner@beta --install-linters TYPESCRIPT_ES --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/typescript_es"
+    INSTALL_DIR="$HOME/.megalinter/linters/TYPESCRIPT_ES"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "typescript@6.0.3" "eslint@10.14.0" "@eslint/js@10.0.1" "eslint-config-prettier@10.1.8" "eslint-plugin-import-x@4.17.1" "eslint-plugin-jest@29.17.0" "eslint-plugin-n@18.5.0" "eslint-plugin-prettier@5.5.7" "eslint-plugin-promise@7.3.0" "prettier@3.9.10" "prettyjson@1.2.5" "typescript-eslint@8.72.1" "@microsoft/eslint-formatter-sarif@3.1.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

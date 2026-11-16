@@ -204,12 +204,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [JSON_JSONLINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters JSON_JSONLINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -218,12 +212,10 @@ npx mega-linter-runner@beta --install-linters JSON_JSONLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/json_jsonlint"
+    INSTALL_DIR="$HOME/.megalinter/linters/JSON_JSONLINT"
     npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@prantlf/jsonlint@17.0.1"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"

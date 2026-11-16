@@ -171,12 +171,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [KUBERNETES_KUBECONFORM]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters KUBERNETES_KUBECONFORM --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -185,15 +179,12 @@ npx mega-linter-runner@beta --install-linters KUBERNETES_KUBECONFORM --release b
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/kubernetes_kubeconform"
+    INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBECONFORM"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/kubeconform-linux-amd64.tar.gz" https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-amd64.tar.gz &&
-      echo "9bc2bffbf71f261128533edaf912153948b7ff238f9a531ae6d34466ec287883  $INSTALL_DIR/kubeconform-linux-amd64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/kubeconform-linux-amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/kubeconform-linux-amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -202,10 +193,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/kubernetes_kubeconform"
+    INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBECONFORM"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/kubeconform-linux-arm64.tar.gz" https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-arm64.tar.gz &&
-      echo "1f53fc8e81258197a35e8603054162a5af1de8c5af13746c71ab680d9534ed87  $INSTALL_DIR/kubeconform-linux-arm64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/kubeconform-linux-arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/kubeconform-linux-arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -214,10 +204,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/kubernetes_kubeconform"
+    INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBECONFORM"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/kubeconform-darwin-amd64.tar.gz" https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-darwin-amd64.tar.gz &&
-      echo "71dbc87ac9f24099a62b93570e65aa06312ba6ac8aea63b7f86e9d999edf5a92  $INSTALL_DIR/kubeconform-darwin-amd64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/kubeconform-darwin-amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/kubeconform-darwin-amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -226,10 +215,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/kubernetes_kubeconform"
+    INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBECONFORM"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/kubeconform-darwin-arm64.tar.gz" https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-darwin-arm64.tar.gz &&
-      echo "f84f4dfbebf4a6b0b230385fa065a39ea35e02608c2b50d025dcf64775a69d67  $INSTALL_DIR/kubeconform-darwin-arm64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/kubeconform-darwin-arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/kubeconform-darwin-arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -238,10 +226,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/kubernetes_kubeconform"
+    INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBECONFORM"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/kubeconform-windows-amd64.zip" https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-windows-amd64.zip &&
-      echo "e3f56102bcf4f50b034a567e2482a1c5330799983ddd655952310211aef73d93  $INSTALL_DIR/kubeconform-windows-amd64.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/kubeconform-windows-amd64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/kubeconform-windows-amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

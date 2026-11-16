@@ -203,8 +203,6 @@ NATIVE_LINTERS: [DART_DARTANALYZER]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     Provided by the `dart` >=3 runtime, install it with:

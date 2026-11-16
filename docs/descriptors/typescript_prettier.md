@@ -277,12 +277,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [TYPESCRIPT_PRETTIER]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters TYPESCRIPT_PRETTIER --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -291,13 +285,11 @@ npx mega-linter-runner@beta --install-linters TYPESCRIPT_PRETTIER --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/typescript_prettier"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "typescript@6.0.3" "typescript@6.0.3" "prettier@3.9.10"
+    INSTALL_DIR="$HOME/.megalinter/linters/TYPESCRIPT_PRETTIER"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "typescript@6.0.3" "prettier@3.9.10"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```

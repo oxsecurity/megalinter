@@ -210,12 +210,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [DOCKERFILE_HADOLINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters DOCKERFILE_HADOLINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -224,15 +218,12 @@ npx mega-linter-runner@beta --install-linters DOCKERFILE_HADOLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/dockerfile_hadolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/DOCKERFILE_HADOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/hadolint" https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-linux-x86_64 &&
-      echo "c7187db94eeeeca956519a6af171adc31453941a1e777961f6e680f697c8c507  $INSTALL_DIR/hadolint" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/hadolint" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -240,10 +231,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/dockerfile_hadolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/DOCKERFILE_HADOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/hadolint" https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-linux-arm64 &&
-      echo "f6198ef8090f404dbb771abfee086eb8c48ac177f30da7fd3510aca35b344b5d  $INSTALL_DIR/hadolint" | sha256sum -c - &&
       chmod +x "$INSTALL_DIR/hadolint" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -251,10 +241,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/dockerfile_hadolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/DOCKERFILE_HADOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/hadolint" https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-macos-x86_64 &&
-      echo "ffe9bb18b23d5ed1eae50237aecdbb523d016e96da0bd4e7aa432040acfc3fde  $INSTALL_DIR/hadolint" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/hadolint" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -262,10 +251,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/dockerfile_hadolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/DOCKERFILE_HADOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/hadolint" https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-macos-arm64 &&
-      echo "5c09f3213f8e40406abe048233d985eebef336d4a6a20021be47fadb6cf480a2  $INSTALL_DIR/hadolint" | shasum -a 256 -c - &&
       chmod +x "$INSTALL_DIR/hadolint" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -273,10 +261,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/dockerfile_hadolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/DOCKERFILE_HADOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/hadolint.exe" https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-windows-x86_64.exe &&
-      echo "01d927294962b5387f9ead4f18679158452be4f17c765ad0bdffe5264b9c7b0a  $INSTALL_DIR/hadolint.exe" | sha256sum -c - &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

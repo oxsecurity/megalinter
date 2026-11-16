@@ -202,8 +202,6 @@ NATIVE_LINTERS: [LATEX_CHKTEX]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install chktex from your distribution (example: sudo apt install chktex)`

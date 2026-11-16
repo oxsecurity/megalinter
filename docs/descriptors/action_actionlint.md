@@ -185,12 +185,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [ACTION_ACTIONLINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters ACTION_ACTIONLINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -199,15 +193,12 @@ npx mega-linter-runner@beta --install-linters ACTION_ACTIONLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/action_actionlint"
+    INSTALL_DIR="$HOME/.megalinter/linters/ACTION_ACTIONLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/actionlint_1.7.12_linux_amd64.tar.gz" https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz &&
-      echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  $INSTALL_DIR/actionlint_1.7.12_linux_amd64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/actionlint_1.7.12_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/actionlint_1.7.12_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -216,10 +207,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/action_actionlint"
+    INSTALL_DIR="$HOME/.megalinter/linters/ACTION_ACTIONLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/actionlint_1.7.12_linux_arm64.tar.gz" https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_arm64.tar.gz &&
-      echo "325e971b6ba9bfa504672e29be93c24981eeb1c07576d730e9f7c8805afff0c6  $INSTALL_DIR/actionlint_1.7.12_linux_arm64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/actionlint_1.7.12_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/actionlint_1.7.12_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -228,10 +218,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/action_actionlint"
+    INSTALL_DIR="$HOME/.megalinter/linters/ACTION_ACTIONLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/actionlint_1.7.12_darwin_amd64.tar.gz" https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_amd64.tar.gz &&
-      echo "5b44c3bc2255115c9b69e30efc0fecdf498fdb63c5d58e17084fd5f16324c644  $INSTALL_DIR/actionlint_1.7.12_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/actionlint_1.7.12_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/actionlint_1.7.12_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -240,10 +229,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/action_actionlint"
+    INSTALL_DIR="$HOME/.megalinter/linters/ACTION_ACTIONLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/actionlint_1.7.12_darwin_arm64.tar.gz" https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_darwin_arm64.tar.gz &&
-      echo "aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f  $INSTALL_DIR/actionlint_1.7.12_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/actionlint_1.7.12_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/actionlint_1.7.12_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -252,10 +240,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/action_actionlint"
+    INSTALL_DIR="$HOME/.megalinter/linters/ACTION_ACTIONLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/actionlint_1.7.12_windows_amd64.zip" https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_windows_amd64.zip &&
-      echo "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9  $INSTALL_DIR/actionlint_1.7.12_windows_amd64.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/actionlint_1.7.12_windows_amd64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/actionlint_1.7.12_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"

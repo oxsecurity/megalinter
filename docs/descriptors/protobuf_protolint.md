@@ -167,12 +167,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [PROTOBUF_PROTOLINT]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters PROTOBUF_PROTOLINT --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -181,15 +175,12 @@ npx mega-linter-runner@beta --install-linters PROTOBUF_PROTOLINT --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/protobuf_protolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PROTOBUF_PROTOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/protolint_0.58.0_linux_amd64.tar.gz" https://github.com/yoheimuta/protolint/releases/download/v0.58.0/protolint_0.58.0_linux_amd64.tar.gz &&
-      echo "158d6e06c2f0cd96d9916c6e6fceb6af95c9f1006be78b9b950061cc37408a95  $INSTALL_DIR/protolint_0.58.0_linux_amd64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/protolint_0.58.0_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/protolint_0.58.0_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -198,10 +189,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/protobuf_protolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PROTOBUF_PROTOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/protolint_0.58.0_linux_arm64.tar.gz" https://github.com/yoheimuta/protolint/releases/download/v0.58.0/protolint_0.58.0_linux_arm64.tar.gz &&
-      echo "a97d2a117b7d2eb9e87c1ca094367140967b53d48c819ea1b1824760f09f83e0  $INSTALL_DIR/protolint_0.58.0_linux_arm64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/protolint_0.58.0_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/protolint_0.58.0_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -210,10 +200,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Intel)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/protobuf_protolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PROTOBUF_PROTOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/protolint_0.58.0_darwin_amd64.tar.gz" https://github.com/yoheimuta/protolint/releases/download/v0.58.0/protolint_0.58.0_darwin_amd64.tar.gz &&
-      echo "c45ee39ae75662efae677291e9a3ca284ace16b838570db54e01fd8967a9f972  $INSTALL_DIR/protolint_0.58.0_darwin_amd64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/protolint_0.58.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/protolint_0.58.0_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -222,10 +211,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS (Apple Silicon)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/protobuf_protolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PROTOBUF_PROTOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/protolint_0.58.0_darwin_arm64.tar.gz" https://github.com/yoheimuta/protolint/releases/download/v0.58.0/protolint_0.58.0_darwin_arm64.tar.gz &&
-      echo "d4a12544fdabc2ad4b662c90c21abe22ba33264bda6369dacd4c8e55b81e6b21  $INSTALL_DIR/protolint_0.58.0_darwin_arm64.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/protolint_0.58.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/protolint_0.58.0_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -234,10 +222,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/protobuf_protolint"
+    INSTALL_DIR="$HOME/.megalinter/linters/PROTOBUF_PROTOLINT"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/protolint_0.58.0_windows_amd64.tar.gz" https://github.com/yoheimuta/protolint/releases/download/v0.58.0/protolint_0.58.0_windows_amd64.tar.gz &&
-      echo "66efe70020a9f1c124aceb931509093e4cb2f13066b553b40c693f8e0f4bd593  $INSTALL_DIR/protolint_0.58.0_windows_amd64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/protolint_0.58.0_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/protolint_0.58.0_windows_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"

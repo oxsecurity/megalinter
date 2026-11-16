@@ -181,12 +181,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [JSON_BIOME]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters JSON_BIOME --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -195,13 +189,11 @@ npx mega-linter-runner@beta --install-linters JSON_BIOME --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above. They pin the linter packages only: the command above also pins all their dependencies, and verifies the hash of every package.
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/json_biome"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "typescript@6.0.3" "@biomejs/biome@2.6.4"
+    INSTALL_DIR="$HOME/.megalinter/linters/JSON_BIOME"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@biomejs/biome@2.6.4"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```

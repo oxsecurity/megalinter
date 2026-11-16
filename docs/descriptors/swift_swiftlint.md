@@ -168,8 +168,6 @@ NATIVE_LINTERS: [SWIFT_SWIFTLINT]
 | macOS (Apple Silicon) | ✅                                                   |
 | Windows (Git Bash)    | ❌ SwiftLint publishes no Windows build. Use Docker. |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `Install SwiftLint from https://github.com/realm/SwiftLint#installation (Homebrew on Linux: brew install swiftlint, or the swiftlint_linux zip of a release)`

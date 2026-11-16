@@ -157,8 +157,6 @@ NATIVE_LINTERS: [RUST_CLIPPY]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     Provided by the `rust` runtime, install it with:

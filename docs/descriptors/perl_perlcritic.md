@@ -156,8 +156,6 @@ NATIVE_LINTERS: [PERL_PERLCRITIC]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux"
 
     `cpan -T Perl::Critic (or, on Debian/Ubuntu: sudo apt install libperl-critic-perl)`

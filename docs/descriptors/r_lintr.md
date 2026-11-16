@@ -139,8 +139,6 @@ NATIVE_LINTERS: [R_LINTR]
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-This tool is not downloaded by MegaLinter, install it yourself:
-
 === "Linux, macOS, Windows (Git Bash)"
 
     `Rscript -e "install.packages(c('lintr', 'purrr', 'jsonlite'), repos = 'https://cloud.r-project.org/')"`

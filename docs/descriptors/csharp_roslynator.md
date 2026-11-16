@@ -158,12 +158,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [CSHARP_ROSLYNATOR]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters CSHARP_ROSLYNATOR --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -172,12 +166,10 @@ npx mega-linter-runner@beta --install-linters CSHARP_ROSLYNATOR --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/csharp_roslynator"
+    INSTALL_DIR="$HOME/.megalinter/linters/CSHARP_ROSLYNATOR"
     dotnet tool install roslynator.dotnet.cli --version 0.13.0 --tool-path "$INSTALL_DIR"
     export PATH="$INSTALL_DIR:$PATH"
     ```

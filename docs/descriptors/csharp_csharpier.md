@@ -163,12 +163,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [CSHARP_CSHARPIER]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters CSHARP_CSHARPIER --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -177,12 +171,10 @@ npx mega-linter-runner@beta --install-linters CSHARP_CSHARPIER --release beta
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux, macOS, Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/csharp_csharpier"
+    INSTALL_DIR="$HOME/.megalinter/linters/CSHARP_CSHARPIER"
     dotnet tool install csharpier --version 1.2.6 --tool-path "$INSTALL_DIR"
     export PATH="$INSTALL_DIR:$PATH"
     ```

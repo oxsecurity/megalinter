@@ -184,12 +184,6 @@ This linter can run without Docker, see [native mode](https://megalinter.io/late
 NATIVE_LINTERS: [EDITORCONFIG_EDITORCONFIG_CHECKER]
 ```
 
-Install it with:
-
-```shell
-npx mega-linter-runner@beta --install-linters EDITORCONFIG_EDITORCONFIG_CHECKER --release beta
-```
-
 | Platform              | Support |
 |:----------------------|:--------|
 | Linux (x86-64)        | ✅      |
@@ -198,15 +192,12 @@ npx mega-linter-runner@beta --install-linters EDITORCONFIG_EDITORCONFIG_CHECKER 
 | macOS (Apple Silicon) | ✅      |
 | Windows (Git Bash)    | ✅      |
 
-Manual commands, if you do not use the command above, which also verifies the hashes and signatures of every download:
-
 === "Linux (x86-64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/editorconfig_editorconfig_checker"
+    INSTALL_DIR="$HOME/.megalinter/linters/EDITORCONFIG_EDITORCONFIG_CHECKER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/editorconfig-checker-linux-amd64.tar.gz" https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v4.0.2/editorconfig-checker-linux-amd64.tar.gz &&
-      echo "44efaef3ed14c6ab52eb87481d78e5e5c204796dccf26e2f4598a61ba17f8003  $INSTALL_DIR/editorconfig-checker-linux-amd64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/editorconfig-checker-linux-amd64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/editorconfig-checker-linux-amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -215,10 +206,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Linux (ARM64)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/editorconfig_editorconfig_checker"
+    INSTALL_DIR="$HOME/.megalinter/linters/EDITORCONFIG_EDITORCONFIG_CHECKER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/editorconfig-checker-linux-arm64.tar.gz" https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v4.0.2/editorconfig-checker-linux-arm64.tar.gz &&
-      echo "abad76da8c9950fdc2a314bcd66969172aa823e9c595fa7e3a389a91e34d025e  $INSTALL_DIR/editorconfig-checker-linux-arm64.tar.gz" | sha256sum -c - &&
       tar -xzf "$INSTALL_DIR/editorconfig-checker-linux-arm64.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/editorconfig-checker-linux-arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -227,10 +217,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "macOS"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/editorconfig_editorconfig_checker"
+    INSTALL_DIR="$HOME/.megalinter/linters/EDITORCONFIG_EDITORCONFIG_CHECKER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/editorconfig-checker-darwin-all.tar.gz" https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v4.0.2/editorconfig-checker-darwin-all.tar.gz &&
-      echo "ff59f57717d95fc62b8e372c8051dbbb766f7d660942409a85d027b0feb2422c  $INSTALL_DIR/editorconfig-checker-darwin-all.tar.gz" | shasum -a 256 -c - &&
       tar -xzf "$INSTALL_DIR/editorconfig-checker-darwin-all.tar.gz" -C "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/editorconfig-checker-darwin-all.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
@@ -239,10 +228,9 @@ Manual commands, if you do not use the command above, which also verifies the ha
 === "Windows (Git Bash)"
 
     ```shell
-    INSTALL_DIR="$HOME/.local/opt/editorconfig_editorconfig_checker"
+    INSTALL_DIR="$HOME/.megalinter/linters/EDITORCONFIG_EDITORCONFIG_CHECKER"
     mkdir -p "$INSTALL_DIR"
     curl -fsSL -o "$INSTALL_DIR/editorconfig-checker-windows-amd64.zip" https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v4.0.2/editorconfig-checker-windows-amd64.zip &&
-      echo "857f8f74dfc259d73dac93573e37cf3ce01150787d7b139bf839549cc6b5beb9  $INSTALL_DIR/editorconfig-checker-windows-amd64.zip" | sha256sum -c - &&
       unzip -q "$INSTALL_DIR/editorconfig-checker-windows-amd64.zip" -d "$INSTALL_DIR" &&
       rm "$INSTALL_DIR/editorconfig-checker-windows-amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
