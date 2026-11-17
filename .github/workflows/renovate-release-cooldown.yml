@@ -1,0 +1,75 @@
+---
+#############################################
+## Renovate release cooldown               ##
+#############################################
+# renovate.json5 holds updates back until the release is `minimumReleaseAge` (14 days) old,
+# but Renovate can not date every release: images outside Docker Hub (ghcr.io...) and the
+# git-refs / git-tags datasources have no release timestamp. This check dates them itself
+# (GitHub release, commit, image creation date) and fails the Renovate pull request until
+# they are old enough. It also stops Renovate's automerge, which waits for green checks.
+#   - pull requests: evaluates the Renovate pull request
+#   - daily: re-runs the failed checks whose cooldown is over, so they turn green
+# Security updates are not delayed. A maintainer can accept an update earlier with the
+# `skip-release-cooldown` label. See .automation/renovate_release_cooldown.py
+name: "Renovate release cooldown"
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, labeled, unlabeled]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cooldown:
+    name: Renovate release cooldown
+    if: github.event_name == 'pull_request' && github.event.pull_request.user.login == 'renovate[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      # The script comes from the base branch: a pull request can not change its own check
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Check release ages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: python .automation/renovate_release_cooldown.py check --pr "${PR_NUMBER}"
+
+  recheck:
+    name: Re-run expired cooldown checks
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      actions: write
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Re-run the checks whose cooldown is over
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .automation/renovate_release_cooldown.py recheck

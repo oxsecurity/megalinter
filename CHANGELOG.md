@@ -125,6 +125,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - The npm (mega-linter-runner) and PyPI (megalinter) publish jobs end only once the new version can be downloaded from the registry, with its dist-tag and provenance attestation: npm processes uploads for several minutes after accepting them
   - The PyPI package includes the default configurations and the core dependencies lock generated at publish time (ignored by git, so skipped by hatchling)
   - Dependency updates wait longer: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now propose an upgrade only once the release is **14 days old** (was 7). Security fixes are not delayed and still open immediately
+  - **Renovate release cooldown**: a check fails Renovate pull requests updating a dependency Renovate can not date (images outside Docker Hub such as `ghcr.io`, `git-refs` and `git-tags` datasources) until the release is as old as `minimumReleaseAge` (14 days), which also holds back their automerge
+    - The release date comes from the GitHub release, the pinned commit or the image creation date (the most recent one counts)
+    - A daily run re-runs the failed checks whose cooldown is over, so they turn green
+    - Security updates are not delayed, and maintainers can accept an update earlier with the `skip-release-cooldown` label
   - **Benchmark native mode**: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems
   - Stale **native locks** no longer fail pull requests: a warning, and the native install tests are skipped until the locks are refreshed. They block the alpha, beta and release deploys instead (Docker images, mega-linter-runner, PyPI), through the reusable `check-native-locks.yml` workflow, and `/prepare-release` checks them before tagging
   - `native_lock.py --check` also checks the **runtime locks** (`native-locks/runtimes/`), shipped in the PyPI package too
