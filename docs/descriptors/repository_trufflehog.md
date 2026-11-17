@@ -29,7 +29,7 @@ description: How to use trufflehog (configure, ignore files, ignore errors, help
 
 ## trufflehog documentation
 
-- Version in MegaLinter: **3.99.7**
+- Version in MegaLinter: **3.99.8**
 - Visit [Official Web Site](https://github.com/trufflesecurity/trufflehog#readme){target=_blank}
 - See [How to configure trufflehog rules](https://github.com/trufflesecurity/trufflehog#regex-detector-alpha){target=_blank}
 
@@ -270,7 +270,7 @@ analyze
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.7
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.8
 FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 COPY --link --from=trufflehog /usr/bin/trufflehog /usr/bin/
 ```
@@ -299,9 +299,9 @@ NATIVE_LINTERS: [REPOSITORY_TRUFFLEHOG]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRUFFLEHOG"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_linux_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trufflehog_3.99.7_linux_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.8_linux_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_linux_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.8_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.8_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -310,9 +310,9 @@ NATIVE_LINTERS: [REPOSITORY_TRUFFLEHOG]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRUFFLEHOG"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_linux_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trufflehog_3.99.7_linux_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.8_linux_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_linux_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.8_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.8_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -321,9 +321,9 @@ NATIVE_LINTERS: [REPOSITORY_TRUFFLEHOG]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRUFFLEHOG"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_darwin_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trufflehog_3.99.7_darwin_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.8_darwin_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_darwin_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.8_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.8_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -332,9 +332,9 @@ NATIVE_LINTERS: [REPOSITORY_TRUFFLEHOG]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRUFFLEHOG"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_darwin_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trufflehog_3.99.7_darwin_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.8_darwin_arm64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_darwin_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.8_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.8_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -343,9 +343,9 @@ NATIVE_LINTERS: [REPOSITORY_TRUFFLEHOG]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRUFFLEHOG"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.7/trufflehog_3.99.7_windows_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trufflehog_3.99.7_windows_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trufflehog_3.99.8_windows_amd64.tar.gz" https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_windows_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trufflehog_3.99.8_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trufflehog_3.99.8_windows_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

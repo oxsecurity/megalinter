@@ -21,7 +21,7 @@ description: How to use tekton-lint (configure, ignore files, ignore errors, hel
 
 ## tekton-lint documentation
 
-- Version in MegaLinter: **1.2.4**
+- Version in MegaLinter: **1.3.0**
 - Visit [Official Web Site](https://github.com/IBM/tekton-lint#readme){target=_blank}
 - See [How to configure tekton-lint rules](https://github.com/IBM/tekton-lint#configuring-tekton-lint){target=_blank}
 - See [Index of problems detected by tekton-lint](https://github.com/IBM/tekton-lint#rules){target=_blank}
@@ -135,11 +135,11 @@ Examples:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.3.0
 ```
 
 - NPM packages (node.js):
-  - [@ibm/tekton-lint@1.2.4](https://www.npmjs.com/package/@ibm/tekton-lint/v/1.2.4)
+  - [@ibm/tekton-lint@1.3.0](https://www.npmjs.com/package/@ibm/tekton-lint/v/1.3.0)
 
 ### Installation without Docker (native mode)
 
@@ -164,7 +164,7 @@ NATIVE_LINTERS: [TEKTON_TEKTON_LINT]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TEKTON_TEKTON_LINT"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@ibm/tekton-lint@1.2.4"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@ibm/tekton-lint@1.3.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```
