@@ -170,6 +170,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [syft](https://github.com/anchore/syft) from 1.57.1 to **1.57.2** on 2026-11-17
   - [djlint](https://djlint.com/) from 1.49.3 to **1.49.4** on 2026-11-17
   - [checkov](https://www.checkov.io/) from 3.4.0 to **3.4.3** on 2026-11-17
+  - [psalm](https://psalm.dev) from Psalm.6.20.6@ to **Psalm.6.20.7@** on 2026-11-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.7 to **3.99.8** on 2026-11-17
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.4 to **1.3.0** on 2026-11-17
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
