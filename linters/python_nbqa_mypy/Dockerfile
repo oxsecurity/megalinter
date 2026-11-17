@@ -70,7 +70,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=pypi depName=mypy
 ARG PIP_MYPY_VERSION=2.4.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
 ARG PIP_VIRTUALENV_VERSION=21.15.2
 #ARG__END
