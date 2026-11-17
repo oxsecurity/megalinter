@@ -13021,17 +13021,12 @@ Other<span class="w"> </span>options:
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
-<div class="highlight"><pre><span></span><code><span class="c"># Parent descriptor install</span>
-<span class="c"># renovate: datasource=npm depName=typescript</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_TYPESCRIPT_VERSION</span><span class="o">=</span><span class="m">6</span>.0.3
-<span class="c"># Linter install</span>
-<span class="c"># renovate: datasource=npm depName=prettier</span>
+<div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=prettier</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_PRETTIER_VERSION</span><span class="o">=</span><span class="m">3</span>.9.10
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/typescript/v/6.0.3">typescript@6.0.3</a></li>
 <li><a href="https://www.npmjs.com/package/prettier/v/3.9.10">prettier@3.9.10</a></li>
 </ul>
 </li>

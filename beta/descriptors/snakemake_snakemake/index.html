@@ -12853,7 +12853,7 @@
 <span class="w">                 </span><span class="o">[</span>--filegraph<span class="o">]</span><span class="w"> </span><span class="o">[</span>--d3dag<span class="o">]</span><span class="w"> </span><span class="o">[</span>--summary<span class="o">]</span><span class="w"> </span><span class="o">[</span>--detailed-summary<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--archive<span class="w"> </span>FILE<span class="o">]</span><span class="w"> </span><span class="o">[</span>--cleanup-metadata<span class="w"> </span>FILE<span class="w"> </span><span class="o">[</span>FILE<span class="w"> </span>...<span class="o">]]</span>
 <span class="w">                 </span><span class="o">[</span>--cleanup-shadow<span class="o">]</span><span class="w"> </span><span class="o">[</span>--skip-script-cleanup<span class="o">]</span><span class="w"> </span><span class="o">[</span>--unlock<span class="o">]</span>
-<span class="w">                 </span><span class="o">[</span>--list-changes<span class="w"> </span><span class="o">{</span>params,input,code<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--list-input-changes<span class="o">]</span>
+<span class="w">                 </span><span class="o">[</span>--list-changes<span class="w"> </span><span class="o">{</span>params,code,input<span class="o">}]</span><span class="w"> </span><span class="o">[</span>--list-input-changes<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--list-params-changes<span class="o">]</span><span class="w"> </span><span class="o">[</span>--list-untracked<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--delete-all-output<span class="w"> </span><span class="p">|</span><span class="w"> </span>--delete-temp-output<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--keep-incomplete<span class="o">]</span><span class="w"> </span><span class="o">[</span>--drop-metadata<span class="o">]</span><span class="w"> </span><span class="o">[</span>--version<span class="o">]</span>
@@ -12901,7 +12901,7 @@
 <span class="w">                 </span><span class="o">[</span>--apptainer-args<span class="w"> </span>ARGS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--use-envmodules<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--deploy-sources<span class="w"> </span>QUERY<span class="w"> </span>CHECKSUM<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]]</span>
-<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>subprocess,remote,default<span class="o">}]</span>
+<span class="w">                 </span><span class="o">[</span>--mode<span class="w"> </span><span class="o">{</span>remote,default,subprocess<span class="o">}]</span>
 <span class="w">                 </span><span class="o">[</span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--max-jobs-per-second<span class="w"> </span>MAX_JOBS_PER_SECOND<span class="o">]</span>
 <span class="w">                 </span><span class="o">[</span>--report-html-path<span class="w"> </span>VALUE<span class="o">]</span>
@@ -12922,45 +12922,44 @@ EXECUTION:
 <span class="w">  </span>targets<span class="w">               </span>Targets<span class="w"> </span>to<span class="w"> </span>build.<span class="w"> </span>May<span class="w"> </span>be<span class="w"> </span>rules<span class="w"> </span>or<span class="w"> </span>files.
 <span class="w">  </span>--dry-run,<span class="w"> </span>--dryrun,<span class="w"> </span>-n
 <span class="w">                        </span>Do<span class="w"> </span>not<span class="w"> </span>execute<span class="w"> </span>anything,<span class="w"> </span>and<span class="w"> </span>display<span class="w"> </span>what<span class="w"> </span>would<span class="w"> </span>be
-<span class="w">                        </span><span class="k">done</span>.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>a<span class="w"> </span>very<span class="w"> </span>large<span class="w"> </span>workflow,<span class="w"> </span>use<span class="w"> </span><span class="sb">`</span>--dry-
-<span class="w">                        </span>run<span class="w"> </span>--quiet<span class="sb">`</span><span class="w"> </span>to<span class="w"> </span>just<span class="w"> </span>print<span class="w"> </span>a<span class="w"> </span>summary<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>DAG<span class="w"> </span>of
-<span class="w">                        </span>jobs.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">                        </span><span class="k">done</span>.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>a<span class="w"> </span>very<span class="w"> </span>large<span class="w"> </span>workflow,<span class="w"> </span>use<span class="w"> </span>--dry-run
+<span class="w">                        </span>--quiet<span class="w"> </span>to<span class="w"> </span>just<span class="w"> </span>print<span class="w"> </span>a<span class="w"> </span>summary<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>DAG<span class="w"> </span>of<span class="w"> </span>jobs.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 <span class="w">  </span>--profile<span class="w"> </span>PROFILE<span class="w">     </span>Profile<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>configuring<span class="w"> </span>the<span class="w"> </span>Snakemake<span class="w"> </span>run<span class="w"> </span>with
 <span class="w">                        </span>settings<span class="w"> </span>regarding<span class="w"> </span>the<span class="w"> </span>compute<span class="w"> </span>environment.<span class="w"> </span>Every<span class="w"> </span>key
 <span class="w">                        </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>YAML<span class="w"> </span>file<span class="w"> </span>gets<span class="w"> </span>parsed<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>respective
-<span class="w">                        </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>argument:<span class="w"> </span><span class="sb">`</span>executor:<span class="w"> </span>slurm<span class="sb">`</span><span class="w"> </span>gets<span class="w"> </span>parsed
-<span class="w">                        </span>to<span class="w"> </span><span class="sb">`</span>--executor<span class="w"> </span>slurm<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>default-resources:<span class="w"> </span>mem_mb:
-<span class="w">                        </span><span class="m">16000</span><span class="sb">`</span><span class="w"> </span>is<span class="w"> </span>interpreted<span class="w"> </span>as<span class="w"> </span><span class="sb">`</span>--default-resources
-<span class="w">                        </span><span class="nv">mem_mb</span><span class="o">=</span><span class="m">16000</span><span class="sb">`</span>,<span class="w"> </span>etc.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>specify<span class="w"> </span>a<span class="w"> </span>Snakemake
-<span class="w">                        </span>profile<span class="w"> </span>as<span class="w"> </span><span class="o">(</span>i<span class="o">)</span><span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>name,<span class="w"> </span><span class="o">(</span>ii<span class="o">)</span><span class="w"> </span>a<span class="w"> </span>relative<span class="w"> </span>path<span class="w"> </span>to
-<span class="w">                        </span>a<span class="w"> </span>folder<span class="w"> </span>or<span class="w"> </span><span class="o">(</span>iii<span class="o">)</span><span class="w"> </span>the<span class="w"> </span>relative<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>profile
-<span class="w">                        </span>YAML<span class="w"> </span>file<span class="w"> </span>itself.<span class="w"> </span>Snakemake<span class="w"> </span>will<span class="w"> </span>look<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>folder
-<span class="w">                        </span>with<span class="w"> </span>the<span class="w"> </span>profile<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span>existence<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>relative
-<span class="w">                        </span>path<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>/etc/xdg/snakemake<span class="sb">`</span>,
-<span class="w">                        </span><span class="sb">`</span>/root/.config/snakemake<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>working
-<span class="w">                        </span>directory.<span class="w"> </span>Alternatively,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>specify
-<span class="w">                        </span>absolute<span class="w"> </span>paths.<span class="w"> </span>If<span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>folder<span class="w"> </span>is<span class="w"> </span>given,
-<span class="w">                        </span>it<span class="w"> </span>has<span class="w"> </span>to<span class="w"> </span>contain<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span><span class="sb">`</span>profile.yaml<span class="sb">`</span><span class="w"> </span><span class="o">(</span>or<span class="w"> </span>a
-<span class="w">                        </span><span class="sb">`</span>config.yaml<span class="sb">`</span><span class="w"> </span>file,<span class="w"> </span><span class="k">for</span><span class="w"> </span>backwards<span class="w"> </span>compatibility<span class="o">)</span>.<span class="w"> </span>This
+<span class="w">                        </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>argument:<span class="w"> </span>executor:<span class="w"> </span>slurm<span class="w"> </span>gets<span class="w"> </span>parsed<span class="w"> </span>to
+<span class="w">                        </span>--executor<span class="w"> </span>slurm,<span class="w"> </span>default-resources:<span class="w"> </span>mem_mb:<span class="w"> </span><span class="m">16000</span><span class="w"> </span>is
+<span class="w">                        </span>interpreted<span class="w"> </span>as<span class="w"> </span>--default-resources<span class="w"> </span><span class="nv">mem_mb</span><span class="o">=</span><span class="m">16000</span>,<span class="w"> </span>etc.
+<span class="w">                        </span>You<span class="w"> </span>can<span class="w"> </span>specify<span class="w"> </span>a<span class="w"> </span>Snakemake<span class="w"> </span>profile<span class="w"> </span>as<span class="w"> </span><span class="o">(</span>i<span class="o">)</span><span class="w"> </span>a<span class="w"> </span>profile
+<span class="w">                        </span>name,<span class="w"> </span><span class="o">(</span>ii<span class="o">)</span><span class="w"> </span>a<span class="w"> </span>relative<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>folder<span class="w"> </span>or<span class="w"> </span><span class="o">(</span>iii<span class="o">)</span><span class="w"> </span>the
+<span class="w">                        </span>relative<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>profile<span class="w"> </span>YAML<span class="w"> </span>file<span class="w"> </span>itself.
+<span class="w">                        </span>Snakemake<span class="w"> </span>will<span class="w"> </span>look<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>folder<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>profile<span class="w"> </span>name
+<span class="w">                        </span>or<span class="w"> </span>the<span class="w"> </span>existence<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>relative<span class="w"> </span>path<span class="w"> </span><span class="k">in</span>
+<span class="w">                        </span>/etc/xdg/snakemake,<span class="w"> </span>/root/.config/snakemake<span class="w"> </span>and<span class="w"> </span>the
+<span class="w">                        </span>current<span class="w"> </span>working<span class="w"> </span>directory.<span class="w"> </span>Alternatively,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>also
+<span class="w">                        </span>specify<span class="w"> </span>absolute<span class="w"> </span>paths.<span class="w"> </span>If<span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>folder<span class="w"> </span>is
+<span class="w">                        </span>given,<span class="w"> </span>it<span class="w"> </span>has<span class="w"> </span>to<span class="w"> </span>contain<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>profile.yaml<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>a
+<span class="w">                        </span>config.yaml<span class="w"> </span>file,<span class="w"> </span><span class="k">for</span><span class="w"> </span>backwards<span class="w"> </span>compatibility<span class="o">)</span>.<span class="w"> </span>This
 <span class="w">                        </span>file<span class="w"> </span>can<span class="w"> </span>have<span class="w"> </span>an<span class="w"> </span>optional<span class="w"> </span>infix<span class="w"> </span>specifying<span class="w"> </span>a<span class="w"> </span>minimal
-<span class="w">                        </span>snakemake<span class="w"> </span>version<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span><span class="sb">`</span>profile.v9+.yaml<span class="sb">`</span><span class="o">)</span>.
-<span class="w">                        </span>The<span class="w"> </span>profile<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span><span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span>environment
-<span class="w">                        </span>variable<span class="w"> </span><span class="sb">`</span><span class="nv">$SNAKEMAKE_PROFILE</span><span class="sb">`</span>.<span class="w"> </span>However,<span class="w"> </span>once<span class="w"> </span>you
-<span class="w">                        </span>provide<span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>argument
-<span class="w">                        </span><span class="sb">`</span>--profile<span class="sb">`</span>,<span class="w"> </span>this<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span>is<span class="w"> </span>ignored.<span class="w"> </span>And
-<span class="w">                        </span>to<span class="w"> </span>override<span class="w"> </span>this<span class="w"> </span>variable<span class="w"> </span>without<span class="w"> </span>setting<span class="w"> </span>another<span class="w"> </span>one,
-<span class="w">                        </span>provide<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span><span class="sb">`</span>none<span class="sb">`</span><span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>argument.<span class="w"> </span>Finally,
-<span class="w">                        </span>you<span class="w"> </span>can<span class="w"> </span>specify<span class="w"> </span>this<span class="w"> </span>argument<span class="w"> </span>multiple<span class="w"> </span>times.<span class="w"> </span>In<span class="w"> </span>this
-<span class="w">                        </span><span class="k">case</span>,<span class="w"> </span>the<span class="w"> </span>profiles<span class="w"> </span>get<span class="w"> </span>merged<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>later
-<span class="w">                        </span><span class="sb">`</span>--profile<span class="sb">`</span><span class="w"> </span>instances<span class="w"> </span>overriding<span class="w"> </span>top-level<span class="w"> </span>entries<span class="w"> </span><span class="k">in</span>
-<span class="w">                        </span>profiles<span class="w"> </span>specified<span class="w"> </span>earlier.<span class="w"> </span>For<span class="w"> </span>example,<span class="w"> </span><span class="k">if</span><span class="w"> </span>the<span class="w"> </span>last
-<span class="w">                        </span><span class="sb">`</span>--profile<span class="sb">`</span><span class="w"> </span>specifies<span class="w"> </span>the<span class="w"> </span>top<span class="w"> </span>level<span class="w"> </span><span class="sb">`</span>default-
-<span class="w">                        </span>resources:<span class="sb">`</span><span class="w"> </span>keyword,<span class="w"> </span>all<span class="w"> </span>entries<span class="w"> </span>under<span class="w"> </span>that<span class="w"> </span>keyword
-<span class="w">                        </span>from<span class="w"> </span>previous<span class="w"> </span><span class="sb">`</span>--profile<span class="sb">`</span>s<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>ignored.<span class="w"> </span>Similarly,
-<span class="w">                        </span>also<span class="w"> </span>specifying<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>top-level<span class="w"> </span>keys<span class="w"> </span>from<span class="w"> </span>your
-<span class="w">                        </span>profile<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>argument<span class="w"> </span>will<span class="w"> </span>overwrite<span class="w"> </span>this
-<span class="w">                        </span>whole<span class="w"> </span>top-level<span class="w"> </span>key.<span class="w"> </span>Example<span class="w"> </span>profiles<span class="w"> </span><span class="k">for</span><span class="w"> </span>certain
-<span class="w">                        </span>compute<span class="w"> </span>infrastructure<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>obtained<span class="w"> </span>at
+<span class="w">                        </span>snakemake<span class="w"> </span>version<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>profile.v9+.yaml<span class="o">)</span>.<span class="w"> </span>The
+<span class="w">                        </span>profile<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span><span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span>environment<span class="w"> </span>variable
+<span class="w">                        </span><span class="nv">$SNAKEMAKE_PROFILE</span>.<span class="w"> </span>However,<span class="w"> </span>once<span class="w"> </span>you<span class="w"> </span>provide<span class="w"> </span>a
+<span class="w">                        </span>profile<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>argument<span class="w"> </span>--profile,<span class="w"> </span>this
+<span class="w">                        </span>environment<span class="w"> </span>variable<span class="w"> </span>is<span class="w"> </span>ignored.<span class="w"> </span>And<span class="w"> </span>to<span class="w"> </span>override<span class="w"> </span>this
+<span class="w">                        </span>variable<span class="w"> </span>without<span class="w"> </span>setting<span class="w"> </span>another<span class="w"> </span>one,<span class="w"> </span>provide<span class="w"> </span>the
+<span class="w">                        </span>value<span class="w"> </span>none<span class="w"> </span>to<span class="w"> </span>this<span class="w"> </span>argument.<span class="w"> </span>Finally,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>specify
+<span class="w">                        </span>this<span class="w"> </span>argument<span class="w"> </span>multiple<span class="w"> </span>times.<span class="w"> </span>In<span class="w"> </span>this<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>the
+<span class="w">                        </span>profiles<span class="w"> </span>get<span class="w"> </span>merged<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>later<span class="w"> </span>--profile<span class="w"> </span>instances
+<span class="w">                        </span>overriding<span class="w"> </span>top-level<span class="w"> </span>entries<span class="w"> </span><span class="k">in</span><span class="w"> </span>profiles<span class="w"> </span>specified
+<span class="w">                        </span>earlier.<span class="w"> </span>For<span class="w"> </span>example,<span class="w"> </span><span class="k">if</span><span class="w"> </span>the<span class="w"> </span>last<span class="w"> </span>--profile<span class="w"> </span>specifies
+<span class="w">                        </span>the<span class="w"> </span>top<span class="w"> </span>level<span class="w"> </span>default-resources:<span class="w"> </span>keyword,<span class="w"> </span>all<span class="w"> </span>entries
+<span class="w">                        </span>under<span class="w"> </span>that<span class="w"> </span>keyword<span class="w"> </span>from<span class="w"> </span>previous<span class="w"> </span>--profiles<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>ignored.<span class="w"> </span>Similarly,<span class="w"> </span>also<span class="w"> </span>specifying<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>top-
+<span class="w">                        </span>level<span class="w"> </span>keys<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>profile<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line
+<span class="w">                        </span>argument<span class="w"> </span>will<span class="w"> </span>overwrite<span class="w"> </span>this<span class="w"> </span>whole<span class="w"> </span>top-level<span class="w"> </span>key.
+<span class="w">                        </span>Example<span class="w"> </span>profiles<span class="w"> </span><span class="k">for</span><span class="w"> </span>certain<span class="w"> </span>compute<span class="w"> </span>infrastructure
+<span class="w">                        </span>can<span class="w"> </span>be<span class="w"> </span>obtained<span class="w"> </span>at
 <span class="w">                        </span>https://github.com/snakemake/snakemake-cluster-
 <span class="w">                        </span>profiles.<span class="w"> </span><span class="o">[</span>env<span class="w"> </span>var:<span class="w"> </span>SNAKEMAKE_PROFILE<span class="o">]</span>
 <span class="w">  </span>--workflow-profile<span class="w"> </span>WORKFLOW_PROFILE
@@ -12968,42 +12967,40 @@ EXECUTION:
 <span class="w">                        </span>parameters<span class="w"> </span>specific<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>workflow<span class="w"> </span><span class="o">(</span>like
 <span class="w">                        </span>resources<span class="o">)</span>.<span class="w"> </span>For<span class="w"> </span>settings<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>compute
 <span class="w">                        </span>environment<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>compute<span class="w"> </span>cluster<span class="o">)</span>,
-<span class="w">                        </span>use<span class="w"> </span>global<span class="w"> </span><span class="sb">`</span>--profile<span class="sb">`</span>s.<span class="w"> </span>Generally,<span class="w"> </span>an<span class="w"> </span>entry<span class="w"> </span>like
-<span class="w">                        </span><span class="sb">`</span>set-resources:<span class="w"> </span>a:<span class="w"> </span><span class="nv">mem_mb</span><span class="o">=</span><span class="m">8</span><span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>YAML<span class="w"> </span>file,<span class="w"> </span>will
-<span class="w">                        </span>become<span class="w"> </span><span class="sb">`</span>--set-resources<span class="w"> </span>a:mem_mb<span class="o">=</span><span class="m">8</span><span class="sb">`</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the
-<span class="w">                        </span><span class="sb">`</span>snakemake<span class="sb">`</span><span class="w"> </span>run.<span class="w"> </span>The<span class="w"> </span>profile<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>as<span class="w"> </span>a
-<span class="w">                        </span>file<span class="w"> </span>name<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>full<span class="w"> </span>relative<span class="w"> </span>path<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>current
-<span class="w">                        </span>working<span class="w"> </span>directory.<span class="w"> </span>In<span class="w"> </span>this<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>the<span class="w"> </span>YAML<span class="w"> </span>profile<span class="w"> </span>file
-<span class="w">                        </span>can<span class="w"> </span>be<span class="w"> </span>named<span class="w"> </span>arbitrarily.<span class="w"> </span>In<span class="w"> </span>all<span class="w"> </span>other<span class="w"> </span>cases<span class="w"> </span>the
-<span class="w">                        </span>respective<span class="w"> </span>folder<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>searched<span class="w"> </span><span class="k">for</span><span class="w"> </span>a
-<span class="w">                        </span><span class="sb">`</span>profile.yaml<span class="sb">`</span><span class="w"> </span>file<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>a<span class="w"> </span><span class="sb">`</span>config.yaml<span class="sb">`</span><span class="w"> </span>file,<span class="w"> </span><span class="k">for</span>
-<span class="w">                        </span>backwards<span class="w"> </span>compatibility<span class="o">)</span>.<span class="w"> </span>This<span class="w"> </span>file<span class="w"> </span>can<span class="w"> </span>have<span class="w"> </span>an
-<span class="w">                        </span>optional<span class="w"> </span>infix<span class="w"> </span>specifying<span class="w"> </span>a<span class="w"> </span>minimal<span class="w"> </span>snakemake<span class="w"> </span>version
-<span class="w">                        </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span><span class="sb">`</span>profile.v9+.yaml<span class="sb">`</span><span class="o">)</span>.<span class="w"> </span>And<span class="w"> </span>any<span class="w"> </span>of<span class="w"> </span>the
-<span class="w">                        </span>following<span class="w"> </span>options<span class="w"> </span>will<span class="w"> </span>always<span class="w"> </span>search<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>both
-<span class="w">                        </span>the<span class="w"> </span>current<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>location<span class="w"> </span>of<span class="w"> </span>the
-<span class="w">                        </span>Snakefile:<span class="w"> </span><span class="o">(</span>i<span class="o">)</span><span class="w"> </span>If<span class="w"> </span>this<span class="w"> </span>option<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>provided,<span class="w"> </span>the
-<span class="w">                        </span>directory<span class="w"> </span><span class="sb">`</span>profiles/default/<span class="sb">`</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>searched<span class="w"> </span><span class="o">(</span>and
-<span class="w">                        </span>used,<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>is<span class="w"> </span>present<span class="p">;</span><span class="w"> </span>override<span class="w"> </span>this<span class="w"> </span>implicit
-<span class="w">                        </span>usage<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>--workflow-profile<span class="w"> </span>none<span class="sb">`</span><span class="o">)</span>.<span class="w"> </span><span class="o">(</span>ii<span class="o">)</span><span class="w"> </span>If<span class="w"> </span>a
-<span class="w">                        </span>profile<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>given,<span class="w"> </span>the<span class="w"> </span>subdirectory<span class="w"> </span>of<span class="w"> </span>that<span class="w"> </span>name
-<span class="w">                        </span>under<span class="w"> </span><span class="sb">`</span>profiles/<span class="sb">`</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>searched.<span class="w"> </span><span class="o">(</span>iii<span class="o">)</span><span class="w"> </span>If<span class="w"> </span>a<span class="w"> </span>full
-<span class="w">                        </span>relative<span class="w"> </span>path<span class="w"> </span>is<span class="w"> </span>given,<span class="w"> </span>this<span class="w"> </span>directory<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>use<span class="w"> </span>global<span class="w"> </span>--profiles.<span class="w"> </span>Generally,<span class="w"> </span>an<span class="w"> </span>entry<span class="w"> </span>like<span class="w"> </span>set-
+<span class="w">                        </span>resources:<span class="w"> </span>a:<span class="w"> </span><span class="nv">mem_mb</span><span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>YAML<span class="w"> </span>file,<span class="w"> </span>will<span class="w"> </span>become
+<span class="w">                        </span>--set-resources<span class="w"> </span>a:mem_mb<span class="o">=</span><span class="m">8</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>snakemake<span class="w"> </span>run.<span class="w"> </span>The
+<span class="w">                        </span>profile<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>specified<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>name<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>full
+<span class="w">                        </span>relative<span class="w"> </span>path<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>working<span class="w"> </span>directory.<span class="w"> </span>In
+<span class="w">                        </span>this<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>the<span class="w"> </span>YAML<span class="w"> </span>profile<span class="w"> </span>file<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>named
+<span class="w">                        </span>arbitrarily.<span class="w"> </span>In<span class="w"> </span>all<span class="w"> </span>other<span class="w"> </span>cases<span class="w"> </span>the<span class="w"> </span>respective
+<span class="w">                        </span>folder<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>searched<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>profile.yaml<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>or
+<span class="w">                        </span>a<span class="w"> </span>config.yaml<span class="w"> </span>file,<span class="w"> </span><span class="k">for</span><span class="w"> </span>backwards<span class="w"> </span>compatibility<span class="o">)</span>.<span class="w"> </span>This
+<span class="w">                        </span>file<span class="w"> </span>can<span class="w"> </span>have<span class="w"> </span>an<span class="w"> </span>optional<span class="w"> </span>infix<span class="w"> </span>specifying<span class="w"> </span>a<span class="w"> </span>minimal
+<span class="w">                        </span>snakemake<span class="w"> </span>version<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>profile.v9+.yaml<span class="o">)</span>.<span class="w"> </span>And
+<span class="w">                        </span>any<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>options<span class="w"> </span>will<span class="w"> </span>always<span class="w"> </span>search
+<span class="w">                        </span>relative<span class="w"> </span>to<span class="w"> </span>both<span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>and<span class="w"> </span>the
+<span class="w">                        </span>location<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>Snakefile:<span class="w"> </span><span class="o">(</span>i<span class="o">)</span><span class="w"> </span>If<span class="w"> </span>this<span class="w"> </span>option<span class="w"> </span>is<span class="w"> </span>not
+<span class="w">                        </span>provided,<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span>profiles/default/<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>searched<span class="w"> </span><span class="o">(</span>and<span class="w"> </span>used,<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>is<span class="w"> </span>present<span class="p">;</span><span class="w"> </span>override
+<span class="w">                        </span>this<span class="w"> </span>implicit<span class="w"> </span>usage<span class="w"> </span>with<span class="w"> </span>--workflow-profile<span class="w"> </span>none<span class="o">)</span>.
+<span class="w">                        </span><span class="o">(</span>ii<span class="o">)</span><span class="w"> </span>If<span class="w"> </span>a<span class="w"> </span>profile<span class="w"> </span>name<span class="w"> </span>is<span class="w"> </span>given,<span class="w"> </span>the<span class="w"> </span>subdirectory<span class="w"> </span>of
+<span class="w">                        </span>that<span class="w"> </span>name<span class="w"> </span>under<span class="w"> </span>profiles/<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>searched.<span class="w"> </span><span class="o">(</span>iii<span class="o">)</span><span class="w"> </span>If<span class="w"> </span>a
+<span class="w">                        </span>full<span class="w"> </span>relative<span class="w"> </span>path<span class="w"> </span>is<span class="w"> </span>given,<span class="w"> </span>this<span class="w"> </span>directory<span class="w"> </span>will<span class="w"> </span>be
 <span class="w">                        </span>searched.<span class="w"> </span>Settings<span class="w"> </span>made<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>workflow<span class="w"> </span>profile<span class="w"> </span>will
 <span class="w">                        </span>override<span class="w"> </span>settings<span class="w"> </span>made<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>general<span class="w"> </span>profile<span class="w"> </span><span class="o">(</span>see
-<span class="w">                        </span><span class="sb">`</span>--profile<span class="sb">`</span><span class="o">)</span><span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>per-key<span class="w"> </span>basis.<span class="w"> </span>For<span class="w"> </span>example,<span class="w"> </span><span class="k">if</span><span class="w"> </span>you
-<span class="w">                        </span>specify<span class="w"> </span><span class="sb">`</span>default-resources:<span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>workflow<span class="w"> </span>profile,
-<span class="w">                        </span>all<span class="w"> </span><span class="sb">`</span>default-resources:<span class="sb">`</span><span class="w"> </span>entries<span class="w"> </span>from<span class="w"> </span>other<span class="w"> </span>profiles
-<span class="w">                        </span>will<span class="w"> </span>be<span class="w"> </span>ignored<span class="p">;</span><span class="w"> </span>but<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>don<span class="s1">'t specify `default-</span>
-<span class="s1">                        resources` in your workflow profile, `default-</span>
-<span class="s1">                        resources` from other profiles will get passed</span>
-<span class="s1">                        through. Similarly, also specifying any of the top-</span>
-<span class="s1">                        level keys from your workflow specific profile via</span>
-<span class="s1">                        command line arguments will completely overwrite their</span>
-<span class="s1">                        entries.</span>
+<span class="w">                        </span>--profile<span class="o">)</span><span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>per-key<span class="w"> </span>basis.<span class="w"> </span>For<span class="w"> </span>example,<span class="w"> </span><span class="k">if</span><span class="w"> </span>you
+<span class="w">                        </span>specify<span class="w"> </span>default-resources:<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>workflow<span class="w"> </span>profile,
+<span class="w">                        </span>all<span class="w"> </span>default-resources:<span class="w"> </span>entries<span class="w"> </span>from<span class="w"> </span>other<span class="w"> </span>profiles
+<span class="w">                        </span>will<span class="w"> </span>be<span class="w"> </span>ignored<span class="p">;</span><span class="w"> </span>but<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>don<span class="s1">'t specify default-</span>
+<span class="s1">                        resources in your workflow profile, default-resources</span>
+<span class="s1">                        from other profiles will get passed through.</span>
+<span class="s1">                        Similarly, also specifying any of the top-level keys</span>
+<span class="s1">                        from your workflow specific profile via command line</span>
+<span class="s1">                        arguments will completely overwrite their entries.</span>
 <span class="s1">  --cache [RULE ...]    Store output files of given rules in a central cache</span>
 <span class="s1">                        given by the environment variable</span>
-<span class="s1">                        `$SNAKEMAKE_OUTPUT_CACHE`. Likewise, retrieve output</span>
+<span class="s1">                        $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output</span>
 <span class="s1">                        files of the given rules from this cache if they have</span>
 <span class="s1">                        been created before (by anybody writing to the same</span>
 <span class="s1">                        cache), instead of actually executing the rules.</span>
@@ -13014,13 +13011,13 @@ EXECUTION:
 <span class="s1">                        cache directive, see docs) are cached.</span>
 <span class="s1">  --snakefile, -s FILE  The workflow definition in form of a snakefile.</span>
 <span class="s1">                        Usually, you should not need to specify this. By</span>
-<span class="s1">                        default, Snakemake will search for `Snakefile`,</span>
-<span class="s1">                        `snakefile`, `workflow/Snakefile`,</span>
-<span class="s1">                        `workflow/snakefile` beneath the current working</span>
-<span class="s1">                        directory, in this order. Only if you definitely want</span>
-<span class="s1">                        a different layout, you need to use this parameter.</span>
+<span class="s1">                        default, Snakemake will search for Snakefile,</span>
+<span class="s1">                        snakefile, workflow/Snakefile, workflow/snakefile</span>
+<span class="s1">                        beneath the current working directory, in this order.</span>
+<span class="s1">                        Only if you definitely want a different layout, you</span>
+<span class="s1">                        need to use this parameter.</span>
 <span class="s1">  --cores, -c N         Use at most N CPU cores/jobs in parallel. If N is</span>
-<span class="s1">                        omitted or `all`, the limit is set to the number of</span>
+<span class="s1">                        omitted or all, the limit is set to the number of</span>
 <span class="s1">                        available CPU cores. In case of cluster/cloud</span>
 <span class="s1">                        execution, this argument sets the maximum number of</span>
 <span class="s1">                        cores requested from the cluster or cloud scheduler.</span>
@@ -13029,27 +13026,26 @@ EXECUTION:
 <span class="s1">                        info.) This number is available to rules via</span>
 <span class="s1">                        workflow.cores.</span>
 <span class="s1">  --jobs, -j N          Use at most N CPU cluster/cloud jobs in parallel. For</span>
-<span class="s1">                        local execution this is an alias for `--cores` (it is</span>
-<span class="s1">                        though recommended to use `--cores` in that case).</span>
-<span class="s1">                        Note: Set to `unlimited` to allow any number of</span>
-<span class="s1">                        parallel jobs.</span>
+<span class="s1">                        local execution this is an alias for --cores (it is</span>
+<span class="s1">                        though recommended to use --cores in that case). Note:</span>
+<span class="s1">                        Set to unlimited to allow any number of parallel jobs.</span>
 <span class="s1">  --local-cores N       In cluster/cloud mode, use at most N cores of the host</span>
 <span class="s1">                        machine in parallel (default: number of CPU cores of</span>
 <span class="s1">                        the host). The cores are used to execute local rules.</span>
 <span class="s1">                        This option is ignored when not in cluster/cloud mode.</span>
 <span class="s1">  --resources, --res NAME=INT [NAME=INT ...]</span>
 <span class="s1">                        Define additional resources that shall constrain the</span>
-<span class="s1">                        scheduling analogously to `--cores` (see above). A</span>
+<span class="s1">                        scheduling analogously to --cores (see above). A</span>
 <span class="s1">                        resource is defined as a name and an integer value.</span>
-<span class="s1">                        E.g. `--resources mem_mb=1000`. Rules can use</span>
-<span class="s1">                        resources by defining the resource keyword, e.g.</span>
-<span class="s1">                        `resources: mem_mb=600`. If now two rules require 600</span>
-<span class="s1">                        of the resource `mem_mb` they won'</span>t<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span><span class="k">in</span><span class="w"> </span>parallel
-<span class="w">                        </span>by<span class="w"> </span>the<span class="w"> </span>scheduler.<span class="w"> </span>In<span class="w"> </span>cluster/cloud<span class="w"> </span>mode,<span class="w"> </span>this<span class="w"> </span>argument
-<span class="w">                        </span>will<span class="w"> </span>also<span class="w"> </span>constrain<span class="w"> </span>the<span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>resources<span class="w"> </span>requested
-<span class="w">                        </span>from<span class="w"> </span>the<span class="w"> </span>server.<span class="w"> </span><span class="o">(</span>See<span class="w"> </span>https://snakemake.readthedocs.io
-<span class="w">                        </span>/en/stable/snakefiles/rules.html#resources-remote-
-<span class="w">                        </span>execution<span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>info.<span class="o">)</span><span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="s1">                        E.g. --resources mem_mb=1000. Rules can use resources</span>
+<span class="s1">                        by defining the resource keyword, e.g. resources:</span>
+<span class="s1">                        mem_mb=600. If now two rules require 600 of the</span>
+<span class="s1">                        resource mem_mb they won'</span>t<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span><span class="k">in</span><span class="w"> </span>parallel<span class="w"> </span>by<span class="w"> </span>the
+<span class="w">                        </span>scheduler.<span class="w"> </span>In<span class="w"> </span>cluster/cloud<span class="w"> </span>mode,<span class="w"> </span>this<span class="w"> </span>argument<span class="w"> </span>will
+<span class="w">                        </span>also<span class="w"> </span>constrain<span class="w"> </span>the<span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>resources<span class="w"> </span>requested<span class="w"> </span>from
+<span class="w">                        </span>the<span class="w"> </span>server.<span class="w"> </span><span class="o">(</span>See<span class="w"> </span>https://snakemake.readthedocs.io/en/s
+<span class="w">                        </span>table/snakefiles/rules.html#resources-remote-execution
+<span class="w">                        </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>info.<span class="o">)</span><span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
 <span class="w">  </span>--set-threads<span class="w"> </span><span class="nv">RULE</span><span class="o">=</span>THREADS<span class="w"> </span><span class="o">[</span><span class="nv">RULE</span><span class="o">=</span>THREADS<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Overwrite<span class="w"> </span>thread<span class="w"> </span>usage<span class="w"> </span>of<span class="w"> </span>rules.<span class="w"> </span>This<span class="w"> </span>allows<span class="w"> </span>to<span class="w"> </span>fine-
 <span class="w">                        </span>tune<span class="w"> </span>workflow<span class="w"> </span>parallelization.<span class="w"> </span>In<span class="w"> </span>particular,<span class="w"> </span>this<span class="w"> </span>is
@@ -13065,7 +13061,7 @@ EXECUTION:
 <span class="w">                        </span>maximum.<span class="w"> </span>This<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>useful<span class="w"> </span>when<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>restrict
 <span class="w">                        </span>the<span class="w"> </span>maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>threads<span class="w"> </span>without<span class="w"> </span>modifying<span class="w"> </span>the
 <span class="w">                        </span>workflow<span class="w"> </span>definition<span class="w"> </span>or<span class="w"> </span>overwriting<span class="w"> </span>rules<span class="w"> </span>individually
-<span class="w">                        </span>with<span class="w"> </span><span class="sb">`</span>--set-threads<span class="sb">`</span>.
+<span class="w">                        </span>with<span class="w"> </span>--set-threads.
 <span class="w">  </span>--set-resources<span class="w"> </span>RULE:RESOURCE<span class="o">=</span>VALUE<span class="w"> </span><span class="o">[</span>RULE:RESOURCE<span class="o">=</span>VALUE<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Overwrite<span class="w"> </span>resource<span class="w"> </span>usage<span class="w"> </span>of<span class="w"> </span>rules.<span class="w"> </span>This<span class="w"> </span>allows<span class="w"> </span>to
 <span class="w">                        </span>fine-tune<span class="w"> </span>workflow<span class="w"> </span>resources.<span class="w"> </span>In<span class="w"> </span>particular,<span class="w"> </span>this<span class="w"> </span>is
@@ -13086,28 +13082,28 @@ EXECUTION:
 <span class="w">                        </span>Overwrite<span class="w"> </span>resource<span class="w"> </span>scopes.<span class="w"> </span>A<span class="w"> </span>scope<span class="w"> </span>determines<span class="w"> </span>how<span class="w"> </span>a
 <span class="w">                        </span>constraint<span class="w"> </span>is<span class="w"> </span>reckoned<span class="w"> </span><span class="k">in</span><span class="w"> </span>cluster<span class="w"> </span>execution.<span class="w"> </span>With
 <span class="w">                        </span><span class="nv">RESOURCE</span><span class="o">=</span>local,<span class="w"> </span>a<span class="w"> </span>constraint<span class="w"> </span>applied<span class="w"> </span>to<span class="w"> </span>RESOURCE<span class="w"> </span>using
-<span class="w">                        </span><span class="sb">`</span>--resources<span class="sb">`</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>considered<span class="w"> </span>the<span class="w"> </span>limit<span class="w"> </span><span class="k">for</span><span class="w"> </span>each
+<span class="w">                        </span>--resources<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>considered<span class="w"> </span>the<span class="w"> </span>limit<span class="w"> </span><span class="k">for</span><span class="w"> </span>each
 <span class="w">                        </span>group<span class="w"> </span>submission.<span class="w"> </span>With<span class="w"> </span><span class="nv">RESOURCE</span><span class="o">=</span>global,<span class="w"> </span>the<span class="w"> </span>constraint
 <span class="w">                        </span>will<span class="w"> </span>apply<span class="w"> </span>across<span class="w"> </span>all<span class="w"> </span>groups<span class="w"> </span>cumulatively.<span class="w"> </span>By<span class="w"> </span>default,
-<span class="w">                        </span>only<span class="w"> </span><span class="sb">`</span>mem_mb<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span><span class="sb">`</span>disk_mb<span class="sb">`</span><span class="w"> </span>are<span class="w"> </span>considered<span class="w"> </span>local,<span class="w"> </span>all
+<span class="w">                        </span>only<span class="w"> </span>mem_mb<span class="w"> </span>and<span class="w"> </span>disk_mb<span class="w"> </span>are<span class="w"> </span>considered<span class="w"> </span>local,<span class="w"> </span>all
 <span class="w">                        </span>other<span class="w"> </span>resources<span class="w"> </span>are<span class="w"> </span>global.<span class="w"> </span>This<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>modified<span class="w"> </span><span class="k">in</span>
-<span class="w">                        </span>the<span class="w"> </span>snakefile<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>resource_scopes:<span class="sb">`</span><span class="w"> </span>directive.
-<span class="w">                        </span>Note<span class="w"> </span>that<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>threads,<span class="w"> </span>specified<span class="w"> </span>via<span class="w"> </span><span class="sb">`</span>--cores<span class="sb">`</span>,
-<span class="w">                        </span>is<span class="w"> </span>always<span class="w"> </span>considered<span class="w"> </span>local.<span class="w"> </span><span class="o">(</span>See<span class="w"> </span>https://snakemake.rea
-<span class="w">                        </span>dthedocs.io/en/stable/snakefiles/rules.html#resources-
+<span class="w">                        </span>the<span class="w"> </span>snakefile<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>resource_scopes:<span class="w"> </span>directive.
+<span class="w">                        </span>Note<span class="w"> </span>that<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>threads,<span class="w"> </span>specified<span class="w"> </span>via<span class="w"> </span>--cores,<span class="w"> </span>is
+<span class="w">                        </span>always<span class="w"> </span>considered<span class="w"> </span>local.<span class="w"> </span><span class="o">(</span>See<span class="w"> </span>https://snakemake.readth
+<span class="w">                        </span>edocs.io/en/stable/snakefiles/rules.html#resources-
 <span class="w">                        </span>remote-execution<span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>info<span class="o">)</span><span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
 <span class="w">  </span>--default-resources,<span class="w"> </span>--default-res<span class="w"> </span><span class="o">[</span><span class="nv">NAME</span><span class="o">=</span>INT<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Define<span class="w"> </span>default<span class="w"> </span>values<span class="w"> </span>of<span class="w"> </span>resources<span class="w"> </span><span class="k">for</span><span class="w"> </span>rules<span class="w"> </span>that<span class="w"> </span><span class="k">do</span>
 <span class="w">                        </span>not<span class="w"> </span>define<span class="w"> </span>their<span class="w"> </span>own<span class="w"> </span>values.<span class="w"> </span>In<span class="w"> </span>addition<span class="w"> </span>to<span class="w"> </span>plain
 <span class="w">                        </span>integers,<span class="w"> </span>python<span class="w"> </span>expressions<span class="w"> </span>over<span class="w"> </span>inputsize<span class="w"> </span>are
-<span class="w">                        </span>allowed<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="sb">`</span><span class="m">2</span>*input.size_mb<span class="sb">`</span><span class="o">)</span>.<span class="w"> </span>The<span class="w"> </span>inputsize<span class="w"> </span>is<span class="w"> </span>the
+<span class="w">                        </span>allowed<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="m">2</span>*input.size_mb<span class="o">)</span>.<span class="w"> </span>The<span class="w"> </span>inputsize<span class="w"> </span>is<span class="w"> </span>the
 <span class="w">                        </span>sum<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>sizes<span class="w"> </span>of<span class="w"> </span>all<span class="w"> </span>input<span class="w"> </span>files<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>rule.<span class="w"> </span>By
 <span class="w">                        </span>default,<span class="w"> </span>Snakemake<span class="w"> </span>assumes<span class="w"> </span>a<span class="w"> </span>default<span class="w"> </span><span class="k">for</span><span class="w"> </span>mem_mb,
 <span class="w">                        </span>disk_mb,<span class="w"> </span>and<span class="w"> </span>tmpdir<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>below<span class="o">)</span>.<span class="w"> </span>This<span class="w"> </span>option<span class="w"> </span>allows<span class="w"> </span>to
 <span class="w">                        </span>add<span class="w"> </span>further<span class="w"> </span>defaults<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>account<span class="w"> </span>and<span class="w"> </span>partition<span class="w"> </span><span class="k">for</span>
 <span class="w">                        </span>slurm<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>to<span class="w"> </span>overwrite<span class="w"> </span>these<span class="w"> </span>default<span class="w"> </span>values.<span class="w"> </span>The
-<span class="w">                        </span>defaults<span class="w"> </span>are<span class="w"> </span><span class="sb">`</span><span class="nv">mem_mb</span><span class="o">=</span>min<span class="o">(</span>max<span class="o">(</span><span class="m">2</span>*input.size_mb,<span class="w"> </span><span class="m">1000</span><span class="o">)</span>,
-<span class="w">                        </span><span class="m">8000</span><span class="o">)</span><span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span><span class="nv">disk_mb</span><span class="o">=</span>max<span class="o">(</span><span class="m">2</span>*input.size_mb,<span class="w"> </span><span class="m">1000</span><span class="o">)</span><span class="sb">`</span><span class="w"> </span><span class="o">(</span>i.e.,
+<span class="w">                        </span>defaults<span class="w"> </span>are<span class="w"> </span><span class="nv">mem_mb</span><span class="o">=</span>min<span class="o">(</span>max<span class="o">(</span><span class="m">2</span>*input.size_mb,<span class="w"> </span><span class="m">1000</span><span class="o">)</span>,
+<span class="w">                        </span><span class="m">8000</span><span class="o">)</span>,<span class="w"> </span><span class="nv">disk_mb</span><span class="o">=</span>max<span class="o">(</span><span class="m">2</span>*input.size_mb,<span class="w"> </span><span class="m">1000</span><span class="o">)</span><span class="w"> </span><span class="o">(</span>i.e.,
 <span class="w">                        </span>default<span class="w"> </span>disk<span class="w"> </span>and<span class="w"> </span>mem<span class="w"> </span>usage<span class="w"> </span>is<span class="w"> </span>twice<span class="w"> </span>the<span class="w"> </span>input<span class="w"> </span>file
 <span class="w">                        </span>size<span class="w"> </span>but<span class="w"> </span>at<span class="w"> </span>least<span class="w"> </span>1GB<span class="o">)</span>,<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>system<span class="w"> </span>temporary
 <span class="w">                        </span>directory<span class="w"> </span><span class="o">(</span>as<span class="w"> </span>given<span class="w"> </span>by<span class="w"> </span><span class="nv">$TMPDIR</span>,<span class="w"> </span><span class="nv">$TEMP</span>,<span class="w"> </span>or<span class="w"> </span><span class="nv">$TMP</span><span class="o">)</span><span class="w"> </span>is
@@ -13150,10 +13146,9 @@ EXECUTION:
 <span class="w">                        </span>Set<span class="w"> </span>or<span class="w"> </span>overwrite<span class="w"> </span>values<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>workflow<span class="w"> </span>config<span class="w"> </span>object.
 <span class="w">                        </span>The<span class="w"> </span>workflow<span class="w"> </span>config<span class="w"> </span>object<span class="w"> </span>is<span class="w"> </span>accessible<span class="w"> </span>as<span class="w"> </span>variable
 <span class="w">                        </span>config<span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>workflow.<span class="w"> </span>Default<span class="w"> </span>values<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span>
-<span class="w">                        </span>by<span class="w"> </span>providing<span class="w"> </span>a<span class="w"> </span>YAML<span class="w"> </span>JSON<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>see<span class="w"> </span><span class="sb">`</span>--configfile<span class="sb">`</span><span class="w"> </span>and
+<span class="w">                        </span>by<span class="w"> </span>providing<span class="w"> </span>a<span class="w"> </span>YAML<span class="w"> </span>JSON<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>--configfile<span class="w"> </span>and
 <span class="w">                        </span>Documentation<span class="o">)</span>.<span class="w"> </span>Nested<span class="w"> </span>values<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span>
-<span class="w">                        </span>Python<span class="w"> </span>dict<span class="w"> </span>format,<span class="w"> </span>e.g.,<span class="w"> </span><span class="sb">`</span>--config<span class="w"> </span><span class="s2">"foo={'bar':</span>
-<span class="s2">                        42}"</span><span class="sb">`</span>.
+<span class="w">                        </span>Python<span class="w"> </span>dict<span class="w"> </span>format,<span class="w"> </span>e.g.,<span class="w"> </span>--config<span class="w"> </span><span class="s2">"foo={'bar': 42}"</span>.
 <span class="w">  </span>--replace-workflow-config
 <span class="w">                        </span>Config<span class="w"> </span>files<span class="w"> </span>provided<span class="w"> </span>via<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>update
 <span class="w">                        </span>and<span class="w"> </span>extend<span class="w"> </span>the<span class="w"> </span>config<span class="w"> </span>dictionary<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>workflow<span class="w"> </span>but
@@ -13172,10 +13167,10 @@ EXECUTION:
 <span class="w">                        </span>that<span class="w"> </span>this<span class="w"> </span>will<span class="w"> </span>only<span class="w"> </span>touch<span class="w"> </span>files<span class="w"> </span>that<span class="w"> </span>would<span class="w"> </span>otherwise
 <span class="w">                        </span>be<span class="w"> </span>recreated<span class="w"> </span>by<span class="w"> </span>Snakemake<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span>because<span class="w"> </span>their<span class="w"> </span>input
 <span class="w">                        </span>files<span class="w"> </span>are<span class="w"> </span>newer<span class="o">)</span>.<span class="w"> </span>For<span class="w"> </span>enforcing<span class="w"> </span>a<span class="w"> </span>touch,<span class="w"> </span>combine<span class="w"> </span>this
-<span class="w">                        </span>with<span class="w"> </span><span class="sb">`</span>--force<span class="sb">`</span>,<span class="w"> </span><span class="sb">`</span>--forceall<span class="sb">`</span>,<span class="w"> </span>or<span class="w"> </span><span class="sb">`</span>--forcerun<span class="sb">`</span>.<span class="w"> </span>Note
-<span class="w">                        </span>however<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>lose<span class="w"> </span>the<span class="w"> </span>provenance<span class="w"> </span>information<span class="w"> </span>when
-<span class="w">                        </span>the<span class="w"> </span>files<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>created<span class="w"> </span><span class="k">in</span><span class="w"> </span>reality.<span class="w"> </span>Hence,<span class="w"> </span>this
-<span class="w">                        </span>should<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>only<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>last<span class="w"> </span>resort.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">                        </span>with<span class="w"> </span>--force,<span class="w"> </span>--forceall,<span class="w"> </span>or<span class="w"> </span>--forcerun.<span class="w"> </span>Note<span class="w"> </span>however
+<span class="w">                        </span>that<span class="w"> </span>you<span class="w"> </span>lose<span class="w"> </span>the<span class="w"> </span>provenance<span class="w"> </span>information<span class="w"> </span>when<span class="w"> </span>the
+<span class="w">                        </span>files<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>created<span class="w"> </span><span class="k">in</span><span class="w"> </span>reality.<span class="w"> </span>Hence,<span class="w"> </span>this<span class="w"> </span>should
+<span class="w">                        </span>be<span class="w"> </span>used<span class="w"> </span>only<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>last<span class="w"> </span>resort.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 <span class="w">  </span>--keep-going,<span class="w"> </span>-k<span class="w">      </span>Go<span class="w"> </span>on<span class="w"> </span>with<span class="w"> </span>independent<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>job<span class="w"> </span>fails<span class="w"> </span>during
 <span class="w">                        </span>execution.<span class="w"> </span>This<span class="w"> </span>only<span class="w"> </span>applies<span class="w"> </span>to<span class="w"> </span>runtime<span class="w"> </span>failures<span class="w"> </span><span class="k">in</span>
 <span class="w">                        </span>job<span class="w"> </span>execution,<span class="w"> </span>not<span class="w"> </span>to<span class="w"> </span>errors<span class="w"> </span>during<span class="w"> </span>workflow<span class="w"> </span>parsing
@@ -13186,7 +13181,7 @@ EXECUTION:
 <span class="w">                        </span>results<span class="w"> </span>are<span class="w"> </span>consistent<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>workflow<span class="w"> </span>code<span class="w"> </span>and
 <span class="w">                        </span>configuration.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>rather<span class="w"> </span>prefer<span class="w"> </span>the<span class="w"> </span>traditional
 <span class="w">                        </span>way<span class="w"> </span>of<span class="w"> </span>just<span class="w"> </span>considering<span class="w"> </span>file<span class="w"> </span>modification<span class="w"> </span>dates,<span class="w"> </span>use
-<span class="w">                        </span><span class="sb">`</span>--rerun-trigger<span class="w"> </span>mtime<span class="sb">`</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>code<span class="w"> </span>input<span class="w"> </span>mtime
+<span class="w">                        </span>--rerun-trigger<span class="w"> </span>mtime.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>code<span class="w"> </span>input<span class="w"> </span>mtime
 <span class="w">                        </span>params<span class="w"> </span>software-env<span class="o">)</span>
 <span class="w">  </span>--force,<span class="w"> </span>-f<span class="w">           </span>Force<span class="w"> </span>the<span class="w"> </span>execution<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>target<span class="w"> </span>or<span class="w"> </span>the
 <span class="w">                        </span>first<span class="w"> </span>rule<span class="w"> </span>regardless<span class="w"> </span>of<span class="w"> </span>already<span class="w"> </span>created<span class="w"> </span>output.
@@ -13239,9 +13234,9 @@ EXECUTION:
 <span class="w">  </span>--rerun-incomplete,<span class="w"> </span>--ri
 <span class="w">                        </span>Re-run<span class="w"> </span>all<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>of<span class="w"> </span>which<span class="w"> </span>is<span class="w"> </span>recognized<span class="w"> </span>as
 <span class="w">                        </span>incomplete.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--shadow-prefix<span class="w"> </span>DIR<span class="w">   </span>Specify<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>shadow<span class="sb">`</span><span class="w"> </span>directory<span class="w"> </span>is
+<span class="w">  </span>--shadow-prefix<span class="w"> </span>DIR<span class="w">   </span>Specify<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>the<span class="w"> </span>shadow<span class="w"> </span>directory<span class="w"> </span>is
 <span class="w">                        </span>created.<span class="w"> </span>If<span class="w"> </span>not<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>the
-<span class="w">                        </span><span class="sb">`</span>.snakemake<span class="sb">`</span><span class="w"> </span>directory<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>working
+<span class="w">                        </span>.snakemake<span class="w"> </span>directory<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>working
 <span class="w">                        </span>directory.
 <span class="w">  </span>--strict-dag-evaluation<span class="w"> </span><span class="o">{</span>cyclic-graph,functions,periodic-wildcards<span class="o">}</span><span class="w"> </span><span class="o">[{</span>cyclic-graph,functions,periodic-wildcards<span class="o">}</span><span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Strict<span class="w"> </span>evaluation<span class="w"> </span>of<span class="w"> </span>rules<span class="s1">' correctness even when not</span>
@@ -13264,9 +13259,9 @@ EXECUTION:
 <span class="s1">  --dag [{dot,mermaid-js}]</span>
 <span class="s1">                        Do not execute anything and print the directed acyclic</span>
 <span class="s1">                        graph of jobs in the dot language or in mermaid-js.</span>
-<span class="s1">                        Recommended use on Unix systems: `snakemake --dag |</span>
-<span class="s1">                        dot | display`. Note print statements in your</span>
-<span class="s1">                        Snakefile may interfere with visualization.</span>
+<span class="s1">                        Recommended use on Unix systems: snakemake --dag | dot</span>
+<span class="s1">                        | display. Note print statements in your Snakefile may</span>
+<span class="s1">                        interfere with visualization.</span>
 
 <span class="s1">GROUPING:</span>
 <span class="s1">  --groups GROUPS [GROUPS ...]</span>
@@ -13285,14 +13280,14 @@ EXECUTION:
 <span class="s1">  --report [FILE]       Create a self-contained HTML report with default</span>
 <span class="s1">                        statistics, provenance information and user-specified</span>
 <span class="s1">                        results. For smaller datasets with a limited report</span>
-<span class="s1">                        complexity, you can specify an `.html` file and all</span>
+<span class="s1">                        complexity, you can specify an .html file and all</span>
 <span class="s1">                        results will be embedded directly into this file. For</span>
 <span class="s1">                        customized reports on larger sample sizes, it makes</span>
-<span class="s1">                        more sense to specify a `.zip` file. The resulting</span>
+<span class="s1">                        more sense to specify a .zip file. The resulting</span>
 <span class="s1">                        archive will spread the contents across a folder</span>
 <span class="s1">                        structure, for a quicker loading of individual</span>
 <span class="s1">                        results. You can unpack this archive anywhere and open</span>
-<span class="s1">                        the `report.html` file in its main folder to view the</span>
+<span class="s1">                        the report.html file in its main folder to view the</span>
 <span class="s1">                        report in any web browser.</span>
 <span class="s1">  --report-after-run    After finishing the workflow, directly create the</span>
 <span class="s1">                        report. It is required to provide --report. (default:</span>
@@ -13309,7 +13304,7 @@ EXECUTION:
 <span class="s1">  --reporter PLUGIN     Specify a custom report plugin. By default,</span>
 <span class="s1">                        Snakemake'</span>s<span class="w"> </span><span class="nb">builtin</span><span class="w"> </span>html<span class="w"> </span>reporter<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used.<span class="w"> </span>For
 <span class="w">                        </span>custom<span class="w"> </span>reporters,<span class="w"> </span>check<span class="w"> </span>out<span class="w"> </span>their<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>options
-<span class="w">                        </span>starting<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>--report-<span class="sb">`</span>.
+<span class="w">                        </span>starting<span class="w"> </span>with<span class="w"> </span>--report-.
 
 NOTEBOOKS:
 <span class="w">  </span>--draft-notebook<span class="w"> </span>TARGET
@@ -13324,15 +13319,15 @@ NOTEBOOKS:
 <span class="w">                        </span>rule<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>target<span class="w"> </span>file.<span class="w"> </span>This<span class="w"> </span>will
 <span class="w">                        </span>start<span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>server.<span class="w"> </span>Any<span class="w"> </span>changes<span class="w"> </span>to
 <span class="w">                        </span>the<span class="w"> </span>notebook<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>saved,<span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>has<span class="w"> </span>to<span class="w"> </span>be
-<span class="w">                        </span>stopped<span class="w"> </span>by<span class="w"> </span>closing<span class="w"> </span>the<span class="w"> </span>notebook<span class="w"> </span>and<span class="w"> </span>hitting<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>Quit<span class="sb">`</span>
+<span class="w">                        </span>stopped<span class="w"> </span>by<span class="w"> </span>closing<span class="w"> </span>the<span class="w"> </span>notebook<span class="w"> </span>and<span class="w"> </span>hitting<span class="w"> </span>the<span class="w"> </span>Quit
 <span class="w">                        </span>button<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>jupyter<span class="w"> </span>dashboard.<span class="w"> </span>Afterwards,<span class="w"> </span>the
 <span class="w">                        </span>updated<span class="w"> </span>notebook<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>automatically<span class="w"> </span>stored<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
 <span class="w">                        </span>path<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>rule.<span class="w"> </span>If<span class="w"> </span>the<span class="w"> </span>notebook<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>yet
 <span class="w">                        </span>present,<span class="w"> </span>this<span class="w"> </span>will<span class="w"> </span>create<span class="w"> </span>an<span class="w"> </span>empty<span class="w"> </span>draft.
 <span class="w">  </span>--notebook-listen<span class="w"> </span>IP:PORT
 <span class="w">                        </span>The<span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span>and<span class="w"> </span>PORT<span class="w"> </span>the<span class="w"> </span>notebook<span class="w"> </span>server<span class="w"> </span>used<span class="w"> </span><span class="k">for</span>
-<span class="w">                        </span>editing<span class="w"> </span>the<span class="w"> </span>notebook<span class="w"> </span><span class="o">(</span><span class="sb">`</span>--edit-notebook<span class="sb">`</span><span class="o">)</span><span class="w"> </span>will<span class="w"> </span>listen
-<span class="w">                        </span>on.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>localhost:8888<span class="o">)</span>
+<span class="w">                        </span>editing<span class="w"> </span>the<span class="w"> </span>notebook<span class="w"> </span><span class="o">(</span>--edit-notebook<span class="o">)</span><span class="w"> </span>will<span class="w"> </span>listen<span class="w"> </span>on.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>localhost:8888<span class="o">)</span>
 
 UTILITIES:
 <span class="w">  </span>--lint<span class="w"> </span><span class="o">[{</span>text,json<span class="o">}]</span><span class="w">  </span>Perform<span class="w"> </span>linting<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>workflow.<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>print
@@ -13346,8 +13341,8 @@ UTILITIES:
 <span class="w">                        </span>are<span class="w"> </span>already<span class="w"> </span>present.<span class="w"> </span>Jobs<span class="w"> </span>without<span class="w"> </span>present<span class="w"> </span>input<span class="w"> </span>files
 <span class="w">                        </span>will<span class="w"> </span>be<span class="w"> </span>skipped<span class="w"> </span><span class="o">(</span>a<span class="w"> </span>warning<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>issued<span class="o">)</span>.<span class="w"> </span>For<span class="w"> </span>each
 <span class="w">                        </span>rule,<span class="w"> </span>one<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="k">case</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>created<span class="w"> </span>and,<span class="w"> </span>after
-<span class="w">                        </span>successful<span class="w"> </span>execution,<span class="w"> </span>tests<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>pytest
-<span class="w">                        </span>TESTPATH<span class="sb">`</span>.
+<span class="w">                        </span>successful<span class="w"> </span>execution,<span class="w"> </span>tests<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span>with<span class="w"> </span>pytest
+<span class="w">                        </span>TESTPATH.
 <span class="w">  </span>--containerize<span class="w"> </span><span class="o">[{</span>dockerfile,apptainer<span class="o">}]</span>
 <span class="w">                        </span>Print<span class="w"> </span>a<span class="w"> </span>container<span class="w"> </span>definition<span class="w"> </span>that<span class="w"> </span>provides<span class="w"> </span>an
 <span class="w">                        </span>execution<span class="w"> </span>environment<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>workflow,<span class="w"> </span>including<span class="w"> </span>all
@@ -13369,7 +13364,7 @@ UTILITIES:
 <span class="w">                        </span>cyclic<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>rule<span class="w"> </span>appears<span class="w"> </span><span class="k">in</span><span class="w"> </span>several<span class="w"> </span>steps<span class="w"> </span>of<span class="w"> </span>the
 <span class="w">                        </span>workflow.<span class="w"> </span>Use<span class="w"> </span>this<span class="w"> </span><span class="k">if</span><span class="w"> </span>above<span class="w"> </span>option<span class="w"> </span>leads<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>DAG<span class="w"> </span>that
 <span class="w">                        </span>is<span class="w"> </span>too<span class="w"> </span>large.<span class="w"> </span>Recommended<span class="w"> </span>use<span class="w"> </span>on<span class="w"> </span>Unix<span class="w"> </span>systems:
-<span class="w">                        </span>snakemake<span class="w"> </span><span class="sb">`</span>--rulegraph<span class="w"> </span><span class="p">|</span><span class="w"> </span>dot<span class="w"> </span><span class="p">|</span><span class="w"> </span>display<span class="sb">`</span>.<span class="w"> </span>Note<span class="w"> </span>print
+<span class="w">                        </span>snakemake<span class="w"> </span>--rulegraph<span class="w"> </span><span class="p">|</span><span class="w"> </span>dot<span class="w"> </span><span class="p">|</span><span class="w"> </span>display.<span class="w"> </span>Note<span class="w"> </span>print
 <span class="w">                        </span>statements<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>Snakefile<span class="w"> </span>may<span class="w"> </span>interfere<span class="w"> </span>with
 <span class="w">                        </span>visualization.
 <span class="w">  </span>--filegraph<span class="w">           </span>Do<span class="w"> </span>not<span class="w"> </span>execute<span class="w"> </span>anything<span class="w"> </span>and<span class="w"> </span>print<span class="w"> </span>the<span class="w"> </span>dependency<span class="w"> </span>graph
@@ -13432,7 +13427,7 @@ UTILITIES:
 <span class="s1">                        (default: False)</span>
 <span class="s1">  --unlock              Remove a lock on the working directory. (default:</span>
 <span class="s1">                        False)</span>
-<span class="s1">  --list-changes, --lc {params,input,code}</span>
+<span class="s1">  --list-changes, --lc {params,code,input}</span>
 <span class="s1">                        List all output files for which the given items (code,</span>
 <span class="s1">                        input, params) have changed since creation.</span>
 <span class="s1">  --list-input-changes, --li</span>
@@ -13440,7 +13435,7 @@ UTILITIES:
 <span class="s1">                        files have changed in the Snakefile (e.g. new input</span>
 <span class="s1">                        files were added in the rule definition or files were</span>
 <span class="s1">                        renamed). For listing input file modification in the</span>
-<span class="s1">                        filesystem, use `--summary`. (default: False)</span>
+<span class="s1">                        filesystem, use --summary. (default: False)</span>
 <span class="s1">  --list-params-changes, --lp</span>
 <span class="s1">                        List all output files for which the defined params</span>
 <span class="s1">                        have changed in the Snakefile. (default: False)</span>
@@ -13450,21 +13445,20 @@ UTILITIES:
 <span class="s1">                        identifying leftover files. Hidden files and</span>
 <span class="s1">                        directories are ignored. (default: False)</span>
 <span class="s1">  --delete-all-output   Remove all files generated by the workflow. Use</span>
-<span class="s1">                        together with `--dry-run` to list files without</span>
-<span class="s1">                        actually deleting anything. Note that this will not</span>
-<span class="s1">                        recurse into subworkflows. Write-protected files are</span>
-<span class="s1">                        not removed. Nevertheless, use with care! (default:</span>
-<span class="s1">                        False)</span>
+<span class="s1">                        together with --dry-run to list files without actually</span>
+<span class="s1">                        deleting anything. Note that this will not recurse</span>
+<span class="s1">                        into subworkflows. Write-protected files are not</span>
+<span class="s1">                        removed. Nevertheless, use with care! (default: False)</span>
 <span class="s1">  --delete-temp-output  Remove all temporary files generated by the workflow.</span>
-<span class="s1">                        Use together with `--dry-run` to list files without</span>
+<span class="s1">                        Use together with --dry-run to list files without</span>
 <span class="s1">                        actually deleting anything. Note that this will not</span>
 <span class="s1">                        recurse into subworkflows. (default: False)</span>
 <span class="s1">  --keep-incomplete     Do not remove incomplete output files by failed jobs.</span>
 <span class="s1">                        (default: False)</span>
 <span class="s1">  --drop-metadata       Drop metadata file tracking information after job</span>
 <span class="s1">                        finishes. Provenance-information based reports (e.g.</span>
-<span class="s1">                        `--report` and the `--list_x_changes` functions) will</span>
-<span class="s1">                        be empty or incomplete. (default: False)</span>
+<span class="s1">                        --report and the --list_x_changes functions) will be</span>
+<span class="s1">                        empty or incomplete. (default: False)</span>
 <span class="s1">  --version, -v         show program'</span>s<span class="w"> </span>version<span class="w"> </span>number<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
 
 OUTPUT:
@@ -13477,7 +13471,7 @@ OUTPUT:
 <span class="w">  </span>--quiet,<span class="w"> </span>-q<span class="w"> </span><span class="o">[{</span>all,host,progress,reason,rules<span class="o">}</span><span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Do<span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>certain<span class="w"> </span>information.<span class="w"> </span>If<span class="w"> </span>used<span class="w"> </span>without
 <span class="w">                        </span>arguments,<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>any<span class="w"> </span>progress<span class="w"> </span>or<span class="w"> </span>rule
-<span class="w">                        </span>information.<span class="w"> </span>Defining<span class="w"> </span><span class="sb">`</span>all<span class="sb">`</span><span class="w"> </span>results<span class="w"> </span><span class="k">in</span><span class="w"> </span>no<span class="w"> </span>information
+<span class="w">                        </span>information.<span class="w"> </span>Defining<span class="w"> </span>all<span class="w"> </span>results<span class="w"> </span><span class="k">in</span><span class="w"> </span>no<span class="w"> </span>information
 <span class="w">                        </span>being<span class="w"> </span>printed<span class="w"> </span>at<span class="w"> </span>all.
 <span class="w">  </span>--print-compilation<span class="w">   </span>Print<span class="w"> </span>the<span class="w"> </span>python<span class="w"> </span>representation<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>workflow.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
@@ -13528,12 +13522,12 @@ BEHAVIOR:
 <span class="w">                        </span>when<span class="w"> </span>downloading<span class="w"> </span>remote<span class="w"> </span>storage<span class="w"> </span>files.<span class="w"> </span>If<span class="w"> </span>not<span class="w"> </span>set,<span class="w"> </span>no
 <span class="w">                        </span>waiting<span class="w"> </span>is<span class="w"> </span>performed.
 <span class="w">  </span>--wait-for-files<span class="w"> </span><span class="o">[</span>FILE<span class="w"> </span>...<span class="o">]</span>
-<span class="w">                        </span>Wait<span class="w"> </span><span class="sb">`</span>--latency-wait<span class="sb">`</span><span class="w"> </span>seconds<span class="w"> </span><span class="k">for</span><span class="w"> </span>these<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>be
+<span class="w">                        </span>Wait<span class="w"> </span>--latency-wait<span class="w"> </span>seconds<span class="w"> </span><span class="k">for</span><span class="w"> </span>these<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>be
 <span class="w">                        </span>present<span class="w"> </span>before<span class="w"> </span>executing<span class="w"> </span>the<span class="w"> </span>workflow.<span class="w"> </span>This<span class="w"> </span>option<span class="w"> </span>is
 <span class="w">                        </span>used<span class="w"> </span>internally<span class="w"> </span>to<span class="w"> </span>handle<span class="w"> </span>filesystem<span class="w"> </span>latency<span class="w"> </span><span class="k">in</span>
 <span class="w">                        </span>cluster<span class="w"> </span>environments.
 <span class="w">  </span>--wait-for-files-file<span class="w"> </span>FILE
-<span class="w">                        </span>Same<span class="w"> </span>behaviour<span class="w"> </span>as<span class="w"> </span><span class="sb">`</span>--wait-for-files<span class="sb">`</span>,<span class="w"> </span>but<span class="w"> </span>file<span class="w"> </span>list<span class="w"> </span>is
+<span class="w">                        </span>Same<span class="w"> </span>behaviour<span class="w"> </span>as<span class="w"> </span>--wait-for-files,<span class="w"> </span>but<span class="w"> </span>file<span class="w"> </span>list<span class="w"> </span>is
 <span class="w">                        </span>stored<span class="w"> </span><span class="k">in</span><span class="w"> </span>file<span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span>being<span class="w"> </span>passed<span class="w"> </span>on<span class="w"> </span>the
 <span class="w">                        </span>commandline.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>useful<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>files<span class="w"> </span>is
 <span class="w">                        </span>too<span class="w"> </span>long<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>passed<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>commandline.<span class="w"> </span>Meant<span class="w"> </span><span class="k">for</span>
@@ -13589,15 +13583,14 @@ BEHAVIOR:
 <span class="w">  </span>--wrapper-prefix<span class="w"> </span>WRAPPER_PREFIX
 <span class="w">                        </span>URL<span class="w"> </span>prefix<span class="w"> </span><span class="k">for</span><span class="w"> </span>wrapper<span class="w"> </span>directive.<span class="w"> </span>Set<span class="w"> </span>this<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>your
 <span class="w">                        </span>fork<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span><span class="nb">local</span><span class="w"> </span>clone<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>repository,<span class="w"> </span>e.g.,<span class="w"> </span>use<span class="w"> </span>a
-<span class="w">                        </span>git<span class="w"> </span>URL<span class="w"> </span>like<span class="w"> </span><span class="sb">`</span>git+file://path/to/your/local/clone@<span class="sb">`</span>.
+<span class="w">                        </span>git<span class="w"> </span>URL<span class="w"> </span>like<span class="w"> </span>git+file://path/to/your/local/clone@.
 <span class="w">  </span>--default-storage-provider<span class="w"> </span>DEFAULT_STORAGE_PROVIDER
 <span class="w">                        </span>Specify<span class="w"> </span>default<span class="w"> </span>storage<span class="w"> </span>provider<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>all
 <span class="w">                        </span>input<span class="w"> </span>and<span class="w"> </span>output<span class="w"> </span>files<span class="w"> </span>that<span class="w"> </span>don<span class="s1">'t yet specify one</span>
-<span class="s1">                        (e.g. `s3`). See</span>
-<span class="s1">                        https://snakemake.github.io/snakemake-plugin-catalog</span>
-<span class="s1">                        for available storage provider plugins. If not set or</span>
-<span class="s1">                        explicitly `none`, no default storage provider will be</span>
-<span class="s1">                        used.</span>
+<span class="s1">                        (e.g. s3). See https://snakemake.github.io/snakemake-</span>
+<span class="s1">                        plugin-catalog for available storage provider plugins.</span>
+<span class="s1">                        If not set or explicitly none, no default storage</span>
+<span class="s1">                        provider will be used.</span>
 <span class="s1">  --default-storage-prefix DEFAULT_STORAGE_PREFIX</span>
 <span class="s1">                        Specify prefix for default storage provider. E.g. a</span>
 <span class="s1">                        bucket name.</span>
@@ -13615,26 +13608,26 @@ BEHAVIOR:
 <span class="s1">  --shared-fs-usage {input-output,persistence,software-deployment,software-deployment-cache,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,software-deployment-cache,source-cache,sources,storage-local-copies,none} ...]</span>
 <span class="s1">                        Set assumptions on shared filesystem for non-local</span>
 <span class="s1">                        workflow execution. To disable any sharing via the</span>
-<span class="s1">                        filesystem, specify `none`. Usually, the executor</span>
-<span class="s1">                        plugin sets this to a correct default. However,</span>
-<span class="s1">                        sometimes it is worth tuning this setting, e.g. for</span>
-<span class="s1">                        optimizing cluster performance. For example, when</span>
-<span class="s1">                        using `--default-storage-provider fs` together with a</span>
-<span class="s1">                        cluster executor like slurm, you might want to set</span>
-<span class="s1">                        `--shared-fs-usage persistence software-deployment</span>
-<span class="s1">                        sources source-cache`, such that software deployment</span>
-<span class="s1">                        and data provenance will be handled by NFS but input</span>
-<span class="s1">                        and output files will be handled exclusively by the</span>
-<span class="s1">                        storage provider. (default: input-output persistence</span>
-<span class="s1">                        software-deployment software-deployment-cache source-</span>
-<span class="s1">                        cache sources storage-local-copies)</span>
+<span class="s1">                        filesystem, specify none. Usually, the executor plugin</span>
+<span class="s1">                        sets this to a correct default. However, sometimes it</span>
+<span class="s1">                        is worth tuning this setting, e.g. for optimizing</span>
+<span class="s1">                        cluster performance. For example, when using</span>
+<span class="s1">                        --default-storage-provider fs together with a cluster</span>
+<span class="s1">                        executor like slurm, you might want to set --shared-</span>
+<span class="s1">                        fs-usage persistence software-deployment sources</span>
+<span class="s1">                        source-cache, such that software deployment and data</span>
+<span class="s1">                        provenance will be handled by NFS but input and output</span>
+<span class="s1">                        files will be handled exclusively by the storage</span>
+<span class="s1">                        provider. (default: input-output persistence software-</span>
+<span class="s1">                        deployment software-deployment-cache source-cache</span>
+<span class="s1">                        sources storage-local-copies)</span>
 <span class="s1">  --scheduler-greediness, --greediness SCHEDULER_GREEDINESS</span>
 <span class="s1">                        Set the greediness of scheduling. This value between 0</span>
 <span class="s1">                        and 1 determines how careful jobs are selected for</span>
 <span class="s1">                        execution. The default value (1.0) provides the best</span>
 <span class="s1">                        speed and still acceptable scheduling quality.</span>
-<span class="s1">                        Deprecated in favor of `--scheduler-greedy-</span>
-<span class="s1">                        greediness`. (default: 1.0)</span>
+<span class="s1">                        Deprecated in favor of --scheduler-greedy-greediness.</span>
+<span class="s1">                        (default: 1.0)</span>
 <span class="s1">  --scheduler-subsample SCHEDULER_SUBSAMPLE</span>
 <span class="s1">                        Set the number of jobs to be considered for</span>
 <span class="s1">                        scheduling. If number of ready jobs is greater than</span>
@@ -13660,8 +13653,8 @@ BEHAVIOR:
 <span class="s1">  --logger {} [{} ...]  Specify one or more custom loggers, available via</span>
 <span class="s1">                        logger plugins. (default: )</span>
 <span class="s1">  --job-deploy-sources  Whether the workflow sources shall be deployed before</span>
-<span class="s1">                        a remote job is started. Only applies if `--no-shared-</span>
-<span class="s1">                        fs` is set or executors are used that imply no shared</span>
+<span class="s1">                        a remote job is started. Only applies if --no-shared-</span>
+<span class="s1">                        fs is set or executors are used that imply no shared</span>
 <span class="s1">                        FS (e.g. the kubernetes executor). (default: False)</span>
 <span class="s1">  --benchmark-extended  Write extended benchmarking metrics. (default: False)</span>
 <span class="s1">  --persistence-backend {db,file}</span>
@@ -13691,25 +13684,25 @@ REMOTE<span class="w"> </span>EXECUTION:
 <span class="w">                        </span>Immediately<span class="w"> </span>submit<span class="w"> </span>all<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>instead<span class="w"> </span>of
 <span class="w">                        </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>present<span class="w"> </span>input<span class="w"> </span>files.<span class="w"> </span>This<span class="w"> </span>will<span class="w"> </span>fail,
 <span class="w">                        </span>unless<span class="w"> </span>you<span class="w"> </span>make<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>aware<span class="w"> </span>of<span class="w"> </span>job<span class="w"> </span>dependencies,
-<span class="w">                        </span>e.g.<span class="w"> </span>via:<span class="w"> </span><span class="sb">`</span>$<span class="w"> </span>snakemake<span class="w"> </span>--cluster<span class="w"> </span><span class="s1">'sbatch --dependency</span>
-<span class="s1">                        {dependencies}'</span><span class="sb">`</span>.<span class="w"> </span>Assuming<span class="w"> </span>that<span class="w"> </span>your<span class="w"> </span>submit<span class="w"> </span>script
+<span class="w">                        </span>e.g.<span class="w"> </span>via:<span class="w"> </span>$<span class="w"> </span>snakemake<span class="w"> </span>--cluster<span class="w"> </span><span class="s1">'sbatch --dependency</span>
+<span class="s1">                        {dependencies}'</span>.<span class="w"> </span>Assuming<span class="w"> </span>that<span class="w"> </span>your<span class="w"> </span>submit<span class="w"> </span>script
 <span class="w">                        </span><span class="o">(</span>here<span class="w"> </span>sbatch<span class="o">)</span><span class="w"> </span>outputs<span class="w"> </span>the<span class="w"> </span>generated<span class="w"> </span>job<span class="w"> </span>id<span class="w"> </span>to<span class="w"> </span>the
 <span class="w">                        </span>first<span class="w"> </span>stdout<span class="w"> </span>line,<span class="w"> </span><span class="o">{</span>dependencies<span class="o">}</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>filled<span class="w"> </span>with
 <span class="w">                        </span>space<span class="w"> </span>separated<span class="w"> </span>job<span class="w"> </span>ids<span class="w"> </span>this<span class="w"> </span>job<span class="w"> </span>depends<span class="w"> </span>on.<span class="w"> </span>Does<span class="w"> </span>not
 <span class="w">                        </span>work<span class="w"> </span><span class="k">for</span><span class="w"> </span>workflows<span class="w"> </span>that<span class="w"> </span>contain<span class="w"> </span>checkpoint<span class="w"> </span>rules,<span class="w"> </span>and
 <span class="w">                        </span>localrules<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>skipped.<span class="w"> </span>The<span class="w"> </span>additional<span class="w"> </span>argument
-<span class="w">                        </span><span class="sb">`</span>--notemp<span class="sb">`</span><span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>specified.<span class="w"> </span>Most<span class="w"> </span>often,<span class="w"> </span><span class="sb">`</span>--not-
-<span class="w">                        </span>retrieve-storage<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span>also<span class="w"> </span>recommended<span class="w"> </span>to<span class="w"> </span>avoid
+<span class="w">                        </span>--notemp<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span>specified.<span class="w"> </span>Most<span class="w"> </span>often,<span class="w"> </span>--not-
+<span class="w">                        </span>retrieve-storage<span class="w"> </span>is<span class="w"> </span>also<span class="w"> </span>recommended<span class="w"> </span>to<span class="w"> </span>avoid
 <span class="w">                        </span>Snakemake<span class="w"> </span>trying<span class="w"> </span>to<span class="w"> </span>download<span class="w"> </span>output<span class="w"> </span>files<span class="w"> </span>before<span class="w"> </span>the
 <span class="w">                        </span><span class="nb">jobs</span><span class="w"> </span>producing<span class="w"> </span>them<span class="w"> </span>are<span class="w"> </span>executed.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 <span class="w">  </span>--jobscript,<span class="w"> </span>--js<span class="w"> </span>SCRIPT
 <span class="w">                        </span>Provide<span class="w"> </span>a<span class="w"> </span>custom<span class="w"> </span>job<span class="w"> </span>script<span class="w"> </span><span class="k">for</span><span class="w"> </span>submission<span class="w"> </span>to<span class="w"> </span>the
-<span class="w">                        </span>cluster.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>script<span class="w"> </span>resides<span class="w"> </span>as<span class="w"> </span><span class="sb">`</span>jobscript.sh<span class="sb">`</span>
-<span class="w">                        </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>installation<span class="w"> </span>directory.
+<span class="w">                        </span>cluster.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>script<span class="w"> </span>resides<span class="w"> </span>as<span class="w"> </span>jobscript.sh<span class="w"> </span><span class="k">in</span>
+<span class="w">                        </span>the<span class="w"> </span>installation<span class="w"> </span>directory.
 <span class="w">  </span>--jobname,<span class="w"> </span>--jn<span class="w"> </span>NAME<span class="w">  </span>Provide<span class="w"> </span>a<span class="w"> </span>custom<span class="w"> </span>name<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>jobscript<span class="w"> </span>that<span class="w"> </span>is
-<span class="w">                        </span>submitted<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span><span class="o">(</span>see<span class="w"> </span><span class="sb">`</span>--cluster<span class="sb">`</span><span class="o">)</span>.<span class="w"> </span>The
-<span class="w">                        </span>wildcard<span class="w"> </span><span class="sb">`</span><span class="o">{</span>jobid<span class="o">}</span><span class="sb">`</span><span class="w"> </span>has<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>present<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>name.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>snakejob.<span class="o">{</span>name<span class="o">}</span>.<span class="o">{</span>jobid<span class="o">}</span>.sh<span class="o">)</span>
+<span class="w">                        </span>submitted<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>--cluster<span class="o">)</span>.<span class="w"> </span>The<span class="w"> </span>wildcard
+<span class="w">                        </span><span class="o">{</span>jobid<span class="o">}</span><span class="w"> </span>has<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>present<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>name.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>snakejob.<span class="o">{</span>name<span class="o">}</span>.<span class="o">{</span>jobid<span class="o">}</span>.sh<span class="o">)</span>
 
 SOFTWARE<span class="w"> </span>DEPLOYMENT:
 <span class="w">  </span>--software-deployment-method,<span class="w"> </span>--deployment-method,<span class="w"> </span>--deployment,<span class="w"> </span>--sdm<span class="w"> </span><span class="o">{</span>apptainer,conda,env-modules<span class="o">}</span><span class="w"> </span><span class="o">[{</span>apptainer,conda,env-modules<span class="o">}</span><span class="w"> </span>...<span class="o">]</span>
@@ -13727,14 +13720,14 @@ CONDA:
 <span class="w">                        </span>when<span class="w"> </span>using<span class="w"> </span>conda<span class="w"> </span>environments.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 <span class="w">  </span>--list-conda-envs<span class="w">     </span>List<span class="w"> </span>all<span class="w"> </span>conda<span class="w"> </span>environments<span class="w"> </span>and<span class="w"> </span>their<span class="w"> </span>location<span class="w"> </span>on
 <span class="w">                        </span>disk.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--conda-prefix<span class="w"> </span>DIR<span class="w">    </span>Specify<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>conda<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span><span class="sb">`</span>conda-
-<span class="w">                        </span>archive<span class="sb">`</span><span class="w"> </span>directories<span class="w"> </span>are<span class="w"> </span>created.<span class="w"> </span>These<span class="w"> </span>are<span class="w"> </span>used<span class="w"> </span>to
+<span class="w">  </span>--conda-prefix<span class="w"> </span>DIR<span class="w">    </span>Specify<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>the<span class="w"> </span>conda<span class="w"> </span>and<span class="w"> </span>conda-
+<span class="w">                        </span>archive<span class="w"> </span>directories<span class="w"> </span>are<span class="w"> </span>created.<span class="w"> </span>These<span class="w"> </span>are<span class="w"> </span>used<span class="w"> </span>to
 <span class="w">                        </span>store<span class="w"> </span>conda<span class="w"> </span>environments<span class="w"> </span>and<span class="w"> </span>their<span class="w"> </span>archives,
 <span class="w">                        </span>respectively.<span class="w"> </span>If<span class="w"> </span>not<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>the
-<span class="w">                        </span><span class="sb">`</span>.snakemake<span class="sb">`</span><span class="w"> </span>directory<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>invocation
-<span class="w">                        </span>directory.<span class="w"> </span>If<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>--use-conda<span class="sb">`</span><span class="w"> </span>flag<span class="w"> </span>must
-<span class="w">                        </span>also<span class="w"> </span>be<span class="w"> </span>set.<span class="w"> </span>The<span class="w"> </span>value<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>given<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>relative
-<span class="w">                        </span>path,<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>extrapolated<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>invocation
+<span class="w">                        </span>.snakemake<span class="w"> </span>directory<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>invocation
+<span class="w">                        </span>directory.<span class="w"> </span>If<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span>--use-conda<span class="w"> </span>flag<span class="w"> </span>must<span class="w"> </span>also
+<span class="w">                        </span>be<span class="w"> </span>set.<span class="w"> </span>The<span class="w"> </span>value<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>given<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>relative<span class="w"> </span>path,
+<span class="w">                        </span>which<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>extrapolated<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>invocation
 <span class="w">                        </span>directory,<span class="w"> </span>or<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>absolute<span class="w"> </span>path.<span class="w"> </span>The<span class="w"> </span>value<span class="w"> </span>can<span class="w"> </span>also
 <span class="w">                        </span>be<span class="w"> </span>provided<span class="w"> </span>via<span class="w"> </span>the<span class="w"> </span>environment<span class="w"> </span>variable
 <span class="w">                        </span><span class="nv">$SNAKEMAKE_CONDA_PREFIX</span>.<span class="w"> </span>In<span class="w"> </span>any<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>the<span class="w"> </span>prefix<span class="w"> </span>may
@@ -13742,17 +13735,17 @@ CONDA:
 <span class="w">                        </span>expanded.<span class="w"> </span>Note<span class="w"> </span>that<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>remote<span class="w"> </span>execution<span class="w"> </span>e.g.
 <span class="w">                        </span>on<span class="w"> </span>a<span class="w"> </span>cluster<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>node<span class="w"> </span>specific<span class="w"> </span>values<span class="w"> </span><span class="k">for</span>
 <span class="w">                        </span>this,<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>disable<span class="w"> </span>assuming<span class="w"> </span>shared<span class="w"> </span>fs<span class="w"> </span><span class="k">for</span>
-<span class="w">                        </span>software-deployment<span class="w"> </span><span class="o">(</span>see<span class="w"> </span><span class="sb">`</span>--shared-fs-usage<span class="sb">`</span><span class="o">)</span>.
+<span class="w">                        </span>software-deployment<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>--shared-fs-usage<span class="o">)</span>.
 <span class="w">  </span>--conda-cleanup-envs<span class="w">  </span>Cleanup<span class="w"> </span>unused<span class="w"> </span>conda<span class="w"> </span>environments.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 <span class="w">  </span>--conda-cleanup-pkgs<span class="w"> </span><span class="o">[{</span>tarballs,cache<span class="o">}]</span>
 <span class="w">                        </span>Cleanup<span class="w"> </span>conda<span class="w"> </span>packages<span class="w"> </span>after<span class="w"> </span>creating<span class="w"> </span>environments.<span class="w"> </span>In
-<span class="w">                        </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span><span class="sb">`</span>tarballs<span class="sb">`</span><span class="w"> </span>mode,<span class="w"> </span>will<span class="w"> </span>clean<span class="w"> </span>up<span class="w"> </span>all<span class="w"> </span>downloaded
-<span class="w">                        </span>package<span class="w"> </span>tarballs.<span class="w"> </span>In<span class="w"> </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span><span class="sb">`</span>cache<span class="sb">`</span><span class="w"> </span>mode,<span class="w"> </span>will
+<span class="w">                        </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span>tarballs<span class="w"> </span>mode,<span class="w"> </span>will<span class="w"> </span>clean<span class="w"> </span>up<span class="w"> </span>all<span class="w"> </span>downloaded
+<span class="w">                        </span>package<span class="w"> </span>tarballs.<span class="w"> </span>In<span class="w"> </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span>cache<span class="w"> </span>mode,<span class="w"> </span>will
 <span class="w">                        </span>additionally<span class="w"> </span>clean<span class="w"> </span>up<span class="w"> </span>unused<span class="w"> </span>package<span class="w"> </span>caches.<span class="w"> </span><span class="o">(</span>default:
 <span class="w">                        </span>tarballs<span class="o">)</span>
 <span class="w">  </span>--conda-create-envs-only
 <span class="w">                        </span>If<span class="w"> </span>specified,<span class="w"> </span>only<span class="w"> </span>creates<span class="w"> </span>the<span class="w"> </span>job-specific<span class="w"> </span>conda
-<span class="w">                        </span>environments<span class="w"> </span><span class="k">then</span><span class="w"> </span>exits.<span class="w"> </span>The<span class="w"> </span><span class="sb">`</span>--use-conda<span class="sb">`</span><span class="w"> </span>flag<span class="w"> </span>must
+<span class="w">                        </span>environments<span class="w"> </span><span class="k">then</span><span class="w"> </span>exits.<span class="w"> </span>The<span class="w"> </span>--use-conda<span class="w"> </span>flag<span class="w"> </span>must
 <span class="w">                        </span>also<span class="w"> </span>be<span class="w"> </span>set.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 <span class="w">  </span>--conda-frontend<span class="w"> </span><span class="o">{</span>conda,mamba<span class="o">}</span>
 <span class="w">                        </span>Choose<span class="w"> </span>the<span class="w"> </span>conda<span class="w"> </span>frontend<span class="w"> </span><span class="k">for</span><span class="w"> </span>installing<span class="w"> </span>environments.
@@ -13767,26 +13760,25 @@ APPTAINER/SINGULARITY:
 <span class="w">  </span>--apptainer-prefix,<span class="w"> </span>--singularity-prefix<span class="w"> </span>DIR
 <span class="w">                        </span>Specify<span class="w"> </span>a<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>apptainer/singularity
 <span class="w">                        </span>images<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>stored.If<span class="w"> </span>not<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span>value<span class="w"> </span>is
-<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>.snakemake<span class="sb">`</span><span class="w"> </span>directory<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the
-<span class="w">                        </span>invocation<span class="w"> </span>directory.<span class="w"> </span>If<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span><span class="sb">`</span>--use-
-<span class="w">                        </span>apptainer<span class="sb">`</span><span class="w"> </span>flag<span class="w"> </span>must<span class="w"> </span>also<span class="w"> </span>be<span class="w"> </span>set.<span class="w"> </span>The<span class="w"> </span>value<span class="w"> </span>may<span class="w"> </span>be
-<span class="w">                        </span>given<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>relative<span class="w"> </span>path,<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>extrapolated
-<span class="w">                        </span>to<span class="w"> </span>the<span class="w"> </span>invocation<span class="w"> </span>directory,<span class="w"> </span>or<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>absolute<span class="w"> </span>path.
-<span class="w">                        </span>If<span class="w"> </span>not<span class="w"> </span>supplied,<span class="w"> </span>APPTAINER_CACHEDIR<span class="w"> </span>is<span class="w"> </span>used.<span class="w"> </span>In<span class="w"> </span>any
-<span class="w">                        </span><span class="k">case</span>,<span class="w"> </span>the<span class="w"> </span>prefix<span class="w"> </span>may<span class="w"> </span>contain<span class="w"> </span>environment<span class="w"> </span>variables
-<span class="w">                        </span>which<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>properly<span class="w"> </span>expanded.<span class="w"> </span>Note<span class="w"> </span>that<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>use
-<span class="w">                        </span>remote<span class="w"> </span>execution<span class="w"> </span>e.g.<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>cluster<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>node
-<span class="w">                        </span>specific<span class="w"> </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>this,<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>disable<span class="w"> </span>assuming
-<span class="w">                        </span>shared<span class="w"> </span>fs<span class="w"> </span><span class="k">for</span><span class="w"> </span>software-deployment<span class="w"> </span><span class="o">(</span>see<span class="w"> </span><span class="sb">`</span>--shared-fs-
-<span class="w">                        </span>usage<span class="sb">`</span><span class="o">)</span>.
+<span class="w">                        </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>.snakemake<span class="w"> </span>directory<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span>the
+<span class="w">                        </span>invocation<span class="w"> </span>directory.<span class="w"> </span>If<span class="w"> </span>supplied,<span class="w"> </span>the<span class="w"> </span>--use-apptainer
+<span class="w">                        </span>flag<span class="w"> </span>must<span class="w"> </span>also<span class="w"> </span>be<span class="w"> </span>set.<span class="w"> </span>The<span class="w"> </span>value<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>given<span class="w"> </span>as<span class="w"> </span>a
+<span class="w">                        </span>relative<span class="w"> </span>path,<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>extrapolated<span class="w"> </span>to<span class="w"> </span>the
+<span class="w">                        </span>invocation<span class="w"> </span>directory,<span class="w"> </span>or<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>absolute<span class="w"> </span>path.<span class="w"> </span>If<span class="w"> </span>not
+<span class="w">                        </span>supplied,<span class="w"> </span>APPTAINER_CACHEDIR<span class="w"> </span>is<span class="w"> </span>used.<span class="w"> </span>In<span class="w"> </span>any<span class="w"> </span><span class="k">case</span>,<span class="w"> </span>the
+<span class="w">                        </span>prefix<span class="w"> </span>may<span class="w"> </span>contain<span class="w"> </span>environment<span class="w"> </span>variables<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>properly<span class="w"> </span>expanded.<span class="w"> </span>Note<span class="w"> </span>that<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>remote
+<span class="w">                        </span>execution<span class="w"> </span>e.g.<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>cluster<span class="w"> </span>and<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>node<span class="w"> </span>specific
+<span class="w">                        </span>values<span class="w"> </span><span class="k">for</span><span class="w"> </span>this,<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>disable<span class="w"> </span>assuming<span class="w"> </span>shared<span class="w"> </span>fs
+<span class="w">                        </span><span class="k">for</span><span class="w"> </span>software-deployment<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>--shared-fs-usage<span class="o">)</span>.
 <span class="w">  </span>--apptainer-args,<span class="w"> </span>--singularity-args<span class="w"> </span>ARGS
 <span class="w">                        </span>Pass<span class="w"> </span>additional<span class="w"> </span>args<span class="w"> </span>to<span class="w"> </span>apptainer/singularity.
 
 ENVIRONMENT<span class="w"> </span>MODULES:
 <span class="w">  </span>--use-envmodules<span class="w">      </span>If<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>rule,<span class="w"> </span>run<span class="w"> </span>job<span class="w"> </span>within<span class="w"> </span>the<span class="w"> </span>given
 <span class="w">                        </span>environment<span class="w"> </span>modules,<span class="w"> </span>loaded<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>order.<span class="w"> </span>This
-<span class="w">                        </span>can<span class="w"> </span>be<span class="w"> </span>combined<span class="w"> </span>with<span class="w"> </span><span class="sb">`</span>--use-conda<span class="sb">`</span><span class="w"> </span>and<span class="w"> </span><span class="sb">`</span>--use-
-<span class="w">                        </span>singularity<span class="sb">`</span>,<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span><span class="k">then</span><span class="w"> </span>be<span class="w"> </span>only<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>a
+<span class="w">                        </span>can<span class="w"> </span>be<span class="w"> </span>combined<span class="w"> </span>with<span class="w"> </span>--use-conda<span class="w"> </span>and<span class="w"> </span>--use-
+<span class="w">                        </span>singularity,<span class="w"> </span>which<span class="w"> </span>will<span class="w"> </span><span class="k">then</span><span class="w"> </span>be<span class="w"> </span>only<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>a
 <span class="w">                        </span>fallback<span class="w"> </span><span class="k">for</span><span class="w"> </span>rules<span class="w"> </span>which<span class="w"> </span>don<span class="err">'</span>t<span class="w"> </span>define<span class="w"> </span>environment
 <span class="w">                        </span>modules.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 
@@ -13799,7 +13791,7 @@ INTERNAL:
 <span class="w">  </span>--target-jobs<span class="w"> </span>TARGET_JOBS<span class="w"> </span><span class="o">[</span>TARGET_JOBS<span class="w"> </span>...<span class="o">]</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Target<span class="w"> </span>particular<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>by
 <span class="w">                        </span>RULE:WILDCARD1<span class="o">=</span>VALUE,WILDCARD2<span class="o">=</span>VALUE,...
-<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>subprocess,remote,default<span class="o">}</span>
+<span class="w">  </span>--mode<span class="w"> </span><span class="o">{</span>remote,default,subprocess<span class="o">}</span>
 <span class="w">                        </span>Internal<span class="w"> </span>use<span class="w"> </span>only:<span class="w"> </span>Set<span class="w"> </span>execution<span class="w"> </span>mode<span class="w"> </span>of<span class="w"> </span>Snakemake.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>default<span class="o">)</span>
 <span class="w">  </span>--scheduler-solver-path<span class="w"> </span>SCHEDULER_SOLVER_PATH
@@ -13810,8 +13802,8 @@ INTERNAL:
 DEPRECATED:
 <span class="w">  </span>--max-jobs-per-second<span class="w"> </span>MAX_JOBS_PER_SECOND
 <span class="w">                        </span>Maximal<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>job<span class="w"> </span>submissions/executions<span class="w"> </span>per
-<span class="w">                        </span>second.<span class="w"> </span>Deprecated<span class="w"> </span><span class="k">in</span><span class="w"> </span>favor<span class="w"> </span>of<span class="w"> </span><span class="sb">`</span>--max-jobs-per-
-<span class="w">                        </span>timespan<span class="sb">`</span>.
+<span class="w">                        </span>second.<span class="w"> </span>Deprecated<span class="w"> </span><span class="k">in</span><span class="w"> </span>favor<span class="w"> </span>of<span class="w"> </span>--max-jobs-per-
+<span class="w">                        </span>timespan.
 
 html<span class="w"> </span>report<span class="w"> </span>plugin<span class="w"> </span>settings:
 <span class="w">  </span>--report-html-path<span class="w"> </span>VALUE
