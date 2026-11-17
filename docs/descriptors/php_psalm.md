@@ -29,7 +29,7 @@ description: How to use psalm (configure, ignore files, ignore errors, help & ve
 
 ## psalm documentation
 
-- Version in MegaLinter: **Psalm.6.20.5@**
+- Version in MegaLinter: **Psalm.6.20.6@**
 - Visit [Official Web Site](https://psalm.dev){target=_blank}
 - See [How to configure psalm rules](https://psalm.dev/docs/running_psalm/configuration/){target=_blank}
   - If custom `psalm.xml` config file isn't found, [psalm.xml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml){target=_blank} will be used
@@ -318,7 +318,7 @@ ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.20.5
+ARG PHP_VIMEO_PSALM_VERSION=6.20.6
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
 
 ```
@@ -348,7 +348,7 @@ NATIVE_LINTERS: [PHP_PSALM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PHP_PSALM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar &&
+    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar &&
       chmod +x "$INSTALL_DIR/psalm.phar" &&
       export PATH="$INSTALL_DIR:$PATH"
     # psalm: run php "$INSTALL_DIR/psalm.phar"
@@ -359,7 +359,7 @@ NATIVE_LINTERS: [PHP_PSALM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PHP_PSALM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.5/psalm.phar &&
+    curl -fsSL -o "$INSTALL_DIR/psalm.phar" https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar &&
       export PATH="$INSTALL_DIR:$PATH"
     # psalm: run php "$INSTALL_DIR/psalm.phar"
     ```

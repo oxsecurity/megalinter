@@ -152,7 +152,7 @@ options:
   --project-dir PROJECT_DIR
                         Location of project/repository, autodetected based on location of configuration file.
   -r, --rules-dir RULESDIR
-                        Specify custom rule directories. Add -R to keep using embedded rules from /venvs/ansible-lint/lib/python3.14/site-packages/ansiblelint/rules
+                        Specify custom rule directories. Add -R to keep using embedded rules from /venvs/ansible-lint/lib/python3.15/site-packages/ansiblelint/rules
   -R                    Keep default rules when using -r
   -s, --strict          Return non-zero exit code on warnings as well as errors
   --fix [WRITE_LIST]    Allow ansible-lint to perform auto-fixes, including YAML reformatting. You can limit the effective rule transforms (the 'write_list') by passing a keywords 'all' or 'none' or a comma separated list of rule ids or rule tags. YAML reformatting happens whenever '--fix' or '--fix=' is used. '--fix' and '--fix=all' are equivalent: they allow all transforms to run. Presence of --fix in command overrides config file value.
@@ -184,7 +184,7 @@ The following environment variables are also recognized but there is no guarante
 
 ANSIBLE_LINT_CUSTOM_RULESDIR: Used for adding another folder into the lookup path for new rules.
 
-ANSIBLE_LINT_IGNORE_FILE: Define it to override the name of the default ignore file `.ansible-lint-ignore`
+ANSIBLE_LINT_IGNORE_FILE: Define it to override the name of the default ignore file .ansible-lint-ignore
 
 ANSIBLE_LINT_WRITE_TMP: Tells linter to dump fixes into different temp files instead of overriding original. Used internally for testing.
 

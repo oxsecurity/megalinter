@@ -147,7 +147,7 @@ usage: checkov [-h] [-v] [--support] [-d DIRECTORY] [--add-check]
                [--secrets-scan-file-type SECRETS_SCAN_FILE_TYPE]
                [--enable-secret-scan-all-files]
                [--block-list-secret-scan BLOCK_LIST_SECRET_SCAN]
-               [--summary-position {bottom,top}]
+               [--summary-position {top,bottom}]
                [--skip-resources-without-violations] [--deep-analysis]
                [--no-fail-on-crash] [--mask MASK] [--scan-secrets-history]
                [--secrets-history-timeout SECRETS_HISTORY_TIMEOUT]
@@ -387,7 +387,7 @@ options:
                         soft-fail list. For example, if the given enforcement
                         rule has a hard-fail value of HIGH and a soft-fail
                         value of MEDIUM,this is the equivalent of using the
-                        flags `--skip-check LOW --hard-fail-on HIGH`. You can
+                        flags --skip-check LOW --hard-fail-on HIGH. You can
                         use --check, --skip-check, --soft-fail, --soft-fail-
                         on, or --hard-fail-on to override portions of an
                         enforcement rule. Note, however, that the logic of
@@ -431,7 +431,7 @@ options:
                         variable or default)
   --create-baseline     Alongside outputting the findings, save all results to
                         .checkov.baseline file so future runs will not re-flag
-                        the same noise. Works only with `--directory` flag
+                        the same noise. Works only with --directory flag
   --baseline BASELINE   Use a .checkov.baseline file to compare current
                         results with a known baseline. Report will include
                         only failed checks that are new with respect to the
@@ -473,7 +473,7 @@ options:
   --block-list-secret-scan BLOCK_LIST_SECRET_SCAN
                         List of files to filter out from the secret scanner
                         [env var: CKV_SECRETS_SCAN_BLOCK_LIST]
-  --summary-position {bottom,top}
+  --summary-position {top,bottom}
                         Chose whether the summary will be appended on top
                         (before the checks results) or on bottom (after check
                         results), default is on top.

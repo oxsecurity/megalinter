@@ -109,7 +109,7 @@ options:
   --diff             don't update files, but show a diff of what would change
   -w, --width WIDTH  the target line length in characters
   --ext EXT          the extension of files to look at when passed a directory
-                     (default `rst`)
+                     (default rst)
   --test             [internal] run tests instead of updating files
   -v, --verbose      [internal] print extra debugging information
 ```
