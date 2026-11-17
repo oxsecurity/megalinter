@@ -10,76 +10,76 @@
         {
           "archive": "none",
           "name": "psalm.phar",
-          "sha256": "8910e5138585b2c608bd518f806b57e0d54886d22d60621b1d3b6390daccdd4e",
+          "sha256": "e577d603f2c0efa1558299bcc9511c7d132aa466a0a3372f50a9d8af084ff3aa",
           "size": 53064780,
-          "url": "https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar",
+          "url": "https://github.com/vimeo/psalm/releases/download/6.20.7/psalm.phar",
           "verification": [
             "gpg:psalm.asc"
           ]
         }
       ],
-      "version": "6.20.6"
+      "version": "6.20.7"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "none",
           "name": "psalm.phar",
-          "sha256": "8910e5138585b2c608bd518f806b57e0d54886d22d60621b1d3b6390daccdd4e",
+          "sha256": "e577d603f2c0efa1558299bcc9511c7d132aa466a0a3372f50a9d8af084ff3aa",
           "size": 53064780,
-          "url": "https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar",
+          "url": "https://github.com/vimeo/psalm/releases/download/6.20.7/psalm.phar",
           "verification": [
             "gpg:psalm.asc"
           ]
         }
       ],
-      "version": "6.20.6"
+      "version": "6.20.7"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "none",
           "name": "psalm.phar",
-          "sha256": "8910e5138585b2c608bd518f806b57e0d54886d22d60621b1d3b6390daccdd4e",
+          "sha256": "e577d603f2c0efa1558299bcc9511c7d132aa466a0a3372f50a9d8af084ff3aa",
           "size": 53064780,
-          "url": "https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar",
+          "url": "https://github.com/vimeo/psalm/releases/download/6.20.7/psalm.phar",
           "verification": [
             "gpg:psalm.asc"
           ]
         }
       ],
-      "version": "6.20.6"
+      "version": "6.20.7"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "none",
           "name": "psalm.phar",
-          "sha256": "8910e5138585b2c608bd518f806b57e0d54886d22d60621b1d3b6390daccdd4e",
+          "sha256": "e577d603f2c0efa1558299bcc9511c7d132aa466a0a3372f50a9d8af084ff3aa",
           "size": 53064780,
-          "url": "https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar",
+          "url": "https://github.com/vimeo/psalm/releases/download/6.20.7/psalm.phar",
           "verification": [
             "gpg:psalm.asc"
           ]
         }
       ],
-      "version": "6.20.6"
+      "version": "6.20.7"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "none",
           "name": "psalm.phar",
-          "sha256": "8910e5138585b2c608bd518f806b57e0d54886d22d60621b1d3b6390daccdd4e",
+          "sha256": "e577d603f2c0efa1558299bcc9511c7d132aa466a0a3372f50a9d8af084ff3aa",
           "size": 53064780,
-          "url": "https://github.com/vimeo/psalm/releases/download/6.20.6/psalm.phar",
+          "url": "https://github.com/vimeo/psalm/releases/download/6.20.7/psalm.phar",
           "verification": [
             "gpg:psalm.asc"
           ]
         }
       ],
-      "version": "6.20.6"
+      "version": "6.20.7"
     }
   },
-  "spec_hash": "a4632e4a3c1ff606e1bd169b4bfd0a1d5a54140dd9973de6ca01257ef612286c"
+  "spec_hash": "eccc36654c51083297b1f7fb21b46141e0918e3ec59302507dc08c814ee6459d"
 }
