@@ -158,16 +158,11 @@ Available commands:
 
 - Dockerfile commands :
 ```dockerfile
-# Parent descriptor install
-# renovate: datasource=npm depName=typescript
-ARG NPM_TYPESCRIPT_VERSION=6.0.3
-# Linter install
 # renovate: datasource=npm depName=@biomejs/biome
 ARG NPM_BIOMEJS_BIOME_VERSION=2.6.4
 ```
 
 - NPM packages (node.js):
-  - [typescript@6.0.3](https://www.npmjs.com/package/typescript/v/6.0.3)
   - [@biomejs/biome@2.6.4](https://www.npmjs.com/package/@biomejs/biome/v/2.6.4)
 
 ### Installation without Docker (native mode)

@@ -21,7 +21,7 @@ description: How to use roslynator (configure, ignore files, ignore errors, help
 
 ## roslynator documentation
 
-- Version in MegaLinter: **0.13.0.0**
+- Version in MegaLinter: **1.0.1.0**
 - Visit [Official Web Site](https://github.com/dotnet/Roslynator#readme){target=_blank}
 - See [How to configure roslynator rules](https://josefpihrt.github.io/docs/roslynator/configuration){target=_blank}
 - See [How to disable roslynator rules in files](https://josefpihrt.github.io/docs/roslynator/how-to-suppress-diagnostic){target=_blank}
@@ -99,22 +99,21 @@ roslynator fix myproject.csproj
 ### Help content
 
 ```shell
-Roslynator Command Line Tool version 0.13.0.0 (Roslyn version 4.14.0.0)
+Roslynator Command Line Tool version 1.0.1.0 (Roslyn version 5.0.0.0)
 Usage: roslynator [command] [arguments]
 
 Commands:
-  analyze            Analyzes specified project or solution and reports diagnostics.
-  find-symbol        Finds symbols in the specified project or solution.
-  fix                Fixes diagnostics in the specified project or solution.
-  format             Formats whitespace in the specified project or solution.
-  generate-doc       Generates reference documentation from specified project/solution.
-  generate-doc-root  [deprecated] Generates root documentation file from specified project/solution.
-  list-symbols       Lists symbols from the specified project or solution.
-  lloc               Counts logical lines of code in the specified project or solution.
-  loc                Counts physical lines of code in the specified project or solution.
-  migrate            Migrates analyzers to a new version.
-  rename-symbol      Rename symbols in the specified project or solution.
-  spellcheck         Searches the specified project or solution for possible misspellings or typos.
+  analyze        Analyzes specified project or solution and reports diagnostics.
+  find-symbol    Finds symbols in the specified project or solution.
+  fix            Fixes diagnostics in the specified project or solution.
+  format         Formats whitespace in the specified project or solution.
+  generate-doc   Generates reference documentation from specified project/solution.
+  list-symbols   Lists symbols from the specified project or solution.
+  lloc           Counts logical lines of code in the specified project or solution.
+  loc            Counts physical lines of code in the specified project or solution.
+  migrate        Migrates analyzers to a new version.
+  rename-symbol  Rename symbols in the specified project or solution.
+  spellcheck     Searches the specified project or solution for possible misspellings or typos.
 
 Run 'roslynator help [command]' for more information on a command.
 ```
@@ -128,7 +127,7 @@ RUN apk add --no-cache dotnet10-sdk && install -d /usr/local/dotnet-tools
 ENV PATH="${PATH}:/usr/local/dotnet-tools"
 # Linter install
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
+ARG CSHARP_ROSLYNATOR_VERSION=1.0.1
 RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools roslynator.dotnet.cli --version "${CSHARP_ROSLYNATOR_VERSION}" \
     && find /usr/local/dotnet-tools/.store -name "*.nupkg" -delete \
     && DOTNET_SDK_MAJOR="$(dotnet --version | cut -d. -f1)" \
@@ -170,7 +169,7 @@ NATIVE_LINTERS: [CSHARP_ROSLYNATOR]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/CSHARP_ROSLYNATOR"
-    dotnet tool install roslynator.dotnet.cli --version 0.13.0 --tool-path "$INSTALL_DIR"
+    dotnet tool install roslynator.dotnet.cli --version 1.0.1 --tool-path "$INSTALL_DIR"
     export PATH="$INSTALL_DIR:$PATH"
     ```
 

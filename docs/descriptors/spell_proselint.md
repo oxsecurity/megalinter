@@ -123,7 +123,7 @@ proselint, a linter for prose.
 
 options:
   -h, --help            show this help message and exit
-  --config CONFIG       path to a configuration file (`.proselintrc.json`)
+  --config CONFIG       path to a configuration file (.proselintrc.json)
   --output-format, -o {full,json,compact}
                         the format to display results in
   --verbose, -v         enable verbose logging

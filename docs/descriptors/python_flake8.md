@@ -134,7 +134,7 @@ options:
   -q, --quiet           Report only file names, or nothing. This option is
                         repeatable.
   --color {auto,always,never}
-                        Whether to use color in output. Defaults to `auto`.
+                        Whether to use color in output. Defaults to auto.
   --count               Print total number of errors to standard output after
                         all other output.
   --exclude patterns    Comma-separated list of files or directories to
@@ -153,25 +153,23 @@ options:
   --format format       Format errors according to the chosen formatter
                         (default, pylint, quiet-filename, quiet-nothing) or a
                         format string containing %-style mapping keys (code,
-                        col, path, row, text). For example,
-                        ``--format=pylint`` or ``--format='%(path)s
-                        %(code)s'``. (Default: default)
+                        col, path, row, text). For example, --format=pylint or
+                        --format='%(path)s %(code)s'. (Default: default)
   --hang-closing        Hang closing bracket instead of matching indentation
                         of opening bracket's line.
   --ignore errors       Comma-separated list of error codes to ignore (or
-                        skip). For example, ``--ignore=E4,E51,W234``.
-                        (Default: E121,E123,E126,E226,E24,E704,W503,W504)
+                        skip). For example, --ignore=E4,E51,W234. (Default:
+                        E121,E123,E126,E226,E24,E704,W503,W504)
   --extend-ignore errors
                         Comma-separated list of error codes to add to the list
-                        of ignored ones. For example, ``--extend-
-                        ignore=E4,E51,W234``.
+                        of ignored ones. For example, --extend-
+                        ignore=E4,E51,W234.
   --per-file-ignores PER_FILE_IGNORES
                         A pairing of filenames and violation codes that
                         defines which violations to ignore in a particular
                         file. The filenames can be specified in a manner
-                        similar to the ``--exclude`` option and the violations
-                        work similarly to the ``--ignore`` and ``--select``
-                        options.
+                        similar to the --exclude option and the violations
+                        work similarly to the --ignore and --select options.
   --max-line-length n   Maximum allowed line length for the entirety of this
                         run. (Default: 79)
   --max-doc-length n    Maximum allowed doc line length for the entirety of
@@ -180,12 +178,12 @@ options:
   --select errors       Limit the reported error codes to codes prefix-matched
                         by this list. You usually do not need to specify this
                         option as the default includes all installed plugin
-                        codes. For example, ``--select=E4,E51,W234``.
+                        codes. For example, --select=E4,E51,W234.
   --extend-select errors
-                        Add additional error codes to the default
-                        ``--select``. You usually do not need to specify this
-                        option as the default includes all installed plugin
-                        codes. For example, ``--extend-select=E4,E51,W234``.
+                        Add additional error codes to the default --select.
+                        You usually do not need to specify this option as the
+                        default includes all installed plugin codes. For
+                        example, --extend-select=E4,E51,W234.
   --disable-noqa        Disable the effect of "# noqa". This will report
                         errors on lines with "# noqa" at the end.
   --show-source         Show the source generate each error or warning.

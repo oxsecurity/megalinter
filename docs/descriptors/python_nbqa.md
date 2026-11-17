@@ -117,7 +117,7 @@ See https://nbqa.readthedocs.io/en/latest/index.html for more details on how to 
 Run any standard Python code-quality tool on a Jupyter notebook.
 
 positional arguments:
-  command               Command to run, e.g. `flake8`.
+  command               Command to run, e.g. flake8.
   root_dirs             Notebooks or directories to run command on.
 
 options:
@@ -127,12 +127,12 @@ options:
   --nbqa-exclude NBQA_EXCLUDE
                         Global file exclude pattern.
   --nbqa-diff           Show diff which would result from running tool.
-  --nbqa-shell          Run `command` directly rather than `python -m command`
+  --nbqa-shell          Run command directly rather than python -m command
   --nbqa-process-cells NBQA_PROCESS_CELLS
                         Process code within these cell magics. You can pass
-                        multiple options, e.g. `nbqa black my_notebook.ipynb
-                        --nbqa-process-cells add_to,write_to` by placing
-                        commas between them.
+                        multiple options, e.g. nbqa black my_notebook.ipynb
+                        --nbqa-process-cells add_to,write_to by placing commas
+                        between them.
   --version             show program's version number and exit
   --nbqa-dont-skip-bad-cells
                         Don't skip cells with invalid syntax.

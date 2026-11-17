@@ -239,7 +239,7 @@ Main:
   --py-version <py_version>
                         Minimum Python version to use for version dependent
                         checks. Will default to the version used to run
-                        pylint. (default: (3, 14))
+                        pylint. (default: (3, 15))
   --ignored-modules <module names>
                         List of module names for which member attributes
                         should not be checked and will not be imported (useful
@@ -480,7 +480,7 @@ Logging:
                         (default: ('logging',))
   --logging-format-style <old (%) or new ({)>
                         The type of string formatting that logging methods do.
-                        `old` means using % formatting, `new` is for `{}`
+                        old means using % formatting, new is for {}
                         formatting. (default: old)
 
 Similarities:
@@ -618,8 +618,8 @@ Refactoring:
   --suggest-join-with-non-empty-separator <y or n>
                         Let 'consider-using-join' be raised when the separator
                         to join on would be non-empty (resulting in expected
-                        fixes of the type: ``"- " + " - ".join(items)``)
-                        (default: True)
+                        fixes of the type: "- " + " - ".join(items)) (default:
+                        True)
 
 Basic:
   --good-names <names>  Good variable names which should always be accepted,
