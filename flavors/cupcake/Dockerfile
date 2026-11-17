@@ -270,7 +270,7 @@ ARG PIP_RUFF_VERSION=0.17.3
 # renovate: datasource=pypi depName=ty
 ARG PIP_TY_VERSION=0.0.100
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.4.0
+ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=github-tags depName=anchore/grype
 ARG REPOSITORY_GRYPE_VERSION=0.121.1
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
