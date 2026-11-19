@@ -265,7 +265,8 @@ linters:
         - linux/amd64
         - linux/arm64
   # PSALM
-  - linter_name: psalm
+  - class: PsalmLinter
+    linter_name: psalm
     linter_text: |
       **Psalm** is an advanced static analysis tool for PHP that provides comprehensive type checking, security analysis, and code quality assessment. Developed by Vimeo, it offers sophisticated analysis capabilities that go beyond traditional linting to catch subtle bugs and security vulnerabilities.
 
@@ -335,7 +336,7 @@ linters:
       requires:
         - runtime: php
           # Requirement of the psalm phar (Box requirements checker)
-          version: "~8.1.31 || ~8.2.27 || ~8.3.16 || ~8.4.3 || >=8.5"
+          version: "~8.2.27 || ~8.3.16 || ~8.4.3 || >=8.5"
       assets:
         any:
           url: https://github.com/vimeo/psalm/releases/download/{{VERSION}}/psalm.phar
@@ -360,7 +361,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=vimeo/psalm
-          ARG PHP_VIMEO_PSALM_VERSION=6.20.9
+          ARG PHP_VIMEO_PSALM_VERSION=7.0.3
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
     supported_platforms:
