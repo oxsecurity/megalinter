@@ -379,7 +379,7 @@ linters:
     native_install:
       method: binary
       # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v(?<version>.+)$
-      version: "1.13.8"
+      version: "1.13.9"
       assets:
         linux/amd64:
           url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_amd64.zip
@@ -549,7 +549,7 @@ linters:
     native_install:
       method: binary
       # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v(?<version>.+)$
-      version: "1.13.8"
+      version: "1.13.9"
       assets:
         linux/amd64:
           url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_amd64.zip
