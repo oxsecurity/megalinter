@@ -12504,7 +12504,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.49.4</strong></li>
+<li>Version in MegaLinter: <strong>1.49.6</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12776,117 +12776,165 @@
 
 <span class="w">  </span>djLint<span class="w"> </span>·<span class="w"> </span>HTML<span class="w"> </span>template<span class="w"> </span>linter<span class="w"> </span>and<span class="w"> </span>formatter.
 
-Options:
-<span class="w">  </span>--version<span class="w">                       </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+Modes:
+<span class="w">  </span>--lint<span class="w">                          </span>Lint<span class="w"> </span>the<span class="w"> </span>files.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>when
+<span class="w">                                  </span>neither<span class="w"> </span>--reformat<span class="w"> </span>nor<span class="w"> </span>--check<span class="w"> </span>is<span class="w"> </span>given.
+<span class="w">  </span>--reformat<span class="w">                      </span>Format<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>place.
+<span class="w">  </span>--check<span class="w">                         </span>Show<span class="w"> </span>what<span class="w"> </span>formatting<span class="w"> </span>would<span class="w"> </span>change,<span class="w"> </span>without
+<span class="w">                                  </span>changing<span class="w"> </span>the<span class="w"> </span>files.
 <span class="w">  </span>--lsp<span class="w">                           </span>Run<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>language<span class="w"> </span>server<span class="w"> </span>over<span class="w"> </span>stdio,<span class="w"> </span><span class="k">for</span>
 <span class="w">                                  </span>editors.
-<span class="w">  </span>-e,<span class="w"> </span>--extension<span class="w"> </span>TEXT<span class="w">            </span>File<span class="w"> </span>extension<span class="w"> </span>to<span class="w"> </span>check<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>html<span class="o">]</span>
-<span class="w">  </span>-i,<span class="w"> </span>--ignore<span class="w"> </span>TEXT<span class="w">               </span>Codes<span class="w"> </span>to<span class="w"> </span>ignore.<span class="w"> </span>ex:<span class="w"> </span><span class="s2">"H014,H017"</span>
-<span class="w">  </span>--reformat<span class="w">                      </span>Reformat<span class="w"> </span>the<span class="w"> </span>file<span class="o">(</span>s<span class="o">)</span>.
-<span class="w">  </span>--check<span class="w">                         </span>Check<span class="w"> </span>formatting<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>file<span class="o">(</span>s<span class="o">)</span>.
-<span class="w">  </span>--stdin-filename<span class="w"> </span>TEXT<span class="w">           </span>Filename<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>per-file-ignores<span class="w"> </span>and
-<span class="w">                                  </span>messages<span class="w"> </span>when<span class="w"> </span>reading<span class="w"> </span>from<span class="w"> </span>stdin.<span class="w"> </span><span class="o">[</span>default:
-<span class="w">                                  </span>-<span class="o">]</span>
-<span class="w">  </span>--indent<span class="w"> </span>INTEGER<span class="w">                </span>Indent<span class="w"> </span>spacing.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
-<span class="w">  </span>--quiet<span class="w">                         </span>Do<span class="w"> </span>not<span class="w"> </span>print<span class="w"> </span>diff<span class="w"> </span>when<span class="w"> </span>reformatting.
-<span class="w">  </span>--profile<span class="w"> </span>TEXT<span class="w">                  </span>Enable<span class="w"> </span>defaults<span class="w"> </span>by<span class="w"> </span>template<span class="w"> </span>language.<span class="w"> </span>ops:
-<span class="w">                                  </span>django,<span class="w"> </span>jinja,<span class="w"> </span>nunjucks,<span class="w"> </span>handlebars,<span class="w"> </span>liquid,
-<span class="w">                                  </span>golang,<span class="w"> </span>angular,<span class="w"> </span>tera,<span class="w"> </span>askama,<span class="w"> </span>html
-<span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span>html<span class="o">]</span>
-<span class="w">  </span>--require-pragma<span class="w">                </span>Only<span class="w"> </span>format<span class="w"> </span>or<span class="w"> </span>lint<span class="w"> </span>files<span class="w"> </span>that<span class="w"> </span>starts<span class="w"> </span>with<span class="w"> </span>a
-<span class="w">                                  </span>comment<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>text<span class="w"> </span><span class="s1">'djlint:on'</span>
-<span class="w">  </span>--lint<span class="w">                          </span>Lint<span class="w"> </span><span class="k">for</span><span class="w"> </span>common<span class="w"> </span>issues.<span class="w"> </span><span class="o">[</span>default<span class="w"> </span>option<span class="o">]</span>
-<span class="w">  </span>--use-gitignore<span class="w">                 </span>Use<span class="w"> </span>.gitignore<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>extend<span class="w"> </span>excludes.
+
+Files:
+<span class="w">  </span>-e,<span class="w"> </span>--extension<span class="w"> </span>EXT<span class="w">             </span>Extension<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>look<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">in</span>
+<span class="w">                                  </span>folders.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>html<span class="o">]</span>
+<span class="w">  </span>--exclude<span class="w"> </span>PATHS<span class="w">                 </span>Paths<span class="w"> </span>to<span class="w"> </span>skip,<span class="w"> </span>comma-separated,<span class="w"> </span><span class="k">in</span><span class="w"> </span>place<span class="w"> </span>of
+<span class="w">                                  </span>the<span class="w"> </span>default<span class="w"> </span>list.
+<span class="w">  </span>--extend-exclude<span class="w"> </span>PATHS<span class="w">          </span>Paths<span class="w"> </span>to<span class="w"> </span>skip<span class="w"> </span>on<span class="w"> </span>top<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>list,
+<span class="w">                                  </span>comma-separated.
+<span class="w">  </span>--use-gitignore<span class="w">                 </span>Also<span class="w"> </span>skip<span class="w"> </span>the<span class="w"> </span>paths<span class="w"> </span>that<span class="w"> </span>.gitignore<span class="w"> </span>lists.
+<span class="w">  </span>--require-pragma<span class="w">                </span>Only<span class="w"> </span>format<span class="w"> </span>or<span class="w"> </span>lint<span class="w"> </span>files<span class="w"> </span>whose<span class="w"> </span>first<span class="w"> </span>line
+<span class="w">                                  </span>is<span class="w"> </span>a<span class="w"> </span>djlint:on<span class="w"> </span>comment.
+<span class="w">  </span>--stdin-filename<span class="w"> </span>PATH<span class="w">           </span>Path<span class="w"> </span>that<span class="w"> </span>stands<span class="w"> </span><span class="k">for</span><span class="w"> </span>stdin<span class="w"> </span><span class="k">in</span><span class="w"> </span>messages,
+<span class="w">                                  </span>excludes<span class="w"> </span>and<span class="w"> </span>per-file<span class="w"> </span>ignores.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>-<span class="o">]</span>
 <span class="w">  </span>--allow-empty-input<span class="w">             </span>Exit<span class="w"> </span>with<span class="w"> </span><span class="m">0</span><span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span><span class="m">2</span><span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>given
 <span class="w">                                  </span>paths<span class="w"> </span>match<span class="w"> </span>no<span class="w"> </span>files.
-<span class="w">  </span>--warn<span class="w">                          </span>Return<span class="w"> </span>errors<span class="w"> </span>as<span class="w"> </span>warnings.
-<span class="w">  </span>--preserve-leading-space<span class="w">        </span>Attempt<span class="w"> </span>to<span class="w"> </span>preserve<span class="w"> </span>leading<span class="w"> </span>space<span class="w"> </span>on<span class="w"> </span>text.
-<span class="w">  </span>--preserve-blank-lines<span class="w">          </span>Attempt<span class="w"> </span>to<span class="w"> </span>preserve<span class="w"> </span>blank<span class="w"> </span>lines.
-<span class="w">  </span>--preserve-class-newlines<span class="w">       </span>Preserve<span class="w"> </span>line<span class="w"> </span>breaks<span class="w"> </span>inside<span class="w"> </span>multiline<span class="w"> </span>class
-<span class="w">                                  </span>attributes.
-<span class="w">  </span>--format-css<span class="w">                    </span>Also<span class="w"> </span>format<span class="w"> </span>contents<span class="w"> </span>of<span class="w"> </span>&lt;style&gt;<span class="w"> </span>tags.
-<span class="w">  </span>--format-js<span class="w">                     </span>Also<span class="w"> </span>format<span class="w"> </span>contents<span class="w"> </span>of<span class="w"> </span>&lt;script&gt;<span class="w"> </span>tags.
-<span class="w">  </span>--format-attribute-js-json<span class="w">      </span>Also<span class="w"> </span>format<span class="w"> </span>JavaScript/JSON<span class="w"> </span>inside<span class="w"> </span>HTML
-<span class="w">                                  </span>attributes.
-<span class="w">  </span>--format-attribute-js-json-pattern<span class="w"> </span>TEXT
-<span class="w">                                  </span>Regex<span class="w"> </span>pattern<span class="w"> </span>to<span class="w"> </span>match<span class="w"> </span>JavaScript
-<span class="w">                                  </span>attributes.
-<span class="w">  </span>--format-attribute-js-json-min-props<span class="w"> </span>INTEGER
-<span class="w">                                  </span>Minimum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>properties<span class="w"> </span>to<span class="w"> </span>treat
-<span class="w">                                  </span>attribute<span class="w"> </span>content<span class="w"> </span>as<span class="w"> </span>JS/JSON.
-<span class="w">  </span>--configuration<span class="w"> </span>FILE<span class="w">            </span>Path<span class="w"> </span>to<span class="w"> </span>global<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="k">in</span>
-<span class="w">                                  </span>djlint.toml,<span class="w"> </span>.djlint.toml,<span class="w"> </span>or<span class="w"> </span>.djlintrc
-<span class="w">                                  </span>format
-<span class="w">  </span>--prefer-configuration<span class="w">          </span>Let<span class="w"> </span>--configuration<span class="w"> </span>override<span class="w"> </span>the<span class="w"> </span>project<span class="err">'</span>s
-<span class="w">                                  </span>own<span class="w"> </span>config<span class="w"> </span>file,<span class="w"> </span>rather<span class="w"> </span>than<span class="w"> </span>the<span class="w"> </span>other<span class="w"> </span>way
-<span class="w">                                  </span>round.
-<span class="w">  </span>--rules<span class="w"> </span>FILE<span class="w">                    </span>Path<span class="w"> </span>to<span class="w"> </span>custom<span class="w"> </span>rules<span class="w"> </span>file<span class="w"> </span><span class="k">in</span>
-<span class="w">                                  </span>.djlint_rules.yaml<span class="w"> </span>format
-<span class="w">  </span>--statistics<span class="w">                    </span>Count<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>occurrences<span class="w"> </span>of<span class="w"> </span>each
-<span class="w">                                  </span>error/warning<span class="w"> </span>code.
-<span class="w">  </span>--include<span class="w"> </span>TEXT<span class="w">                  </span>Codes<span class="w"> </span>to<span class="w"> </span>include.<span class="w"> </span>ex:<span class="w"> </span><span class="s2">"H014,H017"</span>
-<span class="w">  </span>--ignore-case<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>fix<span class="w"> </span><span class="k">case</span><span class="w"> </span>on<span class="w"> </span>known<span class="w"> </span>html<span class="w"> </span>tags.
-<span class="w">  </span>--ignore-blocks<span class="w"> </span>TEXT<span class="w">            </span>Comma<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>template<span class="w"> </span>blocks<span class="w"> </span>to<span class="w"> </span>not<span class="w"> </span>indent.
-<span class="w">  </span>--blank-line-after-tag<span class="w"> </span>TEXT<span class="w">     </span>Add<span class="w"> </span>an<span class="w"> </span>additional<span class="w"> </span>blank<span class="w"> </span>line<span class="w"> </span>after<span class="w"> </span><span class="o">{</span>%<span class="w"> </span>&lt;tag&gt;
-<span class="w">                                  </span>...<span class="w"> </span>%<span class="o">}</span><span class="w"> </span>tag<span class="w"> </span>groups.
-<span class="w">  </span>--blank-line-before-tag<span class="w"> </span>TEXT<span class="w">    </span>Add<span class="w"> </span>an<span class="w"> </span>additional<span class="w"> </span>blank<span class="w"> </span>line<span class="w"> </span>before<span class="w"> </span><span class="o">{</span>%<span class="w"> </span>&lt;tag&gt;
-<span class="w">                                  </span>...<span class="w"> </span>%<span class="o">}</span><span class="w"> </span>tag<span class="w"> </span>groups.
-<span class="w">  </span>--line-break-after-multiline-tag
-<span class="w">                                  </span>Do<span class="w"> </span>not<span class="w"> </span>condense<span class="w"> </span>the<span class="w"> </span>content<span class="w"> </span>of<span class="w"> </span>multi-line
-<span class="w">                                  </span>tags<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>last<span class="w"> </span>attribute.
-<span class="w">  </span>--custom-blocks<span class="w"> </span>TEXT<span class="w">            </span>Indent<span class="w"> </span>custom<span class="w"> </span>template<span class="w"> </span>blocks.<span class="w"> </span>For<span class="w"> </span>example
-<span class="w">                                  </span><span class="o">{</span>%<span class="w"> </span>toc<span class="w"> </span>%<span class="o">}</span>...<span class="o">{</span>%<span class="w"> </span>endtoc<span class="w"> </span>%<span class="o">}</span>
-<span class="w">  </span>--custom-html<span class="w"> </span>TEXT<span class="w">              </span>Indent<span class="w"> </span>custom<span class="w"> </span>HTML<span class="w"> </span>tags.<span class="w"> </span>For<span class="w"> </span>example<span class="w"> </span>&lt;mjml&gt;
-<span class="w">  </span>--exclude<span class="w"> </span>TEXT<span class="w">                  </span>Override<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>exclude<span class="w"> </span>paths.
-<span class="w">  </span>--extend-exclude<span class="w"> </span>TEXT<span class="w">           </span>Add<span class="w"> </span>additional<span class="w"> </span>paths<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>default<span class="w"> </span>exclude.
-<span class="w">  </span>--linter-output-format<span class="w"> </span>TEXT<span class="w">     </span>Customize<span class="w"> </span>order<span class="w"> </span>of<span class="w"> </span>linter<span class="w"> </span>output<span class="w"> </span>message.
-<span class="w">  </span>--max-line-length<span class="w"> </span>INTEGER<span class="w">       </span>Max<span class="w"> </span>line<span class="w"> </span>length.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">120</span><span class="o">]</span>
-<span class="w">  </span>--max-attribute-length<span class="w"> </span>INTEGER<span class="w">  </span>Max<span class="w"> </span>attribute<span class="w"> </span>length.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">70</span><span class="o">]</span>
-<span class="w">  </span>--format-attribute-template-tags
-<span class="w">                                  </span>Attempt<span class="w"> </span>to<span class="w"> </span>format<span class="w"> </span>template<span class="w"> </span>syntax<span class="w"> </span>inside<span class="w"> </span>of
-<span class="w">                                  </span>tag<span class="w"> </span>attributes.
-<span class="w">  </span>--single-attribute-per-line<span class="w">     </span>When<span class="w"> </span>an<span class="w"> </span>opening<span class="w"> </span>tag<span class="w"> </span>wraps,<span class="w"> </span>put<span class="w"> </span>each
-<span class="w">                                  </span>attribute<span class="w"> </span>on<span class="w"> </span>its<span class="w"> </span>own<span class="w"> </span>line.
-<span class="w">  </span>--per-file-ignores<span class="w"> </span>&lt;TEXT<span class="w"> </span>TEXT&gt;...
-<span class="w">                                  </span>Ignore<span class="w"> </span>linter<span class="w"> </span>rules<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>per-file<span class="w"> </span>basis.
-<span class="w">  </span>--indent-css<span class="w"> </span>INTEGER<span class="w">            </span>Set<span class="w"> </span>CSS<span class="w"> </span>indent<span class="w"> </span>level.
-<span class="w">  </span>--indent-js<span class="w"> </span>INTEGER<span class="w">             </span>Set<span class="w"> </span>JS<span class="w"> </span>indent<span class="w"> </span>level.
-<span class="w">  </span>--close-void-tags<span class="w">               </span>Add<span class="w"> </span>closing<span class="w"> </span>mark<span class="w"> </span>on<span class="w"> </span>known<span class="w"> </span>void<span class="w"> </span>tags.<span class="w"> </span>Ex:
-<span class="w">                                  </span>&lt;img&gt;<span class="w"> </span>becomes<span class="w"> </span>&lt;img<span class="w"> </span>/&gt;
-<span class="w">  </span>--no-line-after-yaml<span class="w">            </span>Do<span class="w"> </span>not<span class="w"> </span>add<span class="w"> </span>a<span class="w"> </span>blank<span class="w"> </span>line<span class="w"> </span>after<span class="w"> </span>yaml<span class="w"> </span>front
+
+Configuration:
+<span class="w">  </span>--profile<span class="w"> </span>NAME<span class="w">                  </span>Template<span class="w"> </span>language:<span class="w"> </span>html,<span class="w"> </span>django,<span class="w"> </span>jinja,
+<span class="w">                                  </span>nunjucks,<span class="w"> </span>handlebars,<span class="w"> </span>liquid,<span class="w"> </span>golang,
+<span class="w">                                  </span>angular,<span class="w"> </span>tera,<span class="w"> </span>askama<span class="w"> </span>or<span class="w"> </span>all.<span class="w"> </span>It<span class="w"> </span>decides
+<span class="w">                                  </span>which<span class="w"> </span>linter<span class="w"> </span>rules<span class="w"> </span>run<span class="w"> </span>and<span class="w"> </span>how<span class="w"> </span>template
+<span class="w">                                  </span>syntax<span class="w"> </span>is<span class="w"> </span>formatted.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>html<span class="o">]</span>
+<span class="w">  </span>--configuration<span class="w"> </span>FILE<span class="w">            </span>Global<span class="w"> </span>config<span class="w"> </span>file:<span class="w"> </span>a<span class="w"> </span>pyproject.toml,
+<span class="w">                                  </span>djlint.toml<span class="w"> </span>or<span class="w"> </span>.djlintrc.<span class="w"> </span>The<span class="w"> </span>project<span class="s1">'s own</span>
+<span class="s1">                                  config file wins where both set an option.</span>
+<span class="s1">  --prefer-configuration          Let the --configuration file win over the</span>
+<span class="s1">                                  project'</span>s<span class="w"> </span>own<span class="w"> </span>config<span class="w"> </span>file.
+
+Linter:
+<span class="w">  </span>-i,<span class="w"> </span>--ignore<span class="w"> </span>CODES<span class="w">              </span>Linter<span class="w"> </span>codes<span class="w"> </span>to<span class="w"> </span>skip,<span class="w"> </span>comma-separated,<span class="w"> </span><span class="k">for</span>
+<span class="w">                                  </span>example<span class="w"> </span>H014,H017.
+<span class="w">  </span>--include<span class="w"> </span>CODES<span class="w">                 </span>Linter<span class="w"> </span>codes<span class="w"> </span>to<span class="w"> </span>turn<span class="w"> </span>on<span class="w"> </span>that<span class="w"> </span>are<span class="w"> </span>off<span class="w"> </span>by
+<span class="w">                                  </span>default,<span class="w"> </span>comma-separated,<span class="w"> </span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>H017.
+<span class="w">  </span>--per-file-ignores<span class="w"> </span>&lt;PATTERN<span class="w"> </span>CODES&gt;...
+<span class="w">                                  </span>Skip<span class="w"> </span>linter<span class="w"> </span>codes<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span>whose<span class="w"> </span>path
+<span class="w">                                  </span>matches<span class="w"> </span>a<span class="w"> </span>regex.<span class="w"> </span>Can<span class="w"> </span>be<span class="w"> </span>repeated.
+<span class="w">  </span>--rules<span class="w"> </span>FILE<span class="w">                    </span>Custom<span class="w"> </span>linter<span class="w"> </span>rules,<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+<span class="w">                                  </span>.djlint_rules.yaml<span class="w"> </span>format.
+
+Output:
+<span class="w">  </span>--quiet<span class="w">                         </span>Do<span class="w"> </span>not<span class="w"> </span>print<span class="w"> </span>diffs,<span class="w"> </span>the<span class="w"> </span>progress<span class="w"> </span>bar<span class="w"> </span>or<span class="w"> </span>the
+<span class="w">                                  </span>summary.
+<span class="w">  </span>--warn<span class="w">                          </span>Exit<span class="w"> </span>with<span class="w"> </span><span class="m">0</span><span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>when<span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>lint
+<span class="w">                                  </span>errors<span class="w"> </span>or<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>reformat.
+<span class="w">  </span>--statistics<span class="w">                    </span>After<span class="w"> </span>linting,<span class="w"> </span>print<span class="w"> </span>how<span class="w"> </span>many<span class="w"> </span><span class="nb">times</span><span class="w"> </span>each
+<span class="w">                                  </span>code<span class="w"> </span>was<span class="w"> </span>found.
+<span class="w">  </span>--linter-output-format<span class="w"> </span>FORMAT<span class="w">   </span>Layout<span class="w"> </span>of<span class="w"> </span>each<span class="w"> </span>lint<span class="w"> </span>message,<span class="w"> </span>from
+<span class="w">                                  </span><span class="o">{</span>filename<span class="o">}</span>,<span class="w"> </span><span class="o">{</span>line<span class="o">}</span>,<span class="w"> </span><span class="o">{</span>end<span class="o">}</span>,<span class="w"> </span><span class="o">{</span>code<span class="o">}</span>,<span class="w"> </span><span class="o">{</span>message<span class="o">}</span>
+<span class="w">                                  </span>and<span class="w"> </span><span class="o">{</span>match<span class="o">}</span>.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="o">{</span>code<span class="o">}</span><span class="w"> </span><span class="o">{</span>line<span class="o">}</span>
+<span class="w">                                  </span><span class="o">{</span>message<span class="o">}</span><span class="w"> </span><span class="o">{</span>match<span class="o">}]</span>
+<span class="w">  </span>--github-output<span class="w"> </span>/<span class="w"> </span>--no-github-output
+<span class="w">                                  </span>Print<span class="w"> </span>results<span class="w"> </span>as<span class="w"> </span>GitHub<span class="w"> </span>Actions<span class="w"> </span>annotations.
+<span class="w">                                  </span>On<span class="w"> </span>by<span class="w"> </span>default<span class="w"> </span>inside<span class="w"> </span>GitHub<span class="w"> </span>Actions.
+<span class="w">  </span>--sarif<span class="w">                         </span>Print<span class="w"> </span>findings<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>SARIF<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span>JSON
+<span class="w">                                  </span>document,<span class="w"> </span><span class="k">for</span><span class="w"> </span>GitHub<span class="w"> </span>code<span class="w"> </span>scanning<span class="w"> </span>and<span class="w"> </span>other
+<span class="w">                                  </span>tools.
+
+Layout:
+<span class="w">  </span>--indent<span class="w"> </span>N<span class="w">                      </span>Spaces<span class="w"> </span>per<span class="w"> </span>indent<span class="w"> </span>level.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">4</span>,<span class="w"> </span>or
+<span class="w">                                  </span>indent_size<span class="w"> </span>from<span class="w"> </span>.editorconfig<span class="o">]</span>
+<span class="w">  </span>--max-line-length<span class="w"> </span>N<span class="w">             </span>Join<span class="w"> </span>tags<span class="w"> </span>onto<span class="w"> </span>one<span class="w"> </span>line<span class="w"> </span>only<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>line
+<span class="w">                                  </span>fits<span class="w"> </span>within<span class="w"> </span>this<span class="w"> </span>length.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">120</span>,<span class="w"> </span>or
+<span class="w">                                  </span>max_line_length<span class="w"> </span>from<span class="w"> </span>.editorconfig<span class="o">]</span>
+<span class="w">  </span>--max-attribute-length<span class="w"> </span>N<span class="w">        </span>Spread<span class="w"> </span>a<span class="w"> </span>tag<span class="s1">'s attributes over lines once</span>
+<span class="s1">                                  they are longer than this. [default: 70]</span>
+<span class="s1">  --single-attribute-per-line     When an opening tag wraps, put each</span>
+<span class="s1">                                  attribute on its own line.</span>
+<span class="s1">  --line-break-after-multiline-tag</span>
+<span class="s1">                                  When a tag'</span>s<span class="w"> </span>attributes<span class="w"> </span>are<span class="w"> </span>spread<span class="w"> </span>over
+<span class="w">                                  </span>lines,<span class="w"> </span>start<span class="w"> </span>its<span class="w"> </span>content<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>line.
+<span class="w">  </span>--no-indent-inner-html<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>indent<span class="w"> </span>&lt;head&gt;<span class="w"> </span>and<span class="w"> </span>&lt;body&gt;<span class="w"> </span>inside
+<span class="w">                                  </span>&lt;html&gt;.
+<span class="w">  </span>--keep-br-inline<span class="w">                </span>Keep<span class="w"> </span>&lt;br&gt;<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>text<span class="w"> </span>it<span class="w"> </span>breaks.
+<span class="w">  </span>--custom-blocks<span class="w"> </span>TAGS<span class="w">            </span>Names<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>custom<span class="w"> </span>template<span class="w"> </span>blocks<span class="w"> </span>to
+<span class="w">                                  </span>indent,<span class="w"> </span>comma-separated,<span class="w"> </span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>toc.
+<span class="w">  </span>--custom-html<span class="w"> </span>TAGS<span class="w">              </span>Names<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>custom<span class="w"> </span>HTML<span class="w"> </span>tags<span class="w"> </span>to<span class="w"> </span>indent,
+<span class="w">                                  </span>comma-separated,<span class="w"> </span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>mjml.
+<span class="w">  </span>--ignore-blocks<span class="w"> </span>TAGS<span class="w">            </span>Template<span class="w"> </span>blocks<span class="w"> </span>that<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>indent<span class="w"> </span>their
+<span class="w">                                  </span>contents,<span class="w"> </span>comma-separated.
+<span class="w">  </span>--blank-line-after-tag<span class="w"> </span>TAGS<span class="w">     </span>Template<span class="w"> </span>tags<span class="w"> </span>to<span class="w"> </span>follow<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>blank<span class="w"> </span>line,
+<span class="w">                                  </span>comma-separated,<span class="w"> </span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>load,extends.
+<span class="w">  </span>--blank-line-before-tag<span class="w"> </span>TAGS<span class="w">    </span>Template<span class="w"> </span>tags<span class="w"> </span>to<span class="w"> </span>precede<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>blank<span class="w"> </span>line,
+<span class="w">                                  </span>comma-separated,<span class="w"> </span><span class="k">for</span><span class="w"> </span>example<span class="w"> </span>load,extends.
+<span class="w">  </span>--max-blank-lines<span class="w"> </span>N<span class="w">             </span>Keep<span class="w"> </span>at<span class="w"> </span>most<span class="w"> </span>this<span class="w"> </span>many<span class="w"> </span>blank<span class="w"> </span>lines<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>row.
+<span class="w">                                  </span>Has<span class="w"> </span>no<span class="w"> </span>effect<span class="w"> </span>with<span class="w"> </span>--preserve-blank-lines.
+<span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span><span class="o">]</span>
+<span class="w">  </span>--preserve-blank-lines<span class="w">          </span>Keep<span class="w"> </span>blank<span class="w"> </span>lines<span class="w"> </span>where<span class="w"> </span>possible.
+<span class="w">  </span>--preserve-leading-space<span class="w">        </span>Keep<span class="w"> </span>the<span class="w"> </span>leading<span class="w"> </span>spaces<span class="w"> </span>of<span class="w"> </span>text<span class="w"> </span>lines<span class="w"> </span>where
+<span class="w">                                  </span>possible.
+<span class="w">  </span>--no-line-after-yaml<span class="w">            </span>Do<span class="w"> </span>not<span class="w"> </span>add<span class="w"> </span>a<span class="w"> </span>blank<span class="w"> </span>line<span class="w"> </span>after<span class="w"> </span>YAML<span class="w"> </span>front
 <span class="w">                                  </span>matter.
-<span class="w">  </span>--name-endblocks<span class="w">                </span>Name<span class="w"> </span>the<span class="w"> </span>endblock<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>block<span class="w"> </span>written<span class="w"> </span>across
-<span class="w">                                  </span>lines.
+
+Rewrites:
+<span class="w">  </span>--close-void-tags<span class="w">               </span>Close<span class="w"> </span>void<span class="w"> </span>tags<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>slash,<span class="w"> </span>so<span class="w"> </span>&lt;img&gt;
+<span class="w">                                  </span>becomes<span class="w"> </span>&lt;img<span class="w"> </span>/&gt;.
+<span class="w">  </span>--ignore-case<span class="w">                   </span>Do<span class="w"> </span>not<span class="w"> </span>fix<span class="w"> </span>the<span class="w"> </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span>known<span class="w"> </span>HTML<span class="w"> </span>tags.
 <span class="w">  </span>--sort-attributes<span class="w">               </span>Sort<span class="w"> </span>attributes<span class="w"> </span>by<span class="w"> </span>name,<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span>first<span class="w"> </span>and
 <span class="w">                                  </span>class<span class="w"> </span>second.
-<span class="w">  </span>--sort-load-tags<span class="w">                </span>Sort<span class="w"> </span>the<span class="w"> </span>libraries<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>%<span class="w"> </span>load<span class="w"> </span>%<span class="o">}</span><span class="w"> </span>tags.
-<span class="w">  </span>--no-indent-inner-html<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>indent<span class="w"> </span>&lt;head&gt;<span class="w"> </span>and<span class="w"> </span>&lt;body&gt;<span class="w"> </span>below
-<span class="w">                                  </span>&lt;html&gt;.
-<span class="w">  </span>--no-function-formatting<span class="w">        </span>Do<span class="w"> </span>not<span class="w"> </span>attempt<span class="w"> </span>to<span class="w"> </span>format<span class="w"> </span><span class="k">function</span><span class="w"> </span>contents.
-<span class="w">  </span>--no-set-formatting<span class="w">             </span>Do<span class="w"> </span>not<span class="w"> </span>attempt<span class="w"> </span>to<span class="w"> </span>format<span class="w"> </span><span class="nb">set</span><span class="w"> </span>contents.
-<span class="w">  </span>--keep-br-inline<span class="w">                </span>Keep<span class="w"> </span>&lt;br&gt;<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>text<span class="w"> </span>it<span class="w"> </span>breaks.
-<span class="w">  </span>--no-entity-formatting<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>rewrite<span class="w"> </span>entity<span class="w"> </span>references<span class="w"> </span>as
-<span class="w">                                  </span>characters.
-<span class="w">  </span>--quote-style<span class="w"> </span><span class="o">[</span>double<span class="p">|</span>single<span class="o">]</span><span class="w">   </span>Quotes<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>strings<span class="w"> </span>inside<span class="w"> </span>template
-<span class="w">                                  </span>tags.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>double<span class="o">]</span>
-<span class="w">  </span>--max-blank-lines<span class="w"> </span>INTEGER<span class="w">       </span>Consolidate<span class="w"> </span>blank<span class="w"> </span>lines<span class="w"> </span>down<span class="w"> </span>to<span class="w"> </span>x<span class="w"> </span>lines.
-<span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span><span class="o">]</span>
-<span class="w">  </span>--github-output<span class="w"> </span>/<span class="w"> </span>--no-github-output
-<span class="w">                                  </span>Output<span class="w"> </span>GitHub-compatible<span class="w"> </span>formatting.
-<span class="w">  </span>--sarif<span class="w">                         </span>Output<span class="w"> </span>findings<span class="w"> </span>as<span class="w"> </span>SARIF<span class="w"> </span><span class="m">2</span>.1.0<span class="w"> </span>json,<span class="w"> </span><span class="k">for</span>
-<span class="w">                                  </span>GitHub<span class="w"> </span>code<span class="w"> </span>scanning<span class="w"> </span>and<span class="w"> </span>other<span class="w"> </span>tools.
+<span class="w">  </span>--sort-load-tags<span class="w">                </span>Sort<span class="w"> </span>the<span class="w"> </span>libraries<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>%<span class="w"> </span>load<span class="w"> </span>%<span class="o">}</span><span class="w"> </span>tags<span class="w"> </span>and
+<span class="w">                                  </span>drop<span class="w"> </span>repeated<span class="w"> </span>ones.
+<span class="w">  </span>--name-endblocks<span class="w">                </span>Name<span class="w"> </span>the<span class="w"> </span>block<span class="w"> </span><span class="k">in</span><span class="w"> </span>its<span class="w"> </span><span class="o">{</span>%<span class="w"> </span>endblock<span class="w"> </span>%<span class="o">}</span><span class="w"> </span>when
+<span class="w">                                  </span>the<span class="w"> </span>block<span class="w"> </span>spans<span class="w"> </span>lines.
+<span class="w">  </span>--quote-style<span class="w"> </span><span class="o">[</span>double<span class="p">|</span>single<span class="o">]</span><span class="w">   </span>Quotes<span class="w"> </span><span class="k">for</span><span class="w"> </span>strings<span class="w"> </span>inside<span class="w"> </span>template<span class="w"> </span>tags.
+<span class="w">                                  </span><span class="o">[</span>default:<span class="w"> </span>double<span class="o">]</span>
+<span class="w">  </span>--no-entity-formatting<span class="w">          </span>Do<span class="w"> </span>not<span class="w"> </span>rewrite<span class="w"> </span>entity<span class="w"> </span>references<span class="w"> </span>such<span class="w"> </span>as
+<span class="w">                                  </span><span class="p">&amp;</span>copy<span class="p">;</span><span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>characters<span class="w"> </span>they<span class="w"> </span>name.
+<span class="w">  </span>--no-function-formatting<span class="w">        </span>Do<span class="w"> </span>not<span class="w"> </span>format<span class="w"> </span>the<span class="w"> </span>arguments<span class="w"> </span>of<span class="w"> </span><span class="k">function</span>
+<span class="w">                                  </span>calls<span class="w"> </span>inside<span class="w"> </span><span class="o">{{</span><span class="w"> </span><span class="o">}}</span>.
+<span class="w">  </span>--no-set-formatting<span class="w">             </span>Do<span class="w"> </span>not<span class="w"> </span>format<span class="w"> </span>the<span class="w"> </span>contents<span class="w"> </span>of<span class="w"> </span><span class="o">{</span>%<span class="w"> </span><span class="nb">set</span><span class="w"> </span>%<span class="o">}</span>
+<span class="w">                                  </span>tags.
+<span class="w">  </span>--preserve-class-newlines<span class="w">       </span>Keep<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>breaks<span class="w"> </span><span class="k">in</span><span class="w"> </span>class<span class="w"> </span>attributes
+<span class="w">                                  </span>written<span class="w"> </span>across<span class="w"> </span>lines.
+<span class="w">  </span>--format-attribute-template-tags
+<span class="w">                                  </span>Format<span class="w"> </span>template<span class="w"> </span>syntax<span class="w"> </span>inside<span class="w"> </span>tag
+<span class="w">                                  </span>attributes.
+
+CSS<span class="w"> </span>and<span class="w"> </span>JavaScript:
+<span class="w">  </span>--format-css<span class="w">                    </span>Also<span class="w"> </span>format<span class="w"> </span>the<span class="w"> </span>contents<span class="w"> </span>of<span class="w"> </span>&lt;style&gt;<span class="w"> </span>tags,
+<span class="w">                                  </span>with<span class="w"> </span>css-beautify.
+<span class="w">  </span>--indent-css<span class="w"> </span>N<span class="w">                  </span>Indent<span class="w"> </span>width<span class="w"> </span>inside<span class="w"> </span>&lt;style&gt;<span class="w"> </span>tags,<span class="w"> </span><span class="k">for</span>
+<span class="w">                                  </span>--format-css.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<span class="w">  </span>--format-js<span class="w">                     </span>Also<span class="w"> </span>format<span class="w"> </span>JavaScript<span class="w"> </span>and<span class="w"> </span>JSON<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;script&gt;
+<span class="w">                                  </span>tags,<span class="w"> </span>with<span class="w"> </span>js-beautify.
+<span class="w">  </span>--indent-js<span class="w"> </span>N<span class="w">                   </span>Indent<span class="w"> </span>width<span class="w"> </span>inside<span class="w"> </span>&lt;script&gt;<span class="w"> </span>tags,<span class="w"> </span><span class="k">for</span>
+<span class="w">                                  </span>--format-js.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<span class="w">  </span>--format-attribute-js-json<span class="w">      </span>Also<span class="w"> </span>format<span class="w"> </span>JavaScript<span class="w"> </span>and<span class="w"> </span>JSON<span class="w"> </span><span class="k">in</span>
+<span class="w">                                  </span>attributes<span class="w"> </span>such<span class="w"> </span>as<span class="w"> </span>onclick<span class="w"> </span>and<span class="w"> </span>x-data.
+<span class="w">  </span>--format-attribute-js-json-pattern<span class="w"> </span>REGEX
+<span class="w">                                  </span>Regex<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>names<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>attributes<span class="w"> </span>to
+<span class="w">                                  </span>format<span class="w"> </span>as<span class="w"> </span>JavaScript<span class="w"> </span>or<span class="w"> </span>JSON.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>on*
+<span class="w">                                  </span>event<span class="w"> </span>handlers<span class="w"> </span>and<span class="w"> </span>Alpine,<span class="w"> </span>Vue,<span class="w"> </span>Angular<span class="w"> </span>and
+<span class="w">                                  </span>Aurelia<span class="w"> </span>bindings<span class="o">]</span>
+<span class="w">  </span>--format-attribute-js-json-min-props<span class="w"> </span>N
+<span class="w">                                  </span>Format<span class="w"> </span>an<span class="w"> </span>object<span class="w"> </span>only<span class="w"> </span>when<span class="w"> </span>it<span class="w"> </span>has<span class="w"> </span>at<span class="w"> </span>least
+<span class="w">                                  </span>this<span class="w"> </span>many<span class="w"> </span>properties.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">2</span><span class="o">]</span>
+
+Other:
+<span class="w">  </span>--version<span class="w">                       </span>Show<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>and<span class="w"> </span>exit.
+<span class="w">  </span>SRC<span class="w"> </span>...
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                      </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=djlint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.49.4
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.49.6
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.49.4">djlint==1.49.4</a></li>
+<li><a href="https://pypi.org/project/djlint/1.49.6">djlint==1.49.6</a></li>
 </ul>
 </li>
 </ul>
@@ -12933,14 +12981,14 @@ Options:
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/HTML_DJLINT"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.11"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.4"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.6"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/HTML_DJLINT"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.11"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.4"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.6"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
