@@ -215,10 +215,10 @@ ARG PIP_SEMGREP_VERSION=1.183.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.56.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 # renovate: datasource=pypi depName=Pygments
 ARG PIP_PYGMENTS_VERSION=2.21.0
 # renovate: datasource=pypi depName=restructuredtext_lint
