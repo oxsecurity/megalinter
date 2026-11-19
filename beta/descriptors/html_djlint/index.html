@@ -12504,7 +12504,7 @@
 <p>For example, define <code>HTML_DJLINT_ARGUMENTS: ["--profile", "django"]</code> to select django format</p>
 <h2 id="djlint-documentation">djlint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.49.6</strong></li>
+<li>Version in MegaLinter: <strong>1.49.9</strong></li>
 <li>Visit <a href="https://djlint.com/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://djlint.com/docs/configuration/" target="_blank">How to configure djlint rules</a></li>
 <li>See <a href="https://djlint.com/docs/ignoring-code/" target="_blank">How to disable djlint rules in files</a></li>
@@ -12803,9 +12803,10 @@ Files:
 Configuration:
 <span class="w">  </span>--profile<span class="w"> </span>NAME<span class="w">                  </span>Template<span class="w"> </span>language:<span class="w"> </span>html,<span class="w"> </span>django,<span class="w"> </span>jinja,
 <span class="w">                                  </span>nunjucks,<span class="w"> </span>handlebars,<span class="w"> </span>liquid,<span class="w"> </span>golang,
-<span class="w">                                  </span>angular,<span class="w"> </span>tera,<span class="w"> </span>askama<span class="w"> </span>or<span class="w"> </span>all.<span class="w"> </span>It<span class="w"> </span>decides
-<span class="w">                                  </span>which<span class="w"> </span>linter<span class="w"> </span>rules<span class="w"> </span>run<span class="w"> </span>and<span class="w"> </span>how<span class="w"> </span>template
-<span class="w">                                  </span>syntax<span class="w"> </span>is<span class="w"> </span>formatted.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>html<span class="o">]</span>
+<span class="w">                                  </span>angular,<span class="w"> </span>tera,<span class="w"> </span>askama,<span class="w"> </span>mako<span class="w"> </span>or<span class="w"> </span>all.<span class="w"> </span>It
+<span class="w">                                  </span>decides<span class="w"> </span>which<span class="w"> </span>linter<span class="w"> </span>rules<span class="w"> </span>run<span class="w"> </span>and<span class="w"> </span>how
+<span class="w">                                  </span>template<span class="w"> </span>syntax<span class="w"> </span>is<span class="w"> </span>formatted.<span class="w"> </span><span class="o">[</span>default:
+<span class="w">                                  </span>html<span class="o">]</span>
 <span class="w">  </span>--configuration<span class="w"> </span>FILE<span class="w">            </span>Global<span class="w"> </span>config<span class="w"> </span>file:<span class="w"> </span>a<span class="w"> </span>pyproject.toml,
 <span class="w">                                  </span>djlint.toml<span class="w"> </span>or<span class="w"> </span>.djlintrc.<span class="w"> </span>The<span class="w"> </span>project<span class="s1">'s own</span>
 <span class="s1">                                  config file wins where both set an option.</span>
@@ -12929,12 +12930,12 @@ Other:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=djlint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.49.6
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_DJLINT_VERSION</span><span class="o">=</span><span class="m">1</span>.49.9
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/djlint/1.49.6">djlint==1.49.6</a></li>
+<li><a href="https://pypi.org/project/djlint/1.49.9">djlint==1.49.9</a></li>
 </ul>
 </li>
 </ul>
@@ -12981,14 +12982,14 @@ Other:
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/HTML_DJLINT"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.11"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.6"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.9"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/HTML_DJLINT"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.11"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.6"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"djlint==1.49.9"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
