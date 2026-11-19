@@ -275,7 +275,7 @@ linters:
           ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
         - |-
           # renovate: datasource=docker depName=golang versioning=semver
-          ARG GO_IMAGE_VERSION=1.27.3
+          ARG GO_IMAGE_VERSION=1.27.4
         # The golang image used as a builder is a temporary workaround
         # Dustilock is not released as a binary or container
         - |-
@@ -487,7 +487,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
+          ARG REPOSITORY_BETTERLEAKS_VERSION=v1.10.1
         - FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
         - COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
     native_install:
