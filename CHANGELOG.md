@@ -87,6 +87,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
 
+  - Add the [GNU Awk (`gawk`) plugin](https://github.com/wesley-dean/mega-linter-plugin-gawk) to the external plugins catalog.
+  - Mark the `repolinter` plugin as deprecated in the external plugins catalog.
+
 - mega-linter-runner
 
   - New **`--native`** option to run MegaLinter without Docker, and **`--install-linters`** to install the linters it needs (not to be confused with `--install`, which sets up MegaLinter in your repository)
