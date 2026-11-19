@@ -102,7 +102,7 @@ docker run -v $(System.DefaultWorkingDirectory):/tmp/lint \
 
 ## betterleaks documentation
 
-- Version in MegaLinter: **1.7.3**
+- Version in MegaLinter: **1.10.1**
 - Visit [Official Web Site](https://github.com/betterleaks/betterleaks#readme){target=_blank}
 - See [How to configure betterleaks rules](https://github.com/betterleaks/betterleaks#configuration){target=_blank}
 - See [How to disable betterleaks rules in files](https://github.com/betterleaks/betterleaks#betterleaksallow){target=_blank}
@@ -211,25 +211,29 @@ Available Commands:
   huggingface scan Hugging Face repositories and community resources for secrets
   s3          scan an S3 (or S3-compatible) bucket for secrets
   stdin       detect secrets from stdin
+  validate    validate a known secret without running detection
   version     display betterleaks version
 
 Flags:
   -b, --baseline-path string          path to baseline with issues that can be ignored
+      --confidence string             minimum confidence to include (low, medium, high)
   -c, --config string                 config file path
                                       order of precedence:
                                       1. --config/-c
                                       2. env var BETTERLEAKS_CONFIG or GITLEAKS_CONFIG
                                       3. env var BETTERLEAKS_CONFIG_TOML or GITLEAKS_CONFIG_TOML with the file content
-                                      4. (target path)/.betterleaks.toml or .gitleaks.toml
+                                      4. (target path)/.betterleaks.toml or .gitleaks.toml (only with --unsafe-auto-load-config)
                                       If none of the four options are used, then the default config will be used
       --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace,rules,rules-csv). cpu=CPU prof, mem=memory prof, trace=exec tracing, rules=rule timings text, rules-csv=rule timings CSV, http=serve via net/http/pprof
       --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to ./diagnostics)
+      --disable-rule strings          disable specific rules by id (repeatable; shorthand: -dr)
       --enable-rule strings           only enable specific rules by id
       --exit-code int                 exit code when leaks have been encountered (default 1)
       --experiments string            comma-separated list of experimental features to enable
   -i, --gitleaks-ignore-path string   path to .betterleaksignore or .gitleaksignore file or folder containing one (default ".")
   -h, --help                          help for betterleaks
       --ignore-gitleaks-allow         ignore gitleaks:allow and betterleaks:allow comments
+      --isolate-rule strings          only enable specific rules by id (repeatable; shorthand: -ir)
       --legacy-print                  use legacy key/value verbose finding format (requires --verbose)
   -l, --log-level string              log level (trace, debug, info, warn, error, fatal) (default "info")
       --match-context string          context around match: L (lines), C (columns/characters). e.g. 10L, 100C, -2C,+4C
@@ -237,13 +241,14 @@ Flags:
       --max-decode-depth int          allow recursive decoding up to this depth (default 5)
       --max-target-megabytes int      files larger than this will be skipped
       --no-banner                     suppress banner
-      --no-color                      turn off color for verbose output
+      --no-color                      turn off color in terminal output
       --redact uint[=100]             redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)
       --regex-engine string           regex engine (stdlib, re2) (default "re2")
-  -f, --report-format string          output format (json, csv, junit, sarif, template)
+  -f, --report-format string          output format (json, csv, junit, sarif, template; validate supports pretty or jsonl)
   -r, --report-path string            report file (use "-" for stdout)
       --report-template string        template file used to generate the report (implies --report-format=template)
       --timeout int                   set a timeout for gitleaks commands in seconds (default "0", no timeout is set)
+      --unsafe-auto-load-config       automatically load .betterleaks.toml or .gitleaks.toml from the target directory (unsafe for untrusted targets)
       --validation                    enable validation of findings against live APIs
       --validation-debug              include validation HTTP debug metadata in output
       --validation-env-vars strings   comma-separated env var names the validation env(...) binding may read (repeat flag to add more); unset means env() is disabled
@@ -265,7 +270,7 @@ Use "betterleaks [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.10.1
 FROM ghcr.io/betterleaks/betterleaks:${REPOSITORY_BETTERLEAKS_VERSION} AS betterleaks
 COPY --link --from=betterleaks /usr/bin/betterleaks /usr/bin/
 ```
@@ -294,9 +299,9 @@ NATIVE_LINTERS: [REPOSITORY_BETTERLEAKS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_BETTERLEAKS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_linux_x64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/betterleaks_1.7.3_linux_x64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.10.1_linux_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.10.1/betterleaks_1.10.1_linux_x64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.10.1_linux_x64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.10.1_linux_x64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -305,9 +310,9 @@ NATIVE_LINTERS: [REPOSITORY_BETTERLEAKS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_BETTERLEAKS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_linux_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/betterleaks_1.7.3_linux_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.10.1_linux_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.10.1/betterleaks_1.10.1_linux_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.10.1_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.10.1_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -316,9 +321,9 @@ NATIVE_LINTERS: [REPOSITORY_BETTERLEAKS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_BETTERLEAKS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_darwin_x64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/betterleaks_1.7.3_darwin_x64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.10.1_darwin_x64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.10.1/betterleaks_1.10.1_darwin_x64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.10.1_darwin_x64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.10.1_darwin_x64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -327,9 +332,9 @@ NATIVE_LINTERS: [REPOSITORY_BETTERLEAKS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_BETTERLEAKS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_darwin_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/betterleaks_1.7.3_darwin_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.10.1_darwin_arm64.tar.gz" https://github.com/betterleaks/betterleaks/releases/download/v1.10.1/betterleaks_1.10.1_darwin_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/betterleaks_1.10.1_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.10.1_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -338,9 +343,9 @@ NATIVE_LINTERS: [REPOSITORY_BETTERLEAKS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_BETTERLEAKS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" https://github.com/betterleaks/betterleaks/releases/download/v1.7.3/betterleaks_1.7.3_windows_x64.zip &&
-      unzip -q "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/betterleaks_1.7.3_windows_x64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/betterleaks_1.10.1_windows_x64.zip" https://github.com/betterleaks/betterleaks/releases/download/v1.10.1/betterleaks_1.10.1_windows_x64.zip &&
+      unzip -q "$INSTALL_DIR/betterleaks_1.10.1_windows_x64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/betterleaks_1.10.1_windows_x64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

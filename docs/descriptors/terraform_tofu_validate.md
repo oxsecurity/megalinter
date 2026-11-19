@@ -222,9 +222,9 @@ NATIVE_LINTERS: [TERRAFORM_TOFU_VALIDATE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TOFU_VALIDATE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_linux_amd64.zip &&
-      unzip -q "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/tofu_1.13.2_linux_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.8_linux_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.8/tofu_1.13.8_linux_amd64.zip &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.8_linux_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.8_linux_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -233,9 +233,9 @@ NATIVE_LINTERS: [TERRAFORM_TOFU_VALIDATE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TOFU_VALIDATE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_linux_arm64.zip &&
-      unzip -q "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/tofu_1.13.2_linux_arm64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.8_linux_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.8/tofu_1.13.8_linux_arm64.zip &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.8_linux_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.8_linux_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -244,9 +244,9 @@ NATIVE_LINTERS: [TERRAFORM_TOFU_VALIDATE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TOFU_VALIDATE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_darwin_amd64.zip &&
-      unzip -q "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/tofu_1.13.2_darwin_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.8_darwin_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.8/tofu_1.13.8_darwin_amd64.zip &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.8_darwin_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.8_darwin_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -255,9 +255,9 @@ NATIVE_LINTERS: [TERRAFORM_TOFU_VALIDATE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TOFU_VALIDATE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_darwin_arm64.zip &&
-      unzip -q "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/tofu_1.13.2_darwin_arm64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.8_darwin_arm64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.8/tofu_1.13.8_darwin_arm64.zip &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.8_darwin_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.8_darwin_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -266,9 +266,9 @@ NATIVE_LINTERS: [TERRAFORM_TOFU_VALIDATE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TOFU_VALIDATE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.2/tofu_1.13.2_windows_amd64.zip &&
-      unzip -q "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/tofu_1.13.2_windows_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/tofu_1.13.8_windows_amd64.zip" https://github.com/opentofu/opentofu/releases/download/v1.13.8/tofu_1.13.8_windows_amd64.zip &&
+      unzip -q "$INSTALL_DIR/tofu_1.13.8_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/tofu_1.13.8_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
