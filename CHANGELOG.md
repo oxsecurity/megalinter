@@ -87,6 +87,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Doc
 
+  - Add the [GNU Awk (`gawk`) plugin](https://github.com/wesley-dean/mega-linter-plugin-gawk) to the external plugins catalog.
+  - Mark the `repolinter` plugin as deprecated in the external plugins catalog.
+
 - mega-linter-runner
 
   - New **`--native`** option to run MegaLinter without Docker, and **`--install-linters`** to install the linters it needs (not to be confused with `--install`, which sets up MegaLinter in your repository)
@@ -173,6 +176,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [psalm](https://psalm.dev) from Psalm.6.20.6@ to **Psalm.6.20.7@** on 2026-11-17
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.7 to **3.99.8** on 2026-11-17
   - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.4 to **1.3.0** on 2026-11-17
+  - [djlint](https://djlint.com/) from 1.49.4 to **1.49.6** on 2026-11-19
+  - [grype](https://github.com/anchore/grype) from 0.122.0 to **0.122.1** on 2026-11-19
+  - [biome](https://biomejs.dev) from 2.6.4 to **2.6.5** on 2026-11-19
+  - [djlint](https://djlint.com/) from 1.49.6 to **1.49.9** on 2026-11-19
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.27 to **3.95.28** on 2026-11-19
+  - [psalm](https://psalm.dev) from Psalm.6.20.7@ to **Psalm.6.20.9@** on 2026-11-19
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.3 to **1.10.1** on 2026-11-19
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
