@@ -23,3 +23,15 @@ useDefault = true
     '''megalinter/descriptors/additional/betterleaks-default\.toml$''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
+
+# Documentation placeholder in a vendored skill (export KIBANA_PASSWORD="changeme"),
+# reported by the generic-password rule since betterleaks 1.10
+[[rules]]
+id = "generic-password"
+[[rules.allowlists]]
+description = "changeme placeholder in the vendored kibana-dashboards skill"
+condition = "AND"
+paths = [
+    '''^\.claude/skills/kibana-dashboards/SKILL\.md$''']
+regexes = [
+    '''^changeme$''']
