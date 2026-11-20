@@ -12583,7 +12583,7 @@
 </ul>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.6.20.9@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.7.0.3@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -12826,7 +12826,9 @@ Surfacing<span class="w"> </span>issues:
 <span class="w">        </span>Unused<span class="w"> </span>code<span class="w"> </span>detection<span class="w"> </span>is<span class="w"> </span>already<span class="w"> </span>on<span class="w"> </span>by<span class="w"> </span>default<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>the<span class="w"> </span>findUnusedCode<span class="w"> </span>config<span class="w"> </span>option<span class="o">)</span>
 
 <span class="w">    </span>--find-unused-psalm-suppress
-<span class="w">        </span>Finds<span class="w"> </span>all<span class="w"> </span>@psalm-suppress<span class="w"> </span>annotations<span class="w"> </span>that<span class="w"> </span>aren’t<span class="w"> </span>used
+<span class="w">        </span>Finds<span class="w"> </span>all<span class="w"> </span>@psalm-suppress<span class="w"> </span>annotations<span class="w"> </span>that<span class="w"> </span>aren’t<span class="w"> </span>used,<span class="w"> </span>including<span class="w"> </span>those<span class="w"> </span>on
+<span class="w">        </span>classes,<span class="w"> </span>interfaces,<span class="w"> </span>traits<span class="w"> </span>and<span class="w"> </span>enums.<span class="w"> </span>@psalm-suppress<span class="w"> </span>of<span class="w"> </span>Tainted*<span class="w"> </span>issues<span class="w"> </span>is
+<span class="w">        </span>only<span class="w"> </span>checked<span class="w"> </span>under<span class="w"> </span>--taint-analysis.
 
 <span class="w">    </span>--find-references-to<span class="o">=[</span>class<span class="p">|</span>method<span class="p">|</span>property<span class="o">]</span>
 <span class="w">        </span>Searches<span class="w"> </span>the<span class="w"> </span>codebase<span class="w"> </span><span class="k">for</span><span class="w"> </span>references<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>fully-qualified<span class="w"> </span>class<span class="w"> </span>or<span class="w"> </span>method,
@@ -12875,7 +12877,7 @@ Output:
 <span class="w">        </span>Available<span class="w"> </span>formats:
 <span class="w">            </span>by-issue-level,<span class="w"> </span>checkstyle,<span class="w"> </span>codeclimate,<span class="w"> </span>compact,<span class="w"> </span>console,<span class="w"> </span>count,<span class="w"> </span>emacs,
 <span class="w">            </span>github,<span class="w"> </span>json,<span class="w"> </span>json-summary,<span class="w"> </span>junit,<span class="w"> </span>phpstorm,<span class="w"> </span>pylint,<span class="w"> </span>sarif,<span class="w"> </span>sonarqube,
-<span class="w">            </span>text,<span class="w"> </span>xml
+<span class="w">            </span>table,<span class="w"> </span>text,<span class="w"> </span>xml
 
 <span class="w">    </span>--no-progress
 <span class="w">        </span>Disable<span class="w"> </span>the<span class="w"> </span>progress<span class="w"> </span>indicator.
@@ -12936,6 +12938,10 @@ Miscellaneous:
 <span class="w">        </span>Create<span class="w"> </span>a<span class="w"> </span>psalm<span class="w"> </span>config<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>current<span class="w"> </span>directory<span class="w"> </span>that<span class="w"> </span>points<span class="w"> </span>to<span class="w"> </span><span class="o">[</span>source_dir<span class="o">]</span>
 <span class="w">        </span>at<span class="w"> </span>the<span class="w"> </span>required<span class="w"> </span>level,<span class="w"> </span>from<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>most<span class="w"> </span>strict,<span class="w"> </span>to<span class="w"> </span><span class="m">8</span>,<span class="w"> </span>most<span class="w"> </span>permissive.
 
+<span class="w">    </span>--init-ci
+<span class="w">        </span>Create<span class="w"> </span>a<span class="w"> </span>GitHub<span class="w"> </span>Actions<span class="w"> </span>workflow<span class="w"> </span>file<span class="w"> </span>at<span class="w"> </span>.github/workflows/psalm.yml.
+<span class="w">        </span>Uses<span class="w"> </span>the<span class="w"> </span>published<span class="w"> </span>Psalm<span class="w"> </span>Docker<span class="w"> </span>image,<span class="w"> </span>pinned<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>from<span class="w"> </span>composer.lock.
+
 <span class="w">    </span>--debug
 <span class="w">        </span>Debug<span class="w"> </span>information
 
@@ -12976,7 +12982,7 @@ Miscellaneous:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=vimeo/psalm</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">6</span>.20.9
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">7</span>.0.3
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>vimeo/psalm:<span class="si">${</span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
@@ -12984,7 +12990,7 @@ Miscellaneous:
 <p>This linter can run without Docker, see <a href="https://megalinter.io/latest/install-native/">native mode</a>.</p>
 <ul>
 <li>Install method: Verified release download</li>
-<li>Requires the php runtime ~8.1.31 || ~8.2.27 || ~8.3.16 || ~8.4.3 || &gt;=8.5</li>
+<li>Requires the php runtime ~8.2.27 || ~8.3.16 || ~8.4.3 || &gt;=8.5</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">NATIVE_LINTERS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">PHP_PSALM</span><span class="p p-Indicator">]</span>
 </code></pre></div>
@@ -13023,7 +13029,7 @@ Miscellaneous:
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PHP_PSALM"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/6.20.9/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/7.0.3/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="c1"># psalm: run php "$INSTALL_DIR/psalm.phar"</span>
@@ -13032,7 +13038,7 @@ curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </sp
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PHP_PSALM"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/6.20.9/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/7.0.3/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="c1"># psalm: run php "$INSTALL_DIR/psalm.phar"</span>
 </code></pre></div>

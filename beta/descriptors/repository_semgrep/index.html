@@ -12505,7 +12505,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 </ul>
 <h2 id="semgrep-documentation">semgrep documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.183.0</strong></li>
+<li>Version in MegaLinter: <strong>1.184.0</strong></li>
 <li>Visit <a href="https://semgrep.dev/" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://semgrep.dev/docs/running-rules/" target="_blank">How to configure semgrep rules</a></li>
 <li>See <a href="https://semgrep.dev/docs/ignoring-findings/#inline-comments" target="_blank">How to disable semgrep rules in files</a></li>
@@ -13434,13 +13434,13 @@ BUGS
 THIRD-PARTY<span class="w"> </span>LICENSES
 <span class="w">       </span>Semgrep<span class="w"> </span>includes<span class="w"> </span>open<span class="w"> </span><span class="nb">source</span><span class="w"> </span>software.<span class="w"> </span>The<span class="w"> </span>licenses<span class="w"> </span>and<span class="w"> </span>notices<span class="w"> </span><span class="k">for</span>
 <span class="w">       </span>these<span class="w"> </span>dependencies<span class="w"> </span>are<span class="w"> </span>listed<span class="w"> </span>at
-<span class="w">       </span>https://semgrep.dev/cli-credits?version<span class="o">=</span><span class="m">1</span>.183.0
+<span class="w">       </span>https://semgrep.dev/cli-credits?version<span class="o">=</span><span class="m">1</span>.184.0
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=semgrep</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_SEMGREP_VERSION</span><span class="o">=</span><span class="m">1</span>.183.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_SEMGREP_VERSION</span><span class="o">=</span><span class="m">1</span>.184.0
 <span class="c"># Wrap semgrep so its OCaml 5 runtime does not abort with</span>
 <span class="c"># "Failed to allocate signal stack for domain 0", which happens when the</span>
 <span class="c"># stack rlimit is unlimited (the case on some CI runners). Cap it to a</span>
@@ -13452,7 +13452,7 @@ THIRD-PARTY<span class="w"> </span>LICENSES
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/semgrep/1.183.0">semgrep==1.183.0</a></li>
+<li><a href="https://pypi.org/project/semgrep/1.184.0">semgrep==1.184.0</a></li>
 </ul>
 </li>
 </ul>
@@ -13499,14 +13499,14 @@ THIRD-PARTY<span class="w"> </span>LICENSES
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/REPOSITORY_SEMGREP"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.10"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"semgrep==1.183.0"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"semgrep==1.184.0"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/REPOSITORY_SEMGREP"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.10"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"semgrep==1.183.0"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"semgrep==1.184.0"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
