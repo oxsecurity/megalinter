@@ -216,7 +216,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.17
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.19
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -245,10 +245,10 @@ ARG PIP_SEMGREP_VERSION=1.184.0
 # renovate: datasource=github-tags depName=anchore/syft
 ARG REPOSITORY_SYFT_VERSION=1.56.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 # renovate: datasource=pypi depName=snakemake
 ARG PIP_SNAKEMAKE_VERSION=9.27.1
 # renovate: datasource=pypi depName=snakefmt
