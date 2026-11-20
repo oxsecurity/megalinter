@@ -183,6 +183,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [php-cs-fixer](https://cs.symfony.com/) from 3.95.27 to **3.95.28** on 2026-11-19
   - [psalm](https://psalm.dev) from Psalm.6.20.7@ to **Psalm.6.20.9@** on 2026-11-19
   - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.3 to **1.10.1** on 2026-11-19
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.17 to **4.0.19** on 2026-11-20
+  - [psalm](https://psalm.dev) from Psalm.6.20.9@ to **Psalm.7.0.3@** on 2026-11-20
+  - [semgrep](https://semgrep.dev/) from 1.183.0 to **1.184.0** on 2026-11-20
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.76.1 to **0.76.2** on 2026-11-20
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.76.1 to **0.76.2** on 2026-11-20
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
