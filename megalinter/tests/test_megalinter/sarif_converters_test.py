@@ -10,7 +10,7 @@ import os
 import tempfile
 import unittest
 
-from megalinter import utils, utils_sarif
+from megalinter import utils, utils_sarif, utilstest
 from megalinter.Linter import Linter
 from megalinter.linters.ClippyLinter import clippy_json_to_sarif
 from megalinter.linters.CodespellLinter import codespell_output_to_sarif
@@ -34,7 +34,10 @@ WORKSPACE = os.path.abspath("lint-workspace")
 
 
 def first_run(sarif_builder):
-    return sarif_builder.build_sarif_output()["runs"][0]
+    sarif_content = sarif_builder.build_sarif_output()
+    schema_errors = utilstest.list_sarif_schema_errors(sarif_content)
+    assert schema_errors == [], schema_errors
+    return sarif_content["runs"][0]
 
 
 def location(result):

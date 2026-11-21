@@ -12,7 +12,7 @@ import unittest
 import yaml
 
 import megalinter
-from megalinter import linter_factory, utils
+from megalinter import linter_factory, utils, utilstest
 from megalinter.linters.ArmLinter import arm_ttk_json_to_sarif
 from megalinter.linters.CljStyleLinter import cljstyle_diff_to_sarif
 from megalinter.linters.CSpellLinter import remap_file_names_results
@@ -49,7 +49,10 @@ WORKSPACE_URI = WORKSPACE.replace("\\", "/")
 
 
 def results_of(sarif_builder):
-    return sarif_builder.build_sarif_output()["runs"][0]["results"]
+    sarif_content = sarif_builder.build_sarif_output()
+    schema_errors = utilstest.list_sarif_schema_errors(sarif_content)
+    assert schema_errors == [], schema_errors
+    return sarif_content["runs"][0]["results"]
 
 
 # (rule, level, file, line, column) of each result
@@ -992,6 +995,28 @@ class TextConvertersTest(unittest.TestCase):
             ],
             "src/x.clj",
         )
+
+
+class SchemaValidationTest(unittest.TestCase):
+    def test_a_log_that_breaks_the_schema_is_reported(self):
+        sarif_content = {
+            "version": "2.1.0",
+            "runs": [
+                {
+                    "tool": {"driver": {"name": "x"}},
+                    "results": [
+                        {
+                            "ruleId": "r",
+                            "level": "critical",
+                            "message": {"text": "m"},
+                        }
+                    ],
+                }
+            ],
+        }
+        schema_errors = utilstest.list_sarif_schema_errors(sarif_content)
+        self.assertEqual(len(schema_errors), 1)
+        self.assertIn("critical", schema_errors[0])
 
 
 class DiffPrefixTest(unittest.TestCase):
