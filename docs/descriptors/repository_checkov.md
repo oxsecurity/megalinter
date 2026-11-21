@@ -387,7 +387,7 @@ options:
                         soft-fail list. For example, if the given enforcement
                         rule has a hard-fail value of HIGH and a soft-fail
                         value of MEDIUM,this is the equivalent of using the
-                        flags --skip-check LOW --hard-fail-on HIGH. You can
+                        flags `--skip-check LOW --hard-fail-on HIGH`. You can
                         use --check, --skip-check, --soft-fail, --soft-fail-
                         on, or --hard-fail-on to override portions of an
                         enforcement rule. Note, however, that the logic of
@@ -431,7 +431,7 @@ options:
                         variable or default)
   --create-baseline     Alongside outputting the findings, save all results to
                         .checkov.baseline file so future runs will not re-flag
-                        the same noise. Works only with --directory flag
+                        the same noise. Works only with `--directory` flag
   --baseline BASELINE   Use a .checkov.baseline file to compare current
                         results with a known baseline. Report will include
                         only failed checks that are new with respect to the

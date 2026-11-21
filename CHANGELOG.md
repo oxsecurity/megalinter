@@ -215,6 +215,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [spectral](https://github.com/stoplightio/spectral) from 6.17.0 to **6.17.1** on 2026-11-21
   - [biome](https://biomejs.dev) from 2.6.5 to **2.6.6** on 2026-11-21
   - [stylelint](https://stylelint.io) from 17.16.0 to **18.0.0** on 2026-11-21
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.19 to **4.0.20** on 2026-11-21
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.28 to **3.95.29** on 2026-11-21
+  - [psalm](https://psalm.dev) from Psalm.7.0.3@ to **Psalm.7.0.5@** on 2026-11-21
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.17.3 to **0.17.4** on 2026-11-21
+  - [ruff](https://github.com/astral-sh/ruff) from 0.17.3 to **0.17.4** on 2026-11-21
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.4.0 to **10.4.1** on 2026-11-21
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
