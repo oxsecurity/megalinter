@@ -24,6 +24,27 @@ CPPLINT_LINE_REGEX = re.compile(
 )
 
 
+class CppLintLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return cpplint_output_to_sarif(return_stdout, self.workspace)
+
+    def build_lint_command(self, file=None):
+        # Dynamically add the list of extensions from list of files
+        if (
+            self.cli_lint_mode == "list_of_files"
+            and self.files is not None
+            and len(self.files) > 0
+        ):
+            extensions = []
+            for file_to_lint in self.files:
+                extension = pathlib.Path(file_to_lint).suffix.replace(".", "")
+                if extension not in extensions:
+                    extensions += [extension]
+            self.cli_lint_extra_args += ["--extensions=" + ",".join(extensions)]
+        cmd = super().build_lint_command(file)
+        return cmd
+
+
 # SARIF is built from the default output format. cpplint has no severity:
 # every finding is an error
 def cpplint_output_to_sarif(stdout, workspace=None):
@@ -53,24 +74,3 @@ def cpplint_output_to_sarif(stdout, workspace=None):
     if has_result is False and stdout.strip() != "":
         logging.debug("[cpplint] No finding found in the output")
     return SarifBuilder().add_run(run)
-
-
-class CppLintLinter(Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return cpplint_output_to_sarif(return_stdout, self.workspace)
-
-    def build_lint_command(self, file=None):
-        # Dynamically add the list of extensions from list of files
-        if (
-            self.cli_lint_mode == "list_of_files"
-            and self.files is not None
-            and len(self.files) > 0
-        ):
-            extensions = []
-            for file_to_lint in self.files:
-                extension = pathlib.Path(file_to_lint).suffix.replace(".", "")
-                if extension not in extensions:
-                    extensions += [extension]
-            self.cli_lint_extra_args += ["--extensions=" + ",".join(extensions)]
-        cmd = super().build_lint_command(file)
-        return cmd

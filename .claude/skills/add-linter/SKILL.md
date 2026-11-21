@@ -119,7 +119,7 @@ Create two test files in `.automation/test/<test_folder>/`:
 
 ## Step 4 — Custom Class (only if needed)
 
-Create a minimal class in `megalinter/linters/` extending `megalinter.Linter`. Only override what the YAML descriptor can't express.
+Create a minimal class in `megalinter/linters/` extending `megalinter.Linter`. Only override what the YAML descriptor can't express. Declare module-level helper `def` functions after the class, never before it. If the linter can not output SARIF, convert its output in Python (`convert_output_to_sarif()` with `megalinter/sarif_builder.py`), so SARIF also works in native mode.
 
 ## Step 5 — Build
 

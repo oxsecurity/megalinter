@@ -25,6 +25,36 @@ RUSTC_ERROR_CODES_URL = "https://doc.rust-lang.org/error_codes"
 CLIPPY_LEVELS = {"error": LEVEL_ERROR, "warning": LEVEL_WARNING}
 
 
+class ClippyLinter(megalinter.Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return clippy_json_to_sarif(return_stdout, self.workspace)
+
+    # To execute before linting files
+    def before_lint_files(self):
+        # Native mode: never change the default toolchain of the user's rustup
+        if self.native_toolchain is not None:
+            return
+        # The image installs a single pinned toolchain and makes it the default
+        # in RUSTUP_HOME: switching to "stable" there would download a second one
+        rustup_home = config.get(
+            self.request_id,
+            "RUSTUP_HOME",
+            os.path.expandvars("${HOME}/.rustup"),
+        )
+        rustup_settings = os.path.join(rustup_home, "settings.toml")
+        if not os.path.isfile(rustup_settings):
+            rustup_init_command = 'echo "Init RUST toolkit" && rustup default stable'
+            if self.pre_commands is None:
+                self.pre_commands = []
+            # Add to pre-commands
+            logging.debug("clippy before_lint_files: " + rustup_init_command)
+            self.pre_commands.append(
+                {"command": rustup_init_command, "cwd": self.workspace}
+            )
+        else:
+            logging.debug("RUST settings found: " + rustup_settings)
+
+
 def clippy_rule_help_uri(code):
     if code.startswith("clippy::"):
         return f"{CLIPPY_LINTS_URL}#{code[len('clippy::'):]}"
@@ -94,33 +124,3 @@ def clippy_json_to_sarif(stdout, workspace=None):
             )
         )
     return SarifBuilder().add_run(run)
-
-
-class ClippyLinter(megalinter.Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return clippy_json_to_sarif(return_stdout, self.workspace)
-
-    # To execute before linting files
-    def before_lint_files(self):
-        # Native mode: never change the default toolchain of the user's rustup
-        if self.native_toolchain is not None:
-            return
-        # The image installs a single pinned toolchain and makes it the default
-        # in RUSTUP_HOME: switching to "stable" there would download a second one
-        rustup_home = config.get(
-            self.request_id,
-            "RUSTUP_HOME",
-            os.path.expandvars("${HOME}/.rustup"),
-        )
-        rustup_settings = os.path.join(rustup_home, "settings.toml")
-        if not os.path.isfile(rustup_settings):
-            rustup_init_command = 'echo "Init RUST toolkit" && rustup default stable'
-            if self.pre_commands is None:
-                self.pre_commands = []
-            # Add to pre-commands
-            logging.debug("clippy before_lint_files: " + rustup_init_command)
-            self.pre_commands.append(
-                {"command": rustup_init_command, "cwd": self.workspace}
-            )
-        else:
-            logging.debug("RUST settings found: " + rustup_settings)

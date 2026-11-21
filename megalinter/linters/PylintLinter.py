@@ -23,6 +23,11 @@ PYLINT_DOC_FOLDERS = {"info": "information"}
 PYLINT_DOC_URL = "https://pylint.readthedocs.io/en/stable/user_guide/messages"
 
 
+class PylintLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return pylint_json2_to_sarif(return_stdout, self.workspace)
+
+
 def pylint_json2_to_sarif(stdout, workspace=None):
     output = utils.find_json_value(stdout, dict, lambda value: "messages" in value)
     if output is None and stdout.strip() != "":
@@ -55,8 +60,3 @@ def pylint_json2_to_sarif(stdout, workspace=None):
             )
         )
     return SarifBuilder().add_run(run)
-
-
-class PylintLinter(Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return pylint_json2_to_sarif(return_stdout, self.workspace)

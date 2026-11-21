@@ -39,47 +39,6 @@ POWERSHELL_JSON_OUTPUT = (
 )
 
 
-# SARIF is built from the JSON findings of Invoke-ScriptAnalyzer
-def powershell_json_to_sarif(stdout, workspace=None):
-    findings = utils.find_json_value(
-        stdout,
-        list,
-        lambda value: all(
-            isinstance(item, dict) and "RuleName" in item for item in value
-        ),
-    )
-    if findings is None and stdout.strip() != "":
-        logging.warning("[powershell] No JSON output found to build SARIF from")
-    run = SarifRunBuilder().init_simple(
-        "PSScriptAnalyzer", url="https://github.com/PowerShell/PSScriptAnalyzer"
-    )
-    for finding in findings or []:
-        rule_id = finding.get("RuleName") or "ParseError"
-        run.add_rule(
-            SarifRuleBuilder().init_simple(
-                rule_id,
-                help_uri=(
-                    f"{POWERSHELL_RULES_URL}/{rule_id[2:]}.md"
-                    if rule_id.startswith("PS")
-                    else None
-                ),
-            )
-        )
-        run.add_result(
-            SarifResultBuilder().init_simple(
-                POWERSHELL_LEVELS.get(finding.get("Severity"), LEVEL_NOTE),
-                finding.get("Message"),
-                rule_id,
-                file_uri=to_sarif_uri(finding.get("ScriptPath") or "", workspace),
-                start_line=finding.get("Line"),
-                start_column=finding.get("Column"),
-                end_line=finding.get("EndLine"),
-                end_column=finding.get("EndColumn"),
-            )
-        )
-    return SarifBuilder().add_run(run)
-
-
 class PowershellLinter(Linter):
     def __init__(self, params=None, linter_config=None):
         super().__init__(params, linter_config)
@@ -202,3 +161,44 @@ class PowershellLinter(Linter):
             "Write-Output $PsVersionTable.PsVersion;",
         ]
         return cmd
+
+
+# SARIF is built from the JSON findings of Invoke-ScriptAnalyzer
+def powershell_json_to_sarif(stdout, workspace=None):
+    findings = utils.find_json_value(
+        stdout,
+        list,
+        lambda value: all(
+            isinstance(item, dict) and "RuleName" in item for item in value
+        ),
+    )
+    if findings is None and stdout.strip() != "":
+        logging.warning("[powershell] No JSON output found to build SARIF from")
+    run = SarifRunBuilder().init_simple(
+        "PSScriptAnalyzer", url="https://github.com/PowerShell/PSScriptAnalyzer"
+    )
+    for finding in findings or []:
+        rule_id = finding.get("RuleName") or "ParseError"
+        run.add_rule(
+            SarifRuleBuilder().init_simple(
+                rule_id,
+                help_uri=(
+                    f"{POWERSHELL_RULES_URL}/{rule_id[2:]}.md"
+                    if rule_id.startswith("PS")
+                    else None
+                ),
+            )
+        )
+        run.add_result(
+            SarifResultBuilder().init_simple(
+                POWERSHELL_LEVELS.get(finding.get("Severity"), LEVEL_NOTE),
+                finding.get("Message"),
+                rule_id,
+                file_uri=to_sarif_uri(finding.get("ScriptPath") or "", workspace),
+                start_line=finding.get("Line"),
+                start_column=finding.get("Column"),
+                end_line=finding.get("EndLine"),
+                end_column=finding.get("EndColumn"),
+            )
+        )
+    return SarifBuilder().add_run(run)

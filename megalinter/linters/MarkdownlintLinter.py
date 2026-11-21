@@ -18,6 +18,11 @@ from megalinter.sarif_builder import (
 )
 
 
+class MarkdownlintLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return markdownlint_json_to_sarif(return_stdout, self.workspace)
+
+
 def markdownlint_json_to_sarif(stdout, workspace=None):
     findings = utils.find_json_value(
         stdout,
@@ -61,8 +66,3 @@ def markdownlint_json_to_sarif(stdout, workspace=None):
             )
         )
     return SarifBuilder().add_run(run)
-
-
-class MarkdownlintLinter(Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return markdownlint_json_to_sarif(return_stdout, self.workspace)

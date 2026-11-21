@@ -23,6 +23,47 @@ STYLELINT_RULES_URL = "https://stylelint.io/user-guide/rules"
 STYLELINT_INVALID_OPTION_RULE = "invalid-option"
 
 
+class StyleLintLinter(Linter):
+    def build_lint_command(self, file=None) -> list:
+        if self.cli_lint_mode == "project":
+            self.cli_lint_extra_args_after.append(
+                f"**/*{self.file_extensions[0]}"
+                if len(self.file_extensions) == 1
+                else f"**/*.{{{",".join(self.file_extensions).replace(".", "")}}}"
+            )
+
+        cmd = super().build_lint_command(file)
+        # stylelint v17 (ESM) resolves config extends from the config file's directory.
+        # In the MegaLinter Docker container all npm packages are installed in /node-deps,
+        # which is not on the standard Node.js resolution path when the config file lives
+        # elsewhere (e.g. /action/lib/.automation/ or the user's workspace).
+        # Passing --config-basedir tells stylelint where to look for extended packages.
+        # Do not add it if the user already defined it in CSS_STYLELINT_ARGUMENTS,
+        # or asked to get rid of it using CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS
+        node_deps_dir = self.get_node_deps_dir()
+        if (
+            node_deps_dir is not None
+            and CONFIG_BASEDIR_ARG not in cmd
+            and CONFIG_BASEDIR_ARG not in self.cli_command_remove_args
+        ):
+            cmd += [CONFIG_BASEDIR_ARG, node_deps_dir]
+        return cmd
+
+    def convert_output_to_sarif(self, return_stdout):
+        return stylelint_json_to_sarif(return_stdout, self.workspace)
+
+    def get_node_deps_dir(self):
+        if self.native_toolchain is not None:
+            return self.native_toolchain.install_dir
+        return NODE_DEPS_DIR if os.path.isdir(NODE_DEPS_DIR) else None
+
+    def pre_test(self, test_name):
+        if test_name.startswith("test_failure"):
+            config.set_value(
+                self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
+            )
+
+
 # SARIF is built from the output of the json formatter
 def stylelint_json_to_sarif(stdout, workspace=None):
     results = utils.find_json_value(
@@ -74,44 +115,3 @@ def stylelint_json_to_sarif(stdout, workspace=None):
                 )
             )
     return SarifBuilder().add_run(run)
-
-
-class StyleLintLinter(Linter):
-    def build_lint_command(self, file=None) -> list:
-        if self.cli_lint_mode == "project":
-            self.cli_lint_extra_args_after.append(
-                f"**/*{self.file_extensions[0]}"
-                if len(self.file_extensions) == 1
-                else f"**/*.{{{",".join(self.file_extensions).replace(".", "")}}}"
-            )
-
-        cmd = super().build_lint_command(file)
-        # stylelint v17 (ESM) resolves config extends from the config file's directory.
-        # In the MegaLinter Docker container all npm packages are installed in /node-deps,
-        # which is not on the standard Node.js resolution path when the config file lives
-        # elsewhere (e.g. /action/lib/.automation/ or the user's workspace).
-        # Passing --config-basedir tells stylelint where to look for extended packages.
-        # Do not add it if the user already defined it in CSS_STYLELINT_ARGUMENTS,
-        # or asked to get rid of it using CSS_STYLELINT_COMMAND_REMOVE_ARGUMENTS
-        node_deps_dir = self.get_node_deps_dir()
-        if (
-            node_deps_dir is not None
-            and CONFIG_BASEDIR_ARG not in cmd
-            and CONFIG_BASEDIR_ARG not in self.cli_command_remove_args
-        ):
-            cmd += [CONFIG_BASEDIR_ARG, node_deps_dir]
-        return cmd
-
-    def convert_output_to_sarif(self, return_stdout):
-        return stylelint_json_to_sarif(return_stdout, self.workspace)
-
-    def get_node_deps_dir(self):
-        if self.native_toolchain is not None:
-            return self.native_toolchain.install_dir
-        return NODE_DEPS_DIR if os.path.isdir(NODE_DEPS_DIR) else None
-
-    def pre_test(self, test_name):
-        if test_name.startswith("test_failure"):
-            config.set_value(
-                self.request_id, "CSS_STYLELINT_CONFIG_FILE", ".stylelintrc_bad.json"
-            )

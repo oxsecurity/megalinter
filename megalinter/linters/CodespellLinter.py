@@ -23,6 +23,11 @@ CODESPELL_LINE_REGEX = re.compile(
 CODESPELL_RULE_ID = "misspelling"
 
 
+class CodespellLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return codespell_output_to_sarif(return_stdout, self.workspace)
+
+
 # codespell has no severity: every finding is an error
 def codespell_output_to_sarif(stdout, workspace=None):
     run = SarifRunBuilder().init_simple(
@@ -54,8 +59,3 @@ def codespell_output_to_sarif(stdout, workspace=None):
     if has_result is False and stdout.strip() != "":
         logging.debug("[codespell] No misspelling found in the output")
     return SarifBuilder().add_run(run)
-
-
-class CodespellLinter(Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return codespell_output_to_sarif(return_stdout, self.workspace)

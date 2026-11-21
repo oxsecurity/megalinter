@@ -27,40 +27,6 @@ YAMLLINT_PARSABLE_REGEX = re.compile(
 )
 
 
-# SARIF is built from the parsable output format
-def yamllint_parsable_to_sarif(stdout, workspace=None):
-    run = SarifRunBuilder().init_simple(
-        "yamllint", url="https://github.com/adrienverge/yamllint"
-    )
-    has_result = False
-    for line in stdout.splitlines():
-        match = YAMLLINT_PARSABLE_REGEX.match(line.strip())
-        if match is None:
-            continue
-        has_result = True
-        rule_id = match.group("rule") or "yamllint"
-        rule_module = rule_id.replace("-", "_")
-        run.add_rule(
-            SarifRuleBuilder().init_simple(
-                rule_id,
-                help_uri=f"{YAMLLINT_RULES_URL}#module-yamllint.rules.{rule_module}",
-            )
-        )
-        run.add_result(
-            SarifResultBuilder().init_simple(
-                LEVEL_WARNING if match.group("level") == "warning" else LEVEL_ERROR,
-                match.group("message"),
-                rule_id,
-                file_uri=to_sarif_uri(match.group("path"), workspace),
-                start_line=int(match.group("line")),
-                start_column=int(match.group("column")),
-            )
-        )
-    if has_result is False and stdout.strip() != "":
-        logging.debug("[yamllint] No finding found in the parsable output")
-    return SarifBuilder().add_run(run)
-
-
 class YamllintLinter(Linter):
     def convert_output_to_sarif(self, return_stdout):
         return yamllint_parsable_to_sarif(return_stdout, self.workspace)
@@ -144,3 +110,37 @@ class YamllintLinter(Linter):
                 break
             config_path = extends
         return [], []
+
+
+# SARIF is built from the parsable output format
+def yamllint_parsable_to_sarif(stdout, workspace=None):
+    run = SarifRunBuilder().init_simple(
+        "yamllint", url="https://github.com/adrienverge/yamllint"
+    )
+    has_result = False
+    for line in stdout.splitlines():
+        match = YAMLLINT_PARSABLE_REGEX.match(line.strip())
+        if match is None:
+            continue
+        has_result = True
+        rule_id = match.group("rule") or "yamllint"
+        rule_module = rule_id.replace("-", "_")
+        run.add_rule(
+            SarifRuleBuilder().init_simple(
+                rule_id,
+                help_uri=f"{YAMLLINT_RULES_URL}#module-yamllint.rules.{rule_module}",
+            )
+        )
+        run.add_result(
+            SarifResultBuilder().init_simple(
+                LEVEL_WARNING if match.group("level") == "warning" else LEVEL_ERROR,
+                match.group("message"),
+                rule_id,
+                file_uri=to_sarif_uri(match.group("path"), workspace),
+                start_line=int(match.group("line")),
+                start_column=int(match.group("column")),
+            )
+        )
+    if has_result is False and stdout.strip() != "":
+        logging.debug("[yamllint] No finding found in the parsable output")
+    return SarifBuilder().add_run(run)

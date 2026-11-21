@@ -21,6 +21,11 @@ FLAKE8_LINE_REGEX = re.compile(
 )
 
 
+class Flake8Linter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return flake8_output_to_sarif(return_stdout, self.workspace)
+
+
 # flake8 has no severity: every finding is an error
 def flake8_output_to_sarif(stdout, workspace=None):
     run = SarifRunBuilder().init_simple("flake8", url="https://flake8.pycqa.org")
@@ -46,8 +51,3 @@ def flake8_output_to_sarif(stdout, workspace=None):
             "Is a custom --format set in the flake8 configuration ?"
         )
     return SarifBuilder().add_run(run)
-
-
-class Flake8Linter(Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return flake8_output_to_sarif(return_stdout, self.workspace)

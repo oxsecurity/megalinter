@@ -21,6 +21,11 @@ from megalinter.sarif_builder import (
 DART_LEVELS = {"error": LEVEL_ERROR, "warning": LEVEL_WARNING}
 
 
+class DartAnalyzerLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return dart_json_to_sarif(return_stdout, self.workspace)
+
+
 def dart_json_to_sarif(stdout, workspace=None):
     output = utils.find_json_value(stdout, dict, lambda value: "diagnostics" in value)
     if output is None and stdout.strip() != "":
@@ -54,8 +59,3 @@ def dart_json_to_sarif(stdout, workspace=None):
             )
         )
     return SarifBuilder().add_run(run)
-
-
-class DartAnalyzerLinter(Linter):
-    def convert_output_to_sarif(self, return_stdout):
-        return dart_json_to_sarif(return_stdout, self.workspace)
