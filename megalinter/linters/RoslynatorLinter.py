@@ -67,8 +67,11 @@ class RoslynatorLinter(Linter):
     # Each project is linted by its own roslynator call, and the next call
     # removes the SARIF file of the previous one: gather the results of all projects
     def merge_project_sarif(self):
-        with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
+        # utf-8-sig: roslynator writes its report with a BOM
+        with open(self.sarif_output_file, "r", encoding="utf-8-sig") as sarif_file:
             project_sarif = json.load(sarif_file)
+        if len(project_sarif.get("runs", [])) == 0:
+            return
         if self.merged_sarif is None:
             self.merged_sarif = project_sarif
             return
