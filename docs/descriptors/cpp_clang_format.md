@@ -222,7 +222,7 @@ NATIVE_LINTERS: [CPP_CLANG_FORMAT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/CPP_CLANG_FORMAT"
     uv venv "$INSTALL_DIR" --python ">=3.7"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "clang-format==23.1.3"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "clang-format==23.1.5"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -231,7 +231,7 @@ NATIVE_LINTERS: [CPP_CLANG_FORMAT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/CPP_CLANG_FORMAT"
     uv venv "$INSTALL_DIR" --python ">=3.7"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "clang-format==23.1.3"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "clang-format==23.1.5"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

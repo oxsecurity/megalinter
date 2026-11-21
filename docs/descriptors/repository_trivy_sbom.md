@@ -28,7 +28,7 @@ description: How to use trivy-sbom (configure, ignore files, ignore errors, help
 
 ## trivy-sbom documentation
 
-- Version in MegaLinter: **0.76.1**
+- Version in MegaLinter: **0.76.2**
 - Visit [Official Web Site](https://aquasecurity.github.io/trivy/){target=_blank}
 - See [How to configure trivy-sbom rules](https://aquasecurity.github.io/trivy/latest/docs/configuration/){target=_blank}
 - See [How to ignore files and directories with trivy-sbom](https://aquasecurity.github.io/trivy/latest/docs/configuration/filtering/#by-inline-comments){target=_blank}
@@ -184,7 +184,7 @@ Use "trivy [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 RUN wget --tries=5 -q -O - https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin "v${REPOSITORY_TRIVY_SBOM_VERSION}" \
     && for attempt in 1 2 3 4 5; do \
@@ -221,9 +221,9 @@ NATIVE_LINTERS: [REPOSITORY_TRIVY_SBOM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRIVY_SBOM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-64bit.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trivy_0.76.1_Linux-64bit.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.2_Linux-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.2/trivy_0.76.2_Linux-64bit.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.2_Linux-64bit.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.2_Linux-64bit.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -232,9 +232,9 @@ NATIVE_LINTERS: [REPOSITORY_TRIVY_SBOM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRIVY_SBOM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_Linux-ARM64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trivy_0.76.1_Linux-ARM64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.2_Linux-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.2/trivy_0.76.2_Linux-ARM64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.2_Linux-ARM64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.2_Linux-ARM64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -243,9 +243,9 @@ NATIVE_LINTERS: [REPOSITORY_TRIVY_SBOM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRIVY_SBOM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_macOS-64bit.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trivy_0.76.1_macOS-64bit.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.2_macOS-64bit.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.2/trivy_0.76.2_macOS-64bit.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.2_macOS-64bit.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.2_macOS-64bit.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -254,9 +254,9 @@ NATIVE_LINTERS: [REPOSITORY_TRIVY_SBOM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRIVY_SBOM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_macOS-ARM64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trivy_0.76.1_macOS-ARM64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.2_macOS-ARM64.tar.gz" https://github.com/aquasecurity/trivy/releases/download/v0.76.2/trivy_0.76.2_macOS-ARM64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/trivy_0.76.2_macOS-ARM64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.2_macOS-ARM64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -265,9 +265,9 @@ NATIVE_LINTERS: [REPOSITORY_TRIVY_SBOM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_TRIVY_SBOM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" https://github.com/aquasecurity/trivy/releases/download/v0.76.1/trivy_0.76.1_windows-64bit.zip &&
-      unzip -q "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/trivy_0.76.1_windows-64bit.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/trivy_0.76.2_windows-64bit.zip" https://github.com/aquasecurity/trivy/releases/download/v0.76.2/trivy_0.76.2_windows-64bit.zip &&
+      unzip -q "$INSTALL_DIR/trivy_0.76.2_windows-64bit.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/trivy_0.76.2_windows-64bit.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

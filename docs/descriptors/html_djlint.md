@@ -29,7 +29,7 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.49.6**
+- Version in MegaLinter: **1.49.9**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
@@ -148,9 +148,10 @@ Files:
 Configuration:
   --profile NAME                  Template language: html, django, jinja,
                                   nunjucks, handlebars, liquid, golang,
-                                  angular, tera, askama or all. It decides
-                                  which linter rules run and how template
-                                  syntax is formatted. [default: html]
+                                  angular, tera, askama, mako or all. It
+                                  decides which linter rules run and how
+                                  template syntax is formatted. [default:
+                                  html]
   --configuration FILE            Global config file: a pyproject.toml,
                                   djlint.toml or .djlintrc. The project's own
                                   config file wins where both set an option.
@@ -276,11 +277,11 @@ Other:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.49.6
+ARG PIP_DJLINT_VERSION=1.49.9
 ```
 
 - PIP packages (Python):
-  - [djlint==1.49.6](https://pypi.org/project/djlint/1.49.6)
+  - [djlint==1.49.9](https://pypi.org/project/djlint/1.49.9)
 
 ### Installation without Docker (native mode)
 
@@ -306,7 +307,7 @@ NATIVE_LINTERS: [HTML_DJLINT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/HTML_DJLINT"
     uv venv "$INSTALL_DIR" --python ">=3.11"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "djlint==1.49.6"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "djlint==1.49.9"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -315,7 +316,7 @@ NATIVE_LINTERS: [HTML_DJLINT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/HTML_DJLINT"
     uv venv "$INSTALL_DIR" --python ">=3.11"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "djlint==1.49.6"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "djlint==1.49.9"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

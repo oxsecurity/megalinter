@@ -112,6 +112,21 @@ CVE-2026-78667
 CVE-2026-78669
 CVE-2026-97031
 
+# Go 1.27.4 / 1.26.11 security release: one more stdlib CVE, flagged on the toolchain
+# baked into every Go binary of the images.
+# - CVE-2026-97054 (net/http, HIGH): for HTTP/1 *servers*, exceeding a MaxBytesReader
+#   limit leaves the connection open instead of closing it. Only a process accepting
+#   HTTP/1 requests from a hostile client is affected; every linter runs as a one-shot
+#   CLI over workspace files and binds no listener (trivy and vale run as clients only).
+# revive and dustilock (compiled in-repo, GO_IMAGE_VERSION) and betterleaks (v1.10.1) are
+# genuinely fixed by PR #9554. The other Go binaries have no release built with a fixed
+# toolchain yet: golangci-lint 2.15.0, vale 3.27.0, actionlint 1.7.12, editorconfig-checker
+# 4.0.2, kubeconform 0.8.0, ls-lint 2.3.2, protolint 0.58.0, shfmt 3.14.1, terraform,
+# tflint 0.66.0, tofu 1.13.9, terragrunt (alpine/terragrunt 1.17.1), grype 0.122.1,
+# syft 1.57.2 and trivy 0.76.2 are all copied from upstream images or release archives.
+# Remove once those binaries are built with go >= 1.27.4 / 1.26.11.
+CVE-2026-97054
+
 # --- Go x/mod module-authentication (editorconfig-checker, syft, trivy) ---
 # CVE-2026-56864 and CVE-2026-56865 are supply-chain integrity flaws in
 # golang.org/x/mod < 0.40.0: a malicious GOSUMDB could serve arbitrary module content
