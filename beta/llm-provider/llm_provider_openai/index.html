@@ -10973,6 +10973,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-an-openai-compatible-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Using an OpenAI-compatible gateway
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12369,6 +12380,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-an-openai-compatible-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Using an OpenAI-compatible gateway
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12472,12 +12494,27 @@
 <span class="nt">LLM_MODEL_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-4.1-mini</span><span class="w">      </span><span class="c1"># or gpt-4o-mini, gpt-4o</span>
 </code></pre></div>
 <h3 id="advanced-configuration">Advanced Configuration</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Custom API endpoint (for Azure OpenAI or compatible APIs)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Custom API endpoint (proxy, gateway or self-hosted OpenAI-compatible server)</span>
 <span class="nt">OPENAI_BASE_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://api.openai.com/v1</span>
 
 <span class="c1"># Organization ID (optional)</span>
 <span class="nt">OPENAI_ORGANIZATION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org-your-org-id</span>
 </code></pre></div>
+<h3 id="using-an-openai-compatible-gateway">Using an OpenAI-compatible gateway</h3>
+<p>Any service exposing an OpenAI-compatible <code>/chat/completions</code> API (LLM gateways, routers, proxies, self-hosted servers like vLLM or LiteLLM) works with this provider, without a dedicated MegaLinter provider.</p>
+<p>Keep <code>LLM_PROVIDER: openai</code>, send the gateway's API key as <code>OPENAI_API_KEY</code>, and set <code>OPENAI_BASE_URL</code> to the gateway URL, including its version segment (usually <code>/v1</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">LLM_ADVISOR_ENABLED</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">LLM_PROVIDER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai</span>
+<span class="nt">LLM_MODEL_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-5.6-sol</span><span class="w">    </span><span class="c1"># any model name exposed by the gateway</span>
+<span class="nt">OPENAI_BASE_URL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://global.api-route.com/v1</span>
+</code></pre></div>
+<p>Notes:</p>
+<ul>
+<li><code>OPENAI_API_KEY</code> must contain the <strong>gateway's</strong> key, not an OpenAI key</li>
+<li><code>LLM_MODEL_NAME</code> must be the model identifier expected by the gateway</li>
+<li>The request is sent to <code>OPENAI_BASE_URL</code> + <code>/chat/completions</code></li>
+<li>See <a href="../../llm-advisor/#api-endpoint-configuration">API Endpoint Configuration</a> for the base URL variables of the other providers</li>
+</ul>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="common-issues">Common Issues</h3>
 <ol>
