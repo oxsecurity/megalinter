@@ -36,6 +36,8 @@ def pylint_json2_to_sarif(stdout, workspace=None):
     for message in (output or {}).get("messages", []):
         category = message.get("type", "")
         symbol = message.get("symbol") or message.get("messageId")
+        if symbol is None:
+            continue
         run.add_rule(
             SarifRuleBuilder().init_simple(
                 symbol,
@@ -54,7 +56,7 @@ def pylint_json2_to_sarif(stdout, workspace=None):
                 symbol,
                 file_uri=to_sarif_uri(message.get("path", ""), workspace),
                 start_line=message.get("line"),
-                start_column=message.get("column", 0) + 1,
+                start_column=(message.get("column") or 0) + 1,
                 end_line=message.get("endLine"),
                 end_column=None if end_column is None else end_column + 1,
             )

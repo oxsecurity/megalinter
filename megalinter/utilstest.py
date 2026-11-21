@@ -634,9 +634,12 @@ def test_linter_report_sarif(linter, test_self):
         config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
     )
     # A linter limited to a sub-directory (ex: actionlint on .github/workflows)
-    # is only active when the workspace contains it, like the "bad" folder does
+    # or to the workspaces that contain a file (ex: .codespellrc) is only active
+    # when the workspace holds it, like the "bad" folder does
     if (
-        linter.cli_lint_mode == "project" or bool(linter.files_sub_directory)
+        linter.cli_lint_mode == "project"
+        or bool(linter.files_sub_directory)
+        or len(linter.active_only_if_file_found) > 0
     ) and os.path.isdir(workspace + os.path.sep + "bad"):
         workspace += os.path.sep + "bad"
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"

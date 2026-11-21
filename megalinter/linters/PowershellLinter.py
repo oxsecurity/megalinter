@@ -168,9 +168,8 @@ def powershell_json_to_sarif(stdout, workspace=None):
     findings = utils.find_json_value(
         stdout,
         list,
-        lambda value: all(
-            isinstance(item, dict) and "RuleName" in item for item in value
-        ),
+        lambda value: len(value) > 0
+        and all(isinstance(item, dict) and "RuleName" in item for item in value),
     )
     if findings is None and stdout.strip() != "":
         logging.warning("[powershell] No JSON output found to build SARIF from")

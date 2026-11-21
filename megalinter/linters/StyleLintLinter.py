@@ -69,9 +69,8 @@ def stylelint_json_to_sarif(stdout, workspace=None):
     results = utils.find_json_value(
         stdout,
         list,
-        lambda value: all(
-            isinstance(item, dict) and "warnings" in item for item in value
-        ),
+        lambda value: len(value) > 0
+        and all(isinstance(item, dict) and "warnings" in item for item in value),
     )
     if results is None and stdout.strip() != "":
         logging.warning("[stylelint] No JSON output found to build SARIF from")

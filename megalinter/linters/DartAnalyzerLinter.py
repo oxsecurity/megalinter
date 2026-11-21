@@ -40,7 +40,7 @@ def dart_json_to_sarif(stdout, workspace=None):
                 code, help_uri=diagnostic.get("documentation")
             )
         )
-        message = diagnostic.get("problemMessage")
+        message = diagnostic.get("problemMessage") or code
         if diagnostic.get("correctionMessage"):
             message += " " + diagnostic["correctionMessage"]
         location = diagnostic.get("location", {})

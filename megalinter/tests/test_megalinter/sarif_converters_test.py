@@ -158,6 +158,33 @@ class ConvertersTest(unittest.TestCase):
             location(run["results"][0])["artifactLocation"]["uri"], "src/a.py"
         )
 
+    def test_converters_tolerate_null_fields(self):
+        pylint_output = {
+            "messages": [
+                {
+                    "type": "warning",
+                    "symbol": "w",
+                    "message": "m",
+                    "line": 1,
+                    "column": None,
+                },
+                {"type": "warning", "message": "no rule id", "line": 2},
+            ]
+        }
+        run = first_run(pylint_json2_to_sarif(json.dumps(pylint_output)))
+        self.assertEqual(len(run["results"]), 1)
+        dart_output = {
+            "diagnostics": [{"code": "c", "severity": "ERROR", "location": {}}]
+        }
+        run = first_run(dart_json_to_sarif(json.dumps(dart_output)))
+        self.assertEqual(run["results"][0]["message"]["text"], "c")
+
+    def test_stray_empty_list_does_not_hide_the_findings(self):
+        findings = [{"fileName": "a.md", "lineNumber": 1, "ruleNames": ["MD001"]}]
+        stdout = "Config [] loaded\n" + json.dumps(findings)
+        run = first_run(markdownlint_json_to_sarif(stdout))
+        self.assertEqual(len(run["results"]), 1)
+
     def test_pylint_without_json_gives_empty_run(self):
         run = first_run(pylint_json2_to_sarif("pylint crashed"))
         self.assertEqual(run["results"], [])

@@ -1203,10 +1203,11 @@ class Linter:
             "{{SARIF_OUTPUT_FILE}}": self.sarif_output_file,
             "{{REPORT_FOLDER}}": self.report_folder,
             "{{WORKSPACE}}": self.workspace,
-            "{{DEFAULT_RULES_LOCATION}}": os.path.abspath(
-                utils.get_default_rules_location()
-            ),
         }
+        if any("{{DEFAULT_RULES_LOCATION}}" in txt for txt in args):
+            default_variables["{{DEFAULT_RULES_LOCATION}}"] = os.path.abspath(
+                utils.get_default_rules_location()
+            )
         merged_map = default_variables
         if additional_variables is not None:
             merged_map.update(additional_variables)
@@ -1549,6 +1550,7 @@ class Linter:
 
     def manage_sarif_output(self, return_stdout):
         sarif_confirmed = False
+        keep_raw_output = False
         # Build the SARIF file from the output of the linters that can not output SARIF
         if (
             self.can_output_sarif is True
@@ -1560,6 +1562,11 @@ class Linter:
             if sarif_builder is not None:
                 with open(self.sarif_output_file, "w", encoding="utf-8") as file:
                     file.write(sarif_builder.build_sarif_json_string())
+                # Without any result, the linter output may be an error message
+                # (ex: invalid configuration) that must stay visible in the logs
+                keep_raw_output = not any(
+                    len(run.results) > 0 for run in sarif_builder.runs
+                )
         # Move SARIF file if necessary if generated in a fixed place by the linter
         if (
             self.can_output_sarif is True
@@ -1617,7 +1624,11 @@ class Linter:
             utils_sarif.normalize_sarif_files(self)
 
         # Convert SARIF into human readable text for Console & Text reporters
-        if sarif_confirmed is True and self.master.sarif_to_human is True:
+        if (
+            sarif_confirmed is True
+            and keep_raw_output is False
+            and self.master.sarif_to_human is True
+        ):
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
                 sarif_text = utils_sarif.remove_suppressed_results_from_text(
                     file.read()

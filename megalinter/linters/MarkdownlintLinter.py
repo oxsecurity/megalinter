@@ -27,9 +27,8 @@ def markdownlint_json_to_sarif(stdout, workspace=None):
     findings = utils.find_json_value(
         stdout,
         list,
-        lambda value: all(
-            isinstance(item, dict) and "ruleNames" in item for item in value
-        ),
+        lambda value: len(value) > 0
+        and all(isinstance(item, dict) and "ruleNames" in item for item in value),
     )
     if findings is None and "ruleNames" in stdout:
         logging.warning("[markdownlint] No JSON output found to build SARIF from")
