@@ -19,6 +19,9 @@
   // proposing it, so compromised releases can be caught and yanked by the
   // community first. Replaces the npm-only 'security:minimumReleaseAgeNpm'
   // preset (3 days) with a stricter setting covering every datasource.
+  // Renovate can not date every release (images outside Docker Hub, git-refs,
+  // git-tags): .github/workflows/renovate-release-cooldown.yml enforces the same
+  // age on those pull requests, and reads this value.
   minimumReleaseAge: '14 days',
   vulnerabilityAlerts: {
     enabled: true,
