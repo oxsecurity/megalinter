@@ -16,3 +16,4 @@ class BashBashExecLinter(megalinter.Linter):
             self.disable_errors = False
         else:
             self.disable_errors = True
+            self.sarif_text_default_level = "warning"

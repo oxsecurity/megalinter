@@ -10,7 +10,13 @@ file_contains_regex:
   - "apiVersion: tekton"
 linters:
   # TEKTON-LINT
-  - linter_name: tekton-lint
+  - class: TektonLintLinter
+    linter_name: tekton-lint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "json"
+    sarif_whole_output: true
     linter_text: |
       **tekton-lint** is a specialized linter designed for validating Tekton CI/CD pipeline files and ensuring they follow best practices. It provides comprehensive validation of Tekton Tasks, Pipelines, and other Kubernetes-native CI/CD resources.
 

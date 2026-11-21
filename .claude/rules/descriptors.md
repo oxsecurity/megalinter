@@ -44,7 +44,7 @@ When creating or modifying a linter entry, **search the internet** to gather all
 - **Project-mode directory exclusions**: `cli_lint_mode_project_exclude_arg_name`, `cli_lint_mode_project_exclude_arg_value`, `cli_lint_mode_project_exclude_separator` (see below)
 - **Error parsing**: `cli_lint_errors_count`, `cli_lint_errors_regex`
 - **Known non-lint failures**: `common_linter_errors` — list of `{identifier, regex, message}` entries for config/environment errors (service unavailable, missing credentials, malformed config, etc.) that should surface guidance to the user. Only evaluated on non-success. Each entry MUST have an `identifier` starting with the linter key followed by `_ERROR_` (e.g. `REPOSITORY_OSV_SCANNER_ERROR_SERVICE_UNAVAILABLE`). Each `regex` must be specific enough not to match normal lint output; avoid `.*` or single-word patterns. Entries are rendered as a "Known errors and resolutions" section at the end of the generated linter doc page.
-- **SARIF**: `can_output_sarif`, `cli_sarif_args`, `sarif_default_output_file`
+- **SARIF**: `can_output_sarif`, `cli_sarif_args`, `sarif_default_output_file`. For a linter that can not output SARIF, `sarif_text_regex` (+ `sarif_text_levels`, `sarif_text_default_level`, `sarif_text_rule_id`) converts its text output, and `sarif_whole_output: true` keeps one result when a failed run gives no finding (see `.claude/rules/python-style.md`)
 - **Behavior**: `is_formatter`, `activation_rules`, `active_only_if_file_found`
 - **IDE**: `ide` with entries for `vscode`, `idea`, `eclipse`, `sublime`, `emacs` etc.
 - **Platforms**: `supported_platforms` with `install_override` for ARM when needed

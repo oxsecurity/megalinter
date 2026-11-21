@@ -11,6 +11,13 @@ file_extensions:
 linters:
   # JSONLINT
   - linter_name: jsonlint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--compact"
+      - "--continue"
+    sarif_text_regex: '^(?P<path>.+): line (?P<line>\d+), col (?P<column>\d+), (?P<message>.+)\.$'
+    sarif_text_rule_id: json-syntax
+    sarif_whole_output: true
     linter_text: |
       **jsonlint** is a comprehensive JSON validation tool that provides command-line interface for ensuring JSON files conform to specifications and maintain proper structure. It serves as the essential validator for JSON data integrity across web applications, APIs, and configuration systems.
 
@@ -136,7 +143,10 @@ linters:
       - "prettier --check myfile.json"
       - "prettier --config .prettierrc.json --check myfile.json"
       - "prettier --config .prettierrc.json --write myfile.json" # format
-  - linter_name: npm-package-json-lint
+  - class: NpmPackageJsonLintLinter
+    linter_name: npm-package-json-lint
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_text: |
       **npm-package-json-lint** is a specialized linter designed specifically for npm package.json files that ensures consistency, correctness, and adherence to best practices in Node.js project configuration. It serves as an essential tool for maintaining professional npm package standards.
 

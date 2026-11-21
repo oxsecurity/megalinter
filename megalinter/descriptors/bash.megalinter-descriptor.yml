@@ -26,6 +26,10 @@ linters:
   # Bash Built in Linter
   - class: BashBashExecLinter
     linter_name: bash-exec
+    can_output_sarif: true
+    sarif_text_regex: '^Error: File:\[(?P<path>.+)\] is not executable$'
+    sarif_text_rule_id: not-executable
+    sarif_whole_output: true
     linter_url: https://www.gnu.org/software/bash/
     linter_text: |
       **bash-exec** is a simple but essential linter that verifies shell scripts have proper executable permissions, preventing deployment issues where scripts fail to run due to missing execute permissions.

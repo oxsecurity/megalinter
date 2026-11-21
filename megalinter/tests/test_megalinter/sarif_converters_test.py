@@ -29,12 +29,16 @@ from megalinter.sarif_builder import (
     SarifRunBuilder,
     to_sarif_uri,
 )
+from megalinter.tests.test_megalinter import sarif_schema
 
 WORKSPACE = os.path.abspath("lint-workspace")
 
 
 def first_run(sarif_builder):
-    return sarif_builder.build_sarif_output()["runs"][0]
+    sarif_content = sarif_builder.build_sarif_output()
+    schema_errors = sarif_schema.list_sarif_schema_errors(sarif_content)
+    assert schema_errors == [], schema_errors
+    return sarif_content["runs"][0]
 
 
 def location(result):

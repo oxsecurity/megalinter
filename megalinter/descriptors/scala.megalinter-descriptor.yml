@@ -15,7 +15,10 @@ supported_platforms:
     - linux/arm64
 linters:
   # SCALAFIX
-  - linter_name: scalafix
+  - class: ScalafixLinter
+    linter_name: scalafix
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_url: https://scalacenter.github.io/scalafix/
     linter_repo: https://github.com/scalacenter/scalafix
     linter_spdx_license: BSD-3-Clause
