@@ -1277,15 +1277,15 @@ class FormatterConvertersTest(unittest.TestCase):
         sarif_builder = regex_output_to_sarif(
             "--- a.py\n+++ a.py\n@@ -1 +1 @@\n",
             WORKSPACE,
-            "mytool",
+            "prettier",
             None,
-            "mytool",
+            "prettier",
             "note",
             unified_diff=True,
         )
         self.assertEqual(
             results_of(sarif_builder)[0]["message"]["text"],
-            "The file is not formatted as mytool expects",
+            "The file is not formatted as prettier expects",
         )
 
 
