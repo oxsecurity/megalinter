@@ -15801,6 +15801,12 @@
 <p>Linters enhancements</p>
 <ul>
 <li><strong>djlint</strong>: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages</li>
+<li><strong>SARIF output</strong> is now available for 5 more linters: <strong>actionlint</strong>, <strong>djlint</strong>, <strong>roslynator</strong>, <strong>rubocop</strong> and <strong>trufflehog</strong>. Enable it with <strong><code>SARIF_REPORTER: true</code></strong> (optionally scoped with <code>SARIF_REPORTER_LINTERS</code>), see the <a href="https://megalinter.io/latest/reporters/SarifReporter/">SARIF reporter</a> documentation<ul>
+<li><strong>djlint</strong> and <strong>rubocop</strong> report most findings as warnings or notes, so the <strong>error count</strong> shown with SARIF enabled is lower than the number of findings</li>
+<li><strong>trufflehog</strong> reports a finding as an error only when the secret is <strong>verified</strong></li>
+<li><strong>roslynator</strong> gathers the findings of all your projects in a single SARIF report</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15881,6 +15887,7 @@
 <li>.NET tools: each install deletes the tool <code>.nupkg</code> archives and the <code>tools/net*</code> folders other than the newest one supported by the SDK, which is the one the tool shims load</li>
 <li>The setuptools vendored <code>wheel</code> cleanup targeted <code>python3.13</code> paths while the images run Python 3.14: paths are now version-agnostic</li>
 <li>LLM providers rewritten on <code>requests</code>: shared <code>LLMProvider</code> HTTP helper (retries on connection errors, 429 and 5xx with <code>Retry-After</code>, masked API keys in errors, <code>SSL_CERT_FILE</code> / <code>SSL_CERT_DIR</code> support) and <code>llm_provider_openai_compatible.py</code> adapter, covered by offline tests in <code>test_llm_providers_http.py</code>. The <code>llm</code> extra is removed, and so is the <code>build.py</code> override that stripped it from standalone images</li>
+<li>New <code>Linter.after_lint_files()</code> hook, called once after all the files are linted: <code>RoslynatorLinter</code> uses it to merge the SARIF reports of its projects. SARIF results without <code>locations</code> are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their <code>bad</code> test folder, so they are active</li>
 </ul>
 </li>
 </ul>
