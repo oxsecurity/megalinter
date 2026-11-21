@@ -10,6 +10,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Breaking changes
 
+  - **stylelint-config-sass-guidelines** is no longer bundled in the MegaLinter images: it does not support **stylelint 18** yet
+    - If your stylelint configuration `extends` it, switch to another shared config such as `stylelint-config-standard-scss`
+    - Or install it yourself with `CSS_STYLELINT_PRE_COMMANDS` once a release supporting stylelint 18 is published
+
 - Core
 
   - **Faster runs**, most visible in native mode and on Windows:

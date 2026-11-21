@@ -137,13 +137,11 @@ ARG NPM_SPECTRAL_CLI_VERSION=6.17.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.16.0
+ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-# renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.5.0
 # renovate: datasource=npm depName=@biomejs/biome
 ARG NPM_BIOMEJS_BIOME_VERSION=2.6.6
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
@@ -439,7 +437,6 @@ RUN npm config set prefix /usr/local \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
-                stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 @biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
