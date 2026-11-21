@@ -135,7 +135,7 @@ ARG NPM_SALESFORCE_PLUGIN_PACKAGING_VERSION=3.0.17
 # renovate: datasource=npm depName=sfdx-hardis
 ARG SFDX_HARDIS_VERSION=8.22.0
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
+ARG PIP_ANSIBLE_LINT_VERSION=26.11.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
 ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
 # renovate: datasource=npm depName=jscpd
@@ -560,6 +560,9 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 # secretlint installation
 # semgrep installation
+# semgrep pins mcp==1.29.0 (CVE-2026-115563, fixed in 1.30.0): upgrade it in the
+# semgrep venv. Remove once semgrep depends on mcp >= 1.30.0.
+RUN VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache "mcp>=1.30.0,<2"
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a
