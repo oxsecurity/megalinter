@@ -15807,6 +15807,11 @@
 <li><strong>roslynator</strong> gathers the findings of all your projects in a single SARIF report</li>
 </ul>
 </li>
+<li><strong>SARIF output</strong> is now available for 11 more linters: <strong>pylint</strong>, <strong>flake8</strong>, <strong>codespell</strong>, <strong>yamllint</strong>, <strong>stylelint</strong>, <strong>markdownlint</strong>, <strong>cpplint</strong>, <strong>dartanalyzer</strong>, <strong>clippy</strong>, <strong>powershell</strong> (PSScriptAnalyzer) and <strong>vale</strong>. Enable it with <strong><code>SARIF_REPORTER: true</code></strong>, in the Docker images and in <strong>native mode</strong><ul>
+<li>Findings keep the severity given by the linter (ex: pylint conventions are notes), so the <strong>error count</strong> shown with SARIF enabled can be lower than the number of findings</li>
+<li><strong>flake8</strong>, <strong>codespell</strong> and <strong>cpplint</strong> have no severity: every finding is reported as an error</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15887,7 +15892,9 @@
 <li>.NET tools: each install deletes the tool <code>.nupkg</code> archives and the <code>tools/net*</code> folders other than the newest one supported by the SDK, which is the one the tool shims load</li>
 <li>The setuptools vendored <code>wheel</code> cleanup targeted <code>python3.13</code> paths while the images run Python 3.14: paths are now version-agnostic</li>
 <li>LLM providers rewritten on <code>requests</code>: shared <code>LLMProvider</code> HTTP helper (retries on connection errors, 429 and 5xx with <code>Retry-After</code>, masked API keys in errors, <code>SSL_CERT_FILE</code> / <code>SSL_CERT_DIR</code> support) and <code>llm_provider_openai_compatible.py</code> adapter, covered by offline tests in <code>test_llm_providers_http.py</code>. The <code>llm</code> extra is removed, and so is the <code>build.py</code> override that stripped it from standalone images</li>
-<li>New <code>Linter.after_lint_files()</code> hook, called once after all the files are linted: <code>RoslynatorLinter</code> uses it to merge the SARIF reports of its projects. SARIF results without <code>locations</code> are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their <code>bad</code> test folder, so they are active</li>
+<li>SARIF for linters that can not output it: new helper <code>megalinter/sarif_builder.py</code> (<code>SarifBuilder</code>, <code>SarifRunBuilder</code>, <code>SarifRuleBuilder</code>, <code>SarifResultBuilder</code>, inspired by node-sarif-builder) and overridable <code>Linter.convert_output_to_sarif()</code> hook, used by the converters of the linter classes (pylint, flake8, codespell, yamllint, stylelint, markdownlint, cpplint, dartanalyzer, clippy, powershell). They are pure Python functions, covered by unit tests in <code>sarif_converters_test.py</code>. Vale uses its official SARIF template (<code>TEMPLATES/vale-sarif.tmpl</code>), reached with the new <code>{{DEFAULT_RULES_LOCATION}}</code> placeholder of <code>cli_sarif_args</code></li>
+<li>Linters in <code>file</code> lint mode now gather the SARIF of all their files in <code>Linter.after_lint_files()</code> (reports are merged with their rules, <code>RoslynatorLinter</code> no longer has its own merge), and the log of a file is the readable version of its SARIF</li>
+<li>New <code>Linter.after_lint_files()</code> hook, called once after all the files are linted: the base class uses it to write the merged SARIF reports of the <code>file</code> lint mode. SARIF results without <code>locations</code> are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their <code>bad</code> test folder, so they are active</li>
 </ul>
 </li>
 </ul>
