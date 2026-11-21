@@ -13,10 +13,9 @@ from megalinter.sarif_builder import (
     LEVEL_ERROR,
     LEVEL_WARNING,
     SarifBuilder,
-    SarifResultBuilder,
     SarifRuleBuilder,
     SarifRunBuilder,
-    to_sarif_uri,
+    result_from_match,
 )
 
 YAMLLINT_BUILTIN_CONFIGS = ("default", "relaxed")
@@ -132,13 +131,12 @@ def yamllint_parsable_to_sarif(stdout, workspace=None):
             )
         )
         run.add_result(
-            SarifResultBuilder().init_simple(
+            result_from_match(
+                match,
+                workspace,
                 LEVEL_WARNING if match.group("level") == "warning" else LEVEL_ERROR,
                 match.group("message"),
                 rule_id,
-                file_uri=to_sarif_uri(match.group("path"), workspace),
-                start_line=int(match.group("line")),
-                start_column=int(match.group("column")),
             )
         )
     if has_result is False and stdout.strip() != "":

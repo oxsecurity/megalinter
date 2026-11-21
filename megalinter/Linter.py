@@ -1558,7 +1558,9 @@ class Linter:
             and self.sarif_output_file is not None
             and not os.path.isfile(self.sarif_output_file)
         ):
+            # pylint: disable=assignment-from-none
             sarif_builder = self.convert_output_to_sarif(return_stdout)
+            # pylint: enable=assignment-from-none
             if sarif_builder is not None:
                 with open(self.sarif_output_file, "w", encoding="utf-8") as file:
                     file.write(sarif_builder.build_sarif_json_string())

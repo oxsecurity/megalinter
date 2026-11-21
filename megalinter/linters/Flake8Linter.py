@@ -11,9 +11,8 @@ from megalinter import Linter
 from megalinter.sarif_builder import (
     LEVEL_ERROR,
     SarifBuilder,
-    SarifResultBuilder,
     SarifRunBuilder,
-    to_sarif_uri,
+    result_from_match,
 )
 
 FLAKE8_LINE_REGEX = re.compile(
@@ -36,13 +35,12 @@ def flake8_output_to_sarif(stdout, workspace=None):
             continue
         has_result = True
         run.add_result(
-            SarifResultBuilder().init_simple(
+            result_from_match(
+                match,
+                workspace,
                 LEVEL_ERROR,
                 match.group("message"),
                 match.group("code"),
-                file_uri=to_sarif_uri(match.group("path"), workspace),
-                start_line=int(match.group("line")),
-                start_column=int(match.group("column")),
             )
         )
     if has_result is False and stdout.strip() != "":

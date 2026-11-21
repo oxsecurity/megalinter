@@ -21,10 +21,25 @@ def to_sarif_uri(path, workspace=None):
             os.path.abspath(workspace).replace("\\", "/").rstrip("/") + "/"
         )
         if uri.startswith(workspace_prefix):
-            uri = uri[len(workspace_prefix) :]
+            prefix_length = len(workspace_prefix)
+            uri = uri[prefix_length:]
     while uri.startswith("./"):
         uri = uri[2:]
     return uri
+
+
+# Result of a finding parsed by a regex with the named groups path, and optionally
+# line and column
+def result_from_match(match, workspace, level, message_text, rule_id):
+    groups = match.groupdict()
+    return SarifResultBuilder().init_simple(
+        level,
+        message_text,
+        rule_id,
+        file_uri=to_sarif_uri(groups["path"], workspace),
+        start_line=int(groups["line"]) if groups.get("line") else None,
+        start_column=int(groups["column"]) if groups.get("column") else None,
+    )
 
 
 class SarifRuleBuilder:

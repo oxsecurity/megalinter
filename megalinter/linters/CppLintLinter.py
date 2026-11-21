@@ -11,10 +11,9 @@ from megalinter import Linter
 from megalinter.sarif_builder import (
     LEVEL_ERROR,
     SarifBuilder,
-    SarifResultBuilder,
     SarifRuleBuilder,
     SarifRunBuilder,
-    to_sarif_uri,
+    result_from_match,
 )
 
 CPPLINT_GUIDE_URL = "https://google.github.io/styleguide/cppguide.html"
@@ -63,12 +62,12 @@ def cpplint_output_to_sarif(stdout, workspace=None):
             )
         )
         run.add_result(
-            SarifResultBuilder().init_simple(
+            result_from_match(
+                match,
+                workspace,
                 LEVEL_ERROR,
                 match.group("message"),
                 match.group("category"),
-                file_uri=to_sarif_uri(match.group("path"), workspace),
-                start_line=int(match.group("line")),
             )
         )
     if has_result is False and stdout.strip() != "":

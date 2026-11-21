@@ -11,10 +11,9 @@ from megalinter import Linter
 from megalinter.sarif_builder import (
     LEVEL_ERROR,
     SarifBuilder,
-    SarifResultBuilder,
     SarifRuleBuilder,
     SarifRunBuilder,
-    to_sarif_uri,
+    result_from_match,
 )
 
 CODESPELL_LINE_REGEX = re.compile(
@@ -47,13 +46,13 @@ def codespell_output_to_sarif(stdout, workspace=None):
             continue
         has_result = True
         run.add_result(
-            SarifResultBuilder().init_simple(
+            result_from_match(
+                match,
+                workspace,
                 LEVEL_ERROR,
                 f'"{match.group("word")}" is a misspelling of '
                 f'"{match.group("suggestions")}"',
                 CODESPELL_RULE_ID,
-                file_uri=to_sarif_uri(match.group("path"), workspace),
-                start_line=int(match.group("line")) if match.group("line") else None,
             )
         )
     if has_result is False and stdout.strip() != "":
