@@ -188,6 +188,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [semgrep](https://semgrep.dev/) from 1.183.0 to **1.184.0** on 2026-11-20
   - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.76.1 to **0.76.2** on 2026-11-20
   - [trivy](https://aquasecurity.github.io/trivy/) from 0.76.1 to **0.76.2** on 2026-11-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.10.1 to **26.11.0** on 2026-11-21
+  - [spectral](https://github.com/stoplightio/spectral) from 6.17.0 to **6.17.1** on 2026-11-21
+  - [biome](https://biomejs.dev) from 2.6.5 to **2.6.6** on 2026-11-21
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
