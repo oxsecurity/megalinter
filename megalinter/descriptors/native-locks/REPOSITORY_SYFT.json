@@ -9,72 +9,72 @@
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "ff37fb20e8d072e193cb659ecb932994ba2add772cbf86909c368fb95a630c50",
-          "size": 30866950,
-          "url": "https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_darwin_amd64.tar.gz",
+          "sha256": "f0e8568a9429ac1c8e4ae9e9c399fede5fcd09e4a7348b47b0532baf1c6500c1",
+          "size": 30871329,
+          "url": "https://github.com/anchore/syft/releases/download/v1.57.0/syft_1.57.0_darwin_amd64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/syft@v1.56.0"
+            "github_release_attestation:anchore/syft@v1.57.0"
           ]
         }
       ],
-      "version": "1.56.0"
+      "version": "1.57.0"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "c19b97a8c175ac7bd8105b8c8240ce740bf078333b12cc62ea49002c1b33e6e0",
-          "size": 28226310,
-          "url": "https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_darwin_arm64.tar.gz",
+          "sha256": "17012a5a110323bb1069e513a8665f1ae445905c56b4e3f9a9df4f95c5bb6161",
+          "size": 28239508,
+          "url": "https://github.com/anchore/syft/releases/download/v1.57.0/syft_1.57.0_darwin_arm64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/syft@v1.56.0"
+            "github_release_attestation:anchore/syft@v1.57.0"
           ]
         }
       ],
-      "version": "1.56.0"
+      "version": "1.57.0"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "1c2493cfcf52d3367d6cb25780d9190c111c2219c34c820574c43e8bae15c528",
-          "size": 31413058,
-          "url": "https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_linux_amd64.tar.gz",
+          "sha256": "9c077a7d43029b3b13e98a8db720661e700c4d58db6352153a06395ae4a2a704",
+          "size": 31424471,
+          "url": "https://github.com/anchore/syft/releases/download/v1.57.0/syft_1.57.0_linux_amd64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/syft@v1.56.0"
+            "github_release_attestation:anchore/syft@v1.57.0"
           ]
         }
       ],
-      "version": "1.56.0"
+      "version": "1.57.0"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "ace61b9397ae28189c674ae332d67a8074dafd71e87724dfb8b22412d8253bb5",
-          "size": 28639815,
-          "url": "https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_linux_arm64.tar.gz",
+          "sha256": "410cbfa0ae0f63246bc0057843760b1de2833cd23919e025e368fd7681308cdb",
+          "size": 28650676,
+          "url": "https://github.com/anchore/syft/releases/download/v1.57.0/syft_1.57.0_linux_arm64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/syft@v1.56.0"
+            "github_release_attestation:anchore/syft@v1.57.0"
           ]
         }
       ],
-      "version": "1.56.0"
+      "version": "1.57.0"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "zip",
-          "sha256": "c4cd2846dc0128e29a947bc6f56e1e5ef01707275b0e58590fbe48105198661d",
-          "size": 30237932,
-          "url": "https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_windows_amd64.zip",
+          "sha256": "06e9663e55f7f38ff966710670fbe0763182c621f7ac2f191bcb209a6dfbd969",
+          "size": 30253627,
+          "url": "https://github.com/anchore/syft/releases/download/v1.57.0/syft_1.57.0_windows_amd64.zip",
           "verification": [
-            "github_release_attestation:anchore/syft@v1.56.0"
+            "github_release_attestation:anchore/syft@v1.57.0"
           ]
         }
       ],
-      "version": "1.56.0"
+      "version": "1.57.0"
     }
   },
-  "spec_hash": "732e75636fb9eb9ed83979ee8a23c1a210c09145491003ae971e124474387a7e"
+  "spec_hash": "62fc75d82fbe2be2f32de877f9098483bdca17f6af6fb8c1545dea6f96670908"
 }
