@@ -15667,7 +15667,16 @@
 <h2 id="unreleased-beta-main-branch-content">[Unreleased] (beta, main branch content)</h2>
 <p>Note: Can be used with <code>oxsecurity/megalinter@beta</code> in your GitHub Action mega-linter.yml file, or with <code>oxsecurity/megalinter:beta</code> docker image</p>
 <ul>
-<li>Breaking changes</li>
+<li>
+<p>Breaking changes</p>
+<ul>
+<li><strong>stylelint-config-sass-guidelines</strong> is no longer bundled in the MegaLinter images: it does not support <strong>stylelint 18</strong> yet<ul>
+<li>If your stylelint configuration <code>extends</code> it, switch to another shared config such as <code>stylelint-config-standard-scss</code></li>
+<li>Or install it yourself with <code>CSS_STYLELINT_PRE_COMMANDS</code> once a release supporting stylelint 18 is published</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>
@@ -15947,6 +15956,9 @@
 <li><a href="https://semgrep.dev/">semgrep</a> from 1.183.0 to <strong>1.184.0</strong> on 2026-11-20</li>
 <li><a href="https://aquasecurity.github.io/trivy/">trivy-sbom</a> from 0.76.1 to <strong>0.76.2</strong> on 2026-11-20</li>
 <li><a href="https://aquasecurity.github.io/trivy/">trivy</a> from 0.76.1 to <strong>0.76.2</strong> on 2026-11-20</li>
+<li><a href="https://ansible-lint.readthedocs.io/">ansible-lint</a> from 26.10.1 to <strong>26.11.0</strong> on 2026-11-21</li>
+<li><a href="https://github.com/stoplightio/spectral">spectral</a> from 6.17.0 to <strong>6.17.1</strong> on 2026-11-21</li>
+<li><a href="https://biomejs.dev">biome</a> from 2.6.5 to <strong>2.6.6</strong> on 2026-11-21</li>
 </ul>
 </li>
 </ul>

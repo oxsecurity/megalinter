@@ -12754,12 +12754,12 @@
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=rstcheck</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RSTCHECK_VERSION</span><span class="o">=</span><span class="m">6</span>.3.0
 <span class="c"># renovate: datasource=pypi depName=click</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RSTCHECK_CLICK_VERSION</span><span class="o">=</span><span class="m">8</span>.5.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RSTCHECK_CLICK_VERSION</span><span class="o">=</span><span class="m">8</span>.5.1
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/click/8.5.0">click==8.5.0</a></li>
+<li><a href="https://pypi.org/project/click/8.5.1">click==8.5.1</a></li>
 <li><a href="https://pypi.org/project/rstcheck[toml,sphinx]/6.3.0">rstcheck[toml,sphinx]==6.3.0</a></li>
 </ul>
 </li>
@@ -12807,14 +12807,14 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/RST_RSTCHECK"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.10"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"click==8.5.0"</span><span class="w"> </span><span class="s2">"rstcheck[toml,sphinx]==6.3.0"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"click==8.5.1"</span><span class="w"> </span><span class="s2">"rstcheck[toml,sphinx]==6.3.0"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/RST_RSTCHECK"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.10"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"click==8.5.0"</span><span class="w"> </span><span class="s2">"rstcheck[toml,sphinx]==6.3.0"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"click==8.5.1"</span><span class="w"> </span><span class="s2">"rstcheck[toml,sphinx]==6.3.0"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>

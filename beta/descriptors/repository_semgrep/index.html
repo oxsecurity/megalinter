@@ -13441,6 +13441,9 @@ THIRD-PARTY<span class="w"> </span>LICENSES
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=semgrep</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_SEMGREP_VERSION</span><span class="o">=</span><span class="m">1</span>.184.0
+<span class="c"># semgrep pins mcp==1.29.0 (CVE-2026-115563, fixed in 1.30.0): upgrade it in the</span>
+<span class="c"># semgrep venv. Remove once semgrep depends on mcp &gt;= 1.30.0.</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nv">VIRTUAL_ENV</span><span class="o">=</span><span class="s2">"/venvs/semgrep"</span><span class="w"> </span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache<span class="w"> </span><span class="s2">"mcp&gt;=1.30.0,&lt;2"</span>
 <span class="c"># Wrap semgrep so its OCaml 5 runtime does not abort with</span>
 <span class="c"># "Failed to allocate signal stack for domain 0", which happens when the</span>
 <span class="c"># stack rlimit is unlimited (the case on some CI runners). Cap it to a</span>
