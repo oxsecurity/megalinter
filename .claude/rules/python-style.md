@@ -22,6 +22,8 @@ globs: ["megalinter/**/*.py", ".automation/**/*.py", "server/**/*.py"]
 - Custom linter classes go in `megalinter/linters/` and must extend `megalinter.Linter`
 - Override only the methods you need: `build_lint_command()`, `before_lint_files()`, `complete_command_line()`, `build_version_command()`
 - Keep custom classes minimal — most config belongs in the YAML descriptor, not Python code
+- In a linter module, module-level helper functions (ex: a converter of the output of the linter to SARIF) are declared **after** the class, never before it. Constants and imports stay at the top
+- Linters that can not output SARIF build it by overriding `convert_output_to_sarif()` with the helpers of `megalinter/sarif_builder.py`: the conversion works in Docker and in native mode (never depend on a binary that exists only in the Docker image)
 
 ## Error Handling
 - Use `logging` module for all output, never `print()`

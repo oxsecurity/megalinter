@@ -29,7 +29,7 @@ Exception for standalone and security flavors docker images, that use a list of 
 
 ## semgrep documentation
 
-- Version in MegaLinter: **1.183.0**
+- Version in MegaLinter: **1.184.0**
 - Visit [Official Web Site](https://semgrep.dev/){target=_blank}
 - See [How to configure semgrep rules](https://semgrep.dev/docs/running-rules/){target=_blank}
 - See [How to disable semgrep rules in files](https://semgrep.dev/docs/ignoring-findings/#inline-comments){target=_blank}
@@ -777,7 +777,7 @@ BUGS
 THIRD-PARTY LICENSES
        Semgrep includes open source software. The licenses and notices for
        these dependencies are listed at
-       https://semgrep.dev/cli-credits?version=1.183.0
+       https://semgrep.dev/cli-credits?version=1.184.0
 
 ```
 
@@ -786,7 +786,10 @@ THIRD-PARTY LICENSES
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.183.0
+ARG PIP_SEMGREP_VERSION=1.184.0
+# semgrep pins mcp==1.29.0 (CVE-2026-115563, fixed in 1.30.0): upgrade it in the
+# semgrep venv. Remove once semgrep depends on mcp >= 1.30.0.
+RUN VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache "mcp>=1.30.0,<2"
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a
@@ -797,7 +800,7 @@ RUN mv /venvs/semgrep/bin/semgrep /venvs/semgrep/bin/semgrep-bin \
 ```
 
 - PIP packages (Python):
-  - [semgrep==1.183.0](https://pypi.org/project/semgrep/1.183.0)
+  - [semgrep==1.184.0](https://pypi.org/project/semgrep/1.184.0)
 
 ### Installation without Docker (native mode)
 
@@ -823,7 +826,7 @@ NATIVE_LINTERS: [REPOSITORY_SEMGREP]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SEMGREP"
     uv venv "$INSTALL_DIR" --python ">=3.10"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "semgrep==1.183.0"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "semgrep==1.184.0"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -832,7 +835,7 @@ NATIVE_LINTERS: [REPOSITORY_SEMGREP]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SEMGREP"
     uv venv "$INSTALL_DIR" --python ">=3.10"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "semgrep==1.183.0"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "semgrep==1.184.0"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

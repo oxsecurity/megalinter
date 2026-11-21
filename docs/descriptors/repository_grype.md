@@ -30,7 +30,7 @@ description: How to use grype (configure, ignore files, ignore errors, help & ve
 
 ## grype documentation
 
-- Version in MegaLinter: **0.122.0**
+- Version in MegaLinter: **0.122.1**
 - Visit [Official Web Site](https://github.com/anchore/grype#readme){target=_blank}
 - See [How to configure grype rules](https://github.com/anchore/grype#configuration){target=_blank}
   - If custom `.grype.yaml` config file isn't found, [.grype.yaml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.grype.yaml){target=_blank} will be used
@@ -183,7 +183,7 @@ Use "grype [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.121.0
+ARG REPOSITORY_GRYPE_VERSION=0.121.1
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/refs/tags/v${REPOSITORY_GRYPE_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 
@@ -211,9 +211,9 @@ NATIVE_LINTERS: [REPOSITORY_GRYPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_GRYPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/grype_0.121.0_linux_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.1_linux_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.1/grype_0.121.1_linux_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.1_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.1_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -222,9 +222,9 @@ NATIVE_LINTERS: [REPOSITORY_GRYPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_GRYPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_linux_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/grype_0.121.0_linux_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.1_linux_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.1/grype_0.121.1_linux_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.1_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.1_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -233,9 +233,9 @@ NATIVE_LINTERS: [REPOSITORY_GRYPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_GRYPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_darwin_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/grype_0.121.0_darwin_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.1_darwin_amd64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.1/grype_0.121.1_darwin_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.1_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.1_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -244,9 +244,9 @@ NATIVE_LINTERS: [REPOSITORY_GRYPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_GRYPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_darwin_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/grype_0.121.0_darwin_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.1_darwin_arm64.tar.gz" https://github.com/anchore/grype/releases/download/v0.121.1/grype_0.121.1_darwin_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/grype_0.121.1_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.1_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -255,9 +255,9 @@ NATIVE_LINTERS: [REPOSITORY_GRYPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_GRYPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" https://github.com/anchore/grype/releases/download/v0.121.0/grype_0.121.0_windows_amd64.zip &&
-      unzip -q "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/grype_0.121.0_windows_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/grype_0.121.1_windows_amd64.zip" https://github.com/anchore/grype/releases/download/v0.121.1/grype_0.121.1_windows_amd64.zip &&
+      unzip -q "$INSTALL_DIR/grype_0.121.1_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/grype_0.121.1_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

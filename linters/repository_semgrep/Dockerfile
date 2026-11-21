@@ -25,7 +25,7 @@
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.15.1-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3*/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -49,7 +49,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.15.1-alpine3.24
+FROM python:3.14.9-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
@@ -66,11 +66,11 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.183.0
+ARG PIP_SEMGREP_VERSION=1.184.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 #ARG__END
 
 ####################
@@ -180,6 +180,9 @@ ENV PATH="/node-deps/node_modules/.bin:${PATH}" \
 #############################################################################################
 #OTHER__START
 # semgrep installation
+# semgrep pins mcp==1.29.0 (CVE-2026-115563, fixed in 1.30.0): upgrade it in the
+# semgrep venv. Remove once semgrep depends on mcp >= 1.30.0.
+RUN VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache "mcp>=1.30.0,<2"
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a

@@ -10,6 +10,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Breaking changes
 
+  - **stylelint-config-sass-guidelines** is no longer bundled in the MegaLinter images: it does not support **stylelint 18** yet
+    - If your stylelint configuration `extends` it, switch to another shared config such as `stylelint-config-standard-scss`
+    - Or install it yourself with `CSS_STYLELINT_PRE_COMMANDS` once a release supporting stylelint 18 is published
+
 - Core
 
   - **Faster runs**, most visible in native mode and on Windows:
@@ -71,6 +75,13 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
   - **djlint**: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages
+  - **SARIF output** is now available for 5 more linters: **actionlint**, **djlint**, **roslynator**, **rubocop** and **trufflehog**. Enable it with **`SARIF_REPORTER: true`** (optionally scoped with `SARIF_REPORTER_LINTERS`), see the [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/) documentation
+    - **djlint** and **rubocop** report most findings as warnings or notes, so the **error count** shown with SARIF enabled is lower than the number of findings
+    - **trufflehog** reports a finding as an error only when the secret is **verified**
+    - **roslynator** gathers the findings of all your projects in a single SARIF report
+  - **SARIF output** is now available for 11 more linters: **pylint**, **flake8**, **codespell**, **yamllint**, **stylelint**, **markdownlint**, **cpplint**, **dartanalyzer**, **clippy**, **powershell** (PSScriptAnalyzer) and **vale**. Enable it with **`SARIF_REPORTER: true`**, in the Docker images and in **native mode**
+    - Findings keep the severity given by the linter (ex: pylint conventions are notes), so the **error count** shown with SARIF enabled can be lower than the number of findings
+    - **flake8**, **codespell** and **cpplint** have no severity: every finding is reported as an error
 
 - Fixes
 
@@ -86,6 +97,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Flavors
 
 - Doc
+
+  - Add the [GNU Awk (`gawk`) plugin](https://github.com/wesley-dean/mega-linter-plugin-gawk) to the external plugins catalog.
+  - Mark the `repolinter` plugin as deprecated in the external plugins catalog.
 
 - mega-linter-runner
 
@@ -117,6 +131,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - .NET tools: each install deletes the tool `.nupkg` archives and the `tools/net*` folders other than the newest one supported by the SDK, which is the one the tool shims load
   - The setuptools vendored `wheel` cleanup targeted `python3.13` paths while the images run Python 3.14: paths are now version-agnostic
   - LLM providers rewritten on `requests`: shared `LLMProvider` HTTP helper (retries on connection errors, 429 and 5xx with `Retry-After`, masked API keys in errors, `SSL_CERT_FILE` / `SSL_CERT_DIR` support) and `llm_provider_openai_compatible.py` adapter, covered by offline tests in `test_llm_providers_http.py`. The `llm` extra is removed, and so is the `build.py` override that stripped it from standalone images
+  - SARIF for linters that can not output it: new helper `megalinter/sarif_builder.py` (`SarifBuilder`, `SarifRunBuilder`, `SarifRuleBuilder`, `SarifResultBuilder`, inspired by node-sarif-builder) and overridable `Linter.convert_output_to_sarif()` hook, used by the converters of the linter classes (pylint, flake8, codespell, yamllint, stylelint, markdownlint, cpplint, dartanalyzer, clippy, powershell). They are pure Python functions, covered by unit tests in `sarif_converters_test.py`. Vale uses its official SARIF template (`TEMPLATES/vale-sarif.tmpl`), reached with the new `{{DEFAULT_RULES_LOCATION}}` placeholder of `cli_sarif_args`
+  - Linters in `file` lint mode now gather the SARIF of all their files in `Linter.after_lint_files()` (reports are merged with their rules, `RoslynatorLinter` no longer has its own merge), and the log of a file is the readable version of its SARIF
+  - New `Linter.after_lint_files()` hook, called once after all the files are linted: the base class uses it to write the merged SARIF reports of the `file` lint mode. SARIF results without `locations` are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their `bad` test folder, so they are active
 
 - CI
 
@@ -172,6 +189,27 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff](https://github.com/astral-sh/ruff) from 0.17.2 to **0.17.3** on 2026-11-17
   - [grype](https://github.com/anchore/grype) from 0.121.3 to **0.122.0** on 2026-11-17
   - [syft](https://github.com/anchore/syft) from 1.57.1 to **1.57.2** on 2026-11-17
+  - [djlint](https://djlint.com/) from 1.49.3 to **1.49.4** on 2026-11-17
+  - [checkov](https://www.checkov.io/) from 3.4.0 to **3.4.3** on 2026-11-17
+  - [psalm](https://psalm.dev) from Psalm.6.20.6@ to **Psalm.6.20.7@** on 2026-11-17
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.7 to **3.99.8** on 2026-11-17
+  - [tekton-lint](https://github.com/IBM/tekton-lint) from 1.2.4 to **1.3.0** on 2026-11-17
+  - [djlint](https://djlint.com/) from 1.49.4 to **1.49.6** on 2026-11-19
+  - [grype](https://github.com/anchore/grype) from 0.122.0 to **0.122.1** on 2026-11-19
+  - [biome](https://biomejs.dev) from 2.6.4 to **2.6.5** on 2026-11-19
+  - [djlint](https://djlint.com/) from 1.49.6 to **1.49.9** on 2026-11-19
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.27 to **3.95.28** on 2026-11-19
+  - [psalm](https://psalm.dev) from Psalm.6.20.7@ to **Psalm.6.20.9@** on 2026-11-19
+  - [betterleaks](https://github.com/betterleaks/betterleaks) from 1.7.3 to **1.10.1** on 2026-11-19
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.17 to **4.0.19** on 2026-11-20
+  - [psalm](https://psalm.dev) from Psalm.6.20.9@ to **Psalm.7.0.3@** on 2026-11-20
+  - [semgrep](https://semgrep.dev/) from 1.183.0 to **1.184.0** on 2026-11-20
+  - [trivy-sbom](https://aquasecurity.github.io/trivy/) from 0.76.1 to **0.76.2** on 2026-11-20
+  - [trivy](https://aquasecurity.github.io/trivy/) from 0.76.1 to **0.76.2** on 2026-11-20
+  - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.10.1 to **26.11.0** on 2026-11-21
+  - [spectral](https://github.com/stoplightio/spectral) from 6.17.0 to **6.17.1** on 2026-11-21
+  - [biome](https://biomejs.dev) from 2.6.5 to **2.6.6** on 2026-11-21
+  - [stylelint](https://stylelint.io) from 17.16.0 to **18.0.0** on 2026-11-21
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

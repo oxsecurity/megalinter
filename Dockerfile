@@ -33,7 +33,7 @@ ARG EDITORCONFIG_EDITORCONFIG_CHECKER_VERSION=4.0.2
 # renovate: datasource=github-tags depName=mgechev/revive
 ARG GO_REVIVE_VERSION=v1.17.1
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.3
+ARG GO_IMAGE_VERSION=1.27.4
 # renovate: datasource=docker depName=ghcr.io/yannh/kubeconform
 ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
@@ -43,9 +43,9 @@ ARG PROTOBUF_PROTOLINT_VERSION=0.58.0
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.10.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.7
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.8
 # renovate: datasource=docker depName=jdkato/vale
 ARG SPELL_VALE_VERSION=v3.26.0
 # renovate: datasource=docker depName=lycheeverse/lychee
@@ -134,7 +134,7 @@ FROM ghcr.io/opentofu/opentofu:${TERRAFORM_TOFU_FMT_VERSION} AS opentofu
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.15.1-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3*/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -158,7 +158,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.15.1-alpine3.24
+FROM python:3.14.9-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
@@ -191,9 +191,9 @@ ARG SFDX_HARDIS_VERSION=8.22.0
 # renovate: datasource=npm depName=typescript
 ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
+ARG PIP_ANSIBLE_LINT_VERSION=26.11.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
+ARG NPM_SPECTRAL_CLI_VERSION=6.17.1
 # renovate: datasource=github-tags depName=Azure/arm-ttk
 ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
@@ -218,15 +218,13 @@ ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
 ARG CSHARP_ROSLYNATOR_VERSION=1.0.1
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.16.0
+ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-# renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.5.0
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.6.4
+ARG NPM_BIOMEJS_BIOME_VERSION=2.6.6
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.12.2'
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
@@ -238,7 +236,7 @@ ARG GO_GOLANGCI_LINT_VERSION=2.15.0
 # renovate: datasource=npm depName=npm-groovy-lint
 ARG NPM_GROOVY_LINT_VERSION=19.0.0
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.49.4
+ARG PIP_DJLINT_VERSION=1.49.9
 # renovate: datasource=npm depName=htmlhint
 ARG NPM_HTMLHINT_VERSION=1.9.2
 # renovate: datasource=github-releases depName=checkstyle/checkstyle
@@ -287,7 +285,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.17
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
 # renovate: datasource=github-tags depName=cvega/luarocks
 ARG LUA_LUACHECK_VERSION=3.3.1
 
@@ -309,11 +307,11 @@ ARG PHP_PHPSTAN_PHPSTAN_VERSION=2.3.5
 # renovate: datasource=packagist depName=phpstan/extension-installer
 ARG PHP_PHPSTAN_EXTENSION_INSTALLER_VERSION=1.4.3
 # renovate: datasource=packagist depName=vimeo/psalm
-ARG PHP_VIMEO_PSALM_VERSION=6.20.6
+ARG PHP_VIMEO_PSALM_VERSION=7.0.5
 # renovate: datasource=packagist depName=overtrue/phplint
 ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
 # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.27
+ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.29
 # renovate: datasource=nuget depName=PSScriptAnalyzer registryUrl=https://www.powershellgallery.com/api/v2/
 ARG PSSA_VERSION='1.25.0'
 
@@ -338,7 +336,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.17.3
+ARG PIP_RUFF_VERSION=0.17.4
 # renovate: datasource=pypi depName=ty
 ARG PIP_TY_VERSION=0.0.100
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
@@ -350,7 +348,7 @@ ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.121.1
+ARG REPOSITORY_GRYPE_VERSION=0.121.2
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.2
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
@@ -362,14 +360,14 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.1.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.1.0
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.183.0
+ARG PIP_SEMGREP_VERSION=1.184.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.55.0
+ARG REPOSITORY_SYFT_VERSION=1.56.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=2.16.0
 # renovate: datasource=pypi depName=robotframework-robocop
@@ -381,7 +379,7 @@ ARG PIP_RESTRUCTUREDTEXT_LINT_VERSION=2.0.2
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
+ARG PIP_RSTCHECK_CLICK_VERSION=8.5.1
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=rubygems depName=rubocop
@@ -407,7 +405,7 @@ ARG PIP_SNAKEMAKE_VERSION=9.27.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.0
+ARG NPM_CSPELL_VERSION=10.4.1
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
@@ -417,7 +415,7 @@ ARG PIP_SQLFLUFF_VERSION=4.5.0
 # renovate: datasource=github-releases depName=realm/SwiftLint
 ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 # renovate: datasource=npm depName=@ibm/tekton-lint
-ARG NPM_IBM_TEKTON_LINT_VERSION=1.2.4
+ARG NPM_IBM_TEKTON_LINT_VERSION=1.3.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
@@ -431,9 +429,9 @@ ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 # renovate: datasource=github-tags depName=rust-lang/rust
 ARG RUST_RUST_VERSION=1.99.1
 
@@ -754,7 +752,6 @@ RUN npm config set prefix /usr/local \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
-                stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 @biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION} \
                 gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
@@ -1228,6 +1225,9 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 # secretlint installation
 # semgrep installation
+# semgrep pins mcp==1.29.0 (CVE-2026-115563, fixed in 1.30.0): upgrade it in the
+# semgrep venv. Remove once semgrep depends on mcp >= 1.30.0.
+RUN VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache "mcp>=1.30.0,<2"
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a

@@ -38,6 +38,79 @@ linters:
     cli_version_arg_name: "-version"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "([0-9]+) \\|"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "-format"
+      # Upstream SARIF 2.1.0 template https://github.com/rhysd/actionlint/blob/main/testdata/format/sarif_template.txt
+      # + result level, so findings are counted as errors only (not also as warnings)
+      - |-
+        {
+            "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+            "version": "2.1.0",
+            "runs": [
+                {
+                    "tool": {
+                        "driver": {
+                            "name": "GitHub Actions lint",
+                            "version": {{ getVersion | json }},
+                            "informationUri": "https://github.com/rhysd/actionlint",
+                            "rules": [
+                                {{$first := true}}
+                                {{range $ := allKinds }}
+                                    {{if $first}}{{$first = false}}{{else}},{{end}}
+                                    {
+                                        "id": {{json $.Name}},
+                                        "name": {{$.Name | toPascalCase | json}},
+                                        "defaultConfiguration": {
+                                            "level": "error"
+                                        },
+                                        "properties": {
+                                            "description": {{json $.Description}},
+                                            "queryURI": "https://github.com/rhysd/actionlint/blob/main/docs/checks.md"
+                                        },
+                                        "fullDescription": {
+                                            "text": {{json $.Description}}
+                                        },
+                                        "helpUri": "https://github.com/rhysd/actionlint/blob/main/docs/checks.md"
+                                    }
+                                {{end}}
+                            ]
+                        }
+                    },
+                    "results": [
+                        {{$first := true}}
+                        {{range $ := .}}
+                            {{if $first}}{{$first = false}}{{else}},{{end}}
+                            {
+                                "ruleId": {{json $.Kind}},
+                                "level": "error",
+                                "message": {
+                                    "text": {{json $.Message}}
+                                },
+                                "locations": [
+                                    {
+                                        "physicalLocation": {
+                                            "artifactLocation": {
+                                                "uri": {{json $.Filepath}},
+                                                "uriBaseId": "%SRCROOT%"
+                                            },
+                                            "region": {
+                                                "startLine": {{$.Line}},
+                                                "startColumn": {{$.Column}},
+                                                "endColumn": {{$.EndColumn}},
+                                                "snippet": {
+                                                    "text": {{json $.Snippet}}
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        {{end}}
+                    ]
+                }
+            ]
+        }
     examples:
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
     install:

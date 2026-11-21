@@ -184,7 +184,7 @@ Use "syft [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.55.0
+ARG REPOSITORY_SYFT_VERSION=1.56.0
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOSITORY_SYFT_VERSION}/install.sh | sh -s -- -b /usr/local/bin
 ```
 
@@ -212,9 +212,9 @@ NATIVE_LINTERS: [REPOSITORY_SYFT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/syft_1.55.0_linux_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/syft_1.56.0_linux_amd64.tar.gz" https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_linux_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/syft_1.56.0_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/syft_1.56.0_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -223,9 +223,9 @@ NATIVE_LINTERS: [REPOSITORY_SYFT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_linux_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/syft_1.55.0_linux_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/syft_1.56.0_linux_arm64.tar.gz" https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_linux_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/syft_1.56.0_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/syft_1.56.0_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -234,9 +234,9 @@ NATIVE_LINTERS: [REPOSITORY_SYFT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_darwin_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/syft_1.55.0_darwin_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/syft_1.56.0_darwin_amd64.tar.gz" https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_darwin_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/syft_1.56.0_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/syft_1.56.0_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -245,9 +245,9 @@ NATIVE_LINTERS: [REPOSITORY_SYFT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_darwin_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/syft_1.55.0_darwin_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/syft_1.56.0_darwin_arm64.tar.gz" https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_darwin_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/syft_1.56.0_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/syft_1.56.0_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -256,9 +256,9 @@ NATIVE_LINTERS: [REPOSITORY_SYFT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/REPOSITORY_SYFT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/syft_1.55.0_windows_amd64.zip" https://github.com/anchore/syft/releases/download/v1.55.0/syft_1.55.0_windows_amd64.zip &&
-      unzip -q "$INSTALL_DIR/syft_1.55.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/syft_1.55.0_windows_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/syft_1.56.0_windows_amd64.zip" https://github.com/anchore/syft/releases/download/v1.56.0/syft_1.56.0_windows_amd64.zip &&
+      unzip -q "$INSTALL_DIR/syft_1.56.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/syft_1.56.0_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

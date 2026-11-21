@@ -937,6 +937,20 @@ def format_bullet_list(files):
     return "{}{}".format(prefix, file_list)
 
 
+# Find the first JSON value of the expected type in a text that can also contain
+# other lines (logs, progress...). Uses the first value accepted by the predicate
+def find_json_value(text: str, value_type=(dict, list), predicate=None):
+    decoder = json.JSONDecoder()
+    for match in re.finditer(r"[\[{]", text):
+        try:
+            value, _ = decoder.raw_decode(text, match.start())
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, value_type) and (predicate is None or predicate(value)):
+            return value
+    return None
+
+
 def find_json_in_stdout(stdout: str, sarif=True):
     # Try using full stdout
     found_json = truncate_json_from_string(stdout)

@@ -38,7 +38,7 @@ plugins:
     author: "[Wesley Dean](https://github.com/wesley-dean)"
   # TODO Group's (@todogroup) repolinter
   - name: repolinter
-    description: Plugin to run TODO Group's repolinter to look for repository best practices
+    description: Plugin to run TODO Group's repolinter to look for repository best practices (deprecated)
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/README.md
     pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-repolinter/blob/main/mega-linter-plugin-repolinter/repolinter.megalinter-descriptor.yml
     author: "[Wesley Dean](https://github.com/wesley-dean)"
@@ -53,6 +53,12 @@ plugins:
     description: Plugin to lint YAML frontmatter in Markdown documents
     docUrl: https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/README.md
     pluginUrl: https://github.com/wesley-dean/mega-linter-plugin-fmlint/blob/main/mega-linter-plugin-fmlint/fmlint.megalinter-descriptor.yml
+    author: "[Wesley Dean](https://github.com/wesley-dean)"
+  # GNU Awk linting
+  - name: gawk
+    description: Plugin to lint GNU Awk files
+    docUrl: https://github.com/wesley-dean/mega-linter-plugin-gawk/blob/main/README.md
+    pluginUrl: https://raw.githubusercontent.com/wesley-dean/mega-linter-plugin-gawk/refs/heads/main/mega-linter-plugin-gawk/gawk.megalinter-descriptor.yml
     author: "[Wesley Dean](https://github.com/wesley-dean)"
   # LintLang for AI agent instructions, tool definitions and prompts
   - name: lintlang

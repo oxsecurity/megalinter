@@ -138,6 +138,7 @@ class Linter:
         self.cli_sarif_args = []
         self.sarif_output_file = None
         self.sarif_default_output_file = None
+        self.merged_sarif = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
         self.cli_command_remove_args = (
@@ -1098,6 +1099,8 @@ class Linter:
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
 
+        self.after_lint_files()
+
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
             # Disable errors: no failure, just warning
@@ -1201,6 +1204,10 @@ class Linter:
             "{{REPORT_FOLDER}}": self.report_folder,
             "{{WORKSPACE}}": self.workspace,
         }
+        if any("{{DEFAULT_RULES_LOCATION}}" in txt for txt in args):
+            default_variables["{{DEFAULT_RULES_LOCATION}}"] = os.path.abspath(
+                utils.get_default_rules_location()
+            )
         merged_map = default_variables
         if additional_variables is not None:
             merged_map.update(additional_variables)
@@ -1327,11 +1334,33 @@ class Linter:
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
+        self.stdout_human = None
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
+        if self.cli_lint_mode == "file" and self.output_sarif is True:
+            # Each file overwrites the SARIF of the previous one: gather them
+            self.merge_file_sarif()
+            # The log of the file is the readable version of its SARIF
+            if self.stdout_human:
+                return_output = self.stdout_human
         return return_code, return_output
+
+    def merge_file_sarif(self):
+        if self.sarif_output_file is None or not os.path.isfile(self.sarif_output_file):
+            return
+        try:
+            # utf-8-sig: some linters (ex: .NET ones) write a BOM
+            with open(self.sarif_output_file, "r", encoding="utf-8-sig") as file:
+                file_sarif = json.load(file)
+        except ValueError as e:
+            logging.warning(f"[SARIF] Unable to merge {self.sarif_output_file}: {e}")
+            return
+        if self.merged_sarif is None:
+            self.merged_sarif = file_sarif
+        else:
+            utils_sarif.merge_sarif_logs(self.merged_sarif, file_sarif)
 
     def native_environment(self, env):
         if self.native_toolchain is None:
@@ -1521,6 +1550,25 @@ class Linter:
 
     def manage_sarif_output(self, return_stdout):
         sarif_confirmed = False
+        keep_raw_output = False
+        # Build the SARIF file from the output of the linters that can not output SARIF
+        if (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and self.sarif_output_file is not None
+            and not os.path.isfile(self.sarif_output_file)
+        ):
+            # pylint: disable=assignment-from-none
+            sarif_builder = self.convert_output_to_sarif(return_stdout)
+            # pylint: enable=assignment-from-none
+            if sarif_builder is not None:
+                with open(self.sarif_output_file, "w", encoding="utf-8") as file:
+                    file.write(sarif_builder.build_sarif_json_string())
+                # Without any result, the linter output may be an error message
+                # (ex: invalid configuration) that must stay visible in the logs
+                keep_raw_output = not any(
+                    len(run.results) > 0 for run in sarif_builder.runs
+                )
         # Move SARIF file if necessary if generated in a fixed place by the linter
         if (
             self.can_output_sarif is True
@@ -1578,7 +1626,11 @@ class Linter:
             utils_sarif.normalize_sarif_files(self)
 
         # Convert SARIF into human readable text for Console & Text reporters
-        if sarif_confirmed is True and self.master.sarif_to_human is True:
+        if (
+            sarif_confirmed is True
+            and keep_raw_output is False
+            and self.master.sarif_to_human is True
+        ):
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
                 sarif_text = utils_sarif.remove_suppressed_results_from_text(
                     file.read()
@@ -1778,6 +1830,17 @@ class Linter:
 
     def before_lint_files(self):
         pass
+
+    # Writes the SARIF merged from the results of each file (linter in file lint mode)
+    def after_lint_files(self):
+        if self.merged_sarif is not None:
+            with open(self.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+                json.dump(self.merged_sarif, sarif_file, sort_keys=True, indent=2)
+
+    # To override in the linters that can not output SARIF: returns a
+    # sarif_builder.SarifBuilder built from the output of the linter, or None
+    def convert_output_to_sarif(self, return_stdout):
+        return None
 
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:
@@ -2603,7 +2666,10 @@ class Linter:
                         count_results = True
 
                     if count_results is True:
-                        total_result += len(result["locations"])
+                        # A result may have no location (ex: roslynator compiler diagnostics)
+                        total_result += (
+                            len(result["locations"]) if "locations" in result else 1
+                        )
 
             return total_result
         except Exception as e:

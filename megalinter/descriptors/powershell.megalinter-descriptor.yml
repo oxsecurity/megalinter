@@ -39,6 +39,7 @@ linters:
   # Internal powershell linter
   - class: PowershellLinter
     linter_name: powershell
+    can_output_sarif: true
     linter_text: |
       **PSScriptAnalyzer** is the premier static code analysis tool for PowerShell modules and scripts that enforces best practices and detects potential issues. Developed by the PowerShell Team and community, it serves as the standard for PowerShell code quality analysis.
 

@@ -21,7 +21,10 @@ def normalize_sarif_files(linter):
         # Read SARIF output file
 
         load_ok = False
-        with open(linter.sarif_output_file, "r", encoding="utf-8") as linter_sarif_file:
+        # utf-8-sig: some linters (ex: roslynator, on .NET) write a BOM
+        with open(
+            linter.sarif_output_file, "r", encoding="utf-8-sig"
+        ) as linter_sarif_file:
             # parse sarif file
             try:
                 linter_sarif_obj = json.load(linter_sarif_file)
@@ -64,6 +67,41 @@ def normalize_sarif_files(linter):
                 clear_default_workspace_prefix(
                     linter.sarif_output_file, default_workspace
                 )
+
+
+# Add the runs of the source SARIF log to the target one. The rules of a run are
+# merged by id, and the rule indexes of the added results follow
+def merge_sarif_logs(target: dict, source: dict):
+    target_runs = target.setdefault("runs", [])
+    for run_index, source_run in enumerate(source.get("runs", [])):
+        if run_index >= len(target_runs):
+            target_runs.append(source_run)
+            continue
+        target_run = target_runs[run_index]
+        rules = (
+            target_run.setdefault("tool", {})
+            .setdefault("driver", {})
+            .setdefault("rules", [])
+        )
+        rule_indexes = {rule.get("id"): index for index, rule in enumerate(rules)}
+        index_map = {}
+        source_rules = source_run.get("tool", {}).get("driver", {}).get("rules", [])
+        for source_index, rule in enumerate(source_rules):
+            if rule.get("id") not in rule_indexes:
+                rule_indexes[rule.get("id")] = len(rules)
+                rules.append(rule)
+            index_map[source_index] = rule_indexes[rule.get("id")]
+        results = target_run.setdefault("results", [])
+        for result in source_run.get("results", []):
+            if "ruleIndex" in result:
+                result["ruleIndex"] = index_map.get(
+                    result["ruleIndex"], result["ruleIndex"]
+                )
+            results.append(result)
+        if "artifacts" in source_run:
+            target_run["artifacts"] = (
+                target_run.get("artifacts", []) + source_run["artifacts"]
+            )
 
 
 def clear_default_workspace_prefix(file_path, default_workspace):

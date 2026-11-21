@@ -10,7 +10,11 @@ file_extensions:
 processing_order: -9
 linters:
   # PYLINT
-  - linter_name: pylint
+  - class: PylintLinter
+    linter_name: pylint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format=json2"
     file_extensions:
       - ".py"
       - ".pyi"
@@ -262,7 +266,9 @@ linters:
         - name: VSCode Python Extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
   # FLAKE8
-  - linter_name: flake8
+  - class: Flake8Linter
+    linter_name: flake8
+    can_output_sarif: true
     linter_text: |
       **Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
 
@@ -994,7 +1000,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.17.3
+          ARG PIP_RUFF_VERSION=0.17.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     native_install:
@@ -1077,7 +1083,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.17.3
+          ARG PIP_RUFF_VERSION=0.17.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     native_install:

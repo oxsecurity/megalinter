@@ -25,7 +25,7 @@
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.15.1-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3*/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -49,7 +49,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.15.1-alpine3.24
+FROM python:3.14.9-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 #ARG__END
 

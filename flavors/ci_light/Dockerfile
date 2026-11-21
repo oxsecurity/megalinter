@@ -23,9 +23,9 @@ ARG BASH_SHFMT_VERSION=v3.14.1-alpine
 # renovate: datasource=docker depName=hadolint/hadolint
 ARG DOCKERFILE_HADOLINT_VERSION=v2.15.1-alpine
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.10.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.7
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.8
 #ARGTOP__END
 
 #############################################################################################
@@ -56,7 +56,7 @@ FROM trufflesecurity/trufflehog:${REPOSITORY_TRUFFLEHOG_VERSION} AS trufflehog
 # Build wheel for megalinter python package
 ##################
 FROM ghcr.io/astral-sh/uv:0.12.3 AS uv
-FROM python:3.15.1-alpine3.24 AS build-ml-core
+FROM python:3.14.9-alpine3.24 AS build-ml-core
 RUN python -m pip install --no-cache-dir "wheel>=0.46.2" "setuptools>=75.8.0" \
     && rm -rf /usr/local/lib/python3*/site-packages/setuptools/_vendor/wheel*
 WORKDIR /
@@ -80,7 +80,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ##################
 # Get base image #
 ##################
-FROM python:3.15.1-alpine3.24
+FROM python:3.14.9-alpine3.24
 # Python 3.14.7 is the first release fixing the CPython stack limit check and the
 # 128 KiB default thread stack size on musl (https://github.com/python/cpython/issues/148260),
 # without which deep recursion in a thread segfaults MegaLinter instead of raising
@@ -109,7 +109,7 @@ ARG NPM_V8R_VERSION=6.1.0
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.121.1
+ARG REPOSITORY_GRYPE_VERSION=0.121.2
 # renovate: datasource=github-releases depName=loeffel-io/ls-lint extractVersion=^v(?<version>.+)$
 ARG REPOSITORY_LS_LINT_VERSION=2.3.2
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
@@ -121,18 +121,18 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.1.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.1.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.55.0
+ARG REPOSITORY_SYFT_VERSION=1.56.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG CARGO_SHELLCHECK_SARIF_VERSION
