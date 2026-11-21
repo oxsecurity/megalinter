@@ -24,7 +24,7 @@ If you do not want cspell to analyze the files names, define `SPELL_CSPELL_ANALY
 
 ## cspell documentation
 
-- Version in MegaLinter: **10.4.0**
+- Version in MegaLinter: **10.4.1**
 - Visit [Official Web Site](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme){target=_blank}
 - See [How to configure cspell rules](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization){target=_blank}
 - See [How to disable cspell rules in files](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code){target=_blank}
@@ -255,11 +255,11 @@ References:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.0
+ARG NPM_CSPELL_VERSION=10.4.1
 ```
 
 - NPM packages (node.js):
-  - [cspell@10.4.0](https://www.npmjs.com/package/cspell/v/10.4.0)
+  - [cspell@10.4.1](https://www.npmjs.com/package/cspell/v/10.4.1)
 
 ### Installation without Docker (native mode)
 
@@ -284,7 +284,7 @@ NATIVE_LINTERS: [SPELL_CSPELL]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/SPELL_CSPELL"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "cspell@10.4.0"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "cspell@10.4.1"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```

@@ -285,11 +285,11 @@ Miscellaneous strictness flags:
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
-                            for non-overlapping types (except None) (inverse:
-                            --no-strict-equality)
+                            for non-overlapping types (except `None`)
+                            (inverse: --no-strict-equality)
   --strict-equality-for-none
-                            Extend --strict-equality for None checks (inverse:
-                            --no-strict-equality-for-none)
+                            Extend `--strict-equality` for `None` checks
+                            (inverse: --no-strict-equality-for-none)
   --no-strict-bytes         Treat bytearray and memoryview as subtypes of
                             bytes (inverse: --strict-bytes)
   --extra-checks            Enable additional checks that are technically
