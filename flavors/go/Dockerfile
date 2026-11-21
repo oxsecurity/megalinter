@@ -143,7 +143,7 @@ ARG GO_ALPINE_VERSION=1.26.11-r0
 # renovate: datasource=pypi depName=ansible-lint
 ARG PIP_ANSIBLE_LINT_VERSION=26.11.0
 # renovate: datasource=npm depName=@stoplight/spectral-cli
-ARG NPM_SPECTRAL_CLI_VERSION=6.17.0
+ARG NPM_SPECTRAL_CLI_VERSION=6.17.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=npm depName=stylelint
