@@ -142,9 +142,7 @@ ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-# renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
@@ -408,7 +406,6 @@ RUN npm config set prefix /usr/local \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
-                stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
@@ -480,15 +477,17 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
+
 # jscpd installation
 # stylelint installation
+
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 # dotenv-linter installation
-    && set -eu; \
+RUN set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=x86_64 ;; \
       linux/arm64) ARCH=aarch64 ;; \

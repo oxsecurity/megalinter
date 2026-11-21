@@ -220,9 +220,7 @@ ARG CSHARP_ROSLYNATOR_VERSION=1.0.1
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-# renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
 # renovate: datasource=npm depName=@biomejs/biome
@@ -754,7 +752,6 @@ RUN npm config set prefix /usr/local \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
-                stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 @biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION} \
                 gherkin-lint@${NPM_GHERKIN_LINT_VERSION} \
@@ -995,11 +992,12 @@ esac \
          for tfm_dir in "$tools_dir"/net[0-9]*; do \
            case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
          done; \
-       done \
+       done
 # stylelint installation
+
 # biome installation
 # dartanalyzer installation
-    && case ${TARGETPLATFORM} in \
+RUN case ${TARGETPLATFORM} in \
   "linux/amd64")  DART_ARCH=x64   ;; \
   "linux/arm64")  DART_ARCH=arm64 ;; \
 esac \

@@ -165,9 +165,7 @@ ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-# renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
 # renovate: datasource=npm depName=@biomejs/biome
@@ -631,7 +629,6 @@ RUN npm config set prefix /usr/local \
                 jscpd@${NPM_JSCPD_VERSION} \
                 stylelint@${NPM_STYLELINT_VERSION} \
                 stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION} \
-                stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION} \
                 stylelint-scss@${NPM_STYLELINT_SCSS_VERSION} \
                 @biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION} \
                 npm-groovy-lint@${NPM_GROOVY_LINT_VERSION} \
@@ -725,18 +722,20 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
+
 # cfn-lint installation
 # jscpd installation
 # cpplint installation
 # stylelint installation
+
 # biome installation
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 # dotenv-linter installation
-    && set -eu; \
+RUN set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=x86_64 ;; \
       linux/arm64) ARCH=aarch64 ;; \
