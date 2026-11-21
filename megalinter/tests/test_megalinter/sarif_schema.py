@@ -11,7 +11,11 @@ import jsonschema
 from megalinter import Linter, utils
 
 SARIF_SCHEMA_FILE = os.path.join(
-    utils.REPO_HOME_DEFAULT, ".automation", "test", "sarif", "sarif-schema-2.1.0.json"
+    utils.REPO_HOME_DEFAULT or "",
+    ".automation",
+    "test",
+    "sarif",
+    "sarif-schema-2.1.0.json",
 )
 
 
@@ -27,6 +31,16 @@ def list_sarif_schema_errors(sarif_content):
         "/".join(str(part) for part in error.absolute_path) + f": {error.message[:200]}"
         for error in errors
     ]
+
+
+# Fails the test when the SARIF of a linter does not follow the SARIF 2.1.0 schema
+def assert_sarif_follows_schema(linter_name, sarif_content):
+    schema_errors = list_sarif_schema_errors(sarif_content)
+    if schema_errors:
+        raise AssertionError(
+            f"SARIF of {linter_name} does not follow the SARIF 2.1.0 schema:\n"
+            + "\n".join(schema_errors[:10])
+        )
 
 
 # True when the SARIF of the linter is built by MegaLinter, from the output of the linter

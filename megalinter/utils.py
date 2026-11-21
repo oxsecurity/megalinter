@@ -956,7 +956,7 @@ def find_json_value(text: str, value_type=(dict, list), predicate=None):
 # Every top-level JSON value of a text mixing JSON and logs, in order of appearance
 def find_json_values(text: str, value_type=(dict, list), predicate=None) -> list:
     decoder = json.JSONDecoder()
-    values = []
+    values: list = []
     position = 0
     while True:
         match = JSON_START_REGEX.search(text, position)

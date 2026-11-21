@@ -541,6 +541,27 @@ class JsonConvertersTest(unittest.TestCase):
             "Deployment/web: /spec/replicas got string, want integer",
         )
 
+    def test_php_cs_fixer_files_with_a_syntax_error(self):
+        stdout = (
+            "Loaded config default from TEMPLATES/.php-cs-fixer.dist.php.\n"
+            'Using cache file ".php-cs-fixer.cache".\n'
+            '{"about":"PHP CS Fixer 3.95.29","files":[],"time":{"total":0},"memory":19.5}\n'
+            "Files that were not fixed due to errors reported during linting before fixing:\n"
+            "   1) ./php_bad_1.php\n"
+            "   2) ./php_bad_2.php\n"
+        )
+        sarif_builder = php_cs_fixer_json_to_sarif(stdout, WORKSPACE)
+        self.assertEqual(
+            summary(sarif_builder),
+            [
+                ("php-cs-fixer-not-fixed", "error", "php_bad_1.php", None, None),
+                ("php-cs-fixer-not-fixed", "error", "php_bad_2.php", None, None),
+            ],
+        )
+        self.assertTrue(
+            results_of(sarif_builder)[0]["message"]["text"].endswith("before fixing")
+        )
+
     def test_php_cs_fixer(self):
         stdout = json.dumps(
             {

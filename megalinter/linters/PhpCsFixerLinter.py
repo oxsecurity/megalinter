@@ -11,6 +11,7 @@ from megalinter.sarif_builder import (
     SarifBuilder,
     SarifResultBuilder,
     SarifRunBuilder,
+    strip_ansi,
     to_sarif_uri,
 )
 
@@ -20,6 +21,12 @@ def _php_single_quoted(value):
 
 
 PHP_CS_FIXER_HUNK_REGEX = re.compile(r"^@@ -(?P<line>\d+)", re.MULTILINE)
+PHP_CS_FIXER_NOT_FIXED_REGEX = re.compile(
+    r"^(?P<reason>Files that were not fixed due to errors.*?):?$"
+    r"(?P<files>(?:\n\s+\d+\) .+)+)",
+    re.MULTILINE,
+)
+PHP_CS_FIXER_NOT_FIXED_FILE_REGEX = re.compile(r"^\s+\d+\) (?P<path>.+)$", re.MULTILINE)
 
 
 class PhpCsFixerLinter(Linter):
@@ -63,7 +70,8 @@ class PhpCsFixerLinter(Linter):
 
 
 # php-cs-fixer gives the fixers applied to each file and the diff of all of them: each
-# fixer is a result, located at the first hunk of the diff
+# fixer is a result, located at the first hunk of the diff. A file with a syntax error
+# is not fixed, and only listed after the report
 def php_cs_fixer_json_to_sarif(stdout, workspace=None):
     run = SarifRunBuilder().init_simple("php-cs-fixer", url="https://cs.symfony.com/")
     for output in utils.find_json_values(
@@ -81,4 +89,16 @@ def php_cs_fixer_json_to_sarif(stdout, workspace=None):
                         start_line=int(hunk.group("line")) if hunk else None,
                     )
                 )
+    for not_fixed in PHP_CS_FIXER_NOT_FIXED_REGEX.finditer(strip_ansi(stdout)):
+        for file in PHP_CS_FIXER_NOT_FIXED_FILE_REGEX.finditer(
+            not_fixed.group("files")
+        ):
+            run.add_result(
+                SarifResultBuilder().init_simple(
+                    LEVEL_ERROR,
+                    not_fixed.group("reason"),
+                    "php-cs-fixer-not-fixed",
+                    file_uri=to_sarif_uri(file.group("path").strip(), workspace),
+                )
+            )
     return SarifBuilder().add_run(run)
