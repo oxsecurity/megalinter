@@ -12,6 +12,10 @@ linters:
   # StyleLint
   - class: StyleLintLinter
     linter_name: stylelint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--formatter"
+      - "json"
     linter_text: |
       **Stylelint** is a mighty CSS linter that helps you avoid errors and enforce coding conventions in your stylesheets. It's designed to catch both syntax errors and problematic patterns while maintaining code consistency across projects.
 

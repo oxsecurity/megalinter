@@ -9,7 +9,11 @@ file_extensions:
   - ".md"
 linters:
   # MarkdownLint
-  - linter_name: markdownlint
+  - class: MarkdownlintLinter
+    linter_name: markdownlint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--json"
     is_formatter: true
     activation_rules:
       - type: variable

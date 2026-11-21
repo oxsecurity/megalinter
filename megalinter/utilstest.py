@@ -698,7 +698,8 @@ def test_linter_report_sarif(linter, test_self):
             # per run); individual clones are "warning". djlint reports "warning"
             # (codes not starting with E), rubocop reports "note" for its convention
             # cops, trufflehog reports "error" only for verified secrets (not
-            # checked by the tests, as the fixtures are not real credentials)
+            # checked by the tests, as the fixtures are not real credentials).
+            # clippy lints, dart infos and vale suggestions are not errors
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
                 "REPOSITORY_OSV_SCANNER",
@@ -707,6 +708,9 @@ def test_linter_report_sarif(linter, test_self):
                 "HTML_DJLINT",
                 "RUBY_RUBOCOP",
                 "REPOSITORY_TRUFFLEHOG",
+                "RUST_CLIPPY",
+                "DART_DARTANALYZER",
+                "SPELL_VALE",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,

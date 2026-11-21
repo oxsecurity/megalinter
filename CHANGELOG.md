@@ -79,6 +79,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - **djlint** and **rubocop** report most findings as warnings or notes, so the **error count** shown with SARIF enabled is lower than the number of findings
     - **trufflehog** reports a finding as an error only when the secret is **verified**
     - **roslynator** gathers the findings of all your projects in a single SARIF report
+  - **SARIF output** is now available for 11 more linters: **pylint**, **flake8**, **codespell**, **yamllint**, **stylelint**, **markdownlint**, **cpplint**, **dartanalyzer**, **clippy**, **powershell** (PSScriptAnalyzer) and **vale**. Enable it with **`SARIF_REPORTER: true`**, in the Docker images and in **native mode**
+    - Findings keep the severity given by the linter (ex: pylint conventions are notes), so the **error count** shown with SARIF enabled can be lower than the number of findings
+    - **flake8**, **codespell** and **cpplint** have no severity: every finding is reported as an error
 
 - Fixes
 
@@ -128,6 +131,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - .NET tools: each install deletes the tool `.nupkg` archives and the `tools/net*` folders other than the newest one supported by the SDK, which is the one the tool shims load
   - The setuptools vendored `wheel` cleanup targeted `python3.13` paths while the images run Python 3.14: paths are now version-agnostic
   - LLM providers rewritten on `requests`: shared `LLMProvider` HTTP helper (retries on connection errors, 429 and 5xx with `Retry-After`, masked API keys in errors, `SSL_CERT_FILE` / `SSL_CERT_DIR` support) and `llm_provider_openai_compatible.py` adapter, covered by offline tests in `test_llm_providers_http.py`. The `llm` extra is removed, and so is the `build.py` override that stripped it from standalone images
+  - SARIF for linters that can not output it: new helper `megalinter/sarif_builder.py` (`SarifBuilder`, `SarifRunBuilder`, `SarifRuleBuilder`, `SarifResultBuilder`, inspired by node-sarif-builder) and overridable `Linter.convert_output_to_sarif()` hook, used by the converters of the linter classes (pylint, flake8, codespell, yamllint, stylelint, markdownlint, cpplint, dartanalyzer, clippy, powershell). They are pure Python functions, covered by unit tests in `sarif_converters_test.py`. Vale uses its official SARIF template (`TEMPLATES/vale-sarif.tmpl`), reached with the new `{{DEFAULT_RULES_LOCATION}}` placeholder of `cli_sarif_args`
+  - Linters in `file` lint mode now gather the SARIF of all their files in `Linter.after_lint_files()` (reports are merged with their rules, `RoslynatorLinter` no longer has its own merge), and the log of a file is the readable version of its SARIF
   - New `Linter.after_lint_files()` hook, called once after all the files are linted: `RoslynatorLinter` uses it to merge the SARIF reports of its projects. SARIF results without `locations` are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their `bad` test folder, so they are active
 
 - CI

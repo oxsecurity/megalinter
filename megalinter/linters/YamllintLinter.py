@@ -3,15 +3,68 @@
 Use yamllint to check YAML files
 """
 
+import logging
 import os
+import re
 
 import yaml
 from megalinter import Linter
+from megalinter.sarif_builder import (
+    LEVEL_ERROR,
+    LEVEL_WARNING,
+    SarifBuilder,
+    SarifResultBuilder,
+    SarifRuleBuilder,
+    SarifRunBuilder,
+    to_sarif_uri,
+)
 
 YAMLLINT_BUILTIN_CONFIGS = ("default", "relaxed")
+YAMLLINT_RULES_URL = "https://yamllint.readthedocs.io/en/stable/rules.html"
+YAMLLINT_PARSABLE_REGEX = re.compile(
+    r"^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+): "
+    r"\[(?P<level>error|warning)\] (?P<message>.*?)(?: \((?P<rule>[a-z0-9_-]+)\))?$"
+)
+
+
+# SARIF is built from the parsable output format
+def yamllint_parsable_to_sarif(stdout, workspace=None):
+    run = SarifRunBuilder().init_simple(
+        "yamllint", url="https://github.com/adrienverge/yamllint"
+    )
+    has_result = False
+    for line in stdout.splitlines():
+        match = YAMLLINT_PARSABLE_REGEX.match(line.strip())
+        if match is None:
+            continue
+        has_result = True
+        rule_id = match.group("rule") or "yamllint"
+        rule_module = rule_id.replace("-", "_")
+        run.add_rule(
+            SarifRuleBuilder().init_simple(
+                rule_id,
+                help_uri=f"{YAMLLINT_RULES_URL}#module-yamllint.rules.{rule_module}",
+            )
+        )
+        run.add_result(
+            SarifResultBuilder().init_simple(
+                LEVEL_WARNING if match.group("level") == "warning" else LEVEL_ERROR,
+                match.group("message"),
+                rule_id,
+                file_uri=to_sarif_uri(match.group("path"), workspace),
+                start_line=int(match.group("line")),
+                start_column=int(match.group("column")),
+            )
+        )
+    if has_result is False and stdout.strip() != "":
+        logging.debug("[yamllint] No finding found in the parsable output")
+    return SarifBuilder().add_run(run)
 
 
 class YamllintLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return yamllint_parsable_to_sarif(return_stdout, self.workspace)
+
     # Forward excluded directories through a generated config extending the
     # resolved one, since yamllint has no CLI exclusion argument. An extending
     # config's ignore key replaces the parent's, so the effective user patterns

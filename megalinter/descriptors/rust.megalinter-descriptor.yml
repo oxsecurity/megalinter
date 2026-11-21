@@ -40,6 +40,9 @@ linters:
     cli_lint_mode: project
     supported_cli_lint_modes:
       - project
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--message-format=json"
     examples:
       - "cargo-clippy"
     install:
