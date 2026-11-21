@@ -12,7 +12,7 @@ import unittest
 import yaml
 
 import megalinter
-from megalinter import linter_factory, utils, utilstest
+from megalinter import linter_factory, utils
 from megalinter.linters.ArmLinter import arm_ttk_json_to_sarif
 from megalinter.linters.CljStyleLinter import cljstyle_diff_to_sarif
 from megalinter.linters.CSpellLinter import remap_file_names_results
@@ -32,6 +32,7 @@ from megalinter.linters.StyLuaLinter import stylua_json_to_sarif
 from megalinter.linters.TektonLintLinter import tekton_lint_json_to_sarif
 from megalinter.linters.TofuValidateLinter import tofu_validate_json_to_sarif
 from megalinter.linters.V8rLinter import v8r_json_to_sarif
+from megalinter.tests.test_megalinter import sarif_schema
 from megalinter.sarif_builder import (
     SarifBuilder,
     SarifResultBuilder,
@@ -50,7 +51,7 @@ WORKSPACE_URI = WORKSPACE.replace("\\", "/")
 
 def results_of(sarif_builder):
     sarif_content = sarif_builder.build_sarif_output()
-    schema_errors = utilstest.list_sarif_schema_errors(sarif_content)
+    schema_errors = sarif_schema.list_sarif_schema_errors(sarif_content)
     assert schema_errors == [], schema_errors
     return sarif_content["runs"][0]["results"]
 
@@ -1014,7 +1015,7 @@ class SchemaValidationTest(unittest.TestCase):
                 }
             ],
         }
-        schema_errors = utilstest.list_sarif_schema_errors(sarif_content)
+        schema_errors = sarif_schema.list_sarif_schema_errors(sarif_content)
         self.assertEqual(len(schema_errors), 1)
         self.assertIn("critical", schema_errors[0])
 

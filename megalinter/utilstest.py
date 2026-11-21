@@ -13,9 +13,8 @@ import uuid
 from datetime import datetime
 from shutil import copytree
 
-import jsonschema
 from git import Repo
-from megalinter import Linter, Megalinter, config, utils
+from megalinter import Megalinter, config, utils
 from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
@@ -622,34 +621,6 @@ def test_linter_report_tap(linter, test_self):
                 )
 
 
-SARIF_SCHEMA_FILE = os.path.join(
-    utils.REPO_HOME_DEFAULT, ".automation", "test", "sarif", "sarif-schema-2.1.0.json"
-)
-
-
-# Violations of the SARIF 2.1.0 JSON schema (OASIS) by a SARIF log, as readable lines
-def list_sarif_schema_errors(sarif_content):
-    with open(SARIF_SCHEMA_FILE, "r", encoding="utf-8") as schema_file:
-        schema = json.load(schema_file)
-    errors = sorted(
-        jsonschema.Draft4Validator(schema).iter_errors(sarif_content),
-        key=lambda error: [str(part) for part in error.absolute_path],
-    )
-    return [
-        "/".join(str(part) for part in error.absolute_path) + f": {error.message[:200]}"
-        for error in errors
-    ]
-
-
-# True when the SARIF of the linter is built by MegaLinter, from the output of the linter
-def is_sarif_built_by_megalinter(linter):
-    return (
-        linter.sarif_text_regex is not None
-        or linter.sarif_whole_output is True
-        or type(linter).convert_output_to_sarif is not Linter.convert_output_to_sarif
-    )
-
-
 # Linters in project mode are run on the bad folder. So are the linters that are only
 # active in a workspace holding a sub-directory (ex: actionlint on .github/workflows) or
 # a file (ex: .codespellrc), when only the bad folder holds it
@@ -734,15 +705,6 @@ def test_linter_report_sarif(linter, test_self):
         len(sarif_content["runs"]) > 0,
         f"Empty runs list in {tmp_sarif_file_name}",
     )
-    # The SARIF built by MegaLinter must follow the SARIF 2.1.0 schema
-    if is_sarif_built_by_megalinter(linter):
-        schema_errors = list_sarif_schema_errors(sarif_content)
-        test_self.assertEqual(
-            schema_errors,
-            [],
-            f"SARIF of {linter.name} does not follow the SARIF 2.1.0 schema:\n"
-            + "\n".join(schema_errors[:10]),
-        )
     # Check number of errors and warnings is ok
     for linter in mega_linter.linters:
         if (
@@ -798,6 +760,8 @@ def test_linter_report_sarif(linter, test_self):
                     + f" ({linter.total_number_warnings})\n"
                     + f"SARIF:{str(sarif_content)}",
                 )
+
+    return sarif_content
 
 
 def assert_is_skipped(skipped_item, output, test_self):
