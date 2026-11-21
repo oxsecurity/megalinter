@@ -1098,6 +1098,8 @@ class Linter:
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
 
+        self.after_lint_files()
+
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
             # Disable errors: no failure, just warning
@@ -1777,6 +1779,9 @@ class Linter:
     ########################################
 
     def before_lint_files(self):
+        pass
+
+    def after_lint_files(self):
         pass
 
     # Build the CLI command to call to lint a file (can be overridden)
@@ -2603,7 +2608,10 @@ class Linter:
                         count_results = True
 
                     if count_results is True:
-                        total_result += len(result["locations"])
+                        # A result may have no location (ex: roslynator compiler diagnostics)
+                        total_result += (
+                            len(result["locations"]) if "locations" in result else 1
+                        )
 
             return total_result
         except Exception as e:

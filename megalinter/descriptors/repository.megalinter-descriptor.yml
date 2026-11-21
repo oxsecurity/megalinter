@@ -1552,6 +1552,9 @@ linters:
       - .
     cli_help_arg_name: --help
     cli_version_arg_name: --version
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--sarif"
     examples:
       - "trufflehog filesystem ."
     install:

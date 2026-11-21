@@ -21,7 +21,10 @@ def normalize_sarif_files(linter):
         # Read SARIF output file
 
         load_ok = False
-        with open(linter.sarif_output_file, "r", encoding="utf-8") as linter_sarif_file:
+        # utf-8-sig: some linters (ex: roslynator, on .NET) write a BOM
+        with open(
+            linter.sarif_output_file, "r", encoding="utf-8-sig"
+        ) as linter_sarif_file:
             # parse sarif file
             try:
                 linter_sarif_obj = json.load(linter_sarif_file)
