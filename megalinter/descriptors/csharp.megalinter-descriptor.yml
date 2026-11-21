@@ -175,6 +175,12 @@ linters:
       - "analyze"
     cli_lint_fix_remove_args:
       - "analyze"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output"
+      - "{{SARIF_OUTPUT_FILE}}"
+      - "--output-format"
+      - "sarif"
     cli_lint_mode: file
     supported_cli_lint_modes:
       - file

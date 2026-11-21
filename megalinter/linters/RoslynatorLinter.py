@@ -3,6 +3,7 @@
 Use roslynator to lint CSharp files
 """
 
+import json
 import logging
 import os
 
@@ -10,6 +11,30 @@ from megalinter import Linter, config
 
 
 class RoslynatorLinter(Linter):
+    merged_sarif = None
+
+    # "roslynator fix" has no --output option
+    def before_lint_files(self):
+        if self.apply_fixes is True:
+            self.output_sarif = False
+
+    # roslynator writes no report file for a project without diagnostics:
+    # start from an empty report, that roslynator overwrites when it has results
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
+        if self.output_sarif is True:
+            with open(self.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+                json.dump(
+                    {
+                        "version": "2.1.0",
+                        "runs": [
+                            {"tool": {"driver": {"name": "Roslynator"}}, "results": []}
+                        ],
+                    },
+                    sarif_file,
+                )
+        return cmd
+
     def process_linter(self, file=None):
         # dotnet restore is a project-setup prerequisite, not the actual lint
         # invocation: run it through the lower-level subprocess primitive
@@ -34,4 +59,27 @@ class RoslynatorLinter(Linter):
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
 
-        return super().process_linter(file)
+        lint_result = super().process_linter(file)
+        if self.output_sarif is True:
+            self.merge_project_sarif()
+        return lint_result
+
+    # Each project is linted by its own roslynator call, and the next call
+    # removes the SARIF file of the previous one: gather the results of all projects
+    def merge_project_sarif(self):
+        with open(self.sarif_output_file, "r", encoding="utf-8") as sarif_file:
+            project_sarif = json.load(sarif_file)
+        if self.merged_sarif is None:
+            self.merged_sarif = project_sarif
+            return
+        merged_run = self.merged_sarif["runs"][0]
+        project_run = project_sarif["runs"][0]
+        merged_run["results"] += project_run["results"]
+        merged_run["artifacts"] = merged_run.get("artifacts", []) + project_run.get(
+            "artifacts", []
+        )
+
+    def after_lint_files(self):
+        if self.merged_sarif is not None:
+            with open(self.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+                json.dump(self.merged_sarif, sarif_file, sort_keys=True, indent=2)

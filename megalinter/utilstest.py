@@ -633,9 +633,11 @@ def test_linter_report_sarif(linter, test_self):
     workspace = (
         config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
     )
-    if linter.cli_lint_mode == "project" and os.path.isdir(
-        workspace + os.path.sep + "bad"
-    ):
+    # A linter limited to a sub-directory (ex: actionlint on .github/workflows)
+    # is only active when the workspace contains it, like the "bad" folder does
+    if (
+        linter.cli_lint_mode == "project" or linter.files_sub_directory is not None
+    ) and os.path.isdir(workspace + os.path.sep + "bad"):
         workspace += os.path.sep + "bad"
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
@@ -693,12 +695,18 @@ def test_linter_report_sarif(linter, test_self):
             # osv-scanner and the Salesforce Code Analyzer eslint (aura) engine
             # report all their SARIF findings at "warning" level too. jscpd
             # only reports its duplication-threshold breach as "error" (one
-            # per run); individual clones are "warning"
+            # per run); individual clones are "warning". djlint reports "warning"
+            # (codes not starting with E), rubocop reports "note" for its convention
+            # cops, trufflehog reports "error" only for verified secrets (not
+            # checked by the tests, as the fixtures are not real credentials)
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
                 "REPOSITORY_OSV_SCANNER",
                 "SALESFORCE_CODE_ANALYZER_AURA",
                 "COPYPASTE_JSCPD",
+                "HTML_DJLINT",
+                "RUBY_RUBOCOP",
+                "REPOSITORY_TRUFFLEHOG",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,

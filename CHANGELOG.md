@@ -75,6 +75,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Linters enhancements
 
   - **djlint**: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages
+  - **SARIF output** is now available for 5 more linters: **actionlint**, **djlint**, **roslynator**, **rubocop** and **trufflehog**. Enable it with **`SARIF_REPORTER: true`** (optionally scoped with `SARIF_REPORTER_LINTERS`), see the [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/) documentation
+    - **djlint** and **rubocop** report most findings as warnings or notes, so the **error count** shown with SARIF enabled is lower than the number of findings
+    - **trufflehog** reports a finding as an error only when the secret is **verified**
+    - **roslynator** gathers the findings of all your projects in a single SARIF report
 
 - Fixes
 
@@ -124,6 +128,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - .NET tools: each install deletes the tool `.nupkg` archives and the `tools/net*` folders other than the newest one supported by the SDK, which is the one the tool shims load
   - The setuptools vendored `wheel` cleanup targeted `python3.13` paths while the images run Python 3.14: paths are now version-agnostic
   - LLM providers rewritten on `requests`: shared `LLMProvider` HTTP helper (retries on connection errors, 429 and 5xx with `Retry-After`, masked API keys in errors, `SSL_CERT_FILE` / `SSL_CERT_DIR` support) and `llm_provider_openai_compatible.py` adapter, covered by offline tests in `test_llm_providers_http.py`. The `llm` extra is removed, and so is the `build.py` override that stripped it from standalone images
+  - New `Linter.after_lint_files()` hook, called once after all the files are linted: `RoslynatorLinter` uses it to merge the SARIF reports of its projects. SARIF results without `locations` are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their `bad` test folder, so they are active
 
 - CI
 
