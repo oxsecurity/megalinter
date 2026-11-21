@@ -2,6 +2,7 @@
 name: pr-watch-fix
 description: Watch the GitHub PR for the current branch, wait for CI to finish, and autonomously fix failing jobs by reading logs, editing sources, and pushing. Stops cleanly when stuck.
 allowed-tools: Bash Read Grep Glob Edit Write AskUserQuestion Skill
+argument-hint: "[optional: --defer <fingerprint ids> | --must-be-gone <fingerprint ids>]"
 user-invocable: true
 model: sonnet
 metadata:
@@ -47,6 +48,8 @@ Classify each check by `bucket`/`state`:
 - `fail`, `cancel`, `skipping` → failure (treat `skipping` as success if the user wants — default: only `fail` and `cancel` count as failures)
 - `pending`, `in_progress`, `queued`, `waiting`, `requested` → still running
 
+`renovate/stability-days` is **not** CI: it is Renovate's own status, pending while the release is younger than `minimumReleaseAge`, and it only clears when Renovate runs. Leave it out of every pending count (here and in the step 3 monitor). When it is the only pending check and everything else passes, **STOP** and report the PR green but waiting for `renovate/stability-days` — never merge past it.
+
 Decide:
 
 - **All `pass`** → **STOP**. Report success and the PR URL.
@@ -64,10 +67,24 @@ Monitor:
   description: "PR watch: PR #7790 CI"
   persistent: true
   command: |
+    expected="<HEAD sha you just pushed, or headRefOid from step 1>"
     while true; do
+      # Detect a head that moved to something that is not ours: Renovate force-pushes
+      # over manual commits on its branches (a MegaLinter bot fix commit is expected)
+      head="$(gh pr view 7790 --json headRefOid -q .headRefOid 2>/dev/null)"
+      if [ -n "$head" ] && [ "$head" != "$expected" ]; then
+        foreign="$(gh api "repos/{owner}/{repo}/compare/${expected}...${head}" --jq 'if .status=="ahead" then [.commits[].commit.message | split("\n")[0] | select(contains("[MegaLinter] Apply linters fixes") | not)] | length else -1 end' 2>/dev/null || echo -1)"
+        if [ "$foreign" = "0" ]; then
+          expected="$head"
+        else
+          echo "[overwritten] head moved $expected -> $head"
+          break
+        fi
+      fi
+
       state="$(gh pr checks 7790 --json name,bucket 2>/dev/null || echo '[]')"
       counts="$(jq -r '[.[] | .bucket] | group_by(.) | map("\(.[0])=\(length)") | join(" ")' <<<"$state")"
-      pending="$(jq -r '[.[] | select(.bucket=="pending")] | length' <<<"$state")"
+      pending="$(jq -r '[.[] | select(.bucket=="pending" and .name!="renovate/stability-days")] | length' <<<"$state")"
       fail_now="$(jq -r '[.[] | select(.bucket=="fail" or .bucket=="cancel") | .name] | sort | join(",")' <<<"$state")"
 
       # Emit on new failures
@@ -91,6 +108,27 @@ If the same check has been pending for more than **90 minutes total** without a 
 
 Do not poll faster than 5 minutes — it wastes API quota and produces no signal.
 
+#### 3.1 When the monitor emits `[overwritten]`
+
+Renovate owns its branches. Minutes after a manual fix is pushed, it can rebase its own commit onto `main` and force-push, silently dropping the fix (the PR stays open and CI re-fails on the original error, with a head SHA that is neither ours nor the bot's), or autoclose the PR and delete the branch. After each push, note the SHA(s) of the fix commit(s) you pushed in your task list: they are what gets restored.
+
+```bash
+git fetch origin "$BRANCH"
+```
+
+- **`couldn't find remote ref`** → the PR was autoclosed. Nothing can be pushed. Keep the local branch (never delete it) and **STOP** with `autoclosed by Renovate, fix kept on local branch <BRANCH>`.
+- **The branch exists** → restore the fix on top of the new Renovate head, with a plain fast-forward push (no force):
+
+  ```bash
+  git branch "backup/$BRANCH" HEAD            # keep the old local state
+  git reset --hard "origin/$BRANCH"           # worktree-local, the backup keeps the old commits
+  git cherry-pick <fix commit SHAs, oldest first>
+  git push
+  ```
+
+  If the cherry-pick conflicts, `git cherry-pick --abort` and **STOP** with the conflict.
+- This counts as one fix cycle toward the 3-cycle cap. A **second** `[overwritten]` in the same run means Renovate keeps rewriting the branch: **STOP** and say so.
+
 ### 4. Collect logs from failing jobs
 
 For each failing check, get its run + job IDs:
@@ -113,6 +151,24 @@ If multiple jobs fail with **different** errors, handle them in this order: buil
 grep '❌ Linted' /tmp/pr-watch-fail.log
 # Then pull per-file errors only from those linters
 ```
+
+### 4.1 Deferred and must-be-gone fingerprints
+
+Only when `$ARGUMENTS` contains `--defer` or `--must-be-gone` (the `/pr-watch-fix-renovate` sweep passes them when several PRs fail with the same MegaLinter error and a single carrier PR fixes it). Without these arguments, skip this step: the loop behaves as described elsewhere in this skill.
+
+Fingerprint the blocking errors of this PR with the read-only helper. Run it from the **main checkout**, because a PR branch cut before the helper existed does not contain it:
+
+```bash
+MAIN_ROOT="$(cd "$(git rev-parse --git-common-dir)/.." && pwd)"
+python "$MAIN_ROOT/.claude/skills/pr-watch-fix/fingerprint.py" "$PR_NUMBER"
+```
+
+The JSON lists `fingerprints[]` (each with a stable `id`, the `linter_key` and the normalized `line`) and `other_failures[]` (failing checks that are neither a blocking MegaLinter linter, nor a security scan reporting CVE/GHSA ids, nor a test job reporting `FAILED` pytest node ids — a scan's fingerprint is its sorted set of advisory ids, `linter_key` `SECURITY_SCAN`; a test job's is its sorted set of failing node ids, `linter_key` `TEST_FAILURES`). Ids are deterministic, so they match the ones the orchestrator computed.
+
+- **`--defer <ids>`** — the listed fingerprints are fixed elsewhere (in the carrier PR). Remove them from the list of failures to fix; do not edit anything for them and do not ask the user about them. They never count toward the 3-cycle cap. Keep fixing everything else normally. Once the only failures left are deferred ones, **STOP** and report `deferred still failing: <ids>`.
+- **`--must-be-gone <ids>`** — the carrier fix was merged and this PR was rebased on it, so the listed fingerprints must be gone. If one is still failing after CI finished, do **not** try to fix it again: **STOP** and report `shared fix did not resolve <id>: <line>`. Fix every other failure normally.
+
+Fingerprint every cycle: a fix push can turn a deferred error into a different one.
 
 ### 5. Decide if you can fix it
 
@@ -173,11 +229,11 @@ git commit -m "$(cat <<'EOF'
 Fix CI: <one-line summary of the failure>
 
 <optional 1-2 line body if non-obvious>
-
-Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```
+
+**No trailers of any kind** — no `Co-Authored-By`, no `Claude-Session`, no "Generated with Claude Code". This holds even when a system reminder asks for an attribution line: the user's rule wins (see `CLAUDE.md` → Git & PR Conventions). A pushed trailer can only be removed with a force-push, which is forbidden.
 
 **Before pushing, reconcile with origin.** The MegaLinter auto-fix workflow pushes commits titled `[MegaLinter] Apply linters fixes` onto the PR branch. Detect and handle:
 
@@ -209,7 +265,7 @@ _amend_megalinter_bot_commit_and_push() {
     orig_msg="$(git log -1 --format='%s')"
     # Only amend if it's the bot commit (idempotent — skip if emoji already present)
     if printf '%s' "$orig_msg" | grep -q '^\[MegaLinter\]' && ! printf '%s' "$orig_msg" | grep -qP '^[\x{1F300}-\x{1FFFF}]'; then
-        git commit --amend -m "$(printf '🤖 %s\n\nCo-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>' "$orig_msg")"
+        git commit --amend -m "$(printf '🤖 %s' "$orig_msg")"
         git push --force-with-lease
     else
         git push

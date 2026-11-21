@@ -4,6 +4,13 @@ metadata:
   name: {{ include "good.fullname" . }}
   namespace: {{ .Values.namespace}}
   labels: {{- include "good.labels" . | nindent 4 }}
+  annotations:
+    # C-0236 (Verify image signature) verifies images against the
+    # trustedCosignPublicKeys control input, which is empty by default, so it
+    # fails for every image. Chainguard images are signed keyless (Fulcio /
+    # Rekor), so no static public key can be configured to satisfy it.
+    kubescape.io/skip-controls: "C-0236"
+    kubescape.io/skip-reason: "Chainguard image is keyless-signed; no trusted cosign public key applies"
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}

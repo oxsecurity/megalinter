@@ -18,13 +18,17 @@ class RakuLinter(megalinter.Linter):
         if os.path.isfile(
             self.workspace + os.path.sep + self.config_file_name
         ):  # META6.json
-            pre_command = f"cd {self.workspace} && zef install --deps-only --/test ."
+            # A shell is kept to find zef: the image PATH holds a literal
+            # ~/.raku/bin, which a direct exec does not resolve. The workspace
+            # goes through cwd, so no path is written in the command
+            pre_command = "zef install --deps-only --/test ."
             logging.debug("Raku before_lint_files: " + pre_command)
             process = subprocess.run(
                 pre_command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 shell=True,
+                cwd=self.workspace,
                 env=config.build_env(
                     self.request_id, True, self.unsecured_env_variables
                 ),
@@ -43,5 +47,6 @@ class RakuLinter(megalinter.Linter):
             cmd += [self.cli_lint_fix_arg_name]
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
+        cmd += self.get_sarif_arguments()
         cmd += ["-I", self.workspace + os.path.sep + "lib", "-c", file]
         return cmd

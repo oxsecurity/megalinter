@@ -59,6 +59,7 @@ linters:
       - list_of_files
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_seed_values: [".cache", ".git", ".hg", ".svn", ".tox"]
     cli_config_extra_args:
       - "-v"
     cli_sarif_args:
@@ -105,9 +106,21 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ansible-lint
-          ARG PIP_ANSIBLE_LINT_VERSION=26.8.0
+          ARG PIP_ANSIBLE_LINT_VERSION=26.11.0
       pip:
         - ansible-lint==${PIP_ANSIBLE_LINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/arm64
+      unsupported:
+        windows/amd64: "ansible-lint does not support Windows (Ansible requires a POSIX system). Use Docker."
+        darwin/amd64: "ansible-lint depends on cryptography, which only publishes Apple Silicon wheels for macOS. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

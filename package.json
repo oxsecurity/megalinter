@@ -10,6 +10,6 @@
   },
   "dependencies": {
     "@cspell/dict-medicalterms": "^4.0.0",
-    "markdown-table-formatter": "^1.4.0"
+    "markdown-table-formatter": "^2.1.0"
   }
 }

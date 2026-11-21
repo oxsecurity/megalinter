@@ -48,6 +48,17 @@ class JsCpdLinter(Linter):
         if config_index is not None:
             with open(cmd[config_index], encoding="utf-8") as config_file:
                 config_content = json.load(config_file)
+            # jscpd resolves the relative paths to analyze against the config
+            # file directory, which becomes the report folder once generated
+            config_dir = os.path.dirname(os.path.abspath(cmd[config_index]))
+            config_paths = config_content.get("path", [])
+            if isinstance(config_paths, str):
+                config_paths = [config_paths]
+            if len(config_paths) > 0:
+                config_content["path"] = [
+                    os.path.normpath(os.path.join(config_dir, config_path))
+                    for config_path in config_paths
+                ]
         ignore_globs = list(config_content.get("ignore", []))
         for excluded_dir in self.get_project_exclude_directories():
             glob = f"**/{excluded_dir}/**"

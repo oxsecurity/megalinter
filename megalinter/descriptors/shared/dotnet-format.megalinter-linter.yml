@@ -22,6 +22,18 @@ cli_lint_fix_remove_args:
   - --verify-no-changes
 cli_help_extra_args:
   - format
+native_install:
+  # dotnet format is part of the .NET SDK itself: nothing to download
+  method: runtime_provided
+  requires:
+    - runtime: dotnet
+      version: ">=8"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 supported_platforms:
   platform:
     - linux/amd64

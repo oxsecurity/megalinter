@@ -88,12 +88,42 @@ linters:
     install:
       dockerfile:
         - |
-          # renovate: datasource=github-tags depName=clj-kondo/clj-kondo
-          ARG CLJ_KONDO_VERSION=2026.08.04
+          # renovate: datasource=github-tags depName=clj-kondo/clj-kondo extractVersion=^v(?<version>.+)$
+          ARG CLJ_KONDO_VERSION=2026.10.26
         - |
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/clj-kondo/clj-kondo/refs/tags/v${CLJ_KONDO_VERSION}/script/install-clj-kondo \
               && chmod +x install-clj-kondo \
               && ./install-clj-kondo --version "$CLJ_KONDO_VERSION"
+    native_install:
+      method: binary
+      version: "${CLJ_KONDO_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-linux-static-amd64.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-linux-aarch64.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-macos-amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-macos-aarch64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/clj-kondo-{{VERSION}}-windows-amd64.zip
+          archive: zip
+      provenance:
+        checksums_url: https://github.com/clj-kondo/clj-kondo/releases/download/v{{VERSION}}/{{ASSET_NAME}}.sha256
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      overrides:
+        linux/arm64:
+          libc: glibc
     supported_platforms:
       platform:
         - linux/amd64
@@ -123,7 +153,12 @@ linters:
           url: https://clojure-lsp.io/
 
     # cljstyle
-  - linter_name: cljstyle
+  - class: CljStyleLinter
+    linter_name: cljstyle
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--no-color"
+    sarif_whole_output: true
     linter_text: |
       **cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
 
@@ -155,8 +190,6 @@ linters:
     # Repeatable, values are compiled as regexes matched against the full path,
     # and they are added to the ignore set of the user .cljstyle config
     cli_lint_mode_project_exclude_arg_name: "--ignore"
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_fix_arg_name: "fix"
     cli_lint_fix_remove_args:
       - "check"
@@ -175,6 +208,28 @@ linters:
           RUN curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
               && chmod +x install-cljstyle \
               && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
+    native_install:
+      method: binary
+      version: "${CLJ_STYLE_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/greglook/cljstyle/releases/download/{{VERSION}}/cljstyle_{{VERSION}}_linux_amd64_static.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/greglook/cljstyle/releases/download/{{VERSION}}/cljstyle_{{VERSION}}_macos_amd64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/greglook/cljstyle/releases/download/{{VERSION}}/cljstyle_{{VERSION}}_macos_arm64.zip
+          archive: zip
+      provenance:
+        unverified: "greglook/cljstyle publishes no checksum file, signature or attestation next to its release zips"
+      platforms:
+        - linux/amd64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        linux/arm64: "cljstyle publishes no Linux arm64 build. Use Docker."
+        windows/amd64: "cljstyle publishes no Windows build. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

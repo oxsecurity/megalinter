@@ -13,7 +13,7 @@ import uuid
 from collections import Counter
 from datetime import datetime, timezone
 
-from megalinter import Reporter, config, utils
+from megalinter import Reporter, config, utils, utils_sarif
 from megalinter.api_providers import PROVIDER_CLASSES
 from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT, ML_VERSION
 from megalinter.utils import get_git_context_info
@@ -219,6 +219,8 @@ class ApiReporter(Reporter):
             files: Counter = Counter()
             for run in sarif.get("runs", []):
                 for result in run.get("results", []):
+                    if utils_sarif.is_suppressed(result):
+                        continue
                     rule_id = result.get("ruleId", "unknown")
                     rules[rule_id] += 1
                     for location in result.get("locations", [])[:1]:

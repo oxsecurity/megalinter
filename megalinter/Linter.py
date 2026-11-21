@@ -34,9 +34,18 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
+from megalinter import (
+    config,
+    pre_post_factory,
+    sarif_builder,
+    utils,
+    utils_reporter,
+    utils_sarif,
+)
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
+from megalinter.native import toolchain as native_toolchain
+from megalinter.native.context import find_git_bash, is_native_mode
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -55,6 +64,8 @@ MAX_PROJECT_EXCLUDE_ARG_BYTES = 64 * 1024
 
 class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
+    # Native mode (MegaLinter without Docker): toolchain of the installed linter
+    native_toolchain = None
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
@@ -134,6 +145,13 @@ class Linter:
         self.cli_sarif_args = []
         self.sarif_output_file = None
         self.sarif_default_output_file = None
+        self.merged_sarif = None
+        self.sarif_text_regex = None
+        self.sarif_text_levels = {}
+        self.sarif_text_default_level = sarif_builder.LEVEL_ERROR
+        self.sarif_text_rule_id = None
+        self.sarif_whole_output = False
+        self.last_return_code = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
         self.cli_command_remove_args = (
@@ -152,6 +170,16 @@ class Linter:
         self.cli_lint_mode_file_extra_args_after = []
         self.cli_lint_mode_list_of_files_extra_args_after = []
         self.cli_lint_mode_project_extra_args_after = []
+        # Regex matched against the linter config file: when found, the config
+        # defines the paths to analyze and cli_lint_mode_project_extra_args_after
+        # is not added, as it would override them (ex: phpcs <file>)
+        self.cli_lint_mode_project_config_paths_regex = None
+        # Workspace-relative .gitignored directories, set by MegaLinter when
+        # IGNORE_GITIGNORED_FILES is active, forwarded with excluded directories.
+        # The name ones can also be sent to tools matching them at any nesting
+        # level, as no tracked directory shares their path suffix
+        self.project_gitignored_directories = []
+        self.project_gitignored_name_directories = []
         # Native CLI argument used to forward EXCLUDED_DIRECTORIES /
         # ADDITIONAL_EXCLUDED_DIRECTORIES to linters running in project mode
         self.cli_lint_mode_project_exclude_arg_name = None
@@ -160,16 +188,25 @@ class Linter:
         # Default values re-included when the linter's exclusion argument
         # replaces its built-in defaults (ex: bandit -x, devskim -g)
         self.cli_lint_mode_project_exclude_seed_values = []
-        # Dotted key path of the resolved config file list that the exclusion
-        # argument REPLACES: its entries are re-emitted first so they are
-        # preserved (ex: checkov skip-path, grype exclude, trivy scan.skip-dirs)
+        # Dotted key path (or list of alternative ones) of the user config file
+        # setting that the exclusion argument REPLACES: its entries are
+        # re-emitted first so they are preserved (ex: checkov skip-path, trivy
+        # scan.skip-dirs, phplint exclude). TOML, JSON, INI and YAML configs are
+        # read, and a * segment matches any key (ex: pylint "*.ignore")
         self.cli_lint_mode_project_exclude_config_key = None
+        # Workspace config files also searched for the config key, for linters
+        # discovering their configuration themselves (ex: djlint pyproject.toml)
+        self.cli_lint_mode_project_exclude_config_files = []
+        # User arguments that can not be combined with the forwarding: nothing
+        # is forwarded when one of them is found (ex: v8r --no-ignore)
+        self.cli_lint_mode_project_exclude_conflicting_args = []
         # Generated ignore file forwarding: argument receiving the generated
-        # file, workspace files merged into it (first existing wins), and
-        # workspace files re-passed through the same argument (when the
-        # argument replaces their default discovery)
+        # file, workspace files merged into it (first existing wins, or all of
+        # them with merge_all_seeds), and workspace files re-passed through the
+        # same argument (when the argument replaces their default discovery)
         self.cli_lint_mode_project_exclude_ignore_file_arg_name = None
         self.cli_lint_mode_project_exclude_ignore_file_seed_files = []
+        self.cli_lint_mode_project_exclude_ignore_file_merge_all_seeds = False
         self.cli_lint_mode_project_exclude_ignore_file_pass_existing = []
         self.cli_lint_errors_count = None
         self.cli_lint_errors_regex = None
@@ -194,7 +231,9 @@ class Linter:
         self.report_folder = ""
         self.reporters = []
         self.lint_command_log: list[str] = []
+        self.lint_command_env: dict[str, str] | None = None
         self.lint_cwd_log = ""
+        self.native_toolchain = None
 
         # Initialize parameters
         default_params = {
@@ -717,6 +756,16 @@ class Linter:
                     + self.config_file_name
                 )
             # in user repo directory provided in <Linter>RULES_PATH or LINTER_RULES_PATH
+            # Native mode: a default configuration can have a variant for native
+            # installs (ex: phpstan without the SARIF formatter installed by Composer)
+            elif is_native_mode() and os.path.isfile(
+                os.path.join(
+                    self.default_rules_location, "native", self.config_file_name
+                )
+            ):
+                self.config_file = os.path.join(
+                    self.default_rules_location, "native", self.config_file_name
+                )
             elif os.path.isfile(
                 self.default_rules_location + os.path.sep + self.config_file_name
             ):
@@ -989,10 +1038,12 @@ class Linter:
 
         # Pre-compute subprocess environment once per linter run to avoid
         # rebuilding secured-variable regexes on every file
-        self._cached_subprocess_env = {
-            **config.build_env(self.request_id, True, self.unsecured_env_variables),
-            "FORCE_COLOR": "0",
-        }
+        self._cached_subprocess_env = self.native_environment(
+            {
+                **config.build_env(self.request_id, True, self.unsecured_env_variables),
+                "FORCE_COLOR": "0",
+            }
+        )
 
         # Initialize linter reports
         for reporter in self.reporters:
@@ -1017,7 +1068,7 @@ class Linter:
                 file_warnings_number = 0
                 file_warnings_number = self.get_total_number_warnings(stdout)
                 self.total_number_warnings += file_warnings_number
-                if return_code > 0:
+                if return_code != 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
                     self.return_code = (
@@ -1060,6 +1111,8 @@ class Linter:
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
+
+        self.after_lint_files()
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -1164,6 +1217,10 @@ class Linter:
             "{{REPORT_FOLDER}}": self.report_folder,
             "{{WORKSPACE}}": self.workspace,
         }
+        if any("{{DEFAULT_RULES_LOCATION}}" in txt for txt in args):
+            default_variables["{{DEFAULT_RULES_LOCATION}}"] = os.path.abspath(
+                utils.get_default_rules_location()
+            )
         merged_map = default_variables
         if additional_variables is not None:
             merged_map.update(additional_variables)
@@ -1263,6 +1320,21 @@ class Linter:
             + utils.format_bullet_list(self.files)
         )
 
+    # Drop files whose name can not be carried safely to an interpreter
+    # through an environment variable (line breaks, NUL...)
+    def drop_files_unsafe_for_interpreter(self):
+        safe_files = []
+        for file in self.files:
+            if re.search(r"[\x00-\x1f\x7f]", file):
+                logging.warning(
+                    f"[{self.linter_name}] Skipped {file!r}: its name contains "
+                    "control characters that can not be passed safely to the linter"
+                )
+            else:
+                safe_files.append(file)
+        self.files = safe_files
+        self.files_number = len(self.files)
+
     # lint a single file or whole project
     def process_linter(self, file=None):
         # Remove previous run SARIF file if necessary
@@ -1275,11 +1347,49 @@ class Linter:
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
+        self.stdout_human = None
         return_code, return_output = self.execute_lint_command(command)
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
+        if self.cli_lint_mode == "file" and self.output_sarif is True:
+            # Each file overwrites the SARIF of the previous one: gather them
+            self.merge_file_sarif()
+            # The log of the file is the readable version of its SARIF
+            if self.stdout_human:
+                return_output = self.stdout_human
         return return_code, return_output
+
+    def merge_file_sarif(self):
+        if self.sarif_output_file is None or not os.path.isfile(self.sarif_output_file):
+            return
+        try:
+            # utf-8-sig: some linters (ex: .NET ones) write a BOM
+            with open(self.sarif_output_file, "r", encoding="utf-8-sig") as file:
+                file_sarif = json.load(file)
+        except ValueError as e:
+            logging.warning(f"[SARIF] Unable to merge {self.sarif_output_file}: {e}")
+            return
+        if self.merged_sarif is None:
+            self.merged_sarif = file_sarif
+        else:
+            utils_sarif.merge_sarif_logs(self.merged_sarif, file_sarif)
+
+    def native_environment(self, env):
+        if self.native_toolchain is None:
+            return env
+        return native_toolchain.build_subprocess_env(
+            env, self.native_toolchain, self.request_id, self.unsecured_env_variables
+        )
+
+    def native_search_path(self, env=None):
+        if self.native_toolchain is None:
+            return None
+        if env is not None:
+            return env.get("PATH")
+        return os.pathsep.join(
+            [*self.native_toolchain.path_dirs, os.environ.get("PATH", "")]
+        )
 
     # Execute a linting command . Can be overridden for special cases, like use of PowerShell script
     # noinspection PyMethodMayBeStatic
@@ -1290,11 +1400,26 @@ class Linter:
         # Use pre-computed env from run(), fall back to building it if called standalone
         subprocess_env = getattr(self, "_cached_subprocess_env", None)
         if subprocess_env is None:
-            subprocess_env = {
-                **config.build_env(self.request_id, True, self.unsecured_env_variables),
-                "FORCE_COLOR": "0",
-            }
-        if isinstance(command, str):
+            subprocess_env = self.native_environment(
+                {
+                    **config.build_env(
+                        self.request_id, True, self.unsecured_env_variables
+                    ),
+                    "FORCE_COLOR": "0",
+                }
+            )
+        if self.lint_command_env:
+            subprocess_env = {**subprocess_env, **self.lint_command_env}
+            logging.debug(f"[{self.linter_name}] Command env: {self.lint_command_env}")
+        if isinstance(command, str) and sys.platform == "win32":
+            self.lint_command_log.append(command)
+            # Windows: shell=True would wrap the command for cmd.exe, so call Git Bash
+            # directly with the command as a single argument
+            return_code, return_stdout = self._run_lint_subprocess(
+                [find_git_bash() or shutil.which("bash"), "-c", command],
+                {"cwd": cwd, "env": subprocess_env},
+            )
+        elif isinstance(command, str):
             self.lint_command_log.append(command)
             # Call linter with a sub-process
             return_code, return_stdout = self._run_lint_subprocess(
@@ -1303,15 +1428,15 @@ class Linter:
                     "shell": True,
                     "cwd": cwd,
                     "env": subprocess_env,
-                    "executable": (
-                        shutil.which("bash") if sys.platform == "win32" else "/bin/bash"
-                    ),
+                    "executable": "/bin/bash",
                 },
             )
         else:
             # Use full executable path if we are on Windows
             if sys.platform == "win32":
-                cli_absolute = shutil.which(command[0])
+                cli_absolute = shutil.which(
+                    command[0], path=self.native_search_path(subprocess_env)
+                )
                 if cli_absolute is not None:
                     command[0] = cli_absolute
                 else:
@@ -1341,6 +1466,7 @@ class Linter:
         return_code, return_stdout = self.apply_common_linter_errors(
             return_code, return_stdout
         )
+        self.last_return_code = return_code
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
@@ -1438,6 +1564,33 @@ class Linter:
 
     def manage_sarif_output(self, return_stdout):
         sarif_confirmed = False
+        keep_raw_output = False
+        # Build the SARIF file from the output of the linters that can not output SARIF
+        if (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and self.sarif_output_file is not None
+            and not os.path.isfile(self.sarif_output_file)
+        ):
+            # pylint: disable=assignment-from-none
+            sarif_log = self.convert_output_to_sarif(return_stdout)
+            # pylint: enable=assignment-from-none
+            if sarif_log is not None:
+                if self.sarif_whole_output is True:
+                    sarif_builder.add_whole_output_result(
+                        sarif_log,
+                        return_stdout,
+                        self.last_return_code,
+                        self.get_sarif_rule_id(),
+                        self.sarif_text_default_level,
+                    )
+                with open(self.sarif_output_file, "w", encoding="utf-8") as file:
+                    file.write(sarif_log.build_sarif_json_string())
+                # Without any result, the linter output may be an error message
+                # (ex: invalid configuration) that must stay visible in the logs
+                keep_raw_output = not any(
+                    len(run.results) > 0 for run in sarif_log.runs
+                )
         # Move SARIF file if necessary if generated in a fixed place by the linter
         if (
             self.can_output_sarif is True
@@ -1495,11 +1648,18 @@ class Linter:
             utils_sarif.normalize_sarif_files(self)
 
         # Convert SARIF into human readable text for Console & Text reporters
-        if sarif_confirmed is True and self.master.sarif_to_human is True:
+        if (
+            sarif_confirmed is True
+            and keep_raw_output is False
+            and self.master.sarif_to_human is True
+        ):
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
-                self.stdout_human = utils_reporter.convert_sarif_to_human(
-                    file.read(), self.request_id
+                sarif_text = utils_sarif.remove_suppressed_results_from_text(
+                    file.read()
                 )
+            self.stdout_human = utils_reporter.convert_sarif_to_human(
+                sarif_text, self.request_id
+            )
 
     # Returns linter version (can be overridden in special cases, like version has special format)
     def get_linter_version(self):
@@ -1514,6 +1674,10 @@ class Linter:
             if prebuilt_version is not None:
                 self.linter_version_cache = prebuilt_version
                 return self.linter_version_cache
+            native_version = self.read_native_version_cache()
+            if native_version is not None:
+                self.linter_version_cache = native_version
+                return self.linter_version_cache
         version_output = self.get_linter_version_output()
         reg = self.version_extract_regex
         if isinstance(reg, str):
@@ -1521,6 +1685,10 @@ class Linter:
         m = reg.search(version_output)
         if m:
             self.linter_version_cache = ".".join(m.group().split())
+            self.write_native_version_cache(self.linter_version_cache)
+        elif self.native_toolchain is not None and self.native_toolchain.version:
+            # Native mode: some release builds report no version (phplint: dev-main)
+            self.linter_version_cache = self.native_toolchain.version
         else:
             logging.error(
                 f"Unable to extract version with regex {str(reg)} from {version_output}"
@@ -1528,16 +1696,72 @@ class Linter:
             self.linter_version_cache = "ERROR"
         return self.linter_version_cache
 
+    # Native mode: a linter installed by MegaLinter never changes inside its install folder
+    # (one folder per resolved install), so its version is read once and kept there, like
+    # the versions collected when Docker images are built. Tools provided by the host can be
+    # upgraded at any time: never cached. The version command and regex are part of the key
+    def native_version_cache_file(self):
+        toolchain = self.native_toolchain
+        if toolchain is None or toolchain.install_dir is None or toolchain.host_tool:
+            return None
+        return os.path.join(toolchain.install_dir, ".megalinter-version.json")
+
+    def native_version_cache_key(self):
+        reg = self.version_extract_regex
+        command = self.build_version_command()
+        # The program actually called (pwsh reports its own version for PSScriptAnalyzer):
+        # replacing or upgrading it invalidates the cache
+        executable = shutil.which(command[0], path=self.native_search_path())
+        return {
+            "command": command,
+            "regex": reg if isinstance(reg, str) else reg.pattern,
+            "executable": executable,
+            "executable_mtime": (
+                os.path.getmtime(executable) if executable is not None else None
+            ),
+        }
+
+    def read_native_version_cache(self):
+        cache_file = self.native_version_cache_file()
+        if cache_file is None or not os.path.isfile(cache_file):
+            return None
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+        except (OSError, ValueError):
+            return None
+        key = self.native_version_cache_key()
+        if key["executable"] is None or cached.get("key") != key:
+            return None
+        return cached.get("version")
+
+    def write_native_version_cache(self, version):
+        cache_file = self.native_version_cache_file()
+        if cache_file is None:
+            return
+        # Written then renamed: linters of a run can be processed by several workers
+        temp_file = f"{cache_file}.{os.getpid()}.tmp"
+        try:
+            with open(temp_file, "w", encoding="utf-8") as f:
+                json.dump(
+                    {"key": self.native_version_cache_key(), "version": version}, f
+                )
+            os.replace(temp_file, cache_file)
+        except OSError as e:
+            logging.debug(f"[native] Unable to cache the version of {self.name}: {e}")
+
     # Returns the version of the associated linter (can be overridden in special cases, like version has special format)
     def get_linter_version_output(self):
         command = self.build_version_command()
         logging.debug("Linter version command: " + str(command))
         cwd = os.getcwd() if command[0] != "npm" else "~/"
-        subprocess_env = {
-            **config.build_env(self.request_id, True, self.unsecured_env_variables),
-            "FORCE_COLOR": "0",
-            "NO_COLOR": "true",
-        }
+        subprocess_env = self.native_environment(
+            {
+                **config.build_env(self.request_id, True, self.unsecured_env_variables),
+                "FORCE_COLOR": "0",
+                "NO_COLOR": "true",
+            }
+        )
         try:
             process = subprocess.run(
                 command,
@@ -1577,17 +1801,21 @@ class Linter:
             try:
                 if isinstance(command, str):
                     command = command.split(" ")
+                subprocess_env = self.native_environment(
+                    {
+                        **config.build_env(
+                            self.request_id, True, self.unsecured_env_variables
+                        ),
+                        "FORCE_COLOR": "0",
+                    }
+                )
                 if sys.platform == "win32":
-                    cli_absolute = shutil.which(command[0])
+                    cli_absolute = shutil.which(
+                        command[0], path=self.native_search_path(subprocess_env)
+                    )
                     if cli_absolute is not None:
                         command[0] = cli_absolute
                 logging.debug("Linter help command: " + str(command))
-                subprocess_env = {
-                    **config.build_env(
-                        self.request_id, True, self.unsecured_env_variables
-                    ),
-                    "FORCE_COLOR": "0",
-                }
                 process = subprocess.run(
                     command,
                     stdout=subprocess.PIPE,
@@ -1624,6 +1852,32 @@ class Linter:
 
     def before_lint_files(self):
         pass
+
+    # Writes the SARIF merged from the results of each file (linter in file lint mode)
+    def after_lint_files(self):
+        if self.merged_sarif is not None:
+            with open(self.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+                json.dump(self.merged_sarif, sarif_file, sort_keys=True, indent=2)
+
+    # To override in the linters that can not output SARIF: returns a
+    # sarif_builder.SarifBuilder built from the output of the linter, or None.
+    # By default, the findings are the matches of the descriptor sarif_text_regex
+    def convert_output_to_sarif(self, return_stdout):
+        if self.sarif_text_regex is None and self.sarif_whole_output is not True:
+            return None
+        return sarif_builder.regex_output_to_sarif(
+            return_stdout,
+            self.workspace,
+            self.linter_name,
+            self.sarif_text_regex,
+            self.get_sarif_rule_id(),
+            self.sarif_text_default_level,
+            self.sarif_text_levels,
+            self.linter_url,
+        )
+
+    def get_sarif_rule_id(self):
+        return self.sarif_text_rule_id or self.linter_name
 
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:
@@ -1718,16 +1972,28 @@ class Linter:
                 self.has_project_exclude_forwarding()
                 and self.is_project_exclude_forwarding_active()
                 and len(self.get_project_exclude_directories()) > 0
+                and not self.has_project_exclude_conflicting_args(cmd)
             )
             if forward_exclusions:
-                cmd += self.build_project_exclude_arguments()
+                cmd += self.build_project_exclude_arguments(cmd)
                 cmd = self.manage_excluded_directories_config(cmd)
-            self.cli_lint_mode_project_extra_args_after = self.replace_vars(
-                self.cli_lint_mode_project_extra_args_after,
-                additional_replace_variables,
-            )
+                self.log_project_gitignored_directories_forwarding()
+            # The paths to analyze (ex: ".") would override the ones defined in
+            # the linter's own configuration (phpcs <file>, phpstan paths...),
+            # making it analyze folders the user deliberately left out
+            if self.is_project_paths_defined_in_config():
+                self.log_lines_pre += [
+                    f"[Project paths] {self.config_file_label} defines the paths to "
+                    f"analyze, so {' '.join(self.cli_lint_mode_project_extra_args_after)} "
+                    "is not added to the command line"
+                ]
+            else:
+                self.cli_lint_mode_project_extra_args_after = self.replace_vars(
+                    self.cli_lint_mode_project_extra_args_after,
+                    additional_replace_variables,
+                )
 
-            cmd += self.cli_lint_mode_project_extra_args_after
+                cmd += self.cli_lint_mode_project_extra_args_after
             # Ignore file arguments come after the positional arguments: array
             # options (ex: v8r --ignore-pattern-files) greedily consume every
             # following non-option argument
@@ -1808,6 +2074,45 @@ class Linter:
         if message not in self.log_lines_pre:
             self.log_lines_pre += [message]
 
+    def is_project_paths_defined_in_config(self):
+        if (
+            self.cli_lint_mode_project_config_paths_regex is None
+            or len(self.cli_lint_mode_project_extra_args_after) == 0
+            or self.config_file is None
+            or not os.path.isfile(self.config_file)
+        ):
+            return False
+        with open(self.config_file, encoding="utf-8", errors="ignore") as file:
+            config_content = file.read()
+        # A commented-out XML entry (ex: <!-- <file>src</file> -->) defines nothing
+        config_content = re.sub(r"<!--.*?-->", "", config_content, flags=re.DOTALL)
+        return (
+            re.search(self.cli_lint_mode_project_config_paths_regex, config_content)
+            is not None
+        )
+
+    def log_project_gitignored_directories_forwarding(self):
+        gitignored_dirs = self.project_gitignored_directories
+        if len(gitignored_dirs) == 0:
+            return
+        path_only_dirs = sorted(
+            set(gitignored_dirs) - set(self.project_gitignored_name_directories)
+        )
+        path_only_info = (
+            f", {len(path_only_dirs)} of them ({', '.join(path_only_dirs[0:5])}) "
+            "only as workspace-relative paths, as tracked directories share their "
+            "name"
+            if len(path_only_dirs) > 0
+            else ""
+        )
+        self.log_project_exclude_forwarding(
+            f"Forwarded {len(gitignored_dirs)} .gitignored directories "
+            f"({', '.join(gitignored_dirs[0:10])}"
+            f"{',…' if len(gitignored_dirs) > 10 else ''}) with the excluded "
+            f"directories{path_only_info} "
+            "(disable with FORWARD_GITIGNORED_DIRECTORIES: false)"
+        )
+
     def log_project_exclude_forwarding(self, message):
         self.log_linter_notice(f"[Excluded directories] {message}")
 
@@ -1875,6 +2180,10 @@ class Linter:
             ):
                 names.add(candidate)
                 paths.add(candidate)
+        # .gitignored directories are located by git itself: they exist, and
+        # their workspace-relative path designates exactly the ignored location
+        names |= set(self.project_gitignored_name_directories)
+        paths |= set(self.project_gitignored_directories)
         always_forwarded = utils.normalize_excluded_directories(
             self.workspace, [utils.get_report_output_folder_name(self.request_id)]
         )
@@ -1950,19 +2259,27 @@ class Linter:
 
     # Forward excluded directories to project-mode linters through their
     # native exclusion argument, when the descriptor declares one
-    def build_project_exclude_arguments(self):
+    def build_project_exclude_arguments(self, cmd=None):
         if self.cli_lint_mode_project_exclude_arg_name is None:
             return []
         if len(self.get_project_exclude_directories()) == 0:
             return []
         arg_name = self.cli_lint_mode_project_exclude_arg_name
-        seed_values = list(self.cli_lint_mode_project_exclude_seed_values)
-        seed_values += self.get_config_list_seed_values()
+        # The config values come first: a regex starting with global inline
+        # flags (ex: "(?x)") must stay at the start of the joined value
+        seed_values = self.get_config_list_seed_values(cmd)
+        seed_values += list(self.cli_lint_mode_project_exclude_seed_values)
+        seed_values += self.pop_user_project_exclude_values(cmd)
         arg_value = self.cli_lint_mode_project_exclude_arg_value
         generated_values = self.build_project_exclude_values(arg_value)
-        if self.project_exclude_template_uses_paths(arg_value):
+        # .gitignored directories can be numerous (ex: one build folder per
+        # package of a monorepo), so they are capped like path templates
+        if (
+            self.project_exclude_template_uses_paths(arg_value)
+            or len(self.project_gitignored_name_directories) > 0
+        ):
             generated_values = self.limit_project_exclude_values(generated_values)
-        values = seed_values + generated_values
+        values = list(dict.fromkeys(seed_values + generated_values))
         values = self.replace_vars(values)
         if len(values) == 0:
             return []
@@ -2000,13 +2317,23 @@ class Linter:
             return []
         seed_lines = []
         for seed_file in self.cli_lint_mode_project_exclude_ignore_file_seed_files:
-            seed_lines = self.read_workspace_file_lines(seed_file)
-            if len(seed_lines) > 0:
+            # Not deduplicated: in ignore files, the order of a repeated pattern
+            # and a negation decides what is ignored
+            seed_lines += self.read_workspace_file_lines(seed_file)
+            if (
+                len(seed_lines) > 0
+                and not self.cli_lint_mode_project_exclude_ignore_file_merge_all_seeds
+            ):
                 break
+        # Ignore files listed in the user config replace the default ones that
+        # the generated file argument would make the tool forget (ex: v8r
+        # ignorePatternFiles)
+        pass_existing = (
+            self.get_config_list_seed_values(cmd)
+            or self.cli_lint_mode_project_exclude_ignore_file_pass_existing
+        )
         ignore_args = []
-        for (
-            existing_file
-        ) in self.cli_lint_mode_project_exclude_ignore_file_pass_existing:
+        for existing_file in pass_existing:
             existing_path = os.path.join(self.workspace, existing_file)
             if os.path.isfile(existing_path):
                 ignore_args += self.build_ignore_file_argument(arg_name, existing_path)
@@ -2027,7 +2354,11 @@ class Linter:
     # ignore file referenced by absolute path (ex: v8r)
     def build_ignore_file_argument(self, arg_name, value):
         if os.path.isabs(value):
-            value = os.path.relpath(value, self.workspace).replace("\\", "/")
+            try:
+                value = os.path.relpath(value, self.workspace).replace("\\", "/")
+            except ValueError:
+                # Windows: the report folder can be on another drive than the workspace
+                value = value.replace("\\", "/")
         if arg_name.endswith("=") or arg_name.endswith(":"):
             return [arg_name + value]
         return [arg_name, value]
@@ -2038,23 +2369,137 @@ class Linter:
     def manage_excluded_directories_config(self, cmd):
         return cmd
 
-    # Entries of the resolved config file list that the exclusion argument
-    # would replace, located by the cli_lint_mode_project_exclude_config_key
-    # dotted key path
-    def get_config_list_seed_values(self):
-        if (
-            self.cli_lint_mode_project_exclude_config_key is None
-            or self.final_config_file is None
-        ):
+    def has_project_exclude_conflicting_args(self, cmd):
+        conflicting_args = [
+            arg
+            for arg in self.cli_lint_mode_project_exclude_conflicting_args
+            if arg in cmd
+        ]
+        if len(conflicting_args) == 0:
+            return False
+        self.log_project_exclude_forwarding(
+            f"EXCLUDED_DIRECTORIES are not forwarded to {self.linter_name}: "
+            f"{', '.join(conflicting_args)} can not be combined with the forwarding"
+        )
+        return True
+
+    # A single-occurrence exclusion argument (joined values) already set by the
+    # user in ARGUMENTS would be overridden by the generated one, or override
+    # it (phpcs --ignore= keeps the first one): remove it from the command
+    # line and return its value, merged first in the generated occurrence
+    def pop_user_project_exclude_values(self, cmd):
+        arg_name = self.cli_lint_mode_project_exclude_arg_name
+        if cmd is None or self.cli_lint_mode_project_exclude_separator is None:
             return []
-        with open(self.final_config_file, encoding="utf-8") as config_file:
-            config_content = yaml.safe_load(config_file) or {}
-        node = config_content
-        for key in self.cli_lint_mode_project_exclude_config_key.split("."):
-            node = node.get(key, {}) if isinstance(node, dict) else {}
-        if isinstance(node, list):
-            return [str(value) for value in node]
+        if arg_name == "":
+            return []
+        bare_arg_name = arg_name.rstrip("=:")
+        value_prefixes = self.get_cli_argument_value_prefixes(arg_name)
+        values = []
+        index = 0
+        while index < len(cmd):
+            arg = cmd[index]
+            if (
+                arg == bare_arg_name
+                and index + 1 < len(cmd)
+                and not cmd[index + 1].startswith("-")
+            ):
+                values += [cmd[index + 1]]
+                del cmd[index : index + 2]
+            elif arg.startswith(value_prefixes):
+                prefix = next(p for p in value_prefixes if arg.startswith(p))
+                values += [arg[len(prefix) :]]
+                del cmd[index]
+            else:
+                index += 1
+        return [value for value in values if value != ""]
+
+    # Config files where the user may define the setting that the exclusion
+    # argument replaces: the one MegaLinter resolved, else the one passed by the
+    # user in ARGUMENTS, then the files the linter discovers itself. Reading a
+    # file the linter does not use can only exclude more, never less
+    def get_project_exclude_config_files(self, cmd=None):
+        config_files = []
+        if self.final_config_file is not None:
+            config_files += [self.final_config_file]
+        elif cmd is not None and self.cli_config_arg_name != "":
+            user_config_file = self.find_cli_argument_value(
+                cmd, self.cli_config_arg_name
+            )
+            if user_config_file is not None:
+                config_files += [user_config_file]
+        config_files += self.cli_lint_mode_project_exclude_config_files
+        config_paths = []
+        for config_file in config_files:
+            config_path = (
+                config_file
+                if os.path.isabs(config_file)
+                else os.path.join(self.workspace, config_file)
+            )
+            if os.path.isfile(config_path) and config_path not in config_paths:
+                config_paths += [config_path]
+        return config_paths
+
+    # Entries of the user config setting that the exclusion argument would
+    # replace, located by the cli_lint_mode_project_exclude_config_key dotted
+    # key path(s): the first config file defining one of them wins
+    def get_config_list_seed_values(self, cmd=None):
+        if self.cli_lint_mode_project_exclude_config_key is None:
+            return []
+        key_paths = self.cli_lint_mode_project_exclude_config_key
+        if isinstance(key_paths, str):
+            key_paths = [key_paths]
+        for config_path in self.get_project_exclude_config_files(cmd):
+            config_content = utils.load_config_file_content(config_path)
+            for key_path in key_paths:
+                values = self.normalize_config_seed_values(
+                    utils.find_config_key_value(config_content, key_path.split("."))
+                )
+                if len(values) > 0:
+                    return values
         return []
+
+    def normalize_config_seed_values(self, value):
+        if isinstance(value, list):
+            return [str(item) for item in value if str(item).strip() != ""]
+        if not isinstance(value, str) or value.strip() == "":
+            return []
+        if self.cli_lint_mode_project_exclude_separator == "|":
+            # A regex is kept whole. A multi-line one is a verbose regex (black
+            # compiles it with re.VERBOSE): closed on a new line so that a
+            # trailing comment does not swallow the joined alternatives, and
+            # grouped unless it starts with global inline flags, which must
+            # stay at the start of the joined regex
+            value = value.strip()
+            if "\n" not in value:
+                return [value]
+            if re.match(r"\(\?[aiLmsux]+\)", value):
+                return [value + "\n"]
+            return [f"(?:{value}\n)"]
+        # Comma or newline separated lists (ex: flake8 extend-exclude, pylint ignore)
+        return [item.strip() for item in re.split(r"[,\n]", value) if item.strip()]
+
+    # Value of a CLI argument in a command line, given as "name value",
+    # "name=value", or concatenated when the argument name ends with = or :
+    def find_cli_argument_value(self, cmd, arg_name):
+        bare_arg_name = arg_name.rstrip("=:")
+        value_prefixes = self.get_cli_argument_value_prefixes(arg_name)
+        for index, arg in enumerate(cmd):
+            if arg == bare_arg_name and index + 1 < len(cmd):
+                return cmd[index + 1]
+            if arg.startswith(value_prefixes):
+                prefix = next(p for p in value_prefixes if arg.startswith(p))
+                return arg[len(prefix) :]
+        return None
+
+    # Prefixes of an argument holding its value: "--name=", plus the argument
+    # name itself when it ends with = or : (ex: "--ignore=", "-config:")
+    def get_cli_argument_value_prefixes(self, arg_name):
+        bare_arg_name = arg_name.rstrip("=:")
+        prefixes = [bare_arg_name + "="]
+        if arg_name != bare_arg_name:
+            prefixes += [arg_name]
+        return tuple(dict.fromkeys(prefixes))
 
     # Locate the value of a CLI argument in a command line
     def find_cli_argument_value_index(self, cmd, arg_names):
@@ -2193,7 +2638,9 @@ class Linter:
             if sarif and sarif["runs"]:
                 for run in sarif["runs"]:
                     for result in run["results"]:
-                        if result["level"] == level:
+                        if result["level"] == level and not utils_sarif.is_suppressed(
+                            result
+                        ):
                             total_result += 1
             else:
                 logging.warning("Unable to find results in:" + stdout)
@@ -2236,6 +2683,8 @@ class Linter:
                             ]["level"]
 
                 for result in run["results"]:
+                    if utils_sarif.is_suppressed(result):
+                        continue
                     count_results = False
 
                     if "level" in result:
@@ -2259,7 +2708,10 @@ class Linter:
                         count_results = True
 
                     if count_results is True:
-                        total_result += len(result["locations"])
+                        # A result may have no location (ex: roslynator compiler diagnostics)
+                        total_result += (
+                            len(result["locations"]) if "locations" in result else 1
+                        )
 
             return total_result
         except Exception as e:
@@ -2275,7 +2727,7 @@ class Linter:
     # Build the CLI command to get linter version (can be overridden if --version is not the way to get the version)
     def build_version_command(self):
         cmd = [*self.cli_executable_version]
-        cli_absolute = shutil.which(cmd[0])
+        cli_absolute = shutil.which(cmd[0], path=self.native_search_path())
         if cli_absolute is not None:
             cmd[0] = cli_absolute
         cmd += self.cli_version_extra_args

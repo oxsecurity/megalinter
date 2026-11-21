@@ -32,6 +32,7 @@ rules:
       - mirror-docker-image.yml
       - slash-command-dispatch.yml
       - stale.yml
+      - test-agent-plugins.yml
+      - test-docs.yml
       - test-mega-linter-runner.yml
-      - test-mkdocs.yml
       - versioning.yml

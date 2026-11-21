@@ -6,6 +6,15 @@ const tsPlugin = require('@typescript-eslint/eslint-plugin');
 module.exports = [
     js.configs.recommended,
     {
+        files: ['**/*.{js,cjs,mjs}'],
+        languageOptions: {
+            sourceType: 'commonjs',
+            globals: {
+                ...globals.node,
+            },
+        },
+    },
+    {
         files: ['**/*.ts'],
         languageOptions: {
             parser: tsParser,

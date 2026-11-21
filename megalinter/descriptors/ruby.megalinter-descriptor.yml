@@ -36,9 +36,13 @@ linters:
       - file
       - list_of_files
       - project
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_fix_arg_name: "--safe-auto-correct"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "sarif"
+      - "--out"
+      - "{{SARIF_OUTPUT_FILE}}"
     common_linter_errors:
       - identifier: RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
         regex: "unable to load plugin|cannot load such file -- rubocop-[a-z]+"
@@ -76,10 +80,10 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=rubygems depName=rubocop
-          ARG GEM_RUBOCOP_VERSION=1.91.0
+          ARG GEM_RUBOCOP_VERSION=1.92.2
         - |-
           # renovate: datasource=rubygems depName=rubocop-github
-          ARG GEM_RUBOCOP_GITHUB_VERSION=0.27.0
+          ARG GEM_RUBOCOP_GITHUB_VERSION=0.29.0
         - |-
           # renovate: datasource=rubygems depName=rubocop-performance
           ARG GEM_RUBOCOP_PERFORMANCE_VERSION=1.27.0
@@ -99,6 +103,19 @@ linters:
         - rubocop-rails:${GEM_RUBOCOP_RAILS_VERSION}
         - rubocop-rake:${GEM_RUBOCOP_RAKE_VERSION}
         - rubocop-rspec:${GEM_RUBOCOP_RSPEC_VERSION}
+    native_install:
+      method: gem
+      requires:
+        - runtime: ruby
+          version: ">=3.4.2"
+      allow_source_build:
+        reason: "rubocop-rails pulls activesupport, whose bigdecimal and json dependencies compile C extensions: a C compiler is needed (on Windows, install Ruby with the DevKit)."
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

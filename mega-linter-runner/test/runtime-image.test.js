@@ -89,9 +89,17 @@ async function prepareFixtureDir(prefix, sourceRelativeDir) {
 }
 
 async function preparePhpFixture() {
-  const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "megalinter-php-"));
+  const tempDir = await fs.promises.mkdtemp(
+    path.join(os.tmpdir(), "megalinter-php-"),
+  );
   await fs.promises.cp(
-    path.join(repoRoot, ".automation", "test", "php", ".php-cs-fixer.risky.php"),
+    path.join(
+      repoRoot,
+      ".automation",
+      "test",
+      "php",
+      ".php-cs-fixer.risky.php",
+    ),
     path.join(tempDir, ".php-cs-fixer.risky.php"),
   );
   await fs.promises.cp(
@@ -212,6 +220,17 @@ const runtimeFixtureCases = [
       /✅ Linted \[JSON\] files with \[npm-package-json-lint\] successfully/,
   },
   {
+    title: "GO_GOLANGCI_LINT",
+    prepare: () =>
+      prepareFixtureDir(
+        "megalinter-go-",
+        path.join(".automation", "test", "golang_runtime_deps"),
+      ),
+    enabledLinter: "GO_GOLANGCI_LINT",
+    successPattern:
+      /✅ Linted \[GO\] files with \[golangci-lint\] successfully/,
+  },
+  {
     title: "SALESFORCE_CODE_ANALYZER_APEX",
     prepare: () =>
       prepareFixtureDir(
@@ -257,7 +276,9 @@ describe("Runtime image", function () {
 
   for (const runtimeMode of runtimeModes) {
     it(`accepts an SSH connection in ${runtimeMode.label} mode`, async () => {
-      const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), "megalinter-ssh-"));
+      const tempDir = await fs.promises.mkdtemp(
+        path.join(os.tmpdir(), "megalinter-ssh-"),
+      );
       const containerName = `megalinter-ssh-${runtimeMode.id}-${Date.now()}`;
       const privateKey = path.join(tempDir, "id_rsa");
       const publicKey = path.join(tempDir, "id_rsa.pub");
@@ -292,7 +313,9 @@ describe("Runtime image", function () {
           image,
         ]);
         if (runRes.status !== 0) {
-          const details = [runRes.stderr, runRes.stdout].filter(Boolean).join("\n");
+          const details = [runRes.stderr, runRes.stdout]
+            .filter(Boolean)
+            .join("\n");
           const logs = readDockerLogs(containerName);
           assert.strictEqual(
             runRes.status,
@@ -307,7 +330,9 @@ describe("Runtime image", function () {
           `${runtimeMode.sshPort}/tcp`,
         ]);
         if (portRes.status !== 0) {
-          const details = [portRes.stderr, portRes.stdout].filter(Boolean).join("\n");
+          const details = [portRes.stderr, portRes.stdout]
+            .filter(Boolean)
+            .join("\n");
           const logs = readDockerLogs(containerName);
           assert.strictEqual(
             portRes.status,

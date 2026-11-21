@@ -9,7 +9,13 @@ file_extensions:
   - ".rst"
 linters:
   # restructuredtext-lint
-  - linter_name: rst-lint
+  - class: RstLintLinter
+    linter_name: rst-lint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "json"
+    sarif_whole_output: true
     linter_text: |
       **restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
 
@@ -27,6 +33,8 @@ linters:
       - **PyPI upload validation** preventing documentation upload failures
       - **Command-line interface** for easy integration into build processes
       - **Fast processing** optimized for large documentation projects
+
+      In `project` lint mode, rst-lint walks every `.rst` file below the workspace: it has no exclusion option, so `EXCLUDED_DIRECTORIES` are not applied. Prefer the default `list_of_files` mode when excluded directories contain `.rst` files.
     linter_url: https://github.com/twolfson/restructuredtext-lint
     linter_repo: https://github.com/twolfson/restructuredtext-lint
     linter_spdx_license: Unlicense
@@ -38,8 +46,12 @@ linters:
       - file
       - list_of_files
       - project
+    # rst-lint requires a path: a directory is walked recursively for *.rst files
+    cli_lint_mode_project_extra_args_after:
+      - .
     examples:
       - "rst-lint myfile.rst"
+      - "rst-lint ."
     install:
       dockerfile:
         - |-
@@ -51,12 +63,31 @@ linters:
       pip:
         - Pygments==${PIP_PYGMENTS_VERSION}
         - restructuredtext_lint==${PIP_RESTRUCTUREDTEXT_LINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
   # rstcheck
   - linter_name: rstcheck
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+): \((?P<severity>[A-Z]+)/\d\) (?P<message>.*)$'
+    sarif_text_levels:
+      "INFO": note
+      "WARNING": warning
+      "ERROR": error
+      "SEVERE": error
+    sarif_whole_output: true
     linter_text: |
       **rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
 
@@ -99,10 +130,21 @@ linters:
           # renovate: datasource=pypi depName=rstcheck
           ARG PIP_RSTCHECK_VERSION=6.3.0
           # renovate: datasource=pypi depName=click
-          ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
+          ARG PIP_RSTCHECK_CLICK_VERSION=8.5.1
       pip:
         - click==${PIP_RSTCHECK_CLICK_VERSION} # Downgrade click as 8.2.0 triggers and error
         - rstcheck[toml,sphinx]==${PIP_RSTCHECK_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -156,6 +198,17 @@ linters:
       pip:
         - rstfmt==${PIP_RSTFMT_VERSION}
     version_extract_regex: "(?<=rstfmt )\\d+(\\.\\d+)+"
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

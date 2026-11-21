@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset name="megalinter-test">
+    <description>Defines the paths to analyze: in project lint mode, MegaLinter must not override them with "." (issue #8955)</description>
+    <file>php_good_1.php</file>
+    <file>php_good_2.php</file>
+    <rule ref="PSR12" />
+</ruleset>

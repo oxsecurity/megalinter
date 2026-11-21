@@ -54,6 +54,7 @@ One guide per linter: load a guide only when the related linter reports errors.
 | PYTHON_PYRIGHT                    | PYTHON         | [python_pyright.md](python_pyright.md)                                       |
 | PYTHON_RUFF                       | PYTHON         | [python_ruff.md](python_ruff.md)                                             |
 | PYTHON_RUFF_FORMAT                | PYTHON         | [python_ruff_format.md](python_ruff_format.md)                               |
+| PYTHON_TY                         | PYTHON         | [python_ty.md](python_ty.md)                                                 |
 | R_LINTR                           | R              | [r_lintr.md](r_lintr.md)                                                     |
 | RAKU_RAKU                         | RAKU           | [raku_raku.md](raku_raku.md)                                                 |
 | RUBY_RUBOCOP                      | RUBY           | [ruby_rubocop.md](ruby_rubocop.md)                                           |

@@ -3,7 +3,6 @@
   extends: [
     'config:recommended',
     'customManagers:dockerfileVersions',
-    ':maintainLockFilesWeekly',
     ':separateMultipleMajorReleases',
     ':semanticCommits',
     ':label(dependencies)',
@@ -16,11 +15,11 @@
     ':automergeDigest', // enable for PRs updating digests
     ':automergePatch', // enable for lock files, patch and pin
   ],
-  // Supply-chain hardening: wait until a release is at least 7 days old before
+  // Supply-chain hardening: wait until a release is at least 14 days old before
   // proposing it, so compromised releases can be caught and yanked by the
   // community first. Replaces the npm-only 'security:minimumReleaseAgeNpm'
   // preset (3 days) with a stricter setting covering every datasource.
-  minimumReleaseAge: '7 days',
+  minimumReleaseAge: '14 days',
   vulnerabilityAlerts: {
     enabled: true,
     // Security fixes must not wait out the cooldown (this is Renovate's
@@ -28,6 +27,15 @@
     minimumReleaseAge: null,
   },
   osvVulnerabilityAlerts: true,
+  // GitHub Actions are owned by Dependabot (.github/dependabot.yml). Renovate
+  // can not date the SHA-pinned digest updates (`uses: x@<sha> # v7`), so with
+  // minimumReleaseAgeBehaviour 'timestamp-required' they stayed pending
+  // forever, while Dependabot applies its 14-day cooldown on the tag release.
+  // Lock file maintenance is not enabled for the same reason: a lock file
+  // refresh has no release timestamp, so it could never pass minimumReleaseAge.
+  'github-actions': {
+    enabled: false,
+  },
   hostRules: [
     {
       // repology.org is slow/flaky and frequently times out from the hosted runner.
@@ -50,6 +58,49 @@
         'js-yaml',
       ],
       allowedVersions: '<5',
+    },
+    {
+      // TypeScript 7 is the native (Go) port and drops the JS compiler API that
+      // typescript-eslint relies on: @typescript-eslint/type-utils crashes on load
+      // ("Cannot read properties of undefined (reading 'Any')"), breaking
+      // TYPESCRIPT_ES, TYPESCRIPT_STANDARD, TSX_ESLINT... Keep TypeScript on v6
+      // until typescript-eslint and the other dependents support v7 (see #8404).
+      matchPackageNames: [
+        'typescript',
+      ],
+      allowedVersions: '<7',
+    },
+    {
+      // Test fixtures under .automation/test (except the frozen bad/ and .wireit/
+      // ones, see ignorePaths) only need to stay current: one weekly grouped PR
+      // instead of one PR per fixture dependency.
+      matchFileNames: [
+        '.automation/test/**',
+      ],
+      groupName: 'test fixtures',
+      schedule: [
+        'before 4am on Monday',
+      ],
+    },
+    {
+      // One Python version for every MegaLinter context: .python-version (local uv,
+      // CI setup-python via python-version-file) and every python:X.Y.Z-alpine base
+      // image (Dockerfile, flavors/, linters/, server/). Bump them all in the same PR,
+      // as the image build refuses to download a Python that differs from its base
+      // image (UV_PYTHON_DOWNLOADS=never). Patches come apart from minor upgrades, so
+      // closing a 3.15 PR never holds back 3.14 security patches.
+      groupName: 'Python',
+      matchDatasources: [
+        'docker',
+      ],
+      matchDepNames: [
+        'python',
+      ],
+      // Test fixtures keep their own weekly group
+      matchFileNames: [
+        '!.automation/test/**',
+      ],
+      separateMinorPatch: true,
     },
     {
       matchPackageNames: [
@@ -96,22 +147,6 @@
       ],
     },
     {
-      groupName: 'langchain',
-      matchPackageNames: [
-        'langchain_*',
-        'langchain*',
-      ],
-      schedule: [
-        'before 3pm every 3 day',
-      ],
-      matchUpdateTypes: [
-        'digest',
-        'patch',
-        'minor',
-        'major',
-      ],
-    },
-    {
       groupName: 'Salesforce packages',
       matchPackageNames: [
         '@salesforce/**',
@@ -155,12 +190,15 @@
   customManagers: [
     {
       customType: 'regex',
-      description: 'Update version inputs in GitHub Actions workflow files (e.g. trivy version)',
+      description: 'Update version inputs in GitHub Actions workflow files (e.g. trivy version), and the pinned versions of native installs (native_install in descriptors, runtimes in native-runtimes.yml)',
       managerFilePatterns: [
         '/(^|/)\\.github/workflows/.*\\.ya?ml$/',
+        '/(^|/)megalinter/descriptors/.*\\.megalinter-(descriptor|linter)\\.ya?ml$/',
+        '/(^|/)megalinter/descriptors/native-runtimes\\.yml$/',
       ],
       matchStrings: [
         '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+version: ["\']?(?<currentValue>[^"\'\\s]+)["\']?',
+        '# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?(?: registryUrl=(?<registryUrl>[^\\s]+?))?\\s+- [A-Za-z0-9_.-]+==(?<currentValue>[^"\'\\s]+)',
       ],
     },
     {
@@ -218,8 +256,16 @@
       ],
     },
   ],
+  // Frozen test fixtures: the bad/ folders and the .wireit/ poison fixtures under
+  // .automation/test intentionally ship outdated / vulnerable dependencies so
+  // MegaLinter's security linters have something to detect. Every other test
+  // folder (good/, fix/...) is kept up to date, except repository_syft/good/good:
+  // a snapshot of an old mega-linter-runner whose lock file only exists as SBOM input
+  // for syft, and that npm refuses to regenerate (remote npm-6.14.18.tgz download blocked).
   ignorePaths: [
-    '.automation/test/**',
+    '.automation/test/**/bad/**',
+    '.automation/test/**/.wireit/**',
+    '.automation/test/repository_syft/good/good/**',
   ],
   dockerfile: {
     managerFilePatterns: [

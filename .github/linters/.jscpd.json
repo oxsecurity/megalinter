@@ -12,6 +12,7 @@
     "**/.venv/**",
     "**/*cache*/**",
     "**/.automation/**",
+    "**/native-locks/**",
     "**/.github/**",
     "**/.idea/**",
     "**/docs/**",
@@ -43,9 +44,12 @@
     "**/megalinter/utils_reporter.py",
     "**/*.test.js",
     "**/CHANGELOG.md",
+    "**/Dockerfile",
+    "**/*.mak",
     "**/README.md",
     "**/skills/**/*.md",
     "**/licenses/*.md",
-    "**/TEMPLATES/java-pmd-ruleset.xml"
+    "**/TEMPLATES/java-pmd-ruleset.xml",
+    "**/osv-scanner.toml"
   ]
 }

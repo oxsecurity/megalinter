@@ -37,8 +37,6 @@ supported_cli_lint_modes:
 cli_lint_extra_args:
   - "check"
   - "--max-diagnostics=none"
-cli_lint_mode_project_extra_args_after:
-  - "."
 config_file_name: biome.json
 cli_config_arg_name: "--config-path"
 cli_lint_fix_arg_name: "--write"
@@ -57,13 +55,24 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=@biomejs/biome
-      ARG NPM_BIOMEJS_BIOME_VERSION=2.5.14
+      ARG NPM_BIOMEJS_BIOME_VERSION=2.6.6
   npm:
     - "@biomejs/biome@${NPM_BIOMEJS_BIOME_VERSION}"
 supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
+native_install:
+  method: npm
+  requires:
+    - runtime: node
+      version: ">=14.21.3"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 ide:
   idea:
     - name: Biome

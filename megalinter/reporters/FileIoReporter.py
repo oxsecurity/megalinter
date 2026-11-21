@@ -35,7 +35,7 @@ class FileIoReporter(Reporter):
                 self.master.request_id, "FILEIO_REPORTER_SEND_SUCCESS", "false"
             )
             == "true"
-            and self.master.has_updated_sources is False
+            and self.master.has_updated_sources == 0
         ):
             logging.info(
                 "[File.io Reporter] No file sent, "

@@ -10,6 +10,10 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+)\s+- (?P<message>[^()]*\([^)]*\))'
+    sarif_text_rule_id: spelling
+    sarif_whole_output: true
     linter_spdx_license: MIT
     variables:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
@@ -45,8 +49,10 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
+    cli_lint_mode_project_exclude_seed_values: ["node_modules/**"]
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?m)(^\\s*\"files\"\\s*:\\s*\\[\\s*[\"'])|(^files[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t]))"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
     examples:
@@ -56,9 +62,20 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=10.3.3
+          ARG NPM_CSPELL_VERSION=10.4.1
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.18.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -71,6 +88,11 @@ linters:
   - class: ProselintLinter
     linter_name: proselint
     name: SPELL_PROSELINT
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format"
+      - "json"
+    sarif_whole_output: true
     linter_spdx_license: BSD-3-Clause
     lint_all_other_linters_files: false
     file_extensions:
@@ -135,6 +157,18 @@ linters:
           ARG PIP_PROSELINT_VERSION=0.16.0
       pip:
         - proselint==${PIP_PROSELINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      libc: glibc
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -155,7 +189,10 @@ linters:
   - class: ValeLinter
     linter_name: vale
     name: SPELL_VALE
-    can_output_sarif: false
+    can_output_sarif: true
+    # Official SARIF template of Vale (https://docs.vale.sh/topics/templates#creating-a-sarif-template)
+    cli_sarif_args:
+      - "--output={{DEFAULT_RULES_LOCATION}}/vale-sarif.tmpl"
     linter_spdx_license: MIT
     lint_all_other_linters_files: false
     file_extensions:
@@ -209,9 +246,38 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=docker depName=jdkato/vale
-          ARG SPELL_VALE_VERSION=v3.22.0
+          ARG SPELL_VALE_VERSION=v3.26.0
         - FROM jdkato/vale:${SPELL_VALE_VERSION} AS vale
         - COPY --link --from=vale /bin/vale /bin/vale
+    native_install:
+      method: binary
+      # Docker takes Vale from the jdkato/vale image (tag v3.26.0): the release asset names carry the version without the v prefix, so it is repeated here
+      # renovate: datasource=github-releases depName=vale-cli/vale extractVersion=^v(?<version>.*)$
+      version: "3.26.0"
+      assets:
+        linux/amd64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_Linux_64-bit.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_Linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_macOS_64-bit.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_macOS_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/vale-cli/vale/releases/download/v{{VERSION}}/vale_{{VERSION}}_Windows_64-bit.zip
+          archive: zip
+      provenance:
+        github_attestation: vale-cli/vale
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -234,6 +300,11 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "json"
+    sarif_whole_output: true
     linter_spdx_license: Apache-2.0
     linter_text: |
       **Lychee** is a fast, async, stream-based link checker written in Rust that finds broken hyperlinks and mail addresses inside Markdown, HTML, reStructuredText, websites, and any other text files.
@@ -248,7 +319,7 @@ linters:
       - **Multiple Output Formats**: JSON, Markdown, detailed, and compact reporting formats
       - **Privacy-Aware**: Options to exclude private IPs, link-local addresses, and localhost from checking
 
-      A file **.lycheeignore** can be defined at the root of the repository to ignore some urls.
+      A file **.lycheeignore** can be defined at the root of the repository, or in the `LINTER_RULES_PATH` folder (default `.github/linters`), to ignore some urls.
       Each line can contain Regular Expressions or glob format.
       Example with glob, regex and full url:
       ```
@@ -257,7 +328,6 @@ linters:
       https://github.com/sgerrand/alpine-pkg-glibc/releases/download
       ```
     test_folder: spell_lychee
-    can_output_sarif: false
     descriptor_flavors:
       - all_flavors
       - cupcake
@@ -321,13 +391,48 @@ linters:
           ARG SPELL_LYCHEE_VERSION=0.24.2-alpine
         - FROM lycheeverse/lychee:${SPELL_LYCHEE_VERSION} AS lychee
         - COPY --link --from=lychee /usr/local/bin/lychee /usr/bin/
+    native_install:
+      method: binary
+      # Docker takes lychee from the lycheeverse/lychee image (tag 0.24.2-alpine): the release asset URLs need the bare version
+      # renovate: datasource=github-releases depName=lycheeverse/lychee extractVersion=^lychee-v(?<version>.*)$
+      version: "0.24.2"
+      assets:
+        linux/amd64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-x86_64-unknown-linux-musl.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        linux/arm64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-aarch64-unknown-linux-musl.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/amd64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-x86_64-apple-darwin.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        darwin/arm64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-aarch64-apple-darwin.tar.gz
+          archive: tar.gz
+          strip_components: 1
+        windows/amd64:
+          url: https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/lychee-x86_64-pc-windows-msvc.zip
+          archive: zip
+          strip_components: 1
+      provenance:
+        checksums_url: "https://github.com/lycheeverse/lychee/releases/download/lychee-v{{VERSION}}/{{ASSET_NAME}}.sha256"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
 
   # codespell
-  - linter_name: codespell
+  - class: CodespellLinter
+    linter_name: codespell
     name: SPELL_CODESPELL
     linter_text: |
       Fix common misspellings in source code and other text files.
@@ -336,7 +441,7 @@ linters:
 
       See the [codespell documentation](https://github.com/codespell-project/codespell) for details.
     test_folder: spell_codespell
-    can_output_sarif: false
+    can_output_sarif: true
     descriptor_flavors:
       - all_flavors
       - cupcake
@@ -401,6 +506,17 @@ linters:
           ARG PIP_CODESPELL_VERSION=2.4.3
       pip:
         - codespell==${PIP_CODESPELL_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

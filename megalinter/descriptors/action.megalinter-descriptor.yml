@@ -38,6 +38,79 @@ linters:
     cli_version_arg_name: "-version"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "([0-9]+) \\|"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "-format"
+      # Upstream SARIF 2.1.0 template https://github.com/rhysd/actionlint/blob/main/testdata/format/sarif_template.txt
+      # + result level, so findings are counted as errors only (not also as warnings)
+      - |-
+        {
+            "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+            "version": "2.1.0",
+            "runs": [
+                {
+                    "tool": {
+                        "driver": {
+                            "name": "GitHub Actions lint",
+                            "version": {{ getVersion | json }},
+                            "informationUri": "https://github.com/rhysd/actionlint",
+                            "rules": [
+                                {{$first := true}}
+                                {{range $ := allKinds }}
+                                    {{if $first}}{{$first = false}}{{else}},{{end}}
+                                    {
+                                        "id": {{json $.Name}},
+                                        "name": {{$.Name | toPascalCase | json}},
+                                        "defaultConfiguration": {
+                                            "level": "error"
+                                        },
+                                        "properties": {
+                                            "description": {{json $.Description}},
+                                            "queryURI": "https://github.com/rhysd/actionlint/blob/main/docs/checks.md"
+                                        },
+                                        "fullDescription": {
+                                            "text": {{json $.Description}}
+                                        },
+                                        "helpUri": "https://github.com/rhysd/actionlint/blob/main/docs/checks.md"
+                                    }
+                                {{end}}
+                            ]
+                        }
+                    },
+                    "results": [
+                        {{$first := true}}
+                        {{range $ := .}}
+                            {{if $first}}{{$first = false}}{{else}},{{end}}
+                            {
+                                "ruleId": {{json $.Kind}},
+                                "level": "error",
+                                "message": {
+                                    "text": {{json $.Message}}
+                                },
+                                "locations": [
+                                    {
+                                        "physicalLocation": {
+                                            "artifactLocation": {
+                                                "uri": {{json $.Filepath}},
+                                                "uriBaseId": "%SRCROOT%"
+                                            },
+                                            "region": {
+                                                "startLine": {{$.Line}},
+                                                "startColumn": {{$.Column}},
+                                                "endColumn": {{$.EndColumn}},
+                                                "snippet": {
+                                                    "text": {{json $.Snippet}}
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        {{end}}
+                    ]
+                }
+            ]
+        }
     examples:
       - "actionlint /path/to/workflow1.yml /path/to/workflow2.yaml"
     install:
@@ -59,6 +132,33 @@ linters:
           COPY --link --from=actionlint /usr/local/bin/actionlint /usr/bin/actionlint
           # shellcheck is a dependency for actionlint
         - COPY --link --from=shellcheck /bin/shellcheck /usr/bin/shellcheck
+    native_install:
+      method: binary
+      version: "${ACTION_ACTIONLINT_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_linux_amd64.tar.gz
+          archive: tar.gz
+        linux/arm64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_linux_arm64.tar.gz
+          archive: tar.gz
+        darwin/amd64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_darwin_amd64.tar.gz
+          archive: tar.gz
+        darwin/arm64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_darwin_arm64.tar.gz
+          archive: tar.gz
+        windows/amd64:
+          url: https://github.com/rhysd/actionlint/releases/download/v{{VERSION}}/actionlint_{{VERSION}}_windows_amd64.zip
+          archive: zip
+      provenance:
+        github_attestation: rhysd/actionlint
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -135,6 +235,19 @@ linters:
               cargo install --force --locked --root /out "zizmor@${CARGO_ZIZMOR_VERSION}" && \
               chmod +x /out/bin/zizmor
         - COPY --link --from=cargo-bin-zizmor /out/bin/zizmor /usr/bin/zizmor
+    native_install:
+      method: pip
+      packages:
+        - "zizmor==${CARGO_ZIZMOR_VERSION}"
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

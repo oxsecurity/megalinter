@@ -21,6 +21,18 @@ supported_platforms:
 linters:
   # PERL CRITIC
   - linter_name: perlcritic
+    can_output_sarif: true
+    cli_sarif_args:
+      - --verbose
+      - '%f\t%l\t%c\t%s\t%p\t%m\n'
+    sarif_text_regex: '^(?P<path>[^\t]+)\t(?P<line>\d+)\t(?P<column>\d+)\t(?P<severity>[1-5])\t(?P<rule>[^\t]+)\t(?P<message>.*)$'
+    sarif_text_levels:
+      "5": error
+      "4": error
+      "3": warning
+      "2": note
+      "1": note
+    sarif_whole_output: true
     linter_text: |
       **perlcritic** is a comprehensive static source code analysis engine for Perl that enforces coding standards and best practices. Based primarily on Damian Conway's "Perl Best Practices" book, it serves as an extensible framework for creating and applying consistent coding standards across Perl projects.
 
@@ -75,11 +87,28 @@ linters:
                     continue_if_failed: false
     examples:
       - "perlcritic myfile.pl"
+    # Perl::Critic is built from source with XS dependencies (PPI, Params::Util...): no pinned and
+    # verifiable install exists, so it is provided by the host and installed by the user
+    native_install:
+      method: runtime_provided
+      requires:
+        - runtime: perl
+          version: ">=5.10.1"
+      suggest:
+        windows: "cpan -T Perl::Critic"
+        darwin: "cpan -T Perl::Critic"
+        linux: "cpan -T Perl::Critic (or, on Debian/Ubuntu: sudo apt install libperl-critic-perl)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - |
           # renovate: datasource=github-tags depName=skaji/cpm
-          ARG PERL_PERLCRITIC_VERSION=v1.1.5
+          ARG PERL_PERLCRITIC_VERSION=v1.1.6
         - |
           # cpm compiles XS modules during installation: the toolchain is only
           # needed within this RUN and evicted from the final layers

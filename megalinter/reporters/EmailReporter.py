@@ -43,8 +43,8 @@ class EmailReporter(Reporter):
             and config.get(
                 self.master.request_id, "EMAIL_REPORTER_SEND_SUCCESS", "false"
             )
-            == "true"
-            and self.master.has_updated_sources is False
+            != "true"
+            and self.master.has_updated_sources == 0
         ):
             logging.info(
                 "[Email Reporter] No mail sent, "

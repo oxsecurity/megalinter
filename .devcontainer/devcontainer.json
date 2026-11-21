@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/python:3-3.14-trixie",
   "containerEnv": {
     // renovate: datasource=npm depName=markdown-table-formatter
-    "NPM_MARKDOWN_TABLE_FORMATTER_VERSION": "1.7.0"
+    "NPM_MARKDOWN_TABLE_FORMATTER_VERSION": "2.1.0"
   },
   "features": {
     "ghcr.io/devcontainers-extra/features/coverage-py:2": {},

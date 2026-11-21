@@ -21,7 +21,10 @@ def normalize_sarif_files(linter):
         # Read SARIF output file
 
         load_ok = False
-        with open(linter.sarif_output_file, "r", encoding="utf-8") as linter_sarif_file:
+        # utf-8-sig: some linters (ex: roslynator, on .NET) write a BOM
+        with open(
+            linter.sarif_output_file, "r", encoding="utf-8-sig"
+        ) as linter_sarif_file:
             # parse sarif file
             try:
                 linter_sarif_obj = json.load(linter_sarif_file)
@@ -66,14 +69,60 @@ def normalize_sarif_files(linter):
                 )
 
 
-def clear_default_workspace_prefix(file_path, default_workspace):
-    def_ws_pattern = r'(?P<def_ws_context>\s+"uri"\:\s")' + default_workspace + "/"
-    def_ws_pattern2 = (
-        r'(?P<def_ws_context>\s+"uri"\:\s"file://)' + default_workspace + "/"
-    )
-    def_ws_pattern3 = r'(?P<def_ws_context>\s+")' + default_workspace + "/"
+# Add the runs of the source SARIF log to the target one. The rules of a run are
+# merged by id, and the rule indexes of the added results follow
+def merge_sarif_logs(target: dict, source: dict):
+    target_runs = target.setdefault("runs", [])
+    for run_index, source_run in enumerate(source.get("runs", [])):
+        if run_index >= len(target_runs):
+            target_runs.append(source_run)
+            continue
+        target_run = target_runs[run_index]
+        rules = (
+            target_run.setdefault("tool", {})
+            .setdefault("driver", {})
+            .setdefault("rules", [])
+        )
+        rule_indexes = {rule.get("id"): index for index, rule in enumerate(rules)}
+        index_map = {}
+        source_rules = source_run.get("tool", {}).get("driver", {}).get("rules", [])
+        for source_index, rule in enumerate(source_rules):
+            if rule.get("id") not in rule_indexes:
+                rule_indexes[rule.get("id")] = len(rules)
+                rules.append(rule)
+            index_map[source_index] = rule_indexes[rule.get("id")]
+        results = target_run.setdefault("results", [])
+        for result in source_run.get("results", []):
+            if "ruleIndex" in result:
+                result["ruleIndex"] = index_map.get(
+                    result["ruleIndex"], result["ruleIndex"]
+                )
+            results.append(result)
+        if "artifacts" in source_run:
+            target_run["artifacts"] = (
+                target_run.get("artifacts", []) + source_run["artifacts"]
+            )
 
-    patterns = [def_ws_pattern, def_ws_pattern2, def_ws_pattern3]
+
+def clear_default_workspace_prefix(file_path, default_workspace):
+    # The workspace is matched literally. On Windows (native mode) it can appear
+    # with forward slashes (URIs) or with JSON-escaped backslashes
+    workspace_patterns = []
+    for variant, separator in (
+        (default_workspace, "/"),
+        (default_workspace.replace("\\", "/"), "/"),
+        (default_workspace.replace("\\", "\\\\"), "\\\\"),
+    ):
+        pattern = re.escape(variant) + re.escape(separator)
+        if pattern not in workspace_patterns:
+            workspace_patterns.append(pattern)
+    patterns = []
+    for workspace_pattern in workspace_patterns:
+        patterns += [
+            r'(?P<def_ws_context>\s+"uri"\:\s")' + workspace_pattern,
+            r'(?P<def_ws_context>\s+"uri"\:\s"file://)' + workspace_pattern,
+            r'(?P<def_ws_context>\s+")' + workspace_pattern,
+        ]
 
     # Create temp file
     fh, abs_path = mkstemp()
@@ -187,6 +236,43 @@ def fix_sarif(linter_sarif_obj, linter):
             # Update run in full list
             linter_sarif_obj["runs"][id_run] = run
     return linter_sarif_obj
+
+
+# A result is suppressed (ex: # nosemgrep) when all its suppressions are accepted:
+# it must be excluded from counts and human-readable details (SARIF 2.1.0 §3.27.23)
+# A suppression without status is accepted, "underReview" and "rejected" are not (§3.35.3)
+def is_suppressed(result: dict) -> bool:
+    suppressions = result.get("suppressions") or []
+    return len(suppressions) > 0 and all(
+        suppression.get("status", "accepted") == "accepted"
+        for suppression in suppressions
+    )
+
+
+# Returns a copy of the SARIF without its suppressed results. The SARIF report
+# itself keeps them, so SARIF consumers still see the suppressions
+def remove_suppressed_results(sarif_obj: dict) -> dict:
+    runs = []
+    for run in sarif_obj.get("runs") or []:
+        results = run.get("results")
+        if isinstance(results, list):
+            run = {
+                **run,
+                "results": [result for result in results if not is_suppressed(result)],
+            }
+        runs.append(run)
+    return {**sarif_obj, "runs": runs}
+
+
+def remove_suppressed_results_from_text(sarif_text: str) -> str:
+    try:
+        sarif_obj = json.loads(sarif_text)
+    except JSONDecodeError:
+        # Invalid SARIF has already been reported by normalize_sarif_files
+        return sarif_text
+    if not isinstance(sarif_obj, dict):
+        return sarif_text
+    return json.dumps(remove_suppressed_results(sarif_obj), indent=2)
 
 
 # Replace startLine and endLine in region or contextRegion

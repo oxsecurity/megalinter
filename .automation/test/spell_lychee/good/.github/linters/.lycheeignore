@@ -1,0 +1,3 @@
+# Found through LINTER_RULES_PATH, not at the workspace root: MegaLinter must
+# forward it to lychee, which only reads .lycheeignore in its working directory
+^https://megalinter-lycheeignore-test\.invalid/

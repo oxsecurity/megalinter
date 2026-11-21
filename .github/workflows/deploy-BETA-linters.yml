@@ -44,8 +44,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Nothing is published while the native install locks are stale
+  native_locks:
+    name: Check native locks
+    uses: ./.github/workflows/check-native-locks.yml
+    permissions:
+      contents: read
+
   get-linters-matrix:
     name: Get Linters Matrix
+    needs: native_locks
     if: ${{ github.event_name == 'workflow_dispatch' || vars.BETA_LINTERS_ENABLED != 'false' }}
     runs-on: ubuntu-latest
     outputs:
@@ -131,10 +139,10 @@ jobs:
             type=raw,value={{date 'YYYYMMDD_HHmm'}}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -202,7 +210,7 @@ jobs:
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
           # renovate: datasource=github-releases depName=aquasecurity/trivy
-          version: "v0.74.0"
+          version: "v0.76.2"
           image-ref: "ghcr.io/${{ github.repository }}-only-${{ matrix.linter }}@${{ steps.build.outputs.digest }}"
           format: "table"
           exit-code: "1"
@@ -272,21 +280,21 @@ jobs:
         linter: ${{ fromJson(needs.get-linters-matrix.outputs.linters) }}
     steps:
       - name: Download digests
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
           path: ${{ runner.temp }}/digests
           pattern: linter-beta-digests-${{ matrix.linter }}-*
           merge-multiple: true
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@37fe631027851001ddb9b187196cc803df7f5f0e # v4
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
 
       - name: Docker meta
         id: meta

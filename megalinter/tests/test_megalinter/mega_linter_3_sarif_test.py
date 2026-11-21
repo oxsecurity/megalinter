@@ -5,6 +5,7 @@ Unit tests for Megalinter class
 """
 
 import glob
+import json
 import logging
 import os
 import re
@@ -15,19 +16,18 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import requests
-from megalinter import Linter, MegaLinter, utils_reporter, utils_sarif, utilstest
+from megalinter import (
+    Linter,
+    MegaLinter,
+    config,
+    utils_reporter,
+    utils_sarif,
+    utilstest,
+)
 from megalinter.constants import DEFAULT_SARIF_REPORT_FILE_NAME
 from megalinter.reporters.SarifReporter import SarifReporter
 
-root = (
-    os.path.dirname(os.path.abspath(__file__))
-    + os.path.sep
-    + ".."
-    + os.path.sep
-    + ".."
-    + os.path.sep
-    + ".."
-)
+root = utilstest.get_root_dir()
 
 # Public echo endpoints used to check that ApiReporter really posts data.
 # They are tried in order, so that a single unavailable remote server does not
@@ -90,7 +90,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
     def test_sarif_fix(self):
         self.before_start()
         # Create megalinter
-        mega_linter = MegaLinter.Megalinter({"request_id": uuid.uuid1()})
+        mega_linter = MegaLinter.Megalinter({"request_id": self.request_id})
         # Create sample linters
         sarif_dir = (
             root
@@ -99,7 +99,7 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         sarif_dir_absolute = os.path.realpath(sarif_dir)
         for sarif_file in glob.glob(f"{sarif_dir_absolute}{os.path.sep}*.sarif"):
             # Create linter
-            linter = Linter(None, {})
+            linter = Linter({"request_id": self.request_id}, {})
             linter.name = "SAMPLE_" + os.path.basename(sarif_file)
             linter.can_output_sarif = True
             linter.sarif_output_file = sarif_file
@@ -119,6 +119,77 @@ class mega_linter_3_sarif_test(unittest.TestCase):
         self.assertTrue(
             os.path.isfile(expected_output_file),
             "Output aggregated SARIF file " + expected_output_file + " should exist",
+        )
+
+    def produce_combined_sarif(self, normalize_linters_output):
+        # Aggregate one sample SARIF report whose URIs still carry the
+        # /github/workspace/ prefix, then return the combined report text.
+        request_id = str(uuid.uuid1())
+        run_config = {}
+        if normalize_linters_output is not None:
+            run_config["SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT"] = (
+                normalize_linters_output
+            )
+        config.set_config(request_id, run_config)
+        tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
+        os.makedirs(tmp_report_folder)
+        # Write a SARIF input whose URI still carries the /github/workspace/
+        # prefix, so the test does not depend on repository fixtures.
+        sarif_input = tmp_report_folder + os.path.sep + "SAMPLE.sarif"
+        sarif_content = {
+            "version": "2.1.0",
+            "runs": [
+                {
+                    "tool": {"driver": {"name": "SAMPLE"}},
+                    "results": [
+                        {
+                            "locations": [
+                                {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "/github/workspace/src/app.py"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                }
+            ],
+        }
+        with open(sarif_input, "w", encoding="utf-8") as sarif_file:
+            json.dump(sarif_content, sarif_file)
+        linter = SimpleNamespace(
+            name="SAMPLE_LINTER",
+            can_output_sarif=True,
+            sarif_output_file=sarif_input,
+        )
+        master = SimpleNamespace(
+            request_id=request_id,
+            linters=[linter],
+            report_folder=tmp_report_folder,
+        )
+        reporter = SarifReporter({"master": master, "report_folder": tmp_report_folder})
+        reporter.produce_report()
+        output_file = tmp_report_folder + os.path.sep + DEFAULT_SARIF_REPORT_FILE_NAME
+        with open(output_file, encoding="utf-8") as output:
+            return output.read()
+
+    def test_sarif_combined_respects_normalize_off(self):
+        combined = self.produce_combined_sarif("false")
+        self.assertIn(
+            "/github/workspace/",
+            combined,
+            "With SARIF_REPORTER_NORMALIZE_LINTERS_OUTPUT=false the combined "
+            "report must keep the workspace prefix",
+        )
+
+    def test_sarif_combined_normalizes_by_default(self):
+        combined = self.produce_combined_sarif(None)
+        self.assertNotIn(
+            "/github/workspace/",
+            combined,
+            "By default the combined report must drop the workspace prefix",
         )
 
     def test_sarif_fix_removes_empty_artifact_changes(self):
@@ -157,6 +228,51 @@ class mega_linter_3_sarif_test(unittest.TestCase):
 
         self.assertEqual(fixed_sarif["runs"][0]["results"][0]["fixes"], [valid_fix])
         self.assertNotIn("fixes", fixed_sarif["runs"][0]["results"][1])
+
+    def test_sarif_is_suppressed(self):
+        cases = [
+            ({}, False),
+            ({"suppressions": []}, False),
+            ({"suppressions": [{"kind": "inSource"}]}, True),
+            ({"suppressions": [{"kind": "external", "status": "accepted"}]}, True),
+            ({"suppressions": [{"kind": "external", "status": "underReview"}]}, False),
+            ({"suppressions": [{"kind": "external", "status": "rejected"}]}, False),
+            (
+                {
+                    "suppressions": [
+                        {"kind": "inSource"},
+                        {"kind": "external", "status": "rejected"},
+                    ]
+                },
+                False,
+            ),
+        ]
+        for result, expected in cases:
+            with self.subTest(result=result):
+                self.assertEqual(expected, utils_sarif.is_suppressed(result))
+
+    def test_sarif_remove_suppressed_results_from_text(self):
+        sarif_file = (
+            root
+            + f"{os.path.sep}.automation{os.path.sep}test{os.path.sep}sarif_reports"
+            + f"{os.path.sep}REPOSITORY_SEMGREP.sarif"
+        )
+        with open(sarif_file, "r", encoding="utf-8") as f:
+            sarif_text = f.read()
+
+        filtered = json.loads(
+            utils_sarif.remove_suppressed_results_from_text(sarif_text)
+        )
+
+        results = filtered["runs"][0]["results"]
+        self.assertEqual(1, len(results))
+        self.assertNotIn("suppressions", results[0])
+        # The SARIF report itself keeps the suppressed result
+        self.assertEqual(2, len(json.loads(sarif_text)["runs"][0]["results"]))
+        self.assertEqual(
+            "not a sarif",
+            utils_sarif.remove_suppressed_results_from_text("not a sarif"),
+        )
 
     # Keep only the endpoints that are currently up and accept the same kind of body
     # than ApiReporter, so a remote outage does not make the test fail.

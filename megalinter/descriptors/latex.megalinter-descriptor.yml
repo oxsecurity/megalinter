@@ -6,6 +6,16 @@ file_extensions:
 linters:
   # Check TEX
   - linter_name: chktex
+    can_output_sarif: true
+    cli_sarif_args:
+      - -f
+      - "%f:%l:%c:%k:%n:%m\n"
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+):(?P<severity>Warning|Error|Message):(?P<rule>\d+):(?P<message>.*)$'
+    sarif_text_levels:
+      Warning: warning
+      Error: error
+      Message: note
+    sarif_whole_output: true
     linter_text: |
       **chktex** is a semantic checker and linter for LaTeX documents that catches typographic and stylistic errors that LaTeX's built-in checker might miss. It helps maintain professional LaTeX document quality and catches subtle typographic errors that affect document appearance.
 
@@ -47,6 +57,18 @@ linters:
         - FROM ghcr.io/assignuser/chktex-alpine:latest AS chktex
         - COPY --link --from=chktex /usr/bin/chktex /usr/bin/
         - RUN cd ~ && touch .chktexrc && cd /
+    native_install:
+      method: runtime_provided
+      suggest:
+        windows: "winget install --id MiKTeX.MiKTeX -e (then: mpm --install=chktex), or install TeX Live from https://tug.org/texlive/windows.html"
+        darwin: "brew install chktex"
+        linux: "Install chktex from your distribution (example: sudo apt install chktex)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

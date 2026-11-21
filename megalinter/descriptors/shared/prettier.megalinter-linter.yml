@@ -30,13 +30,24 @@ install:
   dockerfile:
     - |-
       # renovate: datasource=npm depName=prettier
-      ARG NPM_PRETTIER_VERSION=3.9.8
+      ARG NPM_PRETTIER_VERSION=3.9.10
   npm:
     - prettier@${NPM_PRETTIER_VERSION}
 supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
+native_install:
+  method: npm
+  requires:
+    - runtime: node
+      version: ">=14.0.0"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 ide:
   emacs:
     - name: prettier-emacs

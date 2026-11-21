@@ -8,6 +8,7 @@ import uuid
 from typing import Optional
 
 from megalinter import config, linter_factory, utilstest
+from megalinter.tests.test_megalinter import sarif_schema
 
 
 class LinterTestRoot:
@@ -16,6 +17,9 @@ class LinterTestRoot:
     request_id: str | None = None
 
     def get_linter_instance(self, request_id):
+        return utilstest.attach_native_toolchain(self.build_linter_instance(request_id))
+
+    def build_linter_instance(self, request_id):
         return linter_factory.build_linter(
             self.descriptor_id,
             self.linter_name,
@@ -47,15 +51,10 @@ class LinterTestRoot:
                     f"{linter.linter_name} can not be tested"
                 )
 
-    def lint_mode_setup(self, mode):
-        config.set_value(
-            self.request_id,
-            self.descriptor_id.upper()
-            + "_"
-            + self.linter_name.upper()
-            + "_CLI_LINT_MODE",
-            mode,
-        )
+    # The override variable is named after the linter key (Linter.name), in
+    # which "-" is replaced by "_": CLOJURE_CLJ_KONDO, not CLOJURE_CLJ-KONDO
+    def lint_mode_setup(self, linter, mode):
+        config.set_value(self.request_id, linter.name + "_CLI_LINT_MODE", mode)
 
     # Run a success/failure test forcing a specific cli_lint_mode.
     # The linter is first built without the override to learn which modes it
@@ -75,8 +74,15 @@ class LinterTestRoot:
             raise unittest.SkipTest(
                 "Skipping file lint_mode: covered by list_of_files (CI optimization)"
             )
-        self.lint_mode_setup(mode)
+        self.lint_mode_setup(probe_linter, mode)
         linter = self.get_linter_instance(self.request_id)
+        # Guard against an override that is silently ignored: the test would
+        # then run in the default lint mode instead of the requested one
+        if linter.is_active:
+            assert linter.cli_lint_mode == mode, (
+                f"{linter.name}_CLI_LINT_MODE={mode} was not applied: "
+                f"the linter runs in lint mode {linter.cli_lint_mode}"
+            )
         linter.pre_test(test_name)
         test_func(linter, self)
         linter.post_test(test_name)
@@ -142,7 +148,10 @@ class LinterTestRoot:
         linter = self.get_linter_instance(self.request_id)
         self.skip_if_required_variables_missing(linter)
         linter.pre_test("test_report_sarif")
-        utilstest.test_linter_report_sarif(linter, self)
+        sarif_content = utilstest.test_linter_report_sarif(linter, self)
+        # The SARIF built by MegaLinter must follow the SARIF 2.1.0 schema
+        if sarif_schema.is_sarif_built_by_megalinter(linter):
+            sarif_schema.assert_sarif_follows_schema(linter.name, sarif_content)
         linter.post_test("test_report_sarif")
 
     def test_format_fix(self):

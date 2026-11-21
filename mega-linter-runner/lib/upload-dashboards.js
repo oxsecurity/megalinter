@@ -30,12 +30,12 @@ export class DashboardUploader {
     if (!KNOWN_DASHBOARD_PROVIDERS.includes(this.provider)) {
       throw new Error(
         `Unknown dashboards provider: ${this.provider}. ` +
-          `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}`
+          `Allowed values: ${KNOWN_DASHBOARD_PROVIDERS.join(", ")}`,
       );
     }
     const manifest = JSON.parse(await this.readDashboardFile("manifest.json"));
     const entries = manifest.dashboards.filter(
-      (dashboard) => dashboard.provider === this.provider
+      (dashboard) => dashboard.provider === this.provider,
     );
     const results = [];
     for (const entry of entries) {
@@ -43,7 +43,7 @@ export class DashboardUploader {
       const result = await this[this.provider](entry, content);
       console.log(
         `[MegaLinter dashboards] [${this.provider}] Uploaded ${entry.file}` +
-          (result ? ` (${result})` : "")
+          (result ? ` (${result})` : ""),
       );
       results.push(result);
     }
@@ -53,12 +53,15 @@ export class DashboardUploader {
   async readDashboardFile(relativePath) {
     const localDir = this.env.MEGALINTER_DASHBOARDS_DIR;
     if (localDir) {
-      return await fs.promises.readFile(path.join(localDir, relativePath), "utf8");
+      return await fs.promises.readFile(
+        path.join(localDir, relativePath),
+        "utf8",
+      );
     }
     const response = await fetch(`${DASHBOARDS_BASE_URL}/${relativePath}`);
     if (!response.ok) {
       throw new Error(
-        `Unable to fetch dashboard definition ${relativePath} (${response.status})`
+        `Unable to fetch dashboard definition ${relativePath} (${response.status})`,
       );
     }
     return await response.text();
@@ -68,7 +71,7 @@ export class DashboardUploader {
     const missing = names.filter((name) => !this.env[name]);
     if (missing.length > 0) {
       throw new Error(
-        `[MegaLinter dashboards] [${this.provider}] Missing environment variable(s): ${missing.join(", ")}`
+        `[MegaLinter dashboards] [${this.provider}] Missing environment variable(s): ${missing.join(", ")}`,
       );
     }
   }
@@ -77,7 +80,9 @@ export class DashboardUploader {
     const response = await fetch(url, options);
     const text = await response.text();
     if (!response.ok) {
-      throw new Error(`${label} error (${response.status}): ${text.slice(0, 500)}`);
+      throw new Error(
+        `${label} error (${response.status}): ${text.slice(0, 500)}`,
+      );
     }
     try {
       return JSON.parse(text);
@@ -106,7 +111,7 @@ export class DashboardUploader {
     });
     if (![200, 409, 412].includes(folderResponse.status)) {
       throw new Error(
-        `Grafana folder error (${folderResponse.status}): ${await folderResponse.text()}`
+        `Grafana folder error (${folderResponse.status}): ${await folderResponse.text()}`,
       );
     }
     const dashboard = JSON.parse(content);
@@ -118,7 +123,7 @@ export class DashboardUploader {
         headers,
         body: JSON.stringify({ dashboard, folderUid, overwrite: true }),
       },
-      "Grafana dashboard"
+      "Grafana dashboard",
     );
     return result.url;
   }
@@ -139,10 +144,10 @@ export class DashboardUploader {
     const listing = await this.fetchJson(
       `https://api.${site}/api/v1/dashboard`,
       { headers },
-      "Datadog dashboards list"
+      "Datadog dashboards list",
     );
     const existing = (listing.dashboards || []).filter(
-      (item) => item.title === dashboard.title
+      (item) => item.title === dashboard.title,
     );
     let dashboardId = existing.length ? existing[0].id : null;
     if (dashboardId === null) {
@@ -151,17 +156,20 @@ export class DashboardUploader {
       const created = await this.fetchJson(
         `https://api.${site}/api/v1/dashboard`,
         { method: "POST", headers, body: JSON.stringify(dashboard) },
-        "Datadog dashboard"
+        "Datadog dashboard",
       );
       dashboardId = created.id;
     }
     const resolvedDashboard = JSON.parse(
-      JSON.stringify(dashboard).replaceAll("__SELF_URL__", `/dashboard/${dashboardId}`)
+      JSON.stringify(dashboard).replaceAll(
+        "__SELF_URL__",
+        `/dashboard/${dashboardId}`,
+      ),
     );
     const result = await this.fetchJson(
       `https://api.${site}/api/v1/dashboard/${dashboardId}`,
       { method: "PUT", headers, body: JSON.stringify(resolvedDashboard) },
-      "Datadog dashboard"
+      "Datadog dashboard",
     );
     return result.url;
   }
@@ -174,7 +182,7 @@ export class DashboardUploader {
     form.append(
       "file",
       new Blob([content], { type: "application/ndjson" }),
-      path.basename(entry.file)
+      path.basename(entry.file),
     );
     const result = await this.fetchJson(
       `${host}/api/saved_objects/_import?overwrite=true`,
@@ -186,7 +194,7 @@ export class DashboardUploader {
         },
         body: form,
       },
-      "Kibana saved objects import"
+      "Kibana saved objects import",
     );
     return `${result.successCount} saved objects`;
   }
@@ -206,7 +214,7 @@ export class DashboardUploader {
     };
     const resolvedContent = content.replaceAll(
       '"${NEW_RELIC_ACCOUNT_ID}"',
-      String(accountId)
+      String(accountId),
     );
     const PAGE_GUID_MARKERS = {
       __REPOSITORY_DETAIL_PAGE_GUID__: "Repository detail",
@@ -244,10 +252,9 @@ export class DashboardUploader {
             "{ results { entities { guid name } } } } }",
         }),
       },
-      "New Relic entity search"
+      "New Relic entity search",
     );
-    const entities =
-      search.data?.actor?.entitySearch?.results?.entities || [];
+    const entities = search.data?.actor?.entitySearch?.results?.entities || [];
     const runMutation = async (dashboardInput, existingGuid) => {
       const mutation = existingGuid
         ? "mutation($guid: EntityGuid!, $dashboard: DashboardInput!) { " +
@@ -266,44 +273,44 @@ export class DashboardUploader {
           headers,
           body: JSON.stringify({ query: mutation, variables }),
         },
-        "New Relic dashboard"
+        "New Relic dashboard",
       );
       const mutationResult =
         result.data?.dashboardUpdate || result.data?.dashboardCreate || {};
       if (mutationResult.errors?.length) {
         throw new Error(
-          `New Relic dashboard error: ${JSON.stringify(mutationResult.errors)}`
+          `New Relic dashboard error: ${JSON.stringify(mutationResult.errors)}`,
         );
       }
       return mutationResult.entityResult;
     };
     const firstPass = await runMutation(
       dashboard,
-      entities.length ? entities[0].guid : null
+      entities.length ? entities[0].guid : null,
     );
     // Second pass: replace each marker with the guid of its target page
     // ("Repository detail", "Why this rating?") now that guids are known
     const guidsByMarker = {};
     for (const [marker, pageName] of Object.entries(PAGE_GUID_MARKERS)) {
       const targetPage = (firstPass?.pages || []).find(
-        (page) => page.name === pageName
+        (page) => page.name === pageName,
       );
       guidsByMarker[marker] = targetPage ? targetPage.guid : null;
     }
     const hasMarkerToResolve = Object.entries(guidsByMarker).some(
-      ([marker, pageGuid]) => pageGuid && resolvedContent.includes(marker)
+      ([marker, pageGuid]) => pageGuid && resolvedContent.includes(marker),
     );
     if (hasMarkerToResolve) {
       const linkedDashboard = applyFacetLinks(
         JSON.parse(resolvedContent),
-        guidsByMarker
+        guidsByMarker,
       );
       // Carry the first-pass page guids into the update input so pages are
       // updated in place: without them dashboardUpdate recreates every page
       // with new guids, and the linkedEntityGuids just resolved would be stale
       for (const page of linkedDashboard.pages || []) {
         const firstPassPage = (firstPass?.pages || []).find(
-          (candidate) => candidate.name === page.name
+          (candidate) => candidate.name === page.name,
         );
         if (firstPassPage) {
           page.guid = firstPassPage.guid;

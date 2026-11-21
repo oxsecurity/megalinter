@@ -6,6 +6,7 @@ import re
 import shlex
 import tempfile
 import time
+from urllib.parse import urlsplit
 
 import requests
 import yaml
@@ -64,6 +65,19 @@ def http_get_with_retry(url, headers=None, retries=3, timeout=30, backoff_base=2
         return last_response
     raise RuntimeError(
         f"Unable to retrieve {url} after {retries} attempts: {last_error}"
+    )
+
+
+# Only the real raw.githubusercontent.com host may receive GITHUB_TOKEN: a string
+# prefix also matches raw.githubusercontent.com.evil.example and
+# raw.githubusercontent.com@evil.example
+def is_github_raw_url(url):
+    parsed = urlsplit(url)
+    return (
+        parsed.scheme == "https"
+        and parsed.hostname == "raw.githubusercontent.com"
+        and parsed.username is None
+        and parsed.password is None
     )
 
 
@@ -171,6 +185,16 @@ def init_config(request_id, workspace=None, params=None):
     set_config(request_id, runtime_config)
 
 
+# Native mode runs on the host: commands, plugins and remote configuration coming from the
+# analyzed repository are only used when the user trusts it explicitly from the environment
+# (never from .mega-linter.yml, which belongs to the analyzed repository)
+def native_repo_untrusted():
+    return (
+        os.environ.get("MEGALINTER_NATIVE", "false") == "true"
+        and os.environ.get("NATIVE_TRUST_REPO_COMMANDS", "false") != "true"
+    )
+
+
 def combine_config(workspace, config, combined_config, config_source):
     config_properties_to_append = []
 
@@ -181,12 +205,16 @@ def combine_config(workspace, config, combined_config, config_source):
     if isinstance(extends, str):
         extends = extends.split(",")
     for extends_item in extends:
+        if extends_item.startswith("http") and native_repo_untrusted():
+            logging.warning(
+                f"[native] Remote EXTENDS {extends_item} ignored: trust the repository "
+                "with --trust-repo-commands (or NATIVE_TRUST_REPO_COMMANDS=true in the "
+                "environment) to use it"
+            )
+            continue
         if extends_item.startswith("http"):
             headers = {}
-            if (
-                extends_item.startswith("https://raw.githubusercontent.com")
-                and "GITHUB_TOKEN" in os.environ
-            ):
+            if is_github_raw_url(extends_item) and "GITHUB_TOKEN" in os.environ:
                 github_token = os.environ["GITHUB_TOKEN"]
                 headers["Authorization"] = f"token {github_token}"
             r = http_get_with_retry(extends_item, headers=headers)
@@ -232,6 +260,11 @@ def is_initialized_for(request_id):
     if request_id in RUN_CONFIGS:
         return True
     return False
+
+
+def refresh_env_snapshot():
+    global _ENV_CACHE
+    _ENV_CACHE = None
 
 
 def get_config(request_id=None):
@@ -350,7 +383,7 @@ def copy(request_id):
 # Modules holding per-request caches register a cleaner here, so that delete()
 # drops them along with the config. Avoids config importing them back, which
 # would be circular
-_CACHE_CLEANERS = []
+_CACHE_CLEANERS: list = []
 
 
 def register_cache_cleaner(cleaner):

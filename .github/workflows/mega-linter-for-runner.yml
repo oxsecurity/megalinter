@@ -164,7 +164,7 @@ jobs:
       # Create pull request if applicable
       # (for now works only on PR from same repository, not from forks)
       - name: Create Pull Request with applied fixes
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        uses: peter-evans/create-pull-request@15733dbdfeedb4f7fdb73d13c6f5ac83b710fab8 # v8
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
         with:
@@ -226,7 +226,7 @@ jobs:
           echo 'APPLY_FIXES_IF_COMMIT=false' >> "${GITHUB_ENV}"
 
       - name: Commit and push applied linter fixes
-        uses: stefanzweifel/git-auto-commit-action@4a55954c782fc1ea30b9056cd3e7a2b40ca8887d # v7
+        uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7
         if: env.APPLY_FIXES_IF_COMMIT == 'true'
         with:
           branch: >-

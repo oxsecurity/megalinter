@@ -11,6 +11,7 @@
 #   python tick_dashboard.py --dry-run             # show what would be ticked, change nothing
 #   python tick_dashboard.py --individual          # tick every PR line instead of the "all" box
 #   python tick_dashboard.py --sections open       # only one section
+#   python tick_dashboard.py --branches renovate/a,renovate/b   # rebase only these PRs
 #   python tick_dashboard.py --trigger-run         # also tick "run Renovate again now"
 #   python tick_dashboard.py --issue 3630 --repo oxsecurity/megalinter
 
@@ -55,6 +56,7 @@ SECTION_ALIASES = {
 UNCHECKED = re.compile(r"^(\s*[-*]\s+)\[ \](.*)$")
 CHECKED = re.compile(r"^(\s*[-*]\s+)\[x\](.*)$", re.IGNORECASE)
 HEADER = re.compile(r"^#{1,6}\s+(.*?)\s*$")
+REBASE_BRANCH = re.compile(r"<!--\s*rebase-branch=(\S+?)\s*-->")
 MANUAL_JOB = "<!-- manual job -->"
 
 
@@ -126,26 +128,35 @@ def split_sections(lines):
     return bounds
 
 
-def tick(lines, start, end, individual, section):
+def tick(lines, start, end, individual, section, branches=None):
     """Tick checkboxes in lines[start:end]. Returns list of ticked labels."""
     marker = AGGREGATE_MARKERS.get(section)
     aggregate_idx = None
-    if marker and not individual:
+    if marker and not individual and branches is None:
         for idx in range(start, end):
             if marker in lines[idx] and UNCHECKED.match(lines[idx]):
                 aggregate_idx = idx
                 break
-    targets = (
-        [aggregate_idx]
-        if aggregate_idx is not None
-        else [idx for idx in range(start, end) if UNCHECKED.match(lines[idx])]
-    )
+    if aggregate_idx is not None:
+        targets = [aggregate_idx]
+    else:
+        targets = [
+            idx
+            for idx in range(start, end)
+            if UNCHECKED.match(lines[idx])
+            and (branches is None or branch_of(lines[idx]) in branches)
+        ]
     ticked = []
     for idx in targets:
         match = UNCHECKED.match(lines[idx])
         lines[idx] = f"{match.group(1)}[x]{match.group(2)}"
         ticked.append(label_of(lines[idx]))
     return ticked
+
+
+def branch_of(line):
+    match = REBASE_BRANCH.search(line)
+    return match.group(1) if match else None
 
 
 def label_of(line):
@@ -165,8 +176,15 @@ def main():
     parser.add_argument("--title", default=DASHBOARD_TITLE_DEFAULT)
     parser.add_argument(
         "--sections",
-        default="rate-limited,open",
-        help="comma-separated section names to tick",
+        default=None,
+        help="comma-separated section names to tick "
+        "(default: rate-limited,open; just open with --branches)",
+    )
+    parser.add_argument(
+        "--branches",
+        default=None,
+        help="comma-separated renovate branches: tick only their lines (one by one, "
+        "never the 'all at once' box), only in the sections requested",
     )
     parser.add_argument(
         "--individual",
@@ -181,7 +199,16 @@ def main():
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    wanted = [normalize(s) for s in args.sections.split(",") if s.strip()]
+    branches = None
+    if args.branches is not None:
+        branches = {b.strip() for b in args.branches.split(",") if b.strip()}
+        # An empty filter must never fall back to ticking everything
+        if not branches:
+            sys.exit("ERROR: --branches is empty - nothing to rebase.")
+    sections_arg = args.sections or (
+        "open" if branches is not None else "rate-limited,open"
+    )
+    wanted = [normalize(s) for s in sections_arg.split(",") if s.strip()]
     issue = args.issue or find_dashboard_issue(args.repo, args.title)
 
     body = run_gh(
@@ -192,6 +219,7 @@ def main():
     present = {name for name, _, _ in sections if name}
 
     report = {}
+    listed = set()
     for name in wanted:
         matches = [(s, e) for n, s, e in sections if n == name]
         if not matches:
@@ -199,8 +227,10 @@ def main():
             continue
         ticked = []
         for start, end in matches:
-            ticked += tick(lines, start, end, args.individual, name)
+            listed.update(branch_of(lines[idx]) for idx in range(start, end))
+            ticked += tick(lines, start, end, args.individual, name, branches)
         report[name] = ticked
+    missing = sorted(branches - listed) if branches is not None else []
 
     manual = []
     if args.trigger_run:
@@ -227,24 +257,31 @@ def main():
     if args.trigger_run:
         print(f"  manual run: {'ticked' if manual else 'no unticked checkbox found'}")
 
+    if missing:
+        print(
+            f"  NOT LISTED in {', '.join(wanted)} - will NOT be rebased "
+            f"(edited/blocked by Renovate, closed, or unknown): {', '.join(missing)}"
+        )
+
     total = sum(len(v) for v in report.values() if v) + len(manual)
     if total == 0:
         print("\nNothing changed - no request sent to Renovate.")
-        return
-    if args.dry_run:
+    elif args.dry_run:
         print(f"\nDRY RUN - would tick {total} checkbox(es); issue not modified.")
-        return
-
-    fd, path = tempfile.mkstemp(suffix=".md", text=True)
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
-            handle.write("\n".join(lines) + "\n")
-        run_gh(["issue", "edit", str(issue), "--body-file", path], args.repo)
-    finally:
-        os.unlink(path)
-    print(
-        f"\nTicked {total} checkbox(es) on issue #{issue}. Renovate will act on its next run."
-    )
+    else:
+        fd, path = tempfile.mkstemp(suffix=".md", text=True)
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+                handle.write("\n".join(lines) + "\n")
+            run_gh(["issue", "edit", str(issue), "--body-file", path], args.repo)
+        finally:
+            os.unlink(path)
+        print(
+            f"\nTicked {total} checkbox(es) on issue #{issue}. Renovate will act on its next run."
+        )
+    # Requested branches left out must be noticed by the caller
+    if missing:
+        sys.exit(2)
 
 
 if __name__ == "__main__":

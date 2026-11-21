@@ -9,19 +9,16 @@ install:
   dockerfile:
     - ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
     - ENV PATH="$JAVA_HOME/bin:${PATH}"
-    - |-
-      # renovate: datasource=github-tags depName=coursier/coursier
-      ARG SCALA_COURSIER_VERSION=2.1.24
-    - |
-      RUN curl --retry-all-errors --retry 10 -fLo coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
-              chmod +x coursier
 supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
 linters:
   # SCALAFIX
-  - linter_name: scalafix
+  - class: ScalafixLinter
+    linter_name: scalafix
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_url: https://scalacenter.github.io/scalafix/
     linter_repo: https://github.com/scalacenter/scalafix
     linter_spdx_license: BSD-3-Clause
@@ -90,7 +87,32 @@ linters:
         - |-
           # renovate: datasource=github-tags depName=scalacenter/scalafix
           ARG SCALA_SCALAFIX_VERSION=0.14.9
-        - RUN ./coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && rm -rf /root/.cache
+        - |-
+          # renovate: datasource=github-tags depName=coursier/coursier
+          ARG SCALA_COURSIER_VERSION=2.1.26
+        # coursier is only needed to install scalafix: download and delete it in the same layer
+        - |
+          RUN curl --retry-all-errors --retry 10 -fLo /tmp/coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \
+              chmod +x /tmp/coursier && \
+              /tmp/coursier install scalafix:${SCALA_SCALAFIX_VERSION} --quiet --install-dir /usr/bin && \
+              rm -rf /tmp/coursier /root/.cache
+    native_install:
+      method: runtime_provided
+      # Version of the Docker image: a different host version triggers a warning
+      version: "${SCALA_SCALAFIX_VERSION}"
+      requires:
+        - runtime: java
+          version: ">=8"
+      suggest:
+        windows: "Install Coursier (https://get-coursier.io/docs/cli-installation#windows) then run: cs install scalafix"
+        darwin: "brew install coursier/formulas/coursier && cs setup && cs install scalafix"
+        linux: "Install Coursier (https://get-coursier.io/docs/cli-installation) then run: cs install scalafix"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

@@ -10,7 +10,10 @@ file_names_regex:
   - "Snakefile"
 linters:
   # Internal snakemake linter
-  - linter_name: snakemake
+  - class: SnakemakeLinter
+    linter_name: snakemake
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_text: |
       **Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
 
@@ -51,9 +54,23 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakemake
-          ARG PIP_SNAKEMAKE_VERSION=9.27.0
+          ARG PIP_SNAKEMAKE_VERSION=9.27.1
       pip:
         - snakemake==${PIP_SNAKEMAKE_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.11"
+      allow_source_build:
+        reason: "snakemake depends on connection_pool 0.0.3, published only as a pure Python source distribution (no compiler needed)."
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        windows/amd64: "Snakemake does not run natively on Windows (upstream only supports it through WSL). Use Docker."
     supported_platforms:
       platform:
         - linux/amd64
@@ -111,9 +128,20 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=snakefmt
-          ARG PIP_SNAKEFMT_VERSION=2.0.3
+          ARG PIP_SNAKEFMT_VERSION=2.1.0
       pip:
         - snakefmt==${PIP_SNAKEFMT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.11"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

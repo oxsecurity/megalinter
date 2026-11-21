@@ -45,7 +45,7 @@ LLM_MODEL_NAME: mistral-small-latest
 
 ```yaml
 # Custom API endpoint (rarely needed)
-MISTRAL_BASE_URL: https://api.mistral.ai
+MISTRAL_BASE_URL: https://api.mistral.ai/v1
 ```
 
 ## Troubleshooting

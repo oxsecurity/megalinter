@@ -11,7 +11,7 @@ linters:
   - linter_name: graphql-schema-linter
     disabled: true
     disabled_reason: graphql-schema-linter is unmaintained (no release or commit
-      since May 2022) and its peer dependency range pins graphql to ^15 || ^16,
+      since May 2022) and its peer dependency range pins graphql to ^15 or ^16,
       which blocks the whole GraphQL npm install from moving to graphql v17. Use
       GRAPHQL_BIOME to lint GraphQL files. The linter will be removed in a future
       version
@@ -59,7 +59,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=graphql
-          ARG NPM_GRAPHQL_VERSION=17.0.2
+          ARG NPM_GRAPHQL_VERSION=17.1.0
         - |-
           # renovate: datasource=npm depName=graphql-schema-linter
           ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
@@ -70,6 +70,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
   # BIOME
   - extends: biome
     linter_name: biome

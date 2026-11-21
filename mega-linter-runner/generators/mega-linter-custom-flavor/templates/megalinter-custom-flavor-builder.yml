@@ -129,3 +129,4 @@ jobs:
           CUSTOM_FLAVOR_BUILD_REPO: ${{ steps.lowercase-repo.outputs.repo }}
           CUSTOM_FLAVOR_BUILD_REPO_URL: ${{ github.repositoryUrl }}
           CUSTOM_FLAVOR_BUILD_USER: ${{ github.actor }}
+          # TRIVY_DB_REPOSITORY: "my-registry.example.com/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2" # Uncomment to choose the trivy database mirrors, tried in order

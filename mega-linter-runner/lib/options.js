@@ -7,7 +7,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-import * as optionator from 'optionator';
+import * as optionator from "optionator";
 import { DEFAULT_RELEASE } from "./config.js";
 import { KNOWN_DASHBOARD_PROVIDERS } from "./upload-dashboards.js";
 
@@ -94,7 +94,10 @@ export const optionsDefinition = optionator.default({
         "Pass files to lint as positional arguments to restrict the analysis. " +
         "Reports are written to megalinter-reports/<linter_key> so several standalone runs can be launched in parallel. " +
         "Mutually exclusive with --flavor and --image.",
-      example: ["PYTHON_RUFF", "MARKDOWN_MARKDOWNLINT src/README.md docs/index.md"],
+      example: [
+        "PYTHON_RUFF",
+        "MARKDOWN_MARKDOWNLINT src/README.md docs/index.md",
+      ],
     },
     {
       option: "image",
@@ -166,17 +169,17 @@ export const optionsDefinition = optionator.default({
       option: "platform",
       alias: "z",
       type: "String",
-      default: "linux/amd64",
+      // No default value here: native mode rejects this Docker-only option when it is set.
+      // Docker runs use linux/amd64 when it is not given
       description:
-        "Container image platform forwarded to `docker --platform`.\n" +
+        "Container image platform forwarded to `docker --platform` (default: linux/amd64).\n" +
         `Allowed values: ${KNOWN_PLATFORMS.join(", ")} (linux/arm64 support is partial — see docs).`,
       example: KNOWN_PLATFORMS,
     },
     {
       option: "debug",
       type: "Boolean",
-      description:
-        "Enable verbose logs (equivalent to -e LOG_LEVEL=DEBUG).",
+      description: "Enable verbose logs (equivalent to -e LOG_LEVEL=DEBUG).",
     },
     {
       option: "timeout",
@@ -211,6 +214,44 @@ export const optionsDefinition = optionator.default({
         "Interactive by default: use --no-prompt and the --setup-* options (plus --flavor, --release and --fix) to run it non-interactively (e.g. from a coding agent or a CI job).",
     },
     {
+      option: "native",
+      type: "Boolean",
+      description:
+        "[beta] Run MegaLinter on this machine WITHOUT Docker. Only the linters listed in NATIVE_LINTERS (in .mega-linter.yml) are run, " +
+        "and they are installed from verified, pinned downloads in ~/.megalinter. Requires uv, and Git Bash on Windows. " +
+        "Docker remains the recommended mode, especially for code you do not fully trust: linters can execute the code of the analyzed repository. " +
+        "Use --release beta (the default for --native) to choose the MegaLinter version.",
+    },
+    {
+      option: "install-linters",
+      type: "Boolean",
+      description:
+        "[beta] Install the linters for native mode (--native): the ones given as arguments (example: PYTHON_BLACK JAVASCRIPT_ES), " +
+        "or the ones listed in NATIVE_LINTERS. Not to be confused with --install, that sets up MegaLinter in your repository.",
+      example: ["PYTHON_BLACK JAVASCRIPT_ES"],
+    },
+    {
+      option: "all",
+      type: "Boolean",
+      description:
+        "[--install-linters] Install every linter matching your configuration. Discouraged: slower, and you must fully trust the security of all of them.",
+    },
+    {
+      option: "runtimes",
+      type: "String",
+      description:
+        "[--native, --install-linters] What to do when a language runtime (node, java, dotnet...) required by a linter is missing.\n" +
+        "Allowed values: ask (default), auto (install it in ~/.megalinter/runtimes), never.",
+      example: ["ask", "auto", "never"],
+    },
+    {
+      option: "trust-repo-commands",
+      type: "Boolean",
+      description:
+        "[--native] Run the PRE_COMMANDS / POST_COMMANDS, load the PLUGINS and fetch the remote EXTENDS declared by the analyzed repository. " +
+        "Only use it for a repository you fully trust: these commands run on your machine, not in a container.",
+    },
+    {
       option: "setup-ci",
       type: "String",
       description:
@@ -233,7 +274,8 @@ export const optionsDefinition = optionator.default({
     {
       option: "setup-default-branch",
       type: "String",
-      description: "[--install] Default branch of the repository. Default: main.",
+      description:
+        "[--install] Default branch of the repository. Default: main.",
       example: ["main", "master"],
     },
     {
@@ -253,7 +295,8 @@ export const optionsDefinition = optionator.default({
       option: "custom-flavor-setup",
       alias: "cfs",
       type: "Boolean",
-      description: "Generate scaffolding files to build a custom MegaLinter flavor.",
+      description:
+        "Generate scaffolding files to build a custom MegaLinter flavor.",
     },
     {
       option: "custom-flavor-linters",
@@ -279,8 +322,7 @@ export const optionsDefinition = optionator.default({
       option: "container-name",
       alias: "containername",
       type: "String",
-      description:
-        "Override the container name passed to `docker run --name`.",
+      description: "Override the container name passed to `docker run --name`.",
       example: ["my-megalinter-run"],
     },
     {
@@ -315,8 +357,7 @@ export const optionsDefinition = optionator.default({
     {
       option: "no-user-map",
       type: "Boolean",
-      description:
-        "Run the container as root.",
+      description: "Run the container as root.",
     },
     {
       option: "codetotal",

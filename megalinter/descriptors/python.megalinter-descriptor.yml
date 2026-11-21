@@ -10,7 +10,11 @@ file_extensions:
 processing_order: -9
 linters:
   # PYLINT
-  - linter_name: pylint
+  - class: PylintLinter
+    linter_name: pylint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format=json2"
     file_extensions:
       - ".py"
       - ".pyi"
@@ -63,8 +67,11 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--ignore="
     cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_seed_values: ["CVS"]
+    cli_lint_mode_project_exclude_config_key: ["*.ignore", "tool.pylint.*.ignore"]
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?mi)^\\[(?:tool\\.pylint\\.)?(?:main|master)\\][ \\t]*\\n(?:(?!\\[).*\\n)*?[ \\t]*files[ \\t]*="
     config_file_name: .pylintrc
     cli_config_arg_name: "--rcfile"
     cli_lint_errors_count: regex_count
@@ -105,13 +112,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=pylint
-          ARG PIP_PYLINT_VERSION=4.0.8
+          ARG PIP_PYLINT_VERSION=4.1.3
         - |-
           # renovate: datasource=pypi depName=typing-extensions
           ARG PIP_TYPING_EXTENSIONS_VERSION=4.16.0
       pip:
         - pylint==${PIP_PYLINT_VERSION}
         - typing-extensions==${PIP_TYPING_EXTENSIONS_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -197,6 +215,7 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
     cli_lint_mode_project_exclude_arg_value: "/{{DIR}}/"
     cli_lint_mode_project_exclude_separator: "|"
+    cli_lint_mode_project_exclude_config_key: ["tool.black.extend-exclude", "tool.black.extend_exclude"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
@@ -211,9 +230,20 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=26.5.1
+          ARG PIP_BLACK_VERSION=26.10.1
       pip:
         - black[jupyter]==${PIP_BLACK_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -236,7 +266,9 @@ linters:
         - name: VSCode Python Extension
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.python
   # FLAKE8
-  - linter_name: flake8
+  - class: Flake8Linter
+    linter_name: flake8
+    can_output_sarif: true
     linter_text: |
       **Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
 
@@ -265,8 +297,7 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude="
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_extra_args_after:
-      - .
+    cli_lint_mode_project_exclude_config_key: ["flake8.extend-exclude", "flake8.extend_exclude"]
     config_file_name: .flake8
     cli_config_arg_name: "--config"
     cli_lint_errors_count: total_lines
@@ -299,9 +330,20 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=flake8
-          ARG PIP_FLAKE8_VERSION=7.3.0
+          ARG PIP_FLAKE8_VERSION=7.5.0
       pip:
         - flake8==${PIP_FLAKE8_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.11"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -354,6 +396,7 @@ linters:
       - "--profile"
       - "black"
     cli_lint_mode_project_exclude_arg_name: "--extend-skip"
+    cli_lint_mode_project_exclude_config_key: ["settings.extend_skip", "isort.extend_skip", "tool.isort.extend_skip"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PythonBlackOrIsortLinter class behavior
@@ -370,13 +413,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=black
-          ARG PIP_BLACK_VERSION=26.5.1
+          ARG PIP_BLACK_VERSION=26.10.1
         - |-
           # renovate: datasource=pypi depName=isort
-          ARG PIP_ISORT_VERSION=9.0.1
+          ARG PIP_ISORT_VERSION=9.0.2
       pip:
         - black==${PIP_BLACK_VERSION}
         - isort==${PIP_ISORT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -455,6 +509,8 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "-x"
     cli_lint_mode_project_exclude_arg_value: "./{{DIR_PATH}}"
     cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_config_key: "bandit.exclude"
+    cli_lint_mode_project_exclude_config_files: [".bandit"]
     cli_lint_mode_project_exclude_seed_values:
       ["./.svn", "./CVS", "./.bzr", "./.hg", "./.git", "./__pycache__", "./.tox", "./.eggs", "*.egg"]
     cli_lint_mode_project_extra_args_after:
@@ -489,7 +545,8 @@ linters:
           Resolutions:
             - Check the profile name in your config.
             - Make sure `tests` / `skips` lists reference valid plugin IDs (B101, B602, ...).
-    version_extract_regex: "(?<=bandit )\\d+(\\.\\d+)+"
+    # On Windows, bandit prints the path of its bandit.EXE launcher
+    version_extract_regex: "(?i)(?<=bandit )\\d+(\\.\\d+)+|(?<=bandit\\.exe )\\d+(\\.\\d+)+"
     test_folder: python_bandit
     examples:
       - "bandit myfile.py"
@@ -506,6 +563,17 @@ linters:
         - bandit==${PIP_BANDIT_VERSION}
         - bandit_sarif_formatter==${PIP_BANDIT_SARIF_FORMATTER_VERSION}
         - bandit[toml]==${PIP_BANDIT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -518,8 +586,14 @@ linters:
         - name: Bandit by PyCQA
           url: https://marketplace.visualstudio.com/items?itemName=pycqa.bandit-pycqa
   # MYPY
-  - linter_name: mypy
+  - class: MypyLinter
+    linter_name: mypy
     name: PYTHON_MYPY
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output"
+      - "json"
+    sarif_whole_output: true
     file_extensions:
       - ".py"
       - ".pyi"
@@ -558,6 +632,7 @@ linters:
     cli_lint_mode_project_exclude_arg_value: "/{{DIR}}/"
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "(?m)^\\[(?:tool\\.)?mypy\\][ \\t]*\\n(?:(?!\\[).*\\n)*?[ \\t]*(?:files|packages|modules)[ \\t]*="
     cli_lint_errors_count: regex_sum
     cli_lint_errors_regex: "Found ([0-9]+) error"
     cli_config_arg_name: "--config-file"
@@ -589,7 +664,7 @@ linters:
         message: |-
           mypy crashed with an internal error. This usually indicates a bug in mypy or an interaction with a plugin.
           Resolutions:
-            - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp`, but stale data can persist between runs in long-lived environments).
+            - Clear the mypy cache (MegaLinter sets `MYPY_CACHE_DIR=/tmp/.mypy_cache`, but stale data can persist between runs in long-lived environments).
             - Disable mypy plugins (`plugins = ...` in your config) one by one to narrow the cause.
             - Report the traceback to https://github.com/python/mypy/issues.
     version_extract_regex: "(?<=mypy )\\d+(\\.\\d+)+"
@@ -601,10 +676,23 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.19.1
-        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
+          ARG PIP_MYPY_VERSION=2.4.1
+        - ENV MYPY_CACHE_DIR=/tmp/.mypy_cache # Avoid mypy cache to mess with other linters
       pip:
         - mypy==${PIP_MYPY_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      env:
+        MYPY_CACHE_DIR: "{{NATIVE_INSTALL_DIR}}/mypy-cache"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -630,6 +718,14 @@ linters:
   # NBQA-MYPY
   - linter_name: nbqa
     name: PYTHON_NBQA_MYPY
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?\.ipynb):cell_(?P<cell>\d+):(?P<line>\d+):(?:(?P<column>\d+):)? (?P<severity>error|note|warning): (?P<message>.*?)(?:  \[(?P<rule>[\w-]+)\])?$'
+    sarif_text_rule_id: nbqa
+    sarif_text_levels:
+      "error": error
+      "warning": warning
+      "note": note
+    sarif_whole_output: true
     file_extensions:
       - ".ipynb"
     cli_lint_mode: list_of_files
@@ -644,6 +740,8 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "--nbqa-exclude"
     cli_lint_mode_project_exclude_arg_value: "(^|/){{DIR}}/"
     cli_lint_mode_project_exclude_separator: "|"
+    cli_lint_mode_project_exclude_config_key: "tool.nbqa.exclude.mypy"
+    cli_lint_mode_project_exclude_config_files: ["pyproject.toml"]
     cli_lint_mode_project_extra_args_after:
       - .
     cli_lint_errors_count: regex_sum
@@ -706,11 +804,24 @@ linters:
           ARG PIP_NBQA_VERSION=1.9.1
         - |-
           # renovate: datasource=pypi depName=mypy
-          ARG PIP_MYPY_VERSION=1.19.1
-        - ENV MYPY_CACHE_DIR=/tmp # Avoid mypy cache to mess with other linters
+          ARG PIP_MYPY_VERSION=2.4.1
+        - ENV MYPY_CACHE_DIR=/tmp/.mypy_cache # Avoid mypy cache to mess with other linters
       pip:
         - nbqa==${PIP_NBQA_VERSION}
         - mypy==${PIP_MYPY_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      env:
+        MYPY_CACHE_DIR: "{{NATIVE_INSTALL_DIR}}/mypy-cache"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -751,6 +862,10 @@ linters:
   - class: PyrightLinter
     linter_name: pyright
     name: PYTHON_PYRIGHT
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--outputjson"
+    sarif_whole_output: true
     file_extensions:
       - ".py"
       - ".pyi"
@@ -785,6 +900,7 @@ linters:
       - project
     cli_lint_mode_project_extra_args_after:
       - .
+    cli_lint_mode_project_config_paths_regex: "\"include\"\\s*:"
     config_file_name: pyrightconfig.json
     cli_config_arg_name: -p
     cli_lint_errors_count: regex_sum
@@ -800,6 +916,17 @@ linters:
           ARG NPM_PYRIGHT_VERSION=1.1.414
       npm:
         - pyright@${NPM_PYRIGHT_VERSION}
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=14"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -859,8 +986,6 @@ linters:
       - "check"
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Found ([0-9]+) error"
     config_file_name: ".ruff.toml"
@@ -893,9 +1018,20 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.16.8
+          ARG PIP_RUFF_VERSION=0.17.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.7"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -949,8 +1085,6 @@ linters:
       - project
     cli_lint_mode_project_exclude_arg_name: "--extend-exclude"
     cli_lint_mode_project_exclude_separator: ","
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_config_arg_name: "--config"
     cli_help_arg_name: "help"
     cli_version_arg_name: "--version"
@@ -967,9 +1101,20 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.16.8
+          ARG PIP_RUFF_VERSION=0.17.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.7"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64
@@ -982,3 +1127,110 @@ linters:
       vscode:
         - name: Ruff
           url: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+
+  # ty
+  - linter_name: ty
+    name: PYTHON_TY
+    can_output_sarif: true
+    file_extensions:
+      - ".py"
+      - ".pyi"
+    linter_text: |
+      **ty** is an extremely fast Python type checker and language server written in Rust by Astral (the creators of Ruff and uv).
+
+      **Key features:**
+
+      - **High Performance**: Built from the ground up in Rust for blazing-fast type checking and language server operations
+      - **Incremental Analysis**: Salsa-based query system providing instant diagnostics on save or edit
+      - **Language Server Support**: Full Language Server Protocol (LSP) implementation supporting code completion, navigation, and hover documentation
+      - **Advanced Type System**: Features first-class intersection types, advanced type narrowing, and sophisticated reachability analysis
+      - **Gradual Adoption**: Checks unannotated code bodies by default with flexible configuration options and suppression comments
+    linter_url: https://docs.astral.sh/ty/
+    linter_repo: https://github.com/astral-sh/ty
+    linter_image_url: https://raw.githubusercontent.com/astral-sh/ty/main/docs/assets/logo-letter.svg
+    linter_spdx_license: MIT
+    linter_speed: 5
+    linter_rules_url: https://docs.astral.sh/ty/rules/
+    linter_rules_configuration_url: https://docs.astral.sh/ty/configuration/
+    linter_rules_inline_disable_url: https://docs.astral.sh/ty/configuration/#suppression
+    linter_rules_ignore_config_url: https://docs.astral.sh/ty/configuration/#file-selection
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+      - project
+    cli_lint_extra_args:
+      - "check"
+      - "--no-progress"
+      - "--force-exclude"
+    cli_config_arg_name: "--config-file"
+    cli_lint_fix_arg_name: "--fix"
+    cli_version_arg_name: "--version"
+    cli_help_arg_name: "--help"
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_lint_mode_project_exclude_config_key:
+      - "src.exclude"
+      - "tool.ty.src.exclude"
+    cli_lint_mode_project_exclude_config_files:
+      - "ty.toml"
+      - "pyproject.toml"
+    cli_lint_mode_project_extra_args_after:
+      - .
+    cli_lint_mode_project_config_paths_regex: "(?m)^\\[(?:tool\\.ty\\.)?src\\][ \\t]*\\n(?:(?!\\[).*\\n)*?[ \\t]*(?:include|files)[ \\t]*="
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Found ([0-9]+) diagnostic"
+    config_file_name: "ty.toml"
+    common_linter_errors:
+      - identifier: PYTHON_TY_ERROR_CONFIG_PARSE
+        regex: "(Error loading configuration file|is not a valid `ty\\.toml`|TOML parse error)"
+        message: |-
+          ty could not parse its configuration file (`ty.toml` or `pyproject.toml`).
+          Resolutions:
+            - Validate the TOML syntax of your ty config.
+            - Ensure configuration options match the pinned ty version schema.
+      - identifier: PYTHON_TY_ERROR_IMPORT_NOT_FOUND
+        regex: "(error\\[import-not-found\\]|Cannot resolve imported module)"
+        message: |-
+          ty could not resolve a third-party or local module import (`import-not-found`).
+          Because ty runs inside MegaLinter's isolated container, it will not see packages installed only in your project's environment unless configured.
+          Resolutions:
+            - Install your project dependencies before linting and point ty to that environment via `PYTHON_TY_PRE_COMMANDS` or `--python` in `PYTHON_TY_ARGUMENTS`:
+                PYTHON_TY_PRE_COMMANDS:
+                  - command: "pip install -r requirements.txt"
+                    venv: ty
+                    continue_if_failed: false
+            - For first-party modules outside the repository root (e.g. `.automation/` or `src/`), add them under `[environment] extra-paths` in `ty.toml` or `[tool.ty.environment]` in `pyproject.toml`.
+            - To ignore missing-import errors when external stubs/packages are unavailable, set `import-not-found = "ignore"` under `[rules]` (`[tool.ty.rules]` in `pyproject.toml`).
+    cli_sarif_args:
+      - --output-format
+      - sarif
+    test_folder: python_ty
+    examples:
+      - "ty check myfile.py"
+      - "ty check --config-file ty.toml myfile.py"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=ty
+          ARG PIP_TY_VERSION=0.0.100
+      pip:
+        - ty==${PIP_TY_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.8"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64
+    ide:
+      vscode:
+        - name: ty
+          url: https://marketplace.visualstudio.com/items?itemName=astral-sh.ty

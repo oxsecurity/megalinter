@@ -12,6 +12,10 @@ linters:
   # Raku internal linter
   - class: RakuLinter
     linter_name: raku
+    can_output_sarif: true
+    sarif_text_regex: '(?s)===SORRY!=== Error while compiling (?P<path>[^\n]+)\n(?P<message>.+?)\nat [^\n]+?:(?P<line>\d+)'
+    sarif_text_rule_id: raku-compile-error
+    sarif_whole_output: true
     linter_text: |
       **Raku** compiler provides comprehensive built-in syntax checking and validation through its compile-check mode (`-c` flag). It performs thorough code analysis without execution, ensuring Raku programs are syntactically correct and semantically valid.
 
@@ -41,12 +45,26 @@ linters:
       - "-c"
     examples:
       - "raku -I ./lib -c myfile.raku"
+    native_install:
+      method: runtime_provided
+      # Version of the Docker image: a different host version triggers a warning
+      version: "${RAKU_RAKU_VERSION}"
+      suggest:
+        windows: "Install Rakudo Star with the MSI installer from https://rakudo.org/downloads/star"
+        darwin: "brew install rakudo-star"
+        linux: "Install Rakudo from https://rakudo.org/downloads (example: sudo apt install rakudo)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     install:
       dockerfile:
         - ARG TARGETPLATFORM
         - |
-          # renovate: datasource=github-tags depName=nxadm/rakudo-pkg
-          ARG RAKU_RAKU_VERSION=2026.03
+          # renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
+          ARG RAKU_RAKU_VERSION=2026.09
           ARG RAKU_RAKU_ALPINE_VERSION=3.23
         - |
           RUN case ${TARGETPLATFORM} in \

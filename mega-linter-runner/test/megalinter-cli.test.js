@@ -1,17 +1,20 @@
 /* jscpd:ignore-start */
-import assert from 'assert';
+import assert from "assert";
 import { exec as childProcessExec } from "child_process";
 import os from "os";
 import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
-import * as  util from "util";
+import * as util from "util";
 const exec = util.promisify(childProcessExec);
 
 const release = process.env.MEGALINTER_RELEASE || "beta";
 const nodockerpull =
   process.env.MEGALINTER_NO_DOCKER_PULL === "true" ? true : false;
-const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const packageDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+);
 
 const MEGA_LINTER = "mega-linter-runner ";
 
@@ -25,7 +28,7 @@ describe("CLI", function () {
     assert(stdout, "stdout is set");
     assert(
       stdout.includes("mega-linter [options]"),
-      "stdout contains help content"
+      "stdout contains help content",
     );
   });
 
@@ -38,7 +41,7 @@ describe("CLI", function () {
     assert(stdout, "stdout is set");
     assert(
       stdout.includes("mega-linter-runner version"),
-      'stdout should contains "mega-linter-runner version"'
+      'stdout should contains "mega-linter-runner version"',
     );
   });
 
@@ -48,10 +51,18 @@ describe("CLI", function () {
       done();
       return;
     }
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "megalinter-upgrade-"));
-    fs.writeFileSync(path.join(tempDir, ".mega-linter.yml"), "ENABLE_LINTERS:\n  - YAML_PRETTIER\n");
+    const tempDir = fs.mkdtempSync(
+      path.join(os.tmpdir(), "megalinter-upgrade-"),
+    );
+    fs.writeFileSync(
+      path.join(tempDir, ".mega-linter.yml"),
+      "ENABLE_LINTERS:\n  - YAML_PRETTIER\n",
+    );
     const params = ["--upgrade", "--no-prompt"];
-    exec(`node ${path.join(packageDir, "lib", "index.js")} ${params.join(" ")}`, { cwd: tempDir })
+    exec(
+      `node ${path.join(packageDir, "lib", "index.js")} ${params.join(" ")}`,
+      { cwd: tempDir },
+    )
       .then((res) => {
         const stdout = res.stdout;
         const stderr = res.stderr;
@@ -61,7 +72,7 @@ describe("CLI", function () {
         assert(stdout, "stdout is set");
         assert(
           stdout.includes("mega-linter-runner applied"),
-          'stdout should contains "mega-linter-runner applied"'
+          'stdout should contains "mega-linter-runner applied"',
         );
         fs.rmSync(tempDir, { recursive: true, force: true });
         done();

@@ -215,7 +215,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=eslint
-          ARG NPM_ESLINT_VERSION=10.11.0
+          ARG NPM_ESLINT_VERSION=10.14.0
         - |-
           # renovate: datasource=npm depName=@eslint/js
           ARG NPM_ESLINT_JS_VERSION=10.0.1
@@ -227,19 +227,19 @@ linters:
           ARG NPM_ESLINT_PLUGIN_IMPORT_X_VERSION=4.17.1
         - |-
           # renovate: datasource=npm depName=eslint-plugin-jest
-          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.16.6
+          ARG NPM_ESLINT_PLUGIN_JEST_VERSION=29.17.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-n
-          ARG NPM_ESLINT_PLUGIN_N_VERSION=18.3.0
+          ARG NPM_ESLINT_PLUGIN_N_VERSION=18.5.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-prettier
-          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.6
+          ARG NPM_ESLINT_PLUGIN_PRETTIER_VERSION=5.5.7
         - |-
           # renovate: datasource=npm depName=eslint-plugin-promise
           ARG NPM_ESLINT_PLUGIN_PROMISE_VERSION=7.3.0
         - |-
           # renovate: datasource=npm depName=eslint-plugin-vue
-          ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.11.0
+          ARG NPM_ESLINT_PLUGIN_VUE_VERSION=10.12.0
         - |-
           # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
           ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
@@ -256,6 +256,11 @@ linters:
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
   - class: JavaScriptStandardLinter
     linter_name: standard
+    can_output_sarif: true
+    sarif_text_regex: '^\s*(?P<path>.+?):(?P<line>\d+):(?P<column>\d+): (?P<message>.*?) \((?P<rule>[^()]*)\)(?: \((?P<severity>warning)\))?$'
+    sarif_text_levels:
+      "warning": warning
+    sarif_whole_output: true
     linter_text: |
       **JavaScript Standard Style** is a popular zero-configuration JavaScript linter and code formatter that eliminates endless debates about code style by providing a strict, opinionated set of rules. It serves as both a style guide and automated enforcement tool for clean, consistent JavaScript.
 
@@ -289,8 +294,6 @@ linters:
       - list_of_files
       - project
     cli_lint_fix_arg_name: "--fix"
-    cli_lint_mode_project_extra_args_after:
-      - .
     test_folder: javascript_standard
     examples:
       - "standard myfile.js"
@@ -306,6 +309,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=16.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       brackets:
         - name: brackets-standard

@@ -50,6 +50,11 @@ linters:
       - "prettier --config .prettierrc.json --write myfile.yml" # format
   - class: YamllintLinter
     linter_name: yamllint
+    can_output_sarif: true
+    # Overrides the --format standard of cli_lint_extra_args (the last one wins)
+    cli_sarif_args:
+      - "--format"
+      - "parsable"
     linter_text: |
       **yamllint** is a linter for YAML files that checks for syntax validity, key repetition, lines length, trailing spaces, indentation, and other common YAML issues. It helps ensure YAML files are well-formed, follow consistent formatting conventions, and avoid common pitfalls.
 
@@ -112,6 +117,17 @@ linters:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       emacs:
         - name: flycheck
@@ -135,6 +151,9 @@ linters:
     cli_lint_mode_project_exclude_ignore_file_arg_name: "--ignore-pattern-files="
     cli_lint_mode_project_exclude_arg_value: "{{DIR_PATH}}/**"
     cli_lint_mode_project_exclude_ignore_file_pass_existing: [".v8rignore", ".gitignore"]
+    cli_lint_mode_project_exclude_config_key: "ignorePatternFiles"
+    cli_lint_mode_project_exclude_config_files: [".v8rrc", ".v8rrc.json", ".v8rrc.yml", ".v8rrc.yaml"]
+    cli_lint_mode_project_exclude_conflicting_args: ["--no-ignore"]
     cli_lint_mode_project_extra_args_after:
       - "**/*.{yml,yaml}"
     test_folder: yaml_schema

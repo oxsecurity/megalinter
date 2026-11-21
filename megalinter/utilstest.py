@@ -19,6 +19,9 @@ from megalinter.constants import (
     DEFAULT_DOCKER_WORKSPACE_DIR,
     DEFAULT_REPORT_FOLDER_NAME,
 )
+from megalinter.native.context import NativeError, is_native_mode
+from megalinter.native.installer import NativeInstaller
+from megalinter.native.resolve import spec_from_linter
 
 REPO_HOME = (
     DEFAULT_DOCKER_WORKSPACE_DIR
@@ -101,6 +104,7 @@ def linter_test_setup(params=None):
     config.set_value(request_id, "GITHUB_COMMENT_REPORTER", "false")
     config.set_value(request_id, "CONFIG_REPORTER", "false")
     config.set_value(request_id, "FLAVOR_SUGGESTIONS", "false")
+    config.set_value(request_id, "NATIVE_SUGGESTIONS", "false")
     config.set_value(request_id, "IGNORE_GITIGNORED_FILES", "true")
     config.set_value(request_id, "VALIDATE_ALL_CODEBASE", "true")
     config.set_value(request_id, "CLEAR_REPORT_FOLDER", "true")
@@ -140,6 +144,26 @@ def print_output(output):
             print(line)
 
 
+def attach_native_toolchain(linter):
+    if not is_native_mode():
+        return linter
+    installer = NativeInstaller(linter.request_id)
+    spec = spec_from_linter(linter)
+    status, reason = installer.status(spec)
+    if status == "unsupported":
+        raise unittest.SkipTest(reason)
+    # Tools provided by the host (not downloaded by MegaLinter) can be absent from a runner
+    if status in ("host-provided", "not installed") and (
+        spec.native_install["method"] == "runtime_provided"
+    ):
+        try:
+            installer.install(spec)
+        except NativeError as e:
+            raise unittest.SkipTest(f"{linter.name} is not available on this host: {e}")
+    linter.native_toolchain = installer.toolchain(spec)
+    return linter
+
+
 def call_mega_linter(env_vars):
     usage_stdout = io.StringIO()
     request_id = env_vars["request_id"]
@@ -147,6 +171,10 @@ def call_mega_linter(env_vars):
         # Set env variables
         for env_var_key, env_var_value in env_vars.items():
             config.set_value(request_id, env_var_key, env_var_value)
+        # Native mode: linters are installed beforehand (megalinter install-linters)
+        if is_native_mode() and "ENABLE_LINTERS" in env_vars:
+            config.set_value(request_id, "NATIVE_LINTERS", env_vars["ENABLE_LINTERS"])
+            config.set_value(request_id, "NATIVE_MISSING_LINTERS", "fail")
         # Call linter
         mega_linter = Megalinter({"request_id": request_id})
         mega_linter.run()
@@ -593,6 +621,51 @@ def test_linter_report_tap(linter, test_self):
                 )
 
 
+# Linters in project mode are run on the bad folder. So are the linters that are only
+# active in a workspace holding a sub-directory (ex: actionlint on .github/workflows) or
+# a file (ex: .codespellrc), when only the bad folder holds it
+def find_sarif_test_workspace(linter, workspace):
+    bad_workspace = workspace + os.path.sep + "bad"
+    if not os.path.isdir(bad_workspace):
+        return workspace
+    if linter.cli_lint_mode == "project":
+        return bad_workspace
+    sub_directory = linter.files_sub_directory
+    if (
+        sub_directory
+        and not os.path.isdir(os.path.join(workspace, sub_directory))
+        and os.path.isdir(os.path.join(bad_workspace, sub_directory))
+    ):
+        return bad_workspace
+    activation_files = [
+        file_name.split(":")[0] for file_name in linter.active_only_if_file_found
+    ]
+    if (
+        activation_files
+        and not any(
+            os.path.isfile(os.path.join(workspace, f)) for f in activation_files
+        )
+        and any(
+            os.path.isfile(os.path.join(bad_workspace, f)) for f in activation_files
+        )
+    ):
+        return bad_workspace
+    # A configuration file that only the bad folder holds (ex: .v8rrc.yml maps the
+    # schemas, pyproject.toml lets pyright analyze the hidden .automation folder)
+    config_files = [
+        file_name
+        for file_name in [linter.config_file_name, "pyproject.toml"]
+        if file_name
+    ]
+    if any(
+        not os.path.isfile(os.path.join(workspace, f))
+        and os.path.isfile(os.path.join(bad_workspace, f))
+        for f in config_files
+    ):
+        return bad_workspace
+    return workspace
+
+
 # Test that the linter provides a SARIF output if it's configured like that
 def test_linter_report_sarif(linter, test_self):
     if (
@@ -605,10 +678,7 @@ def test_linter_report_sarif(linter, test_self):
     workspace = (
         config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
     )
-    if linter.cli_lint_mode == "project" and os.path.isdir(
-        workspace + os.path.sep + "bad"
-    ):
-        workspace += os.path.sep + "bad"
+    workspace = find_sarif_test_workspace(linter, workspace)
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
@@ -665,12 +735,34 @@ def test_linter_report_sarif(linter, test_self):
             # osv-scanner and the Salesforce Code Analyzer eslint (aura) engine
             # report all their SARIF findings at "warning" level too. jscpd
             # only reports its duplication-threshold breach as "error" (one
-            # per run); individual clones are "warning"
+            # per run); individual clones are "warning". djlint reports "warning"
+            # (codes not starting with E), rubocop reports "note" for its convention
+            # cops, trufflehog reports "error" only for verified secrets (not
+            # checked by the tests, as the fixtures are not real credentials).
+            # clippy lints, dart infos and vale suggestions are not errors,
+            # nor are the warnings of luacheck, rst-lint and rstcheck. The fixtures of
+            # helm (one chart) and npm-package-json-lint (one package.json) give one
+            # error, and git diff --check finds nothing in the committed fixtures
+            # (they have no_test_failure). ts-standard needs the tsconfig.json of the bad
+            # folder, which the eslint tests of the same folder must not use
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
                 "REPOSITORY_OSV_SCANNER",
                 "SALESFORCE_CODE_ANALYZER_AURA",
                 "COPYPASTE_JSCPD",
+                "HTML_DJLINT",
+                "RUBY_RUBOCOP",
+                "REPOSITORY_TRUFFLEHOG",
+                "RUST_CLIPPY",
+                "DART_DARTANALYZER",
+                "SPELL_VALE",
+                "LUA_LUACHECK",
+                "KUBERNETES_HELM",
+                "JSON_NPM_PACKAGE_JSON_LINT",
+                "RST_RST_LINT",
+                "RST_RSTCHECK",
+                "REPOSITORY_GIT_DIFF",
+                "TYPESCRIPT_STANDARD",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
@@ -679,13 +771,19 @@ def test_linter_report_sarif(linter, test_self):
                     + f"SARIF:{str(sarif_content)}",
                 )
 
-            if linter.cli_lint_warnings_count is not None:
+            # stylelint and vale fixtures do not give several warnings
+            if linter.cli_lint_warnings_count is not None and linter.name not in [
+                "CSS_STYLELINT",
+                "SPELL_VALE",
+            ]:
                 test_self.assertTrue(
                     linter.total_number_warnings > 1,
                     f"Missing multiple sarif warnings in {linter.name}"
                     + f" ({linter.total_number_warnings})\n"
                     + f"SARIF:{str(sarif_content)}",
                 )
+
+    return sarif_content
 
 
 def assert_is_skipped(skipped_item, output, test_self):

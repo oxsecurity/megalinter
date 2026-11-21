@@ -28,6 +28,7 @@ def build_linter(request_id, workspace="."):
     linter.workspace = workspace
     linter.lint_command_log = []
     linter.lint_cwd_log = None
+    linter.lint_command_env = None
     linter.common_linter_errors = []
     linter.can_output_sarif = False
     linter.output_sarif = False

@@ -9,6 +9,8 @@ Generates a full execution log in SARIF format within a file named **mega-linter
 
 Note: Only linters able to handle SARIF will provide output in the aggregated SARIF file.
 
+Results that a linter marks as suppressed in its SARIF output (for example a finding silenced with `# nosemgrep`) are not counted as errors or warnings, and are not listed in the console and text reports. They are kept in the SARIF files, so tools reading them still see the suppression.
+
 This reporter **is deactivated by default**.
 
 ![Screenshot](../assets/images/SarifReporter_1.jpg)

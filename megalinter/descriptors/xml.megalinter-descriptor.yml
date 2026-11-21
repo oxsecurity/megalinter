@@ -12,6 +12,13 @@ linters:
   # XML LINT
   - class: XmlLintLinter
     linter_name: xmllint
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>[^\s:][^:\n]*?):(?P<line>\d+): (?:element [^:]+: )?(?P<rule>[\w/ -]*?) ?(?P<severity>error|warning) : (?P<message>.*)$'
+    sarif_text_rule_id: xmllint
+    sarif_text_levels:
+      "error": error
+      "warning": warning
+    sarif_whole_output: true
     linter_spdx_license: MIT
     linter_text: |
       **xmllint** is a command-line XML tool from the libxml2 library that provides comprehensive XML parsing, validation, and formatting capabilities for XML documents and related technologies.
@@ -54,6 +61,18 @@ linters:
         - libxml2
         - libxml2-utils
         - libgcc
+    native_install:
+      method: runtime_provided
+      suggest:
+        darwin: "xmllint is preinstalled on macOS (brew install libxml2 for a recent version)"
+        linux: "Install libxml2 utilities from your distribution (example: sudo apt install libxml2-utils)"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+      unsupported:
+        windows/amd64: "xmllint (libxml2) has no official Windows distribution. Use Docker."
     supported_platforms:
       platform:
         - linux/amd64

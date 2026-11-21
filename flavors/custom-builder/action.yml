@@ -40,6 +40,7 @@ runs:
             -e CUSTOM_FLAVOR_BUILD_REPO=${{ env.CUSTOM_FLAVOR_BUILD_REPO }} \
             -e CUSTOM_FLAVOR_BUILD_REPO_URL=${{ env.CUSTOM_FLAVOR_BUILD_REPO_URL }} \
             -e CUSTOM_FLAVOR_BUILD_USER=${{ env.CUSTOM_FLAVOR_BUILD_USER }} \
+            -e "TRIVY_DB_REPOSITORY=${{ env.TRIVY_DB_REPOSITORY }}" \
           ghcr.io/oxsecurity/megalinter-custom-flavor-builder:${{ inputs.megalinter-custom-flavor-builder-tag }}
       shell: bash
     
@@ -85,7 +86,7 @@ runs:
 
     - name: Upload build artifacts
       if: always()
-      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
       with:
         name: megalinter-custom-flavor-artifacts
         path: |

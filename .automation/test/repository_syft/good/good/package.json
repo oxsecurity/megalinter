@@ -78,19 +78,19 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^6.0.0",
     "find-package-json": "^1.2.0",
-    "fs-extra": "^10.0.0",
-    "glob-promise": "^4.2.2",
+    "fs-extra": "^11.0.0",
+    "glob-promise": "^6.0.0",
     "optionator": "^0.9.1",
-    "which": "^2.0.2",
-    "yeoman-environment": "^6.0.0",
-    "yeoman-generator": "^7.5.1",
-    "yosay": "^2.0.2"
+    "which": "^7.0.0",
+    "yeoman-environment": "^8.0.0",
+    "yeoman-generator": "^10.0.0",
+    "yosay": "^3.0.0"
   },
   "devDependencies": {
     "assert": "^2.0.0",
     "eslint": "^10.6.0",
-    "mocha": "^11.1.0"
+    "mocha": "^12.0.0"
   }
 }

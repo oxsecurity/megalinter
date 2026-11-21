@@ -29,7 +29,7 @@ linters:
       - **Inline rule disabling** using comments for granular control
       - **Gradle script support** for build file quality analysis
       - **Multi-file processing** for batch operations on large codebases
-      - **Java 17 compatibility** ensuring modern runtime support
+      - **Java 17 to 25 compatibility** ensuring modern runtime support
     can_output_sarif: true
     linter_url: https://nvuillam.github.io/npm-groovy-lint/
     linter_repo: https://github.com/nvuillam/npm-groovy-lint
@@ -47,6 +47,7 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "--ignorepattern"
     cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
     cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_config_key: "ignorepattern"
     config_file_name: .groovylintrc.json
     cli_lint_extra_args:
       - --javaexecutable
@@ -77,13 +78,30 @@ linters:
         - ENV PATH="$JAVA_HOME/bin:${PATH}"
         - |-
           # renovate: datasource=npm depName=npm-groovy-lint
-          ARG NPM_GROOVY_LINT_VERSION=18.0.0
+          ARG NPM_GROOVY_LINT_VERSION=19.0.0
       npm:
         - npm-groovy-lint@${NPM_GROOVY_LINT_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.13.0"
+        - runtime: java
+          version: ">=17"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+      linter_overrides:
+        cli_lint_extra_args:
+          - --failon
+          - error
     ide:
       vscode:
         - name: VSCode Groovy Lint

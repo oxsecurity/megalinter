@@ -37,6 +37,14 @@ SARIF_SAMPLE = {
                         {"physicalLocation": {"artifactLocation": {"uri": "src/a.py"}}}
                     ],
                 },
+                # Suppressed in source: excluded from the breakdowns
+                {
+                    "ruleId": "F401",
+                    "locations": [
+                        {"physicalLocation": {"artifactLocation": {"uri": "src/b.py"}}}
+                    ],
+                    "suppressions": [{"kind": "inSource"}],
+                },
             ]
         }
     ]

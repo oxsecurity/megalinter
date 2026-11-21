@@ -5,8 +5,9 @@
 replicaCount: 1
 namespace: ""
 image:
-  # Using a Chainguard image: minimal, non-root by default, and signed with
-  # cosign so it satisfies image signature verification controls.
+  # Using a Chainguard image: minimal and non-root by default. It is signed
+  # keyless with cosign, so control C-0236 (which needs a trusted static public
+  # key) is skipped by an annotation in templates/deployment.yaml.
   repository: cgr.dev/chainguard/nginx
   # Chainguard only publishes a "latest" tag on the public tier, so always
   # pull to avoid running a stale cached image.

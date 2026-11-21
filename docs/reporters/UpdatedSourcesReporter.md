@@ -34,6 +34,10 @@ If you aren't using GitHub Actions, you can:
 - use [Email Reporter](EmailReporter.md): Updated source folder will be in the email attachment reports zip
 - publish folder `<WORKSPACE>/report/updated_sources` as artifact with your CI tool
 
+### Fail the run when fixes are applied
+
+Set `FAIL_IF_UPDATED_SOURCES` to `true` to make the run fail when sources have been updated, so a developer commits the content of the **updated_sources** folder. The failure reason is shown in the console and in the reports, and the option takes precedence over `DISABLE_ERRORS`. See [Apply fixes](../config-apply-fixes.md).
+
 ### Empty updated sources folder
 
 The folder is empty when MegaLinter can not list the files updated by the linters. This happens on a **read-only workspace** whose repository uses **git-lfs**: the LFS filter has nowhere to write its temporary files, so the `git diff` used to detect updated files fails.

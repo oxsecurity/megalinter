@@ -40,11 +40,24 @@ linters:
     cli_lint_mode: project
     supported_cli_lint_modes:
       - project
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--message-format=json"
     examples:
       - "cargo-clippy"
     install:
       cargo:
         - clippy
+    native_install:
+      method: runtime_provided
+      requires:
+        - runtime: rust
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

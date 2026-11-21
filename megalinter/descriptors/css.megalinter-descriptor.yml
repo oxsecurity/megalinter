@@ -12,6 +12,10 @@ linters:
   # StyleLint
   - class: StyleLintLinter
     linter_name: stylelint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--formatter"
+      - "json"
     linter_text: |
       **Stylelint** is a mighty CSS linter that helps you avoid errors and enforce coding conventions in your stylesheets. It's designed to catch both syntax errors and problematic patterns while maintaining code consistency across projects.
 
@@ -58,7 +62,7 @@ linters:
                   - command: "npm install stylelint-order"
                     cwd: "root"
                     continue_if_failed: false
-            - Note: `stylelint-scss` and `stylelint-config-sass-guidelines` are already bundled and do not need to be re-installed.
+            - Note: `stylelint-scss` is already bundled and does not need to be re-installed. `stylelint-config-sass-guidelines` is no longer bundled (it does not support stylelint 18): install it yourself if you still need it.
             - Or install your project's dependencies and run stylelint from the workspace binary:
                 CSS_STYLELINT_PRE_COMMANDS:
                   - command: yarn install --frozen-lockfile --ignore-scripts
@@ -75,7 +79,7 @@ linters:
                   - command: "npm install stylelint-config-recommended"
                     cwd: "root"
                     continue_if_failed: false
-            - Note: `stylelint-config-standard` and `stylelint-config-sass-guidelines` are already bundled.
+            - Note: `stylelint-config-standard` is already bundled. `stylelint-config-sass-guidelines` is no longer bundled (it does not support stylelint 18).
             - Verify the config name in `.stylelintrc.*` matches the published npm package name exactly.
       - identifier: CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND
         regex: '(Cannot resolve custom syntax|Could not load "?customSyntax|Cannot find module ''postcss-)'
@@ -106,25 +110,32 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=stylelint
-          ARG NPM_STYLELINT_VERSION=17.15.0
+          ARG NPM_STYLELINT_VERSION=18.0.0
         - |-
           # renovate: datasource=npm depName=stylelint-config-standard
-          ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-        - |-
-          # renovate: datasource=npm depName=stylelint-config-sass-guidelines
-          ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+          ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
         - |-
           # renovate: datasource=npm depName=stylelint-scss
-          ARG NPM_STYLELINT_SCSS_VERSION=7.3.0
+          ARG NPM_STYLELINT_SCSS_VERSION=7.5.0
       npm:
         - stylelint@${NPM_STYLELINT_VERSION}
         - stylelint-config-standard@${NPM_STYLELINT_CONFIG_STANDARD_VERSION}
-        - stylelint-config-sass-guidelines@${NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION}
         - stylelint-scss@${NPM_STYLELINT_SCSS_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=20.19.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       emacs:
         - name: flycheck

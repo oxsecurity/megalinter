@@ -50,7 +50,11 @@ install:
               "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 linters:
   # Dart Analyzer
-  - linter_name: dartanalyzer
+  - class: DartAnalyzerLinter
+    linter_name: dartanalyzer
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format=json"
     linter_text: |
       **Dart Analyzer** performs comprehensive static analysis on Dart code to identify errors, warnings, and style issues before execution. It's the same powerful analysis engine used by IDEs and editors with Dart support.
 
@@ -76,8 +80,6 @@ linters:
       - "analyze"
       - "--fatal-infos"
       - "--fatal-warnings"
-    cli_lint_mode_project_extra_args_after:
-      - .
     cli_help_extra_args:
       - "analyze"
     cli_lint_mode: list_of_files
@@ -132,8 +134,22 @@ linters:
               && mv /tmp/dart-sdk/* /usr/lib/dart/ \
               && chmod +x /usr/lib/dart/bin/dart \
               && chmod +x /usr/lib/dart/bin/dartaotruntime \
-              && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip
+              && rm -rf /tmp/dart-sdk /tmp/dart-sdk.zip \
+                 /usr/lib/dart/bin/dartaotruntime_asan /usr/lib/dart/bin/dartaotruntime_msan /usr/lib/dart/bin/dartaotruntime_tsan \
+              && find /usr/lib/dart/bin/resources -type f -name "*.map" -delete
         - ENV PATH="/usr/lib/dart/bin:${PATH}"
+    native_install:
+      # dart analyze is part of the Dart SDK itself
+      method: runtime_provided
+      requires:
+        - runtime: dart
+          version: ">=3"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

@@ -70,7 +70,7 @@ pipeline {
                 changeAuthor =~ /^(dependabot|renovate)(\[bot\])?$/ ||
                 changeTitle =~ /^(chore|fix|deps?|bump)(\(.*\))?: /) {
                 return 'false'
-                }
+            }
             return 'true'
         }
     }

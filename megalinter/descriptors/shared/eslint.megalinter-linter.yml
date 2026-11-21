@@ -25,8 +25,6 @@ supported_cli_lint_modes:
   - project
 cli_lint_extra_args:
   - --no-ignore
-cli_lint_mode_project_extra_args_after:
-  - .
 cli_lint_fix_arg_name: --fix
 cli_sarif_args:
   - --format
@@ -39,6 +37,17 @@ supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
+native_install:
+  method: npm
+  requires:
+    - runtime: node
+      version: ">=20.19.0"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 ide:
   brackets:
     - name: brackets-eslint

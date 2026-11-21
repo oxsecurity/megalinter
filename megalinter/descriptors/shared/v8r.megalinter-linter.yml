@@ -1,6 +1,11 @@
 ---
 class: V8rLinter
 linter_name: v8r
+can_output_sarif: true
+cli_sarif_args:
+  - "--output-format"
+  - "json"
+sarif_whole_output: true
 linter_url: https://github.com/chris48s/v8r
 linter_repo: https://github.com/chris48s/v8r
 linter_spdx_license: MIT
@@ -28,6 +33,25 @@ supported_platforms:
   platform:
     - linux/amd64
     - linux/arm64
+native_install:
+  method: npm
+  overrides:
+    # v8r matches its ignore patterns against Windows paths with backslashes, so excluded
+    # directories can not be forwarded in project mode: list_of_files mode only
+    windows/amd64:
+      linter_overrides:
+        supported_cli_lint_modes:
+          - file
+          - list_of_files
+  requires:
+    - runtime: node
+      version: ">=22.0.0"
+  platforms:
+    - linux/amd64
+    - linux/arm64
+    - darwin/amd64
+    - darwin/arm64
+    - windows/amd64
 ide:
   eclipse:
     - name: native support

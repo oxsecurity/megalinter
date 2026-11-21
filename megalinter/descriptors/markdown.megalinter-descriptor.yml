@@ -9,7 +9,11 @@ file_extensions:
   - ".md"
 linters:
   # MarkdownLint
-  - linter_name: markdownlint
+  - class: MarkdownlintLinter
+    linter_name: markdownlint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--json"
     is_formatter: true
     activation_rules:
       - type: variable
@@ -68,13 +72,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdownlint-cli
-          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.49.1
+          ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
       npm:
         - markdownlint-cli@${NPM_MARKDOWNLINT_CLI_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.0.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       sublime:
         - name: SublimeLinter-contrib-markdownlint
@@ -125,13 +140,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=markdown-table-formatter
-          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=1.7.0
+          ARG NPM_MARKDOWN_TABLE_FORMATTER_VERSION=2.1.0
       npm:
         - markdown-table-formatter@${NPM_MARKDOWN_TABLE_FORMATTER_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22.17.0"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       vscode:
         - name: Markdown Table Prettify Extension
@@ -178,6 +204,9 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_arg_value: "**/{{DIR}}/**"
     cli_lint_mode_project_exclude_separator: ","
+    cli_lint_mode_project_exclude_config_key:
+      ["global.exclude", "exclude", "tool.rumdl.global.exclude", "tool.rumdl.exclude"]
+    cli_lint_mode_project_exclude_config_files: ["rumdl.toml", ".config/rumdl.toml", "pyproject.toml"]
     cli_lint_extra_args:
       - "check"
     cli_lint_fix_arg_name: "--fix"
@@ -192,13 +221,24 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=rumdl
-          ARG PIP_RUMDL_VERSION=0.2.75
+          ARG PIP_RUMDL_VERSION=0.3.2
       pip:
         - rumdl==${PIP_RUMDL_VERSION}
     supported_platforms:
       platform:
         - linux/amd64
         - linux/arm64
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.9"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     ide:
       vscode:
         - name: rumdl - Markdown Linter

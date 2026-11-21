@@ -23,3 +23,8 @@ useDefault = true
     '''megalinter/descriptors/additional/betterleaks-default\.toml$''',
     '''(.*?)(png|jpg|gif|doc|docx|pdf|bin|xls|pyc|zip)$''',
     '''(go.mod|go.sum)$''']
+    # Documentation placeholder in the vendored kibana-dashboards skill
+    # (export KIBANA_PASSWORD="changeme"), flagged by the generic-password rule of
+    # betterleaks 1.10. Only this exact secret value is ignored.
+    regexes = [
+    '''^changeme$''']

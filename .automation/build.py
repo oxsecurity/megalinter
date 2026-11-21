@@ -14,6 +14,7 @@ import subprocess
 import sys
 import time
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 from shutil import copyfile, which
 from typing import Any
@@ -55,6 +56,9 @@ from megalinter.constants import (
     ML_REPO,
     ML_REPO_URL,
 )
+from megalinter.native.catalog import load_native_specs
+from megalinter.native.manual_install import manual_install_groups
+from megalinter.native.spec import validate_all
 from megalinter.removed_linters import (
     REMOVED_DESCRIPTORS,
     REMOVED_LINTER_ALIASES,
@@ -118,6 +122,16 @@ PLUGINS_FILE = REPO_HOME + "/.automation/plugins.yml"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
+
+# Files of npm packages that node never loads at runtime: source maps, type
+# declarations and package-manager metadata. TypeScript's own lib declarations
+# and @types are kept, as type-aware linting reads them
+NPM_UNUSED_FILES_CLEANUP_COMMAND = (
+    'find {path} -type f \\( -name "*.map" -o -name "*.d.ts" -o -name "*.d.mts"'
+    ' -o -name "*.d.cts" -o -name ".npmignore" -o -name ".travis.yml"'
+    ' -o -name "package-lock.json" -o -name ".package-lock.json" \\)'
+    ' -not -path "*/typescript/lib/*" -not -path "*/@types/*" -delete'
+)
 
 BASE_SHIELD_IMAGE_LINK = "https://img.shields.io/docker/image-size"
 BASE_SHIELD_COUNT_LINK = "https://img.shields.io/docker/pulls"
@@ -529,12 +543,15 @@ def build_dockerfile(
                 + "    && curl https://sh.rustup.rs -sSf |"
                 + " sh -s -- -y --profile minimal --default-toolchain ${RUST_RUST_VERSION} --no-modify-path \\\n"
                 + '    && export PATH="${CARGO_HOME}/bin:${PATH}" \\\n'
-                + "    && rustup default stable \\\n"
                 + f"    && {rustup_cargo_cmd} \\\n"
                 + '    && for bin in "${CARGO_HOME}"/bin/*; do \\\n'
                 + '         ln -sf "$bin" /usr/local/bin/"$(basename "$bin")"; \\\n'
                 + "       done \\\n"
-                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache\n'
+                # Sanitizer runtimes are only usable with nightly -Zsanitizer,
+                # and the offline docs are never read in the image
+                + '    && rm -rf "${CARGO_HOME}/registry" "${CARGO_HOME}/git" /root/.cache/sccache \\\n'
+                + '       "${RUSTUP_HOME}"/toolchains/*/share/doc \\\n'
+                + '       "${RUSTUP_HOME}"/toolchains/*/lib/rustlib/*/lib/librustc-*_rt.*san.a\n'
                 + "ENV RUSTUP_HOME=/usr/local/rustup\n"
                 + "ENV CARGO_HOME=/usr/local/cargo\n"
                 + 'ENV PATH="/usr/local/cargo/bin:${PATH}"'
@@ -631,28 +648,14 @@ def build_dockerfile(
             #    + "    && npm audit fix --audit-level=critical || true \\\n" # Deactivated for now
             + '    echo "Cleaning npm cache…" \\\n'
             + "    && (npm cache clean --force || true) \\\n"
+            # No inline "#" comment in this RUN: once Docker joins the continued
+            # lines, it would comment out every following command (it disabled
+            # this whole cleanup until now)
+            # chown: fix for https://github.com/npm/cli/issues/5900
             + '    && echo "Changing owner of node_modules files…" \\\n'
-            + '    && chown -R "$(id -u)":"$(id -g)" node_modules # fix for https://github.com/npm/cli/issues/5900 \\\n'
+            + '    && chown -R "$(id -u)":"$(id -g)" node_modules \\\n'
             + '    && echo "Removing extra node_module files…" \\\n'
-            + '    && find . \\( -not -path "/proc" \\)'
-            + " -and \\( -type f"
-            + ' \\( -iname "*.d.ts"'
-            + ' -o -iname "*.map"'
-            + ' -o -iname "*.npmignore"'
-            + ' -o -iname "*.travis.yml"'
-            + ' -o -iname "*.md"'
-            + ' -o -iname "*.markdown"'
-            + ' -o -iname ".package-lock.json"'
-            + ' -o -iname "package-lock.json"'
-            + " \\) \\) -delete \\\n"
-            + '    && echo "Removing test and doc directories from node_modules…" \\\n'
-            + "    && find ./node_modules -type d"
-            + ' \\( -iname "__tests__"'
-            + ' -o -iname "test"'
-            + ' -o -iname "tests"'
-            + ' -o -iname "docs"'
-            + ' -o -iname ".github"'
-            + " \\) -prune -exec rm -rf {} + \\\n"
+            + f"    && {NPM_UNUSED_FILES_CLEANUP_COMMAND.format(path='./node_modules')} \\\n"
             + "    && rm -rf /root/.npm\n"
             + "WORKDIR /\n"
         )
@@ -708,7 +711,7 @@ def build_dockerfile(
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" uv pip install --upgrade '
                 + '"wheel>=0.46.2" "setuptools>=75.8.0" \\\n'
                 + f'    && VIRTUAL_ENV="/venvs/{pip_linter}" rm -rf '
-                + f"/venvs/{pip_linter}/lib/python3.13/site-packages/setuptools/_vendor/wheel* \\\n"
+                + f"/venvs/{pip_linter}/lib/python3*/site-packages/setuptools/_vendor/wheel* \\\n"
             )
             env_path_command += f":/venvs/{pip_linter}/bin"
         pipenv_install_command += "".join(venv_install_segments)
@@ -832,33 +835,10 @@ def generate_linter_dockerfiles():
                 os.makedirs(os.path.dirname(dockerfile), exist_ok=True)
             descriptor_and_linter = descriptor_items + [vars(linter)]
             copyfile(f"{REPO_HOME}/Dockerfile", dockerfile)
-            # Standalone images exclude the LLM Advisor SDKs (installed via the
-            # "llm" extra in the main and flavor images) to stay lightweight
-            replace_between_markers(
-                dockerfile,
-                "#UV_SYNC__START",
-                "#UV_SYNC__END",
-                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
-                "    --mount=type=bind,source=uv.lock,target=uv.lock \\\n"
-                "    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \\\n"
-                "    uv sync --frozen --no-install-project\n"
-                "# Copy the project into the image\n"
-                "COPY . .\n"
-                "# Sync the project\n"
-                "RUN --mount=type=cache,target=/root/.cache/uv \\\n"
-                "    uv sync --frozen",
-            )
-            replace_between_markers(
-                dockerfile,
-                "#PIP_PROJECT__START",
-                "#PIP_PROJECT__END",
-                "RUN --mount=type=cache,target=/root/.cache/uv,from=build-ml-core \\\n"
-                "    --mount=from=uv,source=/uv,target=/bin/uv \\\n"
-                "    uv pip install --system -e .",
-            )
             extra_lines = [
                 f"ENV ENABLE_LINTERS={linter.name} \\",
                 "    FLAVOR_SUGGESTIONS=false \\",
+                "    NATIVE_SUGGESTIONS=false \\",
                 f"    SINGLE_LINTER={linter.name} \\",
                 "    PRINT_ALPACA=false \\",
                 "    LOG_FILE=none \\",
@@ -1237,7 +1217,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_PRE_COMMANDS",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_PRE_COMMANDS",
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "List of bash commands to run before the linters"
@@ -1259,7 +1238,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_POST_COMMANDS",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_POST_COMMANDS",
                     "description": f"{descriptor.get('descriptor_id')}: List of bash commands to run after the linters",
                     "type": "array",
                     "title": f"Post commands for {descriptor.get('descriptor_id')} descriptor",
@@ -1278,7 +1256,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_INCLUDE",
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex including filter: only files matching this regex will be linted"
@@ -1292,7 +1269,6 @@ def generate_descriptor_documentation(descriptor):
             [
                 f"{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
                 {
-                    "$id": f"#/properties/{descriptor.get('descriptor_id')}_FILTER_REGEX_EXCLUDE",
                     "description": (
                         f"{descriptor.get('descriptor_id')}: "
                         "Custom regex excluding filter: files matching this regex will NOT be linted"
@@ -1470,7 +1446,7 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
             "ignore files, ignore errors, help & version documentations)"
             f" to analyze {linter.descriptor_id} files",
             "---",
-            "<!-- markdownlint-disable MD033 MD041 -->",
+            "<!-- markdownlint-disable MD033 MD041 MD046 -->",
             f"<!-- {'@'}generated by .automation/build.py, please don't update manually -->",
         ]
         # Header image as title
@@ -1625,7 +1601,9 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if repo is not None and repo.github is True:
             # pylint: disable=no-member
             linter_doc_md += [
-                f"[![{repo.repo} - GitHub](https://gh-card.dev/repos/{repo.owner}/{repo.repo}.svg?fullname=)]"
+                f"[![{repo.repo} - GitHub]("
+                "https://github-stats-extended.vercel.app/api/pin/"
+                f"?username={repo.owner}&repo={repo.repo}&show_owner=true)]"
                 f"(https://github.com/{repo.owner}/{repo.repo}){{target=_blank}}",
                 "",
                 # pylint: enable=no-member
@@ -1682,9 +1660,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN",
                         {
-                            "$id": (
-                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_COMMITS_SCAN"
-                            ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Scan only commits in "
                                 "the current Pull Request/Merge Request"
@@ -1700,9 +1675,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA",
                         {
-                            "$id": (
-                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_SOURCE_SHA"
-                            ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Source commit SHA of "
                                 "the Pull Request/Merge Request"
@@ -1718,9 +1690,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA",
                         {
-                            "$id": (
-                                "#/properties/" "REPOSITORY_BETTERLEAKS_PR_TARGET_SHA"
-                            ),
                             "description": (
                                 "REPOSITORY_BETTERLEAKS: Target commit SHA of "
                                 "the Pull Request/Merge Request"
@@ -1771,7 +1740,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_FILTER_REGEX_INCLUDE",
                     {
-                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_INCLUDE",
                         "description": (
                             f"{linter.name}: "
                             "Custom regex including filter: "
@@ -1789,7 +1757,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_FILTER_REGEX_EXCLUDE",
                     {
-                        "$id": f"#/properties/{linter.name}_FILTER_REGEX_EXCLUDE",
                         "description": (
                             f"{linter.name}: "
                             "Custom regex excluding filter: "
@@ -1830,7 +1797,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_CLI_LINT_MODE",
                     {
-                        "$id": f"#/properties/{linter.name}_CLI_LINT_MODE",
                         "description": (
                             f"{linter.name}: "
                             "Override default CLI lint mode used to call the linter (rarely needed)"
@@ -1849,7 +1815,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         if "project" in linter.supported_cli_lint_modes:
             linter_doc_md += [
                 f"| {linter.name}_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward "
-                "excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES) to the "
+                "excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and "
+                ".gitignored directories when IGNORE_GITIGNORED_FILES is true) to the "
                 "linter through its native exclusion arguments or generated ignore/config files | `true` |"
             ]
             add_in_config_schema_file(
@@ -1857,7 +1824,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_FORWARD_EXCLUDED_DIRECTORIES",
                         {
-                            "$id": f"#/properties/{linter.name}_FORWARD_EXCLUDED_DIRECTORIES",
                             "description": (
                                 f"{linter.name}: "
                                 "In project CLI lint mode, forward excluded directories to the "
@@ -1899,7 +1865,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_FILE_EXTENSIONS",
                         {
-                            "$id": f"#/properties/{linter.name}_FILE_EXTENSIONS",
                             "description": (
                                 f"{linter.name}: "
                                 "Override descriptor/linter matching files extensions that will be used "
@@ -1918,7 +1883,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_FILE_NAMES_REGEX",
                         {
-                            "$id": f"#/properties/{linter.name}_FILE_NAMES_REGEX",
                             "description": (
                                 f"{linter.name}: "
                                 "Override descriptor/linter matching file name regexes that will be used "
@@ -1955,7 +1919,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_COMMAND_REMOVE_ARGUMENTS",
                     {
-                        "$id": f"#/properties/{linter.name}_COMMAND_REMOVE_ARGUMENTS",
                         "type": ["array", "string"],
                         "title": f"{title_prefix}{linter.name}: Custom remove arguments",
                         "description": f"{linter.name}: User custom arguments to remove before calling linter",
@@ -1966,7 +1929,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_ARGUMENTS",
                     {
-                        "$id": f"#/properties/{linter.name}_ARGUMENTS",
                         "type": ["array", "string"],
                         "title": f"{title_prefix}{linter.name}: Custom arguments",
                         "description": f"{linter.name}: User custom arguments to add in linter CLI call",
@@ -1977,7 +1939,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_PRE_COMMANDS",
                     {
-                        "$id": f"#/properties/{linter.name}_PRE_COMMANDS",
                         "title": f"{linter.name}: Pre-run commands",
                         "type": "array",
                         "description": (
@@ -1999,7 +1960,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_POST_COMMANDS",
                     {
-                        "$id": f"#/properties/{linter.name}_POST_COMMANDS",
                         "title": f"{linter.name}: Post-run commands",
                         "type": "array",
                         "description": (
@@ -2021,7 +1981,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_DISABLE_ERRORS",
                     {
-                        "$id": f"#/properties/{linter.name}_DISABLE_ERRORS",
                         "type": "boolean",
                         "default": False,
                         "description": (
@@ -2034,7 +1993,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
                     {
-                        "$id": f"#/properties/{linter.name}_DISABLE_ERRORS_IF_LESS_THAN",
                         "type": "number",
                         "default": 0,
                         "description": (
@@ -2048,7 +2006,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_TIMEOUT_SECONDS",
                     {
-                        "$id": f"#/properties/{linter.name}_TIMEOUT_SECONDS",
                         "type": "integer",
                         "description": (
                             f"{linter.name}: "
@@ -2064,7 +2021,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_CLI_EXECUTABLE",
                     {
-                        "$id": f"#/properties/{linter.name}_CLI_EXECUTABLE",
                         "type": "array",
                         "default": [linter.cli_executable],
                         "description": (
@@ -2078,7 +2034,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                 [
                     f"{linter.name}_UNSECURED_ENV_VARIABLES",
                     {
-                        "$id": f"#/properties/{linter.name}_UNSECURED_ENV_VARIABLES",
                         "type": "array",
                         "default": [],
                         "description": "List of env variables explicitly "
@@ -2104,7 +2059,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_CONFIG_FILE",
                         {
-                            "$id": f"#/properties/{linter.name}_CONFIG_FILE",
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Custom config file name",
                             "default": linter.config_file_name,
@@ -2114,7 +2068,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_RULES_PATH",
                         {
-                            "$id": f"#/properties/{linter.name}_RULES_PATH",
                             "type": "string",
                             "title": f"{title_prefix}{linter.name}: Custom config file path",
                             "description": f"{linter.name}: Path where to find linter configuration file",
@@ -2148,7 +2101,6 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
                     [
                         f"{linter.name}_DIRECTORY",
                         {
-                            "$id": f"#/properties/{linter.name}_DIRECTORY",
                             "type": "string",
                             "description": (
                                 'Directory that must be found to activate linter. Use value "any" to always activate'
@@ -2278,6 +2230,8 @@ def process_type(linters_by_type, type1, type_label, linters_tables_md):
         item = vars(linter)
         merge_install_attr(item)
         linter_doc_md += get_install_md(item)
+        linter_doc_md += ["", "### Installation without Docker (native mode)", ""]
+        linter_doc_md += get_native_install_md(item, linter.name)
         # Example log files
         test_report_folder = (
             REPO_HOME
@@ -2720,6 +2674,91 @@ def get_install_md(item):
     return linter_doc_md
 
 
+NATIVE_PLATFORM_LABELS = {
+    "linux/amd64": "Linux (x86-64)",
+    "linux/arm64": "Linux (ARM64)",
+    "darwin/amd64": "macOS (Intel)",
+    "darwin/arm64": "macOS (Apple Silicon)",
+    "windows/amd64": "Windows (Git Bash)",
+}
+NATIVE_FAMILY_LABELS = {
+    "linux": "Linux",
+    "darwin": "macOS",
+    "windows": "Windows (Git Bash)",
+}
+NATIVE_METHOD_LABELS = {
+    "pip": "Python package (isolated virtual environment)",
+    "npm": "npm packages (isolated folder)",
+    "gem": "Ruby gems",
+    "go": "Go module",
+    "dotnet_tool": ".NET tool",
+    "powershell_module": "PowerShell module",
+    "binary": "Verified release download",
+    "runtime_provided": "Provided by the host",
+}
+
+
+@lru_cache(maxsize=1)
+def native_specs_by_key():
+    return {spec.key: spec for spec in load_native_specs()}
+
+
+def native_tab_label(platforms, supported_platforms):
+    labels = []
+    for family, family_label in NATIVE_FAMILY_LABELS.items():
+        family_supported = [p for p in supported_platforms if p.startswith(family)]
+        family_group = [p for p in platforms if p.startswith(family)]
+        if family_group and family_group == family_supported:
+            labels.append(family_label)
+        else:
+            labels += [NATIVE_PLATFORM_LABELS[p] for p in family_group]
+    return ", ".join(labels)
+
+
+def get_native_install_md(item, linter_key):
+    native = item.get("native_install")
+    if not native:
+        return ["Not available."]
+    linter_doc_md = [
+        "This linter can run without Docker, see [native mode](https://megalinter.io/latest/install-native/).",
+        "",
+        f"- Install method: {NATIVE_METHOD_LABELS.get(native['method'], native['method'])}",
+    ]
+    for requirement in native.get("requires", []):
+        constraint = f" {requirement['version']}" if requirement.get("version") else ""
+        linter_doc_md += [
+            f"- Requires the {requirement['runtime']} runtime{constraint}"
+        ]
+    linter_doc_md += [
+        "",
+        "```yaml",
+        f"NATIVE_LINTERS: [{linter_key}]",
+        "```",
+        "",
+        "| Platform | Support |",
+        "| :------- | :------ |",
+    ]
+    for platform, label in NATIVE_PLATFORM_LABELS.items():
+        if platform in native.get("platforms", []):
+            support = "✅"
+        else:
+            support = "❌ " + (native.get("unsupported") or {}).get(platform, "")
+        linter_doc_md += [f"| {label} | {support} |"]
+    groups = manual_install_groups(native_specs_by_key()[linter_key])
+    if not groups:
+        return linter_doc_md + [""]
+    supported_platforms = [p for group in groups for p in group.platforms]
+    linter_doc_md += [""]
+    for group in groups:
+        linter_doc_md += [
+            f'=== "{native_tab_label(group.platforms, supported_platforms)}"',
+            "",
+        ]
+        linter_doc_md += [f"    {line}" if line else "" for line in group.lines]
+        linter_doc_md += [""]
+    return linter_doc_md
+
+
 def doc_url(href):
     if (
         "/descriptors/" in href
@@ -2824,9 +2863,10 @@ def get_repo(linter, check_github=True):
 def merge_install_attr(item):
     if "descriptor_install" not in item:
         return
+    # Linters extending the same shared definition share its install dict: copy it, so the
+    # packages of one descriptor are not added to the pages of the others
+    item["install"] = dict(item.get("install") or {})
     for elt, elt_val in item["descriptor_install"].items():
-        if "install" not in item:
-            item["install"] = {}
         if elt in item["install"]:
             if elt == "dockerfile":
                 item["install"][elt] = (
@@ -3481,6 +3521,50 @@ def validate_own_megalinter_config():
             )
 
 
+# Check the JSON Schemas themselves: compliance with their meta-schema, and no "$id"
+# holding a JSON Pointer fragment ("#/properties/..."), which draft-07 forbids and
+# strict validators reject (issue #9177)
+def validate_json_schemas():
+    errors = 0
+    schema_files = sorted(
+        glob.glob(f"{REPO_HOME}/megalinter/descriptors/schemas/*.jsonschema.json")
+    )
+    for schema_file in schema_files:
+        logging.info("Validating " + os.path.basename(schema_file))
+        with open(schema_file, "r", encoding="utf-8") as schema_file1:
+            json_schema = json.load(schema_file1)
+        try:
+            jsonschema.Draft7Validator.check_schema(json_schema)
+        except jsonschema.exceptions.SchemaError as schema_error:
+            logging.error(f"{os.path.basename(schema_file)} is not a valid JSON schema")
+            logging.error(f"reason: {str(schema_error)}")
+            errors = errors + 1
+        for invalid_id in list_json_pointer_ids(json_schema):
+            logging.error(
+                f"{os.path.basename(schema_file)}: invalid $id {invalid_id} "
+                "(JSON Pointer fragments are not allowed in $id)"
+            )
+            errors = errors + 1
+    if errors > 0:
+        raise ValueError(
+            "Errors have been found while validating JSON schemas, please check logs"
+        )
+
+
+def list_json_pointer_ids(node) -> list[str]:
+    invalid_ids: list[str] = []
+    if isinstance(node, dict):
+        node_id = node.get("$id")
+        if isinstance(node_id, str) and "#/" in node_id:
+            invalid_ids.append(node_id)
+        for value in node.values():
+            invalid_ids += list_json_pointer_ids(value)
+    elif isinstance(node, list):
+        for item in node:
+            invalid_ids += list_json_pointer_ids(item)
+    return invalid_ids
+
+
 # Apply descriptor JSON Schema to every descriptor file
 def validate_descriptors():
     with open(DESCRIPTOR_JSON_SCHEMA, "r", encoding="utf-8") as schema_file:
@@ -3509,7 +3593,6 @@ def validate_descriptors():
             "definitions": descriptor_schema_data.get("definitions", {}),
             **descriptor_schema_data["properties"]["linters"]["items"],
         }
-        shared_linter_schema.pop("$id", None)
         shared_linter_files = sorted(
             glob.glob(
                 f"{REPO_HOME}/megalinter/descriptors/shared/*.megalinter-linter.yml"
@@ -3533,6 +3616,17 @@ def validate_descriptors():
             raise ValueError(
                 "Errors have been found while validating descriptor YML files, please check logs"
             )
+
+
+# Every linter must declare its native install on every native platform
+def validate_native_install():
+    _specs, native_errors = validate_all()
+    for native_error in native_errors:
+        logging.error(native_error)
+    if len(native_errors) > 0:
+        raise ValueError(
+            "Errors have been found in native_install declarations, please check logs"
+        )
 
 
 def finalize_doc_build():
@@ -3621,7 +3715,7 @@ def finalize_doc_build():
         "<!-- mega-linter-badges-start -->",
         "<!-- mega-linter-badges-end -->",
         """![GitHub release](https://img.shields.io/github/v/release/oxsecurity/megalinter?sort=semver&color=%23FD80CD)
-[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-27.8M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
+[![Docker Pulls](https://img.shields.io/badge/docker%20pulls-29.6M-blue?color=%23FD80CD)](https://megalinter.io/flavors/)
 [![Downloads/week](https://img.shields.io/npm/dw/mega-linter-runner.svg?color=%23FD80CD)](https://npmjs.org/package/mega-linter-runner)
 [![Coding Agents](https://img.shields.io/badge/Coding%20Agents-compatible-%23FD80CD?logo=githubcopilot&logoColor=white)](https://megalinter.io/latest/coding-agents/)
 [![GitHub stars](https://img.shields.io/github/stars/oxsecurity/megalinter?cacheSeconds=3600&color=%23FD80CD)](https://github.com/oxsecurity/megalinter/stargazers/)
@@ -4152,9 +4246,13 @@ def generate_documentation_all_users():
             repo_full = repo["repo_url"].replace("https://github.com/", "")
         else:
             continue
+        repo_owner, _, repo_name = repo_full.strip("/").partition("/")
+        repo_name = repo_name.split("/")[0]
         # pylint: disable=no-member
         linter_doc_md += [
-            f"[![{repo_full} - GitHub](https://gh-card.dev/repos/{repo_full}.svg?fullname=)]"
+            f"[![{repo_full} - GitHub]("
+            "https://github-stats-extended.vercel.app/api/pin/"
+            f"?username={repo_owner}&repo={repo_name}&show_owner=true)]"
             f"(https://github.com/{repo_full}){{target=_blank}}",
         ]
         # pylint: enable=no-member
@@ -4423,6 +4521,22 @@ def generate_json_schema_docs():
     )
 
 
+# The native pre-commit hooks of a release run that version of mega-linter-runner (installed
+# once by pre-commit) and of MegaLinter: `rev: vX.Y.Z` gives the same results everywhere
+def pin_native_pre_commit_hooks(version):
+    hooks_file = f"{REPO_HOME}/.pre-commit-hooks.yaml"
+    content = Path(hooks_file).read_text(encoding="utf-8")
+    pinned = re.sub(
+        r"mega-linter-runner@(beta|\d+\.\d+\.\d+)",
+        f"mega-linter-runner@{version}",
+        content,
+    )
+    pinned = re.sub(
+        r"(--release(?:\n\s+- |\s+))(beta|\d+\.\d+\.\d+)", rf"\g<1>{version}", pinned
+    )
+    Path(hooks_file).write_text(pinned, encoding="utf-8", newline="\n")
+
+
 def generate_version():
     # npm version
     logging.info("Updating npm package version…")
@@ -4451,6 +4565,7 @@ def generate_version():
         shell=True,
         check=True,
     )
+    pin_native_pre_commit_hooks(VERSION)
     # Update changelog
     if UPDATE_CHANGELOG is True:
         changelog_file = f"{REPO_HOME}/CHANGELOG.md"
@@ -4606,8 +4721,11 @@ def build_custom_flavor(dockerfile):
         dockerfile,
         "--secret",
         "id=GITHUB_TOKEN",
-        work_dir,
     ]
+    trivy_db_repository = os.getenv("TRIVY_DB_REPOSITORY", "")
+    if trivy_db_repository != "":
+        command += ["--build-arg", f"TRIVY_DB_REPOSITORY={trivy_db_repository}"]
+    command += [work_dir]
     logging.info("Platforms to build on: " + platform)
     logging.info("Running command: " + " ".join(command))
     process = subprocess.run(
@@ -4618,6 +4736,9 @@ def build_custom_flavor(dockerfile):
     )
     stdout = utils.clean_string(process.stdout)
     logging.info(f"Build custom flavor results: ({process.returncode})\n" + stdout)
+    if process.returncode != 0:
+        logging.error("Custom flavor docker image build failed")
+        sys.exit(process.returncode)
 
 
 if __name__ == "__main__":
@@ -4650,6 +4771,7 @@ if __name__ == "__main__":
         ensure_removed_linters_flagged_in_config_schema()
         generate_documentation_removed_linters()
         validate_descriptors()
+        validate_native_install()
         if UPDATE_DEPENDENTS is True:
             update_dependents_info()
         generate_all_flavors()
@@ -4671,6 +4793,7 @@ if __name__ == "__main__":
             generate_json_schema_docs()
         sync_agent_plugin_manifests()
         validate_own_megalinter_config()
+        validate_json_schemas()
         manage_output_variables()
         reformat_markdown_tables()
         from generate_runner_vars import generate as generate_runner_vars

@@ -10,6 +10,18 @@ linters:
   # LUACHECK
   - class: LuacheckLinter
     linter_name: luacheck
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--formatter"
+      - "plain"
+      - "--codes"
+      - "--ranges"
+      - "--no-color"
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+)(?:-(?P<end_column>\d+))?: \((?=(?P<severity>[EW]))(?P<rule>[EW]\d+)\) (?P<message>.*)$'
+    sarif_text_levels:
+      "E": error
+      "W": warning
+    sarif_whole_output: true
     linter_text: |
       **luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, and unreachable code. It provides comprehensive code quality analysis for Lua projects.
 
@@ -73,7 +85,33 @@ linters:
               && cd .. && rm -r luarocks-${LUA_LUACHECK_VERSION}-super-linter/ \
               && luarocks install luacheck \
               && cd / \
-              && apk del .lua-build-deps
+              && apk del .lua-build-deps \
+              && rm -rf /root/.cache/luarocks
+    native_install:
+      method: binary
+      # renovate: datasource=github-releases depName=lunarmodules/luacheck extractVersion=^v(?<version>.+)$
+      version: "1.2.0"
+      libc: glibc
+      assets:
+        linux/amd64:
+          url: https://github.com/lunarmodules/luacheck/releases/download/v{{VERSION}}/luacheck
+          archive: none
+          name: luacheck
+        windows/amd64:
+          url: https://github.com/lunarmodules/luacheck/releases/download/v{{VERSION}}/luacheck.exe
+          archive: none
+          name: luacheck.exe
+      provenance:
+        gpg:
+          keyring: luacheck.asc
+          signature_url: https://github.com/lunarmodules/luacheck/releases/download/v{{VERSION}}/{{ASSET_NAME}}.asc
+      platforms:
+        - linux/amd64
+        - windows/amd64
+      unsupported:
+        linux/arm64: "luacheck publishes a Linux binary for x86_64 only. Use Docker."
+        darwin/amd64: "luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker."
+        darwin/arm64: "luacheck publishes no macOS binary (it is a LuaRocks package that needs a Lua toolchain). Use Docker."
     supported_platforms:
       platform:
         - linux/amd64
@@ -97,6 +135,11 @@ linters:
   # STYLUA
   - class: StyLuaLinter
     linter_name: stylua
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format"
+      - "json"
+    sarif_whole_output: true
     linter_text: |
       **StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration.
 
@@ -136,7 +179,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-releases depName=JohnnyMorganz/StyLua extractVersion=^v(?<version>.+)$
-          ARG CARGO_STYLUA_VERSION=2.5.2
+          ARG CARGO_STYLUA_VERSION=2.6.0
         - |-
           FROM alpine:3.24 AS cargo-bin-stylua
           ARG TARGETARCH
@@ -154,6 +197,33 @@ linters:
               rm /tmp/stylua.zip && \
               chmod +x /out/bin/stylua
         - COPY --link --from=cargo-bin-stylua /out/bin/stylua /usr/bin/stylua
+    native_install:
+      method: binary
+      version: "${CARGO_STYLUA_VERSION}"
+      assets:
+        linux/amd64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-linux-x86_64-musl.zip
+          archive: zip
+        linux/arm64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-linux-aarch64-musl.zip
+          archive: zip
+        darwin/amd64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-macos-x86_64.zip
+          archive: zip
+        darwin/arm64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-macos-aarch64.zip
+          archive: zip
+        windows/amd64:
+          url: https://github.com/JohnnyMorganz/StyLua/releases/download/v{{VERSION}}/stylua-windows-x86_64.zip
+          archive: zip
+      provenance:
+        github_attestation: JohnnyMorganz/StyLua
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
     supported_platforms:
       platform:
         - linux/amd64

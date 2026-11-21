@@ -1,4 +1,9 @@
+import yaml
 from megalinter import config
+
+# MegaLinter's own YAML files (descriptors, native runtimes) are parsed on each run: the C
+# parser of PyYAML (libyaml, shipped in its wheels) is about 10 times faster, same results
+DESCRIPTOR_YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 ML_REPO_OWNER = "oxsecurity"
 ML_REPO_NAME = "megalinter"
@@ -34,7 +39,7 @@ DEFAULT_RELEASE = "v10"
 BETTERLEAKS_RULESET_FILE_NAME = "betterleaks-default.toml"
 BETTERLEAKS_RULESET_REPO = "betterleaks/betterleaks"
 # renovate: datasource=github-tags depName=betterleaks/betterleaks
-BETTERLEAKS_RULESET_VERSION = "v1.8.1"
+BETTERLEAKS_RULESET_VERSION = "v1.10.0"
 
 DEFAULT_DOCKERFILE_ARGS: list[str] = [
     "ARG TARGETPLATFORM",
@@ -94,15 +99,15 @@ DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [
-    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.2.1",
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.3",
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.9.1",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.15.6",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [
-    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.98.1",
+    "# renovate: datasource=github-tags depName=rust-lang/rust\nARG RUST_RUST_VERSION=1.99.1",
 ]
 
 DEFAULT_DOCKERFILE_FLAVOR_ARGS = [
