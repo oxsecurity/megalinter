@@ -3,7 +3,7 @@
   "common": {
     "package_json": {
       "dependencies": {
-        "@biomejs/biome": "2.6.5",
+        "@biomejs/biome": "2.6.6",
         "typescript": "6.0.3"
       },
       "name": "megalinter-native-typescript_biome",
@@ -16,7 +16,7 @@
       "packages": {
         "": {
           "dependencies": {
-            "@biomejs/biome": "2.6.5",
+            "@biomejs/biome": "2.6.6",
             "typescript": "6.0.3"
           },
           "name": "megalinter-native-typescript_biome",
@@ -33,22 +33,22 @@
             "type": "opencollective",
             "url": "https://opencollective.com/biome"
           },
-          "integrity": "sha512-n0sp74QbSVEkWXlH659TKv4oJNylwAvDeZ8K8vt/PbcF1xneuNWe57z/G0Bxfh00cufhWXF6DiStLM8+jcLUpg==",
+          "integrity": "sha512-NCgVJRyrU1+hsW1ILNaRqNAb9fRL4n49bwyef+wjVJQ488/bXbp0BfnNqTTExkiNQT3ugkgYKR1vK8NxsjlNSQ==",
           "license": "MIT OR Apache-2.0",
           "optionalDependencies": {
-            "@biomejs/cli-android-arm64": "2.6.5",
-            "@biomejs/cli-android-x64": "2.6.5",
-            "@biomejs/cli-darwin-arm64": "2.6.5",
-            "@biomejs/cli-darwin-x64": "2.6.5",
-            "@biomejs/cli-linux-arm64": "2.6.5",
-            "@biomejs/cli-linux-arm64-musl": "2.6.5",
-            "@biomejs/cli-linux-x64": "2.6.5",
-            "@biomejs/cli-linux-x64-musl": "2.6.5",
-            "@biomejs/cli-win32-arm64": "2.6.5",
-            "@biomejs/cli-win32-x64": "2.6.5"
+            "@biomejs/cli-android-arm64": "2.6.6",
+            "@biomejs/cli-android-x64": "2.6.6",
+            "@biomejs/cli-darwin-arm64": "2.6.6",
+            "@biomejs/cli-darwin-x64": "2.6.6",
+            "@biomejs/cli-linux-arm64": "2.6.6",
+            "@biomejs/cli-linux-arm64-musl": "2.6.6",
+            "@biomejs/cli-linux-x64": "2.6.6",
+            "@biomejs/cli-linux-x64-musl": "2.6.6",
+            "@biomejs/cli-win32-arm64": "2.6.6",
+            "@biomejs/cli-win32-x64": "2.6.6"
           },
-          "resolved": "https://registry.npmjs.org/@biomejs/biome/-/biome-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/biome/-/biome-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-android-arm64": {
           "cpu": [
@@ -57,14 +57,14 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-fkLzc1WRU7wRIUNmAm7cxILb4dd6eESz/VycWvVFKVn6tXx0gFQKdUbPnwT42xys8AEvIJQpFGcK00kURwqorg==",
+          "integrity": "sha512-bicnqNNxEX7pjkDQaptYvPRIWDfgXJLl/Ok7iZjC+F1AhfReor3FSS7SgPYnOvUy/jf++5U/KYN4T8OKH5rrNA==",
           "license": "MIT OR Apache-2.0",
           "optional": true,
           "os": [
             "android"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-android-arm64/-/cli-android-arm64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-android-arm64/-/cli-android-arm64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-android-x64": {
           "cpu": [
@@ -73,14 +73,14 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-fkZ9dPnDAzAcaPtPCiwqtkub5C9FQK/oGCGaU9sq+DysTaq13pE9FxBIMcEZ3ydn8/FfcMdXi/DDzKDP+qyn2Q==",
+          "integrity": "sha512-N443kDSElF4kDMKjarsL+ymj/ewLA5R9VAdawA7fJ7pwgN3JVDZp0K+xhKBglH8EwsKi2+K8xC6WxXSkgziFfw==",
           "license": "MIT OR Apache-2.0",
           "optional": true,
           "os": [
             "android"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-android-x64/-/cli-android-x64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-android-x64/-/cli-android-x64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-darwin-arm64": {
           "cpu": [
@@ -89,14 +89,14 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-bKd0EOREgnVjeZm4s9knQ+WdPOkWS3JHB+eWGHlx+Pq66bqQA1/KybwU0O+zuyAyXiphSCBcrLruZt3YtnJoaQ==",
+          "integrity": "sha512-/vSAqWx3by3p8w5ew+HVJDgguuaTK3U6Fb5gk/oDUH21iWOopm3gOlhT6tZfy5mTaM5R4CVc3uFWkxBtEDrKyw==",
           "license": "MIT OR Apache-2.0",
           "optional": true,
           "os": [
             "darwin"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-darwin-arm64/-/cli-darwin-arm64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-darwin-arm64/-/cli-darwin-arm64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-darwin-x64": {
           "cpu": [
@@ -105,14 +105,14 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-UkT9BECNOXSiW6SGddjyaRACy362Sc9n3vDaTFkccL0bC2gW7JzM16i4+JKPbEaDn1Sa+oETHV8KungnI/y40Q==",
+          "integrity": "sha512-lLdOAJKbrAoDs+3GvTyVmMW345D9IhrIE3GgoL2eeHwO1boN4VhrSlALtFYsP0p+Jy4udUp4bTguij0qjKrH8w==",
           "license": "MIT OR Apache-2.0",
           "optional": true,
           "os": [
             "darwin"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-darwin-x64/-/cli-darwin-x64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-darwin-x64/-/cli-darwin-x64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-linux-arm64": {
           "cpu": [
@@ -121,7 +121,7 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-H9cVMWBqW/lkFK9NHJdt0bpM2q7PacUDEjQoff9+m0dCV09H/jmBykfTCkbDthHf8+jCuWDJWiQFJ7bDkiGOcA==",
+          "integrity": "sha512-UzJdUCg9dbEGpZOuZRyehEPrnwKjx9z4Um7sWLG5x6txu7UjeWdJZuBXVGlyAdD39w2Hx0nZeK1jKC4NFUTCNQ==",
           "libc": [
             "glibc"
           ],
@@ -130,8 +130,8 @@
           "os": [
             "linux"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-arm64/-/cli-linux-arm64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-arm64/-/cli-linux-arm64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-linux-arm64-musl": {
           "cpu": [
@@ -140,7 +140,7 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-kfc3AePW1a0/d/gUpcIz95nf3Ce8YY2/xL0Fk3fLqAhKsotqUi6PN6BaVWss4p6ijWbiuacZ9NQ4NiQtpjbYpw==",
+          "integrity": "sha512-rw2Vsoi/WZGDyRjMXx9KZH9zsHe79LIzkdWHkLqsIkeKZm6qiGxtiIApxn7cmJSoEPaSvHaH5pRj1FhTcyL/XA==",
           "libc": [
             "musl"
           ],
@@ -149,8 +149,8 @@
           "os": [
             "linux"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-linux-x64": {
           "cpu": [
@@ -159,7 +159,7 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-e6/WMSN/+FhH+ZOoBevps/euxFQmv6BXqYNuTn1+ITR6O4XYFjHF5PeVSNZnjkgSYmvhcDkfepSX5lXczMijGA==",
+          "integrity": "sha512-l8/aPXc1cz8VpUyd4hb5Pm5zx+X3voQBks4aLYbp5pC8KSchuHyvqDfY5xax39qCHomI/2xn6NKEot+zebG38g==",
           "libc": [
             "glibc"
           ],
@@ -168,8 +168,8 @@
           "os": [
             "linux"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-x64/-/cli-linux-x64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-x64/-/cli-linux-x64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-linux-x64-musl": {
           "cpu": [
@@ -178,7 +178,7 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-0mHVpLNt7/FugfZ2VPugUIEIiooWIyHGGJUqU9StxamBln9hz+maXRFIECU50jaf5/ZB93veGIViN5VKgw2AEA==",
+          "integrity": "sha512-DiKejs+GnFbOVQsBnukUpiB+T13tqUDFGwwjsTq51vatAsaflzFzVD0BOgjVUGRrqKgE0K0Xf+wNtkcmdN2chw==",
           "libc": [
             "musl"
           ],
@@ -187,8 +187,8 @@
           "os": [
             "linux"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-x64-musl/-/cli-linux-x64-musl-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-linux-x64-musl/-/cli-linux-x64-musl-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-win32-arm64": {
           "cpu": [
@@ -197,14 +197,14 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-uBbfpdR/cH5up1iRJFGAPP97xKMzrgMs685CSrY7NM+Q4Unw7chY0o3JulEvJdmU6c6hGQxwqotMq7DDH0DzxA==",
+          "integrity": "sha512-DjVXwQAQeHrO1JEZAEus54k40Tnh4glyU3VFLcDBKwoz0xnxCEnqw6TCMXoujcQMQynWd3AY8bLrbR1o0XNqow==",
           "license": "MIT OR Apache-2.0",
           "optional": true,
           "os": [
             "win32"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-win32-arm64/-/cli-win32-arm64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-win32-arm64/-/cli-win32-arm64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/@biomejs/cli-win32-x64": {
           "cpu": [
@@ -213,14 +213,14 @@
           "engines": {
             "node": ">=14.21.3"
           },
-          "integrity": "sha512-07LaCeN9vvmbAAMOMsUjMfL5UbsCDkvVeyMJIgwNRc0xYqhizBGkjVzx05LYEwCXl2AiHcdzqVPR4IOYAsI1QQ==",
+          "integrity": "sha512-B7KMG26A4I9lAuxwBGMmiVcjMGAeJRoz+pzFt9brRvOAsIrgOu8ptJld5rUWui6tM1uiJwxeJhhDPuAiZtxXdw==",
           "license": "MIT OR Apache-2.0",
           "optional": true,
           "os": [
             "win32"
           ],
-          "resolved": "https://registry.npmjs.org/@biomejs/cli-win32-x64/-/cli-win32-x64-2.6.5.tgz",
-          "version": "2.6.5"
+          "resolved": "https://registry.npmjs.org/@biomejs/cli-win32-x64/-/cli-win32-x64-2.6.6.tgz",
+          "version": "2.6.6"
         },
         "node_modules/typescript": {
           "bin": {
@@ -244,5 +244,5 @@
   "generator": 2,
   "linter": "TYPESCRIPT_BIOME",
   "method": "npm",
-  "spec_hash": "4c1c413666948822eaee299b095bf2409ea8a37588852626bbb355ef30c0f13b"
+  "spec_hash": "866f18143fe327d99bace1808b0676d56e7da9be9290be5f1176e6e1b05c2761"
 }

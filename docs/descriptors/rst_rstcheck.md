@@ -173,11 +173,11 @@ rstcheck -c .rstcheck.cfg myfile.rst
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
+ARG PIP_RSTCHECK_CLICK_VERSION=8.5.1
 ```
 
 - PIP packages (Python):
-  - [click==8.5.0](https://pypi.org/project/click/8.5.0)
+  - [click==8.5.1](https://pypi.org/project/click/8.5.1)
   - [rstcheck[toml,sphinx]==6.3.0](https://pypi.org/project/rstcheck[toml,sphinx]/6.3.0)
 
 ### Installation without Docker (native mode)
@@ -204,7 +204,7 @@ NATIVE_LINTERS: [RST_RSTCHECK]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/RST_RSTCHECK"
     uv venv "$INSTALL_DIR" --python ">=3.10"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "click==8.5.0" "rstcheck[toml,sphinx]==6.3.0"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "click==8.5.1" "rstcheck[toml,sphinx]==6.3.0"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -213,7 +213,7 @@ NATIVE_LINTERS: [RST_RSTCHECK]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/RST_RSTCHECK"
     uv venv "$INSTALL_DIR" --python ">=3.10"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "click==8.5.0" "rstcheck[toml,sphinx]==6.3.0"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "click==8.5.1" "rstcheck[toml,sphinx]==6.3.0"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 
