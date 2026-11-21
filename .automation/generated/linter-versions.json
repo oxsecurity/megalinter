@@ -118,7 +118,7 @@
     "sql-lint": "1.0.0",
     "sqlfluff": "4.5.0",
     "standard": "17.1.2",
-    "stylelint": "17.16.0",
+    "stylelint": "18.0.0",
     "stylua": "2.6.0",
     "swiftlint": "0.65.1",
     "syft": "1.57.2",

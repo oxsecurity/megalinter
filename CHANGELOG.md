@@ -195,6 +195,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ansible-lint](https://ansible-lint.readthedocs.io/) from 26.10.1 to **26.11.0** on 2026-11-21
   - [spectral](https://github.com/stoplightio/spectral) from 6.17.0 to **6.17.1** on 2026-11-21
   - [biome](https://biomejs.dev) from 2.6.5 to **2.6.6** on 2026-11-21
+  - [stylelint](https://stylelint.io) from 17.16.0 to **18.0.0** on 2026-11-21
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
