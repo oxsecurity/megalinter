@@ -34,7 +34,6 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-
 from megalinter import (
     config,
     pre_post_factory,

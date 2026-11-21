@@ -22,7 +22,6 @@ from megalinter.linters.PowershellLinter import powershell_json_to_sarif
 from megalinter.linters.PylintLinter import pylint_json2_to_sarif
 from megalinter.linters.StyleLintLinter import stylelint_json_to_sarif
 from megalinter.linters.YamllintLinter import yamllint_parsable_to_sarif
-from megalinter.tests.test_megalinter import sarif_schema
 from megalinter.sarif_builder import (
     SarifBuilder,
     SarifResultBuilder,
@@ -30,6 +29,7 @@ from megalinter.sarif_builder import (
     SarifRunBuilder,
     to_sarif_uri,
 )
+from megalinter.tests.test_megalinter import sarif_schema
 
 WORKSPACE = os.path.abspath("lint-workspace")
 

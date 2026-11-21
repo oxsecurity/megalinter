@@ -9,9 +9,8 @@ import json
 import os
 import unittest
 
-import yaml
-
 import megalinter
+import yaml
 from megalinter import linter_factory, utils
 from megalinter.linters.ArmLinter import arm_ttk_json_to_sarif
 from megalinter.linters.CljStyleLinter import cljstyle_diff_to_sarif
@@ -32,7 +31,6 @@ from megalinter.linters.StyLuaLinter import stylua_json_to_sarif
 from megalinter.linters.TektonLintLinter import tekton_lint_json_to_sarif
 from megalinter.linters.TofuValidateLinter import tofu_validate_json_to_sarif
 from megalinter.linters.V8rLinter import v8r_json_to_sarif
-from megalinter.tests.test_megalinter import sarif_schema
 from megalinter.sarif_builder import (
     SarifBuilder,
     SarifResultBuilder,
@@ -43,6 +41,7 @@ from megalinter.sarif_builder import (
     to_one_based,
     unified_diff_to_results,
 )
+from megalinter.tests.test_megalinter import sarif_schema
 
 DESCRIPTORS_DIR = os.path.join(os.path.dirname(megalinter.__file__), "descriptors")
 WORKSPACE = os.path.abspath("lint-workspace")

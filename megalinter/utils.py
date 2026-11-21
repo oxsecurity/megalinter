@@ -16,7 +16,6 @@ from typing import Any, Optional, Pattern, Sequence, Union
 
 import git
 import yaml
-
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
