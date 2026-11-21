@@ -26,7 +26,7 @@
       
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -15812,6 +15812,16 @@
 <li><strong>flake8</strong>, <strong>codespell</strong> and <strong>cpplint</strong> have no severity: every finding is reported as an error</li>
 </ul>
 </li>
+<li><strong>SARIF output</strong> is now available for 38 more linters, in the Docker images and in <strong>native mode</strong>. Enable it with <strong><code>SARIF_REPORTER: true</code></strong>:<ul>
+<li><strong>Code and config</strong>: <strong>mypy</strong>, <strong>pyright</strong>, <strong>nbqa</strong>, <strong>standard</strong>, <strong>ts-standard</strong>, <strong>jsonlint</strong>, <strong>v8r</strong> (JSON and YAML), <strong>npm-package-json-lint</strong>, <strong>gherkin-lint</strong>, <strong>tekton-lint</strong>, <strong>rst-lint</strong>, <strong>rstcheck</strong>, <strong>dotenv-linter</strong>, <strong>editorconfig-checker</strong>, <strong>ls-lint</strong>, <strong>xmllint</strong>, <strong>chktex</strong>, <strong>luacheck</strong>, <strong>perlcritic</strong>, <strong>raku</strong>, <strong>php-cs-fixer</strong>, <strong>snakemake</strong>, <strong>arm-ttk</strong></li>
+<li><strong>Infrastructure</strong>: <strong>kubeconform</strong>, <strong>helm</strong>, <strong>tofu validate</strong>, <strong>terragrunt</strong></li>
+<li><strong>Formatting checks</strong>: <strong>clang-format</strong> (C and C++), <strong>stylua</strong>, <strong>cljstyle</strong>, <strong>scalafix</strong></li>
+<li><strong>Spelling, links and files</strong>: <strong>cspell</strong>, <strong>proselint</strong>, <strong>lychee</strong>, <strong>git diff --check</strong>, <strong>bash-exec</strong></li>
+<li>Findings keep the severity given by the linter (ex: luacheck warnings, helm infos), so the <strong>error count</strong> shown with SARIF enabled can be lower than the number of findings</li>
+<li>When a linter fails without a finding MegaLinter can read (ex: invalid configuration), the SARIF report holds one result with the message of the linter</li>
+<li><strong>jsonlint</strong> now reports all the invalid files with SARIF enabled, instead of stopping at the first one</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15895,6 +15905,7 @@
 <li>SARIF for linters that can not output it: new helper <code>megalinter/sarif_builder.py</code> (<code>SarifBuilder</code>, <code>SarifRunBuilder</code>, <code>SarifRuleBuilder</code>, <code>SarifResultBuilder</code>, inspired by node-sarif-builder) and overridable <code>Linter.convert_output_to_sarif()</code> hook, used by the converters of the linter classes (pylint, flake8, codespell, yamllint, stylelint, markdownlint, cpplint, dartanalyzer, clippy, powershell). They are pure Python functions, covered by unit tests in <code>sarif_converters_test.py</code>. Vale uses its official SARIF template (<code>TEMPLATES/vale-sarif.tmpl</code>), reached with the new <code>{{DEFAULT_RULES_LOCATION}}</code> placeholder of <code>cli_sarif_args</code></li>
 <li>Linters in <code>file</code> lint mode now gather the SARIF of all their files in <code>Linter.after_lint_files()</code> (reports are merged with their rules, <code>RoslynatorLinter</code> no longer has its own merge), and the log of a file is the readable version of its SARIF</li>
 <li>New <code>Linter.after_lint_files()</code> hook, called once after all the files are linted: the base class uses it to write the merged SARIF reports of the <code>file</code> lint mode. SARIF results without <code>locations</code> are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their <code>bad</code> test folder, so they are active</li>
+<li>SARIF for the linters whose output is text: new descriptor properties <strong><code>sarif_text_regex</code></strong> (named groups <code>path</code>, <code>line</code>, <code>column</code>, <code>end_column</code>, <code>rule</code>, <code>severity</code>, <code>message</code>, <code>cell</code>), <code>sarif_text_levels</code>, <code>sarif_text_default_level</code>, <code>sarif_text_rule_id</code> and <code>sarif_whole_output</code>, read by the default <code>Linter.convert_output_to_sarif()</code> (17 linters need no Python code). <code>sarif_whole_output</code> adds one result without location holding the output when a failed run gives no result. New <code>sarif_builder</code> helpers (<code>regex_output_to_sarif</code>, <code>add_whole_output_result</code>, <code>unified_diff_to_results</code>, <code>to_one_based</code>, <code>file_uri_to_path</code>, <code>sarif_from_results</code>) and <code>utils.find_json_values()</code>. Linters with a JSON or structured output have a converter in their class (mypy, pyright, v8r, kubeconform, php-cs-fixer, gherkin-lint, tekton-lint, rst-lint, proselint, lychee, tofu validate, arm-ttk, stylua, npm-package-json-lint, helm, snakemake, scalafix, cljstyle). The regular expressions of the descriptors are tested as shipped in <code>sarif_text_converters_test.py</code>. The SARIF built by MegaLinter is validated against the <strong>SARIF 2.1.0 JSON schema</strong> (vendored in <code>.automation/test/sarif/</code>), by the unit tests of the converters and by <code>test_report_sarif</code> of each linter whose SARIF MegaLinter builds</li>
 </ul>
 </li>
 </ul>
@@ -15974,6 +15985,12 @@
 <li><a href="https://github.com/stoplightio/spectral">spectral</a> from 6.17.0 to <strong>6.17.1</strong> on 2026-11-21</li>
 <li><a href="https://biomejs.dev">biome</a> from 2.6.5 to <strong>2.6.6</strong> on 2026-11-21</li>
 <li><a href="https://stylelint.io">stylelint</a> from 17.16.0 to <strong>18.0.0</strong> on 2026-11-21</li>
+<li><a href="https://github.com/kubescape/kubescape">kubescape</a> from 4.0.19 to <strong>4.0.20</strong> on 2026-11-21</li>
+<li><a href="https://cs.symfony.com/">php-cs-fixer</a> from 3.95.28 to <strong>3.95.29</strong> on 2026-11-21</li>
+<li><a href="https://psalm.dev">psalm</a> from Psalm.7.0.3@ to <strong>Psalm.7.0.5@</strong> on 2026-11-21</li>
+<li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.17.3 to <strong>0.17.4</strong> on 2026-11-21</li>
+<li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.17.3 to <strong>0.17.4</strong> on 2026-11-21</li>
+<li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 10.4.0 to <strong>10.4.1</strong> on 2026-11-21</li>
 </ul>
 </li>
 </ul>

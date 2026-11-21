@@ -26,7 +26,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -12505,7 +12505,7 @@ Copy it at the root of your repository, read it, remove real spelling errors (af
 If you do not want cspell to analyze the files names, define <code>SPELL_CSPELL_ANALYZE_FILE_NAMES</code> to <code>false</code></p>
 <h2 id="cspell-documentation">cspell documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>10.4.0</strong></li>
+<li>Version in MegaLinter: <strong>10.4.1</strong></li>
 <li>Visit <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#customization" target="_blank">How to configure cspell rules</a></li>
 <li>See <a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell#enable--disable-checking-sections-of-code" target="_blank">How to disable cspell rules in files</a></li>
@@ -12918,12 +12918,12 @@ References:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=cspell</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_CSPELL_VERSION</span><span class="o">=</span><span class="m">10</span>.4.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_CSPELL_VERSION</span><span class="o">=</span><span class="m">10</span>.4.1
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/cspell/v/10.4.0">cspell@10.4.0</a></li>
+<li><a href="https://www.npmjs.com/package/cspell/v/10.4.1">cspell@10.4.1</a></li>
 </ul>
 </li>
 </ul>
@@ -12969,7 +12969,7 @@ References:
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/SPELL_CSPELL"</span>
-npm<span class="w"> </span>install<span class="w"> </span>--prefix<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--ignore-scripts<span class="w"> </span>--no-audit<span class="w"> </span>--no-fund<span class="w"> </span><span class="s2">"cspell@10.4.0"</span>
+npm<span class="w"> </span>install<span class="w"> </span>--prefix<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--ignore-scripts<span class="w"> </span>--no-audit<span class="w"> </span>--no-fund<span class="w"> </span><span class="s2">"cspell@10.4.1"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/node_modules/.bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">NODE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/node_modules"</span>
 </code></pre></div>

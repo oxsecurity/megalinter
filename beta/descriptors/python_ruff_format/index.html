@@ -26,7 +26,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -12501,7 +12501,7 @@
 </ul>
 <h2 id="ruff-format-documentation">ruff-format documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>0.17.3</strong></li>
+<li>Version in MegaLinter: <strong>0.17.4</strong></li>
 <li>Visit <a href="https://github.com/astral-sh/ruff#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://docs.astral.sh/ruff/configuration/" target="_blank">How to configure ruff-format rules</a><ul>
 <li>If custom <code>.ruff.toml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml" target="_blank">.ruff.toml</a> will be used</li>
@@ -12754,7 +12754,7 @@ Commands:
 <span class="s2">          Control when colored output is used</span>
 
 <span class="s2">          Possible values:</span>
-<span class="s2">          - auto:   Display colors if the output goes to an interactive terminal</span>
+<span class="s2">          - auto:   Use color when writing to a terminal, unless overridden by the environment</span>
 <span class="s2">          - always: Always display colors</span>
 <span class="s2">          - never:  Never display colors</span>
 
@@ -12764,12 +12764,12 @@ Commands:
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=pypi depName=ruff</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RUFF_VERSION</span><span class="o">=</span><span class="m">0</span>.17.3
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PIP_RUFF_VERSION</span><span class="o">=</span><span class="m">0</span>.17.4
 </code></pre></div></li>
 </ul>
 <ul>
 <li>PIP packages (Python):<ul>
-<li><a href="https://pypi.org/project/ruff/0.17.3">ruff==0.17.3</a></li>
+<li><a href="https://pypi.org/project/ruff/0.17.4">ruff==0.17.4</a></li>
 </ul>
 </li>
 </ul>
@@ -12816,14 +12816,14 @@ Commands:
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PYTHON_RUFF_FORMAT"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.7"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"ruff==0.17.3"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin/python"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"ruff==0.17.4"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PYTHON_RUFF_FORMAT"</span>
 uv<span class="w"> </span>venv<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--python<span class="w"> </span><span class="s2">"&gt;=3.7"</span>
-uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"ruff==0.17.3"</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts/python.exe"</span><span class="w"> </span>--only-binary<span class="w"> </span>:all:<span class="w"> </span><span class="s2">"ruff==0.17.4"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/Scripts:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>

@@ -26,7 +26,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -12758,7 +12758,7 @@
 
 Sort<span class="w"> </span>Python<span class="w"> </span>import<span class="w"> </span>definitions<span class="w"> </span>alphabetically<span class="w"> </span>within<span class="w"> </span>logical<span class="w"> </span>sections.<span class="w"> </span>Run
 with<span class="w"> </span>no<span class="w"> </span>arguments<span class="w"> </span>to<span class="w"> </span>see<span class="w"> </span>a<span class="w"> </span>quick<span class="w"> </span>start<span class="w"> </span>guide,<span class="w"> </span>otherwise,<span class="w"> </span>one<span class="w"> </span>or<span class="w"> </span>more
-files/directories/stdin<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>provided.<span class="w"> </span>Use<span class="w"> </span>-<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span>to
+files/directories/stdin<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>provided.<span class="w"> </span>Use<span class="w"> </span><span class="sb">`</span>-<span class="sb">`</span><span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>argument<span class="w"> </span>to
 represent<span class="w"> </span>stdin.<span class="w"> </span>Use<span class="w"> </span>--interactive<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>pre<span class="w"> </span><span class="m">5</span>.0.0<span class="w"> </span>interactive<span class="w"> </span>behavior.
 If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to isort 5, see the upgrading guide:</span>
 <span class="s1">https://isort.readthedocs.io/en/latest/upgrade_guides/5.0.0.html</span>
@@ -12910,7 +12910,7 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="w">  </span>--ls,<span class="w"> </span>--length-sort<span class="w">   </span>Sort<span class="w"> </span>imports<span class="w"> </span>by<span class="w"> </span>their<span class="w"> </span>string<span class="w"> </span>length.
 <span class="w">  </span>--lss,<span class="w"> </span>--length-sort-straight
 <span class="w">                        </span>Sort<span class="w"> </span>straight<span class="w"> </span>imports<span class="w"> </span>by<span class="w"> </span>their<span class="w"> </span>string<span class="w"> </span>length.<span class="w"> </span>Similar
-<span class="w">                        </span>to<span class="w"> </span>length_sort<span class="w"> </span>but<span class="w"> </span>applies<span class="w"> </span>only<span class="w"> </span>to<span class="w"> </span>straight<span class="w"> </span>imports
+<span class="w">                        </span>to<span class="w"> </span><span class="sb">`</span>length_sort<span class="sb">`</span><span class="w"> </span>but<span class="w"> </span>applies<span class="w"> </span>only<span class="w"> </span>to<span class="w"> </span>straight<span class="w"> </span>imports
 <span class="w">                        </span>and<span class="w"> </span>doesn<span class="s1">'t affect from imports.</span>
 <span class="s1">  -m, --multi-line {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}</span>
 <span class="s1">                        Multi line output (0-grid, 1-vertical, 2-hanging,</span>
@@ -12922,8 +12922,8 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="s1">                        Inserts a blank line before a comment following an</span>
 <span class="s1">                        import.</span>
 <span class="s1">  --nis, --no-inline-sort</span>
-<span class="s1">                        Leaves from imports with multiple imports '</span>as-is<span class="s1">'</span>
-<span class="s1">                        (e.g. from foo import a, c ,b).</span>
+<span class="s1">                        Leaves `from` imports with multiple imports '</span>as-is<span class="s1">'</span>
+<span class="s1">                        (e.g. `from foo import a, c ,b`).</span>
 <span class="s1">  --ot, --order-by-type</span>
 <span class="s1">                        Order imports by type, which is determined by case, in</span>
 <span class="s1">                        addition to alphabetically. **NOTE**: type here refers</span>
@@ -12934,7 +12934,7 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="s1">                        variable_or_function. If your project follows PEP8 or</span>
 <span class="s1">                        a related coding standard and has many imports this is</span>
 <span class="s1">                        a good default, otherwise you likely will want to turn</span>
-<span class="s1">                        it off. From the CLI the --dont-order-by-type option</span>
+<span class="s1">                        it off. From the CLI the `--dont-order-by-type` option</span>
 <span class="s1">                        will turn this off.</span>
 <span class="s1">  --dt, --dont-order-by-type</span>
 <span class="s1">                        Don'</span>t<span class="w"> </span>order<span class="w"> </span>imports<span class="w"> </span>by<span class="w"> </span>type,<span class="w"> </span>which<span class="w"> </span>is<span class="w"> </span>determined<span class="w"> </span>by
@@ -12946,7 +12946,7 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="w">                        </span>variable_or_function.<span class="w"> </span>If<span class="w"> </span>your<span class="w"> </span>project<span class="w"> </span>follows<span class="w"> </span>PEP8<span class="w"> </span>or
 <span class="w">                        </span>a<span class="w"> </span>related<span class="w"> </span>coding<span class="w"> </span>standard<span class="w"> </span>and<span class="w"> </span>has<span class="w"> </span>many<span class="w"> </span>imports<span class="w"> </span>this<span class="w"> </span>is
 <span class="w">                        </span>a<span class="w"> </span>good<span class="w"> </span>default.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>turn<span class="w"> </span>this<span class="w"> </span>on<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>CLI
-<span class="w">                        </span>using<span class="w"> </span>--order-by-type.
+<span class="w">                        </span>using<span class="w"> </span><span class="sb">`</span>--order-by-type<span class="sb">`</span>.
 <span class="w">  </span>--rr,<span class="w"> </span>--reverse-relative
 <span class="w">                        </span>Reverse<span class="w"> </span>order<span class="w"> </span>of<span class="w"> </span>relative<span class="w"> </span>imports.
 <span class="w">  </span>--reverse-sort<span class="w">        </span>Reverses<span class="w"> </span>the<span class="w"> </span>ordering<span class="w"> </span>of<span class="w"> </span>imports.
@@ -12980,9 +12980,10 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="s1">                        names</span>
 <span class="s1">  --remove-redundant-aliases</span>
 <span class="s1">                        Tells isort to remove redundant aliases from imports,</span>
-<span class="s1">                        such as import os as os. This defaults to False simply</span>
-<span class="s1">                        because some projects use these seemingly useless</span>
-<span class="s1">                        aliases to signify intent and change behaviour.</span>
+<span class="s1">                        such as `import os as os`. This defaults to `False`</span>
+<span class="s1">                        simply because some projects use these seemingly</span>
+<span class="s1">                        useless aliases to signify intent and change</span>
+<span class="s1">                        behaviour.</span>
 <span class="s1">  --honor-noqa          Tells isort to honor noqa comments to enforce skipping</span>
 <span class="s1">                        those comments.</span>
 <span class="s1">  --treat-comment-as-code TREAT_COMMENTS_AS_CODE</span>
@@ -13024,13 +13025,13 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="w">                        </span>groupby<span class="o">)</span>.<span class="w"> </span>Instead,<span class="w"> </span>sort<span class="w"> </span>the<span class="w"> </span>imports<span class="w"> </span>by<span class="w"> </span>module,
 <span class="w">                        </span>independent<span class="w"> </span>of<span class="w"> </span>import<span class="w"> </span>style.
 <span class="w">  </span>--hcss,<span class="w"> </span>--honor-case-in-force-sorted-sections
-<span class="w">                        </span>Honor<span class="w"> </span>--case-sensitive<span class="w"> </span>when<span class="w"> </span>--force-sort-within-
-<span class="w">                        </span>sections<span class="w"> </span>is<span class="w"> </span>being<span class="w"> </span>used.<span class="w"> </span>Without<span class="w"> </span>this<span class="w"> </span>option<span class="w"> </span>set,
-<span class="w">                        </span>--order-by-type<span class="w"> </span>decides<span class="w"> </span>module<span class="w"> </span>name<span class="w"> </span>ordering<span class="w"> </span>too.
+<span class="w">                        </span>Honor<span class="w"> </span><span class="sb">`</span>--case-sensitive<span class="sb">`</span><span class="w"> </span>when<span class="w"> </span><span class="sb">`</span>--force-sort-within-
+<span class="w">                        </span>sections<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span>being<span class="w"> </span>used.<span class="w"> </span>Without<span class="w"> </span>this<span class="w"> </span>option<span class="w"> </span>set,
+<span class="w">                        </span><span class="sb">`</span>--order-by-type<span class="sb">`</span><span class="w"> </span>decides<span class="w"> </span>module<span class="w"> </span>name<span class="w"> </span>ordering<span class="w"> </span>too.
 <span class="w">  </span>--srss,<span class="w"> </span>--sort-relative-in-force-sorted-sections
-<span class="w">                        </span>When<span class="w"> </span>using<span class="w"> </span>--force-sort-within-sections,<span class="w"> </span>sort<span class="w"> </span>relative
-<span class="w">                        </span>imports<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>way<span class="w"> </span>as<span class="w"> </span>they<span class="w"> </span>are<span class="w"> </span>sorted<span class="w"> </span>when<span class="w"> </span>not<span class="w"> </span>using
-<span class="w">                        </span>that<span class="w"> </span>setting.
+<span class="w">                        </span>When<span class="w"> </span>using<span class="w"> </span><span class="sb">`</span>--force-sort-within-sections<span class="sb">`</span>,<span class="w"> </span>sort
+<span class="w">                        </span>relative<span class="w"> </span>imports<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>way<span class="w"> </span>as<span class="w"> </span>they<span class="w"> </span>are<span class="w"> </span>sorted<span class="w"> </span>when
+<span class="w">                        </span>not<span class="w"> </span>using<span class="w"> </span>that<span class="w"> </span>setting.
 <span class="w">  </span>--fass,<span class="w"> </span>--force-alphabetical-sort-within-sections
 <span class="w">                        </span>Force<span class="w"> </span>all<span class="w"> </span>imports<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>sorted<span class="w"> </span>alphabetically<span class="w"> </span>within<span class="w"> </span>a
 <span class="w">                        </span>section
@@ -13047,7 +13048,7 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="s1">  --src, --src-path SRC_PATHS</span>
 <span class="s1">                        Add an explicitly defined source path (modules within</span>
 <span class="s1">                        src paths have their imports automatically categorized</span>
-<span class="s1">                        as first_party). Glob expansion (* and **) is</span>
+<span class="s1">                        as first_party). Glob expansion (`*` and `**`) is</span>
 <span class="s1">                        supported for this option.</span>
 <span class="s1">  -b, --builtin KNOWN_STANDARD_LIBRARY</span>
 <span class="s1">                        Force isort to recognize a module as part of Python'</span>s
@@ -13088,7 +13089,7 @@ If<span class="w"> </span>you<span class="s1">'ve used isort 4 but are new to is
 <span class="w">                        </span>Python<span class="w"> </span><span class="m">3</span><span class="w"> </span>version<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>the<span class="w"> </span>target,<span class="w"> </span>and<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>union
 <span class="w">                        </span>of<span class="w"> </span>all<span class="w"> </span>stdlib<span class="w"> </span>modules<span class="w"> </span>across<span class="w"> </span>versions.<span class="w"> </span>If<span class="w"> </span>auto<span class="w"> </span>is
 <span class="w">                        </span>specified,<span class="w"> </span>the<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>interpreter<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>run
-<span class="w">                        </span>isort<span class="w"> </span><span class="o">(</span>currently:<span class="w"> </span><span class="m">315</span><span class="o">)</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used.
+<span class="w">                        </span>isort<span class="w"> </span><span class="o">(</span>currently:<span class="w"> </span><span class="m">314</span><span class="o">)</span><span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used.
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>

@@ -26,7 +26,7 @@
       
       
       <link rel="icon" href="../../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -12583,7 +12583,7 @@
 </ul>
 <h2 id="psalm-documentation">psalm documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>Psalm.7.0.3@</strong></li>
+<li>Version in MegaLinter: <strong>Psalm.7.0.5@</strong></li>
 <li>Visit <a href="https://psalm.dev" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://psalm.dev/docs/running_psalm/configuration/" target="_blank">How to configure psalm rules</a><ul>
 <li>If custom <code>psalm.xml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/psalm.xml" target="_blank">psalm.xml</a> will be used</li>
@@ -12982,7 +12982,7 @@ Miscellaneous:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=vimeo/psalm</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">7</span>.0.3
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="o">=</span><span class="m">7</span>.0.5
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>vimeo/psalm:<span class="si">${</span><span class="nv">PHP_VIMEO_PSALM_VERSION</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
@@ -13029,7 +13029,7 @@ Miscellaneous:
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PHP_PSALM"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/7.0.3/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/7.0.5/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="c1"># psalm: run php "$INSTALL_DIR/psalm.phar"</span>
@@ -13038,7 +13038,7 @@ curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </sp
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PHP_PSALM"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/7.0.3/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/psalm.phar"</span><span class="w"> </span>https://github.com/vimeo/psalm/releases/download/7.0.5/psalm.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="c1"># psalm: run php "$INSTALL_DIR/psalm.phar"</span>
 </code></pre></div>
