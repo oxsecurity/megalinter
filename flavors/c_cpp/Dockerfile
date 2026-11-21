@@ -456,8 +456,7 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
     && rm -rf /root/.npm \
 # bash-exec installation
     && printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: File:[$1] is not executable"; exit 1; fi' > /usr/bin/bash-exec \
-    && chmod +x /usr/bin/bash-exec
-
+    && chmod +x /usr/bin/bash-exec \
 # shellcheck installation
 # Managed with COPY --link --from=cargo-bin-shellcheck-sarif /out/bin/shellcheck-sarif /usr/bin/shellcheck-sarif
 # Managed with # Next COPY line commented because already managed by another linter
@@ -468,13 +467,12 @@ RUN npm --no-cache install --ignore-scripts --omit=dev --prefix /node-deps-spect
 # jscpd installation
 # cpplint installation
 # stylelint installation
-
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 # dotenv-linter installation
-RUN set -eu; \
+    && set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=x86_64 ;; \
       linux/arm64) ARCH=aarch64 ;; \

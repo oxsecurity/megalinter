@@ -569,15 +569,14 @@ esac \
          for tfm_dir in "$tools_dir"/net[0-9]*; do \
            case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
          done; \
-       done
+       done \
 # stylelint installation
-
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 # dotenv-linter installation
-RUN set -eu; \
+    && set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=x86_64 ;; \
       linux/arm64) ARCH=aarch64 ;; \

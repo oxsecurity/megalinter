@@ -722,20 +722,18 @@ RUN printf '#!/bin/bash \n\nif [[ -x "$1" ]]; then exit 0; else echo "Error: Fil
 # cljstyle installation
     && curl --retry 5 --retry-delay 5 -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle \
     && chmod +x install-cljstyle \
-    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION"
-
+    && ./install-cljstyle --static --version "$CLJ_STYLE_VERSION" \
 # cfn-lint installation
 # jscpd installation
 # cpplint installation
 # stylelint installation
-
 # biome installation
 # hadolint installation
 # Managed with COPY --link --from=hadolint /bin/hadolint /usr/bin/hadolint
 # editorconfig-checker installation
 # Managed with COPY --link --from=editorconfig-checker /usr/bin/editorconfig-checker /usr/bin/editorconfig-checker
 # dotenv-linter installation
-RUN set -eu; \
+    && set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=x86_64 ;; \
       linux/arm64) ARCH=aarch64 ;; \

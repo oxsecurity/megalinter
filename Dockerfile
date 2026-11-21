@@ -992,12 +992,11 @@ esac \
          for tfm_dir in "$tools_dir"/net[0-9]*; do \
            case "$(basename "$tfm_dir")" in "net${keep}".*) ;; *) rm -rf "$tfm_dir" ;; esac; \
          done; \
-       done
+       done \
 # stylelint installation
-
 # biome installation
 # dartanalyzer installation
-RUN case ${TARGETPLATFORM} in \
+    && case ${TARGETPLATFORM} in \
   "linux/amd64")  DART_ARCH=x64   ;; \
   "linux/arm64")  DART_ARCH=arm64 ;; \
 esac \
