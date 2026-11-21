@@ -12626,7 +12626,7 @@
 </ul>
 <h2 id="stylelint-documentation">stylelint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>17.16.0</strong></li>
+<li>Version in MegaLinter: <strong>18.0.0</strong></li>
 <li>Visit <a href="https://stylelint.io" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://stylelint.io/user-guide/configure" target="_blank">How to configure stylelint rules</a><ul>
 <li>If custom <code>.stylelintrc.json</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json" target="_blank">.stylelintrc.json</a> will be used</li>
@@ -12938,13 +12938,13 @@
 
 <span class="w">  </span>Input:<span class="w"> </span>Files<span class="o">(</span>s<span class="o">)</span>,<span class="w"> </span>glob<span class="o">(</span>s<span class="o">)</span>,<span class="w"> </span>or<span class="w"> </span>nothing<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>stdin.
 
-<span class="w">    </span>If<span class="w"> </span>an<span class="w"> </span>input<span class="w"> </span>argument<span class="w"> </span>is<span class="w"> </span>wrapped<span class="w"> </span><span class="k">in</span><span class="w"> </span>quotation<span class="w"> </span>marks,<span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>passed<span class="w"> </span>to
-<span class="w">    </span>globby<span class="w"> </span><span class="k">for</span><span class="w"> </span>cross-platform<span class="w"> </span>glob<span class="w"> </span>support.<span class="w"> </span><span class="s2">"node_modules"</span><span class="w"> </span>are<span class="w"> </span>always<span class="w"> </span>ignored.
+<span class="w">    </span>If<span class="w"> </span>an<span class="w"> </span>input<span class="w"> </span>argument<span class="w"> </span>is<span class="w"> </span>wrapped<span class="w"> </span><span class="k">in</span><span class="w"> </span>quotation<span class="w"> </span>marks,<span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>expanded
+<span class="w">    </span>as<span class="w"> </span>a<span class="w"> </span>glob<span class="w"> </span><span class="k">for</span><span class="w"> </span>cross-platform<span class="w"> </span>support.<span class="w"> </span><span class="s2">"node_modules"</span><span class="w"> </span>are<span class="w"> </span>always<span class="w"> </span>ignored.
 <span class="w">    </span>You<span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>pass<span class="w"> </span>no<span class="w"> </span>input<span class="w"> </span>and<span class="w"> </span>use<span class="w"> </span>stdin,<span class="w"> </span>instead.
 
 <span class="w">  </span>Options:
 
-<span class="w">    </span>--config,<span class="w"> </span>-c<span class="w"> </span>&lt;path_or_module&gt;
+<span class="w">    </span>-c<span class="w"> </span>&lt;path_or_module&gt;,<span class="w"> </span>--config<span class="o">=</span>&lt;path_or_module&gt;
 
 <span class="w">      </span>A<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>JSON,<span class="w"> </span>YAML,<span class="w"> </span>CommonJS,<span class="w"> </span>or<span class="w"> </span>ES<span class="w"> </span>module<span class="o">)</span>,
 <span class="w">      </span>or<span class="w"> </span>a<span class="w"> </span>module<span class="w"> </span>name<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"node_modules"</span><span class="w"> </span>that<span class="w"> </span>points<span class="w"> </span>to<span class="w"> </span>one.<span class="w"> </span>If<span class="w"> </span>no<span class="w"> </span>argument<span class="w"> </span>is
@@ -12959,7 +12959,7 @@
 <span class="w">      </span>The<span class="w"> </span>search<span class="w"> </span>will<span class="w"> </span>begin<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>and<span class="w"> </span>move<span class="w"> </span>up<span class="w"> </span>the<span class="w"> </span>directory
 <span class="w">      </span>tree<span class="w"> </span><span class="k">until</span><span class="w"> </span>a<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>found.
 
-<span class="w">    </span>--config-basedir<span class="w"> </span>&lt;path&gt;
+<span class="w">    </span>--config-basedir<span class="o">=</span>&lt;path&gt;
 
 <span class="w">      </span>An<span class="w"> </span>absolute<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span>that<span class="w"> </span>relative<span class="w"> </span>paths<span class="w"> </span>defining<span class="w"> </span><span class="s2">"extends"</span>,
 <span class="w">      </span><span class="s2">"plugins"</span>,<span class="w"> </span>and<span class="w"> </span><span class="s2">"customSyntax"</span><span class="w"> </span>are<span class="w"> </span>*relative<span class="w"> </span>to*.<span class="w"> </span>Only<span class="w"> </span>necessary<span class="w"> </span><span class="k">if</span><span class="w"> </span>these
@@ -12969,30 +12969,30 @@
 
 <span class="w">      </span>Print<span class="w"> </span>the<span class="w"> </span>configuration<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span>path.<span class="w"> </span>Globs<span class="w"> </span>are<span class="w"> </span>unsupported.
 
-<span class="w">    </span>--ignore-path,<span class="w"> </span>-i<span class="w"> </span>&lt;path&gt;
+<span class="w">    </span>-i<span class="w"> </span>&lt;path&gt;,<span class="w"> </span>--ignore-path<span class="o">=</span>&lt;path&gt;
 
 <span class="w">      </span>A<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>containing<span class="w"> </span>patterns<span class="w"> </span>that<span class="w"> </span>describe<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>ignore.<span class="w"> </span>The
 <span class="w">      </span>path<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>absolute<span class="w"> </span>or<span class="w"> </span>relative<span class="w"> </span>to<span class="w"> </span><span class="s2">"process.cwd()"</span>.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>repeat<span class="w"> </span>the
 <span class="w">      </span>option<span class="w"> </span>to<span class="w"> </span>provide<span class="w"> </span>multiple<span class="w"> </span>paths.<span class="w"> </span>By<span class="w"> </span>default,<span class="w"> </span>Stylelint<span class="w"> </span>looks<span class="w"> </span><span class="k">for</span>
 <span class="w">      </span><span class="s2">".stylelintignore"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"process.cwd()"</span>.<span class="w"> </span>Multiple<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>set.
 
-<span class="w">    </span>--ignore-pattern,<span class="w"> </span>--ip<span class="w"> </span>&lt;pattern&gt;
+<span class="w">    </span>--ignore-pattern<span class="o">=</span>&lt;pattern&gt;
 
 <span class="w">      </span>A<span class="w"> </span>pattern<span class="w"> </span>of<span class="w"> </span>files<span class="w"> </span>to<span class="w"> </span>ignore<span class="w"> </span><span class="o">(</span><span class="k">in</span><span class="w"> </span>addition<span class="w"> </span>to<span class="w"> </span>those<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">".stylelintignore"</span><span class="o">)</span>.
 <span class="w">      </span>Multiple<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>set.
 
-<span class="w">    </span>--fix<span class="w"> </span><span class="o">[</span>&lt;mode&gt;<span class="o">]</span>
+<span class="w">    </span>--fix<span class="o">[=</span>&lt;mode&gt;<span class="o">]</span>
 
 <span class="w">      </span>Automatically<span class="w"> </span>fix<span class="w"> </span>problems<span class="w"> </span>of<span class="w"> </span>certain<span class="w"> </span>rules.<span class="w"> </span>The<span class="w"> </span>modes<span class="w"> </span>are<span class="w"> </span>as<span class="w"> </span>follows:
 
 <span class="w">        </span>strict<span class="w">       </span>only<span class="w"> </span>fixing<span class="w"> </span>when<span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>no<span class="w"> </span>syntax<span class="w"> </span>errors<span class="w"> </span><span class="o">(</span>default<span class="o">)</span>
 <span class="w">        </span>lax<span class="w">          </span>attempting<span class="w"> </span>to<span class="w"> </span>fix<span class="w"> </span>as<span class="w"> </span>much<span class="w"> </span>as<span class="w"> </span>possible<span class="w"> </span>even<span class="w"> </span>with<span class="w"> </span>syntax<span class="w"> </span>errors
 
-<span class="w">    </span>--compute-edit-info,<span class="w"> </span>--cei
+<span class="w">    </span>--compute-edit-info
 
 <span class="w">      </span>Compute<span class="w"> </span>edit<span class="w"> </span>information<span class="w"> </span><span class="k">for</span><span class="w"> </span>fixable<span class="w"> </span>problems.
 
-<span class="w">    </span>--custom-syntax<span class="w"> </span>&lt;name_or_path&gt;
+<span class="w">    </span>--custom-syntax<span class="o">=</span>&lt;name_or_path&gt;
 
 <span class="w">      </span>A<span class="w"> </span>module<span class="w"> </span>name<span class="w"> </span>or<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>JS<span class="w"> </span>file<span class="w"> </span>exporting<span class="w"> </span>a<span class="w"> </span>PostCSS-compatible<span class="w"> </span>syntax.
 
@@ -13000,15 +13000,15 @@
 
 <span class="w">      </span>Accept<span class="w"> </span>stdin<span class="w"> </span>input<span class="w"> </span>even<span class="w"> </span><span class="k">if</span><span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>empty.
 
-<span class="w">    </span>--stdin-filename<span class="w"> </span>&lt;name&gt;
+<span class="w">    </span>--stdin-filename<span class="o">=</span>&lt;name&gt;
 
 <span class="w">      </span>A<span class="w"> </span>filename<span class="w"> </span>to<span class="w"> </span>assign<span class="w"> </span>stdin<span class="w"> </span>input.
 
-<span class="w">    </span>--ignore-disables,<span class="w"> </span>--id
+<span class="w">    </span>--ignore-disables
 
 <span class="w">      </span>Ignore<span class="w"> </span><span class="s2">"stylelint-disable"</span><span class="w"> </span>comments.
 
-<span class="w">    </span>--disable-default-ignores,<span class="w"> </span>--di
+<span class="w">    </span>--disable-default-ignores
 
 <span class="w">      </span>Allow<span class="w"> </span>linting<span class="w"> </span>of<span class="w"> </span><span class="s2">"node_modules"</span>.
 
@@ -13019,7 +13019,7 @@
 <span class="w">      </span>stored<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">"./.stylelintcache"</span>.<span class="w"> </span>To<span class="w"> </span>adjust<span class="w"> </span>this,<span class="w"> </span>use<span class="w"> </span><span class="s2">"--cache-location"</span>.
 <span class="w">      </span>Cache<span class="w"> </span>is<span class="w"> </span>disabled<span class="w"> </span>by<span class="w"> </span>default.
 
-<span class="w">    </span>--cache-location<span class="w"> </span>&lt;path&gt;
+<span class="w">    </span>--cache-location<span class="o">=</span>&lt;path&gt;
 
 <span class="w">      </span>A<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>cache<span class="w"> </span>location.<span class="w"> </span>If<span class="w"> </span>a
 <span class="w">      </span>directory<span class="w"> </span>is<span class="w"> </span>specified,<span class="w"> </span>a<span class="w"> </span>cache<span class="w"> </span>file<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>created<span class="w"> </span>inside<span class="w"> </span>the<span class="w"> </span>specified
@@ -13029,7 +13029,7 @@
 <span class="w">      </span>on<span class="w"> </span>*nix<span class="w"> </span>systems<span class="w"> </span>or<span class="w"> </span><span class="s2">"\" on Windows. Otherwise the path will be assumed to</span>
 <span class="s2">      be a file.</span>
 
-<span class="s2">    --cache-strategy &lt;strategy&gt;</span>
+<span class="s2">    --cache-strategy=&lt;strategy&gt;</span>
 
 <span class="s2">      A strategy for the cache to use for detecting changed files. Either one of:</span>
 
@@ -13041,7 +13041,7 @@
 <span class="s2">      happen during git operations like "</span>git<span class="w"> </span>clone<span class="s2">" because git does not track file</span>
 <span class="s2">      modification time.</span>
 
-<span class="s2">    --formatter, -f &lt;formatter&gt;</span>
+<span class="s2">    -f &lt;formatter&gt;, --formatter=&lt;formatter&gt;</span>
 
 <span class="s2">      An output formatter. The variants are as follows:</span>
 
@@ -13052,11 +13052,11 @@
 <span class="s2">        unix         C compiler-like format</span>
 <span class="s2">        verbose      extend "</span>string<span class="s2">" to include a file list and a tally</span>
 
-<span class="s2">    --custom-formatter &lt;path_or_module&gt;</span>
+<span class="s2">    --custom-formatter=&lt;path_or_module&gt;</span>
 
 <span class="s2">      A path to a JS file or module name exporting a custom formatting function.</span>
 
-<span class="s2">    --quiet, -q</span>
+<span class="s2">    -q, --quiet</span>
 
 <span class="s2">      Only register problems for rules with an "</span>error<span class="s2">"-level severity (ignore</span>
 <span class="s2">      "</span>warning<span class="s2">"-level).</span>
@@ -13073,57 +13073,60 @@
 
 <span class="s2">      Force enable/disable the validation of the rules' options.</span>
 
-<span class="s2">    --report-needless-disables, --rd</span>
+<span class="s2">    --report-needless-disables</span>
 
 <span class="s2">      Also report errors for "</span>stylelint-disable<span class="s2">" comments that are not blocking</span>
 <span class="s2">      a lint warning. The process will exit with code 2 if needless disables are found.</span>
 
-<span class="s2">    --report-invalid-scope-disables, --risd</span>
+<span class="s2">    --report-invalid-scope-disables</span>
 
 <span class="s2">      Report "</span>stylelint-disable<span class="s2">" comments that used for rules that don't exist</span>
 <span class="s2">      within the configuration object. The process will exit with code 2 if invalid</span>
 <span class="s2">      scope disables are found.</span>
 
-<span class="s2">    --report-descriptionless-disables, --rdd</span>
+<span class="s2">    --report-descriptionless-disables</span>
 
 <span class="s2">      Report "</span>stylelint-disable<span class="s2">" comments without a description. The process will</span>
 <span class="s2">      exit with code 2 if descriptionless disables are found.</span>
 
-<span class="s2">    --max-warnings, --mw &lt;number&gt;</span>
+<span class="s2">    --max-warnings=&lt;number&gt;</span>
 
 <span class="s2">      The number of warnings above which the process will exit with code 2.</span>
 <span class="s2">      Useful when setting "</span>defaultSeverity<span class="s2">" to "</span>warning<span class="s2">" and expecting the process</span>
 <span class="s2">      to fail on warnings (e.g. CI build).</span>
 
-<span class="s2">    --output-file, -o &lt;path&gt;</span>
+<span class="s2">    -o &lt;path&gt;, --output-file=&lt;path&gt;</span>
 
 <span class="s2">      A file path to write a report.</span>
 
-<span class="s2">    --allow-empty-input, --aei</span>
+<span class="s2">    --allow-empty-input</span>
 
 <span class="s2">      When a glob pattern matches no files, the process will exit without throwing an error.</span>
 
-<span class="s2">    --suppress [&lt;rule&gt;]</span>
+<span class="s2">    --suppress[=&lt;rule&gt;]</span>
+
 <span class="s2">      Suppress problems and record them in a file. If no rule is specified,</span>
 <span class="s2">      all problems are suppressed. Otherwise, only problems with the given</span>
-<span class="s2">      rules are suppressed, e.g., "</span>--suppress<span class="w"> </span>rule1<span class="w"> </span>--suppress<span class="w"> </span>rule2<span class="s2">".</span>
+<span class="s2">      rules are suppressed, e.g., "</span>--suppress<span class="o">=</span>rule1<span class="w"> </span>--suppress<span class="o">=</span>rule2<span class="s2">".</span>
 <span class="s2">      See also "</span>--suppress-location<span class="s2">".</span>
 
-<span class="s2">    --suppress-location &lt;path&gt;</span>
+<span class="s2">    --suppress-location=&lt;path&gt;</span>
 
 <span class="s2">      A path to a file or directory to be used for the suppressions file location. If a</span>
 <span class="s2">      directory is specified, a suppressions file will be created inside the specified</span>
 <span class="s2">      folder, with the name "</span>stylelint-suppressions.json<span class="s2">".</span>
 
-<span class="s2">    --globby-options, --go &lt;json&gt;</span>
+<span class="s2">    --globby-options=&lt;json&gt;</span>
 
-<span class="s2">      Options in JSON format passed to globby.</span>
+<span class="s2">      Options in JSON format used to match the input globs. Supported options are</span>
+<span class="s2">      "</span>braceExpansion<span class="s2">", "</span>caseSensitiveMatch<span class="s2">", "</span>dot<span class="s2">", "</span>extglob<span class="s2">", "</span>followSymbolicLinks<span class="s2">"</span>
+<span class="s2">      and "</span>ignore<span class="s2">".</span>
 
-<span class="s2">    --version, -v</span>
+<span class="s2">    -v, --version</span>
 
 <span class="s2">      Show the version.</span>
 
-<span class="s2">    --help, -h</span>
+<span class="s2">    -h, --help</span>
 
 <span class="s2">      Show the help.</span>
 </code></pre></div>
@@ -13131,21 +13134,18 @@
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=npm depName=stylelint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_VERSION</span><span class="o">=</span><span class="m">17</span>.16.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_VERSION</span><span class="o">=</span><span class="m">18</span>.0.0
 <span class="c"># renovate: datasource=npm depName=stylelint-config-standard</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_CONFIG_STANDARD_VERSION</span><span class="o">=</span><span class="m">40</span>.0.0
-<span class="c"># renovate: datasource=npm depName=stylelint-config-sass-guidelines</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION</span><span class="o">=</span><span class="m">13</span>.0.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_CONFIG_STANDARD_VERSION</span><span class="o">=</span><span class="m">41</span>.0.0
 <span class="c"># renovate: datasource=npm depName=stylelint-scss</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_SCSS_VERSION</span><span class="o">=</span><span class="m">7</span>.4.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NPM_STYLELINT_SCSS_VERSION</span><span class="o">=</span><span class="m">7</span>.5.0
 </code></pre></div></li>
 </ul>
 <ul>
 <li>NPM packages (node.js):<ul>
-<li><a href="https://www.npmjs.com/package/stylelint/v/17.16.0">stylelint@17.16.0</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-config-standard/v/40.0.0">stylelint-config-standard@40.0.0</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/13.0.0">stylelint-config-sass-guidelines@13.0.0</a></li>
-<li><a href="https://www.npmjs.com/package/stylelint-scss/v/7.4.0">stylelint-scss@7.4.0</a></li>
+<li><a href="https://www.npmjs.com/package/stylelint/v/18.0.0">stylelint@18.0.0</a></li>
+<li><a href="https://www.npmjs.com/package/stylelint-config-standard/v/41.0.0">stylelint-config-standard@41.0.0</a></li>
+<li><a href="https://www.npmjs.com/package/stylelint-scss/v/7.5.0">stylelint-scss@7.5.0</a></li>
 </ul>
 </li>
 </ul>
@@ -13191,7 +13191,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/CSS_STYLELINT"</span>
-npm<span class="w"> </span>install<span class="w"> </span>--prefix<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--ignore-scripts<span class="w"> </span>--no-audit<span class="w"> </span>--no-fund<span class="w"> </span><span class="s2">"stylelint@17.16.0"</span><span class="w"> </span><span class="s2">"stylelint-config-standard@40.0.0"</span><span class="w"> </span><span class="s2">"stylelint-config-sass-guidelines@13.0.0"</span><span class="w"> </span><span class="s2">"stylelint-scss@7.4.0"</span>
+npm<span class="w"> </span>install<span class="w"> </span>--prefix<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span>--ignore-scripts<span class="w"> </span>--no-audit<span class="w"> </span>--no-fund<span class="w"> </span><span class="s2">"stylelint@18.0.0"</span><span class="w"> </span><span class="s2">"stylelint-config-standard@41.0.0"</span><span class="w"> </span><span class="s2">"stylelint-scss@7.5.0"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/node_modules/.bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">NODE_PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/node_modules"</span>
 </code></pre></div>
@@ -13212,7 +13212,7 @@ Resolutions:
         - command: "npm install stylelint-order"
           cwd: "root"
           continue_if_failed: false
-  - Note: `stylelint-scss` and `stylelint-config-sass-guidelines` are already bundled and do not need to be re-installed.
+  - Note: `stylelint-scss` is already bundled and does not need to be re-installed. `stylelint-config-sass-guidelines` is no longer bundled (it does not support stylelint 18): install it yourself if you still need it.
   - Or install your project's dependencies and run stylelint from the workspace binary:
       CSS_STYLELINT_PRE_COMMANDS:
         - command: yarn install --frozen-lockfile --ignore-scripts
@@ -13232,7 +13232,7 @@ Resolutions:
         - command: "npm install stylelint-config-recommended"
           cwd: "root"
           continue_if_failed: false
-  - Note: `stylelint-config-standard` and `stylelint-config-sass-guidelines` are already bundled.
+  - Note: `stylelint-config-standard` is already bundled. `stylelint-config-sass-guidelines` is no longer bundled (it does not support stylelint 18).
   - Verify the config name in `.stylelintrc.*` matches the published npm package name exactly.
 </code></pre></div>
 <h3 id="css_stylelint_error_custom_syntax_not_found">CSS_STYLELINT_ERROR_CUSTOM_SYNTAX_NOT_FOUND</h3>
