@@ -81,7 +81,8 @@ Add the linter entry with **as many properties as possible**. Even though the JS
 **SARIF support (if available):**
 - `can_output_sarif: true`
 - `cli_sarif_args` — with `{{SARIF_OUTPUT_FILE}}` placeholder
-- No SARIF output: `sarif_text_regex` (+ `sarif_text_levels`, `sarif_text_rule_id`) converts the text output with no Python code, and `sarif_whole_output: true` keeps a result when a failed run gives none
+- SARIF is **mandatory** for an active linter (`make megalinter-build` fails otherwise; only `disabled: true` is exempt)
+- No SARIF output: `sarif_text_regex` (+ `sarif_text_levels`, `sarif_text_rule_id`, `sarif_text_default_message`) converts the text output with no Python code, `sarif_unified_diff: true` converts the unified diff printed by a formatter, and `sarif_whole_output: true` keeps a result when a failed run gives none
 
 **Behavior flags:**
 - `is_formatter: true` — if it's a formatter

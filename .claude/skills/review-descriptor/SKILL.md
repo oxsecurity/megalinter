@@ -49,7 +49,7 @@ For each linter entry, audit against the **full property list** below. Report a 
 - [ ] `cli_lint_errors_regex` — set and matches actual linter output format
 
 ## 5. SARIF Support
-- [ ] If linter supports SARIF: `can_output_sarif: true`, `cli_sarif_args` with `{{SARIF_OUTPUT_FILE}}`
+- [ ] `can_output_sarif: true` (mandatory unless `disabled: true`): `cli_sarif_args` with `{{SARIF_OUTPUT_FILE}}` when the linter outputs SARIF, otherwise `sarif_text_regex` / `sarif_unified_diff` / `sarif_whole_output`
 - [ ] If not: confirmed that tool doesn't support SARIF output (**search the internet** to verify)
 
 ## 6. Install & Platforms

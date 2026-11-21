@@ -186,6 +186,11 @@ linters:
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
+    can_output_sarif: true
+    sarif_text_regex: "^(?P<path>.+?) is not correctly formatted!$"
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as rstfmt expects
+    sarif_whole_output: true
     test_folder: rst_rstfmt
     examples:
       - "rstfmt --check myfile.rst"

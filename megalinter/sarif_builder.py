@@ -22,6 +22,8 @@ UNIFIED_DIFF_REGEX = re.compile(
     r"^--- (?P<path>[^\t\n]+)(?:\t[^\n]*)?\n\+\+\+ (?P<new_path>[^\n]*)\n@@ -(?P<line>\d+)",
     re.MULTILINE,
 )
+# isort names the sides of its diff "<file>:before" and "<file>:after"
+DIFF_SIDE_SUFFIX_REGEX = re.compile(r":(?:before|after)$")
 
 
 def to_sarif_uri(path, workspace=None):
@@ -91,13 +93,15 @@ def regex_output_to_sarif(
     default_level=LEVEL_ERROR,
     levels=None,
     url=None,
+    default_message=None,
+    unified_diff=False,
 ):
     run = SarifRunBuilder().init_simple(tool_name, url=url)
     if regex:
         levels = levels or {}
         for match in re.finditer(regex, strip_ansi(stdout), re.MULTILINE):
             groups = match.groupdict()
-            message_text = (groups.get("message") or "").strip()
+            message_text = (groups.get("message") or default_message or "").strip()
             if groups.get("cell"):
                 message_text = f"cell {groups['cell']}: {message_text}"
             level = levels.get(groups.get("severity"), default_level)
@@ -116,6 +120,15 @@ def regex_output_to_sarif(
                     ),
                 )
             )
+    if unified_diff:
+        for result in unified_diff_to_results(
+            stdout,
+            workspace,
+            default_level,
+            default_message or f"The file is not formatted as {tool_name} expects",
+            default_rule_id,
+        ):
+            run.add_result(result)
     return SarifBuilder().add_run(run)
 
 
@@ -141,11 +154,15 @@ def add_whole_output_result(
 def unified_diff_to_results(stdout, workspace, level, message_text, rule_id):
     results = []
     for match in UNIFIED_DIFF_REGEX.finditer(strip_ansi(stdout)):
-        path = match.group("path").strip()
+        path = DIFF_SIDE_SUFFIX_REGEX.sub("", match.group("path").strip())
+        new_path = DIFF_SIDE_SUFFIX_REGEX.sub(
+            "", match.group("new_path").split("\t")[0].strip()
+        )
+        # shfmt compares a "<file>.orig" copy with the file
+        if path == new_path + ".orig":
+            path = new_path
         # git style diffs prefix the paths with a/ and b/ (or old/ and new/)
-        if path.startswith(("a/", "old/")) and match.group("new_path").startswith(
-            ("b/", "new/")
-        ):
+        if path.startswith(("a/", "old/")) and new_path.startswith(("b/", "new/")):
             path = path.split("/", 1)[1]
             # Some tools remove the leading slash of an absolute path
             if workspace and ("/" + path).startswith(

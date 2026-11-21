@@ -90,6 +90,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Findings keep the severity given by the linter (ex: luacheck warnings, helm infos), so the **error count** shown with SARIF enabled can be lower than the number of findings
     - When a linter fails without a finding MegaLinter can read (ex: invalid configuration), the SARIF report holds one result with the message of the linter
     - **jsonlint** now reports all the invalid files with SARIF enabled, instead of stopping at the first one
+  - **SARIF output** is now available for the **17 remaining formatters**, so every active linter supports **`SARIF_REPORTER: true`**, in the Docker images and in **native mode**:
+    - **Python**: **black**, **isort**, **ruff format**
+    - **JavaScript, TypeScript, JSON and YAML**: **prettier**
+    - **Infrastructure**: **terraform fmt**, **tofu fmt**
+    - **Other languages**: **shfmt**, **snakefmt**, **rstfmt**, **csharpier**, **dotnet-format** (C# and VB.NET), **markdown-table-formatter**, **powershell formatter**
+    - Each unformatted file is a **note**, located at its first change when the tool reports one. Syntax and parse errors stay errors
+    - Notes are counted as warnings, so the **error count** shown with SARIF enabled is lower than the number of unformatted files
+    - **powershell formatter** has no check mode and never fails, so its SARIF report holds no result
 
 - Fixes
 
@@ -143,6 +151,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Linters in `file` lint mode now gather the SARIF of all their files in `Linter.after_lint_files()` (reports are merged with their rules, `RoslynatorLinter` no longer has its own merge), and the log of a file is the readable version of its SARIF
   - New `Linter.after_lint_files()` hook, called once after all the files are linted: the base class uses it to write the merged SARIF reports of the `file` lint mode. SARIF results without `locations` are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their `bad` test folder, so they are active
   - SARIF for the linters whose output is text: new descriptor properties **`sarif_text_regex`** (named groups `path`, `line`, `column`, `end_column`, `rule`, `severity`, `message`, `cell`), `sarif_text_levels`, `sarif_text_default_level`, `sarif_text_rule_id` and `sarif_whole_output`, read by the default `Linter.convert_output_to_sarif()` (17 linters need no Python code). `sarif_whole_output` adds one result without location holding the output when a failed run gives no result. New `sarif_builder` helpers (`regex_output_to_sarif`, `add_whole_output_result`, `unified_diff_to_results`, `to_one_based`, `file_uri_to_path`, `sarif_from_results`) and `utils.find_json_values()`. Linters with a JSON or structured output have a converter in their class (mypy, pyright, v8r, kubeconform, php-cs-fixer, gherkin-lint, tekton-lint, rst-lint, proselint, lychee, tofu validate, arm-ttk, stylua, npm-package-json-lint, helm, snakemake, scalafix, cljstyle). The regular expressions of the descriptors are tested as shipped in `sarif_text_converters_test.py`. The SARIF built by MegaLinter is validated against the **SARIF 2.1.0 JSON schema** (vendored in `.automation/test/sarif/`), by the unit tests of the converters and by `test_report_sarif` of each linter whose SARIF MegaLinter builds
+  - SARIF for the formatters: new descriptor properties **`sarif_unified_diff`** (one result per file of the unified diff printed by the linter, at its first hunk) and **`sarif_text_default_message`**, read by the default `Linter.convert_output_to_sarif()` and `sarif_builder.regex_output_to_sarif()`. `unified_diff_to_results()` reads the `<file>:before` sides of isort and the `<file>.orig` copy of shfmt. The regular expressions of the formatters are tested as shipped in `FormatterConvertersTest`
+  - SARIF is **mandatory** for every active linter: `build.py` fails (`validate_sarif_support()`, built on `linter_factory.list_linters_without_sarif()`) and `sarif_coverage_test.py` fails when one declares no `can_output_sarif`. Only a `disabled` linter is exempt. `test_report_sarif` checks that the SARIF of a formatter holds a result, as its notes are not counted as errors
 
 - CI
 

@@ -250,6 +250,11 @@ linters:
       - "-d"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "---.*\\n.*\\+\\+\\+.*"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as shfmt expects
+    sarif_whole_output: true
     help_command_return_code: 0
     test_folder: shell_shfmt
     examples:
