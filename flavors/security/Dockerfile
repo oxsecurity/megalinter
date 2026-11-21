@@ -124,7 +124,7 @@ ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.121.1
+ARG REPOSITORY_GRYPE_VERSION=0.121.2
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r3
 # renovate: datasource=npm depName=secretlint
