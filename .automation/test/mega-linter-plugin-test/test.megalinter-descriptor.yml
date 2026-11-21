@@ -9,4 +9,6 @@ linters:
       dockerfile:
         - RUN npm install jsonlint -g && echo "This is my test MegaLinter plugin!"
     linter_name: jsonlint
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_url: https://github.com/zaach/jsonlint
