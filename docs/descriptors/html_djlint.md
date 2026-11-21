@@ -11,7 +11,7 @@ description: How to use djlint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/djlint/djLint?sort=semver)](https://github.com/djlint/djLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/djlint/djLint)](https://github.com/djlint/djLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/djlint/djLint)](https://github.com/djlint/djLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/djlint/djLint)](https://github.com/djlint/djLint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/djlint/djLint?sort=semver)](https://github.com/djlint/djLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/djlint/djLint)](https://github.com/djlint/djLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/djlint/djLint)](https://github.com/djlint/djLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/djlint/djLint)](https://github.com/djlint/djLint/graphs/contributors/)
 
 **djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
