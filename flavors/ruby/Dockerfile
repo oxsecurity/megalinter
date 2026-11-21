@@ -137,7 +137,7 @@ ARG NPM_JSCPD_VERSION=5.4.2
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=17.16.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-config-sass-guidelines
 ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
 # renovate: datasource=npm depName=stylelint-scss
