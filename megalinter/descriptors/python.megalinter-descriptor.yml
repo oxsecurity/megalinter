@@ -1000,7 +1000,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.17.3
+          ARG PIP_RUFF_VERSION=0.17.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     native_install:
@@ -1083,7 +1083,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ruff
-          ARG PIP_RUFF_VERSION=0.17.3
+          ARG PIP_RUFF_VERSION=0.17.4
       pip:
         - ruff==${PIP_RUFF_VERSION}
     native_install:
