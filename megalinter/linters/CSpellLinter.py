@@ -184,5 +184,5 @@ def remap_file_names_results(sarif_log, temp_file_name, files, workspace):
                 artifact["uri"] = to_sarif_uri(files[index], workspace)
                 location.pop("region", None)
                 result["message"]["text"] += " (in the file name)"
-                remapped_results.append(result)
+            remapped_results.append(result)
         run.results = remapped_results

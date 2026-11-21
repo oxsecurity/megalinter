@@ -19,12 +19,14 @@ LEVEL_NOTE = "note"
 WHOLE_OUTPUT_MAX_LENGTH = 4000
 
 UNIFIED_DIFF_REGEX = re.compile(
-    r"^--- (?P<path>[^\t\n]+)(?:\t[^\n]*)?\n\+\+\+ [^\n]*\n@@ -(?P<line>\d+)",
+    r"^--- (?P<path>[^\t\n]+)(?:\t[^\n]*)?\n\+\+\+ (?P<new_path>[^\n]*)\n@@ -(?P<line>\d+)",
     re.MULTILINE,
 )
 
 
 def to_sarif_uri(path, workspace=None):
+    if path is None:
+        return None
     uri = str(path).replace("\\", "/")
     if workspace:
         workspace_prefix = (
@@ -140,7 +142,10 @@ def unified_diff_to_results(stdout, workspace, level, message_text, rule_id):
     results = []
     for match in UNIFIED_DIFF_REGEX.finditer(strip_ansi(stdout)):
         path = match.group("path").strip()
-        if path.startswith(("a/", "old/")):
+        # git style diffs prefix the paths with a/ and b/ (or old/ and new/)
+        if path.startswith(("a/", "old/")) and match.group("new_path").startswith(
+            ("b/", "new/")
+        ):
             path = path.split("/", 1)[1]
             # Some tools remove the leading slash of an absolute path
             if workspace and ("/" + path).startswith(

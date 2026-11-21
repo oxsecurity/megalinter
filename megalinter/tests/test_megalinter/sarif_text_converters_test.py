@@ -599,7 +599,7 @@ class JsonConvertersTest(unittest.TestCase):
         region = results_of(sarif_builder)[0]["locations"][0]["physicalLocation"][
             "region"
         ]
-        self.assertEqual(region["endColumn"], 6)
+        self.assertEqual(region["endColumn"], 7)
         self.assertTrue(
             results_of(sarif_builder)[1]["message"]["text"].endswith("see docs")
         )
@@ -792,7 +792,7 @@ class JsonConvertersTest(unittest.TestCase):
         region = results_of(sarif_builder)[0]["locations"][0]["physicalLocation"][
             "region"
         ]
-        self.assertEqual(region["endColumn"], 5)
+        self.assertEqual(region["endColumn"], 6)
 
     def test_arm_ttk(self):
         stdout = json.dumps(
@@ -994,6 +994,23 @@ class TextConvertersTest(unittest.TestCase):
         )
 
 
+class DiffPrefixTest(unittest.TestCase):
+    def test_a_directory_named_a_is_kept_when_the_diff_has_no_git_prefixes(self):
+        results = unified_diff_to_results(
+            "--- a/src/Foo.scala\n+++ <expected fix>\n@@ -3,7 +3,6 @@\n",
+            WORKSPACE,
+            "error",
+            "m",
+            "r",
+        )
+        self.assertEqual(
+            results[0].result["locations"][0]["physicalLocation"]["artifactLocation"][
+                "uri"
+            ],
+            "a/src/Foo.scala",
+        )
+
+
 class CoreHelpersTest(unittest.TestCase):
     def test_find_json_values_returns_every_top_level_value(self):
         values = utils.find_json_values('log [1, 2]\n{"a": [3]}\nnoise [] {"b": 1}')
@@ -1050,7 +1067,11 @@ class CoreHelpersTest(unittest.TestCase):
         )
         self.assertEqual(
             [(r[2], r[3]) for r in summary(sarif_builder)],
-            [("exmaple_file.md", None), ("README.md", 4)],
+            [
+                ("exmaple_file.md", None),
+                ("abc-megalinter_file_names_cspell.txt", 9),
+                ("README.md", 4),
+            ],
         )
         self.assertTrue(
             results_of(sarif_builder)[0]["message"]["text"].endswith(

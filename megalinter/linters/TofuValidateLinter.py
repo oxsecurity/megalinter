@@ -41,6 +41,7 @@ class TofuValidateLinter(Linter):
         return_code = 0
         outputs = []
         self.module_outputs = []
+        self.stdout_human = None
         self.collecting_modules = True
         for module_directory in self.get_module_directories():
             module_return_code, output = self.process_module(module_directory)
@@ -52,6 +53,8 @@ class TofuValidateLinter(Linter):
         # The SARIF is built once for all the modules, from their outputs
         self.last_return_code = return_code
         self.manage_sarif_output("\n".join(outputs))
+        if self.stdout_human:
+            return return_code, self.stdout_human
         return return_code, "\n".join(outputs)
 
     def manage_sarif_output(self, return_stdout):
@@ -134,8 +137,7 @@ def tofu_validate_json_to_sarif(module_outputs, workspace=None):
                         start_line=to_one_based(start.get("line")),
                         start_column=to_one_based(start.get("column")),
                         end_line=to_one_based(end.get("line")),
-                        # The end of the range is exclusive
-                        end_column=to_one_based(end.get("column", 0) - 1),
+                        end_column=to_one_based(end.get("column")),
                     )
                 )
     return SarifBuilder().add_run(run)

@@ -70,7 +70,7 @@ def pyright_json_to_sarif(stdout, workspace=None):
                     start_line=to_one_based(start.get("line"), zero_based=True),
                     start_column=to_one_based(start.get("character"), zero_based=True),
                     end_line=to_one_based(end.get("line"), zero_based=True),
-                    end_column=to_one_based(end.get("character")),
+                    end_column=to_one_based(end.get("character"), zero_based=True),
                 )
             )
     return SarifBuilder().add_run(run)

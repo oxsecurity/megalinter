@@ -53,7 +53,7 @@ def mypy_json_to_sarif(stdout, workspace=None):
                 # mypy columns are 0-based, and its end column is exclusive
                 start_column=to_one_based(diagnostic.get("column"), zero_based=True),
                 end_line=to_one_based(diagnostic.get("end_line")),
-                end_column=to_one_based(diagnostic.get("end_column")),
+                end_column=to_one_based(diagnostic.get("end_column"), zero_based=True),
             )
         )
     return SarifBuilder().add_run(run)
