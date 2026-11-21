@@ -621,6 +621,38 @@ def test_linter_report_tap(linter, test_self):
                 )
 
 
+# Linters in project mode are run on the bad folder. So are the linters that are only
+# active in a workspace holding a sub-directory (ex: actionlint on .github/workflows) or
+# a file (ex: .codespellrc), when only the bad folder holds it
+def find_sarif_test_workspace(linter, workspace):
+    bad_workspace = workspace + os.path.sep + "bad"
+    if not os.path.isdir(bad_workspace):
+        return workspace
+    if linter.cli_lint_mode == "project":
+        return bad_workspace
+    sub_directory = linter.files_sub_directory
+    if (
+        sub_directory
+        and not os.path.isdir(os.path.join(workspace, sub_directory))
+        and os.path.isdir(os.path.join(bad_workspace, sub_directory))
+    ):
+        return bad_workspace
+    activation_files = [
+        file_name.split(":")[0] for file_name in linter.active_only_if_file_found
+    ]
+    if (
+        activation_files
+        and not any(
+            os.path.isfile(os.path.join(workspace, f)) for f in activation_files
+        )
+        and any(
+            os.path.isfile(os.path.join(bad_workspace, f)) for f in activation_files
+        )
+    ):
+        return bad_workspace
+    return workspace
+
+
 # Test that the linter provides a SARIF output if it's configured like that
 def test_linter_report_sarif(linter, test_self):
     if (
@@ -633,12 +665,7 @@ def test_linter_report_sarif(linter, test_self):
     workspace = (
         config.get(linter.request_id, "DEFAULT_WORKSPACE") + os.path.sep + test_folder
     )
-    # A linter limited to a sub-directory (ex: actionlint on .github/workflows)
-    # is only active when the workspace contains it, like the "bad" folder does
-    if (
-        linter.cli_lint_mode == "project" or bool(linter.files_sub_directory)
-    ) and os.path.isdir(workspace + os.path.sep + "bad"):
-        workspace += os.path.sep + "bad"
+    workspace = find_sarif_test_workspace(linter, workspace)
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
     # Call linter
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
@@ -698,7 +725,8 @@ def test_linter_report_sarif(linter, test_self):
             # per run); individual clones are "warning". djlint reports "warning"
             # (codes not starting with E), rubocop reports "note" for its convention
             # cops, trufflehog reports "error" only for verified secrets (not
-            # checked by the tests, as the fixtures are not real credentials)
+            # checked by the tests, as the fixtures are not real credentials).
+            # clippy lints, dart infos and vale suggestions are not errors
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
                 "REPOSITORY_OSV_SCANNER",
@@ -707,6 +735,9 @@ def test_linter_report_sarif(linter, test_self):
                 "HTML_DJLINT",
                 "RUBY_RUBOCOP",
                 "REPOSITORY_TRUFFLEHOG",
+                "RUST_CLIPPY",
+                "DART_DARTANALYZER",
+                "SPELL_VALE",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
@@ -715,7 +746,11 @@ def test_linter_report_sarif(linter, test_self):
                     + f"SARIF:{str(sarif_content)}",
                 )
 
-            if linter.cli_lint_warnings_count is not None:
+            # stylelint and vale fixtures do not give several warnings
+            if linter.cli_lint_warnings_count is not None and linter.name not in [
+                "CSS_STYLELINT",
+                "SPELL_VALE",
+            ]:
                 test_self.assertTrue(
                     linter.total_number_warnings > 1,
                     f"Missing multiple sarif warnings in {linter.name}"

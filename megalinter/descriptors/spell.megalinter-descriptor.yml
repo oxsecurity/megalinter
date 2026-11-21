@@ -180,7 +180,10 @@ linters:
   - class: ValeLinter
     linter_name: vale
     name: SPELL_VALE
-    can_output_sarif: false
+    can_output_sarif: true
+    # Official SARIF template of Vale (https://docs.vale.sh/topics/templates#creating-a-sarif-template)
+    cli_sarif_args:
+      - "--output={{DEFAULT_RULES_LOCATION}}/vale-sarif.tmpl"
     linter_spdx_license: MIT
     lint_all_other_linters_files: false
     file_extensions:
@@ -415,7 +418,8 @@ linters:
         - linux/arm64
 
   # codespell
-  - linter_name: codespell
+  - class: CodespellLinter
+    linter_name: codespell
     name: SPELL_CODESPELL
     linter_text: |
       Fix common misspellings in source code and other text files.
@@ -424,7 +428,7 @@ linters:
 
       See the [codespell documentation](https://github.com/codespell-project/codespell) for details.
     test_folder: spell_codespell
-    can_output_sarif: false
+    can_output_sarif: true
     descriptor_flavors:
       - all_flavors
       - cupcake
