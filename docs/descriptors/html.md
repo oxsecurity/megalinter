@@ -11,7 +11,7 @@ description: djlint, htmlhint are available to analyze HTML files in MegaLinter
 
 | Linter                                                                   | Additional                                                                                                                                                                        |
 |--------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**djlint**](html_djlint.md)<br/>[_HTML_DJLINT_](html_djlint.md)         | [![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint)                                                          |
+| [**djlint**](html_djlint.md)<br/>[_HTML_DJLINT_](html_djlint.md)         | [![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint) ![sarif](https://shields.io/badge/-SARIF-orange)         |
 | [**htmlhint**](html_htmlhint.md)<br/>[_HTML_HTMLHINT_](html_htmlhint.md) | [![GitHub stars](https://img.shields.io/github/stars/htmlhint/HTMLHint?cacheSeconds=3600)](https://github.com/htmlhint/HTMLHint) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
