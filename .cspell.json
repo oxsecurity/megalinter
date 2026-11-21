@@ -1617,6 +1617,7 @@
         "sqlfluff",
         "sqlfluffignore",
         "squizlabs",
+        "SRCROOT",
         "sshs",
         "stackoverflow",
         "stacktraces",
