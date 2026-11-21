@@ -82,6 +82,14 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **SARIF output** is now available for 11 more linters: **pylint**, **flake8**, **codespell**, **yamllint**, **stylelint**, **markdownlint**, **cpplint**, **dartanalyzer**, **clippy**, **powershell** (PSScriptAnalyzer) and **vale**. Enable it with **`SARIF_REPORTER: true`**, in the Docker images and in **native mode**
     - Findings keep the severity given by the linter (ex: pylint conventions are notes), so the **error count** shown with SARIF enabled can be lower than the number of findings
     - **flake8**, **codespell** and **cpplint** have no severity: every finding is reported as an error
+  - **SARIF output** is now available for 38 more linters, in the Docker images and in **native mode**. Enable it with **`SARIF_REPORTER: true`**:
+    - **Code and config**: **mypy**, **pyright**, **nbqa**, **standard**, **ts-standard**, **jsonlint**, **v8r** (JSON and YAML), **npm-package-json-lint**, **gherkin-lint**, **tekton-lint**, **rst-lint**, **rstcheck**, **dotenv-linter**, **editorconfig-checker**, **ls-lint**, **xmllint**, **chktex**, **luacheck**, **perlcritic**, **raku**, **php-cs-fixer**, **snakemake**, **arm-ttk**
+    - **Infrastructure**: **kubeconform**, **helm**, **tofu validate**, **terragrunt**
+    - **Formatting checks**: **clang-format** (C and C++), **stylua**, **cljstyle**, **scalafix**
+    - **Spelling, links and files**: **cspell**, **proselint**, **lychee**, **git diff --check**, **bash-exec**
+    - Findings keep the severity given by the linter (ex: luacheck warnings, helm infos), so the **error count** shown with SARIF enabled can be lower than the number of findings
+    - When a linter fails without a finding MegaLinter can read (ex: invalid configuration), the SARIF report holds one result with the message of the linter
+    - **jsonlint** now reports all the invalid files with SARIF enabled, instead of stopping at the first one
 
 - Fixes
 
@@ -134,6 +142,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - SARIF for linters that can not output it: new helper `megalinter/sarif_builder.py` (`SarifBuilder`, `SarifRunBuilder`, `SarifRuleBuilder`, `SarifResultBuilder`, inspired by node-sarif-builder) and overridable `Linter.convert_output_to_sarif()` hook, used by the converters of the linter classes (pylint, flake8, codespell, yamllint, stylelint, markdownlint, cpplint, dartanalyzer, clippy, powershell). They are pure Python functions, covered by unit tests in `sarif_converters_test.py`. Vale uses its official SARIF template (`TEMPLATES/vale-sarif.tmpl`), reached with the new `{{DEFAULT_RULES_LOCATION}}` placeholder of `cli_sarif_args`
   - Linters in `file` lint mode now gather the SARIF of all their files in `Linter.after_lint_files()` (reports are merged with their rules, `RoslynatorLinter` no longer has its own merge), and the log of a file is the readable version of its SARIF
   - New `Linter.after_lint_files()` hook, called once after all the files are linted: the base class uses it to write the merged SARIF reports of the `file` lint mode. SARIF results without `locations` are now counted (as one finding) instead of making the count fail. The SARIF test runs linters restricted to a sub-directory (like actionlint) on their `bad` test folder, so they are active
+  - SARIF for the linters whose output is text: new descriptor properties **`sarif_text_regex`** (named groups `path`, `line`, `column`, `end_column`, `rule`, `severity`, `message`, `cell`), `sarif_text_levels`, `sarif_text_default_level`, `sarif_text_rule_id` and `sarif_whole_output`, read by the default `Linter.convert_output_to_sarif()` (17 linters need no Python code). `sarif_whole_output` adds one result without location holding the output when a failed run gives no result. New `sarif_builder` helpers (`regex_output_to_sarif`, `add_whole_output_result`, `unified_diff_to_results`, `to_one_based`, `file_uri_to_path`, `sarif_from_results`) and `utils.find_json_values()`. Linters with a JSON or structured output have a converter in their class (mypy, pyright, v8r, kubeconform, php-cs-fixer, gherkin-lint, tekton-lint, rst-lint, proselint, lychee, tofu validate, arm-ttk, stylua, npm-package-json-lint, helm, snakemake, scalafix, cljstyle). The regular expressions of the descriptors are tested as shipped in `sarif_text_converters_test.py`
 
 - CI
 

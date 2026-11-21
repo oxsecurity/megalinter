@@ -123,6 +123,10 @@ linters:
         - linux/arm64
   # TERRAGRUNT
   - linter_name: terragrunt
+    can_output_sarif: true
+    sarif_text_regex: "File '(?P<path>[^']+)' (?P<message>needs formatting)"
+    sarif_text_rule_id: terragrunt-fmt
+    sarif_whole_output: true
     linter_text: |
       **Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability.
 
@@ -426,6 +430,10 @@ linters:
   # TOFU VALIDATE
   - class: TofuValidateLinter
     linter_name: tofu-validate
+    can_output_sarif: true
+    cli_sarif_args:
+      - "-json"
+    sarif_whole_output: true
     linter_text: |
       **tofu validate** is the built-in OpenTofu command that checks whether a configuration is internally consistent and semantically valid, without reading any state or contacting any infrastructure. OpenTofu is the community-driven, MPL-2.0 licensed fork of Terraform hosted by the Linux Foundation.
 

@@ -1809,6 +1809,55 @@
             "title": "SARIF default output file",
             "type": "string"
           },
+          "sarif_text_default_level": {
+            "default": "error",
+            "description": "SARIF level of the findings found by sarif_text_regex when it has no severity group, or when the severity is not listed in sarif_text_levels",
+            "enum": [
+              "error",
+              "warning",
+              "note"
+            ],
+            "title": "SARIF level of the findings parsed from text",
+            "type": "string"
+          },
+          "sarif_text_levels": {
+            "additionalProperties": {
+              "enum": [
+                "error",
+                "warning",
+                "note"
+              ],
+              "type": "string"
+            },
+            "description": "SARIF level of each value captured by the severity group of sarif_text_regex",
+            "examples": [
+              {
+                "ERROR": "error",
+                "WARNING": "warning"
+              }
+            ],
+            "title": "SARIF levels by severity",
+            "type": "object"
+          },
+          "sarif_text_regex": {
+            "description": "Regular expression applied (multiline) to the linter output to build the SARIF results when the linter can not output SARIF. Named groups: path (required), line, column, end_column, rule, severity, message, cell",
+            "examples": [
+              "^(?P<path>.+?):(?P<line>\\d+):(?P<column>\\d+): (?P<rule>[A-Z]+\\d+) (?P<message>.*)$"
+            ],
+            "title": "SARIF text regex",
+            "type": "string"
+          },
+          "sarif_text_rule_id": {
+            "description": "Rule id of the findings found by sarif_text_regex when it has no rule group (default: the linter name)",
+            "title": "SARIF text rule id",
+            "type": "string"
+          },
+          "sarif_whole_output": {
+            "default": false,
+            "description": "When the linter fails and no finding could be converted to SARIF, add a result without location holding the output of the linter",
+            "title": "SARIF whole output fallback",
+            "type": "boolean"
+          },
           "supported_cli_lint_modes": {
             "default": [
               "file"

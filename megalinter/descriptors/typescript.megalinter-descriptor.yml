@@ -252,6 +252,11 @@ linters:
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
   - class: TypeScriptStandardLinter
     linter_name: ts-standard
+    can_output_sarif: true
+    sarif_text_regex: '^\s*(?P<path>.+?):(?P<line>\d+):(?P<column>\d+): (?P<message>.*?) \((?P<rule>[^()]*)\)(?: \((?P<severity>warning)\))?$'
+    sarif_text_levels:
+      "warning": warning
+    sarif_whole_output: true
     linter_text: |
       **TypeScript Standard Style** is the TypeScript edition of the popular JavaScript Standard Style that brings zero-configuration linting and formatting to TypeScript projects. It extends the proven JavaScript Standard rules with TypeScript-specific enhancements and type-aware analysis.
 

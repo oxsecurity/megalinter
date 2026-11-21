@@ -19,6 +19,11 @@ linters:
   - class: KubeconformLinter
     linter_name: kubeconform
     name: KUBERNETES_KUBECONFORM
+    can_output_sarif: true
+    cli_sarif_args:
+      - "-output"
+      - "json"
+    sarif_whole_output: true
     linter_repo: https://github.com/yannh/kubeconform
     linter_megalinter_ref_url: https://github.com/yannh/kubeconform/pull/202
     linter_url: https://github.com/yannh/kubeconform
@@ -132,8 +137,11 @@ linters:
         - linux/amd64
         - linux/arm64
   # HELM LINT
-  - linter_name: helm
+  - class: HelmLintLinter
+    linter_name: helm
     name: KUBERNETES_HELM
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_repo: https://github.com/helm/helm
     linter_url: https://helm.sh/docs/helm/helm_lint/
     linter_spdx_license: Apache-2.0

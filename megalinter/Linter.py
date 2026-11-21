@@ -34,7 +34,15 @@ import urllib.request
 from time import perf_counter
 
 import yaml
-from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
+
+from megalinter import (
+    config,
+    pre_post_factory,
+    sarif_builder,
+    utils,
+    utils_reporter,
+    utils_sarif,
+)
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
 from megalinter.native import toolchain as native_toolchain
@@ -139,6 +147,12 @@ class Linter:
         self.sarif_output_file = None
         self.sarif_default_output_file = None
         self.merged_sarif = None
+        self.sarif_text_regex = None
+        self.sarif_text_levels = {}
+        self.sarif_text_default_level = sarif_builder.LEVEL_ERROR
+        self.sarif_text_rule_id = None
+        self.sarif_whole_output = False
+        self.last_return_code = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
         self.cli_command_remove_args = (
@@ -1453,6 +1467,7 @@ class Linter:
         return_code, return_stdout = self.apply_common_linter_errors(
             return_code, return_stdout
         )
+        self.last_return_code = return_code
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
@@ -1559,15 +1574,23 @@ class Linter:
             and not os.path.isfile(self.sarif_output_file)
         ):
             # pylint: disable=assignment-from-none
-            sarif_builder = self.convert_output_to_sarif(return_stdout)
+            sarif_log = self.convert_output_to_sarif(return_stdout)
             # pylint: enable=assignment-from-none
-            if sarif_builder is not None:
+            if sarif_log is not None:
+                if self.sarif_whole_output is True:
+                    sarif_builder.add_whole_output_result(
+                        sarif_log,
+                        return_stdout,
+                        self.last_return_code,
+                        self.get_sarif_rule_id(),
+                        self.sarif_text_default_level,
+                    )
                 with open(self.sarif_output_file, "w", encoding="utf-8") as file:
-                    file.write(sarif_builder.build_sarif_json_string())
+                    file.write(sarif_log.build_sarif_json_string())
                 # Without any result, the linter output may be an error message
                 # (ex: invalid configuration) that must stay visible in the logs
                 keep_raw_output = not any(
-                    len(run.results) > 0 for run in sarif_builder.runs
+                    len(run.results) > 0 for run in sarif_log.runs
                 )
         # Move SARIF file if necessary if generated in a fixed place by the linter
         if (
@@ -1838,9 +1861,24 @@ class Linter:
                 json.dump(self.merged_sarif, sarif_file, sort_keys=True, indent=2)
 
     # To override in the linters that can not output SARIF: returns a
-    # sarif_builder.SarifBuilder built from the output of the linter, or None
+    # sarif_builder.SarifBuilder built from the output of the linter, or None.
+    # By default, the findings are the matches of the descriptor sarif_text_regex
     def convert_output_to_sarif(self, return_stdout):
-        return None
+        if self.sarif_text_regex is None and self.sarif_whole_output is not True:
+            return None
+        return sarif_builder.regex_output_to_sarif(
+            return_stdout,
+            self.workspace,
+            self.linter_name,
+            self.sarif_text_regex,
+            self.get_sarif_rule_id(),
+            self.sarif_text_default_level,
+            self.sarif_text_levels,
+            self.linter_url,
+        )
+
+    def get_sarif_rule_id(self):
+        return self.sarif_text_rule_id or self.linter_name
 
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:

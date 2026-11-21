@@ -726,7 +726,8 @@ def test_linter_report_sarif(linter, test_self):
             # (codes not starting with E), rubocop reports "note" for its convention
             # cops, trufflehog reports "error" only for verified secrets (not
             # checked by the tests, as the fixtures are not real credentials).
-            # clippy lints, dart infos and vale suggestions are not errors
+            # clippy lints, dart infos and vale suggestions are not errors,
+            # nor are the warnings of luacheck. The helm fixture is one chart
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
                 "REPOSITORY_OSV_SCANNER",
@@ -738,6 +739,8 @@ def test_linter_report_sarif(linter, test_self):
                 "RUST_CLIPPY",
                 "DART_DARTANALYZER",
                 "SPELL_VALE",
+                "LUA_LUACHECK",
+                "KUBERNETES_HELM",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,

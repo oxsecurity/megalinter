@@ -10,7 +10,10 @@ file_names_regex:
   - "Snakefile"
 linters:
   # Internal snakemake linter
-  - linter_name: snakemake
+  - class: SnakemakeLinter
+    linter_name: snakemake
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_text: |
       **Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
 

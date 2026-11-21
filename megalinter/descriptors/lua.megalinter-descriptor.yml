@@ -10,6 +10,18 @@ linters:
   # LUACHECK
   - class: LuacheckLinter
     linter_name: luacheck
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--formatter"
+      - "plain"
+      - "--codes"
+      - "--ranges"
+      - "--no-color"
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+)(?:-(?P<end_column>\d+))?: \((?=(?P<severity>[EW]))(?P<rule>[EW]\d+)\) (?P<message>.*)$'
+    sarif_text_levels:
+      "E": error
+      "W": warning
+    sarif_whole_output: true
     linter_text: |
       **luacheck** is a static analyzer and linter for Lua code that detects various issues such as usage of undefined global variables, unused variables and values, accessing uninitialized variables, and unreachable code. It provides comprehensive code quality analysis for Lua projects.
 
@@ -123,6 +135,11 @@ linters:
   # STYLUA
   - class: StyLuaLinter
     linter_name: stylua
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format"
+      - "json"
+    sarif_whole_output: true
     linter_text: |
       **StyLua** is an opinionated code formatter for Lua that automatically formats Lua code to enforce consistent style. It removes the need for debates about formatting by providing sensible defaults while still allowing some configuration.
 

@@ -12,6 +12,7 @@ import uuid
 
 from megalinter import Linter, config, utils
 from megalinter.constants import DEFAULT_REPORT_FOLDER_NAME
+from megalinter.sarif_builder import to_sarif_uri
 
 
 class CSpellLinter(Linter):
@@ -54,6 +55,18 @@ class CSpellLinter(Linter):
                 )
 
         return super().build_lint_command(file)
+
+    def convert_output_to_sarif(self, return_stdout):
+        sarif_log = super().convert_output_to_sarif(return_stdout)
+        if self.temp_file_name is not None:
+            # The temp file with the file names is the last of the files
+            remap_file_names_results(
+                sarif_log,
+                os.path.basename(self.temp_file_name),
+                self.files[:-1],
+                self.workspace,
+            )
+        return sarif_log
 
     def execute_lint_command(self, command):
         return_code, return_stdout = super().execute_lint_command(command)
@@ -153,3 +166,23 @@ Of course, please correct real typos before :)
         config.set_value(
             self.request_id, "SPELL_CSPELL_FILE_EXTENSIONS", [".js", ".md"]
         )
+
+
+# A misspelling in the temp file of file names (one file per line) is a misspelling
+# in the name of the file at the same line
+def remap_file_names_results(sarif_log, temp_file_name, files, workspace):
+    for run in sarif_log.runs:
+        remapped_results = []
+        for result in run.results:
+            location = (result.get("locations") or [{}])[0].get("physicalLocation", {})
+            artifact = location.get("artifactLocation", {})
+            if not artifact.get("uri", "").endswith(temp_file_name):
+                remapped_results.append(result)
+                continue
+            index = location.get("region", {}).get("startLine", 0) - 1
+            if 0 <= index < len(files):
+                artifact["uri"] = to_sarif_uri(files[index], workspace)
+                location.pop("region", None)
+                result["message"]["text"] += " (in the file name)"
+                remapped_results.append(result)
+        run.results = remapped_results

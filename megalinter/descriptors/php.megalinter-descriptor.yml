@@ -464,6 +464,12 @@ linters:
   - class: PhpCsFixerLinter
     linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format=json"
+      - "--diff"
+      - "--no-ansi"
+    sarif_whole_output: true
     linter_text: |
       **PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
 

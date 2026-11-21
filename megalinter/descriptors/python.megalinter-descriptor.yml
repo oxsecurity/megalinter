@@ -586,8 +586,14 @@ linters:
         - name: Bandit by PyCQA
           url: https://marketplace.visualstudio.com/items?itemName=pycqa.bandit-pycqa
   # MYPY
-  - linter_name: mypy
+  - class: MypyLinter
+    linter_name: mypy
     name: PYTHON_MYPY
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output"
+      - "json"
+    sarif_whole_output: true
     file_extensions:
       - ".py"
       - ".pyi"
@@ -712,6 +718,14 @@ linters:
   # NBQA-MYPY
   - linter_name: nbqa
     name: PYTHON_NBQA_MYPY
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?\.ipynb):cell_(?P<cell>\d+):(?P<line>\d+):(?:(?P<column>\d+):)? (?P<severity>error|note|warning): (?P<message>.*?)(?:  \[(?P<rule>[\w-]+)\])?$'
+    sarif_text_rule_id: nbqa
+    sarif_text_levels:
+      "error": error
+      "warning": warning
+      "note": note
+    sarif_whole_output: true
     file_extensions:
       - ".ipynb"
     cli_lint_mode: list_of_files
@@ -848,6 +862,10 @@ linters:
   - class: PyrightLinter
     linter_name: pyright
     name: PYTHON_PYRIGHT
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--outputjson"
+    sarif_whole_output: true
     file_extensions:
       - ".py"
       - ".pyi"

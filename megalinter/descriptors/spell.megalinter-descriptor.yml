@@ -10,6 +10,10 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+)\s+- (?P<message>[^()]*\([^)]*\))'
+    sarif_text_rule_id: spelling
+    sarif_whole_output: true
     linter_spdx_license: MIT
     variables:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
@@ -84,6 +88,11 @@ linters:
   - class: ProselintLinter
     linter_name: proselint
     name: SPELL_PROSELINT
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format"
+      - "json"
+    sarif_whole_output: true
     linter_spdx_license: BSD-3-Clause
     lint_all_other_linters_files: false
     file_extensions:
@@ -291,6 +300,11 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "json"
+    sarif_whole_output: true
     linter_spdx_license: Apache-2.0
     linter_text: |
       **Lychee** is a fast, async, stream-based link checker written in Rust that finds broken hyperlinks and mail addresses inside Markdown, HTML, reStructuredText, websites, and any other text files.
@@ -314,7 +328,6 @@ linters:
       https://github.com/sgerrand/alpine-pkg-glibc/releases/download
       ```
     test_folder: spell_lychee
-    can_output_sarif: false
     descriptor_flavors:
       - all_flavors
       - cupcake

@@ -302,6 +302,10 @@ linters:
         - linux/arm64
   # GIT_DIFF
   - linter_name: git_diff
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>[^+\s][^\n]*?):(?P<line>\d+): (?P<message>[^\n]+?)\.?$'
+    sarif_text_rule_id: whitespace-error
+    sarif_whole_output: true
     lint_all_files: true
     test_folder: git_diff
     linter_text: |
@@ -665,6 +669,10 @@ linters:
   # LS-LINT
   - class: LsLintLinter
     linter_name: ls-lint
+    can_output_sarif: true
+    sarif_text_regex: "^(?P<path>.+?) (?P<message>failed for `[^`]+` rules: .+)$"
+    sarif_text_rule_id: ls-lint
+    sarif_whole_output: true
     linter_text: |
       **ls-lint** is an extremely fast file and directory name linter that helps maintain consistent naming conventions across your project. It validates file and directory names against configurable rules to enforce naming patterns, prevent problematic characters, and ensure cross-platform compatibility.
 

@@ -16,6 +16,7 @@ from typing import Any, Optional, Pattern, Sequence, Union
 
 import git
 import yaml
+
 from megalinter import config, logger
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 
@@ -32,6 +33,7 @@ REPO_HOME_DEFAULT = (
 )
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
+JSON_START_REGEX = re.compile(r"[\[{]")
 
 # Workspaces whose "git diff" already failed: list_updated_files runs once per
 # linted file, and a workspace that fails once keeps failing for the whole run
@@ -949,6 +951,25 @@ def find_json_value(text: str, value_type=(dict, list), predicate=None):
         if isinstance(value, value_type) and (predicate is None or predicate(value)):
             return value
     return None
+
+
+# Every top-level JSON value of a text mixing JSON and logs, in order of appearance
+def find_json_values(text: str, value_type=(dict, list), predicate=None) -> list:
+    decoder = json.JSONDecoder()
+    values = []
+    position = 0
+    while True:
+        match = JSON_START_REGEX.search(text, position)
+        if match is None:
+            return values
+        try:
+            value, end = decoder.raw_decode(text, match.start())
+        except json.JSONDecodeError:
+            position = match.start() + 1
+            continue
+        position = end
+        if isinstance(value, value_type) and (predicate is None or predicate(value)):
+            values.append(value)
 
 
 def find_json_in_stdout(stdout: str, sarif=True):

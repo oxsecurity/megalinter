@@ -31,6 +31,8 @@ linters:
   # ARM TTK
   - class: ArmLinter
     linter_name: arm-ttk
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_text: |
       **ARM TTK (Azure Resource Manager Template Toolkit)** is the official Microsoft toolkit for analyzing and testing Azure Resource Manager Templates. It validates ARM templates for coding best practices and ensures they follow recommended guidelines.
 
