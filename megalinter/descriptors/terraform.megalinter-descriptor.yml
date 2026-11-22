@@ -260,6 +260,11 @@ linters:
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as terraform fmt expects
+    sarif_whole_output: true
     examples:
       - "terraform fmt myfile.tf"
     install:
@@ -370,6 +375,11 @@ linters:
     cli_lint_fix_remove_args:
       - "-diff"
       - "-check"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as tofu fmt expects
+    sarif_whole_output: true
     examples:
       - "tofu fmt -diff -check myfile.tf"
       - "tofu fmt myfile.tf"

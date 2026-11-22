@@ -47,6 +47,7 @@ def assert_sarif_follows_schema(linter_name, sarif_content):
 def is_sarif_built_by_megalinter(linter):
     return (
         linter.sarif_text_regex is not None
+        or linter.sarif_unified_diff is True
         or linter.sarif_whole_output is True
         or type(linter).convert_output_to_sarif is not Linter.convert_output_to_sarif
     )

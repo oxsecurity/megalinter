@@ -97,10 +97,17 @@ def convert_with_descriptor(file_name, linter_name, stdout, return_code=1):
         linter.get("sarif_text_rule_id") or linter_name,
         linter.get("sarif_text_default_level", "error"),
         linter.get("sarif_text_levels"),
+        None,
+        linter.get("sarif_text_default_message"),
+        linter.get("sarif_unified_diff", False),
     )
     if linter.get("sarif_whole_output"):
         add_whole_output_result(
-            sarif_builder, stdout, return_code, linter_name, "error"
+            sarif_builder,
+            stdout,
+            return_code,
+            linter_name,
+            linter.get("sarif_text_default_level", "error"),
         )
     return sarif_builder
 
@@ -1015,6 +1022,270 @@ class TextConvertersTest(unittest.TestCase):
                 "uri"
             ],
             "src/x.clj",
+        )
+
+
+PRETTIER_DESCRIPTORS = [
+    ("javascript.megalinter-descriptor.yml", "prettier"),
+    ("json.megalinter-descriptor.yml", "prettier"),
+    ("typescript.megalinter-descriptor.yml", "prettier"),
+    ("yaml.megalinter-descriptor.yml", "prettier"),
+]
+
+
+class FormatterConvertersTest(unittest.TestCase):
+    def test_black_diff_and_parse_error(self):
+        stdout = (
+            f"--- {WORKSPACE_URI}/bad.py\t2026-11-21 21:24:17.634541+00:00\n"
+            f"+++ {WORKSPACE_URI}/bad.py\t2026-11-21 21:24:18.278403+00:00\n"
+            "@@ -3,2 +3,5 @@\n-x=1\n+x = 1\n"
+            f"would reformat {WORKSPACE_URI}/bad.py\n"
+            f"error: cannot format {WORKSPACE_URI}/broken.py: Cannot parse: 1:2: x =\n"
+            "\nOh no! 1 file would be reformatted, 1 file would fail to reformat.\n"
+        )
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "python.megalinter-descriptor.yml", "black", stdout
+                )
+            ),
+            [
+                ("black", "error", "broken.py", None, None),
+                ("black", "note", "bad.py", 3, None),
+            ],
+        )
+
+    def test_isort_diff_names_the_sides_of_the_file(self):
+        stdout = (
+            f"ERROR: {WORKSPACE_URI}/bad_imports.py Imports are incorrectly sorted "
+            "and/or formatted.\n"
+            f"--- {WORKSPACE_URI}/bad_imports.py:before\t2026-11-21 22:24:17.634541\n"
+            f"+++ {WORKSPACE_URI}/bad_imports.py:after\t2026-11-21 22:24:18.608797\n"
+            "@@ -1,2 +1,2 @@\n+import os\n import sys\n-import os\n"
+        )
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "python.megalinter-descriptor.yml", "isort", stdout
+                )
+            ),
+            [("isort", "note", "bad_imports.py", 1, None)],
+        )
+
+    def test_shfmt_diff_compares_a_copy_of_the_file(self):
+        stdout = (
+            f"--- {WORKSPACE_URI}/bad.sh.orig\n+++ {WORKSPACE_URI}/bad.sh\n"
+            "@@ -1,4 +1,4 @@\n #!/bin/bash\n-if [ 1 ];then\n+if [ 1 ]; then\n"
+        )
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "bash.megalinter-descriptor.yml", "shfmt", stdout
+                )
+            ),
+            [("shfmt", "note", "bad.sh", 1, None)],
+        )
+
+    def test_terraform_and_tofu_fmt_diffs(self):
+        stdout = (
+            "modules/bad.tf\n--- old/modules/bad.tf\n+++ new/modules/bad.tf\n"
+            '@@ -2,3 +2,3 @@\n resource "a" "b" {\n-c=1\n+  c = 1\n'
+        )
+        for linter_name in ("terraform-fmt", "tofu-fmt"):
+            self.assertEqual(
+                summary(
+                    convert_with_descriptor(
+                        "terraform.megalinter-descriptor.yml", linter_name, stdout
+                    )
+                ),
+                [(linter_name, "note", "modules/bad.tf", 2, None)],
+            )
+
+    def test_ruff_format_gives_the_position_of_the_first_change(self):
+        stdout = (
+            "unformatted: File would be reformatted\n"
+            " --> src/bad.py:1:2\n  |\n  - x=1\n1 + x = 1\n  |\n\n"
+            "unformatted: File would be reformatted\n"
+            " --> src/bad2.py:4:1\n  |\n\n2 files would be reformatted\n"
+        )
+        sarif_builder = convert_with_descriptor(
+            "python.megalinter-descriptor.yml", "ruff-format", stdout
+        )
+        self.assertEqual(
+            summary(sarif_builder),
+            [
+                ("ruff-format", "note", "src/bad.py", 1, 2),
+                ("ruff-format", "note", "src/bad2.py", 4, 1),
+            ],
+        )
+        self.assertEqual(
+            results_of(sarif_builder)[0]["message"]["text"],
+            "File would be reformatted",
+        )
+
+    def test_snakefmt_compact_diff(self):
+        stdout = (
+            "=====> Diff for rules/a.smk <=====\n\n--- original\n+++ new\n"
+            '@@ -1,4 +1,7 @@\n rule a:\n-    input: "a"\n'
+            "\n[INFO] 1 file(s) would be changed\n"
+        )
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "snakemake.megalinter-descriptor.yml", "snakefmt", stdout
+                )
+            ),
+            [("snakefmt", "note", "rules/a.smk", 1, None)],
+        )
+
+    def test_rstfmt(self):
+        stdout = "docs/bad.rst is not correctly formatted!\ndocs/b.rst is not correctly formatted!\n"
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "rst.megalinter-descriptor.yml", "rstfmt", stdout
+                )
+            ),
+            [
+                ("rstfmt", "note", "docs/bad.rst", None, None),
+                ("rstfmt", "note", "docs/b.rst", None, None),
+            ],
+        )
+
+    def test_markdown_table_formatter(self):
+        stdout = "2 files contain markdown tables to format:\n- docs/a.md\n- b.md\n"
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "markdown.megalinter-descriptor.yml",
+                    "markdown-table-formatter",
+                    stdout,
+                )
+            ),
+            [
+                ("markdown-table-formatter", "note", "docs/a.md", None, None),
+                ("markdown-table-formatter", "note", "b.md", None, None),
+            ],
+        )
+
+    def test_prettier_files_and_syntax_errors_of_every_language(self):
+        stdout = (
+            "Checking formatting...\n"
+            "[warn] Ignored unknown option { foo: 1 }.\n"
+            "[warn] src/bad.js\n"
+            "[error] src/broken.js: SyntaxError: Unexpected token (3:5)\n"
+            "[error] > 3 |   x = ;\n"
+            "[error]     |       ^\n"
+            '[error] No files matching the pattern were found: "x.js".\n'
+            "[warn] Code style issues found in 2 files. Run Prettier with --write to fix.\n"
+        )
+        for file_name, linter_name in PRETTIER_DESCRIPTORS:
+            sarif_builder = convert_with_descriptor(file_name, linter_name, stdout)
+            self.assertEqual(
+                summary(sarif_builder),
+                [
+                    ("prettier", "note", "src/bad.js", None, None),
+                    ("prettier", "error", "src/broken.js", None, None),
+                ],
+            )
+            self.assertEqual(
+                results_of(sarif_builder)[1]["message"]["text"],
+                "SyntaxError: Unexpected token (3:5)",
+            )
+
+    def test_prettier_summary_of_a_single_file(self):
+        stdout = (
+            "Checking formatting...\n[warn] bad.json\n"
+            "[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n"
+        )
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "json.megalinter-descriptor.yml", "prettier", stdout
+                )
+            ),
+            [("prettier", "note", "bad.json", None, None)],
+        )
+
+    def test_csharpier(self):
+        stdout = (
+            "Warning ./src/Bad.cs - Was not formatted.\n"
+            "Error ./src/Broken.cs - Failed to compile so was not formatted.\n"
+            "Checked 2 files in 120ms.\n"
+        )
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "csharp.megalinter-descriptor.yml", "csharpier", stdout
+                )
+            ),
+            [
+                ("csharpier", "note", "src/Bad.cs", None, None),
+                ("csharpier", "error", "src/Broken.cs", None, None),
+            ],
+        )
+
+    def test_dotnet_format_in_csharp_and_vb(self):
+        stdout = (
+            f"{WORKSPACE_URI}/Bad.cs(3,5): error WHITESPACE: Fix whitespace formatting. "
+            f"Replace 1 characters with '\\n'. [{WORKSPACE_URI}/App.csproj]\n"
+            f"{WORKSPACE_URI}/Bad.vb(7,1): warning IDE0055: Fix formatting\n"
+        )
+        for file_name in (
+            "csharp.megalinter-descriptor.yml",
+            "vbdotnet.megalinter-descriptor.yml",
+        ):
+            sarif_builder = convert_with_descriptor(file_name, "dotnet-format", stdout)
+            self.assertEqual(
+                summary(sarif_builder),
+                [
+                    ("WHITESPACE", "note", "Bad.cs", 3, 5),
+                    ("IDE0055", "note", "Bad.vb", 7, 1),
+                ],
+            )
+            self.assertEqual(
+                results_of(sarif_builder)[0]["message"]["text"],
+                "Fix whitespace formatting. Replace 1 characters with '\\n'.",
+            )
+
+    def test_a_failed_run_without_finding_keeps_its_output(self):
+        sarif_builder = convert_with_descriptor(
+            "python.megalinter-descriptor.yml",
+            "ruff-format",
+            "error: Failed to parse bad.py:1:2: Expected an expression\n",
+            return_code=2,
+        )
+        self.assertEqual(
+            summary(sarif_builder), [("ruff-format", "note", None, None, None)]
+        )
+
+    def test_powershell_formatter_never_reports_a_result(self):
+        stdout = "function Get-Foo {\n    'foo'\n}\n"
+        self.assertEqual(
+            summary(
+                convert_with_descriptor(
+                    "powershell.megalinter-descriptor.yml",
+                    "powershell_formatter",
+                    stdout,
+                    return_code=0,
+                )
+            ),
+            [],
+        )
+
+    def test_diff_message_defaults_to_the_tool_name(self):
+        sarif_builder = regex_output_to_sarif(
+            "--- a.py\n+++ a.py\n@@ -1 +1 @@\n",
+            WORKSPACE,
+            "prettier",
+            None,
+            "prettier",
+            "note",
+            unified_diff=True,
+        )
+        self.assertEqual(
+            results_of(sarif_builder)[0]["message"]["text"],
+            "The file is not formatted as prettier expects",
         )
 
 
