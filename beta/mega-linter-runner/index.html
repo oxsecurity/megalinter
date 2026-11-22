@@ -9839,6 +9839,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/spell_typos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  typos
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -12471,7 +12498,11 @@
 <p><a class="glightbox" data-type="image" href="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;"><img alt="Screenshot" src="https://github.com/oxsecurity/megalinter/blob/main/docs/assets/images/ConsoleReporter.jpg?raw=true&gt;" /></a></p>
 <h2 id="installation">Installation</h2>
 <h3 id="pre-requisites">Pre-requisites</h3>
-<p>You need to have <a href="https://nodejs.org/en/">NodeJS</a> and <a href="https://www.docker.com/">Docker</a> installed on your computer to run MegaLinter locally with MegaLinter Runner</p>
+<ul>
+<li>Docker mode (default): <a href="https://nodejs.org/en/">NodeJS</a> and a container engine (<a href="https://www.docker.com/">Docker</a>, Podman or Apple container)</li>
+<li>Native mode (beta, <code>--native</code>): NodeJS and <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>, plus Git Bash on Windows. No Docker. See <a href="https://megalinter.io/latest/install-native/">native mode</a></li>
+<li>Configuration files (<code>--install</code>, <code>--upgrade</code>): NodeJS only</li>
+</ul>
 <h3 id="global-installation">Global installation</h3>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>mega-linter-runner<span class="w"> </span>-g
 </code></pre></div>
@@ -12548,9 +12579,29 @@
 <td><!-- --></td>
 </tr>
 <tr>
+<td><code>--filesonly</code></td>
+<td>Do not run linters in <code>project</code> CLI lint mode (equivalent to <code>-e SKIP_CLI_LINT_MODES=project</code>)</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>-j</code> <br/> <code>--json</code></td>
+<td>Generate the JSON report <code>megalinter-reports/mega-linter-report.json</code> (equivalent to <code>-e JSON_REPORTER=true</code>). With <code>--list-linters</code>, print the list as JSON</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--sarif</code></td>
+<td>Generate the SARIF report <code>megalinter-reports/megalinter-report.sarif</code> (equivalent to <code>-e SARIF_REPORTER=true</code>)</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--debug</code></td>
+<td>Enable verbose logs (equivalent to <code>-e LOG_LEVEL=DEBUG</code>)</td>
+<td><!-- --></td>
+</tr>
+<tr>
 <td><code>-r</code> <br/> <code>--release</code></td>
-<td>Allows to override MegaLinter version used. If not set, the <code>MEGALINTER_VERSION</code> property of <code>.mega-linter.yml</code> is used when defined</td>
-<td><code>latest</code></td>
+<td>Docker: image tag to use (if not set, the <code>MEGALINTER_VERSION</code> property of <code>.mega-linter.yml</code> is used when defined). Native: version of the <code>megalinter</code> PyPI package, <code>beta</code> or an exact version (<code>MEGALINTER_VERSION</code> is not read)</td>
+<td>Docker: <code>latest</code>, native: <code>beta</code></td>
 </tr>
 <tr>
 <td><code>-h</code> <br/> <code>--help</code></td>
@@ -12605,6 +12656,31 @@
 <tr>
 <td><code>--install-linters</code></td>
 <td>[beta] Install the linters for <code>--native</code>: the ones given as arguments (<code>--install-linters PYTHON_BLACK JAVASCRIPT_ES</code>) or the ones of <code>NATIVE_LINTERS</code>. Not to be confused with <code>--install</code>, which sets up MegaLinter in your repository</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--native-setup</code></td>
+<td>[beta] Set up native mode in one command: choose the linters to run on this machine (suggested from their speed, the others stay for CI), write them in <code>NATIVE_LINTERS</code>, install them and run a first lint. The linter keys given as arguments skip the choice</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--uninstall-linters</code></td>
+<td>[beta] Remove the linters given as arguments (<code>--uninstall-linters PYTHON_BLACK</code>) installed for <code>--native</code></td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--list-linters</code></td>
+<td>[beta] Show the native status of every linter (installed, available, unsupported on this platform...)</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--doctor</code></td>
+<td>[beta] Check the prerequisites of native mode: Git Bash on Windows, uv, language runtimes and the <code>~/.megalinter</code> folder</td>
+<td><!-- --></td>
+</tr>
+<tr>
+<td><code>--prune-cache</code></td>
+<td>[beta] Empty the download and linter caches of native mode</td>
 <td><!-- --></td>
 </tr>
 <tr>

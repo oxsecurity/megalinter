@@ -739,6 +739,23 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Run locally
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="././" class="md-nav__link md-nav__link--active">
         
   
@@ -754,6 +771,37 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-mega-linter-runner-and-megalinter-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How mega-linter-runner and megalinter fit together
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -9848,6 +9896,33 @@
 
                 
               
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/spell_typos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  typos
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
             </ul>
           </nav>
         
@@ -12148,6 +12223,11 @@
                       
                     
                     
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
                   
                   <div class="md-sidebar__inner">
                     
@@ -12159,6 +12239,25 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-mega-linter-runner-and-megalinter-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How mega-linter-runner and megalinter fit together
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -12192,6 +12291,54 @@
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner<span class="w"> </span>--flavor<span class="w"> </span>salesforce<span class="w"> </span>-e<span class="w"> </span><span class="s2">"'ENABLE=DOCKERFILE,MARKDOWN,YAML'"</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'SHOW_ELAPSED_TIME=true'</span>
 </code></pre></div>
 <p>Note: You can also use this command line in your custom CI/CD pipelines.</p>
+<h2 id="how-mega-linter-runner-and-megalinter-fit-together">How mega-linter-runner and megalinter fit together</h2>
+<p>Two programs, one job each:</p>
+<ul>
+<li><code>mega-linter-runner</code> (npm, JavaScript) is the launcher you type. It also sets up your repository (<code>--install</code>, <code>--upgrade</code>).</li>
+<li><code>megalinter</code> (PyPI, Python) is the engine that lints. It runs inside the Docker image, or, in <a href="https://megalinter.io/latest/install-native/">native mode</a> (beta), in a verified copy that the runner installs on your machine.</li>
+</ul>
+<pre class="mermaid"><code>flowchart LR
+    U(["You, agent skills,&lt;br/&gt;pre-commit, CI wrappers"]) --&gt; R["&lt;b&gt;mega-linter-runner&lt;/b&gt;&lt;br/&gt;npm, JavaScript&lt;br/&gt;parses the options"]
+    R --&gt;|"default"| D["docker run&lt;br/&gt;MegaLinter image"]
+    D --&gt; E1[["megalinter engine&lt;br/&gt;Python, in the container"]]
+    R --&gt;|"--native, --native-setup,&lt;br/&gt;--install-linters, --doctor..."| N["uv + verification&lt;br/&gt;sha256 and PyPI attestation"]
+    N --&gt; E2[["megalinter engine&lt;br/&gt;Python, in ~/.megalinter"]]
+    R --&gt;|"--install, --upgrade,&lt;br/&gt;--custom-flavor-setup"| G["Configuration generators&lt;br/&gt;JavaScript only"]</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">You need</th>
+<th style="text-align: left;">Install</th>
+<th style="text-align: center;">Node.js</th>
+<th style="text-align: center;">Docker</th>
+<th style="text-align: center;">uv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Run MegaLinter in a container (default)</td>
+<td style="text-align: left;">nothing but the runner</td>
+<td style="text-align: center;">yes</td>
+<td style="text-align: center;">yes</td>
+<td style="text-align: center;">no</td>
+</tr>
+<tr>
+<td style="text-align: left;">Run MegaLinter without Docker (beta)</td>
+<td style="text-align: left;">the runner downloads and verifies the engine</td>
+<td style="text-align: center;">yes</td>
+<td style="text-align: center;">no</td>
+<td style="text-align: center;">yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create or upgrade <code>.mega-linter.yml</code> and CI files</td>
+<td style="text-align: left;">nothing but the runner</td>
+<td style="text-align: center;">yes</td>
+<td style="text-align: center;">no</td>
+<td style="text-align: center;">no</td>
+</tr>
+</tbody>
+</table>
+<p>You never need to call <code>megalinter</code> yourself: the runner translates its options into the engine's arguments and environment variables. A copy installed by hand (<code>uv tool install megalinter --pre</code>) is only a shortcut: the runner does not verify it.</p>
 <!-- install-locally-section-end -->
 
 

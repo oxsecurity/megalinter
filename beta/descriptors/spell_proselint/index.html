@@ -9796,6 +9796,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#migration-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Migration Guide
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#proselint-documentation" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -10000,6 +10011,33 @@
     
   
   codespell
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spell_typos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  typos
 
     
   </span>
@@ -12332,6 +12370,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#migration-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Migration Guide
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#proselint-documentation" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12489,7 +12538,13 @@
   </a>
 </div>
 
-<p><a href="https://github.com/amperser/proselint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600" /></a> <a class="glightbox" data-type="image" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /></a> <a href="https://github.com/amperser/proselint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/amperser/proselint?sort=semver" /></a> <a href="https://github.com/amperser/proselint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/amperser/proselint" /></a> <a href="https://github.com/amperser/proselint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/amperser/proselint" /></a> <a href="https://github.com/amperser/proselint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/amperser/proselint" /></a></p>
+<p><span title="Deprecated: proselint is unmaintained and suffers from high false-positive rates and Python packaging conflicts. Migrate to Vale (SPELL_VALE) for prose style checking or typos (SPELL_TYPOS) for fast source-code spell checking.">⚠️</span> <a href="https://github.com/amperser/proselint"><img alt="GitHub stars" src="https://img.shields.io/github/stars/amperser/proselint?cacheSeconds=3600" /></a> <a class="glightbox" data-type="image" href="https://shields.io/badge/-SARIF-orange"><img alt="sarif" src="https://shields.io/badge/-SARIF-orange" /></a> <a href="https://github.com/amperser/proselint/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/amperser/proselint?sort=semver" /></a> <a href="https://github.com/amperser/proselint/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/amperser/proselint" /></a> <a href="https://github.com/amperser/proselint/graphs/commit-activity/"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/amperser/proselint" /></a> <a href="https://github.com/amperser/proselint/graphs/contributors/"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/amperser/proselint" /></a></p>
+<blockquote>
+<p>This linter has been deprecated.</p>
+<p>proselint is unmaintained and suffers from high false-positive rates and Python packaging conflicts. Migrate to Vale (SPELL_VALE) for prose style checking or typos (SPELL_TYPOS) for fast source-code spell checking.</p>
+<p>You should disable proselint by adding it in DISABLE_LINTERS property.</p>
+<p>It will be maintained at least until the next major release.</p>
+</blockquote>
 <p><strong>proselint</strong> is a powerful linter for English prose that places the world's greatest writers and editors by your side, offering intelligent suggestions to improve your writing quality and style.</p>
 <p><strong>Key Features:</strong></p>
 <ul>
@@ -12499,6 +12554,13 @@
 <li><strong>Security Awareness</strong>: Identifies sensitive information like credit card numbers and passwords in text</li>
 <li><strong>Rich Output Formats</strong>: Provides detailed suggestions with source attribution, severity levels, and potential replacements</li>
 <li><strong>Extensible Configuration</strong>: Fully customizable checks through JSON configuration files</li>
+</ul>
+<h3 id="migration-guide">Migration Guide</h3>
+<p><code>SPELL_PROSELINT</code> is deprecated and will be removed in a future major release. Replace it with <code>SPELL_VALE</code> for prose style linting and <code>SPELL_TYPOS</code> for fast source-code spell checking:</p>
+<ul>
+<li><strong>Editorial and prose style linting (<code>SPELL_VALE</code>)</strong>: Replace <code>.proselintrc.json</code> with a <code>.vale.ini</code> configuration file and install community prose style packages (such as <code>write-good</code>, <code>Google</code>, or <code>Microsoft</code>) via <code>vale sync</code>.</li>
+<li><strong>Fast source-code spell checking (<code>SPELL_TYPOS</code>)</strong>: Enable <code>SPELL_TYPOS</code> (configured via <code>typos.toml</code>, <code>_typos.toml</code>, <code>.typos.toml</code>, <code>pyproject.toml</code>, or <code>Cargo.toml</code>) to catch unambiguous misspellings across source files, comments, and documentation with <code>--write-changes</code> auto-fix support.</li>
+<li><strong>Disable <code>SPELL_PROSELINT</code></strong>: Remove <code>.proselintrc.json</code> once migrated, or add <code>DISABLE_LINTERS: [SPELL_PROSELINT]</code> to your <code>.mega-linter.yml</code> configuration.</li>
 </ul>
 <h2 id="proselint-documentation">proselint documentation</h2>
 <ul>
@@ -12658,112 +12720,105 @@
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/supported-linters/">all</a></td>
 <td style="text-align: left;">Default MegaLinter Flavor</td>
-<td style="text-align: center;">134</td>
+<td style="text-align: center;">135</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/c_cpp/">c_cpp</a></td>
 <td style="text-align: left;">Optimized for pure C/C++ projects</td>
-<td style="text-align: center;">59</td>
+<td style="text-align: center;">60</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp" /></a></td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
-<td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/cupcake/">cupcake</a></td>
-<td style="text-align: left;">MegaLinter for the most commonly used languages</td>
-<td style="text-align: center;">100</td>
-<td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/documentation/">documentation</a></td>
 <td style="text-align: left;">MegaLinter for documentation projects</td>
-<td style="text-align: center;">52</td>
+<td style="text-align: center;">53</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnet/">dotnet</a></td>
 <td style="text-align: left;">Optimized for C, C++, C# or VB based projects</td>
-<td style="text-align: center;">66</td>
+<td style="text-align: center;">67</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/dotnetweb/">dotnetweb</a></td>
 <td style="text-align: left;">Optimized for C, C++, C# or VB based projects with JS/TS</td>
-<td style="text-align: center;">81</td>
+<td style="text-align: center;">82</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/go/">go</a></td>
 <td style="text-align: left;">Optimized for GO based projects</td>
-<td style="text-align: center;">54</td>
+<td style="text-align: center;">55</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-go" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/java/">java</a></td>
 <td style="text-align: left;">Optimized for JAVA based projects</td>
-<td style="text-align: center;">57</td>
+<td style="text-align: center;">58</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-java" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/javascript/">javascript</a></td>
 <td style="text-align: left;">Optimized for JAVASCRIPT or TYPESCRIPT based projects</td>
-<td style="text-align: center;">68</td>
+<td style="text-align: center;">69</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/php/">php</a></td>
 <td style="text-align: left;">Optimized for PHP based projects</td>
-<td style="text-align: center;">57</td>
+<td style="text-align: center;">58</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-php" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/python/">python</a></td>
 <td style="text-align: left;">Optimized for PYTHON based projects</td>
-<td style="text-align: center;">70</td>
+<td style="text-align: center;">71</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-python" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/ruby/">ruby</a></td>
 <td style="text-align: left;">Optimized for RUBY based projects</td>
-<td style="text-align: center;">53</td>
+<td style="text-align: center;">54</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/rust/">rust</a></td>
 <td style="text-align: left;">Optimized for RUST based projects</td>
-<td style="text-align: center;">53</td>
+<td style="text-align: center;">54</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/salesforce/">salesforce</a></td>
 <td style="text-align: left;">Optimized for Salesforce based projects</td>
-<td style="text-align: center;">58</td>
+<td style="text-align: center;">59</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/swift/">swift</a></td>
 <td style="text-align: left;">Optimized for SWIFT based projects</td>
-<td style="text-align: center;">53</td>
+<td style="text-align: center;">54</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift" /></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><a class="glightbox" href="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" data-type="image"><img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a></a></td>
 <td style="text-align: left;"><a href="https://megalinter.io/beta/flavors/terraform/">terraform</a></td>
 <td style="text-align: left;">Optimized for TERRAFORM based projects</td>
-<td style="text-align: center;">57</td>
+<td style="text-align: center;">58</td>
 <td style="text-align: right;"><a class="glightbox" data-type="image" href="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta"><img alt="Docker Image Size (tag)" src="https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta" /></a> <a class="glightbox" data-type="image" href="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform" /></a></td>
 </tr>
 </tbody>
