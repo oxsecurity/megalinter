@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2919,
+    "variable_count": 2920,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -55,7 +55,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 15,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 67,
+      "GENERAL": 68,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 17,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -18299,6 +18299,18 @@
       "title": "Parallel processing",
       "description": "Process linters in parallel to improve overall MegaLinter performance. If true, linters of same language or formats are grouped in the same parallel process to avoid lock issues if fixing the same files",
       "default": true,
+      "category": "GENERAL",
+      "section": "PERFORMANCE"
+    },
+    "PARALLEL_POOL": {
+      "name": "PARALLEL_POOL",
+      "type": "string",
+      "title": "Parallel pool",
+      "description": "How linters run in parallel: threads (default in native mode: workers start instantly, linters being sub-processes) or processes (default in Docker: each worker process loads MegaLinter again)",
+      "enum": [
+        "threads",
+        "processes"
+      ],
       "category": "GENERAL",
       "section": "PERFORMANCE"
     },

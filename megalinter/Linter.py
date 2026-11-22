@@ -20,6 +20,7 @@ The following list of items can/must be overridden on custom linter local class:
 
 """
 
+import copy
 import errno
 import hashlib
 import json
@@ -259,8 +260,12 @@ class Linter:
         else:
             params = {**default_params, **params}
 
-        # Initialize with configuration data
+        # Initialize with configuration data. Lists and dicts are copied: the
+        # definition of a shared linter (extends) is the same object for all the
+        # linters extending it, and linter classes can extend them in place
         for key, value in linter_config.items():
+            if isinstance(value, (list, dict)):
+                value = copy.copy(value)
             self.__setattr__(key, value)
         self.descriptor_cli_lint_mode = self.cli_lint_mode
         if "request_id" in params:

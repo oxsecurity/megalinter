@@ -16,6 +16,7 @@ import shutil
 import sys
 import threading
 from logging.handlers import QueueHandler, QueueListener
+from multiprocessing.pool import ThreadPool
 from shutil import copytree
 from uuid import uuid1
 
@@ -103,6 +104,11 @@ def init_worker(request_config_in, log_queue, log_level):
 def run_linters(linters, request_id):
     global REQUEST_CONFIG
     config.set_config(request_id, REQUEST_CONFIG)
+    return run_linters_group(linters)
+
+
+# Runs a group of linters in a pool worker (process or thread)
+def run_linters_group(linters):
     for linter in linters:
         # Skip console reporter in workers: output will be produced in the
         # main process to avoid interleaved CI log section markers
@@ -516,6 +522,20 @@ class Megalinter:
         )
         return process_number
 
+    # Native mode runs the linters in threads by default (PARALLEL_POOL: threads), as
+    # MegaLinter runs on the user's machine, often with the slow "spawn" start method
+    # of the worker processes. Docker keeps worker processes unless asked otherwise
+    def get_parallel_pool_type(self):
+        default_pool_type = "threads" if self.native_mode is True else "processes"
+        pool_type = config.get(self.request_id, "PARALLEL_POOL", default_pool_type)
+        if pool_type not in ("threads", "processes"):
+            logging.warning(
+                f"PARALLEL_POOL must be threads or processes, not {pool_type}: "
+                f"using {default_pool_type}"
+            )
+            return default_pool_type
+        return pool_type
+
     # Same as a pool worker (run_linters): the linter pre/post commands and the console
     # reports are handled by the caller, as for a parallel run
     def process_linters_group_in_process(self, linters):
@@ -572,28 +592,42 @@ class Megalinter:
         # Execute linters in asynchronous pool to improve overall performances.
         # Never more workers than groups: an idle worker still costs its start
         process_number = min(self.get_parallel_process_number(), group_count)
-        # Tunnel log records of worker processes through a multiprocessing queue,
-        # so they are emitted by the initial handlers in the main process without
-        # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
         root_logger = logging.getLogger()
         initial_handlers = root_logger.handlers[:]
-        log_level = root_logger.getEffectiveLevel()
-        log_queue = mp.Queue()
-        log_queue_listener = QueueListener(
-            log_queue, *initial_handlers, respect_handler_level=True
-        )
-        root_logger.handlers = [QueueHandler(log_queue)]
-        log_queue_listener.start()
-        # With "forkserver" (the default start method on Linux since Python 3.14, Docker
-        # images included), the server imports MegaLinter once and every worker is forked
-        # from it, instead of each worker importing it again (about a second each)
-        if mp.get_start_method() == "forkserver":
-            mp.set_forkserver_preload(["megalinter"])
-        pool = mp.Pool(
-            process_number,
-            initializer=init_worker,
-            initargs=(config.get(self.request_id), log_queue, log_level),
-        )
+        log_queue_listener = None
+        if self.get_parallel_pool_type() == "threads":
+            # Linters are sub-processes: a worker thread only waits for them, and
+            # costs nothing to start, where a worker process loads MegaLinter
+            # again (about a second with the "spawn" start method of Windows and
+            # macOS). The linters, the configuration and the log handlers of this
+            # process are shared with the threads
+            pool = ThreadPool(process_number)
+            run_group = run_linters_group
+            run_group_args = []
+        else:
+            # Tunnel log records of worker processes through a multiprocessing queue,
+            # so they are emitted by the initial handlers in the main process without
+            # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
+            log_level = root_logger.getEffectiveLevel()
+            log_queue = mp.Queue()
+            log_queue_listener = QueueListener(
+                log_queue, *initial_handlers, respect_handler_level=True
+            )
+            root_logger.handlers = [QueueHandler(log_queue)]
+            log_queue_listener.start()
+            # With "forkserver" (the default start method on Linux since Python 3.14,
+            # Docker images included), the server imports MegaLinter once and every
+            # worker is forked from it, instead of each worker importing it again
+            # (about a second each)
+            if mp.get_start_method() == "forkserver":
+                mp.set_forkserver_preload(["megalinter"])
+            pool = mp.Pool(
+                process_number,
+                initializer=init_worker,
+                initargs=(config.get(self.request_id), log_queue, log_level),
+            )
+            run_group = run_linters
+            run_group_args = [self.request_id]
         pool_results = []
         lock = threading.RLock()
         pending_groups = {"count": 0}
@@ -614,8 +648,8 @@ class Megalinter:
                 pending_groups["count"] += 1
                 descriptor_id = linter_group[0].descriptor_id
                 result = pool.apply_async(
-                    run_linters,
-                    args=[linter_group, self.request_id],
+                    run_group,
+                    args=[linter_group, *run_group_args],
                     callback=lambda res, d=descriptor_id: on_group_processed(d),
                     error_callback=lambda exc, d=descriptor_id: on_group_processed(d),
                 )
@@ -651,8 +685,9 @@ class Megalinter:
                 if idx is not None:
                     self.linters[idx] = updated_linter
         # Drain pending worker log records, then restore direct logging handlers
-        log_queue_listener.stop()
-        root_logger.handlers = initial_handlers
+        if log_queue_listener is not None:
+            log_queue_listener.stop()
+            root_logger.handlers = initial_handlers
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self, params):

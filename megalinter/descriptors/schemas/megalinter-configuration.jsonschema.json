@@ -20747,6 +20747,18 @@
       "x-order": 600000,
       "x-section": "PERFORMANCE"
     },
+    "PARALLEL_POOL": {
+      "description": "How linters run in parallel: threads (default in native mode: workers start instantly, linters being sub-processes) or processes (default in Docker: each worker process loads MegaLinter again)",
+      "enum": [
+        "threads",
+        "processes"
+      ],
+      "title": "Parallel pool",
+      "type": "string",
+      "x-category": "GENERAL",
+      "x-order": 600015,
+      "x-section": "PERFORMANCE"
+    },
     "PARALLEL_PROCESS_NUMBER": {
       "description": "All available cores are used in CI, and all but one outside CI to keep your machine responsive. If there are too many, you need to decrease the number of used cores in order to enhance performances",
       "examples": [

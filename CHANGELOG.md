@@ -19,6 +19,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Faster repeated runs in native mode**, see [Faster repeated runs](https://megalinter.io/latest/install-native/#faster-repeated-runs):
     - **eslint, prettier, stylelint and cspell keep their own cache** between runs, in `~/.megalinter/cache/linters`, and analyze again only the files that changed (off for TypeScript eslint, whose type-aware rules depend on other files). Disable it with **`NATIVE_LINTER_CACHE: false`**, or for one linter with `<LINTER_KEY>_NATIVE_CACHE: false`
     - With **Python 3.15**, MegaLinter loads the libraries of its reporters and CI integrations (GitHub, GitLab, Jira, Redis...) only when they are used: it starts in **0.09 s instead of 0.52 s**, in each worker process too
+    - Linters run in parallel **threads** instead of worker processes, which loaded MegaLinter again each (about a second each on Windows and macOS): **-25 %** on a run of 4 JavaScript, CSS and spelling linters with the start method of Windows and macOS. New variable **`PARALLEL_POOL`** (`threads`, default in native mode, or `processes`, default in Docker)
 
   - **Faster runs**, most visible in native mode and on Windows:
     - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
@@ -128,6 +129,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Dev
 
+  - `Megalinter.process_linters_parallel()` runs the linter groups in a `multiprocessing.pool.ThreadPool` when `get_parallel_pool_type()` is `threads` (no log queue, no forkserver preload, no pickling). `Linter.__init__` copies the list and dict values of the descriptor, so a linter class extending one in place (cpplint, cspell, checkov, jscpd, stylelint) no longer changes the definition shared with the other linters extending the same shared file. Covered by `parallel_pool_test.py`
   - Modules importing a library used only by some reporters, CI providers or remote configurations declare it in **`__lazy_modules__`** (PEP 810): lazy on Python 3.15+, ignored by older versions. `lazy_imports_test.py` checks that importing MegaLinter and all its reporters loads none of them
   - New linter-level descriptor property **`cli_lint_cache_args`**: arguments enabling the linter's own cache, sent only in native mode, with `{{LINTER_CACHE_DIR}}` replaced by a folder of `MEGALINTER_HOME/cache/linters/<LINTER_KEY>/<workspace hash>`. Declared for eslint (shared, emptied for `TYPESCRIPT_ES` / `TSX_ES`), prettier (shared), stylelint and cspell. `BlackLinter` runs `black --check` first, then `--check --diff` only on the files to reformat (black skips its cache with `--diff`)
   - **`/pr-watch-fix-renovate`** fixes a MegaLinter error shared by several Renovate PRs **once**, in a carrier PR:
