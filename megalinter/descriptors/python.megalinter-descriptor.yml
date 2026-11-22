@@ -148,7 +148,12 @@ linters:
         - name: Pylint
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.pylint
   # BLACK
-  - linter_name: black
+  - class: BlackLinter
+    linter_name: black
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - pyproject.toml
     file_extensions:
       - ".py"
       - ".pyi"
@@ -222,6 +227,14 @@ linters:
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_regex: "^(?P<severity>error): cannot format (?P<path>.+?): (?P<message>.+)$"
+    sarif_text_levels:
+      error: error
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as black expects
+    sarif_whole_output: true
     examples:
       - "black --diff --check myfile.py"
       - "black --config pyproject.toml --diff --check myfile.py"
@@ -268,6 +281,12 @@ linters:
   # FLAKE8
   - class: Flake8Linter
     linter_name: flake8
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - .flake8
+        - setup.cfg
+        - tox.ini
     can_output_sarif: true
     linter_text: |
       **Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.
@@ -405,6 +424,11 @@ linters:
       - "--check"
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "\\@\\@ (.*) \\@\\@"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_default_level: note
+    sarif_text_default_message: The imports are not sorted as isort expects
+    sarif_whole_output: true
     examples:
       - "isort --diff --check --profile black myfile.py"
       - "isort --diff --check --profile black --settings-file .isort.cfg myfile.py"
@@ -1093,6 +1117,10 @@ linters:
       - --check
     cli_lint_fix_remove_args:
       - --check
+    can_output_sarif: true
+    sarif_text_regex: '^unformatted: (?P<message>[^\n]+)\n --> (?P<path>[^\n]+?):(?P<line>\d+):(?P<column>\d+)$'
+    sarif_text_default_level: note
+    sarif_whole_output: true
     config_file_name: ".ruff.toml"
     examples:
       - "ruff format --check myfile.py myfile2.py"

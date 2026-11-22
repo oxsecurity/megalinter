@@ -55,7 +55,7 @@ class JiraReporterTest(unittest.TestCase):
     def run_reporter(self, provider_patch, existing_comments=None):
         with (
             provider_patch,
-            mock.patch("megalinter.reporters.JiraReporter.Jira") as jira_class,
+            mock.patch("atlassian.Jira") as jira_class,
         ):
             jira = jira_class.return_value
             jira.issue_get_comments.return_value = {"comments": existing_comments or []}
@@ -158,7 +158,7 @@ class JiraReporterTest(unittest.TestCase):
 
     def test_jira_error_does_not_raise(self):
         patch = self.mock_provider(CiProviderGithubActions, ["PROJ-1"], "r #PR1", "")
-        with patch, mock.patch("megalinter.reporters.JiraReporter.Jira") as jira_class:
+        with patch, mock.patch("atlassian.Jira") as jira_class:
             jira_class.return_value.issue_get_comments.side_effect = Exception("boom")
             self.build_reporter().produce_report()
 

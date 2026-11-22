@@ -149,14 +149,21 @@ export const optionsDefinition = optionator.default({
       option: "prerun",
       type: "Boolean",
       description:
-        "Analysis-only mode (equivalent to -e MEGALINTER_PRERUN=true): identify active linters and collect files, then stop before running any linter and output configuration suggestions to improve performances (directories to exclude, lighter flavor), in the console and in megalinter-reports/prerun-report.json. Requires MegaLinter v10 or beta.",
+        "Analysis-only mode (equivalent to -e MEGALINTER_PRERUN=true): identify active linters and collect files, then stop before running any linter and output configuration suggestions to improve performances (directories to exclude, lighter flavor), in the console and in megalinter-reports/prerun-report.json. Requires MegaLinter v10 or beta. " +
+        "With --native, it also suggests the NATIVE_LINTERS to run on this machine.",
     },
     {
       option: "json",
       alias: "j",
       type: "Boolean",
       description:
-        "Output the run summary as a JSON object on stdout (equivalent to -e JSON_REPORTER=true).",
+        "Generate the JSON report megalinter-reports/mega-linter-report.json (equivalent to -e JSON_REPORTER=true).",
+    },
+    {
+      option: "sarif",
+      type: "Boolean",
+      description:
+        "Generate the SARIF report megalinter-reports/megalinter-report.sarif (equivalent to -e SARIF_REPORTER=true).",
     },
     {
       option: "nodockerpull",
@@ -229,6 +236,40 @@ export const optionsDefinition = optionator.default({
         "[beta] Install the linters for native mode (--native): the ones given as arguments (example: PYTHON_BLACK JAVASCRIPT_ES), " +
         "or the ones listed in NATIVE_LINTERS. Not to be confused with --install, that sets up MegaLinter in your repository.",
       example: ["PYTHON_BLACK JAVASCRIPT_ES"],
+    },
+    {
+      option: "native-setup",
+      type: "Boolean",
+      description:
+        "[beta] Set up native mode in one command: choose the linters to run on this machine (suggested from their speed, the others stay for CI), " +
+        "write them in NATIVE_LINTERS, install them and run a first lint. The linters given as arguments skip the choice " +
+        "(example: PYTHON_BLACK JAVASCRIPT_ES). Without arguments, it asks in a terminal and only prints the suggestion otherwise.",
+      example: ["PYTHON_BLACK JAVASCRIPT_ES"],
+    },
+    {
+      option: "uninstall-linters",
+      type: "Boolean",
+      description:
+        "[beta] Remove the given linters (example: PYTHON_BLACK JAVASCRIPT_ES) installed for native mode (--native).",
+      example: ["PYTHON_BLACK JAVASCRIPT_ES"],
+    },
+    {
+      option: "list-linters",
+      type: "Boolean",
+      description:
+        "[beta] Show the native status of every linter (installed, available, unsupported on this platform...). Add --json for a machine-readable list.",
+    },
+    {
+      option: "doctor",
+      type: "Boolean",
+      description:
+        "[beta] Check the prerequisites of native mode (--native): Git Bash on Windows, uv, language runtimes and the ~/.megalinter folder.",
+    },
+    {
+      option: "prune-cache",
+      type: "Boolean",
+      description:
+        "[beta] Empty the download and linter caches of native mode (--native).",
     },
     {
       option: "all",

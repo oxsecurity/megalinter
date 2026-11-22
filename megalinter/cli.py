@@ -8,7 +8,9 @@ import uuid
 
 import megalinter
 from megalinter import config
+from megalinter.native import config_writer
 from megalinter.native import selection as native_selection
+from megalinter.native import suggest as native_suggest
 from megalinter.native.catalog import load_native_specs
 from megalinter.native.context import (
     NativeError,
@@ -61,6 +63,57 @@ def build_parser():
         default=None,
         help="Policy to install missing language runtimes (default: ask)",
     )
+    add_report_arguments(run)
+
+    prerun = commands.add_parser(
+        "prerun",
+        help=(
+            "Analyze the repository without running any linter: suggest the linters "
+            "to run natively and the configuration improvements"
+        ),
+    )
+    prerun.add_argument(
+        "--input", default=None, help="Folder to analyze (default: current folder)"
+    )
+    prerun.add_argument(
+        "--runtimes",
+        choices=POLICIES,
+        default=None,
+        help="Policy to install missing language runtimes (default: ask)",
+    )
+
+    setup = commands.add_parser(
+        "setup",
+        help=(
+            "Choose the linters to run natively, write them in NATIVE_LINTERS, "
+            "install them and run a first lint"
+        ),
+    )
+    setup.add_argument(
+        "--linters",
+        default=None,
+        help=(
+            "Comma separated linter keys to use (example: PYTHON_BLACK,JAVASCRIPT_ES). "
+            "Without it, the suggestion is shown and asked in a terminal"
+        ),
+    )
+    setup.add_argument(
+        "--input",
+        default=None,
+        help="Folder holding the configuration (default: current folder)",
+    )
+    setup.add_argument(
+        "--runtimes",
+        choices=POLICIES,
+        default=None,
+        help="Policy to install missing language runtimes (default: ask)",
+    )
+    setup.add_argument(
+        "--no-run",
+        action="store_true",
+        help="Only write the configuration and install the linters",
+    )
+    add_report_arguments(setup)
 
     install = commands.add_parser(
         "install-linters",
@@ -104,13 +157,30 @@ def build_parser():
 
     commands.add_parser("doctor", help="Check the native mode prerequisites")
 
-    cache = commands.add_parser("cache", help="Manage the download cache")
+    cache = commands.add_parser("cache", help="Manage the download and linter caches")
     cache.add_argument("action", choices=["prune"])
     return parser
 
 
+def add_report_arguments(parser):
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Generate the JSON report (JSON_REPORTER=true)",
+    )
+    parser.add_argument(
+        "--sarif",
+        action="store_true",
+        help="Generate the SARIF report (SARIF_REPORTER=true)",
+    )
+
+
 def prepare_environment(arguments):
     os.environ["MEGALINTER_NATIVE"] = "true"
+    if getattr(arguments, "json", False):
+        os.environ["JSON_REPORTER"] = "true"
+    if getattr(arguments, "sarif", False):
+        os.environ["SARIF_REPORTER"] = "true"
     workspace = os.path.abspath(getattr(arguments, "input", None) or os.getcwd())
     if not os.path.isdir(workspace):
         raise NativeError(f"Folder not found: {workspace}")
@@ -133,6 +203,104 @@ def command_run(arguments):
     linter = megalinter.Megalinter({"cli": True, "request_id": str(uuid.uuid1())})
     linter.run()
     return 0
+
+
+def run_native_prerun():
+    os.environ["MEGALINTER_PRERUN"] = "true"
+    config.refresh_env_snapshot()
+    try:
+        mega_linter = megalinter.Megalinter(
+            {"cli": True, "request_id": str(uuid.uuid1())}
+        )
+        mega_linter.run()
+    finally:
+        del os.environ["MEGALINTER_PRERUN"]
+        config.refresh_env_snapshot()
+    return mega_linter
+
+
+def command_prerun(arguments):
+    prepare_environment(arguments)
+    run_native_prerun()
+    return 0
+
+
+def parse_linter_keys(value):
+    keys = [key.strip().upper() for key in value.split(",") if key.strip() != ""]
+    if len(keys) == 0:
+        raise NativeError("No linter chosen")
+    known = {spec.key for spec in load_native_specs()}
+    unknown = sorted(set(keys) - known)
+    if len(unknown) > 0:
+        raise NativeError(native_selection.unknown_linters_message(unknown))
+    return keys
+
+
+def read_answer(question):
+    try:
+        return input(question).strip().lower()
+    except EOFError:
+        # Windows reports the NUL device (no input at all) as a terminal
+        raise NativeError("Setup cancelled: no answer was given") from None
+
+
+def ask_native_linters(suggestion):
+    recommended = suggestion["values"]
+    logging.info(
+        "Linters proposed for native mode (CI keeps running every active linter):"
+    )
+    logging.info("\n".join(native_suggest.format_native_rows(suggestion["details"])))
+    if not sys.stdin.isatty():
+        raise NativeError(
+            "Choose the linters to run natively, for example: megalinter setup --linters "
+            + ",".join(recommended)
+        )
+    answer = read_answer(
+        f"Run these {len(recommended)} linters natively? [Y/n/e (edit the list)] "
+    )
+    if answer in ("", "y", "yes"):
+        return recommended
+    if answer in ("e", "edit"):
+        return parse_linter_keys(
+            read_answer("Linters to run natively (comma separated keys): ")
+        )
+    raise NativeError("Setup cancelled")
+
+
+def choose_native_linters(arguments, prerun_report, configured):
+    if arguments.linters:
+        return parse_linter_keys(arguments.linters)
+    suggestion = next(
+        (
+            item
+            for item in prerun_report["suggestions"]
+            if native_suggest.is_native_suggestion(item)
+        ),
+        None,
+    )
+    if suggestion is not None:
+        return ask_native_linters(suggestion)
+    if len(configured) > 0:
+        return configured
+    raise NativeError(
+        "No linter of this repository can run without Docker: use Docker "
+        "(npx mega-linter-runner without --native)"
+    )
+
+
+def command_setup(arguments):
+    workspace = prepare_environment(arguments)
+    mega_linter = run_native_prerun()
+    config_file = config_writer.find_config_file(workspace)
+    configured = config_writer.read_configured_linters(config_file)
+    keys = choose_native_linters(arguments, mega_linter.prerun_report, configured)
+    if keys != configured:
+        config_writer.write_native_linters(config_file, keys)
+        logging.info(f"NATIVE_LINTERS written in {config_file}: {', '.join(keys)}")
+    install_explicit_linters(argparse.Namespace(linters=keys, force=False))
+    if arguments.no_run:
+        return 0
+    return command_run(arguments)
 
 
 def command_install_linters(arguments):
@@ -264,6 +432,8 @@ def command_cache(arguments):
 
 COMMANDS = {
     "run": command_run,
+    "prerun": command_prerun,
+    "setup": command_setup,
     "install-linters": command_install_linters,
     "uninstall-linters": command_uninstall_linters,
     "list-linters": command_list_linters,

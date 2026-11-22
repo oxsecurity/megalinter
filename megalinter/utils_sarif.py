@@ -289,3 +289,57 @@ def fix_sarif_physical_location(physical_location):
             location_item["endColumn"] = 1
         physical_location[location_key] = location_item
     return physical_location
+
+
+# Findings of a SARIF file (after normalization), as flat records for the JSON report
+def extract_findings(sarif_file, workspace=None):
+    if sarif_file is None or not os.path.isfile(sarif_file):
+        return None
+    with open(sarif_file, "r", encoding="utf-8-sig") as file:
+        try:
+            sarif_obj = json.load(file)
+        except JSONDecodeError:
+            return None
+    findings = []
+    for run in sarif_obj.get("runs") or []:
+        for result in run.get("results") or []:
+            if is_suppressed(result):
+                continue
+            findings.append(build_finding(result, workspace))
+    return findings
+
+
+def build_finding(result: dict, workspace=None) -> dict:
+    finding = {"level": result.get("level") or "warning"}
+    rule_id = result.get("ruleId") or (result.get("rule") or {}).get("id")
+    if rule_id:
+        finding["rule"] = rule_id
+    message = result.get("message") or {}
+    text = message.get("text") or message.get("markdown")
+    if text:
+        finding["message"] = text
+    locations = result.get("locations") or []
+    physical = (locations[0].get("physicalLocation") or {}) if locations else {}
+    uri = (physical.get("artifactLocation") or {}).get("uri")
+    if uri:
+        finding["file"] = relative_finding_path(uri, workspace)
+    region = physical.get("region") or {}
+    for sarif_key, key in (
+        ("startLine", "line"),
+        ("startColumn", "column"),
+        ("endLine", "end_line"),
+    ):
+        if sarif_key in region:
+            finding[key] = region[sarif_key]
+    return finding
+
+
+def relative_finding_path(uri: str, workspace=None) -> str:
+    path = uri.removeprefix("file://").replace("\\", "/")
+    if workspace:
+        prefix = workspace.replace("\\", "/").rstrip("/") + "/"
+        # file:///C:/... on Windows leaves a leading slash before the drive
+        for candidate in (path, path.removeprefix("/")):
+            if candidate.startswith(prefix):
+                return candidate.removeprefix(prefix)
+    return path

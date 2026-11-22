@@ -11,6 +11,7 @@ file_extensions:
 linters:
   # JSONLINT
   - linter_name: jsonlint
+    native_results_cache: {}
     can_output_sarif: true
     cli_sarif_args:
       - "--compact"

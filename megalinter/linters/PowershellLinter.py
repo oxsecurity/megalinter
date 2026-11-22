@@ -51,6 +51,8 @@ class PowershellLinter(Linter):
         self.drop_files_unsafe_for_interpreter()
 
     def convert_output_to_sarif(self, return_stdout):
+        if self.linter_name == "powershell_formatter":
+            return super().convert_output_to_sarif(return_stdout)
         return powershell_json_to_sarif(return_stdout, self.workspace)
 
     # Build the CLI command to call to lint a file with a powershell script

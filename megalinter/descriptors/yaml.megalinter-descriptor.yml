@@ -50,6 +50,12 @@ linters:
       - "prettier --config .prettierrc.json --write myfile.yml" # format
   - class: YamllintLinter
     linter_name: yamllint
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - .yamllint
+        - .yamllint.yaml
+        - .yamllint.yml
     can_output_sarif: true
     # Overrides the --format standard of cli_lint_extra_args (the last one wins)
     cli_sarif_args:

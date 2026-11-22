@@ -25,6 +25,13 @@ supported_cli_lint_modes:
   - project
 cli_lint_extra_args:
   - --no-ignore
+# Native mode: unchanged files are not linted again (the cache holds their results)
+cli_lint_cache_args:
+  - --cache
+  - --cache-location
+  - "{{LINTER_CACHE_DIR}}/cache"
+  - --cache-strategy
+  - content
 cli_lint_fix_arg_name: --fix
 cli_sarif_args:
   - --format

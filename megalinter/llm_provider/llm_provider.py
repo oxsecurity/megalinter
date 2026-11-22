@@ -3,6 +3,9 @@
 Base LLM Provider class for MegaLinter
 """
 
+# Annotations are not evaluated at load time: requests is only needed for type checking
+from __future__ import annotations
+
 import email.utils
 import json
 import logging
@@ -10,10 +13,12 @@ import os
 import time
 from abc import ABC, abstractmethod
 from datetime import datetime, timezone
-from typing import Any, Dict, Optional, Union
+from typing import TYPE_CHECKING, Any, Dict, Optional, Union
 
-import requests
 from megalinter import config
+
+if TYPE_CHECKING:
+    import requests
 
 
 class LLMProviderError(Exception):
@@ -116,6 +121,9 @@ class LLMProvider(ABC):
         ]  # Only Ollama doesn't require API key
 
     def create_http_session(self) -> requests.Session:
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         session = requests.Session()
         session.headers.update({"User-Agent": "MegaLinter-LLM-Advisor"})
         return session
@@ -200,6 +208,9 @@ class LLMProvider(ABC):
         headers: Optional[Dict[str, str]] = None,
         stream: bool = False,
     ) -> requests.Response:
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         request_headers = {
             "Content-Type": "application/json",
             "Accept": "application/json",

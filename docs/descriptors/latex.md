@@ -9,9 +9,9 @@ description: chktex is available to analyze LATEX files in MegaLinter
 
 ## Linters
 
-| Linter                                                              | Additional |
-|---------------------------------------------------------------------|------------|
-| [**chktex**](latex_chktex.md)<br/>[_LATEX_CHKTEX_](latex_chktex.md) |            |
+| Linter                                                              | Additional                                       |
+|---------------------------------------------------------------------|--------------------------------------------------|
+| [**chktex**](latex_chktex.md)<br/>[_LATEX_CHKTEX_](latex_chktex.md) | ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files
 

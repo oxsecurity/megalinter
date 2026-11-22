@@ -17,6 +17,13 @@ supported_cli_lint_modes:
 cli_config_arg_name: --config
 cli_lint_extra_args:
   - --check
+# Native mode: files already formatted are not checked again until they change
+cli_lint_cache_args:
+  - --cache
+  - --cache-location
+  - "{{LINTER_CACHE_DIR}}/cache"
+  - --cache-strategy
+  - content
 cli_lint_mode_project_exclude_ignore_file_arg_name: --ignore-path
 cli_lint_mode_project_exclude_ignore_file_pass_existing:
   - .gitignore
@@ -24,8 +31,42 @@ cli_lint_mode_project_exclude_ignore_file_pass_existing:
 cli_lint_mode_project_extra_args_after:
   - .
 cli_lint_fix_arg_name: --write
+native_results_cache:
+  failed_files_in_output: true
+  config_files:
+    - .prettierrc
+    - .prettierrc.json
+    - .prettierrc.yaml
+    - .prettierrc.yml
+    - .prettierrc.json5
+    - .prettierrc.js
+    - .prettierrc.cjs
+    - .prettierrc.mjs
+    - .prettierrc.ts
+    - .prettierrc.cts
+    - .prettierrc.mts
+    - .prettierrc.toml
+    - prettier.config.js
+    - prettier.config.cjs
+    - prettier.config.mjs
+    - prettier.config.ts
+    - prettier.config.cts
+    - prettier.config.mts
+    - package.json
+    - package.yaml
+    - .editorconfig
+    - .prettierignore
+    - .gitignore
 cli_lint_fix_remove_args:
   - --check
+can_output_sarif: true
+sarif_text_regex: '^\[(?P<severity>warn|error)\] (?P<path>(?![>\s]|Code style issues|Ignored unknown option)(?:(?!: )[^\n])+)(?:: (?P<message>\w*Error: [^\n]*))?$'
+sarif_text_levels:
+  warn: note
+  error: error
+sarif_text_default_level: note
+sarif_text_default_message: The file is not formatted as prettier expects
+sarif_whole_output: true
 install:
   dockerfile:
     - |-

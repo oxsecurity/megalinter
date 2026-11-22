@@ -459,6 +459,7 @@
         "SPELL_LYCHEE",
         "SPELL_MISSPELL",
         "SPELL_PROSELINT",
+        "SPELL_TYPOS",
         "SPELL_VALE",
         "SQL_SQLFLUFF",
         "SQL_SQL_LINT",
@@ -20627,6 +20628,15 @@
       "x-order": 910050,
       "x-section": "MISC"
     },
+    "NATIVE_LINTER_CACHE": {
+      "default": true,
+      "description": "Native mode: let the linters that have their own cache of results (eslint, prettier, stylelint, cspell) keep it between runs, in MEGALINTER_HOME, so they analyze again only the files that changed. Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_CACHE: false for one linter",
+      "title": "Native mode linter caches",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 910080,
+      "x-section": "MISC"
+    },
     "NATIVE_MISSING_LINTERS": {
       "default": "install",
       "description": "Native mode: what to do with a linter listed in NATIVE_LINTERS that is not installed. install: install it, skip: skip it, fail: stop with an error",
@@ -20653,6 +20663,15 @@
       "type": "boolean",
       "x-category": "GENERAL",
       "x-order": 910070,
+      "x-section": "MISC"
+    },
+    "NATIVE_RESULTS_CACHE": {
+      "default": true,
+      "description": "Native mode: the files that a linter found without any problem are not linted again by the next runs while they, the linter and its configuration stay the same (for the linters whose result on a file depends only on its content). Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_RESULTS_CACHE: false for one linter",
+      "title": "Native mode results cache",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 910090,
       "x-section": "MISC"
     },
     "NATIVE_SUGGESTIONS": {
