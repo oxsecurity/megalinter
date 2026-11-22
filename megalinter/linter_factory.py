@@ -32,7 +32,9 @@ def list_linters_without_sarif(linters_init_params=None):
     return [
         linter
         for linter in list_all_linters(linters_init_params)
-        if linter.disabled is not True and linter.can_output_sarif is not True
+        if linter.disabled is not True
+        and linter.is_plugin is not True
+        and linter.can_output_sarif is not True
     ]
 
 
