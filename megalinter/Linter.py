@@ -1422,7 +1422,7 @@ class Linter:
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         if file is None:
-            command = self.fit_command_in_windows_limit(command)
+            self.warn_on_windows_command_limit(command)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
@@ -1439,15 +1439,18 @@ class Linter:
                 return_output = self.stdout_human
         return return_code, return_output
 
-    # Windows: a list of files too long for any launch of the linter is replaced by a
-    # project mode run, when the linter has one: always a single command
-    def fit_command_in_windows_limit(self, command):
+    # Windows: a linter always runs in one command, so a list of files above the limit
+    # of the system can not be linted: say what to do about it
+    def warn_on_windows_command_limit(self, command):
         if (
             sys.platform != "win32"
             or self.cli_lint_mode != "list_of_files"
             or not isinstance(command, list)
         ):
-            return command
+            return
+        command_chars = len(subprocess.list2cmdline(command))
+        if command_chars <= WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS:
+            return
         executable = shutil.which(
             command[0],
             path=self.native_search_path(getattr(self, "_cached_subprocess_env", None)),
@@ -1458,35 +1461,31 @@ class Linter:
             and self.find_posix_launcher(executable) is None
         ):
             max_chars = WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
-        if len(subprocess.list2cmdline(command)) <= max_chars:
-            return command
-        if not self.is_cli_lint_mode_supported("project"):
-            logging.warning(
-                f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
-                "Windows command line limit and this linter has no project mode: "
-                "reduce them with FILTER_REGEX_EXCLUDE, or use Docker"
-            )
-            return command
-        logging.warning(
+        if command_chars <= max_chars:
+            return
+        message = (
             f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
-            "Windows command line limit: running it in project mode"
+            "Windows command line limit. Lint fewer files with FILTER_REGEX_EXCLUDE, "
+            "or use Docker"
         )
-        self.cli_lint_mode = "project"
-        return self.build_lint_command()
+        logging.warning(message)
+        self.tips.append({"category": "windows_command_line", "message": message})
 
     # npm and MegaLinter write a POSIX launcher next to each .cmd launcher
     def find_posix_launcher(self, executable):
         if find_git_bash() is None:
             return None
         launcher = os.path.splitext(executable)[0]
-        if not os.path.isfile(launcher):
+        try:
+            with open(launcher, "rb") as launcher_file:
+                return launcher if launcher_file.read(2) == b"#!" else None
+        except OSError:
             return None
-        with open(launcher, "rb") as launcher_file:
-            return launcher if launcher_file.read(2) == b"#!" else None
 
     # Git Bash reads the arguments from a file, so that the long command line never
     # goes through cmd.exe: the POSIX launcher starts the tool with all of them
     def run_through_git_bash(self, command, subprocess_env, cwd, launcher):
+        self.lint_command_log[-1] = " ".join([launcher, *command[1:]])
         with tempfile.TemporaryDirectory() as folder:
             arguments_file = os.path.join(folder, "arguments")
             with open(arguments_file, "w", encoding="utf-8", newline="") as file:
@@ -1495,7 +1494,7 @@ class Linter:
                 [
                     find_git_bash(),
                     "-c",
-                    'mapfile -d "" -t arguments < "$1"; exec "$2" "${arguments[@]}"',
+                    'mapfile -d "" -t arguments < "$1" && exec "$2" "${arguments[@]}"',
                     "megalinter",
                     arguments_file.replace("\\", "/"),
                     launcher.replace("\\", "/"),
