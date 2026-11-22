@@ -147,8 +147,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Windows: the **Fixed** column of the summary counts the files fixed in subfolders (it showed 0 for them)
   - **Linter notices** (such as checkov `--skip-framework secrets`) are now displayed inside the section of their linter in the console log, instead of out of context before the first linter
   - Windows, native mode: linters no longer fail with **"The command line is too long"** on repositories with many files
-    - They still run in a single command, through **Git Bash** when the list is too long for `cmd.exe`
-    - Above the Windows limit, a **tip** tells you to lint fewer files with `FILTER_REGEX_EXCLUDE`, or to use Docker
+    - They still run in a **single command**: linters written in JavaScript or Python read their long file list from a temporary file, with **no size limit**
+    - Other linters go through **Git Bash** up to the Windows limit of 32,767 characters. Above it, the run **fails** with a tip to lint fewer files with `FILTER_REGEX_EXCLUDE`, or to use Docker
   - An absolute **`LINTER_RULES_PATH`** (example: `/rules`) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)
   - **Spaces around the elements** of comma-separated variables are now ignored: `ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"` (or a YAML folded scalar `>-`) enables both linters, instead of silently skipping `BASH_SHFMT`. Fixes [#9605](https://github.com/oxsecurity/megalinter/issues/9605)
   - **ENABLE_LINTERS** and **DISABLE_LINTERS** now log a **warning** (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key

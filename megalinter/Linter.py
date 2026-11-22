@@ -47,6 +47,7 @@ from megalinter import (
 )
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
+from megalinter.native import long_command
 from megalinter.native import toolchain as native_toolchain
 from megalinter.native.context import (
     cache_dir,
@@ -69,12 +70,6 @@ DEFAULT_LINTER_TIMEOUT_SECONDS = 300
 # kept as the budget for generated exclusion values, leaving room for the rest
 # of the command line
 MAX_PROJECT_EXCLUDE_ARG_BYTES = 64 * 1024
-
-# Windows caps a command line at 32767 characters, and at 8191 when it goes through
-# cmd.exe (.cmd and .bat launchers, like the ones npm creates). The margin covers
-# what a launcher adds when it expands its own path and the path of the tool
-WINDOWS_COMMAND_LINE_MAX_CHARS = 32000
-WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS = 7000
 
 
 class Linter:
@@ -1422,7 +1417,7 @@ class Linter:
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         if file is None:
-            self.warn_on_windows_command_limit(command)
+            self.check_windows_command_limit(command)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
@@ -1439,71 +1434,58 @@ class Linter:
                 return_output = self.stdout_human
         return return_code, return_output
 
-    # Windows: a linter always runs in one command, so a list of files above the limit
-    # of the system can not be linted: say what to do about it
-    def warn_on_windows_command_limit(self, command):
+    # Windows: a linter always runs in one command. When no route can pass its files,
+    # it can not run on them: that must fail the run, even for a non-blocking linter
+    def check_windows_command_limit(self, command):
         if (
             sys.platform != "win32"
             or self.cli_lint_mode != "list_of_files"
             or not isinstance(command, list)
+            or len(subprocess.list2cmdline(command))
+            <= long_command.WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
         ):
-            return
-        command_chars = len(subprocess.list2cmdline(command))
-        if command_chars <= WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS:
             return
         executable = shutil.which(
             command[0],
             path=self.native_search_path(getattr(self, "_cached_subprocess_env", None)),
         )
-        max_chars = WINDOWS_COMMAND_LINE_MAX_CHARS
-        if (
-            is_windows_script(executable)
-            and self.find_posix_launcher(executable) is None
-        ):
-            max_chars = WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
-        if command_chars <= max_chars:
+        if executable is None:
             return
+        route = long_command.find_route([executable, *command[1:]])
+        if route == long_command.ROUTE_TOO_LONG:
+            self.report_windows_command_limit()
+
+    def report_windows_command_limit(self):
         message = (
             f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
-            "Windows command line limit. Lint fewer files with FILTER_REGEX_EXCLUDE, "
-            "or use Docker"
+            "Windows command line limit, and MegaLinter can not pass them to this tool. "
+            "Lint fewer files with FILTER_REGEX_EXCLUDE, or use Docker"
         )
-        logging.warning(message)
+        logging.error(message)
         self.tips.append({"category": "windows_command_line", "message": message})
+        self.disable_errors = False
+        self.disable_errors_if_less_than = None
 
-    # npm and MegaLinter write a POSIX launcher next to each .cmd launcher
-    def find_posix_launcher(self, executable):
-        if find_git_bash() is None:
-            return None
-        launcher = os.path.splitext(executable)[0]
-        try:
-            with open(launcher, "rb") as launcher_file:
-                return launcher if launcher_file.read(2) == b"#!" else None
-        except OSError:
-            return None
-
-    # Git Bash reads the arguments from a file, so that the long command line never
-    # goes through cmd.exe: the POSIX launcher starts the tool with all of them
-    def run_through_git_bash(self, command, subprocess_env, cwd, launcher):
-        self.lint_command_log[-1] = " ".join([launcher, *command[1:]])
-        with tempfile.TemporaryDirectory() as folder:
-            arguments_file = os.path.join(folder, "arguments")
-            with open(arguments_file, "w", encoding="utf-8", newline="") as file:
-                file.write("".join(f"{argument}\0" for argument in command[1:]))
+    def run_windows_lint_subprocess(self, command, subprocess_env, cwd):
+        route = long_command.find_route(command)
+        if route in (long_command.ROUTE_DIRECT, long_command.ROUTE_TOO_LONG):
             return self._run_lint_subprocess(
-                [
-                    find_git_bash(),
-                    "-c",
-                    'mapfile -d "" -t arguments < "$1" && exec "$2" "${arguments[@]}"',
-                    "megalinter",
-                    arguments_file.replace("\\", "/"),
-                    launcher.replace("\\", "/"),
-                ],
-                {
-                    "cwd": cwd,
-                    "env": {**subprocess_env, "MSYS_NO_PATHCONV": "1"},
-                },
+                command, {"env": subprocess_env, "cwd": cwd}
             )
+        logging.info(
+            f"[{self.linter_name}] Command line too long for Windows: "
+            f"passing its arguments through a file ({route})"
+        )
+        with tempfile.TemporaryDirectory() as folder:
+            launch_command, launch_env = long_command.build_launch(
+                route, command, subprocess_env, folder
+            )
+            return_code, return_stdout = self._run_lint_subprocess(
+                launch_command, {"env": launch_env, "cwd": cwd}
+            )
+        if return_code != 0 and long_command.is_launch_failure(return_stdout):
+            self.report_windows_command_limit()
+        return return_code, return_stdout
 
     def merge_file_sarif(self):
         if self.sarif_output_file is None or not os.path.isfile(self.sarif_output_file):
@@ -1591,17 +1573,9 @@ class Linter:
             self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
-                posix_launcher = None
-                if (
-                    sys.platform == "win32"
-                    and is_windows_script(command[0])
-                    and len(subprocess.list2cmdline(command))
-                    > WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
-                ):
-                    posix_launcher = self.find_posix_launcher(command[0])
-                if posix_launcher is not None:
-                    return_code, return_stdout = self.run_through_git_bash(
-                        command, subprocess_env, cwd, posix_launcher
+                if sys.platform == "win32":
+                    return_code, return_stdout = self.run_windows_lint_subprocess(
+                        command, subprocess_env, cwd
                     )
                 else:
                     return_code, return_stdout = self._run_lint_subprocess(
@@ -2964,7 +2938,3 @@ class Linter:
 
     def post_test(self, test_name):
         pass
-
-
-def is_windows_script(executable):
-    return executable is not None and executable.lower().endswith((".cmd", ".bat"))
