@@ -4,6 +4,9 @@ GitHub Comment reporter
 Post a comment on Github Pull Requests
 """
 
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["github"]
+
 import logging
 
 import github

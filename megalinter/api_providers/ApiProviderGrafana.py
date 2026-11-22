@@ -5,6 +5,9 @@ endpoint and metrics to a Prometheus/Influx write endpoint.
 Also handles the legacy NOTIF_API_* variables.
 """
 
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["requests"]
+
 import copy
 import json
 import logging

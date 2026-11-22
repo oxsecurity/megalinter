@@ -4,6 +4,9 @@ Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
 """
 
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["requests"]
+
 import logging
 
 import requests

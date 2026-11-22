@@ -3,6 +3,9 @@
 GitLab CI provider
 """
 
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["gitlab"]
+
 import logging
 import re
 import time

@@ -4,6 +4,9 @@ Jira reporter
 Post a comment on the Jira tickets referenced by labels of the current Pull Request
 """
 
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["atlassian"]
+
 import logging
 import re
 

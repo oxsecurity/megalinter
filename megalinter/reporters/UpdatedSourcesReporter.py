@@ -4,6 +4,9 @@ Updated Repository reporter
 Creates a folder containing only files updated by the linters
 """
 
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["git"]
+
 import logging
 import os
 import shutil

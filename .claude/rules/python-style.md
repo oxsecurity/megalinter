@@ -8,6 +8,7 @@ globs: ["megalinter/**/*.py", ".automation/**/*.py", "server/**/*.py"]
 ## Imports
 - Place all imports at the top of the file, never inline or conditional
 - Do not test if imports work (no try/except ImportError) — assume all packages are always available
+- A third-party library used only by some reporters, CI providers or remote configurations (requests, github, gitlab, redis, pytablewriter, atlassian, jsonpickle, git) is listed in the module's `__lazy_modules__`, declared just before its imports: Python 3.15+ then imports it on first use (PEP 810), older versions ignore it. Add new heavy libraries there and to `LAZY_LIBRARIES` of `lazy_imports_test.py`
 - Use `from megalinter import config` then `config.get(self.request_id, "VAR", default)` for configuration access
 
 ## Docstrings and Comments

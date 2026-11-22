@@ -1,4 +1,7 @@
 # flake8: noqa: E203
+# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
+__lazy_modules__ = ["requests", "pytablewriter", "pytablewriter.style", "redis"]
+
 import json
 import logging
 import os
