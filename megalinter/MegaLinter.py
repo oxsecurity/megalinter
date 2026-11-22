@@ -703,6 +703,23 @@ class Megalinter:
         if args.linterversion == "yes":
             self.linter_version_only = True
 
+    @staticmethod
+    def resolve_linter_rules_path(github_workspace, linter_rules_path_val):
+        if linter_rules_path_val.startswith("http"):
+            return linter_rules_path_val
+        # A leading slash always means an absolute path, whatever the platform (#9606)
+        is_absolute = os.path.isabs(
+            linter_rules_path_val
+        ) or linter_rules_path_val.startswith(("/", os.path.sep))
+        workspace_path = github_workspace + os.path.sep + linter_rules_path_val
+        if not is_absolute and os.path.isdir(workspace_path):
+            return workspace_path
+        if os.path.isdir(linter_rules_path_val):
+            return linter_rules_path_val
+        raise ValueError(
+            f"LINTER_RULES_PATH should be a valid directory ({linter_rules_path_val})"
+        )
+
     # Manage configuration variables
     def load_config_vars(self):
         _sentinel = object()
@@ -711,21 +728,9 @@ class Megalinter:
             self.request_id, "LINTER_RULES_PATH", _sentinel
         )
         if linter_rules_path_val is not _sentinel:
-            if linter_rules_path_val.startswith("http"):
-                self.linter_rules_path = linter_rules_path_val
-            # Only relative paths are resolved inside the workspace (#9606)
-            elif not os.path.isabs(linter_rules_path_val) and os.path.isdir(
-                self.github_workspace + os.path.sep + linter_rules_path_val
-            ):
-                self.linter_rules_path = (
-                    self.github_workspace + os.path.sep + linter_rules_path_val
-                )
-            elif os.path.isdir(linter_rules_path_val):
-                self.linter_rules_path = linter_rules_path_val
-            else:
-                raise ValueError(
-                    f"LINTER_RULES_PATH should be a valid directory ({linter_rules_path_val})"
-                )
+            self.linter_rules_path = self.resolve_linter_rules_path(
+                self.github_workspace, linter_rules_path_val
+            )
         # Filtering regex (inclusion)
         _val = config.get(self.request_id, "FILTER_REGEX_INCLUDE", _sentinel)
         if _val is not _sentinel:
