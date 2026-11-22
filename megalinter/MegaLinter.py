@@ -95,6 +95,10 @@ class Megalinter:
         if params is None:
             params = {}
 
+        # Actionable advice and skipped linters, for the JSON report
+        self.tips = []
+        self.skipped_linters_details = []
+
         # megalinter_exec cli variables
         self.cli = params["cli"] if "cli" in params else False
         self.arg_input = None
@@ -203,9 +207,6 @@ class Megalinter:
         self.fail_if_updated_sources = self.read_fail_if_updated_sources()
         self.flavor_suggestions = None
         self.native_suggestion = None
-        # Actionable advice and skipped linters, for the JSON report
-        self.tips = []
-        self.skipped_linters_details = []
 
         # Initialize plugins
         self.pre_commands_results = pre_post_factory.run_pre_commands(

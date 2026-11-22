@@ -11,7 +11,7 @@ from megalinter.native import suggest
 
 
 class FakeInstaller:
-    statuses = {}
+    statuses: dict[str, tuple] = {}
 
     def __init__(self, request_id=None):
         self.request_id = request_id
@@ -76,7 +76,7 @@ class SuggestTest(unittest.TestCase):
     def test_rules(self):
         FakeInstaller.statuses = {
             "PYTHON_UNSUPPORTED": ("unsupported", "No Windows build. Use Docker."),
-            "PYTHON_HOSTTOOL": ("host-provided", None),
+            "PYTHON_HOST_TOOL": ("host-provided", None),
         }
         master = self.master(
             [
@@ -84,7 +84,7 @@ class SuggestTest(unittest.TestCase):
                 fake_linter("PYTHON_PYLINT", speed=2),
                 fake_linter("REPOSITORY_TRIVY", speed=4, mode="project"),
                 fake_linter("PYTHON_UNSUPPORTED"),
-                fake_linter("PYTHON_HOSTTOOL", executable="hosttool"),
+                fake_linter("PYTHON_HOST_TOOL", executable="host_tool"),
             ]
         )
         with patch("megalinter.native.suggest.shutil.which", return_value=None):
@@ -99,15 +99,15 @@ class SuggestTest(unittest.TestCase):
             rows["PYTHON_UNSUPPORTED"]["reason"], "No Windows build. Use Docker."
         )
         self.assertEqual(rows["PYTHON_UNSUPPORTED"]["native_status"], "unsupported")
-        self.assertIn("hosttool is not installed", rows["PYTHON_HOSTTOOL"]["reason"])
+        self.assertIn("host_tool is not installed", rows["PYTHON_HOST_TOOL"]["reason"])
         self.assertFalse(any(rows[key]["recommended"] for key in list(rows)[1:]))
 
     def test_host_tool_found_on_the_machine_is_recommended(self):
-        FakeInstaller.statuses = {"PYTHON_HOSTTOOL": ("host-provided", None)}
-        master = self.master([fake_linter("PYTHON_HOSTTOOL")])
+        FakeInstaller.statuses = {"PYTHON_HOST_TOOL": ("host-provided", None)}
+        master = self.master([fake_linter("PYTHON_HOST_TOOL")])
         with patch("megalinter.native.suggest.shutil.which", return_value="/bin/tool"):
             suggestion = suggest.build_native_linters_suggestion(master)
-        self.assertEqual(suggestion["values"], ["PYTHON_HOSTTOOL"])
+        self.assertEqual(suggestion["values"], ["PYTHON_HOST_TOOL"])
 
     def test_measured_time_wins_over_the_static_speed(self):
         self.write_report({"PYTHON_PYLINT": 0.4, "SPELL_CSPELL": 12.5})
