@@ -15855,15 +15855,6 @@
       "category": "GENERAL",
       "section": "PERFORMANCE"
     },
-    "PARALLEL_POOL": {
-      "name": "PARALLEL_POOL",
-      "type": "string",
-      "title": "Parallel pool",
-      "description": "How linters run in parallel: threads (default: linters are sub-processes, so the workers only wait for them, and a thread starts instantly) or processes (each worker process loads MegaLinter again)",
-      "enum": ["threads", "processes"],
-      "category": "GENERAL",
-      "section": "PERFORMANCE"
-    },
     "PARALLEL_PROCESS_NUMBER": {
       "name": "PARALLEL_PROCESS_NUMBER",
       "type": "number",

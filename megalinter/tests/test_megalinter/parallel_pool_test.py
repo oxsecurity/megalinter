@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# Tests of the pool running the linters in parallel: threads by default, or
-# processes with PARALLEL_POOL: processes
+# Tests of the thread pool running the linters in parallel
 import logging
 import os
 import sys
@@ -13,7 +12,6 @@ from megalinter.MegaLinter import Megalinter
 FAKE_LINTER_MESSAGE = "fake linter ran"
 
 
-# Must be at module level to be picklable by the worker processes
 class FakeLinter:
     def __init__(self, name, descriptor_id="FAKE"):
         self.name = name
@@ -23,8 +21,11 @@ class FakeLinter:
         self.ran_in_pid = None
         self.ran_in_thread = None
         self.version_read = False
+        self.fail = False
 
     def run(self, **kwargs):
+        if self.fail:
+            raise RuntimeError(f"{self.name} failed")
         self.ran_in_pid = os.getpid()
         self.ran_in_thread = threading.current_thread().name
         logging.info(f"{FAKE_LINTER_MESSAGE}: {self.name}")
@@ -74,29 +75,29 @@ class ParallelPoolTest(unittest.TestCase):
 
     def test_linters_run_in_threads(self):
         for native_mode in (True, False):
-            self.assertEqual(
-                build_megalinter(self.request_id, native_mode).get_parallel_pool_type(),
-                "threads",
-            )
-        megalinter = build_megalinter(self.request_id, native_mode=True)
-        self.run_parallel(megalinter)
-        for linter in megalinter.linters:
-            self.assertEqual(linter.ran_in_pid, os.getpid(), linter.name)
-            self.assertNotEqual(linter.ran_in_thread, "MainThread", linter.name)
-            self.assertTrue(linter.version_read, linter.name)
-            self.assertIn(f"{FAKE_LINTER_MESSAGE}: {linter.name}", self.messages)
+            megalinter = build_megalinter(self.request_id, native_mode)
+            linters = list(megalinter.linters)
+            self.run_parallel(megalinter)
+            # The linters run in place: the same objects hold the results
+            self.assertEqual(megalinter.linters, linters)
+            for linter in megalinter.linters:
+                self.assertEqual(linter.ran_in_pid, os.getpid(), linter.name)
+                self.assertNotEqual(linter.ran_in_thread, "MainThread", linter.name)
+                self.assertTrue(linter.version_read, linter.name)
+                self.assertIn(f"{FAKE_LINTER_MESSAGE}: {linter.name}", self.messages)
         self.assertEqual(logging.getLogger().handlers[0].messages, self.messages)
 
-    def test_processes_on_request(self):
-        config.set(self.request_id, "PARALLEL_POOL", "processes")
+    def test_single_group_runs_in_a_thread(self):
         megalinter = build_megalinter(self.request_id, native_mode=False)
-        self.assertEqual(megalinter.get_parallel_pool_type(), "processes")
+        megalinter.linters = megalinter.linters[:1]
         self.run_parallel(megalinter)
-        for linter in megalinter.linters:
-            # The linters returned by the worker processes replace the initial ones
-            self.assertIsNotNone(linter.ran_in_pid, linter.name)
-            self.assertNotEqual(linter.ran_in_pid, os.getpid(), linter.name)
-            self.assertIn(f"{FAKE_LINTER_MESSAGE}: {linter.name}", self.messages)
+        self.assertNotEqual(megalinter.linters[0].ran_in_thread, "MainThread")
+
+    def test_failed_group_raises(self):
+        megalinter = build_megalinter(self.request_id, native_mode=False)
+        megalinter.linters[1].fail = True
+        with self.assertRaises(RuntimeError):
+            self.run_parallel(megalinter)
 
     # Linters running in threads share the configuration: building the environment of
     # a linter must not fail while another linter sets a variable
@@ -134,13 +135,6 @@ class ParallelPoolTest(unittest.TestCase):
         finally:
             sys.setswitchinterval(switch_interval)
         self.assertEqual(errors, [])
-
-    def test_invalid_value_uses_threads(self):
-        config.set(self.request_id, "PARALLEL_POOL", "fibers")
-        self.assertEqual(
-            build_megalinter(self.request_id, False).get_parallel_pool_type(),
-            "threads",
-        )
 
 
 if __name__ == "__main__":

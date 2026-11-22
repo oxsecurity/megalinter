@@ -19,7 +19,7 @@ That way you need to trust only MegaLinter core code with your secrets, not the 
 ## Performance
 
 - [MegaLinter flavors](flavors.md) allow using smaller Docker images, reducing pull time.
-- Thanks to Python multiprocessing, linters are run in parallel, which is much faster than Super-Linter's Bash script that runs all linters sequentially.
+- Linters are run in parallel, which is much faster than Super-Linter's Bash script that runs all linters sequentially.
 - When the linter allows it, call it once with N files, instead of calling it N times with one file.
 
 ## More languages and formats linted

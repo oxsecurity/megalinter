@@ -316,7 +316,7 @@ jobs:
       contents: read
       packages: read
     if: needs.build.outputs.is-quick != 'true'
-    timeout-minutes: 50
+    timeout-minutes: 30
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -390,43 +390,6 @@ jobs:
             mega-linter.log
             linter-helps.json
             linter-versions.json
-
-      # TEMPORARY (PR #9601): compare PARALLEL_POOL processes and threads on the same
-      # runner, alternating them, with the same image and sources. Removed once measured
-      - name: Benchmark parallel pools (temporary)
-        if: github.event_name == 'push'
-        shell: bash
-        env:
-          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
-          GH_REPOSITORY: ${{ github.repository }}
-          GH_SHA: ${{ github.sha }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set +e -uo pipefail
-          # Network-bound linters (link checker, vulnerability databases, schema downloads)
-          # are disabled: their duration varies with the network, not with the pool. The
-          # variable replaces the DISABLE_LINTERS of .mega-linter.yml: its linters come first
-          disabled="JSON_PRETTIER,MARKDOWN_RUMDL,PYTHON_PYRIGHT,SPELL_CODESPELL,SPELL_PROSELINT,SPELL_VALE,SPELL_LYCHEE,REPOSITORY_GRYPE,REPOSITORY_TRIVY,REPOSITORY_TRIVY_SBOM,REPOSITORY_OSV_SCANNER,REPOSITORY_DUSTILOCK,REPOSITORY_TRUFFLEHOG,JSON_V8R,YAML_V8R"
-          index=0
-          for pool in processes threads threads processes processes threads threads processes; do
-            index=$((index + 1))
-            sudo git checkout -- .
-            sudo git clean -fdxq
-            start=$(date +%s%N)
-            docker run -e PARALLEL_POOL="${pool}" -e DISABLE_LINTERS="${disabled}" -e GITHUB_REPOSITORY="${GH_REPOSITORY}" -e GITHUB_SHA="${GH_SHA}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e GITHUB_COMMENT_REPORTER=false -e GITHUB_STATUS_REPORTER=false -e API_REPORTER=false -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}" > "${RUNNER_TEMP}/bench-${index}-${pool}.log" 2>&1
-            code=$?
-            end=$(date +%s%N)
-            grep -E '^\| (✅|⚠️|❌)' "${RUNNER_TEMP}/bench-${index}-${pool}.log" | awk -F'|' '{print $3, $7, $9}' > "${RUNNER_TEMP}/bench-${index}-${pool}.results"
-            linters_total=$(grep -E '^\| (✅|⚠️|❌)' "${RUNNER_TEMP}/bench-${index}-${pool}.log" | awk -F'|' '{gsub(/[ s]/, "", $10); total += $10} END {printf "%.1f", total}')
-            echo "BENCH run ${index} ${pool}: $(( (end - start) / 1000000 )) ms (exit ${code}), sum of linter durations ${linters_total} s" | tee -a "${GITHUB_STEP_SUMMARY}"
-          done
-          for index in 2 3 4 5 6 7 8; do
-            previous=$(ls "${RUNNER_TEMP}"/bench-1-*.results)
-            current=$(ls "${RUNNER_TEMP}"/bench-${index}-*.results)
-            diff "${previous}" "${current}" && echo "BENCH identical results (runs 1 and ${index})" | tee -a "${GITHUB_STEP_SUMMARY}"
-          done
-          grep -E '^\| ' "${RUNNER_TEMP}/bench-2-threads.log" | tail -40
-        timeout-minutes: 30
 
   ###############################################################
   # Consumer: mega-linter-runner tests against the cached image #
