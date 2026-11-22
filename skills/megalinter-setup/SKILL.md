@@ -183,8 +183,8 @@ Native mode lints on the user's machine without Docker, and a run takes seconds.
 
 4. **Offer pre-commit hooks.** Native mode does not run on commits by itself. Unless the user already answered, ask (a structured question when your platform has one):
 
-   - **On commit and push (recommended)**: `megalinter-native-incremental` lints the files of each commit, `megalinter-native-full` runs on push
-   - **On commit only**: `megalinter-native-incremental`
+   - **On commit only (recommended)**: `megalinter-native-incremental` lints the files of each commit
+   - **On commit and push**: `megalinter-native-incremental`, plus `megalinter-native-full` on push
    - **No hooks**: skip the rest of this step
 
    Say before they answer that the hooks run `NATIVE_LINTERS`, **apply fixes** to the committed files, block the commit or push on an error, and that each teammate has to run `pre-commit install` once.
@@ -198,7 +198,7 @@ Native mode lints on the user's machine without Docker, and a run takes seconds.
       curl -fsSL https://raw.githubusercontent.com/oxsecurity/megalinter/<tag>/.pre-commit-hooks.yaml | grep megalinter-native-incremental
       ```
 
-   2. Add the hooks to `.pre-commit-config.yaml`. **Merge them into an existing file**, never replace it, and keep only the hooks the user chose. When the tag ships the hooks:
+   2. Add the hooks to `.pre-commit-config.yaml`. **Merge them into an existing file**, never replace it, and keep `megalinter-native-full` only for the commit and push choice. When the tag ships the hooks:
 
       ```yaml
       repos:
@@ -238,11 +238,11 @@ Native mode lints on the user's machine without Docker, and a run takes seconds.
       ```
 
    3. Make sure `megalinter-reports/` is in `.gitignore`.
-   4. Activate the hooks, leaving out `--hook-type pre-push` for commit only. When `pre-commit` is missing, install it first with `uv tool install pre-commit`:
+   4. Activate the hooks, adding `--hook-type pre-push` for the commit and push choice. When `pre-commit` is missing, install it first with `uv tool install pre-commit`:
 
       ```bash
       pre-commit validate-config
-      pre-commit install --hook-type pre-commit --hook-type pre-push
+      pre-commit install --hook-type pre-commit
       ```
 
    See <https://megalinter.io/latest/install-native/#pre-commit-hook>.
