@@ -96,3 +96,11 @@ POST_COMMANDS:
     cwd: "workspace"
 ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES:
   - GITHUB_TOKEN
+
+# Linters run by native mode (without Docker). CI keeps running every active linter
+NATIVE_LINTERS:
+  - BASH_SHELLCHECK
+  - PYTHON_BLACK
+  - PYTHON_FLAKE8
+  - PYTHON_ISORT
+  - PYTHON_RUFF
