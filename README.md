@@ -1319,11 +1319,11 @@ flowchart LR
     R -->|"--install, --upgrade,<br/>--custom-flavor-setup"| G["Configuration generators<br/>JavaScript only"]
 ```
 
-| You need | Install | Node.js | Docker | uv |
-|:---------|:--------|:-------:|:------:|:--:|
-| Run MegaLinter in a container (default) | nothing but the runner | yes | yes | no |
-| Run MegaLinter without Docker (beta) | the runner downloads and verifies the engine | yes | no | yes |
-| Create or upgrade `.mega-linter.yml` and CI files | nothing but the runner | yes | no | no |
+| You need                                          | Install                                      | Node.js | Docker | uv  |
+|:--------------------------------------------------|:---------------------------------------------|:-------:|:------:|:---:|
+| Run MegaLinter in a container (default)           | nothing but the runner                       |   yes   |  yes   | no  |
+| Run MegaLinter without Docker (beta)              | the runner downloads and verifies the engine |   yes   |   no   | yes |
+| Create or upgrade `.mega-linter.yml` and CI files | nothing but the runner                       |   yes   |   no   | no  |
 
 You never need to call `megalinter` yourself: the runner translates its options into the engine's arguments and environment variables. A copy installed by hand (`uv tool install megalinter --pre`) is only a shortcut: the runner does not verify it.
 
