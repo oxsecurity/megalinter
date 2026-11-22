@@ -878,6 +878,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#faster-repeated-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Faster repeated runs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#differences-with-docker" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12452,6 +12463,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#faster-repeated-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Faster repeated runs
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#differences-with-docker" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -12624,7 +12646,7 @@ npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--nati
 </tr>
 <tr>
 <td style="text-align: left;"><code>megalinter cache prune</code></td>
-<td style="text-align: left;">Empty the download cache</td>
+<td style="text-align: left;">Empty the download and linter caches</td>
 </tr>
 </tbody>
 </table>
@@ -12634,7 +12656,8 @@ npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--nati
 mega-linter-runner<span class="w"> </span>--native<span class="w"> </span>--release<span class="w"> </span>beta
 </code></pre></div>
 <p>Upgrade it with the same <code>npm install -g</code> command.</p>
-<p>On Windows and macOS, each parallel worker process starts by loading MegaLinter (about a second). With a few fast linters, fewer workers are quicker: set <code>PARALLEL_PROCESS_NUMBER</code> (for example <code>2</code>) in your environment, not in <code>.mega-linter.yml</code>, where it would also apply to CI. Measured on a 4-core Windows laptop with 6 linters: 5.0–5.7 s with 2 workers, 9.2–9.9 s with 6.</p>
+<p>With <code>--release beta</code>, the runner looks for a new beta on PyPI at most once an hour: the runs in between start the installed beta without downloading the list of releases. Pass an exact version to <code>--release</code> to never contact PyPI once it is installed.</p>
+<p>MegaLinter runs the linters in parallel <strong>threads</strong>: they start instantly, where a worker process loaded MegaLinter again (about a second on Windows and macOS). Each linter still runs in its own process, so the linters use all your cores.</p>
 <h2 id="pre-commit-hook">Pre-commit hook</h2>
 <p>Native mode makes MegaLinter fast enough to run on each commit with <a href="https://pre-commit.com/">pre-commit</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">repos</span><span class="p">:</span>
@@ -12695,6 +12718,16 @@ mega-linter-runner<span class="w"> </span>--native<span class="w"> </span>--rele
 <td style="text-align: left;">Install only from the local download cache</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>NATIVE_LINTER_CACHE</code></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">Let eslint, prettier, stylelint and cspell keep their cache between runs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NATIVE_RESULTS_CACHE</code></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">Do not lint again the unchanged files linted without any problem</td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>MEGALINTER_HOME</code></td>
 <td style="text-align: left;"><code>~/.megalinter</code></td>
 <td style="text-align: left;">Where linters, runtimes and downloads are stored</td>
@@ -12702,6 +12735,14 @@ mega-linter-runner<span class="w"> </span>--native<span class="w"> </span>--rele
 </tbody>
 </table>
 <p>When MegaLinter runs in Docker and your <code>.mega-linter.yml</code> has no <code>NATIVE_LINTERS</code>, its reports suggest trying native mode. Define <code>NATIVE_SUGGESTIONS: false</code> to hide this suggestion.</p>
+<h2 id="faster-repeated-runs">Faster repeated runs</h2>
+<p>Native mode keeps data between runs that a Docker container loses, so the next runs are faster:</p>
+<ul>
+<li><strong>Results cache</strong>: the files a linter found without any problem are not linted again while they, the linter, its arguments and its configuration files stay the same. Only for linters whose result on a file depends on nothing else than its content and its configuration: black, flake8, yamllint, markdownlint, jsonlint and prettier. A run that finds problems still caches the files the linter did not report, and files with warnings are always linted again. The configuration files the linters find by themselves are watched in the folders of the linted files and in all their parents, above the workspace too. User-level configuration (for example <code>~/.config/black</code>) is not watched: run <code>megalinter cache prune</code> after changing it. Disable the cache with <code>NATIVE_RESULTS_CACHE: false</code>, or for one linter with <code>&lt;LINTER_KEY&gt;_NATIVE_RESULTS_CACHE: false</code></li>
+<li><strong>Linter caches</strong>: eslint, prettier, stylelint and cspell keep their own cache of results, in <code>~/.megalinter/cache/linters</code> (never in your repository), and analyze again only the files that changed. Disable it with <code>NATIVE_LINTER_CACHE: false</code>, or for one linter with <code>&lt;LINTER_KEY&gt;_NATIVE_CACHE: false</code> (example: <code>JAVASCRIPT_ES_NATIVE_CACHE: false</code>). The eslint cache is off for TypeScript (<code>TYPESCRIPT_ES</code>, <code>TSX_ES</code>), and for any eslint configuration enabling type-aware rules (<code>projectService</code>, <code>parserOptions.project</code>, <code>*TypeChecked</code> configs), whose results depend on other files. If your type-aware rules come from a shared configuration package, disable it with <code>JAVASCRIPT_ES_NATIVE_CACHE: false</code></li>
+<li>black uses its own cache too (in your user cache folder)</li>
+<li><code>megalinter cache prune</code> empties the caches kept in <code>~/.megalinter</code></li>
+</ul>
 <h2 id="differences-with-docker">Differences with Docker</h2>
 <ul>
 <li>Results can differ from Docker: operating system, tool versions provided by the host, file system case sensitivity and path separators.</li>

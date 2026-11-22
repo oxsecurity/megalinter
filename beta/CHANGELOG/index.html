@@ -15683,11 +15683,104 @@
 <p>Core</p>
 <ul>
 <li>
+<p><strong>Faster repeated runs in native mode</strong>, see <a href="https://megalinter.io/latest/install-native/#faster-repeated-runs">Faster repeated runs</a>:</p>
+<ul>
+<li>New <strong>results cache</strong>: the files that black, flake8, yamllint, markdownlint, jsonlint or prettier found without any problem are <strong>not linted again</strong> while they and the configuration stay the same, even when the run found problems in other files. Disable it with <strong><code>NATIVE_RESULTS_CACHE: false</code></strong>, or for one linter with <code>&lt;LINTER_KEY&gt;_NATIVE_RESULTS_CACHE: false</code></li>
+<li><strong>eslint, prettier, stylelint and cspell keep their own cache</strong> between runs, in <code>~/.megalinter/cache/linters</code>, and analyze again only the files that changed (not for eslint configurations enabling type-aware rules, whose results depend on other files). Disable it with <strong><code>NATIVE_LINTER_CACHE: false</code></strong>, or for one linter with <code>&lt;LINTER_KEY&gt;_NATIVE_CACHE: false</code></li>
+<li>MegaLinter loads the libraries of its reporters and CI integrations (GitHub, GitLab, Jira, Redis...) <strong>only when they are used</strong>, so it <strong>starts faster</strong>, in native mode and in Docker</li>
+<li>Linters run in parallel <strong>threads</strong> instead of worker processes, in native mode and in Docker: a worker process loaded MegaLinter again (about a second each on Windows and macOS). Each linter still runs in its own process, so all the cores are used as before, and a Docker run takes the same time</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Native run, warm (4-core Linux)</th>
+<th>Before</th>
+<th>After</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7 Python, YAML, Markdown, JSON linters (220 files)</td>
+<td>3.49 s</td>
+<td>1.92 s</td>
+<td>-45 %</td>
+</tr>
+<tr>
+<td>Same, start method of Windows and macOS</td>
+<td>3.95 s</td>
+<td>1.92 s</td>
+<td>-51 %</td>
+</tr>
+<tr>
+<td>Same, Python 3.15</td>
+<td>4.09 s</td>
+<td>1.37 s</td>
+<td>-67 %</td>
+</tr>
+<tr>
+<td>Same, one file edited before the run, start method of Windows/macOS</td>
+<td>3.90 s</td>
+<td>2.08 s</td>
+<td>-47 %</td>
+</tr>
+<tr>
+<td>4 JavaScript, CSS, spelling linters (56 files)</td>
+<td>5.93 s</td>
+<td>2.33 s</td>
+<td>-61 %</td>
+</tr>
+<tr>
+<td>Same, start method of Windows and macOS</td>
+<td>6.37 s</td>
+<td>2.29 s</td>
+<td>-64 %</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Detail (4-core Linux)</th>
+<th>Before</th>
+<th>After</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MegaLinter startup until the linters run (Python 3.13)</td>
+<td>0.57 s</td>
+<td>0.22 s</td>
+<td>-61 %</td>
+</tr>
+<tr>
+<td>black on 121 unchanged files</td>
+<td>1.81 s</td>
+<td>0.18 s</td>
+<td>-90 %</td>
+</tr>
+<tr>
+<td>4 JS, CSS, spelling linters: processes → threads, Windows/macOS</td>
+<td>2.93 s</td>
+<td>2.20 s</td>
+<td>-25 %</td>
+</tr>
+<tr>
+<td>Docker, 32 linters: processes → threads (mean of 4 runs)</td>
+<td>79.6 s</td>
+<td>81.4 s</td>
+<td>+2 % (noise)</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ul>
+<li>
 <p><strong>Faster runs</strong>, most visible in native mode and on Windows:</p>
 <ul>
 <li>MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster</li>
-<li>A run that has a single group of linters to run (for example a pre-commit hook on one Python file, with fixes) runs them directly instead of starting worker processes, and a run never starts more worker processes than it has linter groups</li>
-<li>On Linux (Python 3.14, Docker images included), worker processes no longer load MegaLinter again one by one</li>
 <li>Native mode reads the version of each installed linter once instead of running its <code>--version</code> command on every run, and looks for the language runtimes of the machine once per run instead of once per linter</li>
 <li><code>mega-linter-runner --native</code> starts an installed exact <code>--release</code> without contacting PyPI, and keeps working offline with the beta it already installed</li>
 </ul>
@@ -15800,6 +15893,10 @@
 <li>
 <p>Linters enhancements</p>
 <ul>
+<li><strong>black</strong> now uses its own cache, which it ignored because MegaLinter called it with <code>--diff</code>: it checks the files first, then computes the diff only for the files it would reformat. The report is unchanged<ul>
+<li>Most visible in <strong>native mode</strong>, where black's cache is kept between runs (see the measures in Core)</li>
+</ul>
+</li>
 <li><strong>djlint</strong>: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages</li>
 <li><strong>SARIF output</strong> is now available for 5 more linters: <strong>actionlint</strong>, <strong>djlint</strong>, <strong>roslynator</strong>, <strong>rubocop</strong> and <strong>trufflehog</strong>. Enable it with <strong><code>SARIF_REPORTER: true</code></strong> (optionally scoped with <code>SARIF_REPORTER_LINTERS</code>), see the <a href="https://megalinter.io/latest/reporters/SarifReporter/">SARIF reporter</a> documentation<ul>
 <li><strong>djlint</strong> and <strong>rubocop</strong> report most findings as warnings or notes, so the <strong>error count</strong> shown with SARIF enabled is lower than the number of findings</li>
@@ -15870,6 +15967,7 @@
 <li>
 <p>mega-linter-runner</p>
 <ul>
+<li><code>--native --release beta</code> looks for a new beta on PyPI <strong>at most once an hour</strong> instead of on every run (it downloaded the 345 KB list of all the releases each time), which speeds up frequent runs such as pre-commit hooks</li>
 <li>New <strong><code>--native</code></strong> option to run MegaLinter without Docker, and <strong><code>--install-linters</code></strong> to install the linters it needs (not to be confused with <code>--install</code>, which sets up MegaLinter in your repository)<ul>
 <li>With <code>--native</code>, the files given as arguments are the only ones linted, and <code>--env</code> accepts the same quoted values as with Docker (<code>"'ENABLE=MARKDOWN,YAML'"</code>)</li>
 </ul>
@@ -15893,6 +15991,10 @@
 <li>
 <p>Dev</p>
 <ul>
+<li>New linter-level descriptor property <strong><code>native_results_cache</code></strong> (<code>config_files</code>, <code>failed_files_in_output</code>) and module <code>megalinter/native/results_cache.py</code>: <code>Linter.run()</code> lints only the files not recorded as successful for the current key (MegaLinter and linter versions, install folder, arguments, linter variables, config and ignore files, <code>config_files</code> found in the folders of the linted files and their parents), recognized by size and modification time, else by sha256. Files modified during the run are not recorded, nor recently modified ones by size and time (coarse timestamps). Never in project mode or with SARIF. Covered by <code>results_cache_test.py</code></li>
+<li><code>Megalinter.process_linters_parallel()</code> runs the linter groups in a <code>multiprocessing.pool.ThreadPool</code>, the only parallel architecture: the worker process pool, <code>init_worker()</code>, the log queue, the forkserver preload, the single-group shortcut and <code>parallel_logging_test.py</code> are removed. The linters run in place, so their objects are no longer pickled and copied back. <code>Linter.__init__</code> copies the list and dict values of the descriptor, so a linter class extending one in place (cpplint, cspell, checkov, jscpd, stylelint) no longer changes the definition shared with the other linters extending the same shared file. Covered by <code>parallel_pool_test.py</code></li>
+<li>Heavy libraries used only by optional features (requests, PyGithub, python-gitlab, redis, pytablewriter, atlassian-python-api, jsonpickle) are imported inside the functions using them, an exception to the top-of-file rule documented in <code>.claude/rules/python-style.md</code>. <code>lazy_imports_test.py</code> checks, on every Python version, that importing MegaLinter and all its reporters loads none of them. Tests fake them through <code>sys.modules</code> or the library's own attributes</li>
+<li>New linter-level descriptor property <strong><code>cli_lint_cache_args</code></strong>: arguments enabling the linter's own cache, sent only in native mode, with <code>{{LINTER_CACHE_DIR}}</code> replaced by a folder of <code>MEGALINTER_HOME/cache/linters/&lt;LINTER_KEY&gt;/&lt;workspace hash&gt;</code>. Declared for eslint (shared, emptied for <code>TYPESCRIPT_ES</code> / <code>TSX_ES</code>), prettier (shared), stylelint and cspell. <code>BlackLinter</code> runs <code>black --check</code> first, then <code>--check --diff</code> only on the files to reformat (black skips its cache with <code>--diff</code>) <code>EslintLinter</code> sends no cache argument when the eslint configuration enables type-aware rules (<code>projectService</code>, <code>project:</code>, <code>*TypeChecked</code> configs)</li>
 <li><strong><code>/pr-watch-fix-renovate</code></strong> fixes a MegaLinter error shared by several Renovate PRs <strong>once</strong>, in a carrier PR:<ul>
 <li>fingerprints the blocking MegaLinter errors, the CVE/GHSA ids of failing security scans and the failing pytest node ids of test jobs (<code>.claude/skills/pr-watch-fix/fingerprint.py</code>), groups the PRs and picks the carrier (<code>sweep.py</code>)</li>
 <li>after you merge the carrier, asks Renovate to rebase only the group members (<code>/renovate-rebase --branches</code>) and watches them again; when Renovate does not run, falls back (with your approval) on <code>gh pr update-branch</code> and flags members superseded by the carrier</li>
