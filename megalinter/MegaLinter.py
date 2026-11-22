@@ -519,11 +519,11 @@ class Megalinter:
         )
         return process_number
 
-    # Native mode runs the linters in threads by default (PARALLEL_POOL: threads), as
-    # MegaLinter runs on the user's machine, often with the slow "spawn" start method
-    # of the worker processes. Docker keeps worker processes unless asked otherwise
+    # Linters run in threads (PARALLEL_POOL: threads): they are sub-processes, so a
+    # worker only waits for them, and a thread starts instantly where a worker process
+    # loads MegaLinter again
     def get_parallel_pool_type(self):
-        default_pool_type = "threads" if self.native_mode is True else "processes"
+        default_pool_type = "threads"
         pool_type = config.get(self.request_id, "PARALLEL_POOL", default_pool_type)
         if pool_type not in ("threads", "processes"):
             logging.warning(

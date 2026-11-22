@@ -20757,7 +20757,7 @@
       "x-section": "PERFORMANCE"
     },
     "PARALLEL_POOL": {
-      "description": "How linters run in parallel: threads (default in native mode: workers start instantly, linters being sub-processes) or processes (default in Docker: each worker process loads MegaLinter again)",
+      "description": "How linters run in parallel: threads (default: linters are sub-processes, so the workers only wait for them, and a thread starts instantly) or processes (each worker process loads MegaLinter again)",
       "enum": [
         "threads",
         "processes"

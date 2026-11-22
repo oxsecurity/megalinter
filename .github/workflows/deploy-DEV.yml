@@ -316,7 +316,7 @@ jobs:
       contents: read
       packages: read
     if: needs.build.outputs.is-quick != 'true'
-    timeout-minutes: 30
+    timeout-minutes: 50
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -390,6 +390,36 @@ jobs:
             mega-linter.log
             linter-helps.json
             linter-versions.json
+
+      # TEMPORARY (PR #9601): compare PARALLEL_POOL processes and threads on the same
+      # runner, alternating them, with the same image and sources. Removed once measured
+      - name: Benchmark parallel pools (temporary)
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          DOCKER_IMAGE: ${{ needs.build.outputs.image-tag }}
+          GH_REPOSITORY: ${{ github.repository }}
+          GH_SHA: ${{ github.sha }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          index=0
+          for pool in processes threads processes threads; do
+            index=$((index + 1))
+            sudo git checkout -- .
+            sudo git clean -fdxq
+            start=$(date +%s)
+            docker run -e PARALLEL_POOL="${pool}" -e GITHUB_REPOSITORY="${GH_REPOSITORY}" -e GITHUB_SHA="${GH_SHA}" -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e GITHUB_COMMENT_REPORTER=false -e GITHUB_STATUS_REPORTER=false -e API_REPORTER=false -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "${GITHUB_WORKSPACE}:/tmp/lint" "${DOCKER_IMAGE}" > "${RUNNER_TEMP}/bench-${index}-${pool}.log" 2>&1
+            code=$?
+            end=$(date +%s)
+            echo "BENCH run ${index} ${pool}: $((end - start)) s (exit ${code})" | tee -a "${GITHUB_STEP_SUMMARY}"
+            grep -E '^\| (✅|⚠️|❌)' "${RUNNER_TEMP}/bench-${index}-${pool}.log" | awk -F'|' '{print $3, $7, $9}' > "${RUNNER_TEMP}/bench-${index}-${pool}.results"
+          done
+          echo "Per-linter errors, processes vs threads:"
+          diff "${RUNNER_TEMP}/bench-1-processes.results" "${RUNNER_TEMP}/bench-2-threads.results" && echo "BENCH identical results (runs 1 and 2)" | tee -a "${GITHUB_STEP_SUMMARY}"
+          diff "${RUNNER_TEMP}/bench-3-processes.results" "${RUNNER_TEMP}/bench-4-threads.results" && echo "BENCH identical results (runs 3 and 4)" | tee -a "${GITHUB_STEP_SUMMARY}"
+          grep -E '^\| ' "${RUNNER_TEMP}/bench-4-threads.log" | head -80
+        timeout-minutes: 30
 
   ###############################################################
   # Consumer: mega-linter-runner tests against the cached image #

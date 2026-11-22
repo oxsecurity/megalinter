@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# Tests of the pool running the linters in parallel: threads (default in native
-# mode) or processes (default in Docker), selected with PARALLEL_POOL
+# Tests of the pool running the linters in parallel: threads by default, or
+# processes with PARALLEL_POOL: processes
 import logging
 import os
 import sys
@@ -72,9 +72,13 @@ class ParallelPoolTest(unittest.TestCase):
     def run_parallel(self, megalinter):
         megalinter.process_linters_parallel(list(megalinter.linters), False)
 
-    def test_native_mode_runs_linters_in_threads(self):
+    def test_linters_run_in_threads(self):
+        for native_mode in (True, False):
+            self.assertEqual(
+                build_megalinter(self.request_id, native_mode).get_parallel_pool_type(),
+                "threads",
+            )
         megalinter = build_megalinter(self.request_id, native_mode=True)
-        self.assertEqual(megalinter.get_parallel_pool_type(), "threads")
         self.run_parallel(megalinter)
         for linter in megalinter.linters:
             self.assertEqual(linter.ran_in_pid, os.getpid(), linter.name)
@@ -83,7 +87,8 @@ class ParallelPoolTest(unittest.TestCase):
             self.assertIn(f"{FAKE_LINTER_MESSAGE}: {linter.name}", self.messages)
         self.assertEqual(logging.getLogger().handlers[0].messages, self.messages)
 
-    def test_docker_runs_linters_in_processes(self):
+    def test_processes_on_request(self):
+        config.set(self.request_id, "PARALLEL_POOL", "processes")
         megalinter = build_megalinter(self.request_id, native_mode=False)
         self.assertEqual(megalinter.get_parallel_pool_type(), "processes")
         self.run_parallel(megalinter)
@@ -92,20 +97,6 @@ class ParallelPoolTest(unittest.TestCase):
             self.assertIsNotNone(linter.ran_in_pid, linter.name)
             self.assertNotEqual(linter.ran_in_pid, os.getpid(), linter.name)
             self.assertIn(f"{FAKE_LINTER_MESSAGE}: {linter.name}", self.messages)
-
-    def test_parallel_pool_variable_wins(self):
-        config.set(self.request_id, "PARALLEL_POOL", "processes")
-        self.assertEqual(
-            build_megalinter(self.request_id, True).get_parallel_pool_type(),
-            "processes",
-        )
-        config.set(self.request_id, "PARALLEL_POOL", "threads")
-        megalinter = build_megalinter(self.request_id, False)
-        self.assertEqual(megalinter.get_parallel_pool_type(), "threads")
-        self.run_parallel(megalinter)
-        self.assertTrue(
-            all(linter.ran_in_pid == os.getpid() for linter in megalinter.linters)
-        )
 
     # Linters running in threads share the configuration: building the environment of
     # a linter must not fail while another linter sets a variable
@@ -144,15 +135,11 @@ class ParallelPoolTest(unittest.TestCase):
             sys.setswitchinterval(switch_interval)
         self.assertEqual(errors, [])
 
-    def test_invalid_value_uses_default(self):
+    def test_invalid_value_uses_threads(self):
         config.set(self.request_id, "PARALLEL_POOL", "fibers")
         self.assertEqual(
-            build_megalinter(self.request_id, True).get_parallel_pool_type(),
-            "threads",
-        )
-        self.assertEqual(
             build_megalinter(self.request_id, False).get_parallel_pool_type(),
-            "processes",
+            "threads",
         )
 
 
