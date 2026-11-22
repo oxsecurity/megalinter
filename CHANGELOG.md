@@ -19,8 +19,17 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Faster repeated runs in native mode**, see [Faster repeated runs](https://megalinter.io/latest/install-native/#faster-repeated-runs):
     - New **results cache**: the files that black, flake8, yamllint, markdownlint, jsonlint or prettier found without any problem are **not linted again** while they and the configuration stay the same, even when the run found problems in other files. Disable it with **`NATIVE_RESULTS_CACHE: false`**, or for one linter with `<LINTER_KEY>_NATIVE_RESULTS_CACHE: false`
     - **eslint, prettier, stylelint and cspell keep their own cache** between runs, in `~/.megalinter/cache/linters`, and analyze again only the files that changed (off for TypeScript eslint, whose type-aware rules depend on other files). Disable it with **`NATIVE_LINTER_CACHE: false`**, or for one linter with `<LINTER_KEY>_NATIVE_CACHE: false`
-    - With **Python 3.15**, MegaLinter loads the libraries of its reporters and CI integrations (GitHub, GitLab, Jira, Redis...) only when they are used: it starts in **0.09 s instead of 0.52 s**, in each worker process too
+    - With **Python 3.15**, MegaLinter loads the libraries of its reporters and CI integrations (GitHub, GitLab, Jira, Redis...) only when they are used: it starts in **0.09 s instead of 0.52 s**
     - Linters run in parallel **threads** instead of worker processes, which loaded MegaLinter again each (about a second each on Windows and macOS): **-25 %** on a run of 4 JavaScript, CSS and spelling linters with the start method of Windows and macOS. New variable **`PARALLEL_POOL`** (`threads`, default in native mode, or `processes`, default in Docker)
+
+    | Native run, warm (4-core Linux)                                     | Before | After  | Delta  |
+    |---------------------------------------------------------------------|--------|--------|--------|
+    | 7 Python, YAML, Markdown, JSON linters (220 files)                  | 3.49 s | 1.92 s | -45 %  |
+    | Same, start method of Windows and macOS                             | 3.95 s | 1.92 s | -51 %  |
+    | Same, Python 3.15                                                   | 4.09 s | 1.37 s | -67 %  |
+    | Same, one file edited before the run, start method of Windows/macOS | 3.90 s | 2.08 s | -47 %  |
+    | 4 JavaScript, CSS, spelling linters (56 files)                      | 5.93 s | 2.33 s | -61 %  |
+    | Same, start method of Windows and macOS                             | 6.37 s | 2.29 s | -64 %  |
 
   - **Faster runs**, most visible in native mode and on Windows:
     - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
