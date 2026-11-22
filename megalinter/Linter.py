@@ -158,6 +158,8 @@ class Linter:
         self.sarif_text_levels = {}
         self.sarif_text_default_level = sarif_builder.LEVEL_ERROR
         self.sarif_text_rule_id = None
+        self.sarif_text_default_message = None
+        self.sarif_unified_diff = False
         self.sarif_whole_output = False
         self.last_return_code = None
         self.no_config_if_fix = False
@@ -1908,9 +1910,14 @@ class Linter:
 
     # To override in the linters that can not output SARIF: returns a
     # sarif_builder.SarifBuilder built from the output of the linter, or None.
-    # By default, the findings are the matches of the descriptor sarif_text_regex
+    # By default, the findings are the matches of the descriptor sarif_text_regex,
+    # and the files of the unified diff printed by the linter (sarif_unified_diff)
     def convert_output_to_sarif(self, return_stdout):
-        if self.sarif_text_regex is None and self.sarif_whole_output is not True:
+        if (
+            self.sarif_text_regex is None
+            and self.sarif_unified_diff is not True
+            and self.sarif_whole_output is not True
+        ):
             return None
         return sarif_builder.regex_output_to_sarif(
             return_stdout,
@@ -1921,6 +1928,8 @@ class Linter:
             self.sarif_text_default_level,
             self.sarif_text_levels,
             self.linter_url,
+            self.sarif_text_default_message,
+            self.sarif_unified_diff,
         )
 
     def get_sarif_rule_id(self):

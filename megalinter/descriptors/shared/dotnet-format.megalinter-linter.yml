@@ -20,6 +20,10 @@ cli_lint_mode_project_exclude_arg_value: ./{{DIR_PATH}}/
 cli_lint_fix_arg_name: --megalinter-fix-flag
 cli_lint_fix_remove_args:
   - --verify-no-changes
+can_output_sarif: true
+sarif_text_regex: '^(?P<path>[^\n]+?)\((?P<line>\d+),(?P<column>\d+)\): (?:warning|error) (?P<rule>\w+): (?P<message>.*?)(?: \[[^\]\n]+\])?$'
+sarif_text_default_level: note
+sarif_whole_output: true
 cli_help_extra_args:
   - format
 native_install:

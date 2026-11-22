@@ -59,6 +59,14 @@ native_results_cache:
     - .gitignore
 cli_lint_fix_remove_args:
   - --check
+can_output_sarif: true
+sarif_text_regex: '^\[(?P<severity>warn|error)\] (?P<path>(?![>\s]|Code style issues|Ignored unknown option)(?:(?!: )[^\n])+)(?:: (?P<message>\w*Error: [^\n]*))?$'
+sarif_text_levels:
+  warn: note
+  error: error
+sarif_text_default_level: note
+sarif_text_default_message: The file is not formatted as prettier expects
+sarif_whole_output: true
 install:
   dockerfile:
     - |-

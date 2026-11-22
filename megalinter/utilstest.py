@@ -680,6 +680,12 @@ def test_linter_report_sarif(linter, test_self):
     )
     workspace = find_sarif_test_workspace(linter, workspace)
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+    # A formatter reports its unformatted files as notes, which are not errors: its
+    # SARIF must hold a result, unless its fixtures can not fail (Invoke-Formatter)
+    expects_formatter_results = linter.is_formatter is True and not any(
+        os.path.isfile(os.path.join(folder, "no_test_failure"))
+        for folder in [workspace, os.path.join(workspace, "bad")]
+    )
     # Call linter
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
@@ -718,10 +724,16 @@ def test_linter_report_sarif(linter, test_self):
         len(sarif_content["runs"]) > 0,
         f"Empty runs list in {tmp_sarif_file_name}",
     )
+    if expects_formatter_results is True:
+        test_self.assertTrue(
+            any(len(run["results"]) > 0 for run in sarif_content["runs"]),
+            f"No result in the SARIF of the formatter: {str(sarif_content)}",
+        )
     # Check number of errors and warnings is ok
     for linter in mega_linter.linters:
         if (
             linter.output_sarif is True
+            and linter.is_formatter is not True
             and linter.cli_lint_mode != "file"
             and linter.name
             not in [

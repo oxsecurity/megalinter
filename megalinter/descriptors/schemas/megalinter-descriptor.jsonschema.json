@@ -1864,6 +1864,14 @@
             "title": "SARIF level of the findings parsed from text",
             "type": "string"
           },
+          "sarif_text_default_message": {
+            "description": "Message of the findings found by sarif_text_regex when it has no message group, and of the files found by sarif_unified_diff",
+            "examples": [
+              "The file is not formatted as black expects"
+            ],
+            "title": "SARIF text default message",
+            "type": "string"
+          },
           "sarif_text_levels": {
             "additionalProperties": {
               "enum": [
@@ -1895,6 +1903,12 @@
             "description": "Rule id of the findings found by sarif_text_regex when it has no rule group (default: the linter name)",
             "title": "SARIF text rule id",
             "type": "string"
+          },
+          "sarif_unified_diff": {
+            "default": false,
+            "description": "For a linter that checks formatting by printing a unified diff: add one result per file of the diff, located at its first modified hunk",
+            "title": "SARIF from unified diff",
+            "type": "boolean"
           },
           "sarif_whole_output": {
             "default": false,

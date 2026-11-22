@@ -3629,6 +3629,24 @@ def validate_native_install():
         )
 
 
+# Every active linter must be able to output SARIF
+def validate_sarif_support():
+    linters = megalinter.linter_factory.list_linters_without_sarif(
+        {"request_id": "build"}
+    )
+    for linter in linters:
+        logging.error(
+            f"{linter.name} can not output SARIF: declare can_output_sarif: true with "
+            "cli_sarif_args, or sarif_text_regex / sarif_unified_diff / "
+            "sarif_whole_output, or override convert_output_to_sarif() in its class "
+            "(only a disabled linter is exempt)"
+        )
+    if len(linters) > 0:
+        raise ValueError(
+            "Errors have been found in SARIF support declarations, please check logs"
+        )
+
+
 def finalize_doc_build():
     # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
@@ -4772,6 +4790,7 @@ if __name__ == "__main__":
         generate_documentation_removed_linters()
         validate_descriptors()
         validate_native_install()
+        validate_sarif_support()
         if UPDATE_DEPENDENTS is True:
             update_dependents_info()
         generate_all_flavors()
