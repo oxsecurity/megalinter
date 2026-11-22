@@ -9,10 +9,10 @@ description: luacheck, stylua are available to analyze LUA files in MegaLinter
 
 ## Linters
 
-| Linter                                                                | Additional                                                                                                                               |
-|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck) |
-| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md)         | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua)   |
+| Linter                                                                | Additional                                                                                                                                                                                |
+|-----------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**luacheck**](lua_luacheck.md)<br/>[_LUA_LUACHECK_](lua_luacheck.md) | [![GitHub stars](https://img.shields.io/github/stars/lunarmodules/luacheck?cacheSeconds=3600)](https://github.com/lunarmodules/luacheck) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**stylua**](lua_stylua.md)<br/>[_LUA_STYLUA_](lua_stylua.md)         | [![GitHub stars](https://img.shields.io/github/stars/JohnnyMorganz/StyLua?cacheSeconds=3600)](https://github.com/JohnnyMorganz/StyLua) ![sarif](https://shields.io/badge/-SARIF-orange)   |
 
 ## Linted files
 

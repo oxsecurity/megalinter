@@ -11,7 +11,7 @@ description: How to use helm (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/helm/helm?sort=semver)](https://github.com/helm/helm/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/helm/helm)](https://github.com/helm/helm/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/helm/helm)](https://github.com/helm/helm/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/helm/helm)](https://github.com/helm/helm/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/helm/helm?cacheSeconds=3600)](https://github.com/helm/helm) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/helm/helm?sort=semver)](https://github.com/helm/helm/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/helm/helm)](https://github.com/helm/helm/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/helm/helm)](https://github.com/helm/helm/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/helm/helm)](https://github.com/helm/helm/graphs/contributors/)
 
 **Helm Lint** examines Helm charts for potential issues, misconfigurations, and adherence to best practices. It validates chart structure, templates, and values to ensure charts can be successfully deployed and function correctly in Kubernetes environments.
 
