@@ -1,11 +1,10 @@
 import os
-import shutil
-import tempfile
 import time
 import unittest
 
 from megalinter import config
 from megalinter.native.results_cache import ResultsCache, is_results_cache_enabled
+from megalinter.tests.test_megalinter.native.native_home import NativeHomeTestCase
 
 
 class FakeToolchain:
@@ -44,19 +43,11 @@ class FakeLinter:
         return self.linter_version
 
 
-class ResultsCacheTest(unittest.TestCase):
+class ResultsCacheTest(NativeHomeTestCase):
+    request_id = "test-native-results-cache"
+
     def setUp(self):
-        self.request_id = "test-native-results-cache"
-        self.home = tempfile.mkdtemp()
-        os.chmod(self.home, 0o700)
-        self.workspace = tempfile.mkdtemp()
-        config.set_config(
-            self.request_id,
-            {"MEGALINTER_NATIVE": "true", "MEGALINTER_HOME": self.home},
-        )
-        self.addCleanup(config.delete, self.request_id)
-        self.addCleanup(shutil.rmtree, self.home, True)
-        self.addCleanup(shutil.rmtree, self.workspace, True)
+        super().setUp()
         os.makedirs(os.path.join(self.workspace, "src"))
         self.files = ["a.py", "src/b.py", "src/c.py"]
         for file in self.files:

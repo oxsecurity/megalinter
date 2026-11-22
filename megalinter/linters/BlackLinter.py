@@ -35,7 +35,8 @@ class BlackLinter(Linter):
             targets = list(self.files)
         else:
             targets = list(self.cli_lint_mode_project_extra_args_after)
-        if len(targets) > 0 and cmd[-len(targets) :] == targets:
+        targets_count = len(targets)
+        if targets_count > 0 and cmd[-targets_count:] == targets:
             return targets
         return None
 
@@ -53,8 +54,8 @@ class BlackLinter(Linter):
         return return_code, merge_black_outputs(diff_stdout, return_stdout)
 
     def build_black_diff_command(self, command, check_stdout):
-        check_index = command.index("--check")
-        with_diff = [*command[: check_index + 1], "--diff", *command[check_index + 1 :]]
+        after_check = command.index("--check") + 1
+        with_diff = [*command[:after_check], "--diff", *command[after_check:]]
         if self.black_lint_targets is None:
             # Unknown layout of the command line: compute the diff of the whole command
             return with_diff

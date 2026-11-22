@@ -45,6 +45,17 @@ class BlackLinterTest(unittest.TestCase):
         ):
             return linter.build_lint_command(file)
 
+    # Runs the check (failing with check_output) then the diff: returns the result
+    # and the command line of the diff
+    def run_check_then_diff(self, linter, command, check_output):
+        with patch.object(
+            Linter,
+            "execute_lint_command",
+            side_effect=[(1, check_output), (1, DIFF_OUTPUT)],
+        ) as execute:
+            result = linter.execute_lint_command(command)
+        return result, execute.call_args_list[1].args[0]
+
     def test_check_runs_without_diff(self):
         linter = build_black_linter()
         command = self.build_command(linter)
@@ -73,13 +84,9 @@ class BlackLinterTest(unittest.TestCase):
     def test_diff_only_for_files_to_reformat(self):
         linter = build_black_linter()
         command = self.build_command(linter)
-        with patch.object(
-            Linter,
-            "execute_lint_command",
-            side_effect=[(1, CHECK_FAILED_OUTPUT), (1, DIFF_OUTPUT)],
-        ) as execute:
-            return_code, stdout = linter.execute_lint_command(command)
-        diff_command = execute.call_args_list[1].args[0]
+        (return_code, stdout), diff_command = self.run_check_then_diff(
+            linter, command, CHECK_FAILED_OUTPUT
+        )
         self.assertEqual(
             diff_command,
             [
@@ -101,29 +108,21 @@ class BlackLinterTest(unittest.TestCase):
     def test_file_mode_target_is_replaced(self):
         linter = build_black_linter(cli_lint_mode="file")
         command = self.build_command(linter, "src/b.py")
-        with patch.object(
-            Linter,
-            "execute_lint_command",
-            side_effect=[(1, "would reformat /ws/src/b.py\n"), (1, DIFF_OUTPUT)],
-        ) as execute:
-            linter.execute_lint_command(command)
-        self.assertEqual(execute.call_args_list[1].args[0][-1], "/ws/src/b.py")
-        self.assertNotIn("src/b.py", execute.call_args_list[1].args[0])
+        _result, diff_command = self.run_check_then_diff(
+            linter, command, "would reformat /ws/src/b.py\n"
+        )
+        self.assertEqual(diff_command[-1], "/ws/src/b.py")
+        self.assertNotIn("src/b.py", diff_command)
 
     def test_project_mode_target_is_replaced(self):
         linter = build_black_linter(cli_lint_mode="project")
         command = self.build_command(linter)
         self.assertEqual(linter.black_lint_targets, ["."])
-        with patch.object(
-            Linter,
-            "execute_lint_command",
-            side_effect=[(1, "would reformat /ws/src/b.py\n"), (1, DIFF_OUTPUT)],
-        ) as execute:
-            linter.execute_lint_command(command)
-        self.assertEqual(
-            execute.call_args_list[1].args[0][-2:], ["pyproject.toml", "/ws/src/b.py"]
+        _result, diff_command = self.run_check_then_diff(
+            linter, command, "would reformat /ws/src/b.py\n"
         )
-        self.assertNotIn(".", execute.call_args_list[1].args[0])
+        self.assertEqual(diff_command[-2:], ["pyproject.toml", "/ws/src/b.py"])
+        self.assertNotIn(".", diff_command)
 
     def test_unknown_layout_reruns_whole_command_with_diff(self):
         linter = build_black_linter()
@@ -134,15 +133,11 @@ class BlackLinterTest(unittest.TestCase):
         ):
             command = linter.build_lint_command()
         self.assertIsNone(linter.black_lint_targets)
-        with patch.object(
-            Linter,
-            "execute_lint_command",
-            side_effect=[(1, CHECK_FAILED_OUTPUT), (1, DIFF_OUTPUT)],
-        ) as execute:
-            linter.execute_lint_command(command)
+        _result, diff_command = self.run_check_then_diff(
+            linter, command, CHECK_FAILED_OUTPUT
+        )
         self.assertEqual(
-            execute.call_args_list[1].args[0],
-            ["black", "--check", "--diff", "--config", "x", "extra"],
+            diff_command, ["black", "--check", "--diff", "--config", "x", "extra"]
         )
 
     def test_parse_errors_only_need_no_diff(self):

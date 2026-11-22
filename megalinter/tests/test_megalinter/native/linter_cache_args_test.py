@@ -5,6 +5,7 @@ import unittest
 
 from megalinter import config
 from megalinter.Linter import Linter
+from megalinter.tests.test_megalinter.native.native_home import NativeHomeTestCase
 
 CACHE_ARGS = [
     "--cache",
@@ -25,19 +26,8 @@ def build_linter(request_id, workspace, cache_args=None, user_args=None):
     return linter
 
 
-class NativeLinterCacheArgsTest(unittest.TestCase):
-    def setUp(self):
-        self.request_id = "test-native-linter-cache-args"
-        self.home = tempfile.mkdtemp()
-        os.chmod(self.home, 0o700)
-        self.workspace = tempfile.mkdtemp()
-        config.set_config(
-            self.request_id,
-            {"MEGALINTER_NATIVE": "true", "MEGALINTER_HOME": self.home},
-        )
-        self.addCleanup(config.delete, self.request_id)
-        self.addCleanup(shutil.rmtree, self.home, True)
-        self.addCleanup(shutil.rmtree, self.workspace, True)
+class NativeLinterCacheArgsTest(NativeHomeTestCase):
+    request_id = "test-native-linter-cache-args"
 
     def test_cache_folder_is_outside_the_workspace(self):
         linter = build_linter(self.request_id, self.workspace)
