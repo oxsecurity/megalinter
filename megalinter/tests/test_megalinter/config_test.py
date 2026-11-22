@@ -739,7 +739,7 @@ class config_test(unittest.TestCase):
     def test_unknown_linters_references_are_reported(self):
         megalinter = Megalinter.__new__(Megalinter)
         megalinter.tips = []
-        megalinter.enable_linters = ["BASH_SHELLCHECK", "BASH_SHFTM"]
+        megalinter.enable_linters = ["BASH_SHELLCHECK", "BASH_UNKNOWN"]
         megalinter.disable_linters = [
             "PYTHON_RUFF",
             " BASH_SHFMT",
@@ -750,12 +750,12 @@ class config_test(unittest.TestCase):
             megalinter.check_unknown_linters_references(known)
         self.assertEqual(len(megalinter.tips), 1)
         message = megalinter.tips[0]["message"]
-        self.assertIn("BASH_SHFTM", message)
+        self.assertIn("BASH_UNKNOWN", message)
         self.assertIn(" BASH_SHFMT", message)
         # Known and removed linters are not reported as unknown
         self.assertNotIn("BASH_SHELLCHECK,", message)
         self.assertNotIn("REPOSITORY_GITLEAKS", message)
-        self.assertIn("BASH_SHFTM", logs.output[0])
+        self.assertIn("BASH_UNKNOWN", logs.output[0])
 
     def test_known_linters_references_are_not_reported(self):
         megalinter = Megalinter.__new__(Megalinter)
