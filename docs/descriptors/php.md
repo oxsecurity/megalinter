@@ -15,7 +15,7 @@ description: phpcs, phpstan, psalm, phplint, php-cs-fixer are available to analy
 | [**phpstan**](php_phpstan.md)<br/>[_PHP_PHPSTAN_](php_phpstan.md)                   | [![GitHub stars](https://img.shields.io/github/stars/phpstan/phpstan?cacheSeconds=3600)](https://github.com/phpstan/phpstan) ![sarif](https://shields.io/badge/-SARIF-orange)                               |
 | [**psalm**](php_psalm.md)<br/>[_PHP_PSALM_](php_psalm.md)                           | [![GitHub stars](https://img.shields.io/github/stars/vimeo/psalm?cacheSeconds=3600)](https://github.com/vimeo/psalm) ![sarif](https://shields.io/badge/-SARIF-orange)                                       |
 | [**phplint**](php_phplint.md)<br/>[_PHP_PHPLINT_](php_phplint.md)                   | [![GitHub stars](https://img.shields.io/github/stars/overtrue/phplint?cacheSeconds=3600)](https://github.com/overtrue/phplint) ![sarif](https://shields.io/badge/-SARIF-orange)                             |
-| [**php-cs-fixer**](php_php_cs_fixer.md)<br/>[_PHP_PHPCSFIXER_](php_php_cs_fixer.md) | [![GitHub stars](https://img.shields.io/github/stars/PHP-CS-Fixer/PHP-CS-Fixer?cacheSeconds=3600)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)                                                            |
+| [**php-cs-fixer**](php_php_cs_fixer.md)<br/>[_PHP_PHPCSFIXER_](php_php_cs_fixer.md) | [![GitHub stars](https://img.shields.io/github/stars/PHP-CS-Fixer/PHP-CS-Fixer?cacheSeconds=3600)](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer) ![sarif](https://shields.io/badge/-SARIF-orange)           |
 
 ## Linted files
 
