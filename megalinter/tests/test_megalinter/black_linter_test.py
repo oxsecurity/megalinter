@@ -140,6 +140,15 @@ class BlackLinterTest(unittest.TestCase):
             diff_command, ["black", "--check", "--diff", "--config", "x", "extra"]
         )
 
+    def test_quiet_check_computes_the_diff_of_every_file(self):
+        # black --quiet does not print the files to reformat, only exits with 1
+        linter = build_black_linter()
+        command = self.build_command(linter)
+        command.insert(1, "--quiet")
+        _result, diff_command = self.run_check_then_diff(linter, command, "")
+        self.assertIn("--diff", diff_command)
+        self.assertEqual(diff_command[-len(linter.files) :], linter.files)
+
     def test_parse_errors_only_need_no_diff(self):
         linter = build_black_linter()
         command = self.build_command(linter)

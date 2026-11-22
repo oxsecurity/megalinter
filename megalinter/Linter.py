@@ -1098,7 +1098,7 @@ class Linter:
                     and return_code == 0
                     and file_warnings_number == 0
                 ):
-                    results_cache.record_success([file])
+                    results_cache.record_successful_run([file], stdout)
                 if return_code != 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
@@ -1142,7 +1142,7 @@ class Linter:
                 self.status = "warning"
             if results_cache is not None:
                 if return_code == 0 and self.total_number_warnings == 0:
-                    results_cache.record_success(self.files)
+                    results_cache.record_successful_run(self.files, stdout)
                 else:
                     results_cache.record_files_absent_from_output(self.files, stdout)
             # Build result for list of files

@@ -1,3 +1,4 @@
+import json
 import os
 import time
 import unittest
@@ -173,6 +174,45 @@ class ResultsCacheTest(NativeHomeTestCase):
         cache.record_files_absent_from_output(files_to_lint, output)
         cache.save()
         self.assertEqual(self.files_to_lint(self.linter()), ["src/c.py"])
+
+    def test_successful_run_does_not_record_files_named_in_output(self):
+        # yamllint exits 0 when it only finds warnings
+        linter = self.linter()
+        cache = ResultsCache(linter)
+        files_to_lint = cache.select_files_to_lint(linter.files)
+        cache.record_successful_run(
+            files_to_lint, "src/b.py\n  1:1  warning  missing document start\n"
+        )
+        cache.save()
+        self.assertEqual(self.files_to_lint(self.linter()), ["src/b.py"])
+
+    def test_malformed_entries_are_ignored(self):
+        cache = ResultsCache(self.linter())
+        os.makedirs(os.path.dirname(cache.cache_file))
+        with open(cache.cache_file, "w", encoding="utf-8") as file:
+            json.dump(
+                {
+                    "key": cache.key,
+                    "files": {"a.py": [12, 34], "src/b.py": "x", "src/c.py": None},
+                },
+                file,
+            )
+        self.assertEqual(self.files_to_lint(self.linter()), self.files)
+
+    def test_config_file_above_the_workspace_invalidates(self):
+        # MegaLinter run on a sub-folder of a repository holding the configuration
+        sub_workspace = os.path.join(self.workspace, "packages", "app")
+        os.makedirs(sub_workspace)
+        with open(os.path.join(sub_workspace, "a.py"), "w", encoding="utf-8") as f:
+            f.write("x = 1\n")
+
+        def sub_linter():
+            return FakeLinter(self.request_id, sub_workspace, ["a.py"])
+
+        self.run_success(sub_linter())
+        self.assertEqual(self.files_to_lint(sub_linter()), [])
+        self.write("setup.cfg", "[flake8]\nmax-line-length = 120\n")
+        self.assertEqual(self.files_to_lint(sub_linter()), ["a.py"])
 
     def test_output_naming_no_file_records_nothing(self):
         linter = self.linter()

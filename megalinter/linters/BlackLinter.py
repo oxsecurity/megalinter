@@ -47,13 +47,15 @@ class BlackLinter(Linter):
             or return_code == 0
         ):
             return return_code, return_stdout
-        diff_command = self.build_black_diff_command(command, return_stdout)
+        diff_command = self.build_black_diff_command(
+            command, return_code, return_stdout
+        )
         if diff_command is None:
             return return_code, return_stdout
         _diff_return_code, diff_stdout = super().execute_lint_command(diff_command)
         return return_code, merge_black_outputs(diff_stdout, return_stdout)
 
-    def build_black_diff_command(self, command, check_stdout):
+    def build_black_diff_command(self, command, check_return_code, check_stdout):
         after_check = command.index("--check") + 1
         with_diff = [*command[:after_check], "--diff", *command[after_check:]]
         if self.black_lint_targets is None:
@@ -61,6 +63,11 @@ class BlackLinter(Linter):
             return with_diff
         to_reformat = BLACK_WOULD_REFORMAT_REGEX.findall(check_stdout)
         if len(to_reformat) == 0:
+            # --quiet hides the files to reformat (exit code 1), but not their diff
+            if check_return_code == 1 or any(
+                arg in ("-q", "--quiet") for arg in command
+            ):
+                return with_diff
             # Only parse errors: there is no diff to show
             return None
         return [

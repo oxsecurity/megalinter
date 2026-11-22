@@ -80,7 +80,8 @@ class ResultsCache:
         ).hexdigest()
 
     # Configuration files the linter finds by itself, in the folder of a linted file
-    # or in one of its parents up to the workspace root
+    # or in one of its parents, up to the workspace root and above it (a workspace can
+    # be a sub-folder of a repository, whose root holds the configuration)
     def discovered_config_files(self):
         names = (self.linter.native_results_cache or {}).get("config_files", [])
         if len(names) == 0:
@@ -91,6 +92,12 @@ class ResultsCache:
             while folder not in folders:
                 folders.add(folder)
                 folder = os.path.dirname(folder)
+        parent = os.path.dirname(self.workspace)
+        while True:
+            folders.add(parent)
+            if os.path.dirname(parent) == parent:
+                break
+            parent = os.path.dirname(parent)
         found = []
         for folder in sorted(folders):
             for name in names:
@@ -130,7 +137,18 @@ class ResultsCache:
         if not isinstance(content, dict) or content.get("key") != self.key:
             return {}
         entries = content.get("files", {})
-        return entries if isinstance(entries, dict) else {}
+        if not isinstance(entries, dict):
+            return {}
+        # Entries are [size, modification time, sha256]: any other one is ignored
+        return {
+            file: entry
+            for file, entry in entries.items()
+            if isinstance(entry, list)
+            and len(entry) == 3
+            and isinstance(entry[0], int)
+            and isinstance(entry[1], int)
+            and isinstance(entry[2], str)
+        }
 
     # A file is unchanged when its size and modification time are the recorded
     # ones, or else when its content has the recorded digest
@@ -177,6 +195,14 @@ class ResultsCache:
             if now_ns - stat[1] < RACY_MODIFICATION_NS:
                 stat = [stat[0], 0]
             self.entries[file] = [*stat, digest]
+
+    # After a successful run: some linters succeed while reporting warnings (yamllint
+    # exits 0 with warnings only), so the files the output names are not recorded
+    def record_successful_run(self, files, output):
+        output = output or ""
+        self.record_success(
+            [file for file in files if not self.is_in_output(file, output)]
+        )
 
     # After a run with problems: when the linter checks every file and names each
     # file with a problem in its output (failed_files_in_output), the files it does
