@@ -29,7 +29,7 @@ cli_lint_extra_args:
 cli_lint_cache_args:
   - --cache
   - --cache-location
-  - "{{LINTER_CACHE_DIR}}/eslintcache"
+  - "{{LINTER_CACHE_DIR}}/cache"
   - --cache-strategy
   - content
 cli_lint_fix_arg_name: --fix

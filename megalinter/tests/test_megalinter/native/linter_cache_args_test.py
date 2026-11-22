@@ -9,7 +9,7 @@ from megalinter.Linter import Linter
 CACHE_ARGS = [
     "--cache",
     "--cache-location",
-    "{{LINTER_CACHE_DIR}}/eslintcache",
+    "{{LINTER_CACHE_DIR}}/cache",
     "--cache-strategy",
     "content",
 ]

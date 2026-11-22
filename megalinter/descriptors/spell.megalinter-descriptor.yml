@@ -59,7 +59,7 @@ linters:
     cli_lint_cache_args:
       - "--cache"
       - "--cache-location"
-      - "{{LINTER_CACHE_DIR}}/cspellcache"
+      - "{{LINTER_CACHE_DIR}}/cache"
       - "--cache-strategy"
       - "content"
     examples:

@@ -941,7 +941,7 @@
               [
                 "--cache",
                 "--cache-location",
-                "{{LINTER_CACHE_DIR}}/eslintcache",
+                "{{LINTER_CACHE_DIR}}/cache",
                 "--cache-strategy",
                 "content"
               ]
