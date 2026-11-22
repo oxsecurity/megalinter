@@ -15914,6 +15914,12 @@
 <li>
 <p>New linters</p>
 <ul>
+<li><strong><a href="https://github.com/crate-ci/typos">typos</a></strong>, a fast source-code spell checker written in Rust that catches low-false-positive misspellings across identifiers, comments, strings, and filenames, available as <strong>SPELL_TYPOS</strong><ul>
+<li>Supports <strong>APPLY_FIXES</strong> (<code>--write-changes</code> for unambiguous typos), <code>file</code>, <code>list_of_files</code>, and <code>project</code> lint modes, and forwards <code>EXCLUDED_DIRECTORIES</code> in project lint mode, and <strong>SARIF output</strong> with <code>SARIF_REPORTER: true</code></li>
+</ul>
+</li>
+</ul>
+<ul>
 <li>Add <a href="https://docs.astral.sh/ty/">ty</a> linter for PYTHON — fast Python type checker and language server written in Rust</li>
 </ul>
 </li>
@@ -15925,7 +15931,10 @@
 <li>Re-enabled linters</li>
 </ul>
 <ul>
-<li>Deprecated linters</li>
+<li>Deprecated linters<ul>
+<li><strong>SPELL_PROSELINT</strong> (<code>proselint</code>) — deprecated because <code>proselint</code> is unmaintained with high false-positive rates and Python packaging conflicts. Migrate to <strong>SPELL_VALE</strong> (<code>vale</code>) for prose style checking or <strong>SPELL_TYPOS</strong> (<code>typos</code>) for fast source-code spell checking. Will be removed in a future major release; disable it by adding <code>SPELL_PROSELINT</code> to <code>DISABLE_LINTERS</code> in your <code>.mega-linter.yml</code>.</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>Removed linters</li>
