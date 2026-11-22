@@ -47,6 +47,13 @@ linters:
     config_file_name: .stylelintrc.json
     cli_config_arg_name: "--config"
     cli_lint_fix_arg_name: "--fix"
+    # Native mode: unchanged files are not linted again
+    cli_lint_cache_args:
+      - "--cache"
+      - "--cache-location"
+      - "{{LINTER_CACHE_DIR}}/stylelintcache"
+      - "--cache-strategy"
+      - "content"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "([0-9]+) errors"
     cli_lint_warnings_count: regex_number

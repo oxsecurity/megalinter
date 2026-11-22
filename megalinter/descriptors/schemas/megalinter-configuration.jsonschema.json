@@ -20627,6 +20627,15 @@
       "x-order": 910050,
       "x-section": "MISC"
     },
+    "NATIVE_LINTER_CACHE": {
+      "default": true,
+      "description": "Native mode: let the linters that have their own cache of results (eslint, prettier, stylelint, cspell) keep it between runs, in MEGALINTER_HOME, so they analyze again only the files that changed. Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_CACHE: false for one linter",
+      "title": "Native mode linter caches",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 910080,
+      "x-section": "MISC"
+    },
     "NATIVE_MISSING_LINTERS": {
       "default": "install",
       "description": "Native mode: what to do with a linter listed in NATIVE_LINTERS that is not installed. install: install it, skip: skip it, fail: stop with an error",

@@ -16,6 +16,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Core
 
+  - **Faster repeated runs in native mode**, see [Faster repeated runs](https://megalinter.io/latest/install-native/#faster-repeated-runs):
+    - **eslint, prettier, stylelint and cspell keep their own cache** between runs, in `~/.megalinter/cache/linters`, and analyze again only the files that changed (off for TypeScript eslint, whose type-aware rules depend on other files). Disable it with **`NATIVE_LINTER_CACHE: false`**, or for one linter with `<LINTER_KEY>_NATIVE_CACHE: false`
+
   - **Faster runs**, most visible in native mode and on Windows:
     - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
     - A run that has a single group of linters to run (for example a pre-commit hook on one Python file, with fixes) runs them directly instead of starting worker processes, and a run never starts more worker processes than it has linter groups
@@ -124,6 +127,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Dev
 
+  - New linter-level descriptor property **`cli_lint_cache_args`**: arguments enabling the linter's own cache, sent only in native mode, with `{{LINTER_CACHE_DIR}}` replaced by a folder of `MEGALINTER_HOME/cache/linters/<LINTER_KEY>/<workspace hash>`. Declared for eslint (shared, emptied for `TYPESCRIPT_ES` / `TSX_ES`), prettier (shared), stylelint and cspell. `BlackLinter` runs `black --check` first, then `--check --diff` only on the files to reformat (black skips its cache with `--diff`)
   - **`/pr-watch-fix-renovate`** fixes a MegaLinter error shared by several Renovate PRs **once**, in a carrier PR:
     - fingerprints the blocking MegaLinter errors, the CVE/GHSA ids of failing security scans and the failing pytest node ids of test jobs (`.claude/skills/pr-watch-fix/fingerprint.py`), groups the PRs and picks the carrier (`sweep.py`)
     - after you merge the carrier, asks Renovate to rebase only the group members (`/renovate-rebase --branches`) and watches them again; when Renovate does not run, falls back (with your approval) on `gh pr update-branch` and flags members superseded by the carrier

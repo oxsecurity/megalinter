@@ -55,6 +55,13 @@ linters:
     cli_lint_mode_project_config_paths_regex: "(?m)(^\\s*\"files\"\\s*:\\s*\\[\\s*[\"'])|(^files[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t]))"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
+    # Native mode: unchanged files are not checked again
+    cli_lint_cache_args:
+      - "--cache"
+      - "--cache-location"
+      - "{{LINTER_CACHE_DIR}}/cspellcache"
+      - "--cache-strategy"
+      - "content"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"

@@ -11,6 +11,8 @@ linters:
   # ESLINT
   - extends: eslint
     linter_name: eslint
+    # No cache: type-aware rules make the result of a file depend on other files
+    cli_lint_cache_args: []
     linter_text: |
       **ESLint with React Plugin** provides comprehensive linting for TSX (TypeScript React) files, combining ESLint's powerful static analysis with React-specific rules to ensure high-quality React applications written in TypeScript.
 

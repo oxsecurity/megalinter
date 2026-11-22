@@ -934,6 +934,24 @@
             "title": "CLI help extra commands",
             "type": "array"
           },
+          "cli_lint_cache_args": {
+            "default": [],
+            "description": "Native mode only: arguments enabling the linter's own cache of results, so unchanged files are not analyzed again on the next run. {{LINTER_CACHE_DIR}} is replaced by a folder of MEGALINTER_HOME dedicated to the linter and the workspace (never inside the analyzed sources). Not sent when NATIVE_LINTER_CACHE (or <LINTER_KEY>_NATIVE_CACHE) is false, or when the user arguments already contain the first argument",
+            "examples": [
+              [
+                "--cache",
+                "--cache-location",
+                "{{LINTER_CACHE_DIR}}/eslintcache",
+                "--cache-strategy",
+                "content"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint cache arguments (native mode)",
+            "type": "array"
+          },
           "cli_lint_errors_count": {
             "description": "Defines how to count errors from log file. regex_number, regex_count, regex_sum, total_lines or sarif",
             "enum": [

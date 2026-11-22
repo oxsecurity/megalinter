@@ -21,6 +21,7 @@ The following list of items can/must be overridden on custom linter local class:
 """
 
 import errno
+import hashlib
 import json
 import logging
 import os
@@ -45,7 +46,12 @@ from megalinter import (
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
 from megalinter.native import toolchain as native_toolchain
-from megalinter.native.context import find_git_bash, is_native_mode
+from megalinter.native.context import (
+    cache_dir,
+    find_git_bash,
+    is_native_mode,
+    megalinter_home,
+)
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -154,6 +160,8 @@ class Linter:
         self.last_return_code = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
+        # Native mode: arguments enabling the linter's own cache ({{LINTER_CACHE_DIR}})
+        self.cli_lint_cache_args = []
         self.cli_command_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -1893,6 +1901,9 @@ class Linter:
         )
         cmd += self.cli_lint_extra_args
 
+        # Native mode: let the linter keep its cache of results between runs
+        cmd += self.get_native_cache_arguments()
+
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
@@ -2022,6 +2033,43 @@ class Linter:
             else:
                 cmd += self.files
         return cmd
+
+    # Native mode keeps the linters caches between runs, outside the analyzed sources:
+    # one folder per linter and workspace, under MEGALINTER_HOME/cache/linters
+    def get_native_cache_arguments(self) -> list:
+        if (
+            len(self.cli_lint_cache_args) == 0
+            or not is_native_mode(self.request_id)
+            or not self.is_native_cache_enabled()
+            or any(
+                arg.split("=")[0] in ("--cache", "--no-cache", "--cache-location")
+                for arg in self.cli_lint_user_args
+            )
+        ):
+            return []
+        linter_cache_dir = self.get_native_cache_dir()
+        os.makedirs(linter_cache_dir, mode=0o700, exist_ok=True)
+        return [
+            arg.replace("{{LINTER_CACHE_DIR}}", linter_cache_dir)
+            for arg in self.cli_lint_cache_args
+        ]
+
+    def is_native_cache_enabled(self) -> bool:
+        linter_value = config.get(self.request_id, f"{self.name}_NATIVE_CACHE", "")
+        if linter_value != "":
+            return linter_value == "true"
+        return config.get(self.request_id, "NATIVE_LINTER_CACHE", "true") == "true"
+
+    def get_native_cache_dir(self) -> str:
+        workspace_key = hashlib.sha256(
+            os.path.abspath(self.workspace).encode("utf-8")
+        ).hexdigest()[:16]
+        return os.path.join(
+            cache_dir(megalinter_home(self.request_id)),
+            "linters",
+            self.name,
+            workspace_key,
+        )
 
     # Remove arguments listed in <LINTER_NAME>_COMMAND_REMOVE_ARGUMENTS.
     # Arguments that are not in the command line are just ignored, as they can be

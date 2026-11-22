@@ -17,6 +17,13 @@ supported_cli_lint_modes:
 cli_config_arg_name: --config
 cli_lint_extra_args:
   - --check
+# Native mode: files already formatted are not checked again until they change
+cli_lint_cache_args:
+  - --cache
+  - --cache-location
+  - "{{LINTER_CACHE_DIR}}/prettiercache"
+  - --cache-strategy
+  - content
 cli_lint_mode_project_exclude_ignore_file_arg_name: --ignore-path
 cli_lint_mode_project_exclude_ignore_file_pass_existing:
   - .gitignore

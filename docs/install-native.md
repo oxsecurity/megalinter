@@ -109,7 +109,7 @@ export NODE_USE_SYSTEM_CA=1        # Node.js linters
 | `megalinter uninstall-linters KEY...` | Remove installed linters                                     |
 | `megalinter list-linters`             | Show the native status of every linter                       |
 | `megalinter doctor`                   | Check Git Bash, uv, runtimes and the install folder          |
-| `megalinter cache prune`              | Empty the download cache                                     |
+| `megalinter cache prune`              | Empty the download and linter caches                         |
 
 ### Faster commands
 
@@ -148,17 +148,26 @@ repos:
 
 ## Configuration
 
-| Variable                      | Default         | Description                                                           |
-|:------------------------------|:----------------|:----------------------------------------------------------------------|
-| `NATIVE_LINTERS`              | empty           | Linters allowed to run natively (keys, or `all`)                      |
-| `NATIVE_INSTALL_RUNTIMES`     | `ask`           | `ask`, `auto` or `never`                                              |
-| `NATIVE_MISSING_LINTERS`      | `install`       | `install`, `skip` or `fail` for a listed linter that is not installed |
-| `NATIVE_ENV_ALLOWLIST`        | empty           | Extra environment variables given to the linters                      |
-| `NATIVE_IGNORE_HOST_RUNTIMES` | `false`         | Ignore the runtimes installed on the host                             |
-| `NATIVE_OFFLINE`              | `false`         | Install only from the local download cache                            |
-| `MEGALINTER_HOME`             | `~/.megalinter` | Where linters, runtimes and downloads are stored                      |
+| Variable                      | Default         | Description                                                              |
+|:------------------------------|:----------------|:-------------------------------------------------------------------------|
+| `NATIVE_LINTERS`              | empty           | Linters allowed to run natively (keys, or `all`)                         |
+| `NATIVE_INSTALL_RUNTIMES`     | `ask`           | `ask`, `auto` or `never`                                                 |
+| `NATIVE_MISSING_LINTERS`      | `install`       | `install`, `skip` or `fail` for a listed linter that is not installed    |
+| `NATIVE_ENV_ALLOWLIST`        | empty           | Extra environment variables given to the linters                         |
+| `NATIVE_IGNORE_HOST_RUNTIMES` | `false`         | Ignore the runtimes installed on the host                                |
+| `NATIVE_OFFLINE`              | `false`         | Install only from the local download cache                               |
+| `NATIVE_LINTER_CACHE`         | `true`          | Let eslint, prettier, stylelint and cspell keep their cache between runs |
+| `MEGALINTER_HOME`             | `~/.megalinter` | Where linters, runtimes and downloads are stored                         |
 
 When MegaLinter runs in Docker and your `.mega-linter.yml` has no `NATIVE_LINTERS`, its reports suggest trying native mode. Define `NATIVE_SUGGESTIONS: false` to hide this suggestion.
+
+## Faster repeated runs
+
+Native mode keeps data between runs that a Docker container loses, so the next runs are faster:
+
+- **Linter caches**: eslint, prettier, stylelint and cspell keep their own cache of results, in `~/.megalinter/cache/linters` (never in your repository), and analyze again only the files that changed. Disable it with `NATIVE_LINTER_CACHE: false`, or for one linter with `<LINTER_KEY>_NATIVE_CACHE: false` (example: `JAVASCRIPT_ES_NATIVE_CACHE: false`). The cache is off for TypeScript eslint (`TYPESCRIPT_ES`, `TSX_ES`), whose type-aware rules make the result of a file depend on other files
+- black uses its own cache too (in your user cache folder)
+- `megalinter cache prune` empties the caches kept in `~/.megalinter`
 
 ## Differences with Docker
 
