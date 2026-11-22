@@ -4,7 +4,6 @@ import logging
 import os
 import subprocess
 
-import requests
 from megalinter import ci_providers, config, utils
 from megalinter.constants import (
     DEFAULT_RELEASE,
@@ -17,9 +16,6 @@ from megalinter.constants import (
     OX_MARKDOWN_LINK,
 )
 from megalinter.flavor_factory import is_custom_flavor
-from pytablewriter import Align, MarkdownTableWriter
-from pytablewriter.style import Style
-from redis import Redis
 
 # Most severe first, used to sort linters with issues in reports
 _ICON_SEVERITY_ORDER = {"❌": 0, "⚠️": 1, "☑️": 2, "✅": 3}
@@ -614,6 +610,9 @@ def build_webhook_headers(request_id: str) -> dict:
 
 
 def post_webhook_message(hook_url: str, payload: object, reporter, success_label: str):
+    # Imported on use: loading this library at startup slows down every run
+    import requests
+
     context = ""
     if reporter.scope == "linter":
         context = (
@@ -642,6 +641,9 @@ def post_webhook_message(hook_url: str, payload: object, reporter, success_label
 
 
 def send_redis_message(reporter_self, message_data):
+    # Imported on use: loading this library at startup slows down every run
+    from redis import Redis
+
     try:
         redis = Redis(
             host=reporter_self.redis_host, port=reporter_self.redis_port, db=0
@@ -702,6 +704,10 @@ def _sort_linters_by_icon_severity(linter):
 
 
 def _build_table_content(linters, reporter_self, action_run_url):
+    # Imported on use: loading this library at startup slows down every run
+    from pytablewriter import Align, MarkdownTableWriter
+    from pytablewriter.style import Style
+
     table_header = [
         "Descriptor",
         "Linter",

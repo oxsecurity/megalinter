@@ -5,7 +5,6 @@ Run mega-linter
 """
 
 import faulthandler
-import multiprocessing as mp
 import threading
 import uuid
 
@@ -13,10 +12,9 @@ import megalinter
 
 # musl (Alpine) gives every thread a 128 KiB stack, where glibc gives 8 MiB, and
 # CPython below 3.14.7 miscomputed its stack guard there. Deep recursion in a
-# thread then crashed the process with SIGSEGV instead of raising RecursionError:
-# multiprocessing.Pool pickles the linter object graph (which reaches the whole
-# Megalinter instance through Linter.master) inside its handler threads, which is
-# exactly such a recursion. Ask for a glibc-sized stack for the threads we create.
+# thread then crashed the process with SIGSEGV instead of raising RecursionError
+# (#8779), and the linters run in the threads of a pool. Ask for a glibc-sized
+# stack for the threads we create.
 THREAD_STACK_SIZE = 8 * 1024 * 1024
 
 
@@ -41,5 +39,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    mp.freeze_support()
     main()

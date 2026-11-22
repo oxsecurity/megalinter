@@ -18,11 +18,14 @@ class XmlLintLinter(Linter):
             and config.get(self.request_id, "XML_XMLLINT_AUTOFORMAT", "false") == "true"
         ):
             if self.cli_lint_mode == "file":
-                config.set(
-                    self.request_id,
-                    "XMLLINT_INDENT",
-                    config.get(self.request_id, "XML_XMLLINT_INDENT", "  "),
-                )
+                # Given to the xmllint command only: setting it in the configuration
+                # would clear caches shared with the linters running in other threads
+                self.lint_command_env = {
+                    **(self.lint_command_env or {}),
+                    "XMLLINT_INDENT": config.get(
+                        self.request_id, "XML_XMLLINT_INDENT", "  "
+                    ),
+                }
                 cmd += ["--output", f"{file}"]
             else:
                 raise KeyError(

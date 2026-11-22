@@ -8,7 +8,6 @@ import tempfile
 import time
 from urllib.parse import urlsplit
 
-import requests
 import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
@@ -41,6 +40,9 @@ DEFAULT_SECURED_ENV_VARIABLES = (
 # Retries cover network exceptions and every non-200; the last response is
 # returned so callers keep their own specific status-code error messages.
 def http_get_with_retry(url, headers=None, retries=3, timeout=30, backoff_base=2):
+    # Imported on use: loading this library at startup slows down every run
+    import requests
+
     last_response = None
     last_error = None
     for attempt in range(retries):
@@ -432,7 +434,9 @@ def build_env(request_id, secured=True, allow_list=[]):
     )
     allow_set = frozenset(allow_list)
     env_dict = {}
-    for key, value in get_config(request_id).items():
+    # Iterate a copy: linters running in parallel threads can set
+    # variables meanwhile, and dict() copies it without releasing the GIL
+    for key, value in dict(get_config(request_id)).items():
         if key not in allow_set and (
             key in secured_plain_vars
             or match_variable_regexes(key, secured_env_variables_regex)

@@ -9,7 +9,6 @@ import tempfile
 import zipfile
 from json.decoder import JSONDecodeError
 
-import requests
 from megalinter import Reporter, config
 
 
@@ -28,6 +27,9 @@ class FileIoReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         # Skip report if no errors has been found
         if (
             self.master.status == "success"

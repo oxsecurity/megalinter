@@ -20,7 +20,9 @@ The following list of items can/must be overridden on custom linter local class:
 
 """
 
+import copy
 import errno
+import hashlib
 import json
 import logging
 import os
@@ -45,7 +47,13 @@ from megalinter import (
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
 from megalinter.native import toolchain as native_toolchain
-from megalinter.native.context import find_git_bash, is_native_mode
+from megalinter.native.context import (
+    cache_dir,
+    find_git_bash,
+    is_native_mode,
+    megalinter_home,
+)
+from megalinter.native.results_cache import ResultsCache, is_results_cache_enabled
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -156,6 +164,11 @@ class Linter:
         self.last_return_code = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
+        # Native mode: arguments enabling the linter's own cache ({{LINTER_CACHE_DIR}})
+        self.cli_lint_cache_args = []
+        # Native mode: the files linted without any problem are not linted again while
+        # unchanged ({config_files: [...]}: files the linter finds by itself)
+        self.native_results_cache = None
         self.cli_command_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -253,8 +266,12 @@ class Linter:
         else:
             params = {**default_params, **params}
 
-        # Initialize with configuration data
+        # Initialize with configuration data. Lists and dicts are copied: the
+        # definition of a shared linter (extends) is the same object for all the
+        # linters extending it, and linter classes can extend them in place
         for key, value in linter_config.items():
+            if isinstance(value, (list, dict)):
+                value = copy.copy(value)
             self.__setattr__(key, value)
         self.descriptor_cli_lint_mode = self.cli_lint_mode
         if "request_id" in params:
@@ -1059,6 +1076,14 @@ class Linter:
             self.master, self, run_commands_before_linters
         )
 
+        # Native mode: the files unchanged since they were linted without any problem
+        # are not linted again
+        results_cache = None
+        all_files = self.files
+        if is_results_cache_enabled(self):
+            results_cache = ResultsCache(self)
+            self.files = results_cache.select_files_to_lint(all_files)
+
         # Lint each file one by one
         if self.cli_lint_mode == "file":
             index = 0
@@ -1070,6 +1095,12 @@ class Linter:
                 file_warnings_number = 0
                 file_warnings_number = self.get_total_number_warnings(stdout)
                 self.total_number_warnings += file_warnings_number
+                if (
+                    results_cache is not None
+                    and return_code == 0
+                    and file_warnings_number == 0
+                ):
+                    results_cache.record_successful_run([file], stdout)
                 if return_code != 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
@@ -1094,9 +1125,10 @@ class Linter:
             # line builds an invalid command (ex: "checkov --file" with no value
             # after it), and the linter would fail on its own arguments instead
             # of reporting a lint result
-            logging.info(
-                f"{self.name} has no file to lint, so its command has not been run"
-            )
+            if results_cache is None or len(results_cache.unchanged_files) == 0:
+                logging.info(
+                    f"{self.name} has no file to lint, so its command has not been run"
+                )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -1110,9 +1142,24 @@ class Linter:
                 self.total_number_errors += self.get_total_number_errors(stdout)
             elif self.total_number_warnings > 0:
                 self.status = "warning"
+            if results_cache is not None:
+                if return_code == 0 and self.total_number_warnings == 0:
+                    results_cache.record_successful_run(self.files, stdout)
+                else:
+                    results_cache.record_files_absent_from_output(self.files, stdout)
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
+
+        if results_cache is not None:
+            self.update_files_lint_results(
+                results_cache.unchanged_files, 0, "success", "", 0, 0
+            )
+            self.files = all_files
+            try:
+                results_cache.save()
+            except OSError as e:
+                logging.warning(f"[Results cache] Unable to save {self.name}: {e}")
 
         self.after_lint_files()
 
@@ -1902,6 +1949,9 @@ class Linter:
         )
         cmd += self.cli_lint_extra_args
 
+        # Native mode: let the linter keep its cache of results between runs
+        cmd += self.get_native_cache_arguments()
+
         # Add fix argument if defined
         if self.apply_fixes is True and (
             self.cli_lint_fix_arg_name is not None
@@ -2031,6 +2081,43 @@ class Linter:
             else:
                 cmd += self.files
         return cmd
+
+    # Native mode keeps the linters caches between runs, outside the analyzed sources:
+    # one folder per linter and workspace, under MEGALINTER_HOME/cache/linters
+    def get_native_cache_arguments(self) -> list:
+        if (
+            len(self.cli_lint_cache_args) == 0
+            or not is_native_mode(self.request_id)
+            or not self.is_native_cache_enabled()
+            or any(
+                arg.split("=")[0] in ("--cache", "--no-cache", "--cache-location")
+                for arg in self.cli_lint_user_args
+            )
+        ):
+            return []
+        linter_cache_dir = self.get_native_cache_dir()
+        os.makedirs(linter_cache_dir, mode=0o700, exist_ok=True)
+        return [
+            arg.replace("{{LINTER_CACHE_DIR}}", linter_cache_dir)
+            for arg in self.cli_lint_cache_args
+        ]
+
+    def is_native_cache_enabled(self) -> bool:
+        linter_value = config.get(self.request_id, f"{self.name}_NATIVE_CACHE", "")
+        if linter_value != "":
+            return linter_value == "true"
+        return config.get(self.request_id, "NATIVE_LINTER_CACHE", "true") == "true"
+
+    def get_native_cache_dir(self) -> str:
+        workspace_key = hashlib.sha256(
+            os.path.abspath(self.workspace).encode("utf-8")
+        ).hexdigest()[:16]
+        return os.path.join(
+            cache_dir(megalinter_home(self.request_id)),
+            "linters",
+            self.name,
+            workspace_key,
+        )
 
     # Remove arguments listed in <LINTER_NAME>_COMMAND_REMOVE_ARGUMENTS.
     # Arguments that are not in the command line are just ignored, as they can be

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "variable_count": 2918,
+    "variable_count": 2921,
     "categories": {
       "ACTION": 4,
       "ACTION_ACTIONLINT": 17,
@@ -55,7 +55,7 @@
       "ENV": 4,
       "ENV_DOTENV_LINTER": 15,
       "FILEIO_REPORTER": 2,
-      "GENERAL": 66,
+      "GENERAL": 69,
       "GHERKIN": 4,
       "GHERKIN_GHERKIN_LINT": 17,
       "GITHUB_COMMENT_REPORTER": 5,
@@ -15753,6 +15753,15 @@
       "section": "MISC",
       "items_type": "string"
     },
+    "NATIVE_LINTER_CACHE": {
+      "name": "NATIVE_LINTER_CACHE",
+      "type": "boolean",
+      "title": "Native mode linter caches",
+      "description": "Native mode: let the linters that have their own cache of results (eslint, prettier, stylelint, cspell) keep it between runs, in MEGALINTER_HOME, so they analyze again only the files that changed. Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_CACHE: false for one linter",
+      "default": true,
+      "category": "GENERAL",
+      "section": "MISC"
+    },
     "NATIVE_MISSING_LINTERS": {
       "name": "NATIVE_MISSING_LINTERS",
       "type": "string",
@@ -15769,6 +15778,15 @@
       "title": "Native mode offline",
       "description": "Native mode: never download anything, install only from the local download cache",
       "default": false,
+      "category": "GENERAL",
+      "section": "MISC"
+    },
+    "NATIVE_RESULTS_CACHE": {
+      "name": "NATIVE_RESULTS_CACHE",
+      "type": "boolean",
+      "title": "Native mode results cache",
+      "description": "Native mode: the files that a linter found without any problem are not linted again by the next runs while they, the linter and its configuration stay the same (for the linters whose result on a file depends only on its content). Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_RESULTS_CACHE: false for one linter",
+      "default": true,
       "category": "GENERAL",
       "section": "MISC"
     },

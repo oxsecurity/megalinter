@@ -148,7 +148,12 @@ linters:
         - name: Pylint
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.pylint
   # BLACK
-  - linter_name: black
+  - class: BlackLinter
+    linter_name: black
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - pyproject.toml
     file_extensions:
       - ".py"
       - ".pyi"
@@ -276,6 +281,12 @@ linters:
   # FLAKE8
   - class: Flake8Linter
     linter_name: flake8
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - .flake8
+        - setup.cfg
+        - tox.ini
     can_output_sarif: true
     linter_text: |
       **Flake8** is a comprehensive Python code quality checker that combines three powerful tools—pycodestyle, pyflakes, and mccabe—into a unified linting solution. It serves as the go-to tool for enforcing Python coding standards and catching potential issues.

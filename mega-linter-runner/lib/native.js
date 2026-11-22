@@ -29,6 +29,10 @@ const VERIFIER_LOCK = path.join(
   "native-verifier.requirements.lock",
 );
 const NATIVE_DEFAULT_RELEASE = "beta";
+// The latest beta found on PyPI is remembered for an hour: frequent runs (pre-commit hooks)
+// do not download the list of all the releases of the project from PyPI each time
+const LATEST_BETA_CHECK_FILE = ".latest-beta.json";
+const LATEST_BETA_CHECK_INTERVAL_MS = 60 * 60 * 1000;
 const RUNTIME_POLICIES = ["ask", "auto", "never"];
 // Options that only make sense with a container
 const DOCKER_ONLY_OPTIONS = [
@@ -54,8 +58,17 @@ function devTimestamp(version) {
 }
 
 export class NativeRunner {
-  constructor({ spawnSyncFn, fetchFn, whichFn, home, platform, arch } = {}) {
+  constructor({
+    spawnSyncFn,
+    fetchFn,
+    whichFn,
+    home,
+    platform,
+    arch,
+    nowFn,
+  } = {}) {
     this.spawnSyncFn = spawnSyncFn || spawnSync;
+    this.nowFn = nowFn || Date.now;
     this.fetchFn = fetchFn || globalThis.fetch;
     this.whichFn = whichFn || which;
     this.platform = platform || process.platform;
@@ -325,17 +338,68 @@ export class NativeRunner {
       .filter((version) => fs.existsSync(path.join(coreRoot, version, ".ok")));
   }
 
+  latestBetaCheckPath() {
+    return path.join(this.home, "core", LATEST_BETA_CHECK_FILE);
+  }
+
+  // The latest beta found less than an hour ago, if it is installed
+  rememberedLatestBeta(installed) {
+    let check;
+    try {
+      check = JSON.parse(fs.readFileSync(this.latestBetaCheckPath(), "utf8"));
+    } catch {
+      return null;
+    }
+    const age = this.nowFn() - check.checkedAt;
+    if (
+      typeof check.version === "string" &&
+      typeof check.checkedAt === "number" &&
+      age >= 0 &&
+      age < LATEST_BETA_CHECK_INTERVAL_MS &&
+      installed.includes(check.version)
+    ) {
+      return check.version;
+    }
+    return null;
+  }
+
+  rememberLatestBeta(version) {
+    try {
+      fs.mkdirSync(path.join(this.home, "core"), {
+        recursive: true,
+        mode: 0o700,
+      });
+      fs.writeFileSync(
+        this.latestBetaCheckPath(),
+        JSON.stringify({ version, checkedAt: this.nowFn() }),
+      );
+    } catch {
+      // Not remembered: PyPI is asked again on the next run
+    }
+  }
+
   // An exact version already installed needs no network access (pre-commit hooks pinned to
-  // a release). For beta, PyPI is asked for the latest one, and when it can not be reached
-  // the most recent installed beta keeps working offline
+  // a release). For beta, PyPI is asked for the latest one (at most once an hour when it is
+  // installed), and when it can not be reached the most recent installed beta keeps working
+  // offline
   async resolveCoreVersion(release) {
     const wanted = release || NATIVE_DEFAULT_RELEASE;
     const installed = this.installedCoreVersions();
     if (wanted !== "beta" && installed.includes(wanted)) {
       return wanted;
     }
+    if (wanted === "beta") {
+      const remembered = this.rememberedLatestBeta(installed);
+      if (remembered !== null) {
+        return remembered;
+      }
+    }
     try {
-      return await this.resolveVersion(release);
+      const version = await this.resolveVersion(release);
+      if (wanted === "beta") {
+        this.rememberLatestBeta(version);
+      }
+      return version;
     } catch (error) {
       const betas = installed
         .filter((version) => version.includes(".dev"))

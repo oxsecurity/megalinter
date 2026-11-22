@@ -8,7 +8,6 @@ import json
 import logging
 import os
 
-import jsonpickle
 from megalinter import Reporter, config, utils
 
 
@@ -72,6 +71,9 @@ class JsonReporter(Reporter):
                 self.report_type = "detailed"
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import jsonpickle
+
         result_obj = copy.deepcopy(self.master)
         # Remove output data if result is simple (except if we are in debug mode)
         if (

@@ -104,7 +104,7 @@ def build_parser():
 
     commands.add_parser("doctor", help="Check the native mode prerequisites")
 
-    cache = commands.add_parser("cache", help="Manage the download cache")
+    cache = commands.add_parser("cache", help="Manage the download and linter caches")
     cache.add_argument("action", choices=["prune"])
     return parser
 

@@ -10,7 +10,6 @@ import re
 import urllib.parse
 
 import git
-import requests
 from megalinter import config, utils
 from megalinter.ci_providers.CiProvider import CiProvider
 
@@ -117,6 +116,9 @@ class CiProviderAzurePipelines(CiProvider):
         return f"{self.get_team_project()} #PR{self.get_pr_number()}"
 
     def get_pr_labels(self):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         pr_id = self.get_pr_number()
         if self.get_auth_token() is None or pr_id is None:
             logging.info(
@@ -167,6 +169,9 @@ class CiProviderAzurePipelines(CiProvider):
     # gives the real repository even when the build runs from a fork, so it is
     # preferred over BUILD_REPOSITORY_ID, which stays the fallback
     def get_repository_id(self):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         build_repository_id = config.get(self.request_id, "BUILD_REPOSITORY_ID")
         source_repository_uri = config.get(
             self.request_id, "SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI", ""
