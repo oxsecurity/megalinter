@@ -185,6 +185,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **megalinter-setup** now **proposes the linters to run natively**: it analyzes the repository, shows the linters proposed for your machine and the ones left to CI with the reason, asks you to confirm, then sets everything up with `--native-setup`
     - It explains that CI keeps running every active linter, so `NATIVE_LINTERS` is a subset
   - The **megalinter-runner** sub-agent runs native checks and returns the skipped linters
+  - **megalinter-setup** now **asks where MegaLinter should run**: in CI, natively on your machine, or both (recommended), and sets up what you chose. A native-only setup needs no CI workflow file
   - **megalinter-check**, **megalinter-setup** and **megalinter-runner** now **diagnose a failing native setup with `--doctor`** and `--list-linters`, and always go through `mega-linter-runner` instead of installing the `megalinter` engine themselves
 
 - Dev

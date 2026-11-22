@@ -544,6 +544,20 @@ Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the
 
 The skills only call `mega-linter-runner`, never the `megalinter` engine directly, so the machine needs Node.js and Docker (or uv for [native mode](https://megalinter.io/latest/install-native/)), but no Python install.
 
+**megalinter-setup** asks where MegaLinter should run: in CI, natively on your machine, or both (recommended). CI keeps running every active linter, and `NATIVE_LINTERS` only scopes the fast local runs, so keep the slow and whole-repository linters out of it.
+
+```mermaid
+flowchart TD
+    A["1. Analyze the repository<br/>flavor, CI system, branch"] --> Q{"2. Where should<br/>MegaLinter run?"}
+    Q -->|"CI only"| CI["--install<br/>.mega-linter.yml + CI workflow"]
+    Q -->|"CI + native<br/>(recommended)"| B1["--install<br/>.mega-linter.yml + CI workflow"]
+    B1 --> B2["--native --prerun, confirm the list<br/>then --native-setup KEYS"]
+    Q -->|"Native only"| C1["--native --prerun, confirm the list<br/>then --native-setup KEYS<br/>creates .mega-linter.yml if absent"]
+    CI --> R1(["CI: every active linter"])
+    B2 --> R2(["CI: every active linter<br/>local: the NATIVE_LINTERS subset"])
+    C1 --> R3(["local: the NATIVE_LINTERS subset"])
+```
+
 On coding agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom agents...), dedicated MegaLinter sub-agents (running on low-cost models) watch CI jobs and digest linter outputs to keep large logs out of your agent's context, and fix several linters in parallel.
 
 <!-- install-agent-skills-section-end -->

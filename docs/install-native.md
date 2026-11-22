@@ -86,6 +86,14 @@ You never need to call `megalinter` yourself: the runner translates its options 
 | `--native-setup`    | Picks the linters, writes `NATIVE_LINTERS`, installs them and runs a first lint | native |
 | `--install-linters` | Installs the linter tools on this machine                                       | native |
 
+## Native mode next to CI
+
+Native mode does not replace your CI job: the recommended setup is **both**. CI keeps running every active linter in Docker, and your machine runs the `NATIVE_LINTERS` subset in seconds (agent fix loops, pre-commit hooks, local checks). A green native run is therefore not a green CI: the linters it skips are left to CI.
+
+Without a CI job, native mode works alone: `--native-setup` creates `.mega-linter.yml` when it does not exist. To add CI later, run `npx mega-linter-runner --install`: it backs up `.mega-linter.yml` as `.megalinter-setup.bak`, so copy your `NATIVE_LINTERS` back from it.
+
+The [agent skills](install-agent-skills.md) ask which of the three you want (CI, native, or both) when they set MegaLinter up.
+
 ## NATIVE_LINTERS: explicit opt-in
 
 Nothing runs natively unless it is listed in `NATIVE_LINTERS`. A linter that is activated by your configuration but not listed is skipped, so you can keep running a larger set of linters in Docker or in CI.
