@@ -95,6 +95,10 @@ class Megalinter:
         if params is None:
             params = {}
 
+        # Actionable advice and skipped linters, for the JSON report
+        self.tips = []
+        self.skipped_linters_details = []
+
         # megalinter_exec cli variables
         self.cli = params["cli"] if "cli" in params else False
         self.arg_input = None
@@ -144,6 +148,7 @@ class Megalinter:
         self.ignore_generated_files = False
         self.validate_all_code_base = True
         self.prerun = False
+        self.prerun_report = None
         self.filter_regex_include = None
         self.filter_regex_exclude = None
         self.default_linter_activation = True
@@ -308,7 +313,7 @@ class Megalinter:
                 # must not be notified by an analysis-only run
                 if reporter.name == "CONSOLE" and reporter.is_active:
                     reporter.initialize()
-            run_prerun(self)
+            self.prerun_report = run_prerun(self)
             self.before_exit()
             config.delete(self.request_id)
             return
@@ -771,6 +776,9 @@ class Megalinter:
                 if config.get(self.request_id, env_var) == "true":
                     self.default_linter_activation = False
 
+    def add_tip(self, category, message):
+        self.tips.append({"category": category, "message": message})
+
     # Warn once about linters and descriptors removed from previous major versions
     def check_removed_linters_references(self):
         removed_references = find_removed_references(
@@ -785,6 +793,11 @@ class Megalinter:
                 template=REMOVED_LINTERS_NOTIFICATION_TEMPLATE,
                 value=removed_reference,
                 extras={"doc_url": REMOVED_LINTERS_DOC_URL},
+            )
+            self.add_tip(
+                "deprecation",
+                f"{removed_reference} has been removed from MegaLinter: "
+                f"remove it from your configuration. See {REMOVED_LINTERS_DOC_URL}",
             )
 
     # Load and initialize all linters
@@ -852,17 +865,33 @@ class Megalinter:
                 skipped_linters += [linter.name]
                 if linter.activation_skip_reason is not None:
                     activation_skip_reasons[linter.name] = linter.activation_skip_reason
+                    self.add_tip(
+                        "activation",
+                        f"[Activation] {linter.name}: {linter.activation_skip_reason}",
+                    )
                 if linter.disabled is True:
                     disabled_reason = (
                         linter.disabled_reason
                         if linter.disabled_reason is not None
                         else "Undefined"
                     )
+                    self.skipped_linters_details.append(
+                        {
+                            "key": linter.name,
+                            "reason": f"disabled in MegaLinter: {disabled_reason}",
+                        }
+                    )
                     logging.warning(
                         f"{linter.name} has been disabled in MegaLinter for the following reason: "
                         + disabled_reason
                     )
                 if linter.cli_lint_mode in skip_cli_lint_modes:
+                    self.skipped_linters_details.append(
+                        {
+                            "key": linter.name,
+                            "reason": f"CLI lint mode {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES",
+                        }
+                    )
                     logging.info(
                         f"{linter.name} has been skipped because its CLI lint mode"
                         f" {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
@@ -876,13 +905,15 @@ class Megalinter:
                     and linter.deprecated_description
                     else "This linter is deprecated."
                 )
-                logging.warning(
+                deprecation_message = (
                     f"{linter.name} is deprecated and will be removed in a future major release. "
                     + deprecated_description
                     + " Add "
                     + linter.name
                     + " to DISABLE_LINTERS in your .mega-linter.yml to disable it."
                 )
+                logging.warning(deprecation_message)
+                self.add_tip("deprecation", deprecation_message)
         # Display skipped linters in log
         show_skipped_linters = (
             config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
@@ -899,7 +930,8 @@ class Megalinter:
                     "Some linters were skipped due to activation rules:\n"
                     + reasons_lines
                 )
-        if self.native_mode is True:
+        # The prerun analysis suggests the linters to run natively: nothing is selected or installed
+        if self.native_mode is True and self.prerun is not True:
             self.apply_native_selection(
                 {linter.name for linter in all_linters}, self.linter_version_only
             )
@@ -923,6 +955,10 @@ class Megalinter:
                 "(activation rules, ENABLE/DISABLE...): "
                 + ", ".join(selection.listed_not_active)
             )
+        for linter in selection.not_listed:
+            self.skipped_linters_details.append(
+                {"key": linter.name, "reason": "not listed in NATIVE_LINTERS"}
+            )
         if len(selection.not_listed) > 0 and self.show_skipped_native_linters():
             logging.info(
                 "Skipped linters (not listed in NATIVE_LINTERS): "
@@ -943,6 +979,12 @@ class Megalinter:
                 if status == "not installed":
                     if missing_policy == "skip":
                         logging.warning(f"{linter.name} is not installed: skipped")
+                        self.skipped_linters_details.append(
+                            {
+                                "key": linter.name,
+                                "reason": "not installed (NATIVE_MISSING_LINTERS: skip)",
+                            }
+                        )
                         continue
                     if missing_policy == "fail":
                         raise NativeError(
@@ -957,6 +999,9 @@ class Megalinter:
             except NativeError as e:
                 if selection.wants_all is True:
                     logging.warning(f"{linter.name} skipped in native mode: {e}")
+                    self.skipped_linters_details.append(
+                        {"key": linter.name, "reason": str(e)}
+                    )
                 else:
                     errors.append(f"{linter.name}: {e}")
         if len(errors) > 0:
@@ -972,11 +1017,13 @@ class Megalinter:
             host_version, pinned_version
         ):
             return
-        logging.warning(
+        host_message = (
             f"{linter.name}: {linter.linter_name} {host_version} found on this machine, "
             f"but the MegaLinter Docker image uses {pinned_version}: results may differ from CI. "
             f"Install {linter.linter_name} {pinned_version} to get the same results"
         )
+        logging.warning(host_message)
+        self.add_tip("native", host_message)
 
     def show_skipped_native_linters(self):
         return config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
@@ -1470,7 +1517,7 @@ class Megalinter:
                 if len(heavy_dirs) > 0
                 else ""
             )
-            logging.warning(
+            gitignored_message = (
                 f"⚠️ More than 300 .gitignored files have been detected ({len(ignored_files)}). "
                 "To improve MegaLinter performances, consider adding more excluded directories "
                 "using the ADDITIONAL_EXCLUDED_DIRECTORIES variable. "
@@ -1480,6 +1527,8 @@ class Megalinter:
                 f"{heavy_dirs_info} "
                 f"See {ML_DOC_URL}/config-filtering/"
             )
+            logging.warning(gitignored_message)
+            self.add_tip("performance", gitignored_message)
         return ignored_files
 
     def initialize_output(self):

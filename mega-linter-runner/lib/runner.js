@@ -13,16 +13,13 @@ import { fileURLToPath } from "url";
 import os from "os";
 import { which } from "./which.js";
 import { default as fs } from "fs";
-import { MegaLinterUpgrader } from "./upgrade.js";
 import { NativeRunner } from "./native.js";
-import { CodeTotalRunner } from "./codetotal.js";
 import {
   DashboardUploader,
   KNOWN_DASHBOARD_PROVIDERS,
 } from "./upload-dashboards.js";
 import prompts from "prompts";
 import { DEFAULT_RELEASE } from "./config.js";
-import { createEnv } from "yeoman-environment";
 import { load as yamlLoad } from "js-yaml";
 
 function isSElinuxOn() {
@@ -89,6 +86,8 @@ export class MegaLinterRunner {
 
     // Run configuration generator
     if (options.install) {
+      // Loaded on use: yeoman-environment costs about 1 s of startup to every other command
+      const { createEnv } = await import("yeoman-environment");
       const env = createEnv();
       const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
@@ -116,6 +115,7 @@ export class MegaLinterRunner {
           .split(",")
           .map((linter) => linter.trim());
       }
+      const { createEnv } = await import("yeoman-environment");
       const env = createEnv();
       const __dirname = dirname(fileURLToPath(import.meta.url));
       const generatorPath = path.resolve(
@@ -128,6 +128,7 @@ export class MegaLinterRunner {
 
     // Run upgrader from v4 to v5
     if (options.upgrade) {
+      const { MegaLinterUpgrader } = await import("./upgrade.js");
       const megaLinterUpgrader = new MegaLinterUpgrader({
         noPrompt: options.prompt === false,
       });
@@ -142,13 +143,22 @@ export class MegaLinterRunner {
           "[WARNING] CodeTotal is not actively maintained. The --codetotal integration is kept for legacy users and may be removed in a future major release.",
         ),
       );
+      const { CodeTotalRunner } = await import("./codetotal.js");
       const codeTotalRunner = new CodeTotalRunner(options);
       await codeTotalRunner.run();
       return { status: 0 };
     }
 
     // Run without Docker (beta): hand over to the `megalinter` Python command
-    if (options.native === true || options.installLinters === true) {
+    if (
+      options.native === true ||
+      options.installLinters === true ||
+      options.nativeSetup === true ||
+      options.uninstallLinters === true ||
+      options.listLinters === true ||
+      options.doctor === true ||
+      options.pruneCache === true
+    ) {
       return await new NativeRunner().run(options);
     }
 
@@ -384,6 +394,9 @@ export class MegaLinterRunner {
     }
     if (options.json === true) {
       commandArgs.push(...["-e", "JSON_REPORTER=true"]);
+    }
+    if (options.sarif === true) {
+      commandArgs.push(...["-e", "SARIF_REPORTER=true"]);
     }
     if (envVarsFromDotenv.length > 0) {
       for (const envVarEqualsValue of envVarsFromDotenv) {

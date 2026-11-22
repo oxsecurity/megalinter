@@ -11,6 +11,7 @@ import os
 
 from megalinter import config, flavor_factory, utils
 from megalinter.constants import ML_DOC_URL
+from megalinter.native import suggest as native_suggest
 from megalinter.utils_reporter import log_section_end, log_section_start
 
 PRERUN_REPORT_FILE_NAME = "prerun-report.json"
@@ -144,6 +145,8 @@ def build_flavor_suggestion(mega_linter):
     if (
         config.get(mega_linter.request_id, "FLAVOR_SUGGESTIONS", "true") != "true"
         or flavor_factory.is_custom_flavor()
+        # Flavors are Docker images
+        or mega_linter.native_mode is True
     ):
         return None
     flavor_suggestions = flavor_factory.get_megalinter_flavor_suggestions(
@@ -174,6 +177,12 @@ def build_flavor_suggestion(mega_linter):
     }
 
 
+def build_native_suggestion(mega_linter):
+    if mega_linter.native_mode is not True:
+        return None
+    return native_suggest.build_native_linters_suggestion(mega_linter)
+
+
 def build_prerun_report(mega_linter):
     request_id = mega_linter.request_id
     excluded_dirs = utils.get_excluded_directories(request_id)
@@ -183,6 +192,7 @@ def build_prerun_report(mega_linter):
         build_gitignored_dirs_suggestion(mega_linter, excluded_dirs, kept_by_dir),
         build_generated_dirs_suggestion(mega_linter, excluded_dirs, kept_by_dir),
         build_flavor_suggestion(mega_linter),
+        build_native_suggestion(mega_linter),
     ]:
         if suggestion is not None:
             suggestions += [suggestion]
@@ -244,6 +254,7 @@ def log_prerun_report(report, report_file):
             safe_info = (
                 ""
                 if suggestion["safe"] is True
+                or native_suggest.is_native_suggestion(suggestion)
                 else " (to confirm: may change the linting scope)"
             )
             logging.warning(
@@ -251,6 +262,10 @@ def log_prerun_report(report, report_file):
                 + f"[{', '.join(suggestion['values'])}]{safe_info}\n"
                 + f"  {suggestion['reason']}"
             )
+            if native_suggest.is_native_suggestion(suggestion):
+                logging.info(
+                    "\n".join(native_suggest.format_native_rows(suggestion["details"]))
+                )
     logging.info(f"Prerun report written in [{report_file}]")
     logging.info(
         "Apply the relevant suggestions in .mega-linter.yml, "

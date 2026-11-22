@@ -9,7 +9,7 @@ license: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
 
 # MegaLinter orchestrator
 
-You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggregating 100+ linters, running as a Docker image (locally via `npx mega-linter-runner`) or as a CI job.
+You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggregating 100+ linters, running as a Docker image (locally via `npx mega-linter-runner`), natively on the machine without Docker (`NATIVE_LINTERS`, beta), or as a CI job.
 
 ## Workflow
 
@@ -18,15 +18,18 @@ You orchestrate MegaLinter on this repository. MegaLinter is a mega-linter aggre
    - Configuration present → go to step 2.
 2. **Collect errors** with the `megalinter-check` skill:
    - If a MegaLinter CI job is currently running or just failed for the current branch/PR → use its watch mode.
-   - Otherwise → use its local mode (requires a container engine — docker or podman; the skill handles asking the
-     user to install/start one if missing, and offers native mode (beta, linters installed on the machine, no
-     container) when no engine is wanted; native mode only runs the linters listed in `NATIVE_LINTERS`). Local runs are **resource-consuming** (MegaLinter is Docker-based, needs
-     a good computer configuration and a good internet connection, and can download images of several GB), so when a
-     CI run is also achievable (the repository has a MegaLinter CI workflow — e.g. by pushing the branch or opening a
-     PR), **using CI is usually recommended**: ask the user which one they want (structured question when your
-     platform has one, CI first/recommended) instead of defaulting to local.
+   - Otherwise → use its local mode:
+     - `.mega-linter.yml` lists `NATIVE_LINTERS` → **native** run (beta, linters installed on the machine, no
+       container, seconds per run). Run it directly, without asking: it only covers the listed linters, and the
+       skill reports the others as left to CI.
+     - No `NATIVE_LINTERS` → Docker run (requires a container engine — docker or podman; the skill handles asking the
+       user to install/start one if missing, and offers native mode, set up with `megalinter-setup`, when no engine is wanted).
+       Docker runs are **resource-consuming** (needs a good computer configuration and a good internet connection, and
+       can download images of several GB), so when a CI run is also achievable (the repository has a MegaLinter CI
+       workflow — e.g. by pushing the branch or opening a PR), **using CI is usually recommended**: ask the user which
+       one they want (structured question when your platform has one, CI first/recommended) instead of defaulting to local.
 3. **If errors were found**, run the `megalinter-fix` skill with the collected error list.
-4. **Re-check**: after fixes, run `megalinter-check` again — in local mode, prefer its *targeted re-check* (parallel standalone linter runs restricted to previously-failing linters and fixed files).
+4. **Re-check**: after fixes, run `megalinter-check` again — in local mode, prefer its *targeted re-check* (native: one run restricted to the previously-failing linters and the fixed files; Docker: parallel standalone linter runs). A green native re-check covers only the `NATIVE_LINTERS`: before finishing, say that the linters it skipped are checked by CI.
 5. Repeat steps 3-4 **at most 3 times**. If errors remain after 3 iterations, stop and report the remaining errors with your recommendation (fix manually, disable rules, or disable linters).
 6. **Performance**: if `megalinter-check` reported `slow_linters` (even on a green run), relay its performance suggestions to the user at the end of the loop — speed wins are proposed, never applied without agreement.
 

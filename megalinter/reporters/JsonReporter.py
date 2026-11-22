@@ -28,6 +28,8 @@ class JsonReporter(Reporter):
         "has_updated_sources",
         "flavor_suggestions",
         "native_suggestion",
+        "skipped_linters",
+        "tips",
         "pre_commands_results",
         "post_commands_results",
     ]
@@ -47,6 +49,9 @@ class JsonReporter(Reporter):
         "number_fixed",
         "files_lint_results",
         "elapsed_time_s",
+        "blocking",
+        "findings",
+        "native_first_run",
     ]
 
     def __init__(self, params=None):
@@ -75,6 +80,7 @@ class JsonReporter(Reporter):
         import jsonpickle
 
         result_obj = copy.deepcopy(self.master)
+        self.add_computed_fields(result_obj)
         # Remove output data if result is simple (except if we are in debug mode)
         if (
             self.report_type == "simple"
@@ -112,6 +118,25 @@ class JsonReporter(Reporter):
             logging.info(
                 f"[JSON Reporter] Generated {self.name} report: {json_file_name}"
             )
+
+    # Fields built from several attributes of the run, for both simple and detailed reports
+    def add_computed_fields(self, result_obj):
+        result_obj.skipped_linters = result_obj.skipped_linters_details
+        tips = list(result_obj.tips)
+        for linter in result_obj.linters:
+            # A linter with errors is blocking when it fails the run (not with DISABLE_ERRORS,
+            # nor under <LINTER>_DISABLE_ERRORS_IF_LESS_THAN). Without errors, as configured
+            linter.blocking = (
+                linter.return_code != 0
+                if linter.number_errors > 0
+                else linter.disable_errors is not True
+            )
+            linter.findings = linter.sarif_findings
+            for tip in linter.tips:
+                linter_tip = {**tip, "linter": linter.name}
+                if linter_tip not in tips:
+                    tips.append(linter_tip)
+        result_obj.tips = tips
 
     def filter_fields(self, obj, fields_to_keep):
         for field in dir(obj):

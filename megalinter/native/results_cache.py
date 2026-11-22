@@ -8,10 +8,12 @@ import hashlib
 import json
 import logging
 import os
+import posixpath
 import tempfile
 import time
+from urllib.parse import unquote
 
-from megalinter import config
+from megalinter import config, utils_sarif
 from megalinter.__about__ import __version__
 from megalinter.native.context import cache_dir, megalinter_home
 
@@ -60,6 +62,7 @@ class ResultsCache:
             "class": type(linter).__name__,
             "cli_lint_mode": linter.cli_lint_mode,
             "apply_fixes": linter.apply_fixes,
+            "sarif": [linter.output_sarif, linter.cli_sarif_args],
             "arguments": [
                 linter.cli_executable,
                 linter.cli_lint_extra_args,
@@ -199,10 +202,8 @@ class ResultsCache:
     # After a successful run: some linters succeed while reporting warnings (yamllint
     # exits 0 with warnings only), so the files the output names are not recorded
     def record_successful_run(self, files, output):
-        output = output or ""
-        self.record_success(
-            [file for file in files if not self.is_in_output(file, output)]
-        )
+        mentioned = self.mentioned_files(files, output or "")
+        self.record_success([file for file in files if file not in mentioned])
 
     # After a run with problems: when the linter checks every file and names each
     # file with a problem in its output (failed_files_in_output), the files it does
@@ -211,11 +212,42 @@ class ResultsCache:
     def record_files_absent_from_output(self, files, output):
         if self.linter.native_results_cache.get("failed_files_in_output") is not True:
             return
-        output = output or ""
-        mentioned = {file for file in files if self.is_in_output(file, output)}
+        mentioned = self.mentioned_files(files, output or "")
         if len(mentioned) == 0:
             return
         self.record_success([file for file in files if file not in mentioned])
+
+    # Files the output of the linter names, or the SARIF findings are about
+    def mentioned_files(self, files, output):
+        mentioned = {file for file in files if self.is_in_output(file, output)}
+        return mentioned | self.files_with_sarif_findings(files)
+
+    # With SARIF, the findings say which files have a problem. The SARIF of a file
+    # lint mode run is the one of the last file: any finding is about that file. A
+    # finding without a file can not be attributed: no file is recorded then
+    def files_with_sarif_findings(self, files):
+        if self.linter.output_sarif is not True:
+            return set()
+        findings = (
+            utils_sarif.extract_findings(self.linter.sarif_output_file, self.workspace)
+            or []
+        )
+        if len(findings) == 0:
+            return set()
+        if self.linter.cli_lint_mode == "file" or any(
+            "file" not in finding for finding in findings
+        ):
+            return set(files)
+        named = set()
+        for finding in findings:
+            path = finding["file"].replace("\\", "/")
+            for form in (path, unquote(path)):
+                named.add(posixpath.normpath(form))
+        return {
+            file
+            for file in files
+            if posixpath.normpath(file.replace("\\", "/")) in named
+        }
 
     def is_in_output(self, file, output):
         absolute_file = self.absolute(file)
@@ -238,7 +270,6 @@ def is_results_cache_enabled(linter):
         linter.native_results_cache is None
         or linter.native_toolchain is None
         or linter.cli_lint_mode not in ("file", "list_of_files")
-        or linter.output_sarif is True
     ):
         return False
     linter_value = config.get(

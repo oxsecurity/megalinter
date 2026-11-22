@@ -11,7 +11,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/python/mypy?sort=semver)](https://github.com/python/mypy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/python/mypy)](https://github.com/python/mypy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/python/mypy)](https://github.com/python/mypy/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/python/mypy?sort=semver)](https://github.com/python/mypy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/python/mypy)](https://github.com/python/mypy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/python/mypy)](https://github.com/python/mypy/graphs/contributors/)
 
 **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
