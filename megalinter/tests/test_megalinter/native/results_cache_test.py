@@ -27,6 +27,8 @@ class FakeLinter:
         )
         self.cli_lint_mode = "list_of_files"
         self.output_sarif = False
+        self.cli_sarif_args = []
+        self.sarif_output_file = None
         self.apply_fixes = False
         self.cli_executable = ["fake"]
         self.cli_lint_extra_args = ["--check"]
@@ -230,6 +232,74 @@ class ResultsCacheTest(NativeHomeTestCase):
         cache.save()
         self.assertEqual(self.files_to_lint(self.linter(results_cache={})), self.files)
 
+    def sarif_linter(self, files_with_findings, cli_lint_mode="list_of_files"):
+        linter = self.linter()
+        linter.output_sarif = True
+        linter.cli_sarif_args = ["--sarif"]
+        linter.cli_lint_mode = cli_lint_mode
+        linter.sarif_output_file = os.path.join(self.workspace, "out.sarif")
+        results = [
+            (
+                {"ruleId": "R1", "message": {"text": "problem"}}
+                if file is None
+                else {
+                    "ruleId": "R1",
+                    "message": {"text": "problem"},
+                    "locations": [
+                        {"physicalLocation": {"artifactLocation": {"uri": file}}}
+                    ],
+                }
+            )
+            for file in files_with_findings
+        ]
+        with open(linter.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+            json.dump({"runs": [{"results": results}]}, sarif_file)
+        return linter
+
+    def test_sarif_and_text_runs_have_separate_caches(self):
+        self.run_success(self.linter())
+        self.assertEqual(self.files_to_lint(self.sarif_linter([])), self.files)
+
+    def test_sarif_findings_name_the_files_of_a_failed_run(self):
+        linter = self.sarif_linter(["src/b.py"])
+        cache = ResultsCache(linter)
+        files_to_lint = cache.select_files_to_lint(linter.files)
+        cache.record_files_absent_from_output(files_to_lint, "")
+        cache.save()
+        self.assertEqual(self.files_to_lint(self.sarif_linter([])), ["src/b.py"])
+
+    def test_sarif_findings_of_a_successful_run_are_not_recorded(self):
+        linter = self.sarif_linter(["src\\c.py"])
+        cache = ResultsCache(linter)
+        files_to_lint = cache.select_files_to_lint(linter.files)
+        cache.record_successful_run(files_to_lint, "")
+        cache.save()
+        self.assertEqual(self.files_to_lint(self.sarif_linter([])), ["src/c.py"])
+
+    def test_sarif_finding_without_file_records_nothing(self):
+        linter = self.sarif_linter([None])
+        cache = ResultsCache(linter)
+        files_to_lint = cache.select_files_to_lint(linter.files)
+        cache.record_files_absent_from_output(files_to_lint, "")
+        cache.save()
+        self.assertEqual(self.files_to_lint(self.sarif_linter([])), self.files)
+
+    def test_sarif_of_a_file_mode_run_with_findings_records_nothing(self):
+        linter = self.sarif_linter(["a.py"], cli_lint_mode="file")
+        cache = ResultsCache(linter)
+        files_to_lint = cache.select_files_to_lint(linter.files)
+        cache.record_successful_run(["src/b.py"], "")
+        cache.save()
+        self.assertEqual(files_to_lint, self.files)
+        self.assertEqual(
+            self.files_to_lint(self.sarif_linter([], cli_lint_mode="file")), self.files
+        )
+
+    def test_sarif_without_findings_records_the_files(self):
+        linter = self.sarif_linter([])
+        self.assertEqual(self.run_success(linter), self.files)
+        self.assertEqual(self.files_to_lint(self.sarif_linter([])), [])
+
     def test_cache_is_stored_outside_the_workspace(self):
         cache = ResultsCache(self.linter())
         self.assertTrue(cache.cache_file.startswith(self.home))
@@ -248,7 +318,7 @@ class ResultsCacheTest(NativeHomeTestCase):
         self.assertFalse(is_results_cache_enabled(linter))
         linter = self.linter()
         linter.output_sarif = True
-        self.assertFalse(is_results_cache_enabled(linter))
+        self.assertTrue(is_results_cache_enabled(linter), "SARIF output")
         config.set(self.request_id, "NATIVE_RESULTS_CACHE", "false")
         self.assertFalse(is_results_cache_enabled(self.linter()))
         config.set(self.request_id, "PYTHON_FAKE_NATIVE_RESULTS_CACHE", "true")
