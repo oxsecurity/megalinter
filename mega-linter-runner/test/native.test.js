@@ -272,6 +272,78 @@ describe("mega-linter-runner native mode", () => {
       );
     });
 
+    function countingFetch() {
+      const fetchFn = async () => {
+        fetchFn.calls += 1;
+        return jsonResponse(project(releases));
+      };
+      fetchFn.calls = 0;
+      return fetchFn;
+    }
+
+    it("remembers the latest installed beta for an hour", async () => {
+      let now = Date.parse("2026-11-22T10:00:00Z");
+      const fetchFn = countingFetch();
+      const runner = makeRunner(fetchFn, { nowFn: () => now });
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      for (const minutes of [0, 30, 59]) {
+        now = Date.parse("2026-11-22T10:00:00Z") + minutes * 60 * 1000;
+        assert.strictEqual(
+          await runner.resolveCoreVersion("beta"),
+          "10.2.0.post0.dev20261110000000",
+        );
+      }
+      assert.strictEqual(fetchFn.calls, 1);
+      now = Date.parse("2026-11-22T11:00:00Z");
+      await runner.resolveCoreVersion("beta");
+      assert.strictEqual(fetchFn.calls, 2);
+    });
+
+    it("asks PyPI again when the remembered beta is not installed", async () => {
+      const fetchFn = countingFetch();
+      const runner = makeRunner(fetchFn);
+      assert.strictEqual(
+        await runner.resolveCoreVersion("beta"),
+        "10.2.0.post0.dev20261110000000",
+      );
+      assert.strictEqual(
+        await runner.resolveCoreVersion("beta"),
+        "10.2.0.post0.dev20261110000000",
+      );
+      assert.strictEqual(fetchFn.calls, 2);
+    });
+
+    it("ignores a remembered beta from the future or unreadable", async () => {
+      const now = Date.parse("2026-11-22T10:00:00Z");
+      const fetchFn = countingFetch();
+      const runner = makeRunner(fetchFn, { nowFn: () => now });
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      fs.writeFileSync(
+        path.join(runner.home, "core", ".latest-beta.json"),
+        JSON.stringify({
+          version: "10.2.0.post0.dev20261110000000",
+          checkedAt: now + 1000,
+        }),
+      );
+      await runner.resolveCoreVersion("beta");
+      assert.strictEqual(fetchFn.calls, 1);
+      fs.writeFileSync(
+        path.join(runner.home, "core", ".latest-beta.json"),
+        "not json",
+      );
+      await runner.resolveCoreVersion("beta");
+      assert.strictEqual(fetchFn.calls, 2);
+    });
+
+    it("does not list the remembered beta as an installed version", async () => {
+      const runner = makeRunner(countingFetch());
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      await runner.resolveCoreVersion("beta");
+      assert.deepStrictEqual(runner.installedCoreVersions(), [
+        "10.2.0.post0.dev20261110000000",
+      ]);
+    });
+
     it("fails clearly when no beta was published", async () => {
       const runner = makeRunner(async () => jsonResponse(project({})));
       await assert.rejects(

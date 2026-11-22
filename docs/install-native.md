@@ -122,6 +122,8 @@ mega-linter-runner --native --release beta
 
 Upgrade it with the same `npm install -g` command.
 
+With `--release beta`, the runner looks for a new beta on PyPI at most once an hour: the runs in between start the installed beta without downloading the list of releases. Pass an exact version to `--release` to never contact PyPI once it is installed.
+
 Native mode runs the linters in parallel **threads** (`PARALLEL_POOL: threads`): they start instantly, where a worker process loads MegaLinter again (about a second on Windows and macOS). `PARALLEL_POOL: processes` restores worker processes, the default of Docker runs.
 
 ## Pre-commit hook

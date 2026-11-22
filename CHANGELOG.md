@@ -119,6 +119,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - mega-linter-runner
 
+  - `--native --release beta` looks for a new beta on PyPI **at most once an hour** instead of on every run (it downloaded the 345 KB list of all the releases each time), which speeds up frequent runs such as pre-commit hooks
   - New **`--native`** option to run MegaLinter without Docker, and **`--install-linters`** to install the linters it needs (not to be confused with `--install`, which sets up MegaLinter in your repository)
     - With `--native`, the files given as arguments are the only ones linted, and `--env` accepts the same quoted values as with Docker (`"'ENABLE=MARKDOWN,YAML'"`)
 
