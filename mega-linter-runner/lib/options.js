@@ -247,6 +247,31 @@ export const optionsDefinition = optionator.default({
       example: ["PYTHON_BLACK JAVASCRIPT_ES"],
     },
     {
+      option: "uninstall-linters",
+      type: "Boolean",
+      description:
+        "[beta] Remove the given linters (example: PYTHON_BLACK JAVASCRIPT_ES) installed for native mode (--native).",
+      example: ["PYTHON_BLACK JAVASCRIPT_ES"],
+    },
+    {
+      option: "list-linters",
+      type: "Boolean",
+      description:
+        "[beta] Show the native status of every linter (installed, available, unsupported on this platform...). Add --json for a machine-readable list.",
+    },
+    {
+      option: "doctor",
+      type: "Boolean",
+      description:
+        "[beta] Check the prerequisites of native mode (--native): Git Bash on Windows, uv, language runtimes and the ~/.megalinter folder.",
+    },
+    {
+      option: "prune-cache",
+      type: "Boolean",
+      description:
+        "[beta] Empty the download and linter caches of native mode (--native).",
+    },
+    {
       option: "all",
       type: "Boolean",
       description:

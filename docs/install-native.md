@@ -17,7 +17,7 @@ Supported platforms: Linux (x86-64 and ARM64), macOS (Apple Silicon), Windows wi
 Requirements:
 
 - [uv](https://docs.astral.sh/uv/getting-started/installation/) (Windows: `winget install --id astral-sh.uv -e`, macOS: `brew install uv`)
-- Node.js, to run `mega-linter-runner`
+- Node.js, to run `mega-linter-runner`, the launcher that downloads, verifies and calls the MegaLinter engine (see [how the pieces fit](#how-the-runner-and-megalinter-fit-together))
 - Windows only: [Git for Windows](https://git-scm.com/download/win) (Git Bash), `winget install --id Git.Git -e`
 
 Set up native mode in one command:
@@ -48,15 +48,43 @@ To do it by hand instead:
 2. Install them, then run:
 
     ```shell
-    npx mega-linter-runner@beta --install-linters --release beta
-    npx mega-linter-runner@beta --native --release beta
+    npx mega-linter-runner@beta --install-linters
+    npx mega-linter-runner@beta --native
     ```
 
-While native mode is in beta, use the beta of `mega-linter-runner` (`@beta`): released versions older than native mode do not know these options.
+While native mode is in beta, use the beta of `mega-linter-runner` (`@beta`): released versions older than native mode do not know these options. Native mode uses the latest beta of MegaLinter by default: pass `--release <version>` only to pin an exact version.
 
 The linter keys are the ones used everywhere else in MegaLinter (`ENABLE_LINTERS`, `DISABLE_LINTERS`...). Each [linter page](supported-linters.md) has a "native mode" section with its key and the platforms it supports.
 
-> **Note:** `--install-linters` installs linters for native mode. It is not `--install`, which sets up MegaLinter in your repository (configuration and CI files).
+## How the runner and megalinter fit together
+
+Two programs, one job each:
+
+- `mega-linter-runner` (npm, JavaScript) is the launcher you type. It also sets up your repository (`--install`, `--upgrade`).
+- `megalinter` (PyPI, Python) is the engine that lints. In native mode, the runner downloads it, verifies it (sha256 and PyPI attestation), installs it in `~/.megalinter/core/<version>/venv`, then calls it for you.
+
+Node.js is needed only for the launcher. In Docker mode, the engine runs inside the image, so nothing else is installed on your machine.
+
+```mermaid
+flowchart LR
+    U(["You, agent skills,<br/>pre-commit, CI wrappers"]) --> R["<b>mega-linter-runner</b><br/>npm, JavaScript<br/>parses the options"]
+    R -->|"default"| D["docker run<br/>MegaLinter image"]
+    D --> E1[["megalinter engine<br/>Python, in the container"]]
+    R -->|"--native, --native-setup,<br/>--install-linters, --doctor..."| N["uv + verification<br/>sha256 and PyPI attestation"]
+    N --> E2[["megalinter engine<br/>Python, in ~/.megalinter"]]
+    R -->|"--install, --upgrade,<br/>--custom-flavor-setup"| G["Configuration generators<br/>JavaScript only"]
+```
+
+You never need to call `megalinter` yourself: the runner translates its options into the engine's arguments and environment variables (`--fix` sets `APPLY_FIXES`, `--linter` sets `NATIVE_LINTERS`...).
+
+### Which "install" do I need?
+
+| Option              | What it does                                                                    | Mode   |
+|:--------------------|:--------------------------------------------------------------------------------|:-------|
+| `--install`         | Creates `.mega-linter.yml` and CI workflow files                                | any    |
+| `--upgrade`         | Upgrades those files to the latest version                                      | any    |
+| `--native-setup`    | Picks the linters, writes `NATIVE_LINTERS`, installs them and runs a first lint | native |
+| `--install-linters` | Installs the linter tools on this machine                                       | native |
 
 ## NATIVE_LINTERS: explicit opt-in
 
@@ -128,18 +156,20 @@ export NODE_USE_SYSTEM_CA=1        # Node.js linters
 
 ## Commands
 
-`mega-linter-runner` forwards to the `megalinter` command that you can also use directly (`uv tool install megalinter --pre`):
+Run everything through `mega-linter-runner`, which calls the `megalinter` engine for you:
 
-| Command                                | Purpose                                                                                                                            |
-|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|
-| `megalinter setup [--linters KEY,KEY]` | Choose the linters to run natively, write `NATIVE_LINTERS`, install them and run a first lint (`--no-run` to stop before the lint) |
-| `megalinter prerun`                    | Suggest the linters to run natively, and configuration improvements, without running any linter                                    |
-| `megalinter run`                       | Lint the current folder with the linters of `NATIVE_LINTERS`                                                                       |
-| `megalinter install-linters [KEY...]`  | Install the given linters, or the ones of `NATIVE_LINTERS`                                                                         |
-| `megalinter uninstall-linters KEY...`  | Remove installed linters                                                                                                           |
-| `megalinter list-linters`              | Show the native status of every linter                                                                                             |
-| `megalinter doctor`                    | Check Git Bash, uv, runtimes and the install folder                                                                                |
-| `megalinter cache prune`               | Empty the download and linter caches                                                                                               |
+| From the runner                                 | What it does                                                                                    |
+|:------------------------------------------------|:------------------------------------------------------------------------------------------------|
+| `mega-linter-runner --native-setup [KEY...]`    | Choose the linters to run natively, write `NATIVE_LINTERS`, install them and run a first lint   |
+| `mega-linter-runner --native --prerun`          | Suggest the linters to run natively, and configuration improvements, without running any linter |
+| `mega-linter-runner --native`                   | Lint the current folder with the linters of `NATIVE_LINTERS`                                    |
+| `mega-linter-runner --install-linters [KEY...]` | Install the given linters, or the ones of `NATIVE_LINTERS`                                      |
+| `mega-linter-runner --uninstall-linters KEY...` | Remove installed linters                                                                        |
+| `mega-linter-runner --list-linters [--json]`    | Show the native status of every linter                                                          |
+| `mega-linter-runner --doctor`                   | Check Git Bash, uv, runtimes and the install folder                                             |
+| `mega-linter-runner --prune-cache`              | Empty the download and linter caches                                                            |
+
+The engine installed by the runner is not on your `PATH`. As a shortcut, you can install your own copy with `uv tool install megalinter --pre` and call the same commands directly (`megalinter setup [--linters KEY,KEY] [--no-run]`, `megalinter prerun`, `megalinter run`, `megalinter install-linters`, `megalinter uninstall-linters`, `megalinter list-linters`, `megalinter doctor`, `megalinter cache prune`). The runner does not verify this copy, and it has none of the runner's conveniences: `--fix`, `--filesonly`, `--debug` and `--linter` are runner options that become environment variables (`APPLY_FIXES`, `SKIP_CLI_LINT_MODES`, `LOG_LEVEL`, `NATIVE_LINTERS`).
 
 ### Reports for tools and coding agents
 

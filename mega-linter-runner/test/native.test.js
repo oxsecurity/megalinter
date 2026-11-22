@@ -73,6 +73,10 @@ describe("mega-linter-runner native mode", () => {
         ["--native", "--release", "beta"],
         ["--install-linters", "--release", "beta"],
         ["--native", "--fix", "--filesonly", "src/app.py"],
+        ["--doctor"],
+        ["--list-linters", "--json"],
+        ["--prune-cache"],
+        ["--uninstall-linters", "PYTHON_BLACK"],
       ]) {
         const options = optionsDefinition.parse([
           "node",
@@ -227,6 +231,59 @@ describe("mega-linter-runner native mode", () => {
         runner.buildArguments({ prerun: true, path: "/work" }),
         ["prerun", "--input", path.resolve("/work")],
       );
+    });
+
+    it("builds the maintenance commands without a workspace", () => {
+      const runner = makeRunner(async () => {});
+      assert.deepStrictEqual(
+        runner.buildArguments({
+          uninstallLinters: true,
+          _: ["PYTHON_BLACK"],
+          path: "/work",
+        }),
+        ["uninstall-linters", "PYTHON_BLACK"],
+      );
+      assert.deepStrictEqual(runner.buildArguments({ listLinters: true }), [
+        "list-linters",
+      ]);
+      assert.deepStrictEqual(
+        runner.buildArguments({ listLinters: true, json: true }),
+        ["list-linters", "--json"],
+      );
+      assert.deepStrictEqual(runner.buildArguments({ doctor: true }), [
+        "doctor",
+      ]);
+      assert.deepStrictEqual(runner.buildArguments({ pruneCache: true }), [
+        "cache",
+        "prune",
+      ]);
+      const env = runner.buildEnvironment({
+        uninstallLinters: true,
+        _: ["PYTHON_BLACK"],
+      });
+      assert.strictEqual(env.MEGALINTER_FILES_TO_LINT, undefined);
+    });
+
+    it("runs one native command at a time, and --uninstall-linters needs linter keys", () => {
+      const runner = makeRunner(async () => {});
+      assert.throws(
+        () =>
+          runner.assertSupportedOptions({ doctor: true, listLinters: true }),
+        /--list-linters and --doctor can not be combined|--doctor and --list-linters can not be combined/,
+      );
+      assert.throws(
+        () =>
+          runner.assertSupportedOptions({ native: true, installLinters: true }),
+        /can not be combined/,
+      );
+      assert.throws(
+        () => runner.assertSupportedOptions({ uninstallLinters: true }),
+        /needs the keys/,
+      );
+      runner.assertSupportedOptions({
+        uninstallLinters: true,
+        _: ["PYTHON_BLACK"],
+      });
     });
 
     it("builds the native-setup command, with or without linter keys", () => {

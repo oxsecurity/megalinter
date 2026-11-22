@@ -542,6 +542,8 @@ Then just ask your agent to _"setup megalinter"_ or _"run megalinter and fix the
 - **megalinter-fix**: apply fixes guided by per-linter fix guides, with user confirmation before disabling anything or pushing
 - **megalinter**: orchestrate the whole check → fix → re-check loop
 
+The skills only call `mega-linter-runner`, never the `megalinter` engine directly, so the machine needs Node.js and Docker (or uv for [native mode](https://megalinter.io/latest/install-native/)), but no Python install.
+
 On coding agents supporting sub-agents (Claude Code, OpenCode, GitHub Copilot custom agents...), dedicated MegaLinter sub-agents (running on low-cost models) watch CI jobs and digest linter outputs to keep large logs out of your agent's context, and fix several linters in parallel.
 
 <!-- install-agent-skills-section-end -->
@@ -1299,6 +1301,31 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 ```
 
 Note: You can also use this command line in your custom CI/CD pipelines.
+
+#### How mega-linter-runner and megalinter fit together
+
+Two programs, one job each:
+
+- `mega-linter-runner` (npm, JavaScript) is the launcher you type. It also sets up your repository (`--install`, `--upgrade`).
+- `megalinter` (PyPI, Python) is the engine that lints. It runs inside the Docker image, or, in [native mode](https://megalinter.io/latest/install-native/) (beta), in a verified copy that the runner installs on your machine.
+
+```mermaid
+flowchart LR
+    U(["You, agent skills,<br/>pre-commit, CI wrappers"]) --> R["<b>mega-linter-runner</b><br/>npm, JavaScript<br/>parses the options"]
+    R -->|"default"| D["docker run<br/>MegaLinter image"]
+    D --> E1[["megalinter engine<br/>Python, in the container"]]
+    R -->|"--native, --native-setup,<br/>--install-linters, --doctor..."| N["uv + verification<br/>sha256 and PyPI attestation"]
+    N --> E2[["megalinter engine<br/>Python, in ~/.megalinter"]]
+    R -->|"--install, --upgrade,<br/>--custom-flavor-setup"| G["Configuration generators<br/>JavaScript only"]
+```
+
+| You need | Install | Node.js | Docker | uv |
+|:---------|:--------|:-------:|:------:|:--:|
+| Run MegaLinter in a container (default) | nothing but the runner | yes | yes | no |
+| Run MegaLinter without Docker (beta) | the runner downloads and verifies the engine | yes | no | yes |
+| Create or upgrade `.mega-linter.yml` and CI files | nothing but the runner | yes | no | no |
+
+You never need to call `megalinter` yourself: the runner translates its options into the engine's arguments and environment variables. A copy installed by hand (`uv tool install megalinter --pre`) is only a shortcut: the runner does not verify it.
 
 <!-- install-locally-section-end -->
 <!-- installation-section-end -->

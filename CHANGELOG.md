@@ -168,6 +168,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     | Start of the runner                                          | 1.40 s | 0.15 s | -89 % |
 
   - New **`--native-setup`** option (see above) and new **`--sarif`** option (equivalent to `-e SARIF_REPORTER=true`)
+  - New **`--uninstall-linters`**, **`--list-linters`** (with `--json`), **`--doctor`** and **`--prune-cache`** options: **every native command** now goes through `mega-linter-runner`, so you do not need to install the `megalinter` engine yourself
+  - The runner README and the [native mode](https://megalinter.io/latest/install-native/) and [run locally](https://megalinter.io/latest/install-locally/) pages now explain **how `mega-linter-runner` and `megalinter` fit together** (with a diagram), the requirements of each mode, and the options that were missing from the table
   - **`--native`** now honors **`--json`** and **`--prerun`**, which it ignored: `--native --prerun` ran a full lint
   - **`--json`** writes the JSON report `megalinter-reports/mega-linter-report.json`: its description said it printed it on stdout
   - `--native --release beta` looks for a new beta on PyPI **at most once an hour** instead of on every run (it downloaded the 345 KB list of all the releases each time), which speeds up frequent runs such as pre-commit hooks

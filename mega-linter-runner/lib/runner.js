@@ -153,7 +153,11 @@ export class MegaLinterRunner {
     if (
       options.native === true ||
       options.installLinters === true ||
-      options.nativeSetup === true
+      options.nativeSetup === true ||
+      options.uninstallLinters === true ||
+      options.listLinters === true ||
+      options.doctor === true ||
+      options.pruneCache === true
     ) {
       return await new NativeRunner().run(options);
     }

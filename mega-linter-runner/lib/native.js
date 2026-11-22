@@ -3,7 +3,7 @@
 //
 // The runner does not lint anything itself: it installs the `megalinter` Python package of the
 // requested channel from PyPI in ~/.megalinter/core/<version>, then hands over to its `megalinter`
-// command (`megalinter run`, `megalinter install-linters`).
+// command (`megalinter run`, `megalinter install-linters`, `megalinter doctor`...).
 //
 // The package is verified before it is installed:
 //   1. its sha256 must match the PyPI metadata
@@ -44,6 +44,16 @@ const DOCKER_ONLY_OPTIONS = [
   ["userMap", "--user-map"],
   ["noUserMap", "--no-user-map"],
   ["flavor", "--flavor"],
+];
+// Options that each select one command of the `megalinter` Python CLI (`--native` is `run`)
+const NATIVE_COMMAND_OPTIONS = [
+  ["native", "--native"],
+  ["nativeSetup", "--native-setup"],
+  ["installLinters", "--install-linters"],
+  ["uninstallLinters", "--uninstall-linters"],
+  ["listLinters", "--list-linters"],
+  ["doctor", "--doctor"],
+  ["pruneCache", "--prune-cache"],
 ];
 const UV_INSTALL_HELP = {
   win32: "winget install --id astral-sh.uv -e",
@@ -115,6 +125,19 @@ export class NativeRunner {
         "--container-engine is only available with Docker: it can not be used with --native or --install-linters",
       );
     }
+    const commands = NATIVE_COMMAND_OPTIONS.filter(
+      ([key]) => options[key] === true,
+    );
+    if (commands.length > 1) {
+      throw new Error(
+        `${commands.map(([, flag]) => flag).join(" and ")} can not be combined: run them one after the other`,
+      );
+    }
+    if (options.uninstallLinters === true && (options._ || []).length === 0) {
+      throw new Error(
+        "--uninstall-linters needs the keys of the linters to remove (example: --uninstall-linters PYTHON_BLACK)",
+      );
+    }
     if (options.nativeSetup === true && options.trustRepoCommands === true) {
       throw new Error(
         "--trust-repo-commands is not available with --native-setup: set up native mode, then run `--native --trust-repo-commands`",
@@ -127,8 +150,13 @@ export class NativeRunner {
     }
   }
 
+  // The positional arguments of these commands are linter keys, not files to lint
   isLinterManagement(options) {
-    return options.installLinters === true || options.nativeSetup === true;
+    return (
+      options.installLinters === true ||
+      options.nativeSetup === true ||
+      options.uninstallLinters === true
+    );
   }
 
   buildEnvironment(options) {
@@ -181,6 +209,19 @@ export class NativeRunner {
       common.push("--runtimes", options.runtimes);
     }
     const keys = (options._ || []).map(String);
+    // These commands work on the native install folder, not on a workspace
+    if (options.uninstallLinters === true) {
+      return ["uninstall-linters", ...keys];
+    }
+    if (options.listLinters === true) {
+      return ["list-linters", ...(options.json === true ? ["--json"] : [])];
+    }
+    if (options.doctor === true) {
+      return ["doctor"];
+    }
+    if (options.pruneCache === true) {
+      return ["cache", "prune"];
+    }
     if (options.installLinters === true) {
       return [
         "install-linters",
