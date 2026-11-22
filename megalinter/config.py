@@ -340,8 +340,9 @@ def get_list(request_id, config_var, default=None):
         # Serialized JSON
         if var.startswith("["):
             return json.loads(var)
-        # String with comma-separated elements
-        return var.split(",")
+        # String with comma-separated elements: spaces around the elements are
+        # ignored (ex: "BASH_SHELLCHECK, BASH_SHFMT", or a YAML folded scalar)
+        return [element.strip() for element in var.split(",") if element.strip()]
     return default
 
 
