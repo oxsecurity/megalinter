@@ -402,10 +402,11 @@ jobs:
           GH_SHA: ${{ github.sha }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          set -uo pipefail
+          set +e -uo pipefail
           # Network-bound linters (link checker, vulnerability databases, schema downloads)
-          # are disabled: their duration varies with the network, not with the pool
-          disabled="SPELL_LYCHEE,REPOSITORY_GRYPE,REPOSITORY_TRIVY,REPOSITORY_TRIVY_SBOM,REPOSITORY_OSV_SCANNER,REPOSITORY_DUSTILOCK,REPOSITORY_TRUFFLEHOG,JSON_V8R,YAML_V8R"
+          # are disabled: their duration varies with the network, not with the pool. The
+          # variable replaces the DISABLE_LINTERS of .mega-linter.yml: its linters come first
+          disabled="JSON_PRETTIER,MARKDOWN_RUMDL,PYTHON_PYRIGHT,SPELL_CODESPELL,SPELL_PROSELINT,SPELL_VALE,SPELL_LYCHEE,REPOSITORY_GRYPE,REPOSITORY_TRIVY,REPOSITORY_TRIVY_SBOM,REPOSITORY_OSV_SCANNER,REPOSITORY_DUSTILOCK,REPOSITORY_TRUFFLEHOG,JSON_V8R,YAML_V8R"
           index=0
           for pool in processes threads threads processes processes threads threads processes; do
             index=$((index + 1))
