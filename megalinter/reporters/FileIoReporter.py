@@ -3,16 +3,12 @@
 Send reports artifacts by email
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import logging
 import os
 import tempfile
 import zipfile
 from json.decoder import JSONDecodeError
 
-import requests
 from megalinter import Reporter, config
 
 
@@ -31,6 +27,9 @@ class FileIoReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         # Skip report if no errors has been found
         if (
             self.master.status == "success"

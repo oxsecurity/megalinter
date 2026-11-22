@@ -3,14 +3,10 @@
 GitHub Actions CI provider
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["github"]
-
 import json
 import logging
 import re
 
-import github
 from megalinter import config, utils
 from megalinter.ci_providers.CiProvider import CiProvider
 
@@ -86,6 +82,9 @@ class CiProviderGithubActions(CiProvider):
         return f"{self.get_repo_slug()} #PR{self.get_pr_number()}"
 
     def get_pr_labels(self):
+        # Imported on use: loading this library at startup slows down every run
+        import github
+
         token = self.get_auth_token()
         pr_number = self.get_pr_number()
         if token is None or pr_number is None:

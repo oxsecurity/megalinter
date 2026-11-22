@@ -3,14 +3,10 @@
 GitLab CI provider
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["gitlab"]
-
 import logging
 import re
 import time
 
-import gitlab
 from megalinter import config, utils
 from megalinter.ci_providers.CiProvider import CiProvider
 
@@ -94,6 +90,9 @@ class CiProviderGitlab(CiProvider):
         return f"project {self.get_project_id()} #MR{self.get_pr_number()}"
 
     def get_pr_labels(self):
+        # Imported on use: loading this library at startup slows down every run
+        import gitlab
+
         mr_id = self.get_pr_number()
         if mr_id is None or (
             self.get_auth_token() is None and self.get_user_auth_token() is None

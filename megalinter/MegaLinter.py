@@ -4,9 +4,6 @@ Main MegaLinter class, encapsulating all linters process and reporting
 
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["git"]
-
 import argparse
 import faulthandler
 import logging

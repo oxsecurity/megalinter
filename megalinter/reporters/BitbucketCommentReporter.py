@@ -4,12 +4,8 @@ Bitbucket Comment reporter
 Post a comment on Bitbucket Merge Requests
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import logging
 
-import requests
 from megalinter import Reporter, config
 from megalinter.ci_providers import CiProviderBitbucket
 from megalinter.utils_reporter import build_markdown_summary
@@ -56,6 +52,9 @@ class BitbucketCommentReporter(Reporter):
 
     def produce_report(self):
         # Post comment on Bitbucket pull request
+
+        # Imported on use: loading this library at startup slows down every run
+        import requests
 
         # The reporter instantiates the Bitbucket provider directly instead of
         # asking the factory: under Jenkins the platform is Jenkins, which maps

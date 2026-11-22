@@ -4,12 +4,8 @@ GitHub Status reporter
 Post a GitHub status for each linter
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import logging
 
-import requests
 from megalinter import Reporter, config
 from megalinter.ci_providers import CiProviderGithubActions
 
@@ -37,6 +33,9 @@ class GithubStatusReporter(Reporter):
             self.is_active = True
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         if (
             config.exists(self.master.request_id, "GITHUB_REPOSITORY")
             and config.exists(self.master.request_id, "GITHUB_SHA")

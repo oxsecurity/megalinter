@@ -5,13 +5,9 @@ Child classes (ApiProviderGrafana, ApiProviderDatadog, ApiProviderElastic,
 ApiProviderNewRelic) send the ApiReporter v2 payload to their backend.
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import json
 import logging
 
-import requests
 from megalinter import config
 
 MAX_OUTPUT_CHARS = 5000
@@ -42,6 +38,9 @@ class ApiProvider:
         )
 
     def post_json(self, url, headers, body, label):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         try:
             response = requests.post(url, headers=headers, json=body, timeout=30)
             if 200 <= response.status_code < 300:
@@ -64,6 +63,9 @@ class ApiProvider:
         return False
 
     def post_raw(self, url, headers, data, label, session=None):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         try:
             requester = session if session is not None else requests
             response = requester.post(url, headers=headers, data=data, timeout=30)

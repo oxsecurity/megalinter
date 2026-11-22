@@ -4,12 +4,8 @@ GitHub Comment reporter
 Post a comment on Github Pull Requests
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["github"]
-
 import logging
 
-import github
 from megalinter import Reporter, config
 from megalinter.ci_providers import CiProviderGithubActions
 from megalinter.constants import ML_REPO_URL
@@ -61,6 +57,9 @@ class GithubCommentReporter(Reporter):
         return f"<!-- megalinter: {identifier} -->"
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import github
+
         # Post comment on GitHub pull request
         # The reporter instantiates the GitHub provider directly instead of
         # asking the factory: under Jenkins the platform is Jenkins, which maps

@@ -2,8 +2,9 @@ import subprocess
 import sys
 import unittest
 
-# Libraries used only by some reporters, CI providers or remote configurations:
-# listed in the __lazy_modules__ of the modules importing them (PEP 810)
+# Libraries used only by some reporters, CI providers, remote configurations or LLM
+# and API providers: imported inside the functions using them, so that loading
+# MegaLinter does not load them
 LAZY_LIBRARIES = [
     "atlassian",
     "github",
@@ -26,7 +27,6 @@ print(json.dumps(sorted(set(m.split(".")[0] for m in sys.modules))))
 """
 
 
-@unittest.skipIf(sys.version_info < (3, 15), "lazy imports need Python 3.15+")
 class LazyImportsTest(unittest.TestCase):
     def test_heavy_libraries_are_not_loaded_at_startup(self):
         output = subprocess.run(

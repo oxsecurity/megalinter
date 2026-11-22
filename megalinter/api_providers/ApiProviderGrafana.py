@@ -5,15 +5,11 @@ endpoint and metrics to a Prometheus/Influx write endpoint.
 Also handles the legacy NOTIF_API_* variables.
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import copy
 import json
 import logging
 import time
 
-import requests
 from megalinter import config
 from megalinter.api_providers.ApiProvider import ApiProvider
 
@@ -141,6 +137,9 @@ class ApiProviderGrafana(ApiProvider):
         return {key: str(value) for key, value in stream_info.items()}
 
     def build_session_and_headers(self, prefix):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         session = requests.Session()
         headers = {
             "accept": "application/json",

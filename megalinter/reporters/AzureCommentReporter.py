@@ -4,12 +4,8 @@ Azure Comment reporter
 Post a comment on Azure Pipelines Pull Requests
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import logging
 
-import requests
 from megalinter import Reporter, config
 from megalinter.ci_providers import CiProviderAzurePipelines
 from megalinter.utils_reporter import build_markdown_summary
@@ -72,6 +68,9 @@ class AzureCommentReporter(Reporter):
         return f"<!-- megalinter: {identifier} -->"
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         # The reporter instantiates the Azure provider directly instead of
         # asking the factory: under Jenkins the platform is Jenkins, which maps
         # its variables onto the Azure ones this reporter needs

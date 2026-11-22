@@ -4,12 +4,8 @@ Gitlab Comment reporter
 Post a comment on Gitlab Merge Requests
 """
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["gitlab"]
-
 import logging
 
-import gitlab
 from megalinter import Reporter, config
 from megalinter.ci_providers import CiProviderGitlab
 from megalinter.pre_post_factory import run_command
@@ -59,6 +55,9 @@ class GitlabCommentReporter(Reporter):
         return f"<!-- megalinter: {identifier} -->"
 
     def produce_report(self):
+        # Imported on use: loading this library at startup slows down every run
+        import gitlab
+
         # Post comment on Gitlab pull request
         # The reporter instantiates the GitLab provider directly instead of
         # asking the factory: under Jenkins the platform is Jenkins, which maps

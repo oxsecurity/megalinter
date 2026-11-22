@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["requests"]
-
 import json
 import logging
 import os
@@ -11,7 +8,6 @@ import tempfile
 import time
 from urllib.parse import urlsplit
 
-import requests
 import yaml
 
 RUN_CONFIGS = {}  # type: ignore[var-annotated]
@@ -44,6 +40,9 @@ DEFAULT_SECURED_ENV_VARIABLES = (
 # Retries cover network exceptions and every non-200; the last response is
 # returned so callers keep their own specific status-code error messages.
 def http_get_with_retry(url, headers=None, retries=3, timeout=30, backoff_base=2):
+    # Imported on use: loading this library at startup slows down every run
+    import requests
+
     last_response = None
     last_error = None
     for attempt in range(retries):

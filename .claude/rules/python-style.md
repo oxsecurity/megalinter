@@ -6,9 +6,9 @@ globs: ["megalinter/**/*.py", ".automation/**/*.py", "server/**/*.py"]
 # Python Style Rules for MegaLinter
 
 ## Imports
-- Place all imports at the top of the file, never inline or conditional
+- Place all imports at the top of the file, never inline or conditional (one exception below)
 - Do not test if imports work (no try/except ImportError) — assume all packages are always available
-- A third-party library used only by some reporters, CI providers or remote configurations (requests, github, gitlab, redis, pytablewriter, atlassian, jsonpickle, git) is listed in the module's `__lazy_modules__`, declared just before its imports: Python 3.15+ then imports it on first use (PEP 810), older versions ignore it. Add new heavy libraries there and to `LAZY_LIBRARIES` of `lazy_imports_test.py`
+- **Exception**: a heavy third-party library used only by optional features (reporters, CI providers, remote configuration, LLM and API providers: requests, github, gitlab, redis, pytablewriter, atlassian, jsonpickle) is imported **inside the function that uses it**, after the comment `# Imported on use: loading this library at startup slows down every run`. Loading them at startup cost about 0.45 s to every run, in every process. Add a new one to `LAZY_LIBRARIES` of `lazy_imports_test.py`, which fails when loading MegaLinter imports one. A module loaded only on demand (like `llm_provider_ollama.py`) keeps its imports at the top. Type hints use `from __future__ import annotations` with an `if TYPE_CHECKING:` import. Tests fake such a library through `sys.modules` (`mock.patch.dict(sys.modules, {"requests": fake})`) or its own attributes (`mock.patch("atlassian.Jira")`), not through the MegaLinter module
 - Use `from megalinter import config` then `config.get(self.request_id, "VAR", default)` for configuration access
 
 ## Docstrings and Comments

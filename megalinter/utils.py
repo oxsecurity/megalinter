@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-# Imported on first use with Python 3.15+ (PEP 810), ignored by older versions
-__lazy_modules__ = ["git"]
-
 import configparser
 import hashlib
 import importlib
