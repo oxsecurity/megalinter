@@ -5,14 +5,13 @@ Main MegaLinter class, encapsulating all linters process and reporting
 """
 
 import argparse
-import faulthandler
 import logging
 import multiprocessing as mp
 import os
 import shutil
 import sys
 import threading
-from logging.handlers import QueueHandler, QueueListener
+from multiprocessing.pool import ThreadPool
 from shutil import copytree
 from uuid import uuid1
 
@@ -74,44 +73,19 @@ REMOVED_LINTERS_NOTIFICATION_TEMPLATE = (
 )
 
 
-# initialize worker processes
-def init_worker(request_config_in, log_queue, log_level):
-    # declare scope of a new global variable
-    global REQUEST_CONFIG
-    # store argument in the global variable for this process
-    REQUEST_CONFIG = request_config_in
-    # Report worker crashes instead of letting the pool hang on a dead worker
-    faulthandler.enable()
-    # Send the worker log records to the main process through the queue, whatever the
-    # multiprocessing start method is. A worker started with "fork" (the default up to
-    # Python 3.13) inherits the parent logger config, but a worker started with
-    # "forkserver" (the default on Linux since Python 3.14) or "spawn" starts with no
-    # handler and the default WARNING level, so its records would be lost.
-    # The %(message)s formatter is explicit because CI annotation commands like
-    # "::group::" must appear at the very start of a line, with no level prefix.
-    queue_handler = QueueHandler(log_queue)
-    queue_handler.setFormatter(logging.Formatter("%(message)s"))
-    root_logger = logging.getLogger()
-    root_logger.handlers = [queue_handler]
-    root_logger.setLevel(log_level)
-
-
-# Function to run linters using multiprocessing pool
-def run_linters(linters, request_id):
-    global REQUEST_CONFIG
-    config.set_config(request_id, REQUEST_CONFIG)
+# Runs a group of linters in a thread of the pool
+def run_linters_group(linters):
     for linter in linters:
-        # Skip console reporter in workers: output will be produced in the
-        # main process to avoid interleaved CI log section markers
+        # Skip console reporter in the threads: output is produced by the main
+        # thread to avoid interleaved CI log section markers
         linter.run(
             run_commands_before_linters=False,
             run_commands_after_linters=False,
             skip_console_reporter=True,
         )
-        # Pre-cache linter version so the main process console report
-        # does not need to run the linter executable
+        # Pre-cache linter version in parallel, so the console report of the
+        # main thread does not need to run the linter executables one by one
         linter.get_linter_version()
-    return linters
 
 
 # Main MegaLinter class, orchestrating files collection, linter processes and reporters
@@ -120,6 +94,10 @@ class Megalinter:
     def __init__(self, params=None):
         if params is None:
             params = {}
+
+        # Actionable advice and skipped linters, for the JSON report
+        self.tips = []
+        self.skipped_linters_details = []
 
         # megalinter_exec cli variables
         self.cli = params["cli"] if "cli" in params else False
@@ -170,6 +148,7 @@ class Megalinter:
         self.ignore_generated_files = False
         self.validate_all_code_base = True
         self.prerun = False
+        self.prerun_report = None
         self.filter_regex_include = None
         self.filter_regex_exclude = None
         self.default_linter_activation = True
@@ -334,7 +313,7 @@ class Megalinter:
                 # must not be notified by an analysis-only run
                 if reporter.name == "CONSOLE" and reporter.is_active:
                     reporter.initialize()
-            run_prerun(self)
+            self.prerun_report = run_prerun(self)
             self.before_exit()
             config.delete(self.request_id)
             return
@@ -367,13 +346,11 @@ class Megalinter:
                     active_linter.master, active_linter, run_before_linters=True
                 )
 
-            # Locate the excluded directories to forward once, here in the main
-            # process: the workspace walk is cached per process, so it would
-            # otherwise be repeated in every worker of the pool (and the cache
-            # is not even inherited with the "forkserver" start method, the
-            # Python 3.14 default on Linux). Done after the linter pre-commands
-            # so the directories they create are taken into account, and before
-            # the pool, so the computed values are pickled into the workers
+            # Locate the excluded directories to forward once, before the linter
+            # threads start: otherwise several of them could walk the workspace at
+            # the same time, before the first walk fills the cache. Done after the
+            # linter pre-commands so the directories they create are taken into
+            # account
             self.prepare_project_exclude_directories()
 
             self.process_linters_parallel(self.active_linters, linters_do_fixes)
@@ -513,16 +490,6 @@ class Megalinter:
         )
         return process_number
 
-    # Same as a pool worker (run_linters): the linter pre/post commands and the console
-    # reports are handled by the caller, as for a parallel run
-    def process_linters_group_in_process(self, linters):
-        for linter in linters:
-            linter.run(
-                run_commands_before_linters=False,
-                run_commands_after_linters=False,
-                skip_console_reporter=True,
-            )
-
     def process_linters_parallel(self, active_linters, linters_do_fixes):
         initial_groups = []
         follower_groups = {}
@@ -560,37 +527,12 @@ class Megalinter:
         group_count = len(initial_groups) + sum(
             len(groups) for groups in follower_groups.values()
         )
-        # A single group (e.g. the fixers of one language) runs in this process: each
-        # worker process imports MegaLinter on start (about a second with the "spawn"
-        # start method of Windows and macOS), more than a pool can save for one group
-        if group_count == 1:
-            self.process_linters_group_in_process(initial_groups[0])
-            return
-        # Execute linters in asynchronous pool to improve overall performances.
-        # Never more workers than groups: an idle worker still costs its start
+        # Linters are sub-processes: a thread of the pool only waits for them, so all
+        # the cores are used, and it starts instantly, where a worker process loaded
+        # MegaLinter again. The linters, the configuration and the log handlers of
+        # this process are shared with the threads. Never more threads than groups
         process_number = min(self.get_parallel_process_number(), group_count)
-        # Tunnel log records of worker processes through a multiprocessing queue,
-        # so they are emitted by the initial handlers in the main process without
-        # being garbled (stdlib equivalent of the former multiprocessing_logging dep)
-        root_logger = logging.getLogger()
-        initial_handlers = root_logger.handlers[:]
-        log_level = root_logger.getEffectiveLevel()
-        log_queue = mp.Queue()
-        log_queue_listener = QueueListener(
-            log_queue, *initial_handlers, respect_handler_level=True
-        )
-        root_logger.handlers = [QueueHandler(log_queue)]
-        log_queue_listener.start()
-        # With "forkserver" (the default start method on Linux since Python 3.14, Docker
-        # images included), the server imports MegaLinter once and every worker is forked
-        # from it, instead of each worker importing it again (about a second each)
-        if mp.get_start_method() == "forkserver":
-            mp.set_forkserver_preload(["megalinter"])
-        pool = mp.Pool(
-            process_number,
-            initializer=init_worker,
-            initargs=(config.get(self.request_id), log_queue, log_level),
-        )
+        pool = ThreadPool(process_number)
         pool_results = []
         lock = threading.RLock()
         pending_groups = {"count": 0}
@@ -611,8 +553,8 @@ class Megalinter:
                 pending_groups["count"] += 1
                 descriptor_id = linter_group[0].descriptor_id
                 result = pool.apply_async(
-                    run_linters,
-                    args=[linter_group, self.request_id],
+                    run_linters_group,
+                    args=[linter_group],
                     callback=lambda res, d=descriptor_id: on_group_processed(d),
                     error_callback=lambda exc, d=descriptor_id: on_group_processed(d),
                 )
@@ -638,18 +580,9 @@ class Megalinter:
             all_groups_processed.wait()
         pool.close()
         pool.join()
-        # Update self.linters objects with results from async processing
-        # Build index for O(1) lookup by linter name
-        linter_index = {linter.name: i for i, linter in enumerate(self.linters)}
+        # The threads ran the linters in place: only raise the error of a failed group
         for pool_result in pool_results:
-            updated_linters = pool_result.get()
-            for updated_linter in updated_linters:
-                idx = linter_index.get(updated_linter.name)
-                if idx is not None:
-                    self.linters[idx] = updated_linter
-        # Drain pending worker log records, then restore direct logging handlers
-        log_queue_listener.stop()
-        root_logger.handlers = initial_handlers
+            pool_result.get()
 
     # noinspection PyMethodMayBeStatic
     def get_workspace(self, params):
@@ -837,6 +770,9 @@ class Megalinter:
                 if config.get(self.request_id, env_var) == "true":
                     self.default_linter_activation = False
 
+    def add_tip(self, category, message):
+        self.tips.append({"category": category, "message": message})
+
     # Warn once about linters and descriptors removed from previous major versions
     def check_removed_linters_references(self):
         removed_references = find_removed_references(
@@ -851,6 +787,11 @@ class Megalinter:
                 template=REMOVED_LINTERS_NOTIFICATION_TEMPLATE,
                 value=removed_reference,
                 extras={"doc_url": REMOVED_LINTERS_DOC_URL},
+            )
+            self.add_tip(
+                "deprecation",
+                f"{removed_reference} has been removed from MegaLinter: "
+                f"remove it from your configuration. See {REMOVED_LINTERS_DOC_URL}",
             )
 
     # Load and initialize all linters
@@ -918,17 +859,33 @@ class Megalinter:
                 skipped_linters += [linter.name]
                 if linter.activation_skip_reason is not None:
                     activation_skip_reasons[linter.name] = linter.activation_skip_reason
+                    self.add_tip(
+                        "activation",
+                        f"[Activation] {linter.name}: {linter.activation_skip_reason}",
+                    )
                 if linter.disabled is True:
                     disabled_reason = (
                         linter.disabled_reason
                         if linter.disabled_reason is not None
                         else "Undefined"
                     )
+                    self.skipped_linters_details.append(
+                        {
+                            "key": linter.name,
+                            "reason": f"disabled in MegaLinter: {disabled_reason}",
+                        }
+                    )
                     logging.warning(
                         f"{linter.name} has been disabled in MegaLinter for the following reason: "
                         + disabled_reason
                     )
                 if linter.cli_lint_mode in skip_cli_lint_modes:
+                    self.skipped_linters_details.append(
+                        {
+                            "key": linter.name,
+                            "reason": f"CLI lint mode {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES",
+                        }
+                    )
                     logging.info(
                         f"{linter.name} has been skipped because its CLI lint mode"
                         f" {linter.cli_lint_mode} is in SKIP_CLI_LINT_MODES variable."
@@ -942,13 +899,15 @@ class Megalinter:
                     and linter.deprecated_description
                     else "This linter is deprecated."
                 )
-                logging.warning(
+                deprecation_message = (
                     f"{linter.name} is deprecated and will be removed in a future major release. "
                     + deprecated_description
                     + " Add "
                     + linter.name
                     + " to DISABLE_LINTERS in your .mega-linter.yml to disable it."
                 )
+                logging.warning(deprecation_message)
+                self.add_tip("deprecation", deprecation_message)
         # Display skipped linters in log
         show_skipped_linters = (
             config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
@@ -965,7 +924,8 @@ class Megalinter:
                     "Some linters were skipped due to activation rules:\n"
                     + reasons_lines
                 )
-        if self.native_mode is True:
+        # The prerun analysis suggests the linters to run natively: nothing is selected or installed
+        if self.native_mode is True and self.prerun is not True:
             self.apply_native_selection(
                 {linter.name for linter in all_linters}, self.linter_version_only
             )
@@ -989,6 +949,10 @@ class Megalinter:
                 "(activation rules, ENABLE/DISABLE...): "
                 + ", ".join(selection.listed_not_active)
             )
+        for linter in selection.not_listed:
+            self.skipped_linters_details.append(
+                {"key": linter.name, "reason": "not listed in NATIVE_LINTERS"}
+            )
         if len(selection.not_listed) > 0 and self.show_skipped_native_linters():
             logging.info(
                 "Skipped linters (not listed in NATIVE_LINTERS): "
@@ -1009,6 +973,12 @@ class Megalinter:
                 if status == "not installed":
                     if missing_policy == "skip":
                         logging.warning(f"{linter.name} is not installed: skipped")
+                        self.skipped_linters_details.append(
+                            {
+                                "key": linter.name,
+                                "reason": "not installed (NATIVE_MISSING_LINTERS: skip)",
+                            }
+                        )
                         continue
                     if missing_policy == "fail":
                         raise NativeError(
@@ -1023,6 +993,9 @@ class Megalinter:
             except NativeError as e:
                 if selection.wants_all is True:
                     logging.warning(f"{linter.name} skipped in native mode: {e}")
+                    self.skipped_linters_details.append(
+                        {"key": linter.name, "reason": str(e)}
+                    )
                 else:
                     errors.append(f"{linter.name}: {e}")
         if len(errors) > 0:
@@ -1038,11 +1011,13 @@ class Megalinter:
             host_version, pinned_version
         ):
             return
-        logging.warning(
+        host_message = (
             f"{linter.name}: {linter.linter_name} {host_version} found on this machine, "
             f"but the MegaLinter Docker image uses {pinned_version}: results may differ from CI. "
             f"Install {linter.linter_name} {pinned_version} to get the same results"
         )
+        logging.warning(host_message)
+        self.add_tip("native", host_message)
 
     def show_skipped_native_linters(self):
         return config.get(self.request_id, "SHOW_SKIPPED_LINTERS", "true") == "true"
@@ -1536,7 +1511,7 @@ class Megalinter:
                 if len(heavy_dirs) > 0
                 else ""
             )
-            logging.warning(
+            gitignored_message = (
                 f"⚠️ More than 300 .gitignored files have been detected ({len(ignored_files)}). "
                 "To improve MegaLinter performances, consider adding more excluded directories "
                 "using the ADDITIONAL_EXCLUDED_DIRECTORIES variable. "
@@ -1546,6 +1521,8 @@ class Megalinter:
                 f"{heavy_dirs_info} "
                 f"See {ML_DOC_URL}/config-filtering/"
             )
+            logging.warning(gitignored_message)
+            self.add_tip("performance", gitignored_message)
         return ignored_files
 
     def initialize_output(self):

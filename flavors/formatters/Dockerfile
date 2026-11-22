@@ -90,7 +90,7 @@ ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
+ARG CSHARP_ROSLYNATOR_VERSION=1.0.1
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=npm depName=markdownlint-cli
@@ -107,7 +107,7 @@ ARG PIP_BLACK_VERSION=26.10.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=9.0.2
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.17.2
+ARG PIP_RUFF_VERSION=0.17.4
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
@@ -115,9 +115,9 @@ ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
 ARG SPELL_TYPOS_VERSION=1.52.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG BASH_SHFMT_VERSION

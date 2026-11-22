@@ -11,7 +11,7 @@ description: actionlint, zizmor are available to analyze ACTION files in MegaLin
 
 | Linter                                                                                 | Additional                                                                                                                                                                                                                            |
 |----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**actionlint**](action_actionlint.md)<br/>[_ACTION_ACTIONLINT_](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint)                                                                                                        |
+| [**actionlint**](action_actionlint.md)<br/>[_ACTION_ACTIONLINT_](action_actionlint.md) | [![GitHub stars](https://img.shields.io/github/stars/rhysd/actionlint?cacheSeconds=3600)](https://github.com/rhysd/actionlint) ![sarif](https://shields.io/badge/-SARIF-orange)                                                       |
 | [**zizmor**](action_zizmor.md)<br/>[_ACTION_ZIZMOR_](action_zizmor.md)                 | [![GitHub stars](https://img.shields.io/github/stars/zizmorcore/zizmor?cacheSeconds=3600)](https://github.com/zizmorcore/zizmor) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
 
 ## Linted files

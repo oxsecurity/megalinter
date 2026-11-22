@@ -6,6 +6,7 @@ Use Eslint to check so many file formats :)
 import json
 import logging
 import os
+import re
 
 from megalinter import Linter
 from megalinter.utils_reporter import register_user_notification
@@ -26,6 +27,13 @@ FLAT_ESLINT_FILES = (
     "eslint.config.ts",
     "eslint.config.mts",
     "eslint.config.cts",
+)
+
+# Type-aware rules (typescript-eslint parserOptions.project / projectService, or the
+# *TypeChecked configs) make the result of a file depend on the other files: ESLint's
+# cache, which only lints the changed files again, would keep stale results
+ESLINT_TYPE_AWARE_CONFIG_REGEX = re.compile(
+    r"\bprojectService\b|\bproject\s*:|TypeChecked"
 )
 
 ESLINT_FLAT_CONFIG_MIGRATION_URL = (
@@ -137,6 +145,32 @@ class EslintLinter(Linter):
 
     # Drop ESLint v8-only flags that v9 removed.
     # Keep --no-ignore stripping when an explicit ignore source is present.
+    def get_native_cache_arguments(self) -> list:
+        cache_arguments = super().get_native_cache_arguments()
+        if len(cache_arguments) > 0 and self.uses_type_aware_rules():
+            logging.info(
+                f"[{self.name}] The ESLint cache is not used: the configuration "
+                "enables type-aware rules, whose results depend on other files"
+            )
+            return []
+        return cache_arguments
+
+    def uses_type_aware_rules(self) -> bool:
+        candidates = [self.config_file] if self.config_file else []
+        candidates += [
+            os.path.join(self.workspace, name)
+            for name in FLAT_ESLINT_FILES + LEGACY_ESLINTRC_FILES
+        ]
+        for candidate in candidates:
+            if not os.path.isabs(candidate):
+                candidate = os.path.join(self.workspace, candidate)
+            if os.path.isfile(candidate):
+                with open(candidate, "r", encoding="utf-8", errors="replace") as file:
+                    return (
+                        ESLINT_TYPE_AWARE_CONFIG_REGEX.search(file.read()) is not None
+                    )
+        return False
+
     def build_lint_command(self, file=None):
         cmd = super().build_lint_command(file)
         cmd = [arg for arg in cmd if arg not in ("--no-eslintrc",)]

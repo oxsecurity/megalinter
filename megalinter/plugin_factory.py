@@ -5,7 +5,6 @@ import shutil
 import subprocess
 import sys
 
-import requests
 import yaml
 from megalinter import config, linter_factory, utils
 
@@ -32,6 +31,9 @@ def initialize_plugins(request_id):
 
 # Load plugin descriptor
 def load_plugin(plugin):
+    # Imported on use: loading this library at startup slows down every run
+    import requests
+
     # Check if plugin is a URL or local path
     if plugin.startswith("https://") or plugin.startswith("file://"):
         # Check validity of plugin URL/path

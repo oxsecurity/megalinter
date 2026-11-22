@@ -3,6 +3,18 @@
 import json
 
 from megalinter import Linter, config
+from megalinter.sarif_builder import (
+    LEVEL_ERROR,
+    SarifBuilder,
+    SarifResultBuilder,
+    SarifRuleBuilder,
+    SarifRunBuilder,
+    to_one_based,
+    to_sarif_uri,
+)
+
+TYPOS_RULE_ID = "typo"
+TYPOS_URL = "https://github.com/crate-ci/typos"
 
 
 class TyposLinter(Linter):
@@ -91,3 +103,39 @@ class TyposLinter(Linter):
         config.set_value(
             self.request_id, "SPELL_TYPOS_FILE_EXTENSIONS", [".md", ".py", ".txt"]
         )
+
+    def convert_output_to_sarif(self, return_stdout):
+        return typos_output_to_sarif(return_stdout, self.workspace)
+
+
+# typos has no severity: every finding is an error. byte_offset is 0-based
+def typos_output_to_sarif(stdout, workspace=None):
+    run = SarifRunBuilder().init_simple("typos", url=TYPOS_URL)
+    run.add_rule(
+        SarifRuleBuilder().init_simple(
+            TYPOS_RULE_ID,
+            short_description_text="Source code spelling mistake",
+            help_uri=TYPOS_URL,
+        )
+    )
+    for event in TyposLinter._parse_typo_events(stdout):
+        corrections = event.get("corrections")
+        suggestion = (
+            ", ".join(str(item) for item in corrections)
+            if isinstance(corrections, list) and len(corrections) > 0
+            else None
+        )
+        message = f'"{event.get("typo")}" is a typo'
+        if suggestion:
+            message += f', should be "{suggestion}"'
+        run.add_result(
+            SarifResultBuilder().init_simple(
+                LEVEL_ERROR,
+                message,
+                TYPOS_RULE_ID,
+                file_uri=to_sarif_uri(event.get("path"), workspace),
+                start_line=to_one_based(event.get("line_num")),
+                start_column=to_one_based(event.get("byte_offset"), zero_based=True),
+            )
+        )
+    return SarifBuilder().add_run(run)

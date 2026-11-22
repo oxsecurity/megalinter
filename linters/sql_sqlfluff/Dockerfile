@@ -68,9 +68,9 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.5.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 #ARG__END
 
 ####################

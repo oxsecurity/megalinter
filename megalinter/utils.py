@@ -32,6 +32,7 @@ REPO_HOME_DEFAULT = (
 )
 
 ANSI_ESCAPE_REGEX = re.compile(r"(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]")
+JSON_START_REGEX = re.compile(r"[\[{]")
 
 # Workspaces whose "git diff" already failed: list_updated_files runs once per
 # linted file, and a workspace that fails once keeps failing for the whole run
@@ -935,6 +936,39 @@ def format_bullet_list(files):
     prefix = list_separator if any(files) is True else ""
     file_list = list_separator.join(files) if len(files) > 0 else ""
     return "{}{}".format(prefix, file_list)
+
+
+# Find the first JSON value of the expected type in a text that can also contain
+# other lines (logs, progress...). Uses the first value accepted by the predicate
+def find_json_value(text: str, value_type=(dict, list), predicate=None):
+    decoder = json.JSONDecoder()
+    for match in re.finditer(r"[\[{]", text):
+        try:
+            value, _ = decoder.raw_decode(text, match.start())
+        except json.JSONDecodeError:
+            continue
+        if isinstance(value, value_type) and (predicate is None or predicate(value)):
+            return value
+    return None
+
+
+# Every top-level JSON value of a text mixing JSON and logs, in order of appearance
+def find_json_values(text: str, value_type=(dict, list), predicate=None) -> list:
+    decoder = json.JSONDecoder()
+    values: list = []
+    position = 0
+    while True:
+        match = JSON_START_REGEX.search(text, position)
+        if match is None:
+            return values
+        try:
+            value, end = decoder.raw_decode(text, match.start())
+        except json.JSONDecodeError:
+            position = match.start() + 1
+            continue
+        position = end
+        if isinstance(value, value_type) and (predicate is None or predicate(value)):
+            values.append(value)
 
 
 def find_json_in_stdout(stdout: str, sarif=True):

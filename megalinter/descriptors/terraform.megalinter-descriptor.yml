@@ -123,6 +123,10 @@ linters:
         - linux/arm64
   # TERRAGRUNT
   - linter_name: terragrunt
+    can_output_sarif: true
+    sarif_text_regex: "File '(?P<path>[^']+)' (?P<message>needs formatting)"
+    sarif_text_rule_id: terragrunt-fmt
+    sarif_whole_output: true
     linter_text: |
       **Terragrunt** is a thin wrapper for Terraform that provides tools for keeping your Terraform configurations DRY, working with multiple Terraform modules, and managing remote state. It helps validate Terragrunt configurations and ensures that your infrastructure code follows best practices for modularity, reusability, and maintainability.
 
@@ -256,6 +260,11 @@ linters:
     cli_lint_fix_remove_args:
       - "--diff"
       - "--check"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as terraform fmt expects
+    sarif_whole_output: true
     examples:
       - "terraform fmt myfile.tf"
     install:
@@ -366,6 +375,11 @@ linters:
     cli_lint_fix_remove_args:
       - "-diff"
       - "-check"
+    can_output_sarif: true
+    sarif_unified_diff: true
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as tofu fmt expects
+    sarif_whole_output: true
     examples:
       - "tofu fmt -diff -check myfile.tf"
       - "tofu fmt myfile.tf"
@@ -379,7 +393,7 @@ linters:
     native_install:
       method: binary
       # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v(?<version>.+)$
-      version: "1.13.2"
+      version: "1.13.9"
       assets:
         linux/amd64:
           url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_amd64.zip
@@ -426,6 +440,10 @@ linters:
   # TOFU VALIDATE
   - class: TofuValidateLinter
     linter_name: tofu-validate
+    can_output_sarif: true
+    cli_sarif_args:
+      - "-json"
+    sarif_whole_output: true
     linter_text: |
       **tofu validate** is the built-in OpenTofu command that checks whether a configuration is internally consistent and semantically valid, without reading any state or contacting any infrastructure. OpenTofu is the community-driven, MPL-2.0 licensed fork of Terraform hosted by the Linux Foundation.
 
@@ -549,7 +567,7 @@ linters:
     native_install:
       method: binary
       # renovate: datasource=github-releases depName=opentofu/opentofu extractVersion=^v(?<version>.+)$
-      version: "1.13.2"
+      version: "1.13.9"
       assets:
         linux/amd64:
           url: https://github.com/opentofu/opentofu/releases/download/v{{VERSION}}/tofu_{{VERSION}}_linux_amd64.zip

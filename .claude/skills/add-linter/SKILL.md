@@ -81,6 +81,8 @@ Add the linter entry with **as many properties as possible**. Even though the JS
 **SARIF support (if available):**
 - `can_output_sarif: true`
 - `cli_sarif_args` — with `{{SARIF_OUTPUT_FILE}}` placeholder
+- SARIF is **mandatory** for an active linter (`make megalinter-build` fails otherwise; only `disabled: true` is exempt)
+- No SARIF output: `sarif_text_regex` (+ `sarif_text_levels`, `sarif_text_rule_id`, `sarif_text_default_message`) converts the text output with no Python code, `sarif_unified_diff: true` converts the unified diff printed by a formatter, and `sarif_whole_output: true` keeps a result when a failed run gives none
 
 **Behavior flags:**
 - `is_formatter: true` — if it's a formatter
@@ -119,7 +121,7 @@ Create two test files in `.automation/test/<test_folder>/`:
 
 ## Step 4 — Custom Class (only if needed)
 
-Create a minimal class in `megalinter/linters/` extending `megalinter.Linter`. Only override what the YAML descriptor can't express.
+Create a minimal class in `megalinter/linters/` extending `megalinter.Linter`. Only override what the YAML descriptor can't express. Declare module-level helper `def` functions after the class, never before it. If the linter can not output SARIF, convert its output in Python (`convert_output_to_sarif()` with `megalinter/sarif_builder.py`), so SARIF also works in native mode.
 
 ## Step 5 — Build
 

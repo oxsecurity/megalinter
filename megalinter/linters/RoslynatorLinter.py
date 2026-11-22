@@ -3,6 +3,7 @@
 Use roslynator to lint CSharp files
 """
 
+import json
 import logging
 import os
 
@@ -10,6 +11,28 @@ from megalinter import Linter, config
 
 
 class RoslynatorLinter(Linter):
+    # "roslynator fix" has no --output option
+    def before_lint_files(self):
+        if self.apply_fixes is True:
+            self.output_sarif = False
+
+    # roslynator writes no report file for a project without diagnostics:
+    # start from an empty report, that roslynator overwrites when it has results
+    def build_lint_command(self, file=None):
+        cmd = super().build_lint_command(file)
+        if self.output_sarif is True:
+            with open(self.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+                json.dump(
+                    {
+                        "version": "2.1.0",
+                        "runs": [
+                            {"tool": {"driver": {"name": "Roslynator"}}, "results": []}
+                        ],
+                    },
+                    sarif_file,
+                )
+        return cmd
+
     def process_linter(self, file=None):
         # dotnet restore is a project-setup prerequisite, not the actual lint
         # invocation: run it through the lower-level subprocess primitive

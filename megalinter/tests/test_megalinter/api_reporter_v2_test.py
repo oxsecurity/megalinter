@@ -11,6 +11,7 @@ import tempfile
 import types
 import unittest
 import uuid
+from unittest import mock
 
 from megalinter import config
 from megalinter.reporters.ApiReporter import ApiReporter
@@ -107,17 +108,12 @@ class api_reporter_v2_test(unittest.TestCase):
         fake_requests = types.SimpleNamespace(
             post=fake_post, Session=lambda: FakeSession(captured)
         )
-        self.patched_modules = [
-            sys.modules["megalinter.api_providers.ApiProvider"],
-            sys.modules["megalinter.api_providers.ApiProviderGrafana"],
-        ]
-        self.real_requests = [module.requests for module in self.patched_modules]
-        for module in self.patched_modules:
-            module.requests = fake_requests
+        # The API providers import requests when they send: give them the fake one
+        requests_patch = mock.patch.dict(sys.modules, {"requests": fake_requests})
+        requests_patch.start()
+        self.addCleanup(requests_patch.stop)
 
     def tearDown(self):
-        for module, real in zip(self.patched_modules, self.real_requests):
-            module.requests = real
         if os.path.isfile(self.sarif_path):
             os.remove(self.sarif_path)
         config.delete(self.request_id)

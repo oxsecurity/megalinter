@@ -10,6 +10,10 @@ linters:
   - class: CSpellLinter
     linter_name: cspell
     name: SPELL_CSPELL
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+)\s+- (?P<message>[^()]*\([^)]*\))'
+    sarif_text_rule_id: spelling
+    sarif_whole_output: true
     linter_spdx_license: MIT
     variables:
       - name: SPELL_CSPELL_ANALYZE_FILE_NAMES
@@ -51,6 +55,13 @@ linters:
     cli_lint_mode_project_config_paths_regex: "(?m)(^\\s*\"files\"\\s*:\\s*\\[\\s*[\"'])|(^files[ \\t]*:[ \\t]*(?:\\[[ \\t]*[^\\]\\s]|\\n[ \\t]*-[ \\t]))"
     cli_lint_errors_count: regex_number
     cli_lint_errors_regex: "Issues found: ([0-9]+) in .* file"
+    # Native mode: unchanged files are not checked again
+    cli_lint_cache_args:
+      - "--cache"
+      - "--cache-location"
+      - "{{LINTER_CACHE_DIR}}/cache"
+      - "--cache-strategy"
+      - "content"
     examples:
       - "cspell myfile.any"
       - "cspell -c cspell.json myfile.any"
@@ -58,7 +69,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=10.4.0
+          ARG NPM_CSPELL_VERSION=10.4.1
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     native_install:
@@ -88,6 +99,11 @@ linters:
     deprecated_description: "proselint is unmaintained and suffers from high false-positive rates and Python packaging conflicts. Migrate to Vale (SPELL_VALE) for prose style checking or typos (SPELL_TYPOS) for fast source-code spell checking."
     descriptor_flavors_exclude:
       - cupcake
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--output-format"
+      - "json"
+    sarif_whole_output: true
     linter_spdx_license: BSD-3-Clause
     lint_all_other_linters_files: false
     file_extensions:
@@ -192,7 +208,10 @@ linters:
   - class: ValeLinter
     linter_name: vale
     name: SPELL_VALE
-    can_output_sarif: false
+    can_output_sarif: true
+    # Official SARIF template of Vale (https://docs.vale.sh/topics/templates#creating-a-sarif-template)
+    cli_sarif_args:
+      - "--output={{DEFAULT_RULES_LOCATION}}/vale-sarif.tmpl"
     linter_spdx_license: MIT
     lint_all_other_linters_files: false
     file_extensions:
@@ -300,6 +319,11 @@ linters:
   - class: LycheeLinter
     linter_name: lychee
     name: SPELL_LYCHEE
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "json"
+    sarif_whole_output: true
     linter_spdx_license: Apache-2.0
     linter_text: |
       **Lychee** is a fast, async, stream-based link checker written in Rust that finds broken hyperlinks and mail addresses inside Markdown, HTML, reStructuredText, websites, and any other text files.
@@ -323,7 +347,6 @@ linters:
       https://github.com/sgerrand/alpine-pkg-glibc/releases/download
       ```
     test_folder: spell_lychee
-    can_output_sarif: false
     descriptor_flavors:
       - all_flavors
       - cupcake
@@ -427,7 +450,8 @@ linters:
         - linux/arm64
 
   # codespell
-  - linter_name: codespell
+  - class: CodespellLinter
+    linter_name: codespell
     name: SPELL_CODESPELL
     linter_text: |
       Fix common misspellings in source code and other text files.
@@ -436,7 +460,7 @@ linters:
 
       See the [codespell documentation](https://github.com/codespell-project/codespell) for details.
     test_folder: spell_codespell
-    can_output_sarif: false
+    can_output_sarif: true
     descriptor_flavors:
       - all_flavors
       - cupcake
@@ -521,7 +545,15 @@ linters:
   - class: TyposLinter
     linter_name: typos
     name: SPELL_TYPOS
-    can_output_sarif: false
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - typos.toml
+        - _typos.toml
+        - .typos.toml
+        - pyproject.toml
+        - Cargo.toml
+    can_output_sarif: true
     is_formatter: true
     linter_spdx_license: "MIT OR Apache-2.0"
     linter_speed: 5

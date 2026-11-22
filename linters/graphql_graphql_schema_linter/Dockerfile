@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=graphql
-ARG NPM_GRAPHQL_VERSION=17.0.2
+ARG NPM_GRAPHQL_VERSION=17.1.0
 # renovate: datasource=npm depName=graphql-schema-linter
 ARG NPM_GRAPHQL_SCHEMA_LINTER_VERSION=3.0.1
 #ARG__END

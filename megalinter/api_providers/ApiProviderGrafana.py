@@ -10,7 +10,6 @@ import json
 import logging
 import time
 
-import requests
 from megalinter import config
 from megalinter.api_providers.ApiProvider import ApiProvider
 
@@ -138,6 +137,9 @@ class ApiProviderGrafana(ApiProvider):
         return {key: str(value) for key, value in stream_info.items()}
 
     def build_session_and_headers(self, prefix):
+        # Imported on use: loading this library at startup slows down every run
+        import requests
+
         session = requests.Session()
         headers = {
             "accept": "application/json",

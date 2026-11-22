@@ -8,11 +8,20 @@ name: "Benchmark native mode"
 # The measures are published as Markdown tables in the summary of the run (benchmark-native artifact)
 on:
   workflow_dispatch:
+    inputs:
+      agent_loop:
+        description: "Also measure the agent loop (set up native mode, lint, re-check)"
+        type: boolean
+        default: true
   pull_request:
     paths:
       - ".github/workflows/benchmark-native.yml"
       - ".automation/benchmark_native.py"
       - ".automation/test/benchmark_native/**"
+      - "megalinter/cli.py"
+      - "megalinter/native/suggest.py"
+      - "megalinter/native/config_writer.py"
+      - "mega-linter-runner/lib/native.js"
 
 permissions:
   contents: read
@@ -91,6 +100,81 @@ jobs:
           path: benchmark-logs
           if-no-files-found: ignore
 
+  # The commands of a coding agent: the published beta (what an agent runs today) against this
+  # checkout (runner and core), on the 5 native platforms
+  agent-loop:
+    name: Agent loop (${{ matrix.platform }})
+    if: github.event_name != 'workflow_dispatch' || inputs.agent_loop
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux/amd64
+          - os: ubuntu-24.04-arm
+            platform: linux/arm64
+          - os: macos-15-intel
+            platform: darwin/amd64
+          - os: macos-latest
+            platform: darwin/arm64
+          - os: windows-latest
+            platform: windows/amd64
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUTF8: "1"
+      PLATFORM: ${{ matrix.platform }}
+      RUNNER_LABEL: ${{ matrix.os }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Setup uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          enable-cache: false
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24.x"
+          package-manager-cache: false
+      - name: Install the runner of this checkout
+        working-directory: mega-linter-runner
+        run: npm install --omit=dev --ignore-scripts --no-package-lock
+      - name: Create the demo repository
+        run: python .automation/benchmark_native.py prepare --dest "${RUNNER_TEMP}/benchmark-demo"
+      - name: Benchmark the agent loop
+        run: |
+          python .automation/benchmark_native.py agent-loop \
+            --demo "${RUNNER_TEMP}/benchmark-demo" \
+            --platform "${PLATFORM}" \
+            --runner "${RUNNER_LABEL}" \
+            --checkout "${GITHUB_WORKSPACE}" \
+            --output-dir benchmark-results \
+            --logs benchmark-logs
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-results-agent-loop-${{ strategy.job-index }}
+          path: benchmark-results
+          if-no-files-found: ignore
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmark-logs-agent-loop-${{ strategy.job-index }}
+          path: benchmark-logs
+          if-no-files-found: ignore
+
   docker:
     name: Docker (${{ matrix.platform }})
     runs-on: ${{ matrix.os }}
@@ -162,7 +246,7 @@ jobs:
 
   summary:
     name: Benchmark summary
-    needs: [native, docker]
+    needs: [native, agent-loop, docker]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -176,7 +260,7 @@ jobs:
         with:
           python-version-file: .python-version
       - name: Download results
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           pattern: benchmark-results-*
           path: benchmark-results

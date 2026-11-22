@@ -25,11 +25,11 @@ ARG KUBERNETES_KUBECONFORM_VERSION=v0.8.0-alpine
 # renovate: datasource=github-tags depName=checkmarx/dustilock
 ARG REPOSITORY_DUSTILOCK_VERSION=1.2.0
 # renovate: datasource=docker depName=golang versioning=semver
-ARG GO_IMAGE_VERSION=1.27.3
+ARG GO_IMAGE_VERSION=1.27.4
 # renovate: datasource=docker depName=ghcr.io/betterleaks/betterleaks
-ARG REPOSITORY_BETTERLEAKS_VERSION=v1.7.3
+ARG REPOSITORY_BETTERLEAKS_VERSION=v1.10.1
 # renovate: datasource=docker depName=trufflesecurity/trufflehog
-ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.7
+ARG REPOSITORY_TRUFFLEHOG_VERSION=3.99.8
 # renovate: datasource=docker depName=ghcr.io/terraform-linters/tflint
 ARG TERRAFORM_TFLINT_VERSION=0.65.0
 # renovate: datasource=docker depName=alpine/terragrunt
@@ -110,21 +110,21 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=pypi depName=ansible-lint
-ARG PIP_ANSIBLE_LINT_VERSION=26.10.1
+ARG PIP_ANSIBLE_LINT_VERSION=26.11.0
 # renovate: datasource=pypi depName=cfn-lint
 ARG PIP_CFN_LINT_VERSION=1.59.0
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.17
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
 # renovate: datasource=pypi depName=bandit
 ARG PIP_BANDIT_VERSION=1.9.4
 # renovate: datasource=pypi depName=bandit_sarif_formatter
 ARG PIP_BANDIT_SARIF_FORMATTER_VERSION=1.1.1
 # renovate: datasource=pypi depName=checkov
-ARG PIP_CHECKOV_VERSION=3.4.0
+ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=nuget depName=Microsoft.CST.DevSkim.CLI
 ARG REPOSITORY_DEVSKIM_VERSION=1.0.70
 # renovate: datasource=github-tags depName=anchore/grype
-ARG REPOSITORY_GRYPE_VERSION=0.121.0
+ARG REPOSITORY_GRYPE_VERSION=0.121.2
 # renovate: datasource=repology depName=alpine_3_24/osv-scanner versioning=loose
 ARG REPOSITORY_OSV_SCANNER_VERSION=2.3.8-r3
 # renovate: datasource=npm depName=secretlint
@@ -134,20 +134,20 @@ ARG NPM_SECRETLINT_SECRETLINT_RULE_PRESET_RECOMMEND_VERSION=13.1.0
 # renovate: datasource=npm depName=@secretlint/secretlint-formatter-sarif
 ARG NPM_SECRETLINT_SECRETLINT_FORMATTER_SARIF_VERSION=13.1.0
 # renovate: datasource=pypi depName=semgrep
-ARG PIP_SEMGREP_VERSION=1.183.0
+ARG PIP_SEMGREP_VERSION=1.184.0
 # renovate: datasource=github-tags depName=anchore/syft
-ARG REPOSITORY_SYFT_VERSION=1.55.0
+ARG REPOSITORY_SYFT_VERSION=1.57.0
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_VERSION=0.76.2
 ARG TRIVY_DB_REPOSITORY=mirror.gcr.io/aquasec/trivy-db:2,ghcr.io/aquasecurity/trivy-db:2,public.ecr.aws/aquasecurity/trivy-db:2
 # renovate: datasource=github-tags depName=aquasecurity/trivy
-ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.1
+ARG REPOSITORY_TRIVY_SBOM_VERSION=0.76.2
 # renovate: datasource=github-tags depName=mongodb/kingfisher
 ARG REPOSITORY_KINGFISHER_VERSION=2.16.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG CARGO_SHELLCHECK_SARIF_VERSION
@@ -365,6 +365,9 @@ RUN dotnet tool install --allow-roll-forward --tool-path /usr/local/dotnet-tools
     osv-scanner=${REPOSITORY_OSV_SCANNER_VERSION}
 # secretlint installation
 # semgrep installation
+# semgrep pins mcp==1.29.0 (CVE-2026-115563, fixed in 1.30.0): upgrade it in the
+# semgrep venv. Remove once semgrep depends on mcp >= 1.30.0.
+RUN VIRTUAL_ENV="/venvs/semgrep" uv pip install --no-cache "mcp>=1.30.0,<2"
 # Wrap semgrep so its OCaml 5 runtime does not abort with
 # "Failed to allocate signal stack for domain 0", which happens when the
 # stack rlimit is unlimited (the case on some CI runners). Cap it to a

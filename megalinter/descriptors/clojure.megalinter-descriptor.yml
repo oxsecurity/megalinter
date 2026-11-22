@@ -153,7 +153,12 @@ linters:
           url: https://clojure-lsp.io/
 
     # cljstyle
-  - linter_name: cljstyle
+  - class: CljStyleLinter
+    linter_name: cljstyle
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--no-color"
+    sarif_whole_output: true
     linter_text: |
       **cljstyle** is a comprehensive tool for formatting Clojure code that transforms messy, inconsistent code into beautifully formatted, readable source files. It's a rewrite of the original cljfmt tool with enhanced capabilities and native compilation.
 

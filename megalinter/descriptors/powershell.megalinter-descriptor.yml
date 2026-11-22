@@ -39,6 +39,7 @@ linters:
   # Internal powershell linter
   - class: PowershellLinter
     linter_name: powershell
+    can_output_sarif: true
     linter_text: |
       **PSScriptAnalyzer** is the premier static code analysis tool for PowerShell modules and scripts that enforces best practices and detects potential issues. Developed by the PowerShell Team and community, it serves as the standard for PowerShell code quality analysis.
 
@@ -118,6 +119,8 @@ linters:
       - **Encoding Support**: Configurable output encoding (UTF-8, ASCII, Unicode, etc.) for different environments
       - **Preserve Semantics**: Formats code while maintaining original functionality and behavior
       - **Team Collaboration**: Shared configuration ensures consistent formatting across development teams
+
+      **Note**: Invoke-Formatter has no check mode and never fails, so the SARIF report of this linter holds no result.
     variables:
       - name: POWERSHELL_POWERSHELL_FORMATTER_OUTPUT_ENCODING
         default_value: "utf8"
@@ -137,6 +140,9 @@ linters:
     config_file_name: .powershell-formatter.psd1
     test_folder: powershell_formatter
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for PowershellLinter class behavior
+    # Invoke-Formatter has no check mode: it never fails, so its SARIF report holds no result
+    can_output_sarif: true
+    sarif_whole_output: true
     version_extract_regex: "(\\d+) *(\\d+) *(\\d+)"
     examples:
       - 'pwsh -NoProfile -NoLogo -Command "Invoke-Formatter -ScriptDefinition ''write-host Hello World''"'

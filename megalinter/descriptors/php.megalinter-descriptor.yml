@@ -265,7 +265,8 @@ linters:
         - linux/amd64
         - linux/arm64
   # PSALM
-  - linter_name: psalm
+  - class: PsalmLinter
+    linter_name: psalm
     linter_text: |
       **Psalm** is an advanced static analysis tool for PHP that provides comprehensive type checking, security analysis, and code quality assessment. Developed by Vimeo, it offers sophisticated analysis capabilities that go beyond traditional linting to catch subtle bugs and security vulnerabilities.
 
@@ -335,7 +336,7 @@ linters:
       requires:
         - runtime: php
           # Requirement of the psalm phar (Box requirements checker)
-          version: "~8.1.31 || ~8.2.27 || ~8.3.16 || ~8.4.3 || >=8.5"
+          version: "~8.2.27 || ~8.3.16 || ~8.4.3 || >=8.5"
       assets:
         any:
           url: https://github.com/vimeo/psalm/releases/download/{{VERSION}}/psalm.phar
@@ -360,7 +361,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=vimeo/psalm
-          ARG PHP_VIMEO_PSALM_VERSION=6.20.5
+          ARG PHP_VIMEO_PSALM_VERSION=7.0.5
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require vimeo/psalm:${PHP_VIMEO_PSALM_VERSION}
     supported_platforms:
@@ -463,6 +464,12 @@ linters:
   - class: PhpCsFixerLinter
     linter_name: php-cs-fixer
     name: PHP_PHPCSFIXER
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format=json"
+      - "--diff"
+      - "--no-ansi"
+    sarif_whole_output: true
     linter_text: |
       **PHP-CS-Fixer** is a comprehensive tool that automatically fixes PHP code to follow coding standards and style guidelines. It can repair code style violations and even risky issues, making it an essential formatter for maintaining consistent PHP codebases.
 
@@ -553,7 +560,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=friendsofphp/php-cs-fixer
-          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.27
+          ARG PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION=v3.95.29
         - |
           RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require friendsofphp/php-cs-fixer:${PHP_FRIENDSOFPHP_PHP_CS_FIXER_VERSION} --with-all-dependencies
     ide:

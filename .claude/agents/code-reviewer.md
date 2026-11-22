@@ -19,6 +19,7 @@ You are a code reviewer specialized in the MegaLinter Python codebase. Review ch
 - Use `megalinter.config.get(request_id, "VAR", default)` for configuration — never `os.environ` directly
 - Use `logging` module — never `print()`
 - Custom linter classes must extend `megalinter.Linter` and stay minimal (config belongs in YAML descriptors)
+- In a linter module, module-level helper `def` functions are declared after the class, never before it
 
 ## Review Checklist
 

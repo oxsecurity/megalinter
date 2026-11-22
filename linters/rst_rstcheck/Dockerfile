@@ -68,11 +68,11 @@ ARG TARGETARCH
 # renovate: datasource=pypi depName=rstcheck
 ARG PIP_RSTCHECK_VERSION=6.3.0
 # renovate: datasource=pypi depName=click
-ARG PIP_RSTCHECK_CLICK_VERSION=8.5.0
+ARG PIP_RSTCHECK_CLICK_VERSION=8.5.1
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 #ARG__END
 
 ####################

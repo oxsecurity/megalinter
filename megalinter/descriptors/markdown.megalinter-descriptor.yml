@@ -9,7 +9,20 @@ file_extensions:
   - ".md"
 linters:
   # MarkdownLint
-  - linter_name: markdownlint
+  - class: MarkdownlintLinter
+    linter_name: markdownlint
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - .markdownlint.json
+        - .markdownlint.jsonc
+        - .markdownlint.yaml
+        - .markdownlint.yml
+        - .markdownlintrc
+        - .markdownlintignore
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--json"
     is_formatter: true
     activation_rules:
       - type: variable
@@ -127,6 +140,11 @@ linters:
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
+    can_output_sarif: true
+    sarif_text_regex: "^- (?P<path>.+)$"
+    sarif_text_default_level: note
+    sarif_text_default_message: The markdown tables of the file are not formatted as markdown-table-formatter expects
+    sarif_whole_output: true
     examples:
       - "markdown-table-formatter --check myfile.md" # Check only
       - "markdown-table-formatter myfile.md" # Apply formatting

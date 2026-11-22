@@ -47,5 +47,6 @@ class RakuLinter(megalinter.Linter):
             cmd += [self.cli_lint_fix_arg_name]
         # Add user-defined extra arguments if defined
         cmd += self.cli_lint_user_args
+        cmd += self.get_sarif_arguments()
         cmd += ["-I", self.workspace + os.path.sep + "lib", "-c", file]
         return cmd

@@ -7,7 +7,6 @@ Post a comment on the Jira tickets referenced by labels of the current Pull Requ
 import logging
 import re
 
-from atlassian import Jira
 from megalinter import Reporter, ci_providers, config
 from megalinter.utils_reporter import build_markdown_summary
 
@@ -192,6 +191,9 @@ class JiraReporter(Reporter):
         return labels, ci_provider.get_report_url(), ci_provider.get_pr_reference()
 
     def build_jira_client(self):
+        # Imported on use: loading this library at startup slows down every run
+        from atlassian import Jira
+
         request_id = self.master.request_id
         url = config.get(request_id, "JIRA_URL")
         username = config.get(request_id, "JIRA_USERNAME", "")
