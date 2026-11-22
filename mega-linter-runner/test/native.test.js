@@ -273,9 +273,16 @@ describe("mega-linter-runner native mode", () => {
       );
       assert.throws(
         () =>
-          runner.assertSupportedOptions({ native: true, installLinters: true }),
+          runner.assertSupportedOptions({ doctor: true, installLinters: true }),
         /can not be combined/,
       );
+      // Combinations that were accepted before keep working
+      runner.assertSupportedOptions({ native: true, installLinters: true });
+      runner.assertSupportedOptions({
+        nativeSetup: true,
+        installLinters: true,
+      });
+      runner.assertSupportedOptions({ native: true, doctor: true });
       assert.throws(
         () => runner.assertSupportedOptions({ uninstallLinters: true }),
         /needs the keys/,

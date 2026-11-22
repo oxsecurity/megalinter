@@ -46,8 +46,8 @@ const DOCKER_ONLY_OPTIONS = [
   ["flavor", "--flavor"],
 ];
 // Options that each select one command of the `megalinter` Python CLI (`--native` is `run`)
+const LEGACY_COMMAND_KEYS = ["nativeSetup", "installLinters"];
 const NATIVE_COMMAND_OPTIONS = [
-  ["native", "--native"],
   ["nativeSetup", "--native-setup"],
   ["installLinters", "--install-linters"],
   ["uninstallLinters", "--uninstall-linters"],
@@ -125,10 +125,15 @@ export class NativeRunner {
         "--container-engine is only available with Docker: it can not be used with --native or --install-linters",
       );
     }
+    // --native-setup and --install-linters keep their precedence when combined with each other
+    // or with --native: only the newer commands are strict
     const commands = NATIVE_COMMAND_OPTIONS.filter(
       ([key]) => options[key] === true,
     );
-    if (commands.length > 1) {
+    if (
+      commands.length > 1 &&
+      commands.some(([key]) => !LEGACY_COMMAND_KEYS.includes(key))
+    ) {
       throw new Error(
         `${commands.map(([, flag]) => flag).join(" and ")} can not be combined: run them one after the other`,
       );
