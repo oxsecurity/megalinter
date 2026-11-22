@@ -142,11 +142,18 @@ Rules for writing entries:
 
 ### SARIF Support (fill if linter supports it)
 
-| Property                    | Description                                                     |
-|-----------------------------|-----------------------------------------------------------------|
-| `can_output_sarif`          | `true` if linter can output SARIF                               |
-| `cli_sarif_args`            | Args for SARIF output (use `{{SARIF_OUTPUT_FILE}}` placeholder) |
-| `sarif_default_output_file` | Default SARIF output path                                       |
+| Property                     | Description                                                                                                                                                         |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `can_output_sarif`           | `true` if linter can output SARIF                                                                                                                                   |
+| `cli_sarif_args`             | Args for SARIF output (use `{{SARIF_OUTPUT_FILE}}` placeholder)                                                                                                     |
+| `sarif_default_output_file`  | Default SARIF output path                                                                                                                                           |
+| `sarif_text_regex`           | Regex (named groups `path`, `line`, `column`, `end_column`, `rule`, `severity`, `message`, `cell`) converting the text output of a linter that can not output SARIF |
+| `sarif_text_levels`          | Map of the `severity` group values to `error`, `warning`, `note`                                                                                                    |
+| `sarif_text_default_level`   | Level without severity group (default `error`)                                                                                                                      |
+| `sarif_text_rule_id`         | Rule id without `rule` group (default: the linter name)                                                                                                             |
+| `sarif_text_default_message` | Message without `message` group, and of the files found by `sarif_unified_diff`                                                                                     |
+| `sarif_unified_diff`         | `true`: a formatter printing a unified diff gives one result per file, at its first modified hunk                                                                   |
+| `sarif_whole_output`         | `true`: a failed run without result gives one result with the output                                                                                                |
 
 ### Behavior Flags
 

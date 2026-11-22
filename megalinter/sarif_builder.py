@@ -6,15 +6,29 @@ API inspired by https://github.com/nvuillam/node-sarif-builder
 
 import json
 import os
+import re
+from urllib.parse import unquote, urlparse
 
 from megalinter.constants import DEFAULT_SARIF_SCHEMA_URI, DEFAULT_SARIF_VERSION
+from megalinter.utils import ANSI_ESCAPE_REGEX
 
 LEVEL_ERROR = "error"
 LEVEL_WARNING = "warning"
 LEVEL_NOTE = "note"
 
+WHOLE_OUTPUT_MAX_LENGTH = 4000
+
+UNIFIED_DIFF_REGEX = re.compile(
+    r"^--- (?P<path>[^\t\n]+)(?:\t[^\n]*)?\n\+\+\+ (?P<new_path>[^\n]*)\n@@ -(?P<line>\d+)",
+    re.MULTILINE,
+)
+# isort names the sides of its diff "<file>:before" and "<file>:after"
+DIFF_SIDE_SUFFIX_REGEX = re.compile(r":(?:before|after)$")
+
 
 def to_sarif_uri(path, workspace=None):
+    if path is None:
+        return None
     uri = str(path).replace("\\", "/")
     if workspace:
         workspace_prefix = (
@@ -40,6 +54,131 @@ def result_from_match(match, workspace, level, message_text, rule_id):
         start_line=int(groups["line"]) if groups.get("line") else None,
         start_column=int(groups["column"]) if groups.get("column") else None,
     )
+
+
+def strip_ansi(text):
+    return ANSI_ESCAPE_REGEX.sub("", text)
+
+
+# Position (line, column) of a linter, as a SARIF 1-based number, or None when the
+# linter did not give a valid one
+def to_one_based(value, zero_based=False):
+    if not isinstance(value, int) or isinstance(value, bool):
+        return None
+    position = value + 1 if zero_based else value
+    return position if position >= 1 else None
+
+
+# Path of a file:// URI, as given by the linters that report their files that way
+def file_uri_to_path(uri):
+    path = unquote(urlparse(uri).path)
+    return path[1:] if re.match(r"^/[A-Za-z]:/", path) else path
+
+
+def sarif_from_results(tool_name, results, url=None):
+    run = SarifRunBuilder().init_simple(tool_name, url=url)
+    for result in results:
+        run.add_result(result)
+    return SarifBuilder().add_run(run)
+
+
+# SARIF of a linter whose findings are lines of text matched by a regex with the
+# named groups path, line, column, end_column, rule, severity, message and cell
+def regex_output_to_sarif(
+    stdout,
+    workspace,
+    tool_name,
+    regex,
+    default_rule_id,
+    default_level=LEVEL_ERROR,
+    levels=None,
+    url=None,
+    default_message=None,
+    unified_diff=False,
+):
+    run = SarifRunBuilder().init_simple(tool_name, url=url)
+    if regex:
+        levels = levels or {}
+        for match in re.finditer(regex, strip_ansi(stdout), re.MULTILINE):
+            groups = match.groupdict()
+            message_text = (groups.get("message") or default_message or "").strip()
+            if groups.get("cell"):
+                message_text = f"cell {groups['cell']}: {message_text}"
+            level = levels.get(groups.get("severity"), default_level)
+            run.add_result(
+                SarifResultBuilder().init_simple(
+                    level,
+                    message_text,
+                    (groups.get("rule") or "").strip() or default_rule_id,
+                    file_uri=to_sarif_uri(groups["path"].strip(), workspace),
+                    start_line=int(groups["line"]) if groups.get("line") else None,
+                    start_column=(
+                        int(groups["column"]) if groups.get("column") else None
+                    ),
+                    end_column=(
+                        int(groups["end_column"]) if groups.get("end_column") else None
+                    ),
+                )
+            )
+    if unified_diff:
+        for result in unified_diff_to_results(
+            stdout,
+            workspace,
+            default_level,
+            default_message or f"The file is not formatted as {tool_name} expects",
+            default_rule_id,
+        ):
+            run.add_result(result)
+    return SarifBuilder().add_run(run)
+
+
+# A failed run whose output could not be converted still gives one result, without
+# location, so that the failure is not lost
+def add_whole_output_result(
+    sarif_builder, stdout, return_code, rule_id, level=LEVEL_ERROR
+):
+    if any(len(run.results) > 0 for run in sarif_builder.runs):
+        return
+    message_text = strip_ansi(stdout or "").strip()
+    if return_code in (0, None) or message_text == "" or len(sarif_builder.runs) == 0:
+        return
+    sarif_builder.runs[0].add_result(
+        SarifResultBuilder().init_simple(
+            level, message_text[:WHOLE_OUTPUT_MAX_LENGTH], rule_id
+        )
+    )
+
+
+# One result per file in the unified diff printed by a linter that checks formatting,
+# located at the first modified hunk
+def unified_diff_to_results(stdout, workspace, level, message_text, rule_id):
+    results = []
+    for match in UNIFIED_DIFF_REGEX.finditer(strip_ansi(stdout)):
+        path = DIFF_SIDE_SUFFIX_REGEX.sub("", match.group("path").strip())
+        new_path = DIFF_SIDE_SUFFIX_REGEX.sub(
+            "", match.group("new_path").split("\t")[0].strip()
+        )
+        # shfmt compares a "<file>.orig" copy with the file
+        if path == new_path + ".orig":
+            path = new_path
+        # git style diffs prefix the paths with a/ and b/ (or old/ and new/)
+        if path.startswith(("a/", "old/")) and new_path.startswith(("b/", "new/")):
+            path = path.split("/", 1)[1]
+            # Some tools remove the leading slash of an absolute path
+            if workspace and ("/" + path).startswith(
+                os.path.abspath(workspace).replace("\\", "/").rstrip("/") + "/"
+            ):
+                path = "/" + path
+        results.append(
+            SarifResultBuilder().init_simple(
+                level,
+                message_text,
+                rule_id,
+                file_uri=to_sarif_uri(path, workspace),
+                start_line=int(match.group("line")),
+            )
+        )
+    return results
 
 
 class SarifRuleBuilder:

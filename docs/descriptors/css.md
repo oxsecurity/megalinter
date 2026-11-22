@@ -9,10 +9,10 @@ description: stylelint, biome are available to analyze CSS files in MegaLinter
 
 ## Linters
 
-| Linter                                                                    | Additional                                                                                                                                                                                                                    |
-|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**stylelint**](css_stylelint.md)<br/>[_CSS_STYLELINT_](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green)                                      |
-| [**biome**](css_biome.md)<br/>[_CSS_BIOME_](css_biome.md)                 | [![GitHub stars](https://img.shields.io/github/stars/biomejs/biome?cacheSeconds=3600)](https://github.com/biomejs/biome) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| Linter                                                                    | Additional                                                                                                                                                                                                                                |
+|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**stylelint**](css_stylelint.md)<br/>[_CSS_STYLELINT_](css_stylelint.md) | [![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) |
+| [**biome**](css_biome.md)<br/>[_CSS_BIOME_](css_biome.md)                 | [![GitHub stars](https://img.shields.io/github/stars/biomejs/biome?cacheSeconds=3600)](https://github.com/biomejs/biome) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange)             |
 
 ## Linted files
 

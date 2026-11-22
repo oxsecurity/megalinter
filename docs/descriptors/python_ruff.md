@@ -20,7 +20,7 @@ description: How to use ruff (configure, ignore files, ignore errors, help & ver
 
 ## ruff documentation
 
-- Version in MegaLinter: **0.17.3**
+- Version in MegaLinter: **0.17.4**
 - Visit [Official Web Site](https://github.com/astral-sh/ruff#readme){target=_blank}
 - See [How to configure ruff rules](https://docs.astral.sh/ruff/configuration/){target=_blank}
   - If custom `.ruff.toml` config file isn't found, [.ruff.toml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.ruff.toml){target=_blank} will be used
@@ -71,9 +71,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |       100        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -153,7 +153,7 @@ Global options:
           Control when colored output is used
 
           Possible values:
-          - auto:   Display colors if the output goes to an interactive terminal
+          - auto:   Use color when writing to a terminal, unless overridden by the environment
           - always: Always display colors
           - never:  Never display colors
 
@@ -165,11 +165,11 @@ For help with a specific command, see: `ruff help <command>`.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.17.3
+ARG PIP_RUFF_VERSION=0.17.4
 ```
 
 - PIP packages (Python):
-  - [ruff==0.17.3](https://pypi.org/project/ruff/0.17.3)
+  - [ruff==0.17.4](https://pypi.org/project/ruff/0.17.4)
 
 ### Installation without Docker (native mode)
 
@@ -195,7 +195,7 @@ NATIVE_LINTERS: [PYTHON_RUFF]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PYTHON_RUFF"
     uv venv "$INSTALL_DIR" --python ">=3.7"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "ruff==0.17.3"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "ruff==0.17.4"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -204,7 +204,7 @@ NATIVE_LINTERS: [PYTHON_RUFF]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PYTHON_RUFF"
     uv venv "$INSTALL_DIR" --python ">=3.7"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "ruff==0.17.3"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "ruff==0.17.4"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

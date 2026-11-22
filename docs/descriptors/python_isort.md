@@ -11,7 +11,7 @@ description: How to use isort (configure, ignore files, ignore errors, help & ve
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/isort?sort=semver)](https://github.com/PyCQA/isort/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/PyCQA/isort?cacheSeconds=3600)](https://github.com/PyCQA/isort) ![formatter](https://shields.io/badge/-format-yellow) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/PyCQA/isort?sort=semver)](https://github.com/PyCQA/isort/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/PyCQA/isort)](https://github.com/PyCQA/isort/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/PyCQA/isort)](https://github.com/PyCQA/isort/graphs/contributors/)
 
 **isort** is the definitive Python import sorting tool that automatically organizes and standardizes import statements according to configurable rules. It serves as an essential companion to code formatters for maintaining clean, professional Python codebases.
 
@@ -81,10 +81,10 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       135        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |       100        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        70        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)         | Optimized for PYTHON based projects             |        71        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -157,7 +157,7 @@ usage: isort [-h] [-V] [--vn] [-v] [--only-modified] [--dedup-headings] [-q]
 
 Sort Python import definitions alphabetically within logical sections. Run
 with no arguments to see a quick start guide, otherwise, one or more
-files/directories/stdin must be provided. Use - as the first argument to
+files/directories/stdin must be provided. Use `-` as the first argument to
 represent stdin. Use --interactive to use the pre 5.0.0 interactive behavior.
 If you've used isort 4 but are new to isort 5, see the upgrading guide:
 https://isort.readthedocs.io/en/latest/upgrade_guides/5.0.0.html
@@ -309,7 +309,7 @@ general output options:
   --ls, --length-sort   Sort imports by their string length.
   --lss, --length-sort-straight
                         Sort straight imports by their string length. Similar
-                        to length_sort but applies only to straight imports
+                        to `length_sort` but applies only to straight imports
                         and doesn't affect from imports.
   -m, --multi-line {GRID,VERTICAL,HANGING_INDENT,VERTICAL_HANGING_INDENT,VERTICAL_GRID,VERTICAL_GRID_GROUPED,VERTICAL_GRID_GROUPED_NO_COMMA,NOQA,VERTICAL_HANGING_INDENT_BRACKET,VERTICAL_PREFIX_FROM_MODULE_IMPORT,HANGING_INDENT_WITH_PARENTHESES,BACKSLASH_GRID,0,1,2,3,4,5,6,7,8,9,10,11}
                         Multi line output (0-grid, 1-vertical, 2-hanging,
@@ -321,8 +321,8 @@ general output options:
                         Inserts a blank line before a comment following an
                         import.
   --nis, --no-inline-sort
-                        Leaves from imports with multiple imports 'as-is'
-                        (e.g. from foo import a, c ,b).
+                        Leaves `from` imports with multiple imports 'as-is'
+                        (e.g. `from foo import a, c ,b`).
   --ot, --order-by-type
                         Order imports by type, which is determined by case, in
                         addition to alphabetically. **NOTE**: type here refers
@@ -333,7 +333,7 @@ general output options:
                         variable_or_function. If your project follows PEP8 or
                         a related coding standard and has many imports this is
                         a good default, otherwise you likely will want to turn
-                        it off. From the CLI the --dont-order-by-type option
+                        it off. From the CLI the `--dont-order-by-type` option
                         will turn this off.
   --dt, --dont-order-by-type
                         Don't order imports by type, which is determined by
@@ -345,7 +345,7 @@ general output options:
                         variable_or_function. If your project follows PEP8 or
                         a related coding standard and has many imports this is
                         a good default. You can turn this on from the CLI
-                        using --order-by-type.
+                        using `--order-by-type`.
   --rr, --reverse-relative
                         Reverse order of relative imports.
   --reverse-sort        Reverses the ordering of imports.
@@ -379,9 +379,10 @@ general output options:
                         names
   --remove-redundant-aliases
                         Tells isort to remove redundant aliases from imports,
-                        such as import os as os. This defaults to False simply
-                        because some projects use these seemingly useless
-                        aliases to signify intent and change behaviour.
+                        such as `import os as os`. This defaults to `False`
+                        simply because some projects use these seemingly
+                        useless aliases to signify intent and change
+                        behaviour.
   --honor-noqa          Tells isort to honor noqa comments to enforce skipping
                         those comments.
   --treat-comment-as-code TREAT_COMMENTS_AS_CODE
@@ -423,13 +424,13 @@ section output options:
                         groupby). Instead, sort the imports by module,
                         independent of import style.
   --hcss, --honor-case-in-force-sorted-sections
-                        Honor --case-sensitive when --force-sort-within-
-                        sections is being used. Without this option set,
-                        --order-by-type decides module name ordering too.
+                        Honor `--case-sensitive` when `--force-sort-within-
+                        sections` is being used. Without this option set,
+                        `--order-by-type` decides module name ordering too.
   --srss, --sort-relative-in-force-sorted-sections
-                        When using --force-sort-within-sections, sort relative
-                        imports the same way as they are sorted when not using
-                        that setting.
+                        When using `--force-sort-within-sections`, sort
+                        relative imports the same way as they are sorted when
+                        not using that setting.
   --fass, --force-alphabetical-sort-within-sections
                         Force all imports to be sorted alphabetically within a
                         section
@@ -446,7 +447,7 @@ section output options:
   --src, --src-path SRC_PATHS
                         Add an explicitly defined source path (modules within
                         src paths have their imports automatically categorized
-                        as first_party). Glob expansion (* and **) is
+                        as first_party). Glob expansion (`*` and `**`) is
                         supported for this option.
   -b, --builtin KNOWN_STANDARD_LIBRARY
                         Force isort to recognize a module as part of Python's
@@ -487,7 +488,7 @@ section output options:
                         Python 3 version could be the target, and use a union
                         of all stdlib modules across versions. If auto is
                         specified, the version of the interpreter used to run
-                        isort (currently: 315) will be used.
+                        isort (currently: 314) will be used.
 ```
 
 ### Installation on mega-linter Docker image

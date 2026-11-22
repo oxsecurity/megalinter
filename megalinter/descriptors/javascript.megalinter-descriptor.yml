@@ -256,6 +256,11 @@ linters:
         - "@microsoft/eslint-formatter-sarif@${NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION}"
   - class: JavaScriptStandardLinter
     linter_name: standard
+    can_output_sarif: true
+    sarif_text_regex: '^\s*(?P<path>.+?):(?P<line>\d+):(?P<column>\d+): (?P<message>.*?) \((?P<rule>[^()]*)\)(?: \((?P<severity>warning)\))?$'
+    sarif_text_levels:
+      "warning": warning
+    sarif_whole_output: true
     linter_text: |
       **JavaScript Standard Style** is a popular zero-configuration JavaScript linter and code formatter that eliminates endless debates about code style by providing a strict, opinionated set of rules. It serves as both a style guide and automated enforcement tool for clean, consistent JavaScript.
 

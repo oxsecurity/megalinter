@@ -12,6 +12,14 @@ test_folder: editorconfig-checker
 linters:
   # EDITORCONFIG-CHECKER
   - linter_name: editorconfig-checker
+    can_output_sarif: true
+    cli_sarif_args:
+      - "-format"
+      - "gcc"
+      - "-no-color"
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+):(?P<column>\d+): error: (?P<message>.+)$'
+    sarif_text_rule_id: editorconfig-checker
+    sarif_whole_output: true
     linter_text: |
       **editorconfig-checker** is a language-agnostic tool that validates files against EditorConfig definitions to ensure consistent formatting across your entire codebase. Unlike language-specific linters, it works for every file type and programming language.
 

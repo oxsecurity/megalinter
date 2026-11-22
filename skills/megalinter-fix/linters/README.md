@@ -140,3 +140,4 @@ One guide per linter: load a guide only when the related linter reports errors.
 | SPELL_VALE                        | SPELL          | [spell_vale.md](spell_vale.md)                                               |
 | SPELL_LYCHEE                      | SPELL          | [spell_lychee.md](spell_lychee.md)                                           |
 | SPELL_CODESPELL                   | SPELL          | [spell_codespell.md](spell_codespell.md)                                     |
+| SPELL_TYPOS                       | SPELL          | [spell_typos.md](spell_typos.md)                                             |

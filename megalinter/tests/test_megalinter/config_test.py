@@ -718,6 +718,53 @@ class config_test(unittest.TestCase):
     def get_branch(self):
         return os.environ.get("GITHUB_BRANCH", "main")
 
+    def test_get_list_strips_spaces_around_comma_separated_elements(self):
+        scenarios = [
+            ("BASH_SHELLCHECK,BASH_SHFMT", ["BASH_SHELLCHECK", "BASH_SHFMT"]),
+            ("BASH_SHELLCHECK, BASH_SHFMT", ["BASH_SHELLCHECK", "BASH_SHFMT"]),
+            (" BASH_SHELLCHECK , BASH_SHFMT ", ["BASH_SHELLCHECK", "BASH_SHFMT"]),
+            ("BASH_SHELLCHECK,\n BASH_SHFMT", ["BASH_SHELLCHECK", "BASH_SHFMT"]),
+            ("BASH_SHELLCHECK,,BASH_SHFMT,", ["BASH_SHELLCHECK", "BASH_SHFMT"]),
+            ("BASH_SHELLCHECK", ["BASH_SHELLCHECK"]),
+            ("  ", []),
+            ("", []),
+            ('["A", " B"]', ["A", " B"]),
+            (["A", "B"], ["A", "B"]),
+        ]
+        for value, expected in scenarios:
+            with self.subTest(value=value):
+                with patch.object(config, "get", return_value=value):
+                    self.assertEqual(config.get_list("dummy_request_id", "X"), expected)
+
+    def test_unknown_linters_references_are_reported(self):
+        megalinter = Megalinter.__new__(Megalinter)
+        megalinter.tips = []
+        megalinter.enable_linters = ["BASH_SHELLCHECK", "BASH_UNKNOWN"]
+        megalinter.disable_linters = [
+            "PYTHON_RUFF",
+            " BASH_SHFMT",
+            "REPOSITORY_GITLEAKS",
+        ]
+        known = {"BASH_SHELLCHECK", "BASH_SHFMT", "PYTHON_RUFF"}
+        with self.assertLogs(level="WARNING") as logs:
+            megalinter.check_unknown_linters_references(known)
+        self.assertEqual(len(megalinter.tips), 1)
+        message = megalinter.tips[0]["message"]
+        self.assertIn("BASH_UNKNOWN", message)
+        self.assertIn(" BASH_SHFMT", message)
+        # Known and removed linters are not reported as unknown
+        self.assertNotIn("BASH_SHELLCHECK,", message)
+        self.assertNotIn("REPOSITORY_GITLEAKS", message)
+        self.assertIn("BASH_UNKNOWN", logs.output[0])
+
+    def test_known_linters_references_are_not_reported(self):
+        megalinter = Megalinter.__new__(Megalinter)
+        megalinter.tips = []
+        megalinter.enable_linters = ["BASH_SHELLCHECK"]
+        megalinter.disable_linters = ["PYTHON_RUFF"]
+        megalinter.check_unknown_linters_references({"BASH_SHELLCHECK", "PYTHON_RUFF"})
+        self.assertEqual(megalinter.tips, [])
+
     def test_get_list_args(self):
         # This is a test to check the functionality of the get_list_args method.
         # It mocks the behavior of the get method within this method and asserts the expected output.

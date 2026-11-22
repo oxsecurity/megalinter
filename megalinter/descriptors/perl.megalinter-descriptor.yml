@@ -21,6 +21,18 @@ supported_platforms:
 linters:
   # PERL CRITIC
   - linter_name: perlcritic
+    can_output_sarif: true
+    cli_sarif_args:
+      - --verbose
+      - '%f\t%l\t%c\t%s\t%p\t%m\n'
+    sarif_text_regex: '^(?P<path>[^\t]+)\t(?P<line>\d+)\t(?P<column>\d+)\t(?P<severity>[1-5])\t(?P<rule>[^\t]+)\t(?P<message>.*)$'
+    sarif_text_levels:
+      "5": error
+      "4": error
+      "3": warning
+      "2": note
+      "1": note
+    sarif_whole_output: true
     linter_text: |
       **perlcritic** is a comprehensive static source code analysis engine for Perl that enforces coding standards and best practices. Based primarily on Damian Conway's "Perl Best Practices" book, it serves as an extensible framework for creating and applying consistent coding standards across Perl projects.
 

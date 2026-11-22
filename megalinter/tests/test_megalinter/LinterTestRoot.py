@@ -8,6 +8,7 @@ import uuid
 from typing import Optional
 
 from megalinter import config, linter_factory, utilstest
+from megalinter.tests.test_megalinter import sarif_schema
 
 
 class LinterTestRoot:
@@ -147,7 +148,10 @@ class LinterTestRoot:
         linter = self.get_linter_instance(self.request_id)
         self.skip_if_required_variables_missing(linter)
         linter.pre_test("test_report_sarif")
-        utilstest.test_linter_report_sarif(linter, self)
+        sarif_content = utilstest.test_linter_report_sarif(linter, self)
+        # The SARIF built by MegaLinter must follow the SARIF 2.1.0 schema
+        if sarif_schema.is_sarif_built_by_megalinter(linter):
+            sarif_schema.assert_sarif_follows_schema(linter.name, sarif_content)
         linter.post_test("test_report_sarif")
 
     def test_format_fix(self):

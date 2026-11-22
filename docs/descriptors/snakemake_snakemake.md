@@ -11,7 +11,7 @@ description: How to use snakemake (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver)](https://github.com/snakemake/snakemake/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/snakemake/snakemake)](https://github.com/snakemake/snakemake/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/snakemake/snakemake)](https://github.com/snakemake/snakemake/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/snakemake/snakemake?cacheSeconds=3600)](https://github.com/snakemake/snakemake) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/snakemake/snakemake?sort=semver)](https://github.com/snakemake/snakemake/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/snakemake/snakemake)](https://github.com/snakemake/snakemake/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/snakemake/snakemake)](https://github.com/snakemake/snakemake/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/snakemake/snakemake)](https://github.com/snakemake/snakemake/graphs/contributors/)
 
 **Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
 
@@ -72,21 +72,21 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       134        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        59        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        81        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        54        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        57        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        68        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        57        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        70        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        58        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        53        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        57        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       135        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        60        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        67        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        82        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        55        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        58        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        69        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        58        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        71        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        58        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -198,7 +198,7 @@ usage: snakemake [-h] [--dry-run] [--profile PROFILE]
                  [--apptainer-args ARGS] [--use-envmodules]
                  [--deploy-sources QUERY CHECKSUM]
                  [--target-jobs TARGET_JOBS [TARGET_JOBS ...]]
-                 [--mode {remote,default,subprocess}]
+                 [--mode {subprocess,default,remote}]
                  [--scheduler-solver-path SCHEDULER_SOLVER_PATH]
                  [--max-jobs-per-second MAX_JOBS_PER_SECOND]
                  [--report-html-path VALUE]
@@ -219,44 +219,45 @@ EXECUTION:
   targets               Targets to build. May be rules or files.
   --dry-run, --dryrun, -n
                         Do not execute anything, and display what would be
-                        done. If you have a very large workflow, use --dry-run
-                        --quiet to just print a summary of the DAG of jobs.
-                        (default: False)
+                        done. If you have a very large workflow, use `--dry-
+                        run --quiet` to just print a summary of the DAG of
+                        jobs. (default: False)
   --profile PROFILE     Profile to use for configuring the Snakemake run with
                         settings regarding the compute environment. Every key
                         in this YAML file gets parsed into the respective
-                        command line argument: executor: slurm gets parsed to
-                        --executor slurm, default-resources: mem_mb: 16000 is
-                        interpreted as --default-resources mem_mb=16000, etc.
-                        You can specify a Snakemake profile as (i) a profile
-                        name, (ii) a relative path to a folder or (iii) the
-                        relative path to the profile YAML file itself.
-                        Snakemake will look for a folder with the profile name
-                        or the existence of the relative path in
-                        /etc/xdg/snakemake, /root/.config/snakemake and the
-                        current working directory. Alternatively, you can also
-                        specify absolute paths. If a profile name or folder is
-                        given, it has to contain a file profile.yaml (or a
-                        config.yaml file, for backwards compatibility). This
+                        command line argument: `executor: slurm` gets parsed
+                        to `--executor slurm`, `default-resources: mem_mb:
+                        16000` is interpreted as `--default-resources
+                        mem_mb=16000`, etc. You can specify a Snakemake
+                        profile as (i) a profile name, (ii) a relative path to
+                        a folder or (iii) the relative path to the profile
+                        YAML file itself. Snakemake will look for a folder
+                        with the profile name or the existence of the relative
+                        path in `/etc/xdg/snakemake`,
+                        `/root/.config/snakemake` and the current working
+                        directory. Alternatively, you can also specify
+                        absolute paths. If a profile name or folder is given,
+                        it has to contain a file `profile.yaml` (or a
+                        `config.yaml` file, for backwards compatibility). This
                         file can have an optional infix specifying a minimal
-                        snakemake version (for example profile.v9+.yaml). The
-                        profile can also be set via the environment variable
-                        $SNAKEMAKE_PROFILE. However, once you provide a
-                        profile via the command line argument --profile, this
-                        environment variable is ignored. And to override this
-                        variable without setting another one, provide the
-                        value none to this argument. Finally, you can specify
-                        this argument multiple times. In this case, the
-                        profiles get merged with the later --profile instances
-                        overriding top-level entries in profiles specified
-                        earlier. For example, if the last --profile specifies
-                        the top level default-resources: keyword, all entries
-                        under that keyword from previous --profiles will be
-                        ignored. Similarly, also specifying any of the top-
-                        level keys from your profile as a command line
-                        argument will overwrite this whole top-level key.
-                        Example profiles for certain compute infrastructure
-                        can be obtained at
+                        snakemake version (for example `profile.v9+.yaml`).
+                        The profile can also be set via the environment
+                        variable `$SNAKEMAKE_PROFILE`. However, once you
+                        provide a profile via the command line argument
+                        `--profile`, this environment variable is ignored. And
+                        to override this variable without setting another one,
+                        provide the value `none` to this argument. Finally,
+                        you can specify this argument multiple times. In this
+                        case, the profiles get merged with the later
+                        `--profile` instances overriding top-level entries in
+                        profiles specified earlier. For example, if the last
+                        `--profile` specifies the top level `default-
+                        resources:` keyword, all entries under that keyword
+                        from previous `--profile`s will be ignored. Similarly,
+                        also specifying any of the top-level keys from your
+                        profile as a command line argument will overwrite this
+                        whole top-level key. Example profiles for certain
+                        compute infrastructure can be obtained at
                         https://github.com/snakemake/snakemake-cluster-
                         profiles. [env var: SNAKEMAKE_PROFILE]
   --workflow-profile WORKFLOW_PROFILE
@@ -264,40 +265,42 @@ EXECUTION:
                         parameters specific for this workflow (like
                         resources). For settings specific to the compute
                         environment (for example a specific compute cluster),
-                        use global --profiles. Generally, an entry like set-
-                        resources: a: mem_mb=8 in the YAML file, will become
-                        --set-resources a:mem_mb=8 for the snakemake run. The
-                        profile can be specified as a file name with a full
-                        relative path from the current working directory. In
-                        this case, the YAML profile file can be named
-                        arbitrarily. In all other cases the respective
-                        folder(s) will be searched for a profile.yaml file (or
-                        a config.yaml file, for backwards compatibility). This
-                        file can have an optional infix specifying a minimal
-                        snakemake version (for example profile.v9+.yaml). And
-                        any of the following options will always search
-                        relative to both the current working directory and the
-                        location of the Snakefile: (i) If this option is not
-                        provided, the directory profiles/default/ will be
-                        searched (and used, if a profile is present; override
-                        this implicit usage with --workflow-profile none).
-                        (ii) If a profile name is given, the subdirectory of
-                        that name under profiles/ will be searched. (iii) If a
-                        full relative path is given, this directory will be
+                        use global `--profile`s. Generally, an entry like
+                        `set-resources: a: mem_mb=8` in the YAML file, will
+                        become `--set-resources a:mem_mb=8` for the
+                        `snakemake` run. The profile can be specified as a
+                        file name with a full relative path from the current
+                        working directory. In this case, the YAML profile file
+                        can be named arbitrarily. In all other cases the
+                        respective folder(s) will be searched for a
+                        `profile.yaml` file (or a `config.yaml` file, for
+                        backwards compatibility). This file can have an
+                        optional infix specifying a minimal snakemake version
+                        (for example `profile.v9+.yaml`). And any of the
+                        following options will always search relative to both
+                        the current working directory and the location of the
+                        Snakefile: (i) If this option is not provided, the
+                        directory `profiles/default/` will be searched (and
+                        used, if a profile is present; override this implicit
+                        usage with `--workflow-profile none`). (ii) If a
+                        profile name is given, the subdirectory of that name
+                        under `profiles/` will be searched. (iii) If a full
+                        relative path is given, this directory will be
                         searched. Settings made in the workflow profile will
                         override settings made in the general profile (see
-                        --profile) on a per-key basis. For example, if you
-                        specify default-resources: in the workflow profile,
-                        all default-resources: entries from other profiles
-                        will be ignored; but if you don't specify default-
-                        resources in your workflow profile, default-resources
-                        from other profiles will get passed through.
-                        Similarly, also specifying any of the top-level keys
-                        from your workflow specific profile via command line
-                        arguments will completely overwrite their entries.
+                        `--profile`) on a per-key basis. For example, if you
+                        specify `default-resources:` in the workflow profile,
+                        all `default-resources:` entries from other profiles
+                        will be ignored; but if you don't specify `default-
+                        resources` in your workflow profile, `default-
+                        resources` from other profiles will get passed
+                        through. Similarly, also specifying any of the top-
+                        level keys from your workflow specific profile via
+                        command line arguments will completely overwrite their
+                        entries.
   --cache [RULE ...]    Store output files of given rules in a central cache
                         given by the environment variable
-                        $SNAKEMAKE_OUTPUT_CACHE. Likewise, retrieve output
+                        `$SNAKEMAKE_OUTPUT_CACHE`. Likewise, retrieve output
                         files of the given rules from this cache if they have
                         been created before (by anybody writing to the same
                         cache), instead of actually executing the rules.
@@ -308,13 +311,13 @@ EXECUTION:
                         cache directive, see docs) are cached.
   --snakefile, -s FILE  The workflow definition in form of a snakefile.
                         Usually, you should not need to specify this. By
-                        default, Snakemake will search for Snakefile,
-                        snakefile, workflow/Snakefile, workflow/snakefile
-                        beneath the current working directory, in this order.
-                        Only if you definitely want a different layout, you
-                        need to use this parameter.
+                        default, Snakemake will search for `Snakefile`,
+                        `snakefile`, `workflow/Snakefile`,
+                        `workflow/snakefile` beneath the current working
+                        directory, in this order. Only if you definitely want
+                        a different layout, you need to use this parameter.
   --cores, -c N         Use at most N CPU cores/jobs in parallel. If N is
-                        omitted or all, the limit is set to the number of
+                        omitted or `all`, the limit is set to the number of
                         available CPU cores. In case of cluster/cloud
                         execution, this argument sets the maximum number of
                         cores requested from the cluster or cloud scheduler.
@@ -323,26 +326,27 @@ EXECUTION:
                         info.) This number is available to rules via
                         workflow.cores.
   --jobs, -j N          Use at most N CPU cluster/cloud jobs in parallel. For
-                        local execution this is an alias for --cores (it is
-                        though recommended to use --cores in that case). Note:
-                        Set to unlimited to allow any number of parallel jobs.
+                        local execution this is an alias for `--cores` (it is
+                        though recommended to use `--cores` in that case).
+                        Note: Set to `unlimited` to allow any number of
+                        parallel jobs.
   --local-cores N       In cluster/cloud mode, use at most N cores of the host
                         machine in parallel (default: number of CPU cores of
                         the host). The cores are used to execute local rules.
                         This option is ignored when not in cluster/cloud mode.
   --resources, --res NAME=INT [NAME=INT ...]
                         Define additional resources that shall constrain the
-                        scheduling analogously to --cores (see above). A
+                        scheduling analogously to `--cores` (see above). A
                         resource is defined as a name and an integer value.
-                        E.g. --resources mem_mb=1000. Rules can use resources
-                        by defining the resource keyword, e.g. resources:
-                        mem_mb=600. If now two rules require 600 of the
-                        resource mem_mb they won't be run in parallel by the
-                        scheduler. In cluster/cloud mode, this argument will
-                        also constrain the amount of resources requested from
-                        the server. (See https://snakemake.readthedocs.io/en/s
-                        table/snakefiles/rules.html#resources-remote-execution
-                        for more info.) (default: )
+                        E.g. `--resources mem_mb=1000`. Rules can use
+                        resources by defining the resource keyword, e.g.
+                        `resources: mem_mb=600`. If now two rules require 600
+                        of the resource `mem_mb` they won't be run in parallel
+                        by the scheduler. In cluster/cloud mode, this argument
+                        will also constrain the amount of resources requested
+                        from the server. (See https://snakemake.readthedocs.io
+                        /en/stable/snakefiles/rules.html#resources-remote-
+                        execution for more info.) (default: )
   --set-threads RULE=THREADS [RULE=THREADS ...]
                         Overwrite thread usage of rules. This allows to fine-
                         tune workflow parallelization. In particular, this is
@@ -358,7 +362,7 @@ EXECUTION:
                         maximum. This can be useful when you want to restrict
                         the maximum number of threads without modifying the
                         workflow definition or overwriting rules individually
-                        with --set-threads.
+                        with `--set-threads`.
   --set-resources RULE:RESOURCE=VALUE [RULE:RESOURCE=VALUE ...]
                         Overwrite resource usage of rules. This allows to
                         fine-tune workflow resources. In particular, this is
@@ -379,28 +383,28 @@ EXECUTION:
                         Overwrite resource scopes. A scope determines how a
                         constraint is reckoned in cluster execution. With
                         RESOURCE=local, a constraint applied to RESOURCE using
-                        --resources will be considered the limit for each
+                        `--resources` will be considered the limit for each
                         group submission. With RESOURCE=global, the constraint
                         will apply across all groups cumulatively. By default,
-                        only mem_mb and disk_mb are considered local, all
+                        only `mem_mb` and `disk_mb` are considered local, all
                         other resources are global. This may be modified in
-                        the snakefile using the resource_scopes: directive.
-                        Note that number of threads, specified via --cores, is
-                        always considered local. (See https://snakemake.readth
-                        edocs.io/en/stable/snakefiles/rules.html#resources-
+                        the snakefile using the `resource_scopes:` directive.
+                        Note that number of threads, specified via `--cores`,
+                        is always considered local. (See https://snakemake.rea
+                        dthedocs.io/en/stable/snakefiles/rules.html#resources-
                         remote-execution for more info) (default: )
   --default-resources, --default-res [NAME=INT ...]
                         Define default values of resources for rules that do
                         not define their own values. In addition to plain
                         integers, python expressions over inputsize are
-                        allowed (e.g. 2*input.size_mb). The inputsize is the
+                        allowed (e.g. `2*input.size_mb`). The inputsize is the
                         sum of the sizes of all input files of a rule. By
                         default, Snakemake assumes a default for mem_mb,
                         disk_mb, and tmpdir (see below). This option allows to
                         add further defaults (e.g. account and partition for
                         slurm) or to overwrite these default values. The
-                        defaults are mem_mb=min(max(2*input.size_mb, 1000),
-                        8000), disk_mb=max(2*input.size_mb, 1000) (i.e.,
+                        defaults are `mem_mb=min(max(2*input.size_mb, 1000),
+                        8000)`, `disk_mb=max(2*input.size_mb, 1000)` (i.e.,
                         default disk and mem usage is twice the input file
                         size but at least 1GB), and the system temporary
                         directory (as given by $TMPDIR, $TEMP, or $TMP) is
@@ -443,9 +447,10 @@ EXECUTION:
                         Set or overwrite values in the workflow config object.
                         The workflow config object is accessible as variable
                         config inside the workflow. Default values can be set
-                        by providing a YAML JSON file (see --configfile and
+                        by providing a YAML JSON file (see `--configfile` and
                         Documentation). Nested values must be defined in
-                        Python dict format, e.g., --config "foo={'bar': 42}".
+                        Python dict format, e.g., `--config "foo={'bar':
+                        42}"`.
   --replace-workflow-config
                         Config files provided via command line do not update
                         and extend the config dictionary of the workflow but
@@ -464,10 +469,10 @@ EXECUTION:
                         that this will only touch files that would otherwise
                         be recreated by Snakemake (e.g. because their input
                         files are newer). For enforcing a touch, combine this
-                        with --force, --forceall, or --forcerun. Note however
-                        that you lose the provenance information when the
-                        files have been created in reality. Hence, this should
-                        be used only as a last resort. (default: False)
+                        with `--force`, `--forceall`, or `--forcerun`. Note
+                        however that you lose the provenance information when
+                        the files have been created in reality. Hence, this
+                        should be used only as a last resort. (default: False)
   --keep-going, -k      Go on with independent jobs if a job fails during
                         execution. This only applies to runtime failures in
                         job execution, not to errors during workflow parsing
@@ -478,7 +483,7 @@ EXECUTION:
                         results are consistent with the workflow code and
                         configuration. If you rather prefer the traditional
                         way of just considering file modification dates, use
-                        --rerun-trigger mtime. (default: code input mtime
+                        `--rerun-trigger mtime`. (default: code input mtime
                         params software-env)
   --force, -f           Force the execution of the selected target or the
                         first rule regardless of already created output.
@@ -531,9 +536,9 @@ EXECUTION:
   --rerun-incomplete, --ri
                         Re-run all jobs the output of which is recognized as
                         incomplete. (default: False)
-  --shadow-prefix DIR   Specify a directory in which the shadow directory is
+  --shadow-prefix DIR   Specify a directory in which the `shadow` directory is
                         created. If not supplied, the value is set to the
-                        .snakemake directory relative to the working
+                        `.snakemake` directory relative to the working
                         directory.
   --strict-dag-evaluation {cyclic-graph,functions,periodic-wildcards} [{cyclic-graph,functions,periodic-wildcards} ...]
                         Strict evaluation of rules' correctness even when not
@@ -556,9 +561,9 @@ EXECUTION:
   --dag [{dot,mermaid-js}]
                         Do not execute anything and print the directed acyclic
                         graph of jobs in the dot language or in mermaid-js.
-                        Recommended use on Unix systems: snakemake --dag | dot
-                        | display. Note print statements in your Snakefile may
-                        interfere with visualization.
+                        Recommended use on Unix systems: `snakemake --dag |
+                        dot | display`. Note print statements in your
+                        Snakefile may interfere with visualization.
 
 GROUPING:
   --groups GROUPS [GROUPS ...]
@@ -577,14 +582,14 @@ REPORTS:
   --report [FILE]       Create a self-contained HTML report with default
                         statistics, provenance information and user-specified
                         results. For smaller datasets with a limited report
-                        complexity, you can specify an .html file and all
+                        complexity, you can specify an `.html` file and all
                         results will be embedded directly into this file. For
                         customized reports on larger sample sizes, it makes
-                        more sense to specify a .zip file. The resulting
+                        more sense to specify a `.zip` file. The resulting
                         archive will spread the contents across a folder
                         structure, for a quicker loading of individual
                         results. You can unpack this archive anywhere and open
-                        the report.html file in its main folder to view the
+                        the `report.html` file in its main folder to view the
                         report in any web browser.
   --report-after-run    After finishing the workflow, directly create the
                         report. It is required to provide --report. (default:
@@ -601,7 +606,7 @@ REPORTS:
   --reporter PLUGIN     Specify a custom report plugin. By default,
                         Snakemake's builtin html reporter will be used. For
                         custom reporters, check out their command line options
-                        starting with --report-.
+                        starting with `--report-`.
 
 NOTEBOOKS:
   --draft-notebook TARGET
@@ -616,15 +621,15 @@ NOTEBOOKS:
                         rule used to generate the given target file. This will
                         start a local jupyter notebook server. Any changes to
                         the notebook should be saved, and the server has to be
-                        stopped by closing the notebook and hitting the Quit
+                        stopped by closing the notebook and hitting the `Quit`
                         button on the jupyter dashboard. Afterwards, the
                         updated notebook will be automatically stored in the
                         path defined in the rule. If the notebook is not yet
                         present, this will create an empty draft.
   --notebook-listen IP:PORT
                         The IP address and PORT the notebook server used for
-                        editing the notebook (--edit-notebook) will listen on.
-                        (default: localhost:8888)
+                        editing the notebook (`--edit-notebook`) will listen
+                        on. (default: localhost:8888)
 
 UTILITIES:
   --lint [{text,json}]  Perform linting on the given workflow. This will print
@@ -638,8 +643,8 @@ UTILITIES:
                         are already present. Jobs without present input files
                         will be skipped (a warning will be issued). For each
                         rule, one test case will be created and, after
-                        successful execution, tests can be run with pytest
-                        TESTPATH.
+                        successful execution, tests can be run with `pytest
+                        TESTPATH`.
   --containerize [{dockerfile,apptainer}]
                         Print a container definition that provides an
                         execution environment for the workflow, including all
@@ -661,7 +666,7 @@ UTILITIES:
                         cyclic if a rule appears in several steps of the
                         workflow. Use this if above option leads to a DAG that
                         is too large. Recommended use on Unix systems:
-                        snakemake --rulegraph | dot | display. Note print
+                        snakemake `--rulegraph | dot | display`. Note print
                         statements in your Snakefile may interfere with
                         visualization.
   --filegraph           Do not execute anything and print the dependency graph
@@ -732,7 +737,7 @@ UTILITIES:
                         files have changed in the Snakefile (e.g. new input
                         files were added in the rule definition or files were
                         renamed). For listing input file modification in the
-                        filesystem, use --summary. (default: False)
+                        filesystem, use `--summary`. (default: False)
   --list-params-changes, --lp
                         List all output files for which the defined params
                         have changed in the Snakefile. (default: False)
@@ -742,20 +747,21 @@ UTILITIES:
                         identifying leftover files. Hidden files and
                         directories are ignored. (default: False)
   --delete-all-output   Remove all files generated by the workflow. Use
-                        together with --dry-run to list files without actually
-                        deleting anything. Note that this will not recurse
-                        into subworkflows. Write-protected files are not
-                        removed. Nevertheless, use with care! (default: False)
+                        together with `--dry-run` to list files without
+                        actually deleting anything. Note that this will not
+                        recurse into subworkflows. Write-protected files are
+                        not removed. Nevertheless, use with care! (default:
+                        False)
   --delete-temp-output  Remove all temporary files generated by the workflow.
-                        Use together with --dry-run to list files without
+                        Use together with `--dry-run` to list files without
                         actually deleting anything. Note that this will not
                         recurse into subworkflows. (default: False)
   --keep-incomplete     Do not remove incomplete output files by failed jobs.
                         (default: False)
   --drop-metadata       Drop metadata file tracking information after job
                         finishes. Provenance-information based reports (e.g.
-                        --report and the --list_x_changes functions) will be
-                        empty or incomplete. (default: False)
+                        `--report` and the `--list_x_changes` functions) will
+                        be empty or incomplete. (default: False)
   --version, -v         show program's version number and exit
 
 OUTPUT:
@@ -768,7 +774,7 @@ OUTPUT:
   --quiet, -q [{all,host,progress,reason,rules} ...]
                         Do not output certain information. If used without
                         arguments, do not output any progress or rule
-                        information. Defining all results in no information
+                        information. Defining `all` results in no information
                         being printed at all.
   --print-compilation   Print the python representation of the workflow.
                         (default: False)
@@ -819,12 +825,12 @@ BEHAVIOR:
                         when downloading remote storage files. If not set, no
                         waiting is performed.
   --wait-for-files [FILE ...]
-                        Wait --latency-wait seconds for these files to be
+                        Wait `--latency-wait` seconds for these files to be
                         present before executing the workflow. This option is
                         used internally to handle filesystem latency in
                         cluster environments.
   --wait-for-files-file FILE
-                        Same behaviour as --wait-for-files, but file list is
+                        Same behaviour as `--wait-for-files`, but file list is
                         stored in file instead of being passed on the
                         commandline. This is useful when the list of files is
                         too long to be passed on the commandline. Meant for
@@ -880,14 +886,15 @@ BEHAVIOR:
   --wrapper-prefix WRAPPER_PREFIX
                         URL prefix for wrapper directive. Set this to use your
                         fork or a local clone of the repository, e.g., use a
-                        git URL like git+file://path/to/your/local/clone@.
+                        git URL like `git+file://path/to/your/local/clone@`.
   --default-storage-provider DEFAULT_STORAGE_PROVIDER
                         Specify default storage provider to be used for all
                         input and output files that don't yet specify one
-                        (e.g. s3). See https://snakemake.github.io/snakemake-
-                        plugin-catalog for available storage provider plugins.
-                        If not set or explicitly none, no default storage
-                        provider will be used.
+                        (e.g. `s3`). See
+                        https://snakemake.github.io/snakemake-plugin-catalog
+                        for available storage provider plugins. If not set or
+                        explicitly `none`, no default storage provider will be
+                        used.
   --default-storage-prefix DEFAULT_STORAGE_PREFIX
                         Specify prefix for default storage provider. E.g. a
                         bucket name.
@@ -905,26 +912,26 @@ BEHAVIOR:
   --shared-fs-usage {input-output,persistence,software-deployment,software-deployment-cache,source-cache,sources,storage-local-copies,none} [{input-output,persistence,software-deployment,software-deployment-cache,source-cache,sources,storage-local-copies,none} ...]
                         Set assumptions on shared filesystem for non-local
                         workflow execution. To disable any sharing via the
-                        filesystem, specify none. Usually, the executor plugin
-                        sets this to a correct default. However, sometimes it
-                        is worth tuning this setting, e.g. for optimizing
-                        cluster performance. For example, when using
-                        --default-storage-provider fs together with a cluster
-                        executor like slurm, you might want to set --shared-
-                        fs-usage persistence software-deployment sources
-                        source-cache, such that software deployment and data
-                        provenance will be handled by NFS but input and output
-                        files will be handled exclusively by the storage
-                        provider. (default: input-output persistence software-
-                        deployment software-deployment-cache source-cache
-                        sources storage-local-copies)
+                        filesystem, specify `none`. Usually, the executor
+                        plugin sets this to a correct default. However,
+                        sometimes it is worth tuning this setting, e.g. for
+                        optimizing cluster performance. For example, when
+                        using `--default-storage-provider fs` together with a
+                        cluster executor like slurm, you might want to set
+                        `--shared-fs-usage persistence software-deployment
+                        sources source-cache`, such that software deployment
+                        and data provenance will be handled by NFS but input
+                        and output files will be handled exclusively by the
+                        storage provider. (default: input-output persistence
+                        software-deployment software-deployment-cache source-
+                        cache sources storage-local-copies)
   --scheduler-greediness, --greediness SCHEDULER_GREEDINESS
                         Set the greediness of scheduling. This value between 0
                         and 1 determines how careful jobs are selected for
                         execution. The default value (1.0) provides the best
                         speed and still acceptable scheduling quality.
-                        Deprecated in favor of --scheduler-greedy-greediness.
-                        (default: 1.0)
+                        Deprecated in favor of `--scheduler-greedy-
+                        greediness`. (default: 1.0)
   --scheduler-subsample SCHEDULER_SUBSAMPLE
                         Set the number of jobs to be considered for
                         scheduling. If number of ready jobs is greater than
@@ -950,8 +957,8 @@ BEHAVIOR:
   --logger {} [{} ...]  Specify one or more custom loggers, available via
                         logger plugins. (default: )
   --job-deploy-sources  Whether the workflow sources shall be deployed before
-                        a remote job is started. Only applies if --no-shared-
-                        fs is set or executors are used that imply no shared
+                        a remote job is started. Only applies if `--no-shared-
+                        fs` is set or executors are used that imply no shared
                         FS (e.g. the kubernetes executor). (default: False)
   --benchmark-extended  Write extended benchmarking metrics. (default: False)
   --persistence-backend {db,file}
@@ -981,25 +988,25 @@ REMOTE EXECUTION:
                         Immediately submit all jobs to the cluster instead of
                         waiting for present input files. This will fail,
                         unless you make the cluster aware of job dependencies,
-                        e.g. via: $ snakemake --cluster 'sbatch --dependency
-                        {dependencies}'. Assuming that your submit script
+                        e.g. via: `$ snakemake --cluster 'sbatch --dependency
+                        {dependencies}'`. Assuming that your submit script
                         (here sbatch) outputs the generated job id to the
                         first stdout line, {dependencies} will be filled with
                         space separated job ids this job depends on. Does not
                         work for workflows that contain checkpoint rules, and
                         localrules will be skipped. The additional argument
-                        --notemp should be specified. Most often, --not-
-                        retrieve-storage is also recommended to avoid
+                        `--notemp` should be specified. Most often, `--not-
+                        retrieve-storage` is also recommended to avoid
                         Snakemake trying to download output files before the
                         jobs producing them are executed. (default: False)
   --jobscript, --js SCRIPT
                         Provide a custom job script for submission to the
-                        cluster. The default script resides as jobscript.sh in
-                        the installation directory.
+                        cluster. The default script resides as `jobscript.sh`
+                        in the installation directory.
   --jobname, --jn NAME  Provide a custom name for the jobscript that is
-                        submitted to the cluster (see --cluster). The wildcard
-                        {jobid} has to be present in the name. (default:
-                        snakejob.{name}.{jobid}.sh)
+                        submitted to the cluster (see `--cluster`). The
+                        wildcard `{jobid}` has to be present in the name.
+                        (default: snakejob.{name}.{jobid}.sh)
 
 SOFTWARE DEPLOYMENT:
   --software-deployment-method, --deployment-method, --deployment, --sdm {apptainer,conda,env-modules} [{apptainer,conda,env-modules} ...]
@@ -1017,14 +1024,14 @@ CONDA:
                         when using conda environments. (default: False)
   --list-conda-envs     List all conda environments and their location on
                         disk. (default: False)
-  --conda-prefix DIR    Specify a directory in which the conda and conda-
-                        archive directories are created. These are used to
+  --conda-prefix DIR    Specify a directory in which the `conda` and `conda-
+                        archive` directories are created. These are used to
                         store conda environments and their archives,
                         respectively. If not supplied, the value is set to the
-                        .snakemake directory relative to the invocation
-                        directory. If supplied, the --use-conda flag must also
-                        be set. The value may be given as a relative path,
-                        which will be extrapolated to the invocation
+                        `.snakemake` directory relative to the invocation
+                        directory. If supplied, the `--use-conda` flag must
+                        also be set. The value may be given as a relative
+                        path, which will be extrapolated to the invocation
                         directory, or as an absolute path. The value can also
                         be provided via the environment variable
                         $SNAKEMAKE_CONDA_PREFIX. In any case, the prefix may
@@ -1032,17 +1039,17 @@ CONDA:
                         expanded. Note that if you use remote execution e.g.
                         on a cluster and you have node specific values for
                         this, you should disable assuming shared fs for
-                        software-deployment (see --shared-fs-usage).
+                        software-deployment (see `--shared-fs-usage`).
   --conda-cleanup-envs  Cleanup unused conda environments. (default: False)
   --conda-cleanup-pkgs [{tarballs,cache}]
                         Cleanup conda packages after creating environments. In
-                        case of tarballs mode, will clean up all downloaded
-                        package tarballs. In case of cache mode, will
+                        case of `tarballs` mode, will clean up all downloaded
+                        package tarballs. In case of `cache` mode, will
                         additionally clean up unused package caches. (default:
                         tarballs)
   --conda-create-envs-only
                         If specified, only creates the job-specific conda
-                        environments then exits. The --use-conda flag must
+                        environments then exits. The `--use-conda` flag must
                         also be set. (default: False)
   --conda-frontend {conda,mamba}
                         Choose the conda frontend for installing environments.
@@ -1057,25 +1064,26 @@ APPTAINER/SINGULARITY:
   --apptainer-prefix, --singularity-prefix DIR
                         Specify a directory in which apptainer/singularity
                         images will be stored.If not supplied, the value is
-                        set to the .snakemake directory relative to the
-                        invocation directory. If supplied, the --use-apptainer
-                        flag must also be set. The value may be given as a
-                        relative path, which will be extrapolated to the
-                        invocation directory, or as an absolute path. If not
-                        supplied, APPTAINER_CACHEDIR is used. In any case, the
-                        prefix may contain environment variables which will be
-                        properly expanded. Note that if you use remote
-                        execution e.g. on a cluster and you have node specific
-                        values for this, you should disable assuming shared fs
-                        for software-deployment (see --shared-fs-usage).
+                        set to the `.snakemake` directory relative to the
+                        invocation directory. If supplied, the `--use-
+                        apptainer` flag must also be set. The value may be
+                        given as a relative path, which will be extrapolated
+                        to the invocation directory, or as an absolute path.
+                        If not supplied, APPTAINER_CACHEDIR is used. In any
+                        case, the prefix may contain environment variables
+                        which will be properly expanded. Note that if you use
+                        remote execution e.g. on a cluster and you have node
+                        specific values for this, you should disable assuming
+                        shared fs for software-deployment (see `--shared-fs-
+                        usage`).
   --apptainer-args, --singularity-args ARGS
                         Pass additional args to apptainer/singularity.
 
 ENVIRONMENT MODULES:
   --use-envmodules      If defined in the rule, run job within the given
                         environment modules, loaded in the given order. This
-                        can be combined with --use-conda and --use-
-                        singularity, which will then be only used as a
+                        can be combined with `--use-conda` and `--use-
+                        singularity`, which will then be only used as a
                         fallback for rules which don't define environment
                         modules. (default: False)
 
@@ -1088,7 +1096,7 @@ INTERNAL:
   --target-jobs TARGET_JOBS [TARGET_JOBS ...]
                         Internal use only: Target particular jobs by
                         RULE:WILDCARD1=VALUE,WILDCARD2=VALUE,...
-  --mode {remote,default,subprocess}
+  --mode {subprocess,default,remote}
                         Internal use only: Set execution mode of Snakemake.
                         (default: default)
   --scheduler-solver-path SCHEDULER_SOLVER_PATH
@@ -1099,8 +1107,8 @@ INTERNAL:
 DEPRECATED:
   --max-jobs-per-second MAX_JOBS_PER_SECOND
                         Maximal number of job submissions/executions per
-                        second. Deprecated in favor of --max-jobs-per-
-                        timespan.
+                        second. Deprecated in favor of `--max-jobs-per-
+                        timespan`.
 
 html report plugin settings:
   --report-html-path VALUE

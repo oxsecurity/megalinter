@@ -3,10 +3,21 @@
 Use gherkin-lint to check Gherkin files
 """
 
-from megalinter import Linter
+from megalinter import Linter, utils
+from megalinter.sarif_builder import (
+    LEVEL_ERROR,
+    SarifBuilder,
+    SarifResultBuilder,
+    SarifRunBuilder,
+    to_one_based,
+    to_sarif_uri,
+)
 
 
 class GherkinLintLinter(Linter):
+    def convert_output_to_sarif(self, return_stdout):
+        return gherkin_lint_json_to_sarif(return_stdout, self.workspace)
+
     # Forward excluded directories through --ignore, which overrides the
     # .gherkin-lintignore file: its patterns are merged in. Without that file,
     # gherkin-lint ignores node_modules/** by default, which --ignore replaces
@@ -36,3 +47,27 @@ class GherkinLintLinter(Linter):
             f"(disable with {self.name}_FORWARD_EXCLUDED_DIRECTORIES: false)"
         )
         return cmd
+
+
+# gherkin-lint prints its JSON array on stderr, with the absolute path of each file.
+# The line is a string for some of the errors
+def gherkin_lint_json_to_sarif(stdout, workspace=None):
+    run = SarifRunBuilder().init_simple(
+        "gherkin-lint", url="https://github.com/gherkin-lint/gherkin-lint"
+    )
+    for files in utils.find_json_values(stdout, list):
+        for file_result in files:
+            if not isinstance(file_result, dict) or "filePath" not in file_result:
+                continue
+            for error in file_result.get("errors", []):
+                line = str(error.get("line", ""))
+                run.add_result(
+                    SarifResultBuilder().init_simple(
+                        LEVEL_ERROR,
+                        error.get("message"),
+                        error.get("rule") or "gherkin-lint",
+                        file_uri=to_sarif_uri(file_result["filePath"], workspace),
+                        start_line=to_one_based(int(line)) if line.isdigit() else None,
+                    )
+                )
+    return SarifBuilder().add_run(run)

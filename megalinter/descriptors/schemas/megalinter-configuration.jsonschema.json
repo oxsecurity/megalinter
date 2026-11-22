@@ -459,6 +459,7 @@
         "SPELL_LYCHEE",
         "SPELL_MISSPELL",
         "SPELL_PROSELINT",
+        "SPELL_TYPOS",
         "SPELL_VALE",
         "SQL_SQLFLUFF",
         "SQL_SQL_LINT",
@@ -20627,6 +20628,15 @@
       "x-order": 910050,
       "x-section": "MISC"
     },
+    "NATIVE_LINTER_CACHE": {
+      "default": true,
+      "description": "Native mode: let the linters that have their own cache of results (eslint, prettier, stylelint, cspell) keep it between runs, in MEGALINTER_HOME, so they analyze again only the files that changed. Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_CACHE: false for one linter",
+      "title": "Native mode linter caches",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 910080,
+      "x-section": "MISC"
+    },
     "NATIVE_MISSING_LINTERS": {
       "default": "install",
       "description": "Native mode: what to do with a linter listed in NATIVE_LINTERS that is not installed. install: install it, skip: skip it, fail: stop with an error",
@@ -20653,6 +20663,15 @@
       "type": "boolean",
       "x-category": "GENERAL",
       "x-order": 910070,
+      "x-section": "MISC"
+    },
+    "NATIVE_RESULTS_CACHE": {
+      "default": true,
+      "description": "Native mode: the files that a linter found without any problem are not linted again by the next runs while they, the linter and its configuration stay the same (for the linters whose result on a file depends only on its content). Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_RESULTS_CACHE: false for one linter",
+      "title": "Native mode results cache",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 910090,
       "x-section": "MISC"
     },
     "NATIVE_SUGGESTIONS": {
@@ -36746,6 +36765,7 @@
       "x-section": "PREPOSTCOMMANDS"
     },
     "SPELL_PROSELINT_ARGUMENTS": {
+      "deprecated": true,
       "description": "SPELL_PROSELINT: User custom arguments to add in linter CLI call",
       "examples:": [
         "--foo",
@@ -36754,7 +36774,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Custom arguments",
+      "title": "(deprecated) SPELL_PROSELINT: Custom arguments",
       "type": [
         "array",
         "string"
@@ -36769,11 +36789,12 @@
           "proselint"
         ]
       ],
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Override CLI executable used to build the linter command line (rarely needed)",
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: CLI Executable",
+      "title": "(deprecated) SPELL_PROSELINT: CLI Executable",
       "type": "array",
       "x-category": "SPELL_PROSELINT",
       "x-order": 200060,
@@ -36781,6 +36802,7 @@
     },
     "SPELL_PROSELINT_CLI_LINT_MODE": {
       "default": "list_of_files",
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Override default CLI lint mode used to call the linter (rarely needed)",
       "enum": [
         "file",
@@ -36792,7 +36814,7 @@
         "List of Files",
         "Project"
       ],
-      "title": "SPELL_PROSELINT: CLI lint mode",
+      "title": "(deprecated) SPELL_PROSELINT: CLI lint mode",
       "type": "string",
       "x-category": "SPELL_PROSELINT",
       "x-doc-key": "config-cli-lint-mode",
@@ -36800,6 +36822,7 @@
       "x-section": "LINTER_COMMAND"
     },
     "SPELL_PROSELINT_COMMAND_REMOVE_ARGUMENTS": {
+      "deprecated": true,
       "description": "SPELL_PROSELINT: User custom arguments to remove before calling linter",
       "examples:": [
         "--foo",
@@ -36808,7 +36831,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Custom remove arguments",
+      "title": "(deprecated) SPELL_PROSELINT: Custom remove arguments",
       "type": [
         "array",
         "string"
@@ -36819,8 +36842,9 @@
     },
     "SPELL_PROSELINT_CONFIG_FILE": {
       "default": ".proselintrc.json",
+      "deprecated": true,
       "description": "SPELL_PROSELINT: User custom config file name if different from default",
-      "title": "SPELL_PROSELINT: Custom config file name",
+      "title": "(deprecated) SPELL_PROSELINT: Custom config file name",
       "type": "string",
       "x-category": "SPELL_PROSELINT",
       "x-order": 200010,
@@ -36828,8 +36852,9 @@
     },
     "SPELL_PROSELINT_DISABLE_ERRORS": {
       "default": false,
+      "deprecated": true,
       "description": "SPELL_PROSELINT: If true, SPELL_PROSELINT doesn't make MegaLinter fail even if errors are found",
-      "title": "SPELL_PROSELINT: Disable errors",
+      "title": "(deprecated) SPELL_PROSELINT: Disable errors",
       "type": "boolean",
       "x-category": "SPELL_PROSELINT",
       "x-order": 400000,
@@ -36837,8 +36862,9 @@
     },
     "SPELL_PROSELINT_DISABLE_ERRORS_IF_LESS_THAN": {
       "default": 0,
+      "deprecated": true,
       "description": "SPELL_PROSELINT: If the number of errors found is less than this value, SPELL_PROSELINT doesn't make MegaLinter fail",
-      "title": "SPELL_PROSELINT: Maximum number of errors allowed",
+      "title": "(deprecated) SPELL_PROSELINT: Maximum number of errors allowed",
       "type": "number",
       "x-category": "SPELL_PROSELINT",
       "x-order": 400010,
@@ -36849,6 +36875,7 @@
         ".md",
         ".txt"
       ],
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Override descriptor/linter matching files extensions that will be used to select files to lint",
       "examples": [
         ".py",
@@ -36857,7 +36884,7 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Matching files extensions",
+      "title": "(deprecated) SPELL_PROSELINT: Matching files extensions",
       "type": "array",
       "x-category": "SPELL_PROSELINT",
       "x-order": 300020,
@@ -36865,6 +36892,7 @@
     },
     "SPELL_PROSELINT_FILE_NAMES_REGEX": {
       "default": [],
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Override descriptor/linter matching file name regexes that will be used to select files to lint",
       "examples": [
         "Dockerfile(-.+)?",
@@ -36873,18 +36901,19 @@
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Matching file name regexes",
+      "title": "(deprecated) SPELL_PROSELINT: Matching file name regexes",
       "type": "array",
       "x-category": "SPELL_PROSELINT",
       "x-order": 300030,
       "x-section": "SCOPE"
     },
     "SPELL_PROSELINT_FILTER_REGEX_EXCLUDE": {
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_PROSELINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Excluding Regex",
+      "title": "(deprecated) SPELL_PROSELINT: Excluding Regex",
       "type": [
         "string",
         "array"
@@ -36895,11 +36924,12 @@
       "x-section": "SCOPE"
     },
     "SPELL_PROSELINT_FILTER_REGEX_INCLUDE": {
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_PROSELINT_CLI_LINT_MODE = project",
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Including Regex",
+      "title": "(deprecated) SPELL_PROSELINT: Including Regex",
       "type": [
         "string",
         "array"
@@ -36911,15 +36941,16 @@
     },
     "SPELL_PROSELINT_FORWARD_EXCLUDED_DIRECTORIES": {
       "default": true,
+      "deprecated": true,
       "description": "SPELL_PROSELINT: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
-      "title": "SPELL_PROSELINT: Forward excluded directories in project lint mode",
+      "title": "(deprecated) SPELL_PROSELINT: Forward excluded directories in project lint mode",
       "type": "boolean",
       "x-category": "SPELL_PROSELINT",
       "x-order": 900999,
       "x-section": "GENERAL"
     },
     "SPELL_PROSELINT_POST_COMMANDS": {
-      "description": "SPELL_PROSELINT: Define bash commands to run after running SPELL_PROSELINT",
+      "description": "(deprecated) SPELL_PROSELINT: Define bash commands to run after running SPELL_PROSELINT",
       "examples": [
         [
           {
@@ -36939,7 +36970,7 @@
       "x-section": "PREPOSTCOMMANDS"
     },
     "SPELL_PROSELINT_PRE_COMMANDS": {
-      "description": "SPELL_PROSELINT: Define bash commands to run before running SPELL_PROSELINT",
+      "description": "(deprecated) SPELL_PROSELINT: Define bash commands to run before running SPELL_PROSELINT",
       "examples": [
         [
           {
@@ -36959,20 +36990,22 @@
       "x-section": "PREPOSTCOMMANDS"
     },
     "SPELL_PROSELINT_RULES_PATH": {
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Path where to find linter configuration file",
-      "title": "SPELL_PROSELINT: Custom config file path",
+      "title": "(deprecated) SPELL_PROSELINT: Custom config file path",
       "type": "string",
       "x-category": "SPELL_PROSELINT",
       "x-order": 200040,
       "x-section": "LINTER_COMMAND"
     },
     "SPELL_PROSELINT_TIMEOUT_SECONDS": {
+      "deprecated": true,
       "description": "SPELL_PROSELINT: Maximum duration in seconds of the SPELL_PROSELINT run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
       "examples": [
         3600,
         0
       ],
-      "title": "SPELL_PROSELINT: Timeout in seconds",
+      "title": "(deprecated) SPELL_PROSELINT: Timeout in seconds",
       "type": "integer",
       "x-category": "SPELL_PROSELINT",
       "x-order": 900999,
@@ -36980,13 +37013,257 @@
     },
     "SPELL_PROSELINT_UNSECURED_ENV_VARIABLES": {
       "default": [],
+      "deprecated": true,
       "description": "List of env variables explicitly not filtered before calling SPELL_PROSELINT and its pre/post commands",
       "items": {
         "type": "string"
       },
-      "title": "SPELL_PROSELINT: Unsecured env variables",
+      "title": "(deprecated) SPELL_PROSELINT: Unsecured env variables",
       "type": "array",
       "x-category": "SPELL_PROSELINT",
+      "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
+      "x-order": 600000,
+      "x-section": "SECURITY"
+    },
+    "SPELL_TYPOS_ARGUMENTS": {
+      "description": "SPELL_TYPOS: User custom arguments to add in linter CLI call",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Custom arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "SPELL_TYPOS",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_TYPOS_CLI_EXECUTABLE": {
+      "default": [
+        [
+          "typos"
+        ]
+      ],
+      "description": "SPELL_TYPOS: Override CLI executable used to build the linter command line (rarely needed)",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: CLI Executable",
+      "type": "array",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 200060,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_TYPOS_CLI_LINT_MODE": {
+      "default": "list_of_files",
+      "description": "SPELL_TYPOS: Override default CLI lint mode used to call the linter (rarely needed)",
+      "enum": [
+        "file",
+        "list_of_files",
+        "project"
+      ],
+      "enumNames": [
+        "File",
+        "List of Files",
+        "Project"
+      ],
+      "title": "SPELL_TYPOS: CLI lint mode",
+      "type": "string",
+      "x-category": "SPELL_TYPOS",
+      "x-doc-key": "config-cli-lint-mode",
+      "x-order": 200050,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_TYPOS_COMMAND_REMOVE_ARGUMENTS": {
+      "description": "SPELL_TYPOS: User custom arguments to remove before calling linter",
+      "examples:": [
+        "--foo",
+        "bar"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Custom remove arguments",
+      "type": [
+        "array",
+        "string"
+      ],
+      "x-category": "SPELL_TYPOS",
+      "x-order": 200020,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_TYPOS_CONFIG_FILE": {
+      "default": "typos.toml",
+      "description": "SPELL_TYPOS: User custom config file name if different from default",
+      "title": "SPELL_TYPOS: Custom config file name",
+      "type": "string",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 200010,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_TYPOS_DISABLE_ERRORS": {
+      "default": false,
+      "description": "SPELL_TYPOS: If true, SPELL_TYPOS doesn't make MegaLinter fail even if errors are found",
+      "title": "SPELL_TYPOS: Disable errors",
+      "type": "boolean",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 400000,
+      "x-section": "ERRORS"
+    },
+    "SPELL_TYPOS_DISABLE_ERRORS_IF_LESS_THAN": {
+      "default": 0,
+      "description": "SPELL_TYPOS: If the number of errors found is less than this value, SPELL_TYPOS doesn't make MegaLinter fail",
+      "title": "SPELL_TYPOS: Maximum number of errors allowed",
+      "type": "number",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 400010,
+      "x-section": "ERRORS"
+    },
+    "SPELL_TYPOS_FILE_EXTENSIONS": {
+      "default": [],
+      "description": "SPELL_TYPOS: Override descriptor/linter matching files extensions that will be used to select files to lint",
+      "examples": [
+        ".py",
+        ".myext"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Matching files extensions",
+      "type": "array",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 300020,
+      "x-section": "SCOPE"
+    },
+    "SPELL_TYPOS_FILE_NAMES_REGEX": {
+      "default": [],
+      "description": "SPELL_TYPOS: Override descriptor/linter matching file name regexes that will be used to select files to lint",
+      "examples": [
+        "Dockerfile(-.+)?",
+        "Jenkinsfile"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Matching file name regexes",
+      "type": "array",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 300030,
+      "x-section": "SCOPE"
+    },
+    "SPELL_TYPOS_FILTER_REGEX_EXCLUDE": {
+      "description": "SPELL_TYPOS: Custom regex excluding filter: files matching this regex will NOT be linted. \u26a0\ufe0f Not available with SPELL_TYPOS_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Excluding Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "SPELL_TYPOS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300010,
+      "x-section": "SCOPE"
+    },
+    "SPELL_TYPOS_FILTER_REGEX_INCLUDE": {
+      "description": "SPELL_TYPOS: Custom regex including filter: only files matching this regex will be linted. \u26a0\ufe0f Not available with SPELL_TYPOS_CLI_LINT_MODE = project",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Including Regex",
+      "type": [
+        "string",
+        "array"
+      ],
+      "x-category": "SPELL_TYPOS",
+      "x-doc-key": "config-filtering",
+      "x-order": 300000,
+      "x-section": "SCOPE"
+    },
+    "SPELL_TYPOS_FORWARD_EXCLUDED_DIRECTORIES": {
+      "default": true,
+      "description": "SPELL_TYPOS: In project CLI lint mode, forward excluded directories to the linter through its native exclusion arguments or generated ignore/config files",
+      "title": "SPELL_TYPOS: Forward excluded directories in project lint mode",
+      "type": "boolean",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "SPELL_TYPOS_POST_COMMANDS": {
+      "description": "SPELL_TYPOS: Define bash commands to run after running SPELL_TYPOS",
+      "examples": [
+        [
+          {
+            "command": "npm run test",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_TYPOS: Post-run commands",
+      "type": "array",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 500010,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "SPELL_TYPOS_PRE_COMMANDS": {
+      "description": "SPELL_TYPOS: Define bash commands to run before running SPELL_TYPOS",
+      "examples": [
+        [
+          {
+            "command": "tflint --init",
+            "continue_if_failed": false,
+            "cwd": "workspace"
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/command_info"
+      },
+      "title": "SPELL_TYPOS: Pre-run commands",
+      "type": "array",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 500000,
+      "x-section": "PREPOSTCOMMANDS"
+    },
+    "SPELL_TYPOS_RULES_PATH": {
+      "description": "SPELL_TYPOS: Path where to find linter configuration file",
+      "title": "SPELL_TYPOS: Custom config file path",
+      "type": "string",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 200040,
+      "x-section": "LINTER_COMMAND"
+    },
+    "SPELL_TYPOS_TIMEOUT_SECONDS": {
+      "description": "SPELL_TYPOS: Maximum duration in seconds of the SPELL_TYPOS run. When elapsed, the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS (default: 300). Set 0 to disable the timeout",
+      "examples": [
+        3600,
+        0
+      ],
+      "title": "SPELL_TYPOS: Timeout in seconds",
+      "type": "integer",
+      "x-category": "SPELL_TYPOS",
+      "x-order": 900999,
+      "x-section": "GENERAL"
+    },
+    "SPELL_TYPOS_UNSECURED_ENV_VARIABLES": {
+      "default": [],
+      "description": "List of env variables explicitly not filtered before calling SPELL_TYPOS and its pre/post commands",
+      "items": {
+        "type": "string"
+      },
+      "title": "SPELL_TYPOS: Unsecured env variables",
+      "type": "array",
+      "x-category": "SPELL_TYPOS",
       "x-doc-key": "config-variables-security/#unhide-variables-for-linters",
       "x-order": 600000,
       "x-section": "SECURITY"

@@ -117,7 +117,7 @@ In CI, filter tests via commit message body: `TEST_KEYWORDS=python_ruff_test`. U
 
 - Python: PEP 8, use type hints, do NOT use docstrings for classes/methods
 - Do not test if imports work - assume they are always available
-- Place imports at the top of files
+- Place imports at the top of files (one exception: heavy libraries used only by optional features, see `.claude/rules/python-style.md`)
 - Use `megalinter.config.get(request_id, "VAR", default)` for config access, never `os.environ` directly
 - Use `logging` module for output, never `print()`
 - Documentation files must be Zensical-compliant: always have a blank line after headers and before bulleted lists

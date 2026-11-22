@@ -21,6 +21,7 @@ from megalinter.linters.MarkdownlintLinter import markdownlint_json_to_sarif
 from megalinter.linters.PowershellLinter import powershell_json_to_sarif
 from megalinter.linters.PylintLinter import pylint_json2_to_sarif
 from megalinter.linters.StyleLintLinter import stylelint_json_to_sarif
+from megalinter.linters.TyposLinter import typos_output_to_sarif
 from megalinter.linters.YamllintLinter import yamllint_parsable_to_sarif
 from megalinter.sarif_builder import (
     SarifBuilder,
@@ -29,12 +30,16 @@ from megalinter.sarif_builder import (
     SarifRunBuilder,
     to_sarif_uri,
 )
+from megalinter.tests.test_megalinter import sarif_schema
 
 WORKSPACE = os.path.abspath("lint-workspace")
 
 
 def first_run(sarif_builder):
-    return sarif_builder.build_sarif_output()["runs"][0]
+    sarif_content = sarif_builder.build_sarif_output()
+    schema_errors = sarif_schema.list_sarif_schema_errors(sarif_content)
+    assert schema_errors == [], schema_errors
+    return sarif_content["runs"][0]
 
 
 def location(result):
@@ -220,6 +225,27 @@ class ConvertersTest(unittest.TestCase):
         )
         self.assertEqual(location(run["results"][0])["region"], {"startLine": 12})
         self.assertNotIn("region", location(run["results"][2]))
+
+    def test_typos(self):
+        stdout = (
+            '{"type":"typo","path":"docs/a.md","line_num":12,"byte_offset":4,'
+            '"typo":"teh","corrections":["the"]}\n'
+            '{"type":"typo","path":"b.py","line_num":3,"byte_offset":0,'
+            '"typo":"recieve","corrections":["receive","deceive"]}\n'
+            '{"type":"typo","path":"c.txt","line_num":1,"byte_offset":2,'
+            '"typo":"xyzzy","corrections":[]}\n'
+            '{"type":"binary_file","path":"d.bin"}\n'
+        )
+        run = first_run(typos_output_to_sarif(stdout, WORKSPACE))
+        self.assertEqual(len(run["results"]), 3)
+        self.assertEqual(
+            run["results"][1]["message"]["text"],
+            '"recieve" is a typo, should be "receive, deceive"',
+        )
+        self.assertEqual(run["results"][2]["message"]["text"], '"xyzzy" is a typo')
+        self.assertEqual(
+            location(run["results"][0])["region"], {"startLine": 12, "startColumn": 5}
+        )
 
     def test_yamllint(self):
         stdout = (

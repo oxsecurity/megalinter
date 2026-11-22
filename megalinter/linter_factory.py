@@ -27,6 +27,17 @@ def list_all_linters(linters_init_params=None):
     return linters
 
 
+# List the active linters that can not output SARIF, which is mandatory for them
+def list_linters_without_sarif(linters_init_params=None):
+    return [
+        linter
+        for linter in list_all_linters(linters_init_params)
+        if linter.disabled is not True
+        and linter.is_plugin is not True
+        and linter.can_output_sarif is not True
+    ]
+
+
 # List flavor linters
 def list_flavor_linters(linters_init_params=None, flavor_id="all"):
     all_linters = list_all_linters(linters_init_params)

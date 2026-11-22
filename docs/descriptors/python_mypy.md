@@ -11,7 +11,7 @@ description: How to use mypy (configure, ignore files, ignore errors, help & ver
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/python/mypy?sort=semver)](https://github.com/python/mypy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/python/mypy)](https://github.com/python/mypy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/python/mypy)](https://github.com/python/mypy/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/python/mypy?cacheSeconds=3600)](https://github.com/python/mypy) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/python/mypy?sort=semver)](https://github.com/python/mypy/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/python/mypy)](https://github.com/python/mypy/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/python/mypy)](https://github.com/python/mypy/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/python/mypy)](https://github.com/python/mypy/graphs/contributors/)
 
 **MyPy** is Python's premier static type checker that brings optional static typing to Python through gradual typing. It analyzes type annotations and infers types to catch bugs before runtime, bridging the gap between Python's dynamic nature and static analysis benefits.
 
@@ -82,9 +82,9 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                 | Description                                     | Embedded linters |                                                                                                                                                                                       Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       134        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)   | Default MegaLinter Flavor                       |       135        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/) | MegaLinter for the most commonly used languages |       100        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        70        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)   | Optimized for PYTHON based projects             |        71        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
 
 ## Behind the scenes
 
@@ -285,11 +285,11 @@ Miscellaneous strictness flags:
   --no-implicit-reexport    Treat imports as private unless aliased (inverse:
                             --implicit-reexport)
   --strict-equality         Prohibit equality, identity, and container checks
-                            for non-overlapping types (except None) (inverse:
-                            --no-strict-equality)
+                            for non-overlapping types (except `None`)
+                            (inverse: --no-strict-equality)
   --strict-equality-for-none
-                            Extend --strict-equality for None checks (inverse:
-                            --no-strict-equality-for-none)
+                            Extend `--strict-equality` for `None` checks
+                            (inverse: --no-strict-equality-for-none)
   --no-strict-bytes         Treat bytearray and memoryview as subtypes of
                             bytes (inverse: --strict-bytes)
   --extra-checks            Enable additional checks that are technically

@@ -44,12 +44,32 @@ LLM_MODEL_NAME: gpt-4.1-mini      # or gpt-4o-mini, gpt-4o
 ### Advanced Configuration
 
 ```yaml
-# Custom API endpoint (for Azure OpenAI or compatible APIs)
+# Custom API endpoint (proxy, gateway or self-hosted OpenAI-compatible server)
 OPENAI_BASE_URL: https://api.openai.com/v1
 
 # Organization ID (optional)
 OPENAI_ORGANIZATION: org-your-org-id
 ```
+
+### Using an OpenAI-compatible gateway
+
+Any service exposing an OpenAI-compatible `/chat/completions` API (LLM gateways, routers, proxies, self-hosted servers like vLLM or LiteLLM) works with this provider, without a dedicated MegaLinter provider.
+
+Keep `LLM_PROVIDER: openai`, send the gateway's API key as `OPENAI_API_KEY`, and set `OPENAI_BASE_URL` to the gateway URL, including its version segment (usually `/v1`):
+
+```yaml
+LLM_ADVISOR_ENABLED: true
+LLM_PROVIDER: openai
+LLM_MODEL_NAME: gpt-5.6-sol    # any model name exposed by the gateway
+OPENAI_BASE_URL: https://global.api-route.com/v1
+```
+
+Notes:
+
+- `OPENAI_API_KEY` must contain the **gateway's** key, not an OpenAI key
+- `LLM_MODEL_NAME` must be the model identifier expected by the gateway
+- The request is sent to `OPENAI_BASE_URL` + `/chat/completions`
+- See [API Endpoint Configuration](../llm-advisor.md#api-endpoint-configuration) for the base URL variables of the other providers
 
 ## Troubleshooting
 

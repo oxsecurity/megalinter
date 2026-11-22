@@ -24,5 +24,30 @@ npx mega-linter-runner --flavor salesforce -e "'ENABLE=DOCKERFILE,MARKDOWN,YAML'
 
 Note: You can also use this command line in your custom CI/CD pipelines.
 
+## How mega-linter-runner and megalinter fit together
+
+Two programs, one job each:
+
+- `mega-linter-runner` (npm, JavaScript) is the launcher you type. It also sets up your repository (`--install`, `--upgrade`).
+- `megalinter` (PyPI, Python) is the engine that lints. It runs inside the Docker image, or, in [native mode](https://megalinter.io/latest/install-native/) (beta), in a verified copy that the runner installs on your machine.
+
+```mermaid
+flowchart LR
+    U(["You, agent skills,<br/>pre-commit, CI wrappers"]) --> R["<b>mega-linter-runner</b><br/>npm, JavaScript<br/>parses the options"]
+    R -->|"default"| D["docker run<br/>MegaLinter image"]
+    D --> E1[["megalinter engine<br/>Python, in the container"]]
+    R -->|"--native, --native-setup,<br/>--install-linters, --doctor..."| N["uv + verification<br/>sha256 and PyPI attestation"]
+    N --> E2[["megalinter engine<br/>Python, in ~/.megalinter"]]
+    R -->|"--install, --upgrade,<br/>--custom-flavor-setup"| G["Configuration generators<br/>JavaScript only"]
+```
+
+| You need                                          | Install                                      | Node.js | Docker | uv  |
+|:--------------------------------------------------|:---------------------------------------------|:-------:|:------:|:---:|
+| Run MegaLinter in a container (default)           | nothing but the runner                       |   yes   |  yes   | no  |
+| Run MegaLinter without Docker (beta)              | the runner downloads and verifies the engine |   yes   |   no   | yes |
+| Create or upgrade `.mega-linter.yml` and CI files | nothing but the runner                       |   yes   |   no   | no  |
+
+You never need to call `megalinter` yourself: the runner translates its options into the engine's arguments and environment variables. A copy installed by hand (`uv tool install megalinter --pre`) is only a shortcut: the runner does not verify it.
+
 
 <!-- install-locally-section-end -->

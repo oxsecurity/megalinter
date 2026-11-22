@@ -650,6 +650,19 @@ def find_sarif_test_workspace(linter, workspace):
         )
     ):
         return bad_workspace
+    # A configuration file that only the bad folder holds (ex: .v8rrc.yml maps the
+    # schemas, pyproject.toml lets pyright analyze the hidden .automation folder)
+    config_files = [
+        file_name
+        for file_name in [linter.config_file_name, "pyproject.toml"]
+        if file_name
+    ]
+    if any(
+        not os.path.isfile(os.path.join(workspace, f))
+        and os.path.isfile(os.path.join(bad_workspace, f))
+        for f in config_files
+    ):
+        return bad_workspace
     return workspace
 
 
@@ -667,6 +680,12 @@ def test_linter_report_sarif(linter, test_self):
     )
     workspace = find_sarif_test_workspace(linter, workspace)
     assert os.path.isdir(workspace), f"Test folder {workspace} is not existing"
+    # A formatter reports its unformatted files as notes, which are not errors: its
+    # SARIF must hold a result, unless its fixtures can not fail (Invoke-Formatter)
+    expects_formatter_results = linter.is_formatter is True and not any(
+        os.path.isfile(os.path.join(folder, "no_test_failure"))
+        for folder in [workspace, os.path.join(workspace, "bad")]
+    )
     # Call linter
     tmp_report_folder = tempfile.gettempdir() + os.path.sep + str(uuid.uuid4())
     env_vars = {
@@ -705,10 +724,16 @@ def test_linter_report_sarif(linter, test_self):
         len(sarif_content["runs"]) > 0,
         f"Empty runs list in {tmp_sarif_file_name}",
     )
+    if expects_formatter_results is True:
+        test_self.assertTrue(
+            any(len(run["results"]) > 0 for run in sarif_content["runs"]),
+            f"No result in the SARIF of the formatter: {str(sarif_content)}",
+        )
     # Check number of errors and warnings is ok
     for linter in mega_linter.linters:
         if (
             linter.output_sarif is True
+            and linter.is_formatter is not True
             and linter.cli_lint_mode != "file"
             and linter.name
             not in [
@@ -726,7 +751,12 @@ def test_linter_report_sarif(linter, test_self):
             # (codes not starting with E), rubocop reports "note" for its convention
             # cops, trufflehog reports "error" only for verified secrets (not
             # checked by the tests, as the fixtures are not real credentials).
-            # clippy lints, dart infos and vale suggestions are not errors
+            # clippy lints, dart infos and vale suggestions are not errors,
+            # nor are the warnings of luacheck, rst-lint and rstcheck. The fixtures of
+            # helm (one chart) and npm-package-json-lint (one package.json) give one
+            # error, and git diff --check finds nothing in the committed fixtures
+            # (they have no_test_failure). ts-standard needs the tsconfig.json of the bad
+            # folder, which the eslint tests of the same folder must not use
             if linter.name not in [
                 "REPOSITORY_BETTERLEAKS",
                 "REPOSITORY_OSV_SCANNER",
@@ -738,6 +768,13 @@ def test_linter_report_sarif(linter, test_self):
                 "RUST_CLIPPY",
                 "DART_DARTANALYZER",
                 "SPELL_VALE",
+                "LUA_LUACHECK",
+                "KUBERNETES_HELM",
+                "JSON_NPM_PACKAGE_JSON_LINT",
+                "RST_RST_LINT",
+                "RST_RSTCHECK",
+                "REPOSITORY_GIT_DIFF",
+                "TYPESCRIPT_STANDARD",
             ]:  # does not report errors
                 test_self.assertTrue(
                     linter.total_number_errors > 1,
@@ -757,6 +794,8 @@ def test_linter_report_sarif(linter, test_self):
                     + f" ({linter.total_number_warnings})\n"
                     + f"SARIF:{str(sarif_content)}",
                 )
+
+    return sarif_content
 
 
 def assert_is_skipped(skipped_item, output, test_self):

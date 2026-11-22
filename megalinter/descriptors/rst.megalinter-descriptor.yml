@@ -9,7 +9,13 @@ file_extensions:
   - ".rst"
 linters:
   # restructuredtext-lint
-  - linter_name: rst-lint
+  - class: RstLintLinter
+    linter_name: rst-lint
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "json"
+    sarif_whole_output: true
     linter_text: |
       **restructuredtext-lint** (rst-lint) is a reStructuredText linter that validates RST syntax and helps prevent frustrating errors when uploading documentation to PyPI. It checks for common reStructuredText issues and provides comprehensive validation for documentation workflows.
 
@@ -74,6 +80,14 @@ linters:
         - linux/arm64
   # rstcheck
   - linter_name: rstcheck
+    can_output_sarif: true
+    sarif_text_regex: '^(?P<path>.+?):(?P<line>\d+): \((?P<severity>[A-Z]+)/\d\) (?P<message>.*)$'
+    sarif_text_levels:
+      "INFO": note
+      "WARNING": warning
+      "ERROR": error
+      "SEVERE": error
+    sarif_whole_output: true
     linter_text: |
       **rstcheck** is a comprehensive reStructuredText checker that validates RST syntax while also checking the validity of code blocks in various programming languages. It goes beyond basic RST syntax to ensure code examples and embedded content are also valid.
 
@@ -172,6 +186,11 @@ linters:
     cli_lint_fix_arg_name: "--megalinter-fix-flag" # Workaround for MegaLinter
     cli_lint_fix_remove_args:
       - "--check"
+    can_output_sarif: true
+    sarif_text_regex: "^(?P<path>.+?) is not correctly formatted!$"
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as rstfmt expects
+    sarif_whole_output: true
     test_folder: rst_rstfmt
     examples:
       - "rstfmt --check myfile.rst"
