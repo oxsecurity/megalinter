@@ -17,7 +17,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.14.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.1
 # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
 ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
 #ARGTOP__END
