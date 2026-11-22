@@ -1773,6 +1773,32 @@
           "native_install": {
             "$ref": "#/definitions/native_install"
           },
+          "native_results_cache": {
+            "additionalProperties": false,
+            "description": "Native mode only: the files the linter found without any problem are not linted again by the next runs while they, the linter, its arguments, its variables and its configuration files stay the same. Declare it only for linters whose result on a file depends only on its content and on the configuration (never on the other files of the repository). config_files lists the configuration files the linter finds by itself, in the folder of a linted file or in one of its parents. Not used in project lint mode or with SARIF output, nor when NATIVE_RESULTS_CACHE (or <LINTER_KEY>_NATIVE_RESULTS_CACHE) is false",
+            "examples": [
+              {
+                "config_files": [
+                  "pyproject.toml"
+                ]
+              }
+            ],
+            "properties": {
+              "config_files": {
+                "description": "Configuration files the linter finds by itself, in the folder of a linted file or in one of its parents up to the workspace root",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "failed_files_in_output": {
+                "description": "true when the linter checks every file even after a problem, and names each file with a problem in its output (by its path): after a run with problems, the files it does not name are recorded as linted without any problem",
+                "type": "boolean"
+              }
+            },
+            "title": "Native results cache",
+            "type": "object"
+          },
           "post_commands": {
             "default": [],
             "description": "Custom bash commands to run after linter",

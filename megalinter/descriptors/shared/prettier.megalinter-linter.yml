@@ -31,6 +31,32 @@ cli_lint_mode_project_exclude_ignore_file_pass_existing:
 cli_lint_mode_project_extra_args_after:
   - .
 cli_lint_fix_arg_name: --write
+native_results_cache:
+  failed_files_in_output: true
+  config_files:
+    - .prettierrc
+    - .prettierrc.json
+    - .prettierrc.yaml
+    - .prettierrc.yml
+    - .prettierrc.json5
+    - .prettierrc.js
+    - .prettierrc.cjs
+    - .prettierrc.mjs
+    - .prettierrc.ts
+    - .prettierrc.cts
+    - .prettierrc.mts
+    - .prettierrc.toml
+    - prettier.config.js
+    - prettier.config.cjs
+    - prettier.config.mjs
+    - prettier.config.ts
+    - prettier.config.cts
+    - prettier.config.mts
+    - package.json
+    - package.yaml
+    - .editorconfig
+    - .prettierignore
+    - .gitignore
 cli_lint_fix_remove_args:
   - --check
 install:

@@ -53,6 +53,7 @@ from megalinter.native.context import (
     is_native_mode,
     megalinter_home,
 )
+from megalinter.native.results_cache import ResultsCache, is_results_cache_enabled
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -163,6 +164,9 @@ class Linter:
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
         # Native mode: arguments enabling the linter's own cache ({{LINTER_CACHE_DIR}})
         self.cli_lint_cache_args = []
+        # Native mode: the files linted without any problem are not linted again while
+        # unchanged ({config_files: [...]}: files the linter finds by itself)
+        self.native_results_cache = None
         self.cli_command_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -1070,6 +1074,14 @@ class Linter:
             self.master, self, run_commands_before_linters
         )
 
+        # Native mode: the files unchanged since they were linted without any problem
+        # are not linted again
+        results_cache = None
+        all_files = self.files
+        if is_results_cache_enabled(self):
+            results_cache = ResultsCache(self)
+            self.files = results_cache.select_files_to_lint(all_files)
+
         # Lint each file one by one
         if self.cli_lint_mode == "file":
             index = 0
@@ -1081,6 +1093,12 @@ class Linter:
                 file_warnings_number = 0
                 file_warnings_number = self.get_total_number_warnings(stdout)
                 self.total_number_warnings += file_warnings_number
+                if (
+                    results_cache is not None
+                    and return_code == 0
+                    and file_warnings_number == 0
+                ):
+                    results_cache.record_success([file])
                 if return_code != 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
@@ -1105,9 +1123,10 @@ class Linter:
             # line builds an invalid command (ex: "checkov --file" with no value
             # after it), and the linter would fail on its own arguments instead
             # of reporting a lint result
-            logging.info(
-                f"{self.name} has no file to lint, so its command has not been run"
-            )
+            if results_cache is None or len(results_cache.unchanged_files) == 0:
+                logging.info(
+                    f"{self.name} has no file to lint, so its command has not been run"
+                )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -1121,9 +1140,24 @@ class Linter:
                 self.total_number_errors += self.get_total_number_errors(stdout)
             elif self.total_number_warnings > 0:
                 self.status = "warning"
+            if results_cache is not None:
+                if return_code == 0 and self.total_number_warnings == 0:
+                    results_cache.record_success(self.files)
+                else:
+                    results_cache.record_files_absent_from_output(self.files, stdout)
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
+
+        if results_cache is not None:
+            self.update_files_lint_results(
+                results_cache.unchanged_files, 0, "success", "", 0, 0
+            )
+            self.files = all_files
+            try:
+                results_cache.save()
+            except OSError as e:
+                logging.warning(f"[Results cache] Unable to save {self.name}: {e}")
 
         self.after_lint_files()
 

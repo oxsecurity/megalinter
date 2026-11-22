@@ -20664,6 +20664,15 @@
       "x-order": 910070,
       "x-section": "MISC"
     },
+    "NATIVE_RESULTS_CACHE": {
+      "default": true,
+      "description": "Native mode: the files that a linter found without any problem are not linted again by the next runs while they, the linter and its configuration stay the same (for the linters whose result on a file depends only on its content). Set to false to disable it for all linters, or <LINTER_KEY>_NATIVE_RESULTS_CACHE: false for one linter",
+      "title": "Native mode results cache",
+      "type": "boolean",
+      "x-category": "GENERAL",
+      "x-order": 910090,
+      "x-section": "MISC"
+    },
     "NATIVE_SUGGESTIONS": {
       "default": true,
       "description": "When MegaLinter runs in Docker and NATIVE_LINTERS is not defined, suggests trying native mode (MegaLinter without Docker) to lint faster on your machine. Set to false to hide the suggestion",

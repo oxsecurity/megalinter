@@ -11,6 +11,15 @@ linters:
   # MarkdownLint
   - class: MarkdownlintLinter
     linter_name: markdownlint
+    native_results_cache:
+      failed_files_in_output: true
+      config_files:
+        - .markdownlint.json
+        - .markdownlint.jsonc
+        - .markdownlint.yaml
+        - .markdownlint.yml
+        - .markdownlintrc
+        - .markdownlintignore
     can_output_sarif: true
     cli_sarif_args:
       - "--json"

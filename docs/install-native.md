@@ -157,6 +157,7 @@ repos:
 | `NATIVE_IGNORE_HOST_RUNTIMES` | `false`         | Ignore the runtimes installed on the host                                |
 | `NATIVE_OFFLINE`              | `false`         | Install only from the local download cache                               |
 | `NATIVE_LINTER_CACHE`         | `true`          | Let eslint, prettier, stylelint and cspell keep their cache between runs |
+| `NATIVE_RESULTS_CACHE`        | `true`          | Do not lint again the unchanged files linted without any problem         |
 | `MEGALINTER_HOME`             | `~/.megalinter` | Where linters, runtimes and downloads are stored                         |
 
 When MegaLinter runs in Docker and your `.mega-linter.yml` has no `NATIVE_LINTERS`, its reports suggest trying native mode. Define `NATIVE_SUGGESTIONS: false` to hide this suggestion.
@@ -165,6 +166,7 @@ When MegaLinter runs in Docker and your `.mega-linter.yml` has no `NATIVE_LINTER
 
 Native mode keeps data between runs that a Docker container loses, so the next runs are faster:
 
+- **Results cache**: the files a linter found without any problem are not linted again while they, the linter, its arguments and its configuration files stay the same. Only for linters whose result on a file depends on nothing else than its content and its configuration: black, flake8, yamllint, markdownlint, jsonlint and prettier. A run that finds problems still caches the files the linter did not report. Disable it with `NATIVE_RESULTS_CACHE: false`, or for one linter with `<LINTER_KEY>_NATIVE_RESULTS_CACHE: false`. Configuration files outside the repository (user-level configuration) are not watched: run `megalinter cache prune` after changing one
 - **Linter caches**: eslint, prettier, stylelint and cspell keep their own cache of results, in `~/.megalinter/cache/linters` (never in your repository), and analyze again only the files that changed. Disable it with `NATIVE_LINTER_CACHE: false`, or for one linter with `<LINTER_KEY>_NATIVE_CACHE: false` (example: `JAVASCRIPT_ES_NATIVE_CACHE: false`). The cache is off for TypeScript eslint (`TYPESCRIPT_ES`, `TSX_ES`), whose type-aware rules make the result of a file depend on other files
 - black uses its own cache too (in your user cache folder)
 - `megalinter cache prune` empties the caches kept in `~/.megalinter`
