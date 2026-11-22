@@ -184,6 +184,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Agent Skills
 
+  - **megalinter-setup** now **offers pre-commit hooks** after setting up native mode: on commit only (recommended), on commit and push, or none
   - **megalinter-check** now **lints natively, without asking, when `.mega-linter.yml` lists `NATIVE_LINTERS`**, and without a container engine when you decline Docker
     - It re-checks fixes with **a single native run** restricted to the failing linters and the fixed files, instead of several Docker containers
     - It reads the **findings of the JSON report** instead of parsing logs, and tells you which linters a native run skipped, which are left to CI

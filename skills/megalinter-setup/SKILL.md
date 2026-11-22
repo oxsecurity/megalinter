@@ -181,7 +181,71 @@ Native mode lints on the user's machine without Docker, and a run takes seconds.
 
    When the setup fails on a prerequisite (`uv`, Git Bash, a language runtime) and `--help` lists `--doctor`, run `<runner> --doctor` and relay its findings. Use `<runner>` for every native command: never call the `megalinter` engine or install it yourself, the runner is the only entry that verifies it.
 
-4. **Pre-commit hooks** (`megalinter-native-incremental` on commit, `megalinter-native-full` on push) run the same `NATIVE_LINTERS` on each commit: see <https://megalinter.io/latest/install-native/>.
+4. **Offer pre-commit hooks.** Native mode does not run on commits by itself. Unless the user already answered, ask (a structured question when your platform has one):
+
+   - **On commit only (recommended)**: `megalinter-native-incremental` lints the files of each commit
+   - **On commit and push**: `megalinter-native-incremental`, plus `megalinter-native-full` on push
+   - **No hooks**: skip the rest of this step
+
+   Say before they answer that the hooks run `NATIVE_LINTERS`, **apply fixes** to the committed files, block the commit or push on an error, and that each teammate has to run `pre-commit install` once.
+
+   If they accept:
+
+   1. Take the newest `vX.Y.Z` tag, and check that it ships the native hooks:
+
+      ```bash
+      git ls-remote --tags --refs --sort=-v:refname https://github.com/oxsecurity/megalinter 'v*'
+      curl -fsSL https://raw.githubusercontent.com/oxsecurity/megalinter/<tag>/.pre-commit-hooks.yaml | grep megalinter-native-incremental
+      ```
+
+   2. Add the hooks to `.pre-commit-config.yaml`. **Merge them into an existing file**, never replace it, and keep `megalinter-native-full` only for the commit and push choice. When the tag ships the hooks:
+
+      ```yaml
+      repos:
+        - repo: https://github.com/oxsecurity/megalinter
+          rev: vX.Y.Z
+          hooks:
+            - id: megalinter-native-incremental
+              stages:
+                - pre-commit
+            - id: megalinter-native-full
+              stages:
+                - pre-push
+      ```
+
+      Then install the linters with the same version, as a hook can not ask questions: `npx mega-linter-runner@X.Y.Z --install-linters --release X.Y.Z`.
+
+      When no release ships them yet, use local hooks on the beta runner instead (never `rev: main`, a moving reference):
+
+      ```yaml
+      repos:
+        - repo: local
+          hooks:
+            - id: megalinter-native-incremental
+              name: MegaLinter native (files of the commit)
+              entry: npx --yes mega-linter-runner@beta --native --fix --env CLEAR_REPORT_FOLDER=true --env LOG_LEVEL=warning --filesonly
+              language: system
+              require_serial: true
+              stages:
+                - pre-commit
+            - id: megalinter-native-full
+              name: MegaLinter native
+              entry: npx --yes mega-linter-runner@beta --native --fix --env CLEAR_REPORT_FOLDER=true --env LOG_LEVEL=warning
+              language: system
+              require_serial: true
+              stages:
+                - pre-push
+      ```
+
+   3. Make sure `megalinter-reports/` is in `.gitignore`.
+   4. Activate the hooks, adding `--hook-type pre-push` for the commit and push choice. When `pre-commit` is missing, install it first with `uv tool install pre-commit`:
+
+      ```bash
+      pre-commit validate-config
+      pre-commit install --hook-type pre-commit
+      ```
+
+   See <https://megalinter.io/latest/install-native/#pre-commit-hook>.
 
 Requirements: `uv` and Node.js, plus Git Bash on Windows. Linters run with the user's privileges: native mode is for repositories the user trusts, and `--trust-repo-commands` is never passed on your own initiative.
 
