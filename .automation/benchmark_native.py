@@ -5,6 +5,8 @@
 #   native   measures native mode with the published packages: install, first and warm runs, fixes,
 #            single file run, npx overhead, disk usage of ~/.megalinter, peak memory
 #   docker   measures Docker mode: image pulls (duration, sizes), first and warm runs
+#   agent-loop  measures the commands of a coding agent that sets up native mode, lints and
+#            re-checks a fixed file: the published beta against the current checkout
 #   summary  merges the JSON results of every job into Markdown tables
 #
 # Lint runs exit with a non-zero code because of the problems planted in the demo repository:
@@ -89,7 +91,12 @@ def kill_process_tree(process: subprocess.Popen) -> None:
 # Runs a command, its output going to a log file. On Linux and macOS, os.wait4 returns the
 # resource usage of the command: ru_maxrss is the peak resident memory of the LARGEST single
 # process of its tree (not the sum of the processes running at the same time)
-def run_measured(command: list[str], cwd: str, log_file: str) -> Result:
+def run_measured(
+    command: list[str],
+    cwd: str,
+    log_file: str,
+    extra_env: dict[str, str] | None = None,
+) -> Result:
     executable = shutil.which(command[0]) or command[0]
     state = {"timed_out": False}
 
@@ -105,7 +112,7 @@ def run_measured(command: list[str], cwd: str, log_file: str) -> Result:
         process = subprocess.Popen(
             [executable, *command[1:]],
             cwd=cwd,
-            env=benchmark_environment(),
+            env={**benchmark_environment(), **(extra_env or {})},
             stdout=log,
             stderr=subprocess.STDOUT,
             start_new_session=os.name != "nt",
@@ -338,13 +345,15 @@ class Benchmark:
         command: list[str],
         lint: bool = False,
         cwd: str | None = None,
+        reset: bool = True,
+        env: dict[str, str] | None = None,
     ) -> Result:
-        if lint:
+        if lint and reset:
             reset_workspace(self.workspace, self.use_sudo)
         log_file = os.path.join(self.logs_dir, f"{step_id}.log")
         logging.info(f"::group::{step_id}: {' '.join(command)}")
         try:
-            result = run_measured(command, cwd or self.workspace, log_file)
+            result = run_measured(command, cwd or self.workspace, log_file, env)
         except OSError as error:
             result = {"command": " ".join(command), "error": str(error)}
         result["id"] = step_id
@@ -448,6 +457,156 @@ def command_native(arguments: argparse.Namespace) -> int:
         )
     reset_workspace(bench.workspace)
     bench.results["disk_after_runs"] = disk_usage(home)
+    bench.save()
+    return 0
+
+
+# Agent loop: what a coding agent runs to set up native mode, lint, then re-check a fixed file
+
+
+# The demo repository lists NATIVE_LINTERS: without it, the agent has to choose them
+def remove_native_linters(workspace: str) -> None:
+    config_file = os.path.join(workspace, ".mega-linter.yml")
+    with open(config_file, encoding="utf-8") as file:
+        lines = file.read().splitlines()
+    kept: list[str] = []
+    skipping = False
+    for line in lines:
+        if line.startswith("NATIVE_LINTERS:"):
+            skipping = True
+            continue
+        if skipping and (line.startswith((" ", "-", "\t")) or not line.strip()):
+            continue
+        skipping = False
+        kept.append(line)
+    with open(config_file, "w", encoding="utf-8") as file:
+        file.write("\n".join(kept) + "\n")
+
+
+def suggested_native_linters(workspace: str) -> list[str]:
+    report_file = os.path.join(workspace, "megalinter-reports", "prerun-report.json")
+    if not os.path.isfile(report_file):
+        return []
+    with open(report_file, encoding="utf-8") as file:
+        report = json.load(file)
+    for suggestion in report.get("suggestions", []):
+        if suggestion.get("variable") == "NATIVE_LINTERS":
+            return suggestion.get("values", [])
+    return []
+
+
+# The core of the checkout, in its own virtual environment: the runner installs the one
+# published on PyPI, which does not have the changes yet
+def install_checkout_core(bench: "Benchmark", checkout: str) -> str | None:
+    venv = os.path.join(bench.logs_dir, "checkout-venv")
+    bin_dir = os.path.join(venv, "Scripts" if os.name == "nt" else "bin")
+    python = os.path.join(bin_dir, "python.exe" if os.name == "nt" else "python")
+    bench.step("loop_checkout_venv", ["uv", "venv", venv, "--python", sys.executable])
+    bench.step(
+        "loop_checkout_install",
+        ["uv", "pip", "install", "--python", python, "-e", checkout],
+    )
+    executable = os.path.join(
+        bin_dir, "megalinter.exe" if os.name == "nt" else "megalinter"
+    )
+    return executable if os.path.isfile(executable) else None
+
+
+# The published runner, installed in a folder and called with node: like the runner of the
+# checkout, it does not pay the npx check of the registry on each call (measured apart)
+def published_runner(bench: "Benchmark") -> list[str]:
+    prefix = os.path.join(bench.logs_dir, "published-runner")
+    bench.step(
+        "loop_published_runner_install",
+        ["npm", "install", "--prefix", prefix, "--no-audit", "--no-fund"]
+        + [RUNNER_PACKAGE],
+    )
+    return [
+        "node",
+        os.path.join(prefix, "node_modules", "mega-linter-runner", "lib", "index.js"),
+    ]
+
+
+def agent_loop_old(bench: "Benchmark") -> None:
+    runner = published_runner(bench)
+    # The demo configuration lists NATIVE_LINTERS: the agent wrote it from its own reading
+    # of the repository (not a command)
+    reset_workspace(bench.workspace)
+    for index in range(1, WARM_RUNS + 1):
+        bench.step(f"loop_old_runner_version_{index}", runner + ["--version"])
+    bench.step("loop_old_install", runner + ["--install-linters", "--release", "beta"])
+    bench.step(
+        "loop_old_first_run",
+        runner + ["--native", "--release", "beta", "-e", "JSON_REPORTER=true"],
+        lint=True,
+        reset=False,
+    )
+    bench.step(
+        "loop_old_recheck",
+        runner
+        + ["--native", "--release", "beta", "-e", "JSON_REPORTER=true", SINGLE_FILE],
+        lint=True,
+        reset=False,
+    )
+
+
+def agent_loop_new(bench: "Benchmark", checkout: str | None) -> None:
+    reset_workspace(bench.workspace)
+    remove_native_linters(bench.workspace)
+    core = None
+    if checkout:
+        runner = [
+            "node",
+            os.path.join(checkout, "mega-linter-runner", "lib", "index.js"),
+        ]
+        core = install_checkout_core(bench, checkout)
+        if core is None:
+            bench.results["agent_loop_error"] = "The checkout core was not installed"
+            return
+    else:
+        runner = published_runner(bench)
+    for index in range(1, WARM_RUNS + 1):
+        bench.step(f"loop_new_runner_version_{index}", runner + ["--version"])
+    # The runner hands over to the core: with a checkout, the core is called directly
+    prerun = (
+        [core, "prerun", "--input", bench.workspace]
+        if core
+        else runner + ["--native", "--prerun"]
+    )
+    bench.step("loop_new_prerun", prerun)
+    keys = suggested_native_linters(bench.workspace)
+    if not keys:
+        bench.results["agent_loop_error"] = "The prerun suggested no native linter"
+        return
+    bench.results["loop_new_linters"] = keys
+    linters = ",".join(keys)
+    setup = (
+        [core, "setup", "--linters", linters, "--input", bench.workspace]
+        + ["--json", "--sarif"]
+        if core
+        else runner + ["--native-setup", *keys, "--json", "--sarif"]
+    )
+    bench.step("loop_new_setup", setup, lint=True, reset=False)
+    if core:
+        recheck = [core, "run", "--input", bench.workspace, "--json", "--sarif"]
+        recheck_env = {
+            "NATIVE_LINTERS": linters,
+            "MEGALINTER_FILES_TO_LINT": SINGLE_FILE,
+        }
+    else:
+        recheck = runner + ["--native", "--json", "--sarif"]
+        recheck += ["-e", f"NATIVE_LINTERS={linters}", SINGLE_FILE]
+        recheck_env = None
+    bench.step("loop_new_recheck", recheck, lint=True, reset=False, env=recheck_env)
+
+
+def command_agent_loop(arguments: argparse.Namespace) -> int:
+    bench = Benchmark("agent-loop", arguments)
+    if arguments.flow in ("old", "both"):
+        agent_loop_old(bench)
+    if arguments.flow in ("new", "both"):
+        agent_loop_new(bench, arguments.checkout)
+    reset_workspace(bench.workspace)
     bench.save()
     return 0
 
@@ -666,6 +825,66 @@ def warm_steps(steps: dict[str, Result], prefix: str) -> list[Result]:
         for index in range(1, WARM_RUNS + 1)
         if f"{prefix}{index}" in steps
     ]
+
+
+LOOP_STEPS = [
+    ("old", "install", "Install the listed linters (`--install-linters`)"),
+    ("old", "first_run", "First lint (`--native -e JSON_REPORTER=true`)"),
+    ("old", "recheck", "Re-check one fixed file (`--native`)"),
+    ("new", "prerun", "Analyze, nothing installed (`--native --prerun`)"),
+    ("new", "setup", "Choose, write, install and first lint (`--native-setup`)"),
+    ("new", "recheck", "Re-check one fixed file (`--native`, failing linters only)"),
+]
+LOOP_FLOW_LABELS = {"old": "Published beta", "new": "This change"}
+
+
+def section_agent_loop(results: list[Result]) -> list[str]:
+    rows = []
+    for result in results:
+        steps = steps_by_id(result)
+        platform_name = result["platform"]
+        for flow in ("old", "new"):
+            flow_steps = [
+                (label, steps[f"loop_{flow}_{name}"])
+                for step_flow, name, label in LOOP_STEPS
+                if step_flow == flow and f"loop_{flow}_{name}" in steps
+            ]
+            if not flow_steps:
+                continue
+            flow_label = LOOP_FLOW_LABELS[flow]
+            start = warm_steps(steps, f"loop_{flow}_runner_version_")
+            rows.append(
+                [
+                    platform_name,
+                    flow_label,
+                    "Runner start (`--version`, median)",
+                    median_seconds(start),
+                ]
+            )
+            for label, step in flow_steps:
+                rows.append([platform_name, flow_label, label, seconds(step)])
+            total = sum(
+                step["seconds"] for _, step in flow_steps if step.get("seconds")
+            )
+            rows.append(
+                [
+                    platform_name,
+                    flow_label,
+                    f"**Total, {len(flow_steps)} commands**",
+                    f"**{total:.2f}**",
+                ]
+            )
+    if not rows:
+        return []
+    lines = [
+        "## Agent loop: set up native mode, lint, re-check one fixed file",
+        "",
+        "The commands of a coding agent, in seconds. The published beta needs the agent to choose "
+        "`NATIVE_LINTERS` itself (not a command, not measured); this change proposes them and "
+        "leaves the project-mode linters to CI, so it runs fewer linters.",
+        "",
+    ]
+    return lines + table(["Platform", "Flow", "Step", "Seconds"], rows, text_columns=3)
 
 
 def section_machines(results: list[Result]) -> list[str]:
@@ -1090,7 +1309,9 @@ def section_failures(results: list[Result]) -> list[str]:
 
 
 def command_summary(arguments: argparse.Namespace) -> int:
-    results = load_results(arguments.input)
+    all_results = load_results(arguments.input)
+    loop_results = [item for item in all_results if item["mode"] == "agent-loop"]
+    results = [item for item in all_results if item["mode"] != "agent-loop"]
     lines = [
         "# MegaLinter native mode benchmark",
         "",
@@ -1123,6 +1344,7 @@ def command_summary(arguments: argparse.Namespace) -> int:
         section_failures,
     ]:
         lines += section(results)
+    lines += section_agent_loop(loop_results)
     with open(arguments.output, "w", encoding="utf-8") as file:
         file.write("\n".join(lines))
     logging.info(f"Summary written in {arguments.output}")
@@ -1147,6 +1369,26 @@ def build_parser() -> argparse.ArgumentParser:
         if mode == "docker":
             measure.add_argument("--image-platform", default="linux/amd64")
         measure.set_defaults(handler=handler)
+    loop = commands.add_parser(
+        "agent-loop", help="Measure the commands of a coding agent in native mode"
+    )
+    loop.add_argument("--demo", required=True, help="Demo repository")
+    loop.add_argument("--platform", required=True, help="Example: linux/amd64")
+    loop.add_argument("--runner", default="", help="Runner label")
+    loop.add_argument("--output-dir", required=True)
+    loop.add_argument("--logs", required=True, help="Folder of the step logs")
+    loop.add_argument(
+        "--flow",
+        choices=["old", "new", "both"],
+        default="both",
+        help="old: published beta, new: this change",
+    )
+    loop.add_argument(
+        "--checkout",
+        default=None,
+        help="Checkout holding this change (runner and core). Without it, the published beta is used",
+    )
+    loop.set_defaults(handler=command_agent_loop)
     summary = commands.add_parser("summary", help="Write the Markdown summary")
     summary.add_argument("--input", required=True, help="Folder of the JSON results")
     summary.add_argument("--output", required=True)

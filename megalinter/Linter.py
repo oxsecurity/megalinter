@@ -153,6 +153,10 @@ class Linter:
         self.cli_sarif_args = []
         self.sarif_output_file = None
         self.sarif_default_output_file = None
+        # Findings read from the SARIF output (JSON report), None without SARIF
+        self.sarif_findings = None
+        # Actionable advice met while linting: [{"category": ..., "message": ...}]
+        self.tips = []
         self.merged_sarif = None
         self.sarif_text_regex = None
         self.sarif_text_levels = {}
@@ -169,6 +173,9 @@ class Linter:
         # Native mode: the files linted without any problem are not linted again while
         # unchanged ({config_files: [...]}: files the linter finds by itself)
         self.native_results_cache = None
+        # Native mode: True when this run is the first one of the installed linter, which
+        # is much slower than the next ones (fresh install being scanned and compiled)
+        self.native_first_run = None
         self.cli_command_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -1076,6 +1083,10 @@ class Linter:
             self.master, self, run_commands_before_linters
         )
 
+        first_run_marker = self.native_first_run_marker()
+        if first_run_marker is not None:
+            self.native_first_run = not os.path.isfile(first_run_marker)
+
         # Native mode: the files unchanged since they were linted without any problem
         # are not linted again
         results_cache = None
@@ -1162,6 +1173,16 @@ class Linter:
                 logging.warning(f"[Results cache] Unable to save {self.name}: {e}")
 
         self.after_lint_files()
+        if self.native_first_run is True:
+            try:
+                with open(first_run_marker, "w", encoding="utf-8") as marker_file:
+                    marker_file.write("")
+            except OSError as e:
+                logging.warning(f"Unable to write {first_run_marker}: {e}")
+        if self.output_sarif is True:
+            self.sarif_findings = utils_sarif.extract_findings(
+                self.sarif_output_file, self.workspace
+            )
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -1592,6 +1613,7 @@ class Linter:
                 "Windows into a WSL2-backed container engine)."
             )
             logging.error(timeout_message)
+            self.tips.append({"category": "timeout", "message": timeout_message})
             if partial_output.strip() != "":
                 return 124, partial_output + "\n\n" + timeout_message
             return 124, timeout_message
@@ -1744,6 +1766,12 @@ class Linter:
             )
             self.linter_version_cache = "ERROR"
         return self.linter_version_cache
+
+    def native_first_run_marker(self):
+        toolchain = self.native_toolchain
+        if toolchain is None or toolchain.install_dir is None or toolchain.host_tool:
+            return None
+        return os.path.join(toolchain.install_dir, ".megalinter-first-run")
 
     # Native mode: a linter installed by MegaLinter never changes inside its install folder
     # (one folder per resolved install), so its version is read once and kept there, like

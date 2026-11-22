@@ -115,11 +115,20 @@ export class NativeRunner {
         "--container-engine is only available with Docker: it can not be used with --native or --install-linters",
       );
     }
+    if (options.nativeSetup === true && options.trustRepoCommands === true) {
+      throw new Error(
+        "--trust-repo-commands is not available with --native-setup: set up native mode, then run `--native --trust-repo-commands`",
+      );
+    }
     if (options.runtimes && !RUNTIME_POLICIES.includes(options.runtimes)) {
       throw new Error(
         `Invalid --runtimes value: ${options.runtimes}. Allowed values: ${RUNTIME_POLICIES.join(", ")}`,
       );
     }
+  }
+
+  isLinterManagement(options) {
+    return options.installLinters === true || options.nativeSetup === true;
   }
 
   buildEnvironment(options) {
@@ -133,6 +142,12 @@ export class NativeRunner {
     if (options.debug === true) {
       env.LOG_LEVEL = "DEBUG";
     }
+    if (options.json === true) {
+      env.JSON_REPORTER = "true";
+    }
+    if (options.sarif === true) {
+      env.SARIF_REPORTER = "true";
+    }
     if (options.linter) {
       env.NATIVE_LINTERS = options.linter.toUpperCase();
     }
@@ -140,7 +155,11 @@ export class NativeRunner {
       env.NATIVE_TRUST_REPO_COMMANDS = "true";
     }
     // Files given as arguments (pre-commit hooks), relative to the workspace
-    if (options.installLinters !== true && (options._ || []).length > 0) {
+    if (
+      !this.isLinterManagement(options) &&
+      options.prerun !== true &&
+      (options._ || []).length > 0
+    ) {
       env.MEGALINTER_FILES_TO_LINT = options._.map(String).join(",");
     }
     for (const rawEntry of expandEnvEntries(options.env || [])) {
@@ -161,14 +180,24 @@ export class NativeRunner {
     if (options.runtimes) {
       common.push("--runtimes", options.runtimes);
     }
+    const keys = (options._ || []).map(String);
     if (options.installLinters === true) {
-      const keys = (options._ || []).map(String);
       return [
         "install-linters",
         ...keys,
         ...(options.all === true ? ["--all"] : []),
         ...common,
       ];
+    }
+    if (options.nativeSetup === true) {
+      return [
+        "setup",
+        ...(keys.length > 0 ? ["--linters", keys.join(",")] : []),
+        ...common,
+      ];
+    }
+    if (options.prerun === true) {
+      return ["prerun", ...common];
     }
     return [
       "run",

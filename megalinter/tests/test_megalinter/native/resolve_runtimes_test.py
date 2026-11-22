@@ -183,12 +183,16 @@ class HostVersionTest(unittest.TestCase):
         self.assertIsNone(installer.pinned_host_version(specs["XML_XMLLINT"]))
 
     def test_different_host_version_is_a_warning(self):
+        tips = []
+        master = mock.Mock(add_tip=lambda *tip: tips.append(tip))
         with self.assertLogs(level="WARNING") as logs:
             Megalinter.check_host_linter_version(
-                None, FakeHostLinter("0.63.0"), "0.65.1"
+                master, FakeHostLinter("0.63.0"), "0.65.1"
             )
         self.assertIn("swiftlint 0.63.0 found on this machine", logs.output[0])
         self.assertIn("uses 0.65.1", logs.output[0])
+        self.assertEqual([tip[0] for tip in tips], ["native"])
+        self.assertIn("uses 0.65.1", tips[0][1])
 
     def test_same_or_unknown_host_version_is_silent(self):
         for version in ("0.65.1", "ERROR"):

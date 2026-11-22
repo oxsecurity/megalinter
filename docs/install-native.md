@@ -20,6 +20,22 @@ Requirements:
 - Node.js, to run `mega-linter-runner`
 - Windows only: [Git for Windows](https://git-scm.com/download/win) (Git Bash), `winget install --id Git.Git -e`
 
+Set up native mode in one command:
+
+```shell
+npx mega-linter-runner@beta --native-setup
+```
+
+It analyzes your repository, proposes the linters to run on your machine, writes them in `NATIVE_LINTERS` (your comments and the rest of `.mega-linter.yml` are kept), installs them and runs a first lint. In a terminal, it asks you to confirm or edit the proposed list. Give the linter keys as arguments to skip the question (`--native-setup PYTHON_BLACK MARKDOWN_MARKDOWNLINT`).
+
+Then lint whenever you want:
+
+```shell
+npx mega-linter-runner@beta --native
+```
+
+To do it by hand instead:
+
 1. List the linters allowed to run natively in your `.mega-linter.yml`:
 
     ```yaml
@@ -54,6 +70,18 @@ NATIVE_LINTERS:
 ```
 
 **Using `all` is discouraged.** It installs many linters, which is slow, and you must fully trust the security of every one of them. Prefer listing the linters you need.
+
+## Which linters to run natively
+
+`NATIVE_LINTERS` is usually a subset of what your CI runs. CI keeps running every active linter: the variable only scopes the runs on your machine, where you want fast feedback. The slow linters (spell checkers, type checkers, link checkers) and the ones scanning the whole repository (secret and vulnerability scanners, copy-paste detection) are better left to CI.
+
+`npx mega-linter-runner@beta --native --prerun` shows the proposal without running or installing anything, and `--native-setup` applies it. A linter is proposed for your machine unless:
+
+- it is not available natively on your platform, or the tool it needs from your machine is missing
+- it runs in project mode (it scans the whole repository)
+- it took 10 seconds or more on your last run (the report of the previous run is read), or, when it has not run yet, its `linter_speed` is 2 or less (out of 5). The first run after a linter is installed is slower than the next ones, so it is not counted
+
+The linters left to CI are listed with their reason, and in the console of each run (`Skipped linters (not listed in NATIVE_LINTERS)`). A green native run is not a green CI: the skipped linters still run there.
 
 ## What is installed, and how
 
@@ -93,7 +121,7 @@ export NODE_USE_SYSTEM_CA=1        # Node.js linters
 
 ## Security model
 
-- Commands declared by the analyzed repository (`PRE_COMMANDS`, `POST_COMMANDS`), `PLUGINS` and remote `EXTENDS` are **ignored** in native mode, because they would run on your machine with your privileges. Use `--trust-repo-commands` (or `NATIVE_TRUST_REPO_COMMANDS=true` in the environment, never in `.mega-linter.yml`) only for a repository you fully trust.
+- Commands declared by the analyzed repository (`PRE_COMMANDS`, `POST_COMMANDS`), `PLUGINS` and remote `EXTENDS` are **ignored** in native mode, because they would run on your machine with your privileges. Use `--trust-repo-commands` (or `NATIVE_TRUST_REPO_COMMANDS=true` in the environment, never in `.mega-linter.yml`) only for a repository you fully trust. It is not available with `--native-setup`: set up native mode first, then run `--native --trust-repo-commands`.
 - Linters only receive an allowlist of system environment variables, so the secrets of your machine (cloud credentials, tokens...) do not leak to them. Add more with `NATIVE_ENV_ALLOWLIST`.
 - Native mode refuses to run when `MEGALINTER_HOME` belongs to another user or is writable by others.
 - The `megalinter` Python package is installed by `mega-linter-runner` after checking its PyPI attestation: it must have been published by the release workflow of the MegaLinter repository.
@@ -102,14 +130,20 @@ export NODE_USE_SYSTEM_CA=1        # Node.js linters
 
 `mega-linter-runner` forwards to the `megalinter` command that you can also use directly (`uv tool install megalinter --pre`):
 
-| Command                               | Purpose                                                      |
-|:--------------------------------------|:-------------------------------------------------------------|
-| `megalinter run`                      | Lint the current folder with the linters of `NATIVE_LINTERS` |
-| `megalinter install-linters [KEY...]` | Install the given linters, or the ones of `NATIVE_LINTERS`   |
-| `megalinter uninstall-linters KEY...` | Remove installed linters                                     |
-| `megalinter list-linters`             | Show the native status of every linter                       |
-| `megalinter doctor`                   | Check Git Bash, uv, runtimes and the install folder          |
-| `megalinter cache prune`              | Empty the download and linter caches                         |
+| Command                                | Purpose                                                                                                                            |
+|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| `megalinter setup [--linters KEY,KEY]` | Choose the linters to run natively, write `NATIVE_LINTERS`, install them and run a first lint (`--no-run` to stop before the lint) |
+| `megalinter prerun`                    | Suggest the linters to run natively, and configuration improvements, without running any linter                                    |
+| `megalinter run`                       | Lint the current folder with the linters of `NATIVE_LINTERS`                                                                       |
+| `megalinter install-linters [KEY...]`  | Install the given linters, or the ones of `NATIVE_LINTERS`                                                                         |
+| `megalinter uninstall-linters KEY...`  | Remove installed linters                                                                                                           |
+| `megalinter list-linters`              | Show the native status of every linter                                                                                             |
+| `megalinter doctor`                    | Check Git Bash, uv, runtimes and the install folder                                                                                |
+| `megalinter cache prune`               | Empty the download and linter caches                                                                                               |
+
+### Reports for tools and coding agents
+
+`run` and `setup` accept `--json` (equivalent to `JSON_REPORTER=true`) and `--sarif` (equivalent to `SARIF_REPORTER=true`); `mega-linter-runner` has the same options. With both, `megalinter-reports/mega-linter-report.json` gives each linter's findings (`file`, `line`, `column`, `rule`, `level`, `message`) next to its status, whether it is blocking, and its time. It also lists the `skipped_linters` with their reason, and the `tips` met during the run (performance advice, deprecations, timeouts). The linters that did not produce SARIF have no `findings`.
 
 ### Faster commands
 

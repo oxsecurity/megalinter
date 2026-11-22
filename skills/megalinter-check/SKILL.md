@@ -1,6 +1,6 @@
 ---
 name: megalinter-check
-description: Collect MegaLinter lint errors for the current repository. Use when the user wants to know if the code passes linting, why the MegaLinter CI job fails, or before/after fixing lint errors. Two modes - watch a CI job (GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines) and parse its logs, or run MegaLinter locally with Docker (full run or fast parallel standalone linter runs).
+description: Collect MegaLinter lint errors for the current repository. Use when the user wants to know if the code passes linting, why the MegaLinter CI job fails, or before/after fixing lint errors. Two modes - watch a CI job (GitHub Actions, GitLab CI, Azure Pipelines, Bitbucket Pipelines) and parse its logs, or run MegaLinter locally: natively without Docker when the repository lists NATIVE_LINTERS (seconds per run), otherwise with Docker (full run or fast parallel standalone linter runs).
 argument-hint: "[mode: watch|local] [PR/job URL or linter keys]"
 allowed-tools: Bash, Read, Grep, Glob, Write, Agent, AskUserQuestion
 user-invocable: true
@@ -14,8 +14,10 @@ Collect the current MegaLinter errors and produce a compact error list that the 
 ## Choose a mode
 
 - **Watch mode** — a MegaLinter CI job exists for the current branch/PR (running or completed): parse its logs. No Docker needed.
-- **Local mode** — no CI job available, or the user wants a pre-push check: run MegaLinter with Docker via `npx mega-linter-runner`.
-- **Targeted re-check** (local, after fixes): re-run only the previously-failing linters in parallel standalone images.
+- **Local mode** — no CI job available, or the user wants a pre-push check. Two flavors:
+  - **Native** when `.mega-linter.yml` lists `NATIVE_LINTERS`: the linters run on the machine, no container, a warm run takes seconds. Go straight to "Native mode" below.
+  - **Docker** otherwise, via `npx mega-linter-runner`.
+- **Targeted re-check** (local, after fixes): re-run only the previously-failing linters — one native run, or parallel standalone Docker images.
 
 ## Watch mode
 
@@ -68,7 +70,9 @@ Then tell the user the commit was amended and the checks re-triggered, and resum
 
 ## Local mode
 
-Before the first local run, make sure the user is aware that running MegaLinter locally is **resource-consuming**:
+**Native first.** When `.mega-linter.yml` lists `NATIVE_LINTERS`, use "Native mode" below. The rest of this section (resource warning, watch-or-local question, engine preflight, time bounds, orphaned containers) is about Docker and does not apply to it. A native run is cheap, so do not ask the user to choose between it and CI: run it, and mention that CI also runs the linters that are not listed.
+
+**Docker.** Before the first local run, make sure the user is aware that running MegaLinter locally is **resource-consuming**:
 it needs a reasonably powerful machine (CPU, RAM, free disk space) and a good internet connection — MegaLinter is
 Docker-based and the first run downloads a large image (can be several GB depending on the flavor).
 Because of this, **watch mode (CI does the work) is usually the recommended option**.
@@ -89,26 +93,31 @@ timeout 10 podman info --format '{{.Version.Version}}'
 - Chosen engine errors or times out → probe the other engine the same way; if it answers, use it instead.
 - Neither answers → do **not** start a run (it would hang the same way). Tell the user what you found ("Docker Desktop appears installed but is not responding - is it running?") and **ask** whether you should install or start an engine — then (and only then) load `container-engine.md` from this skill's directory for the setup instructions (prefer podman: free of charge even in enterprise contexts). If the user declines, offer **native mode** (see "Native mode" below). If the user also declines, fall back to watch mode.
 
-### Native mode (beta, no container engine)
+### Native mode (beta)
 
-Native mode runs the linters directly on the user's machine, without Docker: no image to pull, and a run takes seconds. Offer it when no container engine answers, or use it directly when `.mega-linter.yml` already lists `NATIVE_LINTERS` and the user asks for a local run.
+Native mode runs the linters directly on the user's machine, without Docker: no image to pull, and a warm run takes seconds. It is the local mode when `.mega-linter.yml` lists `NATIVE_LINTERS`, and the alternative to offer when no container engine answers (see the engine preflight): in that case the repository has no `NATIVE_LINTERS` yet, so run the "Native mode" setup of `megalinter-setup` first.
 
-- Only the linters listed in `NATIVE_LINTERS` of `.mega-linter.yml` run; the other active linters are **skipped**. Say so in the results: a native run is not a full equivalent of the CI job. When `NATIVE_LINTERS` is missing, propose the list from the linters the repository needs and let the user confirm it. Never use `all` without explicit, informed consent: it installs every matching linter and trusts all of them.
-- Install, then run (while native mode is in beta, always the `@beta` runner and `--release beta`):
+- Only the linters listed in `NATIVE_LINTERS` run. CI still runs every active linter, so a green native run is **not** a green CI: the linters it skipped are returned in `skipped_linters` (below), and you tell the user they are left to CI. Never use `all` without explicit, informed consent: it installs every matching linter and trusts all of them.
+- **Runner command**: use `mega-linter-runner` from `PATH` when its `--help` lists `--native`, otherwise `npx mega-linter-runner@beta`. While native mode is in beta (until MegaLinter v11), always check `--help`: a global runner installed before native mode does not know it, and `npx` without `@beta` resolves such a runner. Never pass `--release` for native commands: `beta` is the default. A `PATH` runner needs no refresh to get the latest MegaLinter beta (it looks for one at most once an hour), so keep using it across fix and re-check loops.
+- Run it, with both reports enabled through `-e` (it works with every runner version that knows `--native`):
 
-```bash
-npx mega-linter-runner@beta --install-linters --release beta
-npx mega-linter-runner@beta --native --release beta -e JSON_REPORTER=true
-```
+  ```bash
+  <runner> --native -e JSON_REPORTER=true -e SARIF_REPORTER=true
+  ```
 
+  A missing linter is installed on the way. When the installs have not been done yet, `--install-linters` does only that.
+- Read `megalinter-reports/mega-linter-report.json`, not the console:
+  - `linters[]`: `name`, `status`, `blocking`, `number_errors`, `elapsed_time_s`, and `findings` (`file`, `line`, `column`, `rule`, `level`, `message`). `findings` is present when SARIF output was on; without it (a core older than the field, or a linter that did not produce SARIF) read `megalinter-reports/linters_logs/ERROR-*.log`.
+  - `skipped_linters[]`: `key` and `reason` of the linters that did not run (not in `NATIVE_LINTERS`, not installed, disabled, excluded CLI lint mode).
+  - `tips[]`: `category` and `message` of the advice met during the run (performance, activation, deprecation, timeout, host tool version).
 - Requirements: `uv` and Node.js, plus Git Bash on Windows. A missing `uv` is reported with the command that installs it.
 - Linters run with the user's privileges: use native mode only on a repository the user trusts, and never pass `--trust-repo-commands` on your own (repository `PRE_COMMANDS`, `POST_COMMANDS` and `PLUGINS` are ignored without it).
 - Installs failing with `invalid peer certificate: UnknownIssuer` mean the network inspects HTTPS: re-run with `UV_NATIVE_TLS=1` (and `NODE_USE_SYSTEM_CA=1` for Node.js linters) in the environment of the command. Never write these to `.mega-linter.yml`.
 - `Unknown linter(s) in NATIVE_LINTERS: X (removed in ..., use Y instead)`: replace the key in `.mega-linter.yml` after telling the user.
-- The reports are the same as with Docker (`megalinter-reports/`), so read them as described below. `PARALLEL_PROCESS_NUMBER` and the time bound apply too.
-- For fix → re-check loops, install the runner once (`npm install -g mega-linter-runner@beta`) and call `mega-linter-runner --native --release beta`: `npx` spends several seconds per call checking its copy of the runner and of its dependencies.
+- The first run of a freshly installed linter can be far slower than the next ones (tens of seconds on Windows): do not report it as slow, and re-run before drawing a performance conclusion.
+- `PARALLEL_PROCESS_NUMBER` and the time bound apply too. For a hung run, wrap the command with `timeout <seconds>`, or pass `--timeout <seconds>` when `--help` lists it.
 
-Flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml` — do not pass `--flavor` or `--release` yourself.
+**Docker commands.** Flavor and version are resolved automatically from `MEGALINTER_FLAVOR` / `MEGALINTER_VERSION` in `.mega-linter.yml` — do not pass `--flavor` or `--release` yourself.
 
 ```bash
 npx mega-linter-runner                            # docker
@@ -175,7 +184,15 @@ If the report file is missing after the run (image older than v10 that ignored `
 
 ## Targeted re-check (after fixes)
 
-Re-run only what previously failed, in parallel (max 4 concurrent containers):
+**Native** (`NATIVE_LINTERS` is listed): one call re-runs the linters that failed, on the files that were fixed. It replaces the parallel Docker runs below, and costs a couple of seconds:
+
+```bash
+<runner> --native -e NATIVE_LINTERS=PYTHON_RUFF,MARKDOWN_MARKDOWNLINT -e JSON_REPORTER=true -e SARIF_REPORTER=true src/a.py src/b.py README.md
+```
+
+The linters that did not fail are not re-run, and the files given as arguments scope the file-based linters (project-scoped ones scan the repository anyway). Unchanged files that a linter found clean before are skipped by its results cache, so a re-check of a whole run is cheap too.
+
+**Docker**: re-run only what previously failed, in parallel (max 4 concurrent containers):
 
 ```bash
 npx mega-linter-runner --linter PYTHON_RUFF -e JSON_REPORTER=true src/a.py src/b.py &
@@ -207,9 +224,13 @@ Whatever the mode, summarize the result in this shape (this is what `megalinter-
       "files": ["src/a.py"],
       "samples": ["src/a.py:10:5 E501 line too long"]
     }
-  ]
+  ],
+  "skipped_linters": [{"key": "SPELL_CSPELL", "reason": "not listed in NATIVE_LINTERS"}]
 }
 ```
+
+- `samples`: at most 10 lines per linter. In native mode, build them from the report `findings` as `file:line:column rule message`.
+- `skipped_linters`: native mode only. These linters did not run, and CI still runs them: tell the user the result is not a full equivalent of the CI job.
 
 Distinguish **blocking** linters (❌, fail the job) from non-blocking ones (⚠️, `DISABLE_ERRORS: true`). A `failure` status means the job/run itself broke (container engine, network, configuration): include a `"failure_reason"` field with a short cause excerpt instead of linter errors. In watch mode, a `"job_url"` field may be added for reference. Add the optional `"tips"` field when console tips were found (see below).
 
@@ -228,7 +249,8 @@ In watch mode, add the optional `"auto_fix_commit"` field when MegaLinter pushed
 
 MegaLinter's console output is full of actionable advice for agents that never reaches the JSON report: performance warnings (">300 .gitignored files... consider ADDITIONAL_EXCLUDED_DIRECTORIES", "Heavy folders detected"), flavor suggestions, `[Activation]` notices explaining why a linter did not run, deprecation and removed-linter notices, timeout kills, forwarded-exclusion traces. Always collect them:
 
-- **Local mode**: the full console stream is persisted in the report folder - glob `megalinter-reports/mega*linter.log` (file name from `LOG_FILE`, default `mega-linter.log`; `LOG_FILE: none` disables it, then use the captured console output). Grep it instead of re-reading the console: `grep -E "⚠|WARNING|\[Activation\]|Heavy folders|To improve|[Ff]lavor|deprecat|Timed out|[Cc]onsider" <log-file>`.
+- **Native mode**: the JSON report already holds them in `tips` (curated at the source: each entry has a `category` and a `message`). Use it, and skip the console grep below.
+- **Docker local mode**: the full console stream is persisted in the report folder - glob `megalinter-reports/mega*linter.log` (file name from `LOG_FILE`, default `mega-linter.log`; `LOG_FILE: none` disables it, then use the captured console output). Grep it instead of re-reading the console: `grep -E "⚠|WARNING|\[Activation\]|Heavy folders|To improve|[Ff]lavor|deprecat|Timed out|[Cc]onsider" <log-file>`.
 - **Watch mode**: the CI job log IS the console output - apply the same grep to the downloaded log.
 
 Curate the matches into at most 10 one-line entries: keep lines that suggest a configuration, performance, or upgrade action; drop per-file lint errors, banners, and progress lines; dedupe repeats. Add them to the output as:
@@ -260,6 +282,6 @@ When MegaLinter is installed as an agent plugin the definitions are namespaced (
 
 - Watch mode → spawn `megalinter-watcher` with the branch/PR reference; it polls, fetches and parses, and returns the output contract.
 - Local mode → spawn `megalinter-runner` with the command to run; it executes and digests the reports.
-- Targeted re-check → spawn one `megalinter-runner` per standalone linter run, in parallel (max 4).
+- Targeted re-check → native: spawn a single `megalinter-runner` for the one native call. Docker: spawn one per standalone linter run, in parallel (max 4).
 
 This keeps multi-megabyte CI logs and linter output out of your context. Without sub-agents, do everything inline.

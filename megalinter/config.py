@@ -33,6 +33,24 @@ DEFAULT_SECURED_ENV_VARIABLES = (
 )
 
 
+CONFIG_FILE_CANDIDATES = [
+    ".mega-linter.yml",
+    ".megalinter.yml",
+    ".mega-linter.yaml",
+    ".megalinter.yaml",
+    # Also support the project-level .config subfolder convention
+    # (https://dot-config.github.io), with or without the leading dot
+    ".config/mega-linter.yml",
+    ".config/megalinter.yml",
+    ".config/mega-linter.yaml",
+    ".config/megalinter.yaml",
+    ".config/.mega-linter.yml",
+    ".config/.megalinter.yml",
+    ".config/.mega-linter.yaml",
+    ".config/.megalinter.yaml",
+]
+
+
 # Fetch a remote config file with a request timeout and bounded retries.
 # Remote configs live on raw.githubusercontent.com, whose CDN edge cache can
 # lag behind a fresh push (transient 404) and occasionally returns 5xx; a bare
@@ -136,22 +154,7 @@ def init_config(request_id, workspace=None, params=None):
     else:
         # Local configuration file found with default name
         config_file = workspace + os.path.sep + ".mega-linter.yml"
-        for candidate in [
-            ".mega-linter.yml",
-            ".megalinter.yml",
-            ".mega-linter.yaml",
-            ".megalinter.yaml",
-            # Also support the project-level .config subfolder convention
-            # (https://dot-config.github.io), with or without the leading dot
-            ".config/mega-linter.yml",
-            ".config/megalinter.yml",
-            ".config/mega-linter.yaml",
-            ".config/megalinter.yaml",
-            ".config/.mega-linter.yml",
-            ".config/.megalinter.yml",
-            ".config/.mega-linter.yaml",
-            ".config/.megalinter.yaml",
-        ]:
+        for candidate in CONFIG_FILE_CANDIDATES:
             if os.path.isfile(workspace + os.path.sep + candidate):
                 config_file = workspace + os.path.sep + candidate
                 break
