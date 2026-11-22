@@ -31,6 +31,7 @@ import shutil
 import signal
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 from time import perf_counter
@@ -68,6 +69,12 @@ DEFAULT_LINTER_TIMEOUT_SECONDS = 300
 # kept as the budget for generated exclusion values, leaving room for the rest
 # of the command line
 MAX_PROJECT_EXCLUDE_ARG_BYTES = 64 * 1024
+
+# Windows caps a command line at 32767 characters, and at 8191 when it goes through
+# cmd.exe (.cmd and .bat launchers, like the ones npm creates). The margin covers
+# what a launcher adds when it expands its own path and the path of the tool
+WINDOWS_COMMAND_LINE_MAX_CHARS = 32000
+WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS = 7000
 
 
 class Linter:
@@ -1414,6 +1421,8 @@ class Linter:
             os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
+        if file is None:
+            command = self.fit_command_in_windows_limit(command)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
@@ -1429,6 +1438,73 @@ class Linter:
             if self.stdout_human:
                 return_output = self.stdout_human
         return return_code, return_output
+
+    # Windows: a list of files too long for any launch of the linter is replaced by a
+    # project mode run, when the linter has one: always a single command
+    def fit_command_in_windows_limit(self, command):
+        if (
+            sys.platform != "win32"
+            or self.cli_lint_mode != "list_of_files"
+            or not isinstance(command, list)
+        ):
+            return command
+        executable = shutil.which(
+            command[0],
+            path=self.native_search_path(getattr(self, "_cached_subprocess_env", None)),
+        )
+        max_chars = WINDOWS_COMMAND_LINE_MAX_CHARS
+        if (
+            is_windows_script(executable)
+            and self.find_posix_launcher(executable) is None
+        ):
+            max_chars = WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
+        if len(subprocess.list2cmdline(command)) <= max_chars:
+            return command
+        if not self.is_cli_lint_mode_supported("project"):
+            logging.warning(
+                f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
+                "Windows command line limit and this linter has no project mode: "
+                "reduce them with FILTER_REGEX_EXCLUDE, or use Docker"
+            )
+            return command
+        logging.warning(
+            f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
+            "Windows command line limit: running it in project mode"
+        )
+        self.cli_lint_mode = "project"
+        return self.build_lint_command()
+
+    # npm and MegaLinter write a POSIX launcher next to each .cmd launcher
+    def find_posix_launcher(self, executable):
+        if find_git_bash() is None:
+            return None
+        launcher = os.path.splitext(executable)[0]
+        if not os.path.isfile(launcher):
+            return None
+        with open(launcher, "rb") as launcher_file:
+            return launcher if launcher_file.read(2) == b"#!" else None
+
+    # Git Bash reads the arguments from a file, so that the long command line never
+    # goes through cmd.exe: the POSIX launcher starts the tool with all of them
+    def run_through_git_bash(self, command, subprocess_env, cwd, launcher):
+        with tempfile.TemporaryDirectory() as folder:
+            arguments_file = os.path.join(folder, "arguments")
+            with open(arguments_file, "w", encoding="utf-8", newline="") as file:
+                file.write("".join(f"{argument}\0" for argument in command[1:]))
+            return self._run_lint_subprocess(
+                [
+                    find_git_bash(),
+                    "-c",
+                    'mapfile -d "" -t arguments < "$1"; exec "$2" "${arguments[@]}"',
+                    "megalinter",
+                    arguments_file.replace("\\", "/"),
+                    launcher.replace("\\", "/"),
+                ],
+                {
+                    "cwd": cwd,
+                    "env": {**subprocess_env, "MSYS_NO_PATHCONV": "1"},
+                },
+            )
 
     def merge_file_sarif(self):
         if self.sarif_output_file is None or not os.path.isfile(self.sarif_output_file):
@@ -1516,13 +1592,26 @@ class Linter:
             self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
-                return_code, return_stdout = self._run_lint_subprocess(
-                    command,
-                    {
-                        "env": subprocess_env,
-                        "cwd": cwd,
-                    },
-                )
+                posix_launcher = None
+                if (
+                    sys.platform == "win32"
+                    and is_windows_script(command[0])
+                    and len(subprocess.list2cmdline(command))
+                    > WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
+                ):
+                    posix_launcher = self.find_posix_launcher(command[0])
+                if posix_launcher is not None:
+                    return_code, return_stdout = self.run_through_git_bash(
+                        command, subprocess_env, cwd, posix_launcher
+                    )
+                else:
+                    return_code, return_stdout = self._run_lint_subprocess(
+                        command,
+                        {
+                            "env": subprocess_env,
+                            "cwd": cwd,
+                        },
+                    )
             except FileNotFoundError as err:
                 return_code = 999
                 return_stdout = (
@@ -2876,3 +2965,7 @@ class Linter:
 
     def post_test(self, test_name):
         pass
+
+
+def is_windows_script(executable):
+    return executable is not None and executable.lower().endswith((".cmd", ".bat"))
