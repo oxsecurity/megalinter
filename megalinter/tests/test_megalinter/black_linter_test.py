@@ -147,7 +147,8 @@ class BlackLinterTest(unittest.TestCase):
         command.insert(1, "--quiet")
         _result, diff_command = self.run_check_then_diff(linter, command, "")
         self.assertIn("--diff", diff_command)
-        self.assertEqual(diff_command[-len(linter.files) :], linter.files)
+        files_count = len(linter.files)
+        self.assertEqual(diff_command[-files_count:], linter.files)
 
     def test_parse_errors_only_need_no_diff(self):
         linter = build_black_linter()
