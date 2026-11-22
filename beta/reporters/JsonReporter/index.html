@@ -10618,6 +10618,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#content-for-tools-and-coding-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Content for tools and coding agents
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12252,6 +12263,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#content-for-tools-and-coding-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Content for tools and coding agents
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12305,6 +12327,15 @@
 </tr>
 </tbody>
 </table>
+<h2 id="content-for-tools-and-coding-agents">Content for tools and coding agents</h2>
+<p>The report is read by tools and coding agents, so the fields they need are available without parsing the logs:</p>
+<ul>
+<li><code>linters[].blocking</code>: <code>false</code> when the errors of the linter do not fail the run (<code>DISABLE_ERRORS</code>, <code>DISABLE_ERRORS_IF_LESS_THAN</code>)</li>
+<li><code>linters[].findings</code>: the problems found, as <code>file</code>, <code>line</code>, <code>column</code>, <code>rule</code>, <code>level</code> and <code>message</code>. Present when the SARIF report is also activated (<code>SARIF_REPORTER: true</code>), for the linters that produce SARIF</li>
+<li><code>skipped_linters</code>: the linters that did not run, with their <code>reason</code> (not listed in <code>NATIVE_LINTERS</code>, not installed, disabled, excluded CLI lint mode)</li>
+<li><code>tips</code>: the advice met during the run, with a <code>category</code> (<code>performance</code>, <code>activation</code>, <code>deprecation</code>, <code>timeout</code>, <code>native</code>) and a <code>message</code></li>
+<li><code>linters[].native_first_run</code>: <code>true</code> for the first run of a linter just installed by <a href="../../install-native/">native mode</a>, much slower than the next ones</li>
+</ul>
 
 
 

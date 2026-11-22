@@ -773,10 +773,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-the-runner-and-megalinter-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How the runner and megalinter fit together
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the runner and megalinter fit together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-install-do-i-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Which "install" do I need?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-mode-next-to-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Native mode next to CI
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#native_linters-explicit-opt-in" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         NATIVE_LINTERS: explicit opt-in
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-linters-to-run-natively" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Which linters to run natively
       </span>
     </span>
   </a>
@@ -838,6 +888,17 @@
   
     <nav class="md-nav" aria-label="Commands">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reports-for-tools-and-coding-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reports for tools and coding agents
+      </span>
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#faster-commands" class="md-nav__link">
@@ -12358,10 +12419,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-the-runner-and-megalinter-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How the runner and megalinter fit together
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the runner and megalinter fit together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-install-do-i-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Which "install" do I need?
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-mode-next-to-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Native mode next to CI
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#native_linters-explicit-opt-in" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         NATIVE_LINTERS: explicit opt-in
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-linters-to-run-natively" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Which linters to run natively
       </span>
     </span>
   </a>
@@ -12423,6 +12534,17 @@
   
     <nav class="md-nav" aria-label="Commands">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reports-for-tools-and-coding-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reports for tools and coding agents
+      </span>
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#faster-commands" class="md-nav__link">
@@ -12516,9 +12638,17 @@
 <p>Requirements:</p>
 <ul>
 <li><a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a> (Windows: <code>winget install --id astral-sh.uv -e</code>, macOS: <code>brew install uv</code>)</li>
-<li>Node.js, to run <code>mega-linter-runner</code></li>
+<li>Node.js, to run <code>mega-linter-runner</code>, the launcher that downloads, verifies and calls the MegaLinter engine (see <a href="#how-the-runner-and-megalinter-fit-together">how the pieces fit</a>)</li>
 <li>Windows only: <a href="https://git-scm.com/download/win">Git for Windows</a> (Git Bash), <code>winget install --id Git.Git -e</code></li>
 </ul>
+<p>Set up native mode in one command:</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--native-setup
+</code></pre></div>
+<p>It analyzes your repository, proposes the linters to run on your machine, writes them in <code>NATIVE_LINTERS</code> (your comments and the rest of <code>.mega-linter.yml</code> are kept), installs them and runs a first lint. In a terminal, it asks you to confirm or edit the proposed list. Give the linter keys as arguments to skip the question (<code>--native-setup PYTHON_BLACK MARKDOWN_MARKDOWNLINT</code>).</p>
+<p>Then lint whenever you want:</p>
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--native
+</code></pre></div>
+<p>To do it by hand instead:</p>
 <ol>
 <li>
 <p>List the linters allowed to run natively in your <code>.mega-linter.yml</code>:</p>
@@ -12530,16 +12660,64 @@
 </li>
 <li>
 <p>Install them, then run:</p>
-<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--install-linters<span class="w"> </span>--release<span class="w"> </span>beta
-npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--native<span class="w"> </span>--release<span class="w"> </span>beta
+<div class="highlight"><pre><span></span><code>npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--install-linters
+npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--native
 </code></pre></div>
 </li>
 </ol>
-<p>While native mode is in beta, use the beta of <code>mega-linter-runner</code> (<code>@beta</code>): released versions older than native mode do not know these options.</p>
+<p>While native mode is in beta, use the beta of <code>mega-linter-runner</code> (<code>@beta</code>): released versions older than native mode do not know these options. Native mode uses the latest beta of MegaLinter by default: pass <code>--release &lt;version&gt;</code> only to pin an exact version.</p>
 <p>The linter keys are the ones used everywhere else in MegaLinter (<code>ENABLE_LINTERS</code>, <code>DISABLE_LINTERS</code>...). Each <a href="../supported-linters/">linter page</a> has a "native mode" section with its key and the platforms it supports.</p>
-<blockquote>
-<p><strong>Note:</strong> <code>--install-linters</code> installs linters for native mode. It is not <code>--install</code>, which sets up MegaLinter in your repository (configuration and CI files).</p>
-</blockquote>
+<h2 id="how-the-runner-and-megalinter-fit-together">How the runner and megalinter fit together</h2>
+<p>Two programs, one job each:</p>
+<ul>
+<li><code>mega-linter-runner</code> (npm, JavaScript) is the launcher you type. It also sets up your repository (<code>--install</code>, <code>--upgrade</code>).</li>
+<li><code>megalinter</code> (PyPI, Python) is the engine that lints. In native mode, the runner downloads it, verifies it (sha256 and PyPI attestation), installs it in <code>~/.megalinter/core/&lt;version&gt;/venv</code>, then calls it for you.</li>
+</ul>
+<p>Node.js is needed only for the launcher. In Docker mode, the engine runs inside the image, so nothing else is installed on your machine.</p>
+<pre class="mermaid"><code>flowchart LR
+    U(["You, agent skills,&lt;br/&gt;pre-commit, CI wrappers"]) --&gt; R["&lt;b&gt;mega-linter-runner&lt;/b&gt;&lt;br/&gt;npm, JavaScript&lt;br/&gt;parses the options"]
+    R --&gt;|"default"| D["docker run&lt;br/&gt;MegaLinter image"]
+    D --&gt; E1[["megalinter engine&lt;br/&gt;Python, in the container"]]
+    R --&gt;|"--native, --native-setup,&lt;br/&gt;--install-linters, --doctor..."| N["uv + verification&lt;br/&gt;sha256 and PyPI attestation"]
+    N --&gt; E2[["megalinter engine&lt;br/&gt;Python, in ~/.megalinter"]]
+    R --&gt;|"--install, --upgrade,&lt;br/&gt;--custom-flavor-setup"| G["Configuration generators&lt;br/&gt;JavaScript only"]</code></pre>
+<p>You never need to call <code>megalinter</code> yourself: the runner translates its options into the engine's arguments and environment variables (<code>--fix</code> sets <code>APPLY_FIXES</code>, <code>--linter</code> sets <code>NATIVE_LINTERS</code>...).</p>
+<h3 id="which-install-do-i-need">Which "install" do I need?</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Option</th>
+<th style="text-align: left;">What it does</th>
+<th style="text-align: left;">Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>--install</code></td>
+<td style="text-align: left;">Creates <code>.mega-linter.yml</code> and CI workflow files</td>
+<td style="text-align: left;">any</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--upgrade</code></td>
+<td style="text-align: left;">Upgrades those files to the latest version</td>
+<td style="text-align: left;">any</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--native-setup</code></td>
+<td style="text-align: left;">Picks the linters, writes <code>NATIVE_LINTERS</code>, installs them and runs a first lint</td>
+<td style="text-align: left;">native</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--install-linters</code></td>
+<td style="text-align: left;">Installs the linter tools on this machine</td>
+<td style="text-align: left;">native</td>
+</tr>
+</tbody>
+</table>
+<h2 id="native-mode-next-to-ci">Native mode next to CI</h2>
+<p>Native mode does not replace your CI job: the recommended setup is <strong>both</strong>. CI keeps running every active linter in Docker, and your machine runs the <code>NATIVE_LINTERS</code> subset in seconds (agent fix loops, pre-commit hooks, local checks). A green native run is therefore not a green CI: the linters it skips are left to CI.</p>
+<p>Without a CI job, native mode works alone: <code>--native-setup</code> creates <code>.mega-linter.yml</code> when it does not exist. To add CI later, run <code>npx mega-linter-runner --install</code>: it backs up <code>.mega-linter.yml</code> as <code>.megalinter-setup.bak</code>, so copy your <code>NATIVE_LINTERS</code> back from it.</p>
+<p>The <a href="../install-agent-skills/">agent skills</a> ask which of the three you want (CI, native, or both) when they set MegaLinter up.</p>
 <h2 id="native_linters-explicit-opt-in">NATIVE_LINTERS: explicit opt-in</h2>
 <p>Nothing runs natively unless it is listed in <code>NATIVE_LINTERS</code>. A linter that is activated by your configuration but not listed is skipped, so you can keep running a larger set of linters in Docker or in CI.</p>
 <p>The special value <code>all</code> means every linter matching your configuration:</p>
@@ -12547,6 +12725,15 @@ npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--nati
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
 </code></pre></div>
 <p><strong>Using <code>all</code> is discouraged.</strong> It installs many linters, which is slow, and you must fully trust the security of every one of them. Prefer listing the linters you need.</p>
+<h2 id="which-linters-to-run-natively">Which linters to run natively</h2>
+<p><code>NATIVE_LINTERS</code> is usually a subset of what your CI runs. CI keeps running every active linter: the variable only scopes the runs on your machine, where you want fast feedback. The slow linters (spell checkers, type checkers, link checkers) and the ones scanning the whole repository (secret and vulnerability scanners, copy-paste detection) are better left to CI.</p>
+<p><code>npx mega-linter-runner@beta --native --prerun</code> shows the proposal without running or installing anything, and <code>--native-setup</code> applies it. A linter is proposed for your machine unless:</p>
+<ul>
+<li>it is not available natively on your platform, or the tool it needs from your machine is missing</li>
+<li>it runs in project mode (it scans the whole repository)</li>
+<li>it took 10 seconds or more on your last run (the report of the previous run is read), or, when it has not run yet, its <code>linter_speed</code> is 2 or less (out of 5). The first run after a linter is installed is slower than the next ones, so it is not counted</li>
+</ul>
+<p>The linters left to CI are listed with their reason, and in the console of each run (<code>Skipped linters (not listed in NATIVE_LINTERS)</code>). A green native run is not a green CI: the skipped linters still run there.</p>
 <h2 id="what-is-installed-and-how">What is installed, and how</h2>
 <p>Linters are installed in <code>~/.megalinter</code> (change it with <code>MEGALINTER_HOME</code>), without administrator rights and without touching your system:</p>
 <table>
@@ -12609,47 +12796,58 @@ npx<span class="w"> </span>mega-linter-runner@beta<span class="w"> </span>--nati
 <p><code>SSL_CERT_FILE</code>, <code>REQUESTS_CA_BUNDLE</code>, <code>NODE_EXTRA_CA_CERTS</code>, <code>PIP_CERT</code> and <code>NPM_CONFIG_CAFILE</code> are given to the installers too.</p>
 <h2 id="security-model">Security model</h2>
 <ul>
-<li>Commands declared by the analyzed repository (<code>PRE_COMMANDS</code>, <code>POST_COMMANDS</code>), <code>PLUGINS</code> and remote <code>EXTENDS</code> are <strong>ignored</strong> in native mode, because they would run on your machine with your privileges. Use <code>--trust-repo-commands</code> (or <code>NATIVE_TRUST_REPO_COMMANDS=true</code> in the environment, never in <code>.mega-linter.yml</code>) only for a repository you fully trust.</li>
+<li>Commands declared by the analyzed repository (<code>PRE_COMMANDS</code>, <code>POST_COMMANDS</code>), <code>PLUGINS</code> and remote <code>EXTENDS</code> are <strong>ignored</strong> in native mode, because they would run on your machine with your privileges. Use <code>--trust-repo-commands</code> (or <code>NATIVE_TRUST_REPO_COMMANDS=true</code> in the environment, never in <code>.mega-linter.yml</code>) only for a repository you fully trust. It is not available with <code>--native-setup</code>: set up native mode first, then run <code>--native --trust-repo-commands</code>.</li>
 <li>Linters only receive an allowlist of system environment variables, so the secrets of your machine (cloud credentials, tokens...) do not leak to them. Add more with <code>NATIVE_ENV_ALLOWLIST</code>.</li>
 <li>Native mode refuses to run when <code>MEGALINTER_HOME</code> belongs to another user or is writable by others.</li>
 <li>The <code>megalinter</code> Python package is installed by <code>mega-linter-runner</code> after checking its PyPI attestation: it must have been published by the release workflow of the MegaLinter repository.</li>
 </ul>
 <h2 id="commands">Commands</h2>
-<p><code>mega-linter-runner</code> forwards to the <code>megalinter</code> command that you can also use directly (<code>uv tool install megalinter --pre</code>):</p>
+<p>Run everything through <code>mega-linter-runner</code>, which calls the <code>megalinter</code> engine for you:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Command</th>
-<th style="text-align: left;">Purpose</th>
+<th style="text-align: left;">From the runner</th>
+<th style="text-align: left;">What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>megalinter run</code></td>
+<td style="text-align: left;"><code>mega-linter-runner --native-setup [KEY...]</code></td>
+<td style="text-align: left;">Choose the linters to run natively, write <code>NATIVE_LINTERS</code>, install them and run a first lint</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mega-linter-runner --native --prerun</code></td>
+<td style="text-align: left;">Suggest the linters to run natively, and configuration improvements, without running any linter</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mega-linter-runner --native</code></td>
 <td style="text-align: left;">Lint the current folder with the linters of <code>NATIVE_LINTERS</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>megalinter install-linters [KEY...]</code></td>
+<td style="text-align: left;"><code>mega-linter-runner --install-linters [KEY...]</code></td>
 <td style="text-align: left;">Install the given linters, or the ones of <code>NATIVE_LINTERS</code></td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>megalinter uninstall-linters KEY...</code></td>
+<td style="text-align: left;"><code>mega-linter-runner --uninstall-linters KEY...</code></td>
 <td style="text-align: left;">Remove installed linters</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>megalinter list-linters</code></td>
+<td style="text-align: left;"><code>mega-linter-runner --list-linters [--json]</code></td>
 <td style="text-align: left;">Show the native status of every linter</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>megalinter doctor</code></td>
+<td style="text-align: left;"><code>mega-linter-runner --doctor</code></td>
 <td style="text-align: left;">Check Git Bash, uv, runtimes and the install folder</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>megalinter cache prune</code></td>
+<td style="text-align: left;"><code>mega-linter-runner --prune-cache</code></td>
 <td style="text-align: left;">Empty the download and linter caches</td>
 </tr>
 </tbody>
 </table>
+<p>The engine installed by the runner is not on your <code>PATH</code>. As a shortcut, you can install your own copy with <code>uv tool install megalinter --pre</code> and call the same commands directly (<code>megalinter setup [--linters KEY,KEY] [--no-run]</code>, <code>megalinter prerun</code>, <code>megalinter run</code>, <code>megalinter install-linters</code>, <code>megalinter uninstall-linters</code>, <code>megalinter list-linters</code>, <code>megalinter doctor</code>, <code>megalinter cache prune</code>). The runner does not verify this copy, and it has none of the runner's conveniences: <code>--fix</code>, <code>--filesonly</code>, <code>--debug</code> and <code>--linter</code> are runner options that become environment variables (<code>APPLY_FIXES</code>, <code>SKIP_CLI_LINT_MODES</code>, <code>LOG_LEVEL</code>, <code>NATIVE_LINTERS</code>).</p>
+<h3 id="reports-for-tools-and-coding-agents">Reports for tools and coding agents</h3>
+<p><code>run</code> and <code>setup</code> accept <code>--json</code> (equivalent to <code>JSON_REPORTER=true</code>) and <code>--sarif</code> (equivalent to <code>SARIF_REPORTER=true</code>); <code>mega-linter-runner</code> has the same options. With both, <code>megalinter-reports/mega-linter-report.json</code> gives each linter's findings (<code>file</code>, <code>line</code>, <code>column</code>, <code>rule</code>, <code>level</code>, <code>message</code>) next to its status, whether it is blocking, and its time. It also lists the <code>skipped_linters</code> with their reason, and the <code>tips</code> met during the run (performance advice, deprecations, timeouts). The linters that did not produce SARIF have no <code>findings</code>.</p>
 <h3 id="faster-commands">Faster commands</h3>
 <p><code>npx</code> checks its copy of <code>mega-linter-runner</code> and of its dependencies on each call, which adds several seconds to every run. When you run MegaLinter often, install the runner once:</p>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>mega-linter-runner@beta

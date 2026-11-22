@@ -12536,7 +12536,7 @@
 <h2 id="performance">Performance</h2>
 <ul>
 <li><a href="../flavors/">MegaLinter flavors</a> allow using smaller Docker images, reducing pull time.</li>
-<li>Linters are run in parallel, which is much faster than Super-Linter's Bash script that runs all linters sequentially.</li>
+<li>Thanks to Python multiprocessing, linters are run in parallel, which is much faster than Super-Linter's Bash script that runs all linters sequentially.</li>
 <li>When the linter allows it, call it once with N files, instead of calling it N times with one file.</li>
 </ul>
 <h2 id="more-languages-and-formats-linted">More languages and formats linted</h2>

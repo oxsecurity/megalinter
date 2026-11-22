@@ -15826,11 +15826,57 @@
 <li>Not available on <strong>Intel Macs</strong>: <code>cryptography</code>, needed to verify the MegaLinter package, no longer publishes builds for them, and <code>mega-linter-runner --native</code> says so instead of failing during the install. Use Docker there</li>
 </ul>
 </li>
-<li><strong>Lighter Docker images</strong>: the main image download shrinks by <strong>21%</strong>, with the same linters and the same behavior (#9497)<ul>
-<li>The Rust toolchain used by <code>RUST_CLIPPY</code> is now installed once instead of twice</li>
-<li>Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches</li>
 <li>
-<p>Compressed download size on ghcr.io, linux/amd64 (before = previous beta):</p>
+<p><strong>Set up native mode in one command</strong>: <code>npx mega-linter-runner@beta --native-setup</code> analyzes your repository, proposes the linters to run on your machine, writes <strong><code>NATIVE_LINTERS</code></strong> in <code>.mega-linter.yml</code>, installs them and runs a first lint. See <a href="https://megalinter.io/latest/install-native/#which-linters-to-run-natively">Native mode</a></p>
+<ul>
+<li><strong>CI keeps running every active linter</strong>: the proposal only scopes your local runs, and leaves the slow linters (spell, type and link checkers) and the ones scanning the whole repository to CI</li>
+<li>A linter that took <strong>10 seconds or more</strong> on your previous run is left to CI, and one that is slow by design (<code>linter_speed</code> 2 or less) too, until it has run</li>
+<li>In a terminal it asks you to confirm or edit the list. Give the linter keys as arguments (<code>--native-setup PYTHON_BLACK MARKDOWN_MARKDOWNLINT</code>) to skip the question</li>
+<li><code>--native --prerun</code> shows the proposal without installing or running anything, and your comments and the rest of <code>.mega-linter.yml</code> are kept when it is written</li>
+<li>New <code>megalinter setup</code> and <code>megalinter prerun</code> commands, and <code>--json</code> / <code>--sarif</code> options of <code>megalinter run</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Coding agent commands (Windows laptop, demo repository)</th>
+<th>Before</th>
+<th>After</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runner start</td>
+<td>0.49 s</td>
+<td>0.20 s</td>
+<td>-59 %</td>
+</tr>
+<tr>
+<td>Choose, install the linters and first lint</td>
+<td>61.70 s</td>
+<td>25.85 s</td>
+<td>-58 %</td>
+</tr>
+<tr>
+<td>Re-check one fixed file</td>
+<td>5.58 s</td>
+<td>2.06 s</td>
+<td>-63 %</td>
+</tr>
+<tr>
+<td><strong>Total, 3 commands</strong></td>
+<td>67.28 s</td>
+<td>27.92 s</td>
+<td>-59 %</td>
+</tr>
+</tbody>
+</table>
+<p>Before: published beta, 6 linters chosen by the agent. After: 5 linters proposed, the one scanning the whole repository is left to CI. Measured once per flow, with an antivirus active.
+  - The native <strong>results cache</strong> now also works when the <strong>SARIF</strong> report is enabled: the files without any finding are still not linted again
+  - <strong>Lighter Docker images</strong>: the main image download shrinks by <strong>21%</strong>, with the same linters and the same behavior (#9497)
+- The Rust toolchain used by <code>RUST_CLIPPY</code> is now installed once instead of twice
+- Files never used at runtime are no longer shipped: leftover download archives, duplicate .NET tool packages and unused .NET framework builds, source maps and type declarations of Node.js linters and Salesforce CLI plugins, unused Rust and Dart runtime extras, and build caches
+- Compressed download size on ghcr.io, linux/amd64 (before = previous beta):</p>
 <table>
 <thead>
 <tr>
@@ -15849,8 +15895,6 @@
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
 </li>
 </ul>
 <ul>
@@ -15946,6 +15990,12 @@
 <li>
 <p>Reporters</p>
 <ul>
+<li>The <strong>JSON report</strong> (<code>JSON_REPORTER: true</code>) gives coding agents and tools what they need without parsing logs. Existing fields are unchanged<ul>
+<li>Each linter has a <strong><code>blocking</code></strong> flag, and its <strong><code>findings</code></strong> (file, line, column, rule, level, message) when the <strong>SARIF</strong> report is enabled (<code>SARIF_REPORTER: true</code>)</li>
+<li>New <strong><code>skipped_linters</code></strong> with the reason of each linter that did not run, and <strong><code>tips</code></strong>: the performance, activation, deprecation and timeout advice met during the run</li>
+<li><strong><code>native_first_run</code></strong> marks the first run of a freshly installed linter in native mode, which is far slower than the next ones (48 s instead of 1.5 s measured on Windows)</li>
+</ul>
+</li>
 <li>Add <strong>Jira reporter</strong>: posts the lint summary as a comment on the Jira ticket(s) referenced by <strong>labels</strong> of a GitHub, GitLab or Azure DevOps Pull Request. Set <code>JIRA_URL</code> with <code>JIRA_API_TOKEN</code> or <code>JIRA_PERSONAL_ACCESS_TOKEN</code>, see <a href="https://megalinter.io/latest/reporters/JiraReporter/">documentation</a></li>
 <li><strong>PR/MR comments</strong> now have cleaner headings and footers. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9488">#9488</a></li>
 </ul>
@@ -15967,6 +16017,34 @@
 <li>
 <p>mega-linter-runner</p>
 <ul>
+<li>
+<p><strong>Starts about 1.2 s faster</strong> on every command other than <code>--install</code>, <code>--upgrade</code> and <code>--custom-flavor-setup</code>, which are the only ones that need the generators</p>
+<table>
+<thead>
+<tr>
+<th><code>mega-linter-runner --version</code> (Windows laptop, median of 9)</th>
+<th>Before</th>
+<th>After</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start of the runner</td>
+<td>1.40 s</td>
+<td>0.15 s</td>
+<td>-89 %</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ul>
+<li>New <strong><code>--native-setup</code></strong> option (see above) and new <strong><code>--sarif</code></strong> option (equivalent to <code>-e SARIF_REPORTER=true</code>)</li>
+<li>New <strong><code>--uninstall-linters</code></strong>, <strong><code>--list-linters</code></strong> (with <code>--json</code>), <strong><code>--doctor</code></strong> and <strong><code>--prune-cache</code></strong> options: <strong>every native command</strong> now goes through <code>mega-linter-runner</code>, so you do not need to install the <code>megalinter</code> engine yourself</li>
+<li>The runner README and the <a href="https://megalinter.io/latest/install-native/">native mode</a> and <a href="https://megalinter.io/latest/install-locally/">run locally</a> pages now explain <strong>how <code>mega-linter-runner</code> and <code>megalinter</code> fit together</strong> (with a diagram), the requirements of each mode, and the options that were missing from the table</li>
+<li><strong><code>--native</code></strong> now honors <strong><code>--json</code></strong> and <strong><code>--prerun</code></strong>, which it ignored: <code>--native --prerun</code> ran a full lint</li>
+<li><strong><code>--json</code></strong> writes the JSON report <code>megalinter-reports/mega-linter-report.json</code>: its description said it printed it on stdout</li>
 <li><code>--native --release beta</code> looks for a new beta on PyPI <strong>at most once an hour</strong> instead of on every run (it downloaded the 345 KB list of all the releases each time), which speeds up frequent runs such as pre-commit hooks</li>
 <li>New <strong><code>--native</code></strong> option to run MegaLinter without Docker, and <strong><code>--install-linters</code></strong> to install the linters it needs (not to be confused with <code>--install</code>, which sets up MegaLinter in your repository)<ul>
 <li>With <code>--native</code>, the files given as arguments are the only ones linted, and <code>--env</code> accepts the same quoted values as with Docker (<code>"'ENABLE=MARKDOWN,YAML'"</code>)</li>
@@ -15979,11 +16057,19 @@
 <li>
 <p>Agent Skills</p>
 <ul>
-<li><strong>megalinter-check</strong> can now lint locally without a container engine, using native mode, after asking you<ul>
-<li>It tells you which linters a native run skipped (the ones missing from <code>NATIVE_LINTERS</code>), and how to fix installs behind a proxy inspecting HTTPS</li>
+<li><strong>megalinter-check</strong> now <strong>lints natively, without asking, when <code>.mega-linter.yml</code> lists <code>NATIVE_LINTERS</code></strong>, and without a container engine when you decline Docker<ul>
+<li>It re-checks fixes with <strong>a single native run</strong> restricted to the failing linters and the fixed files, instead of several Docker containers</li>
+<li>It reads the <strong>findings of the JSON report</strong> instead of parsing logs, and tells you which linters a native run skipped, which are left to CI</li>
+<li>It uses the <code>mega-linter-runner</code> of your <code>PATH</code> when it supports native mode, and <code>npx mega-linter-runner@beta</code> otherwise</li>
 </ul>
 </li>
-<li><strong>megalinter-setup</strong> can add <code>NATIVE_LINTERS</code> to <code>.mega-linter.yml</code> when you want to lint without Docker</li>
+<li><strong>megalinter-setup</strong> now <strong>proposes the linters to run natively</strong>: it analyzes the repository, shows the linters proposed for your machine and the ones left to CI with the reason, asks you to confirm, then sets everything up with <code>--native-setup</code><ul>
+<li>It explains that CI keeps running every active linter, so <code>NATIVE_LINTERS</code> is a subset</li>
+</ul>
+</li>
+<li>The <strong>megalinter-runner</strong> sub-agent runs native checks and returns the skipped linters</li>
+<li><strong>megalinter-setup</strong> now <strong>asks where MegaLinter should run</strong>: in CI, natively on your machine, or both (recommended), and sets up what you chose. A native-only setup needs no CI workflow file</li>
+<li><strong>megalinter-check</strong>, <strong>megalinter-setup</strong> and <strong>megalinter-runner</strong> now <strong>diagnose a failing native setup with <code>--doctor</code></strong> and <code>--list-linters</code>, and always go through <code>mega-linter-runner</code> instead of installing the <code>megalinter</code> engine themselves</li>
 </ul>
 </li>
 </ul>
@@ -15991,7 +16077,12 @@
 <li>
 <p>Dev</p>
 <ul>
-<li>New linter-level descriptor property <strong><code>native_results_cache</code></strong> (<code>config_files</code>, <code>failed_files_in_output</code>) and module <code>megalinter/native/results_cache.py</code>: <code>Linter.run()</code> lints only the files not recorded as successful for the current key (MegaLinter and linter versions, install folder, arguments, linter variables, config and ignore files, <code>config_files</code> found in the folders of the linted files and their parents), recognized by size and modification time, else by sha256. Files modified during the run are not recorded, nor recently modified ones by size and time (coarse timestamps). Never in project mode or with SARIF. Covered by <code>results_cache_test.py</code></li>
+<li>The JSON report fields come from <code>JsonReporter.add_computed_fields</code>: findings are read from the SARIF of each linter by <code>utils_sarif.extract_findings</code> once it has been merged (a file lint mode linter writes one SARIF per file), and <code>Megalinter.tips</code> / <code>skipped_linters_details</code> are filled by <code>add_tip</code> and the native selection</li>
+<li><code>megalinter/native/suggest.py</code> builds the <code>NATIVE_LINTERS</code> suggestion of the prerun report (rules: unsupported, missing host tool, project mode, measured time, then <code>linter_speed</code>), and <code>megalinter/native/config_writer.py</code> edits <code>NATIVE_LINTERS</code> as text then parses the file again, restoring it when the result is not the expected list. <code>config.CONFIG_FILE_CANDIDATES</code> is now shared with it</li>
+<li>A native prerun skips the native selection, so it never installs a linter. <code>Linter.native_first_run_marker</code> keeps a marker in the install folder to flag the first run</li>
+<li>The results cache reads the failing files of a SARIF run from its findings, and its key includes the SARIF arguments so SARIF and text runs do not share entries</li>
+<li><code>runner.js</code> imports <code>yeoman-environment</code>, <code>upgrade.js</code> and <code>codetotal.js</code> when a command needs them</li>
+<li>New linter-level descriptor property <strong><code>native_results_cache</code></strong> (<code>config_files</code>, <code>failed_files_in_output</code>) and module <code>megalinter/native/results_cache.py</code>: <code>Linter.run()</code> lints only the files not recorded as successful for the current key (MegaLinter and linter versions, install folder, arguments, linter variables, config and ignore files, <code>config_files</code> found in the folders of the linted files and their parents), recognized by size and modification time, else by sha256. Files modified during the run are not recorded, nor recently modified ones by size and time (coarse timestamps). Never in project mode. Covered by <code>results_cache_test.py</code></li>
 <li><code>Megalinter.process_linters_parallel()</code> runs the linter groups in a <code>multiprocessing.pool.ThreadPool</code>, the only parallel architecture: the worker process pool, <code>init_worker()</code>, the log queue, the forkserver preload, the single-group shortcut and <code>parallel_logging_test.py</code> are removed. The linters run in place, so their objects are no longer pickled and copied back. <code>Linter.__init__</code> copies the list and dict values of the descriptor, so a linter class extending one in place (cpplint, cspell, checkov, jscpd, stylelint) no longer changes the definition shared with the other linters extending the same shared file. Covered by <code>parallel_pool_test.py</code></li>
 <li>Heavy libraries used only by optional features (requests, PyGithub, python-gitlab, redis, pytablewriter, atlassian-python-api, jsonpickle) are imported inside the functions using them, an exception to the top-of-file rule documented in <code>.claude/rules/python-style.md</code>. <code>lazy_imports_test.py</code> checks, on every Python version, that importing MegaLinter and all its reporters loads none of them. Tests fake them through <code>sys.modules</code> or the library's own attributes</li>
 <li>New linter-level descriptor property <strong><code>cli_lint_cache_args</code></strong>: arguments enabling the linter's own cache, sent only in native mode, with <code>{{LINTER_CACHE_DIR}}</code> replaced by a folder of <code>MEGALINTER_HOME/cache/linters/&lt;LINTER_KEY&gt;/&lt;workspace hash&gt;</code>. Declared for eslint (shared, emptied for <code>TYPESCRIPT_ES</code> / <code>TSX_ES</code>), prettier (shared), stylelint and cspell. <code>BlackLinter</code> runs <code>black --check</code> first, then <code>--check --diff</code> only on the files to reformat (black skips its cache with <code>--diff</code>) <code>EslintLinter</code> sends no cache argument when the eslint configuration enables type-aware rules (<code>projectService</code>, <code>project:</code>, <code>*TypeChecked</code> configs)</li>
@@ -16027,6 +16118,7 @@
 <li>
 <p>CI</p>
 <ul>
+<li>The <strong>Benchmark native mode</strong> workflow has an <strong>Agent loop</strong> job on the 5 native platforms: it measures the commands of a coding agent that sets up native mode, lints and re-checks a fixed file, with the published beta and with this checkout, and adds the table to the summary (<code>benchmark_native.py agent-loop</code>)</li>
 <li><strong>Test native mode</strong>: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled <code>native-full-matrix</code>. <strong>Native locks</strong> regenerates the install locks after descriptor changes. <strong>Deploy MegaLinter to PyPI</strong> publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the <code>release-runner</code> environment</li>
 <li>Renovate also bumps the pinned versions of native installs (<code>native_install</code> in descriptors, runtimes in <code>native-runtimes.yml</code>)</li>
 <li>The npm (mega-linter-runner) and PyPI (megalinter) publish jobs end only once the new version can be downloaded from the registry, with its dist-tag and provenance attestation: npm processes uploads for several minutes after accepting them</li>
@@ -16105,6 +16197,7 @@
 <li><a href="https://github.com/astral-sh/ruff">ruff-format</a> from 0.17.3 to <strong>0.17.4</strong> on 2026-11-21</li>
 <li><a href="https://github.com/astral-sh/ruff">ruff</a> from 0.17.3 to <strong>0.17.4</strong> on 2026-11-21</li>
 <li><a href="https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell">cspell</a> from 10.4.0 to <strong>10.4.1</strong> on 2026-11-21</li>
+<li><a href="https://djlint.com/">djlint</a> from 1.49.9 to <strong>1.49.10</strong> on 2026-11-22</li>
 </ul>
 </li>
 </ul>
