@@ -159,7 +159,9 @@ Native mode lints on the user's machine without Docker, and a run takes seconds.
    <runner> --native-setup PYTHON_BLACK MARKDOWN_MARKDOWNLINT --json
    ```
 
-   Without the runner option (`--help` does not list it) or when the prerun fails because the installed core does not know it, add `NATIVE_LINTERS` to `.mega-linter.yml` yourself, choosing the linters from the technologies of the repository, then run `<runner> --install-linters --release beta`.
+   Without the runner option (`--help` does not list it) or when the prerun fails because the installed core does not know it, add `NATIVE_LINTERS` to `.mega-linter.yml` yourself, choosing the linters from the technologies of the repository, then run `<runner> --install-linters`.
+
+   When the setup fails on a prerequisite (`uv`, Git Bash, a language runtime) and `--help` lists `--doctor`, run `<runner> --doctor` and relay its findings. Use `<runner>` for every native command: never call the `megalinter` engine or install it yourself, the runner is the only entry that verifies it.
 
 4. **Pre-commit hooks** (`megalinter-native-incremental` on commit, `megalinter-native-full` on push) run the same `NATIVE_LINTERS` on each commit: see <https://megalinter.io/latest/install-native/>.
 

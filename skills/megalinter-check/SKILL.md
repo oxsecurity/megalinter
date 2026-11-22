@@ -111,6 +111,10 @@ Native mode runs the linters directly on the user's machine, without Docker: no 
   - `skipped_linters[]`: `key` and `reason` of the linters that did not run (not in `NATIVE_LINTERS`, not installed, disabled, excluded CLI lint mode).
   - `tips[]`: `category` and `message` of the advice met during the run (performance, activation, deprecation, timeout, host tool version).
 - Requirements: `uv` and Node.js, plus Git Bash on Windows. A missing `uv` is reported with the command that installs it.
+- **Diagnose with the runner, never with the engine**: always go through `<runner>`, and never call `megalinter` or install it (`uv tool install megalinter`) yourself: the runner is the only entry that verifies it. When a native run fails before linting (missing `uv`, Git Bash or language runtime, broken install), and `--help` lists `--doctor`:
+  - `<runner> --doctor` checks the prerequisites: relay what it reports.
+  - `<runner> --list-linters --json` gives the native status of every linter (installed, unsupported on this platform, host tool missing).
+  - A linter whose install is broken: ask the user, then `<runner> --uninstall-linters KEY` and run again. `<runner> --prune-cache` empties the download caches.
 - Linters run with the user's privileges: use native mode only on a repository the user trusts, and never pass `--trust-repo-commands` on your own (repository `PRE_COMMANDS`, `POST_COMMANDS` and `PLUGINS` are ignored without it).
 - Installs failing with `invalid peer certificate: UnknownIssuer` mean the network inspects HTTPS: re-run with `UV_NATIVE_TLS=1` (and `NODE_USE_SYSTEM_CA=1` for Node.js linters) in the environment of the command. Never write these to `.mega-linter.yml`.
 - `Unknown linter(s) in NATIVE_LINTERS: X (removed in ..., use Y instead)`: replace the key in `.mega-linter.yml` after telling the user.
