@@ -6,7 +6,6 @@ import os
 import re
 
 import yaml
-
 from megalinter import config
 from megalinter.native.context import NativeError
 

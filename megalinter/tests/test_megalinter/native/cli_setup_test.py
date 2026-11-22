@@ -5,7 +5,6 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 import yaml
-
 from megalinter import cli
 from megalinter.native.context import NativeError
 

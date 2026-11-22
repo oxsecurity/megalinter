@@ -3,7 +3,6 @@ import tempfile
 import unittest
 
 import yaml
-
 from megalinter.native.config_writer import (
     find_config_file,
     replace_native_linters,
