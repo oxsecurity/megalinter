@@ -31,11 +31,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     | 4 JavaScript, CSS, spelling linters (56 files)                      | 5.93 s | 2.33 s | -61 % |
     | Same, start method of Windows and macOS                             | 6.37 s | 2.29 s | -64 % |
 
-    | Detail (4-core Linux)                                               | Before | After  | Delta |
-    |---------------------------------------------------------------------|--------|--------|-------|
-    | MegaLinter startup until the linters run (Python 3.13)              | 0.57 s | 0.22 s | -61 % |
-    | black on 121 unchanged files                                        | 1.81 s | 0.18 s | -90 % |
-    | 4 JS, CSS, spelling linters: processes → threads, Windows/macOS     | 2.93 s | 2.20 s | -25 % |
+    | Detail (4-core Linux)                                           | Before | After  | Delta |
+    |-----------------------------------------------------------------|--------|--------|-------|
+    | MegaLinter startup until the linters run (Python 3.13)          | 0.57 s | 0.22 s | -61 % |
+    | black on 121 unchanged files                                    | 1.81 s | 0.18 s | -90 % |
+    | 4 JS, CSS, spelling linters: processes → threads, Windows/macOS | 2.93 s | 2.20 s | -25 % |
 
   - **Faster runs**, most visible in native mode and on Windows:
     - MegaLinter reads its linter definitions with PyYAML's C parser, about 10 times faster
