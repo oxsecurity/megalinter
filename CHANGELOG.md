@@ -95,6 +95,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Local Hugging Face models: install them in `PRE_COMMANDS` with `pip install transformers torch` (`langchain-huggingface` is no longer needed)
 
 - New linters
+  - **[typos](https://github.com/crate-ci/typos)**, a fast source-code spell checker written in Rust that catches low-false-positive misspellings across identifiers, comments, strings, and filenames, available as **SPELL_TYPOS**
+    - Supports **APPLY_FIXES** (`--write-changes` for unambiguous typos), `file`, `list_of_files`, and `project` lint modes, and forwards `EXCLUDED_DIRECTORIES` in project lint mode, and **SARIF output** with `SARIF_REPORTER: true`
 
   - Add [ty](https://docs.astral.sh/ty/) linter for PYTHON — fast Python type checker and language server written in Rust
 
@@ -103,6 +105,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 - Re-enabled linters
 
 - Deprecated linters
+  - **SPELL_PROSELINT** (`proselint`) — deprecated because `proselint` is unmaintained with high false-positive rates and Python packaging conflicts. Migrate to **SPELL_VALE** (`vale`) for prose style checking or **SPELL_TYPOS** (`typos`) for fast source-code spell checking. Will be removed in a future major release; disable it by adding `SPELL_PROSELINT` to `DISABLE_LINTERS` in your `.mega-linter.yml`.
 
 - Removed linters
 
@@ -143,6 +146,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **phplint**: the default configuration uses `file-extensions`, removing the deprecation warning printed by phplint 9.8 on every run
   - Windows: the **Fixed** column of the summary counts the files fixed in subfolders (it showed 0 for them)
   - An absolute **`LINTER_RULES_PATH`** (example: `/rules`) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)
+  - **Spaces around the elements** of comma-separated variables are now ignored: `ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"` (or a YAML folded scalar `>-`) enables both linters, instead of silently skipping `BASH_SHFMT`. Fixes [#9605](https://github.com/oxsecurity/megalinter/issues/9605)
+  - **ENABLE_LINTERS** and **DISABLE_LINTERS** now log a **warning** (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key
 
 - Reporters
 

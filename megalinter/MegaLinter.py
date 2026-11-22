@@ -800,6 +800,31 @@ class Megalinter:
                 f"remove it from your configuration. See {REMOVED_LINTERS_DOC_URL}",
             )
 
+    # Warn about names of ENABLE_LINTERS / DISABLE_LINTERS matching no linter (typo...)
+    def check_unknown_linters_references(self, known_linter_names):
+        removed_references = find_removed_references(
+            {}, self.enable_linters + self.disable_linters, []
+        )
+        unknown_references = sorted(
+            {
+                name
+                for name in self.enable_linters + self.disable_linters
+                if isinstance(name, str)
+                and name not in known_linter_names
+                and name not in removed_references
+            }
+        )
+        if len(unknown_references) == 0:
+            return
+        message = (
+            "ENABLE_LINTERS / DISABLE_LINTERS reference no linter available in "
+            f"this MegaLinter image: {', '.join(unknown_references)}. Check their "
+            "spelling in your configuration, see the "
+            "[linters list](https://megalinter.io/latest/supported-linters/)"
+        )
+        logging.warning(message)
+        self.add_tip("configuration", message)
+
     # Load and initialize all linters
     def load_linters(self):
         # Linters init params
@@ -842,6 +867,12 @@ class Megalinter:
         else:
             # main flavor
             all_linters = linter_factory.list_all_linters(linter_init_params)
+
+        # A single linter image only knows its own linter
+        if self.megalinter_flavor != "none":
+            self.check_unknown_linters_references(
+                {linter.name for linter in all_linters}
+            )
 
         skipped_linters = []
         activation_skip_reasons = {}
