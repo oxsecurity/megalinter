@@ -25,9 +25,12 @@ class XmlLintLinterTest(unittest.TestCase):
         linter.cli_lint_fix_arg_name = "--format"
         linter.cli_lint_mode = "file"
         linter.lint_command_env = None
-        with patch.object(
-            Linter, "build_lint_command", return_value=["xmllint", "--format"]
-        ), patch.object(config, "clear_registered_caches") as clear_caches:
+        with (
+            patch.object(
+                Linter, "build_lint_command", return_value=["xmllint", "--format"]
+            ),
+            patch.object(config, "clear_registered_caches") as clear_caches,
+        ):
             command = linter.build_lint_command("a.xml")
         self.assertEqual(command, ["xmllint", "--format", "--output", "a.xml"])
         self.assertEqual(linter.lint_command_env, {"XMLLINT_INDENT": "    "})
