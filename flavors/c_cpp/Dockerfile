@@ -135,7 +135,7 @@ ARG NPM_SPECTRAL_CLI_VERSION=6.17.1
 # renovate: datasource=pypi depName=cpplint
 ARG PIP_CPPLINT_VERSION=2.0.2
 # renovate: datasource=npm depName=jscpd
-ARG NPM_JSCPD_VERSION=5.4.2
+ARG NPM_JSCPD_VERSION=5.4.3
 # renovate: datasource=npm depName=stylelint
 ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
