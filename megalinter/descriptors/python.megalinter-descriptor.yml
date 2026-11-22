@@ -148,7 +148,8 @@ linters:
         - name: Pylint
           url: https://marketplace.visualstudio.com/items?itemName=ms-python.pylint
   # BLACK
-  - linter_name: black
+  - class: BlackLinter
+    linter_name: black
     file_extensions:
       - ".py"
       - ".pyi"

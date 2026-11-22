@@ -74,6 +74,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Linters enhancements
 
+  - **black** now uses its own cache, which it ignored because MegaLinter called it with `--diff`: it checks the files first, then computes the diff only for the files it would reformat. The report is unchanged
+    - Most visible in **native mode**, where black's cache is kept between runs: on 121 files, black takes **0.18 s instead of 1.81 s** when nothing changed
   - **djlint**: the descriptor points to the current repository (djlint/djLint), declares the GPL-3.0-or-later license and lists all supported template languages
   - **SARIF output** is now available for 5 more linters: **actionlint**, **djlint**, **roslynator**, **rubocop** and **trufflehog**. Enable it with **`SARIF_REPORTER: true`** (optionally scoped with `SARIF_REPORTER_LINTERS`), see the [SARIF reporter](https://megalinter.io/latest/reporters/SarifReporter/) documentation
     - **djlint** and **rubocop** report most findings as warnings or notes, so the **error count** shown with SARIF enabled is lower than the number of findings
