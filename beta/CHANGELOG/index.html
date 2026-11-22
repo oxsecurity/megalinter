@@ -16096,6 +16096,7 @@
 <li>
 <p>Agent Skills</p>
 <ul>
+<li><strong>megalinter-setup</strong> now <strong>offers pre-commit hooks</strong> after setting up native mode: on commit only (recommended), on commit and push, or none</li>
 <li><strong>megalinter-check</strong> now <strong>lints natively, without asking, when <code>.mega-linter.yml</code> lists <code>NATIVE_LINTERS</code></strong>, and without a container engine when you decline Docker<ul>
 <li>It re-checks fixes with <strong>a single native run</strong> restricted to the failing linters and the fixed files, instead of several Docker containers</li>
 <li>It reads the <strong>findings of the JSON report</strong> instead of parsing logs, and tells you which linters a native run skipped, which are left to CI</li>
