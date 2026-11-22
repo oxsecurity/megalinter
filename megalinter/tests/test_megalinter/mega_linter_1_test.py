@@ -205,6 +205,40 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("Using [eslint", output)
         self.assertIn(".eslintrc-custom.yml", output)
 
+    def _load_linter_rules_path(self, workspace, linter_rules_path_val):
+        config.set_value(self.request_id, "LINTER_RULES_PATH", linter_rules_path_val)
+        mega_linter = megalinter.Megalinter.__new__(megalinter.Megalinter)
+        mega_linter.request_id = self.request_id
+        mega_linter.github_workspace = workspace
+        mega_linter.load_config_vars()
+        return mega_linter.linter_rules_path
+
+    def test_absolute_linter_rules_path_not_resolved_in_workspace(self):
+        # Regression test for issue #9606
+        self.before_start()
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            workspace = os.path.join(tmp_dir, "workspace")
+            rules_dir = os.path.join(tmp_dir, "rules")
+            os.makedirs(rules_dir)
+            # Same path inside the workspace: <workspace>/<rules_dir>
+            os.makedirs(
+                workspace
+                + os.path.sep
+                + os.path.splitdrive(rules_dir)[1].lstrip(os.path.sep)
+            )
+            self.assertEqual(
+                self._load_linter_rules_path(workspace, rules_dir), rules_dir
+            )
+
+    def test_relative_linter_rules_path_resolved_in_workspace(self):
+        self.before_start()
+        with tempfile.TemporaryDirectory() as workspace:
+            os.makedirs(os.path.join(workspace, "rules"))
+            self.assertEqual(
+                self._load_linter_rules_path(workspace, "rules"),
+                workspace + os.path.sep + "rules",
+            )
+
     def test_linter_rules_path_resolves_active_only_if_file_found(self):
         self.before_start()
         with tempfile.TemporaryDirectory() as tmp_workspace:

@@ -713,7 +713,8 @@ class Megalinter:
         if linter_rules_path_val is not _sentinel:
             if linter_rules_path_val.startswith("http"):
                 self.linter_rules_path = linter_rules_path_val
-            elif os.path.isdir(
+            # Only relative paths are resolved inside the workspace (#9606)
+            elif not os.path.isabs(linter_rules_path_val) and os.path.isdir(
                 self.github_workspace + os.path.sep + linter_rules_path_val
             ):
                 self.linter_rules_path = (
