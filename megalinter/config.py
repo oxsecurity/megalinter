@@ -435,7 +435,9 @@ def build_env(request_id, secured=True, allow_list=[]):
     )
     allow_set = frozenset(allow_list)
     env_dict = {}
-    for key, value in get_config(request_id).items():
+    # Iterate a copy: linters running in threads (PARALLEL_POOL: threads) can set
+    # variables meanwhile, and dict() copies it without releasing the GIL
+    for key, value in dict(get_config(request_id)).items():
         if key not in allow_set and (
             key in secured_plain_vars
             or match_variable_regexes(key, secured_env_variables_regex)

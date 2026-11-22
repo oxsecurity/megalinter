@@ -47,7 +47,8 @@ class ResultsCache:
         variable_prefixes = (f"{linter.name}_", f"{linter.descriptor_id}_")
         variables = {
             name: value
-            for name, value in config.get(linter.request_id).items()
+            # A copy: linters running in other threads can set variables meanwhile
+            for name, value in dict(config.get(linter.request_id)).items()
             if name.startswith(variable_prefixes)
         }
         payload = {

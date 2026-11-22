@@ -3,6 +3,7 @@
 # mode) or processes (default in Docker), selected with PARALLEL_POOL
 import logging
 import os
+import sys
 import threading
 import unittest
 
@@ -105,6 +106,43 @@ class ParallelPoolTest(unittest.TestCase):
         self.assertTrue(
             all(linter.ran_in_pid == os.getpid() for linter in megalinter.linters)
         )
+
+    # Linters running in threads share the configuration: building the environment of
+    # a linter must not fail while another linter sets a variable
+    def test_build_env_while_other_threads_set_variables(self):
+        request_id = "test-parallel-pool-concurrent-config"
+        config.set_config(request_id, {f"VAR_{index}": "x" for index in range(300)})
+        self.addCleanup(config.delete, request_id)
+        writing = threading.Event()
+        writing.set()
+        errors = []
+
+        def set_variables():
+            for index in range(30000):
+                config.set_value(request_id, f"NEW_{index}", "y")
+            writing.clear()
+
+        def build_envs():
+            try:
+                while writing.is_set():
+                    config.build_env(request_id)
+            except RuntimeError as e:
+                errors.append(e)
+
+        threads = [threading.Thread(target=set_variables)] + [
+            threading.Thread(target=build_envs) for _ in range(2)
+        ]
+        # Switch threads as often as possible, so they interleave inside build_env
+        switch_interval = sys.getswitchinterval()
+        sys.setswitchinterval(1e-6)
+        try:
+            for thread in threads:
+                thread.start()
+            for thread in threads:
+                thread.join()
+        finally:
+            sys.setswitchinterval(switch_interval)
+        self.assertEqual(errors, [])
 
     def test_invalid_value_uses_default(self):
         config.set(self.request_id, "PARALLEL_POOL", "fibers")
