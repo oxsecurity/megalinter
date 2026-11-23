@@ -30,7 +30,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.17.0**
+- Version in MegaLinter: **1.17.1**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=hashicorp&repo=terraform&show_owner=true)](https://github.com/hashicorp/terraform){target=_blank}
@@ -151,7 +151,7 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```
@@ -180,9 +180,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_amd64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_linux_amd64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_amd64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_linux_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_linux_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -191,9 +191,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_arm64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_linux_arm64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_arm64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_linux_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_linux_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -202,9 +202,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_amd64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_darwin_amd64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_darwin_amd64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_darwin_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_darwin_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -213,9 +213,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_arm64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_darwin_arm64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_darwin_arm64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_darwin_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_darwin_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -224,9 +224,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_windows_amd64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_windows_amd64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_windows_amd64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
