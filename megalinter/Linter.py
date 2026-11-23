@@ -1475,8 +1475,19 @@ class Linter:
             self.report_windows_command_limit()
             return command
         all_files = self.files
-        kept = list(all_files)
-        max_chars = long_command.max_chars_for(executable)
+        fitted_command, kept = self.shrink_files(
+            command, executable, long_command.max_chars_for(executable)
+        )
+        if fitted_command is None or len(kept) == len(all_files):
+            self.files = all_files
+            self.report_windows_command_limit()
+            return command
+        self.record_files_not_linted(all_files, kept)
+        return fitted_command
+
+    # Removes files from the end of the list until the command fits in max_chars
+    def shrink_files(self, command, executable, max_chars):
+        kept = list(self.files)
         fitted_command = command
         while len(kept) > 1:
             overflow = (
@@ -1490,13 +1501,11 @@ class Linter:
                 removed_chars += len(subprocess.list2cmdline([kept.pop()])) + 1
             self.files = list(kept)
             fitted_command = self.build_lint_command()
-        fits = (
-            len(subprocess.list2cmdline([executable, *fitted_command[1:]])) <= max_chars
-        )
-        if len(kept) == len(all_files) or not fits:
-            self.files = all_files
-            self.report_windows_command_limit()
-            return command
+        if len(subprocess.list2cmdline([executable, *fitted_command[1:]])) > max_chars:
+            return None, kept
+        return fitted_command, kept
+
+    def record_files_not_linted(self, all_files, kept):
         self.windows_files_not_linted = all_files[len(kept) :]
         self.files_number = len(kept)
         not_linted_file = self.write_report_generated_file(
@@ -1508,36 +1517,49 @@ class Linter:
             f"NOT linted, they are listed in {not_linted_file}. Lint fewer files with "
             "FILTER_REGEX_EXCLUDE, or use Docker to lint them all"
         )
-        logging.warning(self.windows_truncation_message)
-        self.log_lines_pre.append(self.windows_truncation_message)
+        self.log_linter_notice(self.windows_truncation_message)
         self.tips.append(
             {
                 "category": "windows_command_line",
                 "message": self.windows_truncation_message,
             }
         )
-        return fitted_command
 
-    # The tool started, but could not start the program it wraps with all the files
+    # The tool started, but could not start the program it wraps with all the files.
+    # That program can receive a longer command than the tool (ex: nbqa adds temporary
+    # paths), so the list is halved until it starts
     def retry_with_fewer_files(self, command, return_code, return_output):
         self.windows_launch_failed = False
         executable = self.find_windows_executable(command)
-        if executable is None:
-            self.report_windows_command_limit()
-            return return_code, return_output
-        fitted_command = self.truncate_files_to_windows_limit(command, executable)
-        if self.windows_truncation_message is None:
-            return return_code, return_output
-        self.lint_command_log.pop()
-        if self.sarif_output_file is not None and os.path.isfile(
-            self.sarif_output_file
+        if (
+            executable is None
+            or not is_native_mode(self.request_id)
+            or len(self.files) < 2
         ):
-            os.remove(self.sarif_output_file)
-        self.stdout_human = None
-        return_code, return_output = self.execute_lint_command(fitted_command)
-        if self.windows_launch_failed:
-            self.windows_launch_failed = False
             self.report_windows_command_limit()
+            return return_code, return_output
+        all_files = self.files
+        max_chars = long_command.max_chars_for(executable)
+        while max_chars >= long_command.WINDOWS_MIN_RETRY_CHARS:
+            files_before = len(self.files)
+            fitted_command, kept = self.shrink_files(command, executable, max_chars)
+            max_chars //= 2
+            if fitted_command is None or len(kept) == files_before:
+                continue
+            command = fitted_command
+            self.lint_command_log.pop()
+            if self.sarif_output_file is not None and os.path.isfile(
+                self.sarif_output_file
+            ):
+                os.remove(self.sarif_output_file)
+            self.stdout_human = None
+            return_code, return_output = self.execute_lint_command(fitted_command)
+            if not self.windows_launch_failed:
+                self.record_files_not_linted(all_files, kept)
+                return return_code, return_output
+            self.windows_launch_failed = False
+        self.files = all_files
+        self.report_windows_command_limit()
         return return_code, return_output
 
     # No file could be linted: that must fail the run, even for a non-blocking linter
@@ -1555,23 +1577,36 @@ class Linter:
     def run_windows_lint_subprocess(self, command, subprocess_env, cwd):
         route = long_command.find_route(command)
         if route in (long_command.ROUTE_DIRECT, long_command.ROUTE_TOO_LONG):
-            return self._run_lint_subprocess(
+            return_code, return_stdout = self._run_lint_subprocess(
                 command, {"env": subprocess_env, "cwd": cwd}
             )
+            self.detect_windows_launch_failure(command, return_code, return_stdout)
+            return return_code, return_stdout
         logging.info(
             f"[{self.linter_name}] Command line too long for Windows: "
             f"passing its arguments through a file ({route})"
         )
-        with tempfile.TemporaryDirectory() as folder:
+        # A background process of the tool can keep the folder open after the run
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as folder:
             launch_command, launch_env = long_command.build_launch(
                 route, command, subprocess_env, folder
             )
             return_code, return_stdout = self._run_lint_subprocess(
                 launch_command, {"env": launch_env, "cwd": cwd}
             )
-        if return_code != 0 and long_command.is_launch_failure(return_stdout):
-            self.windows_launch_failed = True
+        self.detect_windows_launch_failure(command, return_code, return_stdout)
         return return_code, return_stdout
+
+    # A tool can start, then fail to start the program it wraps with its arguments
+    def detect_windows_launch_failure(self, command, return_code, return_stdout):
+        if (
+            return_code != 0
+            and long_command.is_launch_failure(return_stdout)
+            and self.cli_lint_mode == "list_of_files"
+            and len(subprocess.list2cmdline(command))
+            > long_command.WINDOWS_MIN_RETRY_CHARS
+        ):
+            self.windows_launch_failed = True
 
     def merge_file_sarif(self):
         if self.sarif_output_file is None or not os.path.isfile(self.sarif_output_file):

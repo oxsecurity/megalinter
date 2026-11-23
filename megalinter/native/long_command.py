@@ -1,7 +1,10 @@
 import configparser
 import glob
+import locale
 import os
 import re
+import shlex
+import shutil
 import subprocess
 
 from megalinter.native.context import find_git_bash
@@ -11,10 +14,15 @@ from megalinter.native.context import find_git_bash
 # what a launcher adds when it expands its own path and the path of the tool
 WINDOWS_COMMAND_LINE_MAX_CHARS = 32000
 WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS = 7000
+# Shortest command tried when a wrapped program can not start
+WINDOWS_MIN_RETRY_CHARS = 2000
 
 ROUTE_DIRECT = "direct"
 ROUTE_NODE = "node"
 ROUTE_PYTHON = "python"
+ROUTE_PHP = "php"
+ROUTE_JAVA = "java"
+ROUTE_RUBY = "ruby"
 ROUTE_GIT_BASH = "git_bash"
 ROUTE_TOO_LONG = "too_long"
 
@@ -23,7 +31,9 @@ NODE_LAUNCHER_REGEX = re.compile(rb'exec\s+(?:"\$basedir/node"|node)\s')
 # arguments (ex: a npm package wrapping a native binary). These errors do not
 # depend on the language of Windows
 LAUNCH_FAILURE_REGEX = re.compile(
-    r"ENAMETOOLONG|WinError 206|error=206|Argument list too long"
+    r"spawn(?:Sync)?\b[^\n]*ENAMETOOLONG|\[WinError 206\]|CreateProcess error=206"
+    r"|: Argument list too long|proc_open\(\): CreateProcess failed"
+    r"|Errno::E(?:2BIG|NAMETOOLONG)"
 )
 
 # Loaded by node before the tool: adds the arguments to process.argv, then removes
@@ -57,6 +67,35 @@ entry_point = next(entry for entry in entry_points if entry.name == name)
 sys.exit(entry_point.load()())
 """
 
+# Loaded by php before the tool (auto_prepend_file), and not by its child processes
+PHP_PRELOAD = r"""<?php
+$megalinterArgumentsFile = getenv('MEGALINTER_ARGUMENTS_FILE');
+if ($megalinterArgumentsFile !== false) {
+    $megalinterScanDir = getenv('MEGALINTER_PHP_INI_SCAN_DIR');
+    putenv('MEGALINTER_ARGUMENTS_FILE');
+    putenv('MEGALINTER_PHP_INI_SCAN_DIR');
+    putenv($megalinterScanDir ? "PHP_INI_SCAN_DIR=$megalinterScanDir" : 'PHP_INI_SCAN_DIR');
+    $megalinterArguments = explode("\0", file_get_contents($megalinterArgumentsFile));
+    array_pop($megalinterArguments);
+    $_SERVER['argv'] = array_merge($_SERVER['argv'], $megalinterArguments);
+    $_SERVER['argc'] = count($_SERVER['argv']);
+    $GLOBALS['argv'] = $_SERVER['argv'];
+    $GLOBALS['argc'] = $_SERVER['argc'];
+    unset($megalinterArgumentsFile, $megalinterScanDir, $megalinterArguments);
+}
+"""
+
+# Loaded by ruby before the tool, and not by its child processes
+RUBY_PRELOAD = r"""arguments_file = ENV.delete("MEGALINTER_ARGUMENTS_FILE")
+if arguments_file
+  { "RUBYOPT" => "MEGALINTER_RUBYOPT", "RUBYLIB" => "MEGALINTER_RUBYLIB" }.each do |name, saved|
+    value = ENV.delete(saved)
+    ENV[name] = value.nil? || value.empty? ? nil : value
+  end
+  ARGV.concat(File.read(arguments_file, encoding: "utf-8").split("\0"))
+end
+"""
+
 GIT_BASH_SCRIPT = 'mapfile -d "" -t arguments < "$1" && exec "$2" "${arguments[@]}"'
 
 
@@ -79,6 +118,58 @@ def is_node_launcher(executable):
         return False
     _launcher, content = read_posix_launcher(executable)
     return content is not None and NODE_LAUNCHER_REGEX.search(content) is not None
+
+
+# The command of a launcher written by MegaLinter: exec <program> <args> "$@"
+def read_launcher_command(executable):
+    if not is_windows_script(executable):
+        return None
+    _launcher, content = read_posix_launcher(executable)
+    if content is None:
+        return None
+    for line in content.decode("utf-8", "replace").splitlines():
+        if not line.startswith("exec "):
+            continue
+        try:
+            parts = shlex.split(line)[1:]
+        except ValueError:
+            return None
+        return parts[:-1] if len(parts) > 1 and parts[-1] == "$@" else None
+    return None
+
+
+def launcher_program(parts):
+    name = os.path.basename(parts[0].replace("\\", "/")).lower()
+    return os.path.splitext(name)[0]
+
+
+def is_java_executable(executable):
+    return os.path.basename(executable).lower() == "java.exe"
+
+
+def find_runtime_route(command):
+    if is_java_executable(command[0]):
+        return ROUTE_JAVA if can_encode_for_java(command) else None
+    parts = read_launcher_command(command[0])
+    if not parts:
+        return None
+    program = launcher_program(parts)
+    if program == "php":
+        return ROUTE_PHP
+    if program == "bundle" and parts[1:2] == ["exec"]:
+        return ROUTE_RUBY
+    if program == "java" and can_encode_for_java(command):
+        return ROUTE_JAVA
+    return None
+
+
+# The java launcher reads its argument files in the encoding of the system
+def can_encode_for_java(command):
+    try:
+        "".join(command[1:]).encode(locale.getencoding())
+    except UnicodeEncodeError:
+        return False
+    return True
 
 
 def find_python_entry_point(executable):
@@ -137,6 +228,9 @@ def find_route(command):
         return ROUTE_NODE
     if find_python_entry_point(executable) is not None:
         return ROUTE_PYTHON
+    runtime_route = find_runtime_route(command)
+    if runtime_route is not None:
+        return runtime_route
     if (
         is_script
         and command_chars <= WINDOWS_COMMAND_LINE_MAX_CHARS
@@ -170,6 +264,61 @@ def build_launch(route, command, env, folder):
         python = os.path.join(os.path.dirname(executable), "python.exe")
         name = find_python_entry_point(executable)
         return [python, "-c", PYTHON_BOOTSTRAP, name, executable, arguments_file], env
+    if route == ROUTE_PHP:
+        with open(
+            os.path.join(folder, "arguments-preload.php"),
+            "w",
+            encoding="utf-8",
+            newline="\n",
+        ) as file:
+            file.write(PHP_PRELOAD)
+        preload = os.path.join(folder, "arguments-preload.php").replace("\\", "/")
+        with open(
+            os.path.join(folder, "megalinter-arguments.ini"), "w", encoding="utf-8"
+        ) as file:
+            file.write(f'auto_prepend_file="{preload}"\n')
+        scan_dir = env.get("PHP_INI_SCAN_DIR", "")
+        return [executable], {
+            **env,
+            "PHP_INI_SCAN_DIR": f"{scan_dir};{folder}" if scan_dir else folder,
+            "MEGALINTER_PHP_INI_SCAN_DIR": scan_dir,
+            "MEGALINTER_ARGUMENTS_FILE": arguments_file,
+        }
+    if route == ROUTE_RUBY:
+        with open(
+            os.path.join(folder, "megalinter_arguments.rb"),
+            "w",
+            encoding="utf-8",
+            newline="\n",
+        ) as file:
+            file.write(RUBY_PRELOAD)
+        ruby_lib = env.get("RUBYLIB", "")
+        ruby_options = env.get("RUBYOPT", "")
+        return [executable], {
+            **env,
+            "RUBYLIB": f"{folder};{ruby_lib}" if ruby_lib else folder,
+            "RUBYOPT": f"-rmegalinter_arguments {ruby_options}".strip(),
+            "MEGALINTER_RUBYLIB": ruby_lib,
+            "MEGALINTER_RUBYOPT": ruby_options,
+            "MEGALINTER_ARGUMENTS_FILE": arguments_file,
+        }
+    if route == ROUTE_JAVA:
+        parts = (
+            [executable]
+            if is_java_executable(executable)
+            else read_launcher_command(executable)
+        )
+        java_file = os.path.join(folder, "java-arguments")
+        with open(java_file, "w", encoding=locale.getencoding(), newline="\n") as file:
+            for argument in [*parts[1:], *command[1:]]:
+                escaped = argument.replace("\\", "\\\\").replace('"', '\\"')
+                file.write(f'"{escaped}"\n')
+        java = (
+            executable
+            if is_java_executable(executable)
+            else shutil.which(parts[0], path=env.get("PATH")) or parts[0]
+        )
+        return [java, f"@{java_file}"], env
     launcher = read_posix_launcher(executable)[0]
     return [
         find_git_bash(),

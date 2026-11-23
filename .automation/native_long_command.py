@@ -42,6 +42,7 @@ PASSING_FILES_FOLDER = "passing-files-with-a-long-folder-name-to-reach-the-limit
 LIST_MIN_CHARS = 36000
 LINTER_TIMEOUT_SECONDS = 900
 PROCESS_TIMEOUT_SECONDS = 1200
+OUTPUT_SAMPLE_CHARS = 300
 OUTCOMES = ["all_files", "truncated", "unclear", "skipped", "broken"]
 
 
@@ -59,49 +60,55 @@ def is_linted_file(linter, name):
         if re.fullmatch(regex, name):
             return True
     extensions = linter.file_extensions or []
+    if len(extensions) == 0 and not linter.file_names_regex:
+        return True
     return "*" in extensions or os.path.splitext(name)[1] in extensions
 
 
+# A file named after its kind first: a good or bad folder also holds configuration
+# files of the same type (ex: biome.json, .v8rrc.yml)
 def find_fixture(linter, kind):
     source = os.path.join(TEST_ROOT, linter.test_folder)
     kind_folder = os.path.join(source, kind)
     has_kind_folder = os.path.isdir(kind_folder)
+    candidates = []
     for folder, sub_folders, files in os.walk(
         kind_folder if has_kind_folder else source
     ):
-        sub_folders[:] = sorted(
+        sub_folders[:] = [
             sub for sub in sub_folders if sub not in ("reports", "fix", ".wireit")
-        )
-        for name in sorted(files):
+        ]
+        for name in files:
             path = os.path.join(folder, name)
             relative = os.path.relpath(path, source).lower()
             if is_linted_file(linter, name) and (has_kind_folder or kind in relative):
-                return path
-    return None
+                candidates.append(
+                    (kind not in name.lower(), name.startswith("."), path)
+                )
+    return sorted(candidates)[0][2] if len(candidates) > 0 else None
 
 
 def copy_configuration_files(linter, workspace):
     source = os.path.join(TEST_ROOT, linter.test_folder)
-    good_folder = os.path.join(source, "good")
-    start_folder = good_folder if os.path.isdir(good_folder) else source
-    shutil.copytree(
-        start_folder,
-        workspace,
-        ignore=shutil.ignore_patterns("reports", "fix", ".wireit"),
-        dirs_exist_ok=True,
-    )
     bad_folder = os.path.join(source, "bad")
+    ignored = shutil.ignore_patterns("reports", "fix", ".wireit")
     if not os.path.isdir(bad_folder):
+        shutil.copytree(source, workspace, ignore=ignored, dirs_exist_ok=True)
         return
-    for name in os.listdir(bad_folder):
-        path = os.path.join(bad_folder, name)
-        target = os.path.join(workspace, name)
-        if (
-            os.path.isfile(path)
-            and not os.path.exists(target)
-            and not is_linted_file(linter, name)
-        ):
-            shutil.copy(path, target)
+    # The configuration of the failing fixture (ex: the schema mapping of v8r), and
+    # the one of the test folder that tools find by walking up (ex: biome.json)
+    for name in os.listdir(source):
+        path = os.path.join(source, name)
+        if os.path.isfile(path):
+            shutil.copy(path, os.path.join(workspace, name))
+    shutil.copytree(bad_folder, workspace, ignore=ignored, dirs_exist_ok=True)
+    # v8r matches fileMatch on the whole path, and the generated files are in sub-folders
+    v8r_config = os.path.join(workspace, ".v8rrc.yml")
+    if os.path.isfile(v8r_config):
+        with open(v8r_config, "r", encoding="utf-8") as f:
+            content = f.read()
+        with open(v8r_config, "w", encoding="utf-8") as f:
+            f.write(content.replace('fileMatch: ["', 'fileMatch: ["**/'))
 
 
 # Copies keep the name of the fixture: some linters select files by their exact name
@@ -128,7 +135,23 @@ def build_workspace(linter, workspace, good_file, bad_file):
     return count + 2
 
 
+def activation_variables(linter):
+    return {
+        rule["variable"]: rule["expected_value"]
+        for rule in linter.activation_rules or []
+        if rule.get("type") == "variable" and "expected_value" in rule
+    }
+
+
 def classify(linter):
+    outcome, detail = classify_output(linter)
+    if outcome in ("unclear", "broken"):
+        sample = " ".join(str(linter.stdout or "").split())[-OUTPUT_SAMPLE_CHARS:]
+        detail = f"{detail}. Output: {sample}"
+    return outcome, detail
+
+
+def classify_output(linter):
     output = f"{linter.stdout_human or ''}\n{linter.stdout or ''}".replace("\\", "/")
     not_linted = len(linter.windows_files_not_linted)
     categories = [tip.get("category") for tip in linter.tips]
@@ -187,7 +210,8 @@ def lint_generated_workspace(key):
     bad_file = find_fixture(linter, "bad")
     if good_file is None or bad_file is None:
         raise unittest.SkipTest("no good and bad fixtures of its file type")
-    with tempfile.TemporaryDirectory() as folder:
+    # A server started by the linter (ex: npm-groovy-lint) can keep the folder open
+    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as folder:
         workspace = os.path.join(folder, "w")
         os.makedirs(workspace)
         generated = build_workspace(linter, workspace, good_file, bad_file)
@@ -203,6 +227,7 @@ def lint_generated_workspace(key):
                 "GITHUB_COMMENT_REPORTER": "false",
                 "GITHUB_STATUS_REPORTER": "false",
                 "request_id": request_id,
+                **activation_variables(linter),
                 **linter.test_variables,
             }
         )
@@ -276,7 +301,7 @@ def summary(input_folder):
     for r in results:
         detail = str(r.get("detail", "")).replace("|", "\\|").replace("\n", " ")
         lines.append(
-            f"| {r['key']} | {r['outcome']} | {r['files']} | {r['not_linted']} | {detail[:160]} |"
+            f"| {r['key']} | {r['outcome']} | {r['files']} | {r['not_linted']} | {detail[:420]} |"
         )
     text = "\n".join(lines) + "\n"
     logging.info(text)

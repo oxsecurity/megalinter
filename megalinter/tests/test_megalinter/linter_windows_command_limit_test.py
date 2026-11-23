@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import locale
 import os
 import subprocess
 import sys
@@ -94,7 +95,7 @@ class LongCommandRouteTest(unittest.TestCase):
     def test_other_script_uses_git_bash_up_to_the_process_limit(self):
         executable = os.path.join(self.folder, "tool.cmd")
         write_file(
-            os.path.join(self.folder, "tool"), b'#!/bin/sh\nexec java -jar x "$@"\n'
+            os.path.join(self.folder, "tool"), b'#!/bin/sh\nexec dart run x "$@"\n'
         )
         with patch.object(long_command, "find_git_bash", return_value="bash"):
             self.assertEqual(
@@ -183,6 +184,103 @@ class LongCommandRouteTest(unittest.TestCase):
             )
         self.assertIn('< "$1" && exec "$2"', launch[2])
         self.assertEqual(env["MSYS_NO_PATHCONV"], "1")
+
+
+class LongCommandRuntimeRouteTest(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp_dir.cleanup)
+        self.folder = self.temp_dir.name
+
+    def shim(self, line):
+        executable = os.path.join(self.folder, "tool.cmd")
+        write_file(executable, b"@echo off\r\n")
+        write_file(os.path.join(self.folder, "tool"), f"#!/bin/sh\n{line}\n".encode())
+        return executable
+
+    def test_routes_are_detected_from_the_launcher(self):
+        for line, route in (
+            ("exec php 'C:/x/phpcs.phar' \"$@\"", long_command.ROUTE_PHP),
+            ("exec java -jar 'C:/x/tool.jar' \"$@\"", long_command.ROUTE_JAVA),
+            (
+                "exec 'C:/ruby/bin/bundle.bat' exec rubocop \"$@\"",
+                long_command.ROUTE_RUBY,
+            ),
+        ):
+            executable = self.shim(line)
+            self.assertEqual(
+                long_command.find_route([executable, *many_files(5000)]), route
+            )
+
+    def test_php_launch_prepends_a_file_reading_the_arguments(self):
+        executable = self.shim("exec php 'C:/x/phpcs.phar' \"$@\"")
+        launch, env = long_command.build_launch(
+            long_command.ROUTE_PHP,
+            [executable, "-q", "a.php"],
+            {"PHP_INI_SCAN_DIR": "C:/ini"},
+            self.folder,
+        )
+        self.assertEqual(launch, [executable])
+        self.assertEqual(env["PHP_INI_SCAN_DIR"], f"C:/ini;{self.folder}")
+        self.assertEqual(env["MEGALINTER_PHP_INI_SCAN_DIR"], "C:/ini")
+        with open(
+            os.path.join(self.folder, "megalinter-arguments.ini"), encoding="utf-8"
+        ) as file:
+            self.assertIn("auto_prepend_file=", file.read())
+
+    def test_ruby_launch_loads_a_file_reading_the_arguments(self):
+        executable = self.shim("exec 'C:/r/bundle.bat' exec rubocop \"$@\"")
+        launch, env = long_command.build_launch(
+            long_command.ROUTE_RUBY,
+            [executable, "a.rb"],
+            {"RUBYOPT": "-W0"},
+            self.folder,
+        )
+        self.assertEqual(launch, [executable])
+        self.assertEqual(env["RUBYOPT"], "-rmegalinter_arguments -W0")
+        self.assertEqual(env["RUBYLIB"], self.folder)
+        self.assertEqual(env["MEGALINTER_RUBYOPT"], "-W0")
+
+    def test_java_launch_uses_an_argument_file(self):
+        executable = self.shim("exec java -jar 'C:/x/tool.jar' \"$@\"")
+        with patch.object(long_command.shutil, "which", return_value="C:/j/java.exe"):
+            launch, _env = long_command.build_launch(
+                long_command.ROUTE_JAVA,
+                [executable, "-c", "C:\\cfg\\a b.xml", "a.java"],
+                {"PATH": "x"},
+                self.folder,
+            )
+        self.assertEqual(launch[0], "C:/j/java.exe")
+        self.assertTrue(launch[1].startswith("@"))
+        with open(launch[1][1:], encoding=locale.getencoding()) as file:
+            self.assertEqual(
+                file.read().splitlines(),
+                [
+                    '"-jar"',
+                    '"C:/x/tool.jar"',
+                    '"-c"',
+                    '"C:\\\\cfg\\\\a b.xml"',
+                    '"a.java"',
+                ],
+            )
+
+    def test_java_executable_uses_an_argument_file(self):
+        java = os.path.join(self.folder, "java.EXE")
+        command = [java, "-jar", "tool.jar", *many_files(2000)]
+        self.assertEqual(long_command.find_route(command), long_command.ROUTE_JAVA)
+        launch, _env = long_command.build_launch(
+            long_command.ROUTE_JAVA, command, {}, self.folder
+        )
+        self.assertEqual(launch[0], java)
+        with open(launch[1][1:], encoding=locale.getencoding()) as file:
+            self.assertEqual(file.read().splitlines()[:2], ['"-jar"', '"tool.jar"'])
+
+    def test_java_path_the_system_can_not_encode_keeps_another_route(self):
+        executable = self.shim("exec java -jar 'C:/x/tool.jar' \"$@\"")
+        with patch.object(long_command.locale, "getencoding", return_value="ascii"):
+            self.assertIsNone(
+                long_command.find_runtime_route([executable, "caf\u00e9.java"])
+            )
 
 
 class LinterWindowsCommandLimitTest(unittest.TestCase):
@@ -289,6 +387,8 @@ class LinterWindowsCommandLimitTest(unittest.TestCase):
             "CreateProcess error=206, The filename or extension is too long",
             "OSError: [WinError 206] Nom de fichier trop long",
             "bash: /c/tool: Argument list too long",
+            "Unable to launch: proc_open(): CreateProcess failed: Nom trop long",
+            "Errno::ENAMETOOLONG: File name too long",
         ):
             self.assertTrue(self.run_long_command(1, output).windows_launch_failed)
 
@@ -312,3 +412,82 @@ class LinterWindowsCommandLimitTest(unittest.TestCase):
         self.assertEqual(execute.call_args[0][0][2:], linter.files)
         self.assertGreater(len(linter.windows_files_not_linted), 0)
         self.assertEqual(linter.lint_command_log, [])
+
+    def test_wrapped_program_is_retried_until_it_starts(self):
+        linter = self.linter(2000)
+        attempts = []
+
+        def execute(command):
+            attempts.append(len(command))
+            linter.lint_command_log.append("retry")
+            linter.windows_launch_failed = len(attempts) < 3
+            return 1, "ENAMETOOLONG" if len(attempts) < 3 else "a.md: error"
+
+        with (
+            patch("megalinter.Linter.shutil.which", return_value="C:\\tool.exe"),
+            patch("megalinter.Linter.is_native_mode", return_value=True),
+            patch.object(linter, "execute_lint_command", side_effect=execute),
+        ):
+            result = linter.retry_with_fewer_files(
+                linter.build_lint_command(), 1, "ENAMETOOLONG"
+            )
+        self.assertEqual(result, (1, "a.md: error"))
+        self.assertEqual(len(attempts), 3)
+        self.assertGreater(attempts[0], attempts[1])
+        self.assertGreater(attempts[1], attempts[2])
+        self.assertEqual(len(linter.files) + len(linter.windows_files_not_linted), 2000)
+
+    def test_wrapped_program_that_never_starts_fails_the_run(self):
+        linter = self.linter(2000)
+        all_files = list(linter.files)
+
+        def execute(_command):
+            linter.lint_command_log.append("retry")
+            linter.windows_launch_failed = True
+            return 1, "ENAMETOOLONG"
+
+        with (
+            patch("megalinter.Linter.shutil.which", return_value="C:\\tool.exe"),
+            patch("megalinter.Linter.is_native_mode", return_value=True),
+            patch.object(linter, "execute_lint_command", side_effect=execute),
+        ):
+            linter.retry_with_fewer_files(
+                linter.build_lint_command(), 1, "ENAMETOOLONG"
+            )
+        self.assertEqual(linter.files, all_files)
+        self.assertEqual(len(linter.windows_files_not_linted), 0)
+        self.assertFalse(linter.disable_errors)
+
+    def test_direct_launch_failure_is_detected(self):
+        linter = self.linter(2000)
+        with (
+            patch.object(
+                long_command, "find_route", return_value=long_command.ROUTE_DIRECT
+            ),
+            patch.object(
+                linter,
+                "_run_lint_subprocess",
+                return_value=(1, "FileNotFoundError: [WinError 206] too long"),
+            ),
+        ):
+            linter.run_windows_lint_subprocess(
+                ["tool.exe", *linter.files], {}, "workspace"
+            )
+        self.assertTrue(linter.windows_launch_failed)
+
+    def test_short_command_is_never_a_launch_failure(self):
+        linter = self.linter(2)
+        with (
+            patch.object(
+                long_command, "find_route", return_value=long_command.ROUTE_DIRECT
+            ),
+            patch.object(
+                linter,
+                "_run_lint_subprocess",
+                return_value=(1, "a.py:1 message quoting [WinError 206]"),
+            ),
+        ):
+            linter.run_windows_lint_subprocess(
+                ["tool.exe", *linter.files], {}, "workspace"
+            )
+        self.assertFalse(linter.windows_launch_failed)
