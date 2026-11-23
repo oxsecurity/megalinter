@@ -147,7 +147,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - Windows: the **Fixed** column of the summary counts the files fixed in subfolders (it showed 0 for them)
   - **Linter notices** (such as checkov `--skip-framework secrets`) are now displayed inside the section of their linter in the console log, instead of out of context before the first linter
   - Windows, native mode: linters no longer fail with **"The command line is too long"** on repositories with many files
-    - They still run in a **single command**: linters written in JavaScript or Python read their long file list from a temporary file, with **no size limit**
+    - They still run in a **single command**: linters running on Node, Python, Java, PHP or Ruby read their long file list from a temporary file, with **no size limit** unless they relaunch another program
     - Other linters go through **Git Bash** up to the Windows limit of 32,767 characters
     - Above it, they lint **the files that fit** and show ⚠️: the console, the linter log and the report tips say how many were skipped, and `<LINTER_KEY>-files-not-linted.txt` lists them
   - An absolute **`LINTER_RULES_PATH`** (example: `/rules`) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)
