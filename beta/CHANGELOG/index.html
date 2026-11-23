@@ -16028,6 +16028,7 @@
 </li>
 <li>An absolute <strong><code>LINTER_RULES_PATH</code></strong> (example: <code>/rules</code>) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)</li>
 <li><strong>Spaces around the elements</strong> of comma-separated variables are now ignored: <code>ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"</code> (or a YAML folded scalar <code>&gt;-</code>) enables both linters, instead of silently skipping <code>BASH_SHFMT</code>. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9605">#9605</a></li>
+<li><strong>SSH mode</strong> (<code>MEGALINTER_SSH=true</code>) run as a non-root user no longer logs <code>Unsupported option UsePAM</code> when the SSH server starts. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9578">#9578</a></li>
 <li><strong>ENABLE_LINTERS</strong> and <strong>DISABLE_LINTERS</strong> now log a <strong>warning</strong> (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key</li>
 </ul>
 </li>
