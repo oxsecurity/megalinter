@@ -24,7 +24,7 @@ description: How to use npm-groovy-lint (configure, ignore files, ignore errors,
 
 ## npm-groovy-lint documentation
 
-- Version in MegaLinter: **19.0.0**
+- Version in MegaLinter: **19.0.1**
 - Visit [Official Web Site](https://nvuillam.github.io/npm-groovy-lint/){target=_blank}
 - See [How to configure npm-groovy-lint rules](https://github.com/nvuillam/npm-groovy-lint#configuration){target=_blank}
   - If custom `.groovylintrc.json` config file isn't found, [.groovylintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.groovylintrc.json){target=_blank} will be used
@@ -173,13 +173,13 @@ Note: command-line arguments have priority on config file properties - default: 
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # renovate: datasource=npm depName=npm-groovy-lint
-ARG NPM_GROOVY_LINT_VERSION=19.0.0
+ARG NPM_GROOVY_LINT_VERSION=19.0.1
 ```
 
 - APK packages (Linux):
   - [openjdk21](https://pkgs.alpinelinux.org/packages?branch=v3.24&arch=x86_64&name=openjdk21)
 - NPM packages (node.js):
-  - [npm-groovy-lint@19.0.0](https://www.npmjs.com/package/npm-groovy-lint/v/19.0.0)
+  - [npm-groovy-lint@19.0.1](https://www.npmjs.com/package/npm-groovy-lint/v/19.0.1)
 
 ### Installation without Docker (native mode)
 
@@ -205,7 +205,7 @@ NATIVE_LINTERS: [GROOVY_NPM_GROOVY_LINT]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/GROOVY_NPM_GROOVY_LINT"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "npm-groovy-lint@19.0.0"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "npm-groovy-lint@19.0.1"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```
