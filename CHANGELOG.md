@@ -154,6 +154,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Spaces around the elements** of comma-separated variables are now ignored: `ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"` (or a YAML folded scalar `>-`) enables both linters, instead of silently skipping `BASH_SHFMT`. Fixes [#9605](https://github.com/oxsecurity/megalinter/issues/9605)
   - **SSH mode** (`MEGALINTER_SSH=true`) run as a non-root user no longer logs `Unsupported option UsePAM` when the SSH server starts. Fixes [#9578](https://github.com/oxsecurity/megalinter/issues/9578)
   - **ENABLE_LINTERS** and **DISABLE_LINTERS** now log a **warning** (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key
+  - The **guidance for known linter errors** (such as `[PYTHON_TY_ERROR_IMPORT_NOT_FOUND]`) is now displayed only inside the section of its linter in the console log, instead of also out of context before the first linter
 
 - Reporters
 
@@ -250,6 +251,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - `native_lock.py --check` also checks the **runtime locks** (`native-locks/runtimes/`), shipped in the PyPI package too
   - **Auto-Update Linters** now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both (without automerge when the locks changed, so pinned hashes are reviewed). **Native locks** only runs on feature branches and on manual runs; both share the `native-lock-setup` composite action
   - The Auto-Update Linters container now gets a read-only token: only the pull request job writes
+  - ty no longer reports `jsonschema` as an unresolved import in `megalinter/native/spec.py` and `sarif_schema.py`: like `build.py`, they use this build/test dependency that the MegaLinter image does not ship
 
 - Linter versions upgrades (N)
   - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.58.0 to **1.59.0** on 2026-11-09
