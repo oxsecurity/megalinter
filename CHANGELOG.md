@@ -311,6 +311,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.4.0 to **10.4.1** on 2026-11-21
   - [djlint](https://djlint.com/) from 1.49.9 to **1.49.10** on 2026-11-22
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.4.2 to **5.4.3** on 2026-11-22
+  - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.17.0 to **1.17.1** on 2026-11-23
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

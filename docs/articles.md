@@ -139,6 +139,7 @@ description: List of all known articles, blog posts and videos that talk about M
 - [semgrep](https://semgrep.dev/docs/extensions/overview){target=_blank}
 - [snakefmt](https://github.com/snakemake/snakefmt#github-actions){target=_blank}
 - [swiftlint](https://github.com/realm/SwiftLint#megalinter){target=_blank}
+- [typos](https://github.com/crate-ci/typos#getting-started){target=_blank}
 - [vale](https://vale.sh/docs){target=_blank}
 - [zizmor](https://docs.zizmor.sh/integrations/){target=_blank}
 <!-- referring-linters-end -->
