@@ -16019,6 +16019,7 @@
 <li>Restore the <strong>GitHub repository cards</strong> on linter documentation pages and on the users page, after the <code>gh-card.dev</code> service shut down (#9433)</li>
 <li><strong>phplint</strong>: the default configuration uses <code>file-extensions</code>, removing the deprecation warning printed by phplint 9.8 on every run</li>
 <li>Windows: the <strong>Fixed</strong> column of the summary counts the files fixed in subfolders (it showed 0 for them)</li>
+<li><strong>Linter notices</strong> (such as checkov <code>--skip-framework secrets</code>) are now displayed inside the section of their linter in the console log, instead of out of context before the first linter</li>
 <li>An absolute <strong><code>LINTER_RULES_PATH</code></strong> (example: <code>/rules</code>) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)</li>
 <li><strong>Spaces around the elements</strong> of comma-separated variables are now ignored: <code>ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"</code> (or a YAML folded scalar <code>&gt;-</code>) enables both linters, instead of silently skipping <code>BASH_SHFMT</code>. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9605">#9605</a></li>
 <li><strong>ENABLE_LINTERS</strong> and <strong>DISABLE_LINTERS</strong> now log a <strong>warning</strong> (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key</li>
