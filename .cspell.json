@@ -1942,6 +1942,20 @@
         "taskkill",
         "temurin",
         "Temurin",
-        "WRONLY"
+        "WRONLY",
+        "commande",
+        "ENAMETOOLONG",
+        "fichier",
+        "ligne",
+        "mapfile",
+        "MSYS",
+        "NAMETOOLONG",
+        "PATHCONV",
+        "putenv",
+        "pyvenv",
+        "rbundler",
+        "rmegalinter",
+        "RUBYLIB",
+        "RUBYOPT"
     ]
 }

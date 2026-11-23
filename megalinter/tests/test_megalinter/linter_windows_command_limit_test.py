@@ -302,7 +302,11 @@ class LinterWindowsCommandLimitTest(unittest.TestCase):
         linter.lint_command_log = ["first command"]
         linter.sarif_output_file = None
         linter.files_number = count
-        linter.build_lint_command = lambda: ["tool.exe", "--check", *linter.files]
+        linter.build_lint_command = lambda _file=None: [
+            "tool.exe",
+            "--check",
+            *linter.files,
+        ]
         return linter
 
     def fit(self, linter, native=True, platform="win32"):
@@ -364,7 +368,7 @@ class LinterWindowsCommandLimitTest(unittest.TestCase):
         linter = self.linter(2000)
         all_files = list(linter.files)
         fixed_command = ["tool.exe", *all_files]
-        linter.build_lint_command = lambda: list(fixed_command)
+        linter.build_lint_command = lambda _file=None: list(fixed_command)
         self.fit(linter)
         self.assertEqual(linter.files, all_files)
         self.assertEqual(len(linter.windows_files_not_linted), 0)
