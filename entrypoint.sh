@@ -157,7 +157,6 @@ else
         -o "PasswordAuthentication no" \
         -o "PermitRootLogin no" \
         -o "PermitUserEnvironment yes" \
-        -o "UsePAM no" \
         -o "PidFile ${SSH_RUNTIME_DIR}/sshd.pid" \
         -o "Subsystem sftp internal-sftp"
     fi

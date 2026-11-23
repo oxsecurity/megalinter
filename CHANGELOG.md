@@ -148,6 +148,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Linter notices** (such as checkov `--skip-framework secrets`) are now displayed inside the section of their linter in the console log, instead of out of context before the first linter
   - An absolute **`LINTER_RULES_PATH`** (example: `/rules`) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)
   - **Spaces around the elements** of comma-separated variables are now ignored: `ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"` (or a YAML folded scalar `>-`) enables both linters, instead of silently skipping `BASH_SHFMT`. Fixes [#9605](https://github.com/oxsecurity/megalinter/issues/9605)
+  - **SSH mode** (`MEGALINTER_SSH=true`) run as a non-root user no longer logs `Unsupported option UsePAM` when the SSH server starts. Fixes [#9578](https://github.com/oxsecurity/megalinter/issues/9578)
   - **ENABLE_LINTERS** and **DISABLE_LINTERS** now log a **warning** (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key
 
 - Reporters
