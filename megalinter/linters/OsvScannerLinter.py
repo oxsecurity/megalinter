@@ -6,8 +6,6 @@ osv-scanner upstream declined to add a --no-fail-if-no-package flag
 (https://github.com/google/osv-scanner/issues/348), so we handle it here.
 """
 
-import logging
-
 from megalinter import Linter, config
 
 
@@ -16,7 +14,7 @@ class OsvScannerLinter(Linter):
     def execute_lint_command(self, command):
         return_code, return_output = super().execute_lint_command(command)
         if return_code == 128 and "no package sources found" in return_output.lower():
-            logging.info(
+            self.log_linter_notice(
                 "[osv-scanner] No package sources found (exit 128) — "
                 "treating as success (nothing to scan)"
             )

@@ -2191,6 +2191,13 @@ class Linter:
             == "true"
         )
 
+    # Notices raised while a linter builds or runs its command are displayed
+    # within the linter section of the console log (not at the moment they are
+    # raised, where they would appear out of context), and only once each
+    def log_linter_notice(self, message):
+        if message not in self.log_lines_pre:
+            self.log_lines_pre += [message]
+
     def is_project_paths_defined_in_config(self):
         if (
             self.cli_lint_mode_project_config_paths_regex is None
@@ -2231,9 +2238,7 @@ class Linter:
         )
 
     def log_project_exclude_forwarding(self, message):
-        log_line = f"[Excluded directories] {message}"
-        if log_line not in self.log_lines_pre:
-            self.log_lines_pre += [log_line]
+        self.log_linter_notice(f"[Excluded directories] {message}")
 
     # Directories forwarded to project-mode linters: EXCLUDED_DIRECTORIES +
     # ADDITIONAL_EXCLUDED_DIRECTORIES + directories identified from
