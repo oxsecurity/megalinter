@@ -34,6 +34,7 @@ LAUNCH_FAILURE_REGEX = re.compile(
     r"spawn(?:Sync)?\b[^\n]*ENAMETOOLONG|\[WinError 206\]|CreateProcess error=206"
     r"|: Argument list too long|proc_open\(\): CreateProcess failed"
     r"|Errno::E(?:2BIG|NAMETOOLONG)"
+    r"|The command line is too long|La ligne de commande est trop longue"
 )
 
 # Loaded by node before the tool: adds the arguments to process.argv, then removes
@@ -95,6 +96,13 @@ if arguments_file
   ARGV.concat(File.read(arguments_file, encoding: "utf-8").split("\0"))
 end
 """
+
+# bundle exec relaunches a .bat file on Windows: the gem executable is loaded directly
+RUBY_BUNDLE_LOAD = (
+    'tool = ENV.delete("MEGALINTER_RUBY_TOOL"); '
+    "spec = Gem.loaded_specs.values.find { |s| s.executables.include?(tool) }; "
+    "$0 = spec.bin_file(tool); load $0"
+)
 
 GIT_BASH_SCRIPT = 'mapfile -d "" -t arguments < "$1" && exec "$2" "${arguments[@]}"'
 
@@ -242,7 +250,16 @@ def find_route(command):
 
 
 # Writes the arguments in the folder, and returns the short command reading them
-def build_launch(route, command, env, folder):
+# PHP getopt() only sees the real command line: options stay on it, and only the files
+# at the end of the command go through the file
+def split_trailing_files(command, files):
+    first_file = len(command) - len(files or [])
+    if files and first_file > 0 and command[first_file:] == list(files):
+        return command[:first_file], list(files)
+    return [command[0]], command[1:]
+
+
+def build_launch(route, command, env, folder, files=None):
     arguments_file = os.path.join(folder, "arguments")
     with open(arguments_file, "w", encoding="utf-8", newline="") as file:
         file.write("".join(f"{argument}\0" for argument in command[1:]))
@@ -278,7 +295,10 @@ def build_launch(route, command, env, folder):
         ) as file:
             file.write(f'auto_prepend_file="{preload}"\n')
         scan_dir = env.get("PHP_INI_SCAN_DIR", "")
-        return [executable], {
+        php_command, php_arguments = split_trailing_files(command, files)
+        with open(arguments_file, "w", encoding="utf-8", newline="") as file:
+            file.write("".join(f"{argument}\0" for argument in php_arguments))
+        return php_command, {
             **env,
             "PHP_INI_SCAN_DIR": f"{scan_dir};{folder}" if scan_dir else folder,
             "MEGALINTER_PHP_INI_SCAN_DIR": scan_dir,
@@ -294,8 +314,13 @@ def build_launch(route, command, env, folder):
             file.write(RUBY_PRELOAD)
         ruby_lib = env.get("RUBYLIB", "")
         ruby_options = env.get("RUBYOPT", "")
-        return [executable], {
+        parts = read_launcher_command(executable)
+        ruby = os.path.join(os.path.dirname(parts[0]), "ruby.exe")
+        if not os.path.isfile(ruby):
+            ruby = shutil.which("ruby", path=env.get("PATH")) or "ruby"
+        return [ruby, "-rbundler/setup", "-e", RUBY_BUNDLE_LOAD], {
             **env,
+            "MEGALINTER_RUBY_TOOL": parts[2],
             "RUBYLIB": f"{folder};{ruby_lib}" if ruby_lib else folder,
             "RUBYOPT": f"-rmegalinter_arguments {ruby_options}".strip(),
             "MEGALINTER_RUBYLIB": ruby_lib,

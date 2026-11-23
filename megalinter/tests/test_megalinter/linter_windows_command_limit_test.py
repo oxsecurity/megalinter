@@ -219,8 +219,13 @@ class LongCommandRuntimeRouteTest(unittest.TestCase):
             [executable, "-q", "a.php"],
             {"PHP_INI_SCAN_DIR": "C:/ini"},
             self.folder,
+            ["a.php"],
         )
-        self.assertEqual(launch, [executable])
+        self.assertEqual(launch, [executable, "-q"])
+        with open(
+            env["MEGALINTER_ARGUMENTS_FILE"], encoding="utf-8", newline=""
+        ) as file:
+            self.assertEqual(file.read(), "a.php\0")
         self.assertEqual(env["PHP_INI_SCAN_DIR"], f"C:/ini;{self.folder}")
         self.assertEqual(env["MEGALINTER_PHP_INI_SCAN_DIR"], "C:/ini")
         with open(
@@ -236,7 +241,8 @@ class LongCommandRuntimeRouteTest(unittest.TestCase):
             {"RUBYOPT": "-W0"},
             self.folder,
         )
-        self.assertEqual(launch, [executable])
+        self.assertEqual(launch[1:3], ["-rbundler/setup", "-e"])
+        self.assertEqual(env["MEGALINTER_RUBY_TOOL"], "rubocop")
         self.assertEqual(env["RUBYOPT"], "-rmegalinter_arguments -W0")
         self.assertEqual(env["RUBYLIB"], self.folder)
         self.assertEqual(env["MEGALINTER_RUBYOPT"], "-W0")
@@ -389,6 +395,8 @@ class LinterWindowsCommandLimitTest(unittest.TestCase):
             "bash: /c/tool: Argument list too long",
             "Unable to launch: proc_open(): CreateProcess failed: Nom trop long",
             "Errno::ENAMETOOLONG: File name too long",
+            "The command line is too long.",
+            "La ligne de commande est trop longue.",
         ):
             self.assertTrue(self.run_long_command(1, output).windows_launch_failed)
 

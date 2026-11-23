@@ -1589,7 +1589,7 @@ class Linter:
         # A background process of the tool can keep the folder open after the run
         with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as folder:
             launch_command, launch_env = long_command.build_launch(
-                route, command, subprocess_env, folder
+                route, command, subprocess_env, folder, self.files
             )
             return_code, return_stdout = self._run_lint_subprocess(
                 launch_command, {"env": launch_env, "cwd": cwd}

@@ -143,6 +143,14 @@ def activation_variables(linter):
     }
 
 
+# Spelling linters lint the files of the other active linters, and there is none here
+def file_extension_variables(linter, good_file, bad_file):
+    if not linter.lint_all_other_linters_files or linter.file_extensions:
+        return {}
+    extensions = {os.path.splitext(path)[1] for path in (good_file, bad_file)}
+    return {f"{linter.name}_FILE_EXTENSIONS": ",".join(sorted(extensions))}
+
+
 def classify(linter):
     outcome, detail = classify_output(linter)
     if outcome in ("unclear", "broken"):
@@ -228,6 +236,7 @@ def lint_generated_workspace(key):
                 "GITHUB_STATUS_REPORTER": "false",
                 "request_id": request_id,
                 **activation_variables(linter),
+                **file_extension_variables(linter, good_file, bad_file),
                 **linter.test_variables,
             }
         )
