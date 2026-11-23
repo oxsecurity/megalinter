@@ -12533,7 +12533,7 @@
 </ul>
 <h2 id="terraform-fmt-documentation">terraform-fmt documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>1.17.0</strong></li>
+<li>Version in MegaLinter: <strong>1.17.1</strong></li>
 <li>Visit <a href="https://developer.hashicorp.com/terraform/cli/commands/fmt" target="_blank">Official Web Site</a></li>
 </ul>
 <p><a href="https://github.com/hashicorp/terraform" target="_blank"><img alt="terraform - GitHub" src="https://github-stats-extended.vercel.app/api/pin/?username=hashicorp&amp;repo=terraform&amp;show_owner=true" /></a></p>
@@ -12763,7 +12763,7 @@ Global<span class="w"> </span>options<span class="w"> </span><span class="o">(</
 <ul>
 <li>Dockerfile commands :
 <div class="highlight"><pre><span></span><code><span class="c"># renovate: datasource=docker depName=alpine/terragrunt</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">TERRAFORM_TERRAGRUNT_VERSION</span><span class="o">=</span><span class="m">1</span>.17.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">TERRAFORM_TERRAGRUNT_VERSION</span><span class="o">=</span><span class="m">1</span>.17.1
 <span class="k">FROM</span><span class="w"> </span><span class="s">alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">terragrunt</span>
 <span class="k">COPY</span><span class="w"> </span>--link<span class="w"> </span>--from<span class="o">=</span>terragrunt<span class="w"> </span>/bin/terraform<span class="w"> </span>/usr/bin/
 </code></pre></div></li>
@@ -12810,45 +12810,45 @@ Global<span class="w"> </span>options<span class="w"> </span><span class="o">(</
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_linux_amd64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_amd64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_linux_amd64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_linux_amd64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_linux_amd64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_amd64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_linux_amd64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_linux_amd64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_linux_arm64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_arm64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_linux_arm64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_linux_arm64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_linux_arm64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_arm64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_linux_arm64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_linux_arm64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_darwin_amd64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_amd64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_darwin_amd64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_darwin_amd64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_darwin_amd64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_darwin_amd64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_darwin_amd64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_darwin_amd64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_darwin_arm64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_arm64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_darwin_arm64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_darwin_arm64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_darwin_arm64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_darwin_arm64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_darwin_arm64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_darwin_arm64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_windows_amd64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_windows_amd64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_windows_amd64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
-<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.0_windows_amd64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_windows_amd64.zip"</span><span class="w"> </span>https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_windows_amd64.zip<span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>unzip<span class="w"> </span>-q<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_windows_amd64.zip"</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">  </span>rm<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/terraform_1.17.1_windows_amd64.zip"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 </code></pre></div>
 </div>
