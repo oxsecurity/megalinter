@@ -110,6 +110,17 @@ def is_launch_failure(output):
     return LAUNCH_FAILURE_REGEX.search(output or "") is not None
 
 
+# Longest command that can really start this tool
+def max_chars_for(executable):
+    if (
+        is_windows_script(executable)
+        and not is_node_launcher(executable)
+        and (find_git_bash() is None or read_posix_launcher(executable)[0] is None)
+    ):
+        return WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
+    return WINDOWS_COMMAND_LINE_MAX_CHARS
+
+
 # How to start this command on Windows, from the way the tool is launched
 def find_route(command):
     executable = command[0]

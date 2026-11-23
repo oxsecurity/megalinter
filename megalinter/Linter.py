@@ -76,6 +76,10 @@ class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
     # Native mode (MegaLinter without Docker): toolchain of the installed linter
     native_toolchain = None
+    # Windows: state of a list of files too long for the command line
+    windows_launch_failed = False
+    windows_files_not_linted = ()
+    windows_truncation_message = None
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
@@ -1153,7 +1157,7 @@ class Linter:
                 self.return_code = 0 if self.disable_errors is True else 1
                 self.number_errors += 1
                 self.total_number_errors += self.get_total_number_errors(stdout)
-            elif self.total_number_warnings > 0:
+            elif self.total_number_warnings > 0 or self.windows_files_not_linted:
                 self.status = "warning"
             if results_cache is not None:
                 if return_code == 0 and self.total_number_warnings == 0:
@@ -1168,7 +1172,10 @@ class Linter:
             self.update_files_lint_results(
                 results_cache.unchanged_files, 0, "success", "", 0, 0
             )
-            self.files = all_files
+            not_linted = set(self.windows_files_not_linted)
+            self.files = [file for file in all_files if file not in not_linted]
+            if len(not_linted) > 0:
+                self.files_number = len(self.files)
             try:
                 results_cache.save()
             except OSError as e:
@@ -1417,12 +1424,16 @@ class Linter:
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
         if file is None:
-            self.check_windows_command_limit(command)
+            command = self.fit_files_in_windows_limit(command)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
         self.stdout_human = None
         return_code, return_output = self.execute_lint_command(command)
+        if self.windows_launch_failed:
+            return_code, return_output = self.retry_with_fewer_files(
+                command, return_code, return_output
+            )
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
@@ -1434,9 +1445,9 @@ class Linter:
                 return_output = self.stdout_human
         return return_code, return_output
 
-    # Windows: a linter always runs in one command. When no route can pass its files,
-    # it can not run on them: that must fail the run, even for a non-blocking linter
-    def check_windows_command_limit(self, command):
+    # Windows: a linter always runs in one command. When no route can pass all its
+    # files, native mode lints the ones that fit and says which ones were left out
+    def fit_files_in_windows_limit(self, command):
         if (
             sys.platform != "win32"
             or self.cli_lint_mode != "list_of_files"
@@ -1444,17 +1455,92 @@ class Linter:
             or len(subprocess.list2cmdline(command))
             <= long_command.WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
         ):
-            return
-        executable = shutil.which(
+            return command
+        executable = self.find_windows_executable(command)
+        if executable is None:
+            return command
+        route = long_command.find_route([executable, *command[1:]])
+        if route != long_command.ROUTE_TOO_LONG:
+            return command
+        return self.truncate_files_to_windows_limit(command, executable)
+
+    def find_windows_executable(self, command):
+        return shutil.which(
             command[0],
             path=self.native_search_path(getattr(self, "_cached_subprocess_env", None)),
         )
-        if executable is None:
-            return
-        route = long_command.find_route([executable, *command[1:]])
-        if route == long_command.ROUTE_TOO_LONG:
-            self.report_windows_command_limit()
 
+    def truncate_files_to_windows_limit(self, command, executable):
+        if not is_native_mode(self.request_id) or len(self.files) < 2:
+            self.report_windows_command_limit()
+            return command
+        all_files = self.files
+        kept = list(all_files)
+        max_chars = long_command.max_chars_for(executable)
+        fitted_command = command
+        while len(kept) > 1:
+            overflow = (
+                len(subprocess.list2cmdline([executable, *fitted_command[1:]]))
+                - max_chars
+            )
+            if overflow <= 0:
+                break
+            removed_chars = 0
+            while len(kept) > 1 and removed_chars < overflow:
+                removed_chars += len(subprocess.list2cmdline([kept.pop()])) + 1
+            self.files = list(kept)
+            fitted_command = self.build_lint_command()
+        fits = (
+            len(subprocess.list2cmdline([executable, *fitted_command[1:]])) <= max_chars
+        )
+        if len(kept) == len(all_files) or not fits:
+            self.files = all_files
+            self.report_windows_command_limit()
+            return command
+        self.windows_files_not_linted = all_files[len(kept) :]
+        self.files_number = len(kept)
+        not_linted_file = self.write_report_generated_file(
+            f"{self.name}-files-not-linted.txt", self.windows_files_not_linted
+        )
+        self.windows_truncation_message = (
+            f"[{self.linter_name}] Windows command line limit: linted {len(kept)} of "
+            f"{len(all_files)} files. {len(self.windows_files_not_linted)} files were "
+            f"NOT linted, they are listed in {not_linted_file}. Lint fewer files with "
+            "FILTER_REGEX_EXCLUDE, or use Docker to lint them all"
+        )
+        logging.warning(self.windows_truncation_message)
+        self.log_lines_pre.append(self.windows_truncation_message)
+        self.tips.append(
+            {
+                "category": "windows_command_line",
+                "message": self.windows_truncation_message,
+            }
+        )
+        return fitted_command
+
+    # The tool started, but could not start the program it wraps with all the files
+    def retry_with_fewer_files(self, command, return_code, return_output):
+        self.windows_launch_failed = False
+        executable = self.find_windows_executable(command)
+        if executable is None:
+            self.report_windows_command_limit()
+            return return_code, return_output
+        fitted_command = self.truncate_files_to_windows_limit(command, executable)
+        if self.windows_truncation_message is None:
+            return return_code, return_output
+        self.lint_command_log.pop()
+        if self.sarif_output_file is not None and os.path.isfile(
+            self.sarif_output_file
+        ):
+            os.remove(self.sarif_output_file)
+        self.stdout_human = None
+        return_code, return_output = self.execute_lint_command(fitted_command)
+        if self.windows_launch_failed:
+            self.windows_launch_failed = False
+            self.report_windows_command_limit()
+        return return_code, return_output
+
+    # No file could be linted: that must fail the run, even for a non-blocking linter
     def report_windows_command_limit(self):
         message = (
             f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
@@ -1484,7 +1570,7 @@ class Linter:
                 launch_command, {"env": launch_env, "cwd": cwd}
             )
         if return_code != 0 and long_command.is_launch_failure(return_stdout):
-            self.report_windows_command_limit()
+            self.windows_launch_failed = True
         return return_code, return_stdout
 
     def merge_file_sarif(self):

@@ -186,38 +186,88 @@ class LongCommandRouteTest(unittest.TestCase):
 
 
 class LinterWindowsCommandLimitTest(unittest.TestCase):
-    def check(self, linter, command, route, platform="win32"):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp_dir.cleanup)
+
+    def linter(self, count):
+        linter = build_linter(many_files(count))
+        linter.request_id = "windows-limit-test"
+        linter.report_folder = self.temp_dir.name
+        linter.log_lines_pre = []
+        linter.lint_command_log = ["first command"]
+        linter.sarif_output_file = None
+        linter.files_number = count
+        linter.build_lint_command = lambda: ["tool.exe", "--check", *linter.files]
+        return linter
+
+    def fit(self, linter, native=True, platform="win32"):
         with (
             patch("megalinter.Linter.sys.platform", platform),
-            patch("megalinter.Linter.shutil.which", return_value=command[0]),
-            patch.object(long_command, "find_route", return_value=route),
+            patch("megalinter.Linter.shutil.which", return_value="C:\\tool.exe"),
+            patch("megalinter.Linter.is_native_mode", return_value=native),
         ):
-            linter.check_windows_command_limit(command)
+            return linter.fit_files_in_windows_limit(linter.build_lint_command())
 
-    def test_linter_that_can_not_run_blocks_the_run(self):
-        files = many_files(2000)
-        linter = build_linter(files)
-        self.check(linter, ["tool.exe", *files], long_command.ROUTE_TOO_LONG)
+    def test_native_mode_lints_the_files_that_fit(self):
+        linter = self.linter(2000)
+        all_files = list(linter.files)
+        command = self.fit(linter)
+        self.assertLessEqual(
+            len(subprocess.list2cmdline(["C:\\tool.exe", *command[1:]])),
+            long_command.WINDOWS_COMMAND_LINE_MAX_CHARS,
+        )
+        self.assertEqual(command[2:], linter.files)
+        self.assertEqual(
+            linter.files + list(linter.windows_files_not_linted), all_files
+        )
+        self.assertEqual(linter.files_number, len(linter.files))
+        self.assertIn("NOT linted", linter.windows_truncation_message)
         self.assertEqual(linter.tips[0]["category"], "windows_command_line")
-        self.assertFalse(linter.disable_errors)
-        self.assertIsNone(linter.disable_errors_if_less_than)
-
-    def test_linter_with_a_route_stays_non_blocking(self):
-        files = many_files(2000)
-        linter = build_linter(files)
-        self.check(linter, ["tool.cmd", *files], long_command.ROUTE_NODE)
-        self.assertEqual(linter.tips, [])
+        self.assertIn(linter.windows_truncation_message, linter.log_lines_pre)
+        not_linted_file = os.path.join(
+            self.temp_dir.name, "MARKDOWN_MARKDOWNLINT-files-not-linted.txt"
+        )
+        with open(not_linted_file, encoding="utf-8") as file:
+            self.assertEqual(
+                file.read().splitlines(), list(linter.windows_files_not_linted)
+            )
         self.assertTrue(linter.disable_errors)
 
-    def test_other_platforms_are_not_checked(self):
-        files = many_files(2000)
-        linter = build_linter(files)
-        self.check(linter, ["tool", *files], long_command.ROUTE_TOO_LONG, "linux")
+    def test_without_native_mode_nothing_is_truncated(self):
+        linter = self.linter(2000)
+        all_files = list(linter.files)
+        self.fit(linter, native=False)
+        self.assertEqual(linter.files, all_files)
+        self.assertEqual(len(linter.windows_files_not_linted), 0)
+        self.assertFalse(linter.disable_errors)
+
+    def test_command_that_fits_is_unchanged(self):
+        linter = self.linter(500)
+        all_files = list(linter.files)
+        command = self.fit(linter)
+        self.assertEqual(command[2:], all_files)
         self.assertEqual(linter.tips, [])
 
+    def test_other_platforms_are_unchanged(self):
+        linter = self.linter(2000)
+        all_files = list(linter.files)
+        self.fit(linter, platform="linux")
+        self.assertEqual(linter.files, all_files)
+        self.assertEqual(linter.tips, [])
+
+    def test_command_that_ignores_the_files_fails_the_run(self):
+        linter = self.linter(2000)
+        all_files = list(linter.files)
+        fixed_command = ["tool.exe", *all_files]
+        linter.build_lint_command = lambda: list(fixed_command)
+        self.fit(linter)
+        self.assertEqual(linter.files, all_files)
+        self.assertEqual(len(linter.windows_files_not_linted), 0)
+        self.assertFalse(linter.disable_errors)
+
     def run_long_command(self, return_code, output):
-        files = many_files(2000)
-        linter = build_linter(files)
+        linter = self.linter(2000)
         with (
             patch.object(
                 long_command, "find_route", return_value=long_command.ROUTE_NODE
@@ -228,23 +278,37 @@ class LinterWindowsCommandLimitTest(unittest.TestCase):
             ),
         ):
             result = linter.run_windows_lint_subprocess(
-                ["tool.cmd", *files], {}, "workspace"
+                ["tool.cmd", *linter.files], {}, "workspace"
             )
         self.assertEqual(result, (return_code, output))
         return linter
 
-    def test_wrapped_program_that_can_not_start_blocks_the_run(self):
+    def test_wrapped_program_that_can_not_start_is_detected(self):
         for output in (
             "Error: spawnSync biome.exe ENAMETOOLONG",
             "CreateProcess error=206, The filename or extension is too long",
             "OSError: [WinError 206] Nom de fichier trop long",
             "bash: /c/tool: Argument list too long",
         ):
-            linter = self.run_long_command(1, output)
-            self.assertEqual(len(linter.tips), 1, output)
-            self.assertFalse(linter.disable_errors)
+            self.assertTrue(self.run_long_command(1, output).windows_launch_failed)
 
-    def test_lint_errors_stay_non_blocking(self):
+    def test_lint_errors_are_not_a_launch_failure(self):
         linter = self.run_long_command(1, "a.md:1 error MD025 Multiple headings")
-        self.assertEqual(linter.tips, [])
-        self.assertTrue(linter.disable_errors)
+        self.assertFalse(linter.windows_launch_failed)
+
+    def test_wrapped_program_is_retried_with_the_files_that_fit(self):
+        linter = self.linter(2000)
+        with (
+            patch("megalinter.Linter.shutil.which", return_value="C:\\tool.exe"),
+            patch("megalinter.Linter.is_native_mode", return_value=True),
+            patch.object(
+                linter, "execute_lint_command", return_value=(1, "a.md: error")
+            ) as execute,
+        ):
+            result = linter.retry_with_fewer_files(
+                linter.build_lint_command(), 1, "ENAMETOOLONG"
+            )
+        self.assertEqual(result, (1, "a.md: error"))
+        self.assertEqual(execute.call_args[0][0][2:], linter.files)
+        self.assertGreater(len(linter.windows_files_not_linted), 0)
+        self.assertEqual(linter.lint_command_log, [])
