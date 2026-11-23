@@ -146,6 +146,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **phplint**: the default configuration uses `file-extensions`, removing the deprecation warning printed by phplint 9.8 on every run
   - Windows: the **Fixed** column of the summary counts the files fixed in subfolders (it showed 0 for them)
   - **Linter notices** (such as checkov `--skip-framework secrets`) are now displayed inside the section of their linter in the console log, instead of out of context before the first linter
+  - Windows, native mode: linters no longer fail with **"The command line is too long"** on repositories with many files
+    - They still run in a **single command**: linters running on Node, Python, Java, PHP or Ruby read their long file list from a temporary file, with **no size limit** unless they relaunch another program
+    - Other linters go through **Git Bash** up to the Windows limit of 32,767 characters
+    - Above it, they lint **the files that fit** and show ⚠️: the console, the linter log and the report tips say how many were skipped, and `<LINTER_KEY>-files-not-linted.txt` lists them
   - An absolute **`LINTER_RULES_PATH`** (example: `/rules`) is used as is: a folder with the same name in the linted repository no longer replaces it (#9606)
   - **Spaces around the elements** of comma-separated variables are now ignored: `ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"` (or a YAML folded scalar `>-`) enables both linters, instead of silently skipping `BASH_SHFMT`. Fixes [#9605](https://github.com/oxsecurity/megalinter/issues/9605)
   - **ENABLE_LINTERS** and **DISABLE_LINTERS** now log a **warning** (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key
@@ -233,6 +237,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
 
+  - **Test native long command lines**: runs every native linter on Windows with a file list above the command line limit, and reports which ones receive all the files, lint a reported part of them, or are broken
   - The **Benchmark native mode** workflow has an **Agent loop** job on the 5 native platforms: it measures the commands of a coding agent that sets up native mode, lints and re-checks a fixed file, with the published beta and with this checkout, and adds the table to the summary (`benchmark_native.py agent-loop`)
   - **Test native mode**: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled `native-full-matrix`. **Native locks** regenerates the install locks after descriptor changes. **Deploy MegaLinter to PyPI** publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the `release-runner` environment
   - Renovate also bumps the pinned versions of native installs (`native_install` in descriptors, runtimes in `native-runtimes.yml`)
