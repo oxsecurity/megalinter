@@ -13099,84 +13099,6 @@ Main:
 <span class="s1">                        Allow explicit reexports by alias from a package</span>
 <span class="s1">                        __init__. (default: False)</span>
 
-<span class="s1">Refactoring:</span>
-<span class="s1">  Looks for code which can be refactored.</span>
-
-<span class="s1">  --max-nested-blocks &lt;int&gt;</span>
-<span class="s1">                        Maximum number of nested blocks for function / method</span>
-<span class="s1">                        body (default: 5)</span>
-<span class="s1">  --never-returning-functions &lt;members names&gt;</span>
-<span class="s1">                        Complete name of functions that never returns. When</span>
-<span class="s1">                        checking for inconsistent-return-statements if a never</span>
-<span class="s1">                        returning function is called then it will be</span>
-<span class="s1">                        considered as an explicit return statement and no</span>
-<span class="s1">                        message will be printed. (default: ('</span>sys.exit<span class="s1">',</span>
-<span class="s1">                        '</span>argparse.parse_error<span class="s1">'))</span>
-<span class="s1">  --suggest-join-with-non-empty-separator &lt;y or n&gt;</span>
-<span class="s1">                        Let '</span>consider-using-join<span class="s1">' be raised when the separator</span>
-<span class="s1">                        to join on would be non-empty (resulting in expected</span>
-<span class="s1">                        fixes of the type: ``"- " + " - ".join(items)``)</span>
-<span class="s1">                        (default: True)</span>
-
-<span class="s1">Variables:</span>
-<span class="s1">  BaseChecker for variables.</span>
-
-<span class="s1">  --init-import &lt;y or n&gt;</span>
-<span class="s1">                        Tells whether we should check for unused import in</span>
-<span class="s1">                        __init__ files. (default: False)</span>
-<span class="s1">  --dummy-variables-rgx &lt;regexp&gt;</span>
-<span class="s1">                        A regular expression matching the name of dummy</span>
-<span class="s1">                        variables (i.e. expected to not be used). (default: _+</span>
-<span class="s1">                        $|(_[a-zA-Z0-9_]*[a-zA-Z0-</span>
-<span class="s1">                        9]+?$)|dummy|^ignored_|^unused_)</span>
-<span class="s1">  --additional-builtins &lt;comma separated list&gt;</span>
-<span class="s1">                        List of additional names supposed to be defined in</span>
-<span class="s1">                        builtins. Remember that you should avoid defining new</span>
-<span class="s1">                        builtins when possible. (default: ())</span>
-<span class="s1">  --callbacks &lt;callbacks&gt;</span>
-<span class="s1">                        List of strings which can identify a callback function</span>
-<span class="s1">                        by name. A callback name must start or end with one of</span>
-<span class="s1">                        those strings. (default: ('</span>cb_<span class="s1">', '</span>_cb<span class="s1">'))</span>
-<span class="s1">  --redefining-builtins-modules &lt;comma separated list&gt;</span>
-<span class="s1">                        List of qualified module names which can have objects</span>
-<span class="s1">                        that can redefine builtins. (default: ('</span>six.moves<span class="s1">',</span>
-<span class="s1">                        '</span>past.builtins<span class="s1">', '</span>future.builtins<span class="s1">', '</span>builtins<span class="s1">', '</span>io<span class="s1">'))</span>
-<span class="s1">  --ignored-argument-names &lt;regexp&gt;</span>
-<span class="s1">                        Argument names that match this expression will be</span>
-<span class="s1">                        ignored. (default:</span>
-<span class="s1">                        re.compile('</span>_.*<span class="p">|</span>^ignored_<span class="p">|</span>^unused_<span class="s1">'))</span>
-<span class="s1">  --allow-global-unused-variables &lt;y or n&gt;</span>
-<span class="s1">                        Tells whether unused global variables should be</span>
-<span class="s1">                        treated as a violation. (default: True)</span>
-<span class="s1">  --allowed-redefined-builtins &lt;comma separated list&gt;</span>
-<span class="s1">                        List of names allowed to shadow builtins (default: ())</span>
-
-<span class="s1">Spelling:</span>
-<span class="s1">  Check spelling in comments and docstrings.</span>
-
-<span class="s1">  --spelling-dict &lt;dict name&gt;</span>
-<span class="s1">                        Spelling dictionary name. No available dictionaries :</span>
-<span class="s1">                        You need to install both the python package and the</span>
-<span class="s1">                        system dependency for enchant to work. (default: )</span>
-<span class="s1">  --spelling-ignore-words &lt;comma separated words&gt;</span>
-<span class="s1">                        List of comma separated words that should not be</span>
-<span class="s1">                        checked. (default: )</span>
-<span class="s1">  --spelling-private-dict-file &lt;path to file&gt;</span>
-<span class="s1">                        A path to a file that contains the private dictionary;</span>
-<span class="s1">                        one word per line. (default: )</span>
-<span class="s1">  --spelling-store-unknown-words &lt;y or n&gt;</span>
-<span class="s1">                        Tells whether to store unknown words to the private</span>
-<span class="s1">                        dictionary (see the --spelling-private-dict-file</span>
-<span class="s1">                        option) instead of raising a message. (default: n)</span>
-<span class="s1">  --max-spelling-suggestions N</span>
-<span class="s1">                        Limits count of emitted suggestions for spelling</span>
-<span class="s1">                        mistakes. (default: 4)</span>
-<span class="s1">  --spelling-ignore-comment-directives &lt;comma separated words&gt;</span>
-<span class="s1">                        List of comma separated words that should be</span>
-<span class="s1">                        considered directives if they appear at the beginning</span>
-<span class="s1">                        of a comment and should not be checked. (default: fmt:</span>
-<span class="s1">                        on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:)</span>
-
 <span class="s1">Classes:</span>
 <span class="s1">  Checker for class nodes.</span>
 
@@ -13199,52 +13121,50 @@ Main:
 <span class="s1">                        Warn about protected attribute access inside special</span>
 <span class="s1">                        methods (default: False)</span>
 
-<span class="s1">Exceptions:</span>
-<span class="s1">  Exception related checks.</span>
+<span class="s1">Method_args:</span>
+<span class="s1">  BaseChecker for method_args.</span>
 
-<span class="s1">  --overgeneral-exceptions &lt;comma-separated class names&gt;</span>
-<span class="s1">                        Exceptions that will emit a warning when caught.</span>
-<span class="s1">                        (default: ('</span>builtins.BaseException<span class="s1">',</span>
-<span class="s1">                        '</span>builtins.Exception<span class="s1">'))</span>
+<span class="s1">  --timeout-methods &lt;comma separated list&gt;</span>
+<span class="s1">                        List of qualified names (i.e., library.method) which</span>
+<span class="s1">                        require a timeout parameter e.g.</span>
+<span class="s1">                        '</span>requests.api.get,requests.api.post<span class="s1">' (default:</span>
+<span class="s1">                        ('</span>requests.api.delete<span class="s1">', '</span>requests.api.get<span class="s1">',</span>
+<span class="s1">                        '</span>requests.api.head<span class="s1">', '</span>requests.api.options<span class="s1">',</span>
+<span class="s1">                        '</span>requests.api.patch<span class="s1">', '</span>requests.api.post<span class="s1">',</span>
+<span class="s1">                        '</span>requests.api.put<span class="s1">', '</span>requests.api.request<span class="s1">'))</span>
 
-<span class="s1">Design:</span>
-<span class="s1">  Checker of potential misdesigns.</span>
+<span class="s1">Format:</span>
+<span class="s1">  Formatting checker.</span>
 
-<span class="s1">  --max-args &lt;int&gt;      Maximum number of arguments for function / method.</span>
-<span class="s1">                        (default: 5)</span>
-<span class="s1">  --max-positional-arguments &lt;int&gt;</span>
-<span class="s1">                        Maximum number of positional arguments for function /</span>
-<span class="s1">                        method. (default: 5)</span>
-<span class="s1">  --max-locals &lt;int&gt;    Maximum number of locals for function / method body.</span>
-<span class="s1">                        (default: 15)</span>
-<span class="s1">  --max-returns &lt;int&gt;   Maximum number of return / yield for function / method</span>
-<span class="s1">                        body. (default: 6)</span>
-<span class="s1">  --max-branches &lt;int&gt;  Maximum number of branch for function / method body.</span>
-<span class="s1">                        (default: 12)</span>
-<span class="s1">  --max-statements &lt;int&gt;</span>
-<span class="s1">                        Maximum number of statements in function / method</span>
-<span class="s1">                        body. (default: 50)</span>
-<span class="s1">  --max-parents &lt;num&gt;   Maximum number of parents for a class (see R0901).</span>
-<span class="s1">                        (default: 7)</span>
-<span class="s1">  --ignored-parents &lt;comma separated list of class names&gt;</span>
-<span class="s1">                        List of qualified class names to ignore when counting</span>
-<span class="s1">                        class parents (see R0901) (default: ())</span>
-<span class="s1">  --max-attributes &lt;num&gt;</span>
-<span class="s1">                        Maximum number of attributes for a class (see R0902).</span>
-<span class="s1">                        (default: 7)</span>
-<span class="s1">  --min-public-methods &lt;num&gt;</span>
-<span class="s1">                        Minimum number of public methods for a class (see</span>
-<span class="s1">                        R0903). (default: 2)</span>
-<span class="s1">  --max-public-methods &lt;num&gt;</span>
-<span class="s1">                        Maximum number of public methods for a class (see</span>
-<span class="s1">                        R0904). (default: 20)</span>
-<span class="s1">  --max-bool-expr &lt;num&gt;</span>
-<span class="s1">                        Maximum number of boolean expressions in an if</span>
-<span class="s1">                        statement (see R0916). (default: 5)</span>
-<span class="s1">  --exclude-too-few-public-methods &lt;pattern&gt;[,&lt;pattern&gt;...]</span>
-<span class="s1">                        List of regular expressions of class ancestor names to</span>
-<span class="s1">                        ignore when counting public methods (see R0903)</span>
-<span class="s1">                        (default: [])</span>
+<span class="s1">  --max-line-length &lt;int&gt;</span>
+<span class="s1">                        Maximum number of characters on a single line.</span>
+<span class="s1">                        Pylint'</span>s<span class="w"> </span>default<span class="w"> </span>of<span class="w"> </span><span class="m">100</span><span class="w"> </span>is<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span>PEP<span class="w"> </span><span class="m">8</span><span class="s1">'s guidance</span>
+<span class="s1">                        that teams may choose line lengths up to 99</span>
+<span class="s1">                        characters. (default: 100)</span>
+<span class="s1">  --ignore-long-lines &lt;regexp&gt;</span>
+<span class="s1">                        Regexp for a line that is allowed to be longer than</span>
+<span class="s1">                        the limit. (default: ^\s*(# )?&lt;?https?://\S+&gt;?$)</span>
+<span class="s1">  --ignore-pattern-in-long-lines &lt;regexp&gt;</span>
+<span class="s1">                        Regexp for a part of a line that will not be counted</span>
+<span class="s1">                        when calculating the line length. (default: None)</span>
+<span class="s1">  --single-line-if-stmt &lt;y or n&gt;</span>
+<span class="s1">                        Allow the body of an if to be on the same line as the</span>
+<span class="s1">                        test if there is no else. (default: False)</span>
+<span class="s1">  --single-line-class-stmt &lt;y or n&gt;</span>
+<span class="s1">                        Allow the body of a class to be on the same line as</span>
+<span class="s1">                        the declaration if body contains single statement.</span>
+<span class="s1">                        (default: False)</span>
+<span class="s1">  --max-module-lines &lt;int&gt;</span>
+<span class="s1">                        Maximum number of lines in a module. (default: 1000)</span>
+<span class="s1">  --indent-string &lt;string&gt;</span>
+<span class="s1">                        String used as indentation unit. This is usually " "</span>
+<span class="s1">                        (4 spaces) or "  " (1 tab). (default: )</span>
+<span class="s1">  --indent-after-paren &lt;int&gt;</span>
+<span class="s1">                        Number of spaces of indent required inside a hanging</span>
+<span class="s1">                        or continued line. (default: 4)</span>
+<span class="s1">  --expected-line-ending-format &lt;empty or LF or CRLF&gt;</span>
+<span class="s1">                        Expected format of line ending, e.g. empty (any line</span>
+<span class="s1">                        ending), LF or CRLF. (default: )</span>
 
 <span class="s1">Basic:</span>
 <span class="s1">  --good-names &lt;names&gt;  Good variable names which should always be accepted,</span>
@@ -13385,6 +13305,44 @@ Main:
 <span class="w">                        </span>Minimum<span class="w"> </span>line<span class="w"> </span>length<span class="w"> </span><span class="k">for</span><span class="w"> </span>functions/classes<span class="w"> </span>that<span class="w"> </span>require
 <span class="w">                        </span>docstrings,<span class="w"> </span>shorter<span class="w"> </span>ones<span class="w"> </span>are<span class="w"> </span>exempt.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>-1<span class="o">)</span>
 
+Logging:
+<span class="w">  </span>Checks<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>module.
+
+<span class="w">  </span>--logging-modules<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
+<span class="w">                        </span>Logging<span class="w"> </span>modules<span class="w"> </span>to<span class="w"> </span>check<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>string<span class="w"> </span>format
+<span class="w">                        </span>arguments<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>logging<span class="w"> </span><span class="k">function</span><span class="w"> </span>parameter<span class="w"> </span>format.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'logging'</span>,<span class="o">))</span>
+<span class="w">  </span>--logging-format-style<span class="w"> </span>&lt;old<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>new<span class="w"> </span><span class="o">({)</span>&gt;
+<span class="w">                        </span>The<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>string<span class="w"> </span>formatting<span class="w"> </span>that<span class="w"> </span>logging<span class="w"> </span>methods<span class="w"> </span><span class="k">do</span>.
+<span class="w">                        </span><span class="sb">`</span>old<span class="sb">`</span><span class="w"> </span>means<span class="w"> </span>using<span class="w"> </span>%<span class="w"> </span>formatting,<span class="w"> </span><span class="sb">`</span>new<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="sb">`</span><span class="o">{}</span><span class="sb">`</span>
+<span class="w">                        </span>formatting.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>old<span class="o">)</span>
+
+Spelling:
+<span class="w">  </span>Check<span class="w"> </span>spelling<span class="w"> </span><span class="k">in</span><span class="w"> </span>comments<span class="w"> </span>and<span class="w"> </span>docstrings.
+
+<span class="w">  </span>--spelling-dict<span class="w"> </span>&lt;dict<span class="w"> </span>name&gt;
+<span class="w">                        </span>Spelling<span class="w"> </span>dictionary<span class="w"> </span>name.<span class="w"> </span>No<span class="w"> </span>available<span class="w"> </span>dictionaries<span class="w"> </span>:
+<span class="w">                        </span>You<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>both<span class="w"> </span>the<span class="w"> </span>python<span class="w"> </span>package<span class="w"> </span>and<span class="w"> </span>the
+<span class="w">                        </span>system<span class="w"> </span>dependency<span class="w"> </span><span class="k">for</span><span class="w"> </span>enchant<span class="w"> </span>to<span class="w"> </span>work.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--spelling-ignore-words<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>words&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>comma<span class="w"> </span>separated<span class="w"> </span>words<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be
+<span class="w">                        </span>checked.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--spelling-private-dict-file<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>file&gt;
+<span class="w">                        </span>A<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>file<span class="w"> </span>that<span class="w"> </span>contains<span class="w"> </span>the<span class="w"> </span>private<span class="w"> </span>dictionary<span class="p">;</span>
+<span class="w">                        </span>one<span class="w"> </span>word<span class="w"> </span>per<span class="w"> </span>line.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--spelling-store-unknown-words<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>to<span class="w"> </span>store<span class="w"> </span>unknown<span class="w"> </span>words<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>private
+<span class="w">                        </span>dictionary<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>the<span class="w"> </span>--spelling-private-dict-file
+<span class="w">                        </span>option<span class="o">)</span><span class="w"> </span>instead<span class="w"> </span>of<span class="w"> </span>raising<span class="w"> </span>a<span class="w"> </span>message.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>n<span class="o">)</span>
+<span class="w">  </span>--max-spelling-suggestions<span class="w"> </span>N
+<span class="w">                        </span>Limits<span class="w"> </span>count<span class="w"> </span>of<span class="w"> </span>emitted<span class="w"> </span>suggestions<span class="w"> </span><span class="k">for</span><span class="w"> </span>spelling
+<span class="w">                        </span>mistakes.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
+<span class="w">  </span>--spelling-ignore-comment-directives<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>words&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>comma<span class="w"> </span>separated<span class="w"> </span>words<span class="w"> </span>that<span class="w"> </span>should<span class="w"> </span>be
+<span class="w">                        </span>considered<span class="w"> </span>directives<span class="w"> </span><span class="k">if</span><span class="w"> </span>they<span class="w"> </span>appear<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>beginning
+<span class="w">                        </span>of<span class="w"> </span>a<span class="w"> </span>comment<span class="w"> </span>and<span class="w"> </span>should<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>checked.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>fmt:
+<span class="w">                        </span>on,fmt:<span class="w"> </span>off,noqa:,noqa,nosec,isort:skip,mypy:<span class="o">)</span>
+
 String:
 <span class="w">  </span>Check<span class="w"> </span>string<span class="w"> </span>literals.
 
@@ -13398,18 +13356,6 @@ String:
 <span class="w">                        </span>generates<span class="w"> </span>a<span class="w"> </span>warning<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>character<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>quote
 <span class="w">                        </span>delimiter<span class="w"> </span>is<span class="w"> </span>used<span class="w"> </span>inconsistently<span class="w"> </span>within<span class="w"> </span>a<span class="w"> </span>module.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-
-Method_args:
-<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>method_args.
-
-<span class="w">  </span>--timeout-methods<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
-<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>qualified<span class="w"> </span>names<span class="w"> </span><span class="o">(</span>i.e.,<span class="w"> </span>library.method<span class="o">)</span><span class="w"> </span>which
-<span class="w">                        </span>require<span class="w"> </span>a<span class="w"> </span>timeout<span class="w"> </span>parameter<span class="w"> </span>e.g.
-<span class="w">                        </span><span class="s1">'requests.api.get,requests.api.post'</span><span class="w"> </span><span class="o">(</span>default:
-<span class="w">                        </span><span class="o">(</span><span class="s1">'requests.api.delete'</span>,<span class="w"> </span><span class="s1">'requests.api.get'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.head'</span>,<span class="w"> </span><span class="s1">'requests.api.options'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.patch'</span>,<span class="w"> </span><span class="s1">'requests.api.post'</span>,
-<span class="w">                        </span><span class="s1">'requests.api.put'</span>,<span class="w"> </span><span class="s1">'requests.api.request'</span><span class="o">))</span>
 
 Typecheck:
 <span class="w">  </span>Try<span class="w"> </span>to<span class="w"> </span>find<span class="w"> </span>bugs<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>code<span class="w"> </span>using<span class="w"> </span><span class="nb">type</span><span class="w"> </span>inference.
@@ -13492,17 +13438,24 @@ Typecheck:
 <span class="s1">                        Whether or not to search for fixme'</span>s<span class="w"> </span><span class="k">in</span><span class="w"> </span>docstrings.
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
 
-Logging:
-<span class="w">  </span>Checks<span class="w"> </span>use<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>module.
+Refactoring:
+<span class="w">  </span>Looks<span class="w"> </span><span class="k">for</span><span class="w"> </span>code<span class="w"> </span>which<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>refactored.
 
-<span class="w">  </span>--logging-modules<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
-<span class="w">                        </span>Logging<span class="w"> </span>modules<span class="w"> </span>to<span class="w"> </span>check<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>string<span class="w"> </span>format
-<span class="w">                        </span>arguments<span class="w"> </span>are<span class="w"> </span><span class="k">in</span><span class="w"> </span>logging<span class="w"> </span><span class="k">function</span><span class="w"> </span>parameter<span class="w"> </span>format.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'logging'</span>,<span class="o">))</span>
-<span class="w">  </span>--logging-format-style<span class="w"> </span>&lt;old<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span>or<span class="w"> </span>new<span class="w"> </span><span class="o">({)</span>&gt;
-<span class="w">                        </span>The<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>string<span class="w"> </span>formatting<span class="w"> </span>that<span class="w"> </span>logging<span class="w"> </span>methods<span class="w"> </span><span class="k">do</span>.
-<span class="w">                        </span><span class="sb">`</span>old<span class="sb">`</span><span class="w"> </span>means<span class="w"> </span>using<span class="w"> </span>%<span class="w"> </span>formatting,<span class="w"> </span><span class="sb">`</span>new<span class="sb">`</span><span class="w"> </span>is<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="sb">`</span><span class="o">{}</span><span class="sb">`</span>
-<span class="w">                        </span>formatting.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>old<span class="o">)</span>
+<span class="w">  </span>--max-nested-blocks<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>nested<span class="w"> </span>blocks<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method
+<span class="w">                        </span>body<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
+<span class="w">  </span>--never-returning-functions<span class="w"> </span>&lt;members<span class="w"> </span>names&gt;
+<span class="w">                        </span>Complete<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>functions<span class="w"> </span>that<span class="w"> </span>never<span class="w"> </span>returns.<span class="w"> </span>When
+<span class="w">                        </span>checking<span class="w"> </span><span class="k">for</span><span class="w"> </span>inconsistent-return-statements<span class="w"> </span><span class="k">if</span><span class="w"> </span>a<span class="w"> </span>never
+<span class="w">                        </span>returning<span class="w"> </span><span class="k">function</span><span class="w"> </span>is<span class="w"> </span>called<span class="w"> </span><span class="k">then</span><span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>considered<span class="w"> </span>as<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span><span class="k">return</span><span class="w"> </span>statement<span class="w"> </span>and<span class="w"> </span>no
+<span class="w">                        </span>message<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>printed.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'sys.exit'</span>,
+<span class="w">                        </span><span class="s1">'argparse.parse_error'</span><span class="o">))</span>
+<span class="w">  </span>--suggest-join-with-non-empty-separator<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Let<span class="w"> </span><span class="s1">'consider-using-join'</span><span class="w"> </span>be<span class="w"> </span>raised<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>separator
+<span class="w">                        </span>to<span class="w"> </span>join<span class="w"> </span>on<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>non-empty<span class="w"> </span><span class="o">(</span>resulting<span class="w"> </span><span class="k">in</span><span class="w"> </span>expected
+<span class="w">                        </span>fixes<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>type:<span class="w"> </span><span class="sb">``</span><span class="s2">"- "</span><span class="w"> </span>+<span class="w"> </span><span class="s2">" - "</span>.join<span class="o">(</span>items<span class="o">)</span><span class="sb">``</span><span class="o">)</span>
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
 
 Similarities:
 <span class="w">  </span>Checks<span class="w"> </span><span class="k">for</span><span class="w"> </span>similarities<span class="w"> </span>and<span class="w"> </span>duplicated<span class="w"> </span>code.
@@ -13524,38 +13477,85 @@ Similarities:
 <span class="w">                        </span>Signatures<span class="w"> </span>are<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>similarity<span class="w"> </span>computation
 <span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
 
-Format:
-<span class="w">  </span>Formatting<span class="w"> </span>checker.
+Design:
+<span class="w">  </span>Checker<span class="w"> </span>of<span class="w"> </span>potential<span class="w"> </span>misdesigns.
 
-<span class="w">  </span>--max-line-length<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>characters<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>single<span class="w"> </span>line.
-<span class="w">                        </span>Pylint<span class="s1">'s default of 100 is based on PEP 8'</span>s<span class="w"> </span>guidance
-<span class="w">                        </span>that<span class="w"> </span>teams<span class="w"> </span>may<span class="w"> </span>choose<span class="w"> </span>line<span class="w"> </span>lengths<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">99</span>
-<span class="w">                        </span>characters.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">100</span><span class="o">)</span>
-<span class="w">  </span>--ignore-long-lines<span class="w"> </span>&lt;regexp&gt;
-<span class="w">                        </span>Regexp<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>is<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>longer<span class="w"> </span>than
-<span class="w">                        </span>the<span class="w"> </span>limit.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>^<span class="se">\s</span>*<span class="o">(</span><span class="c1"># )?&lt;?https?://\S+&gt;?$)</span>
-<span class="w">  </span>--ignore-pattern-in-long-lines<span class="w"> </span>&lt;regexp&gt;
-<span class="w">                        </span>Regexp<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>counted
-<span class="w">                        </span>when<span class="w"> </span>calculating<span class="w"> </span>the<span class="w"> </span>line<span class="w"> </span>length.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>None<span class="o">)</span>
-<span class="w">  </span>--single-line-if-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>an<span class="w"> </span><span class="k">if</span><span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as<span class="w"> </span>the
-<span class="w">                        </span><span class="nb">test</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>there<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span><span class="k">else</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--single-line-class-stmt<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
-<span class="w">                        </span>Allow<span class="w"> </span>the<span class="w"> </span>body<span class="w"> </span>of<span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>line<span class="w"> </span>as
-<span class="w">                        </span>the<span class="w"> </span>declaration<span class="w"> </span><span class="k">if</span><span class="w"> </span>body<span class="w"> </span>contains<span class="w"> </span>single<span class="w"> </span>statement.
-<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
-<span class="w">  </span>--max-module-lines<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>lines<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>module.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">1000</span><span class="o">)</span>
-<span class="w">  </span>--indent-string<span class="w"> </span>&lt;string&gt;
-<span class="w">                        </span>String<span class="w"> </span>used<span class="w"> </span>as<span class="w"> </span>indentation<span class="w"> </span>unit.<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>usually<span class="w"> </span><span class="s2">" "</span>
-<span class="w">                        </span><span class="o">(</span><span class="m">4</span><span class="w"> </span>spaces<span class="o">)</span><span class="w"> </span>or<span class="w"> </span><span class="s2">"  "</span><span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>tab<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
-<span class="w">  </span>--indent-after-paren<span class="w"> </span>&lt;int&gt;
-<span class="w">                        </span>Number<span class="w"> </span>of<span class="w"> </span>spaces<span class="w"> </span>of<span class="w"> </span>indent<span class="w"> </span>required<span class="w"> </span>inside<span class="w"> </span>a<span class="w"> </span>hanging
-<span class="w">                        </span>or<span class="w"> </span>continued<span class="w"> </span>line.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">4</span><span class="o">)</span>
-<span class="w">  </span>--expected-line-ending-format<span class="w"> </span>&lt;empty<span class="w"> </span>or<span class="w"> </span>LF<span class="w"> </span>or<span class="w"> </span>CRLF&gt;
-<span class="w">                        </span>Expected<span class="w"> </span>format<span class="w"> </span>of<span class="w"> </span>line<span class="w"> </span>ending,<span class="w"> </span>e.g.<span class="w"> </span>empty<span class="w"> </span><span class="o">(</span>any<span class="w"> </span>line
-<span class="w">                        </span>ending<span class="o">)</span>,<span class="w"> </span>LF<span class="w"> </span>or<span class="w"> </span>CRLF.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">)</span>
+<span class="w">  </span>--max-args<span class="w"> </span>&lt;int&gt;<span class="w">      </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>arguments<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
+<span class="w">  </span>--max-positional-arguments<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>positional<span class="w"> </span>arguments<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/
+<span class="w">                        </span>method.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
+<span class="w">  </span>--max-locals<span class="w"> </span>&lt;int&gt;<span class="w">    </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>locals<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method<span class="w"> </span>body.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="m">15</span><span class="o">)</span>
+<span class="w">  </span>--max-returns<span class="w"> </span>&lt;int&gt;<span class="w">   </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span><span class="k">return</span><span class="w"> </span>/<span class="w"> </span>yield<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method
+<span class="w">                        </span>body.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+<span class="w">  </span>--max-branches<span class="w"> </span>&lt;int&gt;<span class="w">  </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>branch<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method<span class="w"> </span>body.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="m">12</span><span class="o">)</span>
+<span class="w">  </span>--max-statements<span class="w"> </span>&lt;int&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>statements<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">function</span><span class="w"> </span>/<span class="w"> </span>method
+<span class="w">                        </span>body.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">50</span><span class="o">)</span>
+<span class="w">  </span>--max-parents<span class="w"> </span>&lt;num&gt;<span class="w">   </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>parents<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0901<span class="o">)</span>.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="m">7</span><span class="o">)</span>
+<span class="w">  </span>--ignored-parents<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>class<span class="w"> </span>names&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>qualified<span class="w"> </span>class<span class="w"> </span>names<span class="w"> </span>to<span class="w"> </span>ignore<span class="w"> </span>when<span class="w"> </span>counting
+<span class="w">                        </span>class<span class="w"> </span>parents<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0901<span class="o">)</span><span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--max-attributes<span class="w"> </span>&lt;num&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>attributes<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0902<span class="o">)</span>.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="m">7</span><span class="o">)</span>
+<span class="w">  </span>--min-public-methods<span class="w"> </span>&lt;num&gt;
+<span class="w">                        </span>Minimum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>public<span class="w"> </span>methods<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span><span class="o">(</span>see
+<span class="w">                        </span>R0903<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">2</span><span class="o">)</span>
+<span class="w">  </span>--max-public-methods<span class="w"> </span>&lt;num&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>public<span class="w"> </span>methods<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>class<span class="w"> </span><span class="o">(</span>see
+<span class="w">                        </span>R0904<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">20</span><span class="o">)</span>
+<span class="w">  </span>--max-bool-expr<span class="w"> </span>&lt;num&gt;
+<span class="w">                        </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>boolean<span class="w"> </span>expressions<span class="w"> </span><span class="k">in</span><span class="w"> </span>an<span class="w"> </span><span class="k">if</span>
+<span class="w">                        </span>statement<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0916<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5</span><span class="o">)</span>
+<span class="w">  </span>--exclude-too-few-public-methods<span class="w"> </span>&lt;pattern&gt;<span class="o">[</span>,&lt;pattern&gt;...<span class="o">]</span>
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>regular<span class="w"> </span>expressions<span class="w"> </span>of<span class="w"> </span>class<span class="w"> </span>ancestor<span class="w"> </span>names<span class="w"> </span>to
+<span class="w">                        </span>ignore<span class="w"> </span>when<span class="w"> </span>counting<span class="w"> </span>public<span class="w"> </span>methods<span class="w"> </span><span class="o">(</span>see<span class="w"> </span>R0903<span class="o">)</span>
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">[])</span>
+
+Exceptions:
+<span class="w">  </span>Exception<span class="w"> </span>related<span class="w"> </span>checks.
+
+<span class="w">  </span>--overgeneral-exceptions<span class="w"> </span>&lt;comma-separated<span class="w"> </span>class<span class="w"> </span>names&gt;
+<span class="w">                        </span>Exceptions<span class="w"> </span>that<span class="w"> </span>will<span class="w"> </span>emit<span class="w"> </span>a<span class="w"> </span>warning<span class="w"> </span>when<span class="w"> </span>caught.
+<span class="w">                        </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'builtins.BaseException'</span>,
+<span class="w">                        </span><span class="s1">'builtins.Exception'</span><span class="o">))</span>
+
+Variables:
+<span class="w">  </span>BaseChecker<span class="w"> </span><span class="k">for</span><span class="w"> </span>variables.
+
+<span class="w">  </span>--init-import<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>we<span class="w"> </span>should<span class="w"> </span>check<span class="w"> </span><span class="k">for</span><span class="w"> </span>unused<span class="w"> </span>import<span class="w"> </span><span class="k">in</span>
+<span class="w">                        </span>__init__<span class="w"> </span>files.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>False<span class="o">)</span>
+<span class="w">  </span>--dummy-variables-rgx<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>A<span class="w"> </span>regular<span class="w"> </span>expression<span class="w"> </span>matching<span class="w"> </span>the<span class="w"> </span>name<span class="w"> </span>of<span class="w"> </span>dummy
+<span class="w">                        </span>variables<span class="w"> </span><span class="o">(</span>i.e.<span class="w"> </span>expected<span class="w"> </span>to<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>used<span class="o">)</span>.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>_+
+<span class="w">                        </span>$<span class="p">|</span><span class="o">(</span>_<span class="o">[</span>a-zA-Z0-9_<span class="o">]</span>*<span class="o">[</span>a-zA-Z0-
+<span class="w">                        </span><span class="m">9</span><span class="o">]</span>+?$<span class="o">)</span><span class="p">|</span>dummy<span class="p">|</span>^ignored_<span class="p">|</span>^unused_<span class="o">)</span>
+<span class="w">  </span>--additional-builtins<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>additional<span class="w"> </span>names<span class="w"> </span>supposed<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span>
+<span class="w">                        </span>builtins.<span class="w"> </span>Remember<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>should<span class="w"> </span>avoid<span class="w"> </span>defining<span class="w"> </span>new
+<span class="w">                        </span>builtins<span class="w"> </span>when<span class="w"> </span>possible.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
+<span class="w">  </span>--callbacks<span class="w"> </span>&lt;callbacks&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>strings<span class="w"> </span>which<span class="w"> </span>can<span class="w"> </span>identify<span class="w"> </span>a<span class="w"> </span>callback<span class="w"> </span><span class="k">function</span>
+<span class="w">                        </span>by<span class="w"> </span>name.<span class="w"> </span>A<span class="w"> </span>callback<span class="w"> </span>name<span class="w"> </span>must<span class="w"> </span>start<span class="w"> </span>or<span class="w"> </span>end<span class="w"> </span>with<span class="w"> </span>one<span class="w"> </span>of
+<span class="w">                        </span>those<span class="w"> </span>strings.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'cb_'</span>,<span class="w"> </span><span class="s1">'_cb'</span><span class="o">))</span>
+<span class="w">  </span>--redefining-builtins-modules<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>qualified<span class="w"> </span>module<span class="w"> </span>names<span class="w"> </span>which<span class="w"> </span>can<span class="w"> </span>have<span class="w"> </span>objects
+<span class="w">                        </span>that<span class="w"> </span>can<span class="w"> </span>redefine<span class="w"> </span>builtins.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">(</span><span class="s1">'six.moves'</span>,
+<span class="w">                        </span><span class="s1">'past.builtins'</span>,<span class="w"> </span><span class="s1">'future.builtins'</span>,<span class="w"> </span><span class="s1">'builtins'</span>,<span class="w"> </span><span class="s1">'io'</span><span class="o">))</span>
+<span class="w">  </span>--ignored-argument-names<span class="w"> </span>&lt;regexp&gt;
+<span class="w">                        </span>Argument<span class="w"> </span>names<span class="w"> </span>that<span class="w"> </span>match<span class="w"> </span>this<span class="w"> </span>expression<span class="w"> </span>will<span class="w"> </span>be
+<span class="w">                        </span>ignored.<span class="w"> </span><span class="o">(</span>default:
+<span class="w">                        </span>re.compile<span class="o">(</span><span class="s1">'_.*|^ignored_|^unused_'</span><span class="o">))</span>
+<span class="w">  </span>--allow-global-unused-variables<span class="w"> </span>&lt;y<span class="w"> </span>or<span class="w"> </span>n&gt;
+<span class="w">                        </span>Tells<span class="w"> </span>whether<span class="w"> </span>unused<span class="w"> </span>global<span class="w"> </span>variables<span class="w"> </span>should<span class="w"> </span>be
+<span class="w">                        </span>treated<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>violation.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>True<span class="o">)</span>
+<span class="w">  </span>--allowed-redefined-builtins<span class="w"> </span>&lt;comma<span class="w"> </span>separated<span class="w"> </span>list&gt;
+<span class="w">                        </span>List<span class="w"> </span>of<span class="w"> </span>names<span class="w"> </span>allowed<span class="w"> </span>to<span class="w"> </span>shadow<span class="w"> </span>builtins<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="o">())</span>
 </code></pre></div>
 <h3 id="installation-on-mega-linter-docker-image">Installation on mega-linter Docker image</h3>
 <ul>
