@@ -16030,6 +16030,7 @@
 <li><strong>Spaces around the elements</strong> of comma-separated variables are now ignored: <code>ENABLE_LINTERS: "BASH_SHELLCHECK, BASH_SHFMT"</code> (or a YAML folded scalar <code>&gt;-</code>) enables both linters, instead of silently skipping <code>BASH_SHFMT</code>. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9605">#9605</a></li>
 <li><strong>SSH mode</strong> (<code>MEGALINTER_SSH=true</code>) run as a non-root user no longer logs <code>Unsupported option UsePAM</code> when the SSH server starts. Fixes <a href="https://github.com/oxsecurity/megalinter/issues/9578">#9578</a></li>
 <li><strong>ENABLE_LINTERS</strong> and <strong>DISABLE_LINTERS</strong> now log a <strong>warning</strong> (and show it in the tips of the reports) for names that match no linter, such as a misspelled linter key</li>
+<li>The <strong>guidance for known linter errors</strong> (such as <code>[PYTHON_TY_ERROR_IMPORT_NOT_FOUND]</code>) is now displayed only inside the section of its linter in the console log, instead of also out of context before the first linter</li>
 </ul>
 </li>
 </ul>
@@ -16178,6 +16179,7 @@
 <li><code>native_lock.py --check</code> also checks the <strong>runtime locks</strong> (<code>native-locks/runtimes/</code>), shipped in the PyPI package too</li>
 <li><strong>Auto-Update Linters</strong> now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both (without automerge when the locks changed, so pinned hashes are reviewed). <strong>Native locks</strong> only runs on feature branches and on manual runs; both share the <code>native-lock-setup</code> composite action</li>
 <li>The Auto-Update Linters container now gets a read-only token: only the pull request job writes</li>
+<li>ty no longer reports <code>jsonschema</code> as an unresolved import in <code>megalinter/native/spec.py</code> and <code>sarif_schema.py</code>: like <code>build.py</code>, they use this build/test dependency that the MegaLinter image does not ship</li>
 </ul>
 </li>
 </ul>
