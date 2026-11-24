@@ -9,12 +9,12 @@
 # they are old enough. Renovate automerge is disabled: a maintainer merges once it is green.
 #   - pull requests: evaluates the Renovate pull request
 #   - daily: re-runs the failed checks whose cooldown is over, so they turn green
-# Only security updates are not delayed: nothing else skips the cooldown.
-# See .automation/renovate_release_cooldown.py
+# Security updates are not delayed. A maintainer can accept an update earlier with the
+# `skip-release-cooldown` label. See .automation/renovate_release_cooldown.py
 name: "Renovate release cooldown"
 on:
   pull_request:
-    types: [opened, reopened, synchronize, edited]
+    types: [opened, reopened, synchronize, edited, labeled, unlabeled]
   schedule:
     - cron: "17 5 * * *"
   workflow_dispatch:

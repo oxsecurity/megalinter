@@ -14,7 +14,7 @@
 # When several dates are found, the most recent one counts.
 #
 # Like Renovate's own `vulnerabilityAlerts`, security updates ("[SECURITY]" in the title) are
-# not delayed. Nothing else skips the cooldown.
+# not delayed. The `skip-release-cooldown` label lets a maintainer accept an update anyway.
 #
 #   check --pr <number>   evaluate one pull request, exit code 1 while it must wait
 #   recheck               re-run the failed checks of open Renovate pull requests that now pass
@@ -35,6 +35,7 @@ from typing import Any
 GITHUB_API = "https://api.github.com"
 WORKFLOW_FILE = "renovate-release-cooldown.yml"
 RENOVATE_LOGIN = "renovate[bot]"
+OVERRIDE_LABEL = "skip-release-cooldown"
 SECURITY_TITLE_MARKER = "[SECURITY]"
 USER_AGENT = "megalinter-renovate-release-cooldown"
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -450,6 +451,11 @@ def evaluate(
     cooldown: datetime.timedelta,
     now: datetime.datetime,
 ) -> Evaluation:
+    labels = [label["name"] for label in pull_request.get("labels", [])]
+    if OVERRIDE_LABEL in labels:
+        return Evaluation(
+            False, f"label `{OVERRIDE_LABEL}`: cooldown skipped by a maintainer", []
+        )
     if SECURITY_TITLE_MARKER in pull_request["title"]:
         return Evaluation(
             False,
@@ -507,7 +513,7 @@ def report(evaluation: Evaluation, cooldown: datetime.timedelta) -> None:
         elif result.released_at is None:
             logger.info(
                 f"::error title=Release cooldown::{result.update.label()}: release date not found. "
-                "The update stays blocked: teach .automation/renovate_release_cooldown.py where to find its release date"
+                f"Check it was published at least {cooldown.days} days ago, then add the `{OVERRIDE_LABEL}` label"
             )
         else:
             logger.info(

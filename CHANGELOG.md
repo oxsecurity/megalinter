@@ -243,7 +243,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Renovate release cooldown**: a check fails these Renovate pull requests until the release is as old as `minimumReleaseAge` (14 days)
     - The release date comes from the GitHub release, the pinned commit or the image creation date (the most recent one counts)
     - A daily run re-runs the failed checks whose cooldown is over, so they turn green
-    - Only security updates skip the cooldown: an update whose release date can not be found stays blocked
+    - Security updates are not delayed, and maintainers can accept an update earlier with the `skip-release-cooldown` label
   - **No more automerge** of dependency updates: Renovate and Auto-Update Linters pull requests are all merged by a maintainer
   - **Test native long command lines**: runs every native linter on Windows with a file list above the command line limit, and reports which ones receive all the files, lint a reported part of them, or are broken
   - The **Benchmark native mode** workflow has an **Agent loop** job on the 5 native platforms: it measures the commands of a coding agent that sets up native mode, lints and re-checks a fixed file, with the published beta and with this checkout, and adds the table to the summary (`benchmark_native.py agent-loop`)
