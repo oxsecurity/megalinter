@@ -934,6 +934,24 @@
             "title": "CLI help extra commands",
             "type": "array"
           },
+          "cli_lint_cache_args": {
+            "default": [],
+            "description": "Native mode only: arguments enabling the linter's own cache of results, so unchanged files are not analyzed again on the next run. {{LINTER_CACHE_DIR}} is replaced by a folder of MEGALINTER_HOME dedicated to the linter and the workspace (never inside the analyzed sources). Not sent when NATIVE_LINTER_CACHE (or <LINTER_KEY>_NATIVE_CACHE) is false, or when the user arguments already contain the first argument",
+            "examples": [
+              [
+                "--cache",
+                "--cache-location",
+                "{{LINTER_CACHE_DIR}}/cache",
+                "--cache-strategy",
+                "content"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "title": "CLI Lint cache arguments (native mode)",
+            "type": "array"
+          },
           "cli_lint_errors_count": {
             "description": "Defines how to count errors from log file. regex_number, regex_count, regex_sum, total_lines or sarif",
             "enum": [
@@ -1755,6 +1773,32 @@
           "native_install": {
             "$ref": "#/definitions/native_install"
           },
+          "native_results_cache": {
+            "additionalProperties": false,
+            "description": "Native mode only: the files the linter found without any problem are not linted again by the next runs while they, the linter, its arguments, its variables and its configuration files stay the same. Declare it only for linters whose result on a file depends only on its content and on the configuration (never on the other files of the repository). config_files lists the configuration files the linter finds by itself, in the folder of a linted file or in one of its parents. Not used in project lint mode, nor when NATIVE_RESULTS_CACHE (or <LINTER_KEY>_NATIVE_RESULTS_CACHE) is false",
+            "examples": [
+              {
+                "config_files": [
+                  "pyproject.toml"
+                ]
+              }
+            ],
+            "properties": {
+              "config_files": {
+                "description": "Configuration files the linter finds by itself, in the folder of a linted file or in one of its parents up to the workspace root",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "failed_files_in_output": {
+                "description": "true when the linter checks every file even after a problem, and names each file with a problem in its output (by its path): after a run with problems, the files it does not name are recorded as linted without any problem",
+                "type": "boolean"
+              }
+            },
+            "title": "Native results cache",
+            "type": "object"
+          },
           "post_commands": {
             "default": [],
             "description": "Custom bash commands to run after linter",
@@ -1808,6 +1852,69 @@
             ],
             "title": "SARIF default output file",
             "type": "string"
+          },
+          "sarif_text_default_level": {
+            "default": "error",
+            "description": "SARIF level of the findings found by sarif_text_regex when it has no severity group, or when the severity is not listed in sarif_text_levels",
+            "enum": [
+              "error",
+              "warning",
+              "note"
+            ],
+            "title": "SARIF level of the findings parsed from text",
+            "type": "string"
+          },
+          "sarif_text_default_message": {
+            "description": "Message of the findings found by sarif_text_regex when it has no message group, and of the files found by sarif_unified_diff",
+            "examples": [
+              "The file is not formatted as black expects"
+            ],
+            "title": "SARIF text default message",
+            "type": "string"
+          },
+          "sarif_text_levels": {
+            "additionalProperties": {
+              "enum": [
+                "error",
+                "warning",
+                "note"
+              ],
+              "type": "string"
+            },
+            "description": "SARIF level of each value captured by the severity group of sarif_text_regex",
+            "examples": [
+              {
+                "ERROR": "error",
+                "WARNING": "warning"
+              }
+            ],
+            "title": "SARIF levels by severity",
+            "type": "object"
+          },
+          "sarif_text_regex": {
+            "description": "Regular expression applied (multiline) to the linter output to build the SARIF results when the linter can not output SARIF. Named groups: path (required), line, column, end_column, rule, severity, message, cell",
+            "examples": [
+              "^(?P<path>.+?):(?P<line>\\d+):(?P<column>\\d+): (?P<rule>[A-Z]+\\d+) (?P<message>.*)$"
+            ],
+            "title": "SARIF text regex",
+            "type": "string"
+          },
+          "sarif_text_rule_id": {
+            "description": "Rule id of the findings found by sarif_text_regex when it has no rule group (default: the linter name)",
+            "title": "SARIF text rule id",
+            "type": "string"
+          },
+          "sarif_unified_diff": {
+            "default": false,
+            "description": "For a linter that checks formatting by printing a unified diff: add one result per file of the diff, located at its first modified hunk",
+            "title": "SARIF from unified diff",
+            "type": "boolean"
+          },
+          "sarif_whole_output": {
+            "default": false,
+            "description": "When the linter fails and no finding could be converted to SARIF, add a result without location holding the output of the linter",
+            "title": "SARIF whole output fallback",
+            "type": "boolean"
           },
           "supported_cli_lint_modes": {
             "default": [

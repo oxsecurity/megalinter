@@ -205,6 +205,76 @@ class mega_linter_1_test(unittest.TestCase):
         self.assertIn("Using [eslint", output)
         self.assertIn(".eslintrc-custom.yml", output)
 
+    def test_absolute_linter_rules_path_not_resolved_in_workspace(self):
+        # Regression test for issue #9606
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            workspace = os.path.join(tmp_dir, "workspace")
+            rules_dir = os.path.join(tmp_dir, "rules")
+            os.makedirs(rules_dir)
+            # Same path inside the workspace: <workspace>/<rules_dir>
+            os.makedirs(
+                workspace
+                + os.path.sep
+                + os.path.splitdrive(rules_dir)[1].lstrip(os.path.sep)
+            )
+            self.assertEqual(
+                megalinter.Megalinter.resolve_linter_rules_path(workspace, rules_dir),
+                rules_dir,
+            )
+
+    def test_relative_linter_rules_path_resolved_in_workspace(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            os.makedirs(os.path.join(workspace, "rules"))
+            self.assertEqual(
+                megalinter.Megalinter.resolve_linter_rules_path(workspace, "rules"),
+                workspace + os.path.sep + "rules",
+            )
+
+    def test_relative_linter_rules_path_falls_back_to_current_directory(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            workspace = os.path.join(tmp_dir, "workspace")
+            os.makedirs(workspace)
+            os.makedirs(os.path.join(tmp_dir, "other"))
+            previous_cwd = os.getcwd()
+            os.chdir(tmp_dir)
+            try:
+                self.assertEqual(
+                    megalinter.Megalinter.resolve_linter_rules_path(workspace, "other"),
+                    "other",
+                )
+            finally:
+                os.chdir(previous_cwd)
+
+    def test_leading_slash_linter_rules_path_is_absolute(self):
+        # "/<folder>" means the filesystem root, even if <workspace>/<folder> exists (#9606)
+        folder = "megalinter_rules_" + uuid.uuid4().hex
+        with tempfile.TemporaryDirectory() as workspace:
+            os.makedirs(os.path.join(workspace, folder))
+            with self.assertRaises(ValueError):
+                megalinter.Megalinter.resolve_linter_rules_path(workspace, "/" + folder)
+
+    def test_missing_linter_rules_path_raises(self):
+        with tempfile.TemporaryDirectory() as workspace:
+            for value in ["missing_rules", os.path.join(workspace, "missing_rules")]:
+                with self.assertRaises(ValueError):
+                    megalinter.Megalinter.resolve_linter_rules_path(workspace, value)
+
+    def test_url_linter_rules_path_is_kept(self):
+        url = "https://raw.githubusercontent.com/org/repo/main/rules"
+        self.assertEqual(
+            megalinter.Megalinter.resolve_linter_rules_path("/nowhere", url), url
+        )
+
+    def test_linter_rules_path_config_is_loaded(self):
+        self.before_start()
+        with tempfile.TemporaryDirectory() as workspace:
+            config.set_value(self.request_id, "LINTER_RULES_PATH", workspace)
+            mega_linter = megalinter.Megalinter.__new__(megalinter.Megalinter)
+            mega_linter.request_id = self.request_id
+            mega_linter.github_workspace = os.getcwd()
+            mega_linter.load_config_vars()
+            self.assertEqual(mega_linter.linter_rules_path, workspace)
+
     def test_linter_rules_path_resolves_active_only_if_file_found(self):
         self.before_start()
         with tempfile.TemporaryDirectory() as tmp_workspace:

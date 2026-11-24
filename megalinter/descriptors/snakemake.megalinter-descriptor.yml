@@ -10,7 +10,10 @@ file_names_regex:
   - "Snakefile"
 linters:
   # Internal snakemake linter
-  - linter_name: snakemake
+  - class: SnakemakeLinter
+    linter_name: snakemake
+    can_output_sarif: true
+    sarif_whole_output: true
     linter_text: |
       **Snakemake** is a comprehensive workflow management system with powerful built-in linting capabilities for validating computational workflow definitions. It ensures Snakefiles are properly structured and follow best practices for reproducible research.
 
@@ -117,6 +120,11 @@ linters:
     cli_lint_fix_remove_args:
       - "--check"
       - "--compact-diff"
+    can_output_sarif: true
+    sarif_text_regex: '^=====> Diff for (?P<path>.+?) <=====\s+--- original\s+\+\+\+ new\s+@@ -(?P<line>\d+)'
+    sarif_text_default_level: note
+    sarif_text_default_message: The file is not formatted as snakefmt expects
+    sarif_whole_output: true
     examples:
       - "snakefmt --check --compact-diff Snakefile"
       - "snakefmt --check --compact-diff --config .snakefmt.toml Snakefile"

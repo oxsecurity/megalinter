@@ -45,13 +45,16 @@ linters:
       - .
     cli_lint_errors_count: regex_count
     cli_lint_errors_regex: "[A-Z][0-9]{3} "
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--sarif"
     examples:
       - "djlint myfile1.html myfile2.html"
     install:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=djlint
-          ARG PIP_DJLINT_VERSION=1.49.2
+          ARG PIP_DJLINT_VERSION=1.49.10
       pip:
         - djlint==${PIP_DJLINT_VERSION}
     supported_platforms:

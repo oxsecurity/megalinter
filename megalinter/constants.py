@@ -39,7 +39,7 @@ DEFAULT_RELEASE = "v10"
 BETTERLEAKS_RULESET_FILE_NAME = "betterleaks-default.toml"
 BETTERLEAKS_RULESET_REPO = "betterleaks/betterleaks"
 # renovate: datasource=github-tags depName=betterleaks/betterleaks
-BETTERLEAKS_RULESET_VERSION = "v1.9.0"
+BETTERLEAKS_RULESET_VERSION = "v1.10.0"
 
 DEFAULT_DOCKERFILE_ARGS: list[str] = [
     "ARG TARGETPLATFORM",
@@ -99,11 +99,11 @@ DEFAULT_DOCKERFILE_GEM_APK_PACKAGES = [
 ]
 
 DEFAULT_DOCKERFILE_PIP_ARGS = [
-    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.2.2",
+    "# renovate: datasource=pypi depName=pip\nARG PIP_PIP_VERSION=26.3",
 ]
 
 DEFAULT_DOCKERFILE_PIPENV_ARGS = [
-    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.15.2",
+    "# renovate: datasource=pypi depName=virtualenv\nARG PIP_VIRTUALENV_VERSION=21.15.6",
 ]
 
 DEFAULT_DOCKERFILE_RUST_ARGS = [

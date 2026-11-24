@@ -38,7 +38,7 @@ if [ "${UPGRADE_LINTERS_VERSION}" == "true" ]; then
   # This job refreshes linter-versions.json: versions must come from the real
   # linter executables, not from the manifest baked at image build time
   export VERSION_GET_AT_RUNTIME=true
-  pip install pytest-cov pytest-timeout pytest-rerunfailures
+  pip install pytest-cov pytest-timeout pytest-rerunfailures jsonschema
   # Run only get_linter_version test methods
   pytest --reruns 3 --reruns-delay 1 -v --durations=0 -k _get_linter_version megalinter/
   # Run only get_linter_help test methods
@@ -71,7 +71,7 @@ if [ "${TEST_CASE_RUN}" == "true" ]; then
   # manifest baked at image build time
   export VERSION_GET_AT_RUNTIME=true
   # pip install pytest-cov codecov-cli pytest-timeout pytest-xdist pytest-rerunfailures # temp remove codecov-cli to avoid issues with codecov upload
-  pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures
+  pip install pytest-cov pytest-timeout pytest-xdist pytest-rerunfailures jsonschema
   if [ -z "${TEST_KEYWORDS}" ]; then
     pytest --reruns 3 --reruns-delay 10 -v --timeout=300 --durations=0 --cov=megalinter --cov-report=xml --numprocesses auto --dist loadscope megalinter/
   else
@@ -157,7 +157,6 @@ else
         -o "PasswordAuthentication no" \
         -o "PermitRootLogin no" \
         -o "PermitUserEnvironment yes" \
-        -o "UsePAM no" \
         -o "PidFile ${SSH_RUNTIME_DIR}/sshd.pid" \
         -o "Subsystem sftp internal-sftp"
     fi

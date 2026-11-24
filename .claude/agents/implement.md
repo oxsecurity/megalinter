@@ -49,6 +49,8 @@ Read `.claude/rules/` for the conventions of the area you're touching:
    - Use `megalinter.config.get(request_id, "VAR", default)` — never `os.environ` directly.
    - Use the `logging` module — never `print()`.
    - Custom linter classes in `megalinter/linters/` extend `megalinter.Linter` and stay minimal. Override only what YAML can't express (`build_lint_command`, `before_lint_files`, `complete_command_line`, `build_version_command`).
+   - In a linter module, declare module-level helper `def` functions **after** the class, never before it (constants and imports stay at the top).
+   - SARIF must work in native mode as well as in Docker: for a linter without SARIF output, build it locally in Python (`convert_output_to_sarif()` + `megalinter/sarif_builder.py`), not with a binary that exists only in the Docker image.
    - Reporters extend `megalinter.reporters.Reporter` with `manage_activation()` and `produce_report()`.
    - Don't add defensive error handling for internal code paths; validate only at boundaries (user input, external APIs).
 5. **Test fixtures**: for any descriptor change that affects detection or error parsing, add/update files in `.automation/test/<test_folder>/`. Good file must lint clean; bad file must trigger an error matching `cli_lint_errors_regex`.

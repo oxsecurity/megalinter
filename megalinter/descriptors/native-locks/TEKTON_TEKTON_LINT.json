@@ -3,7 +3,7 @@
   "common": {
     "package_json": {
       "dependencies": {
-        "@ibm/tekton-lint": "1.2.4"
+        "@ibm/tekton-lint": "1.3.0"
       },
       "name": "megalinter-native-tekton_tekton_lint",
       "private": true,
@@ -15,7 +15,7 @@
       "packages": {
         "": {
           "dependencies": {
-            "@ibm/tekton-lint": "1.2.4"
+            "@ibm/tekton-lint": "1.3.0"
           },
           "name": "megalinter-native-tekton_tekton_lint",
           "version": "0.0.0"
@@ -42,10 +42,10 @@
           "engines": {
             "node": ">= 22.0.0"
           },
-          "integrity": "sha512-7539FVmzcpqdA3ryjYJ0GzyykZXlXZDcu0btSubbkn7FRLKWNzKfMEXiILFuoy0X2JGZIbAIc8yPSdZfHOpntg==",
+          "integrity": "sha512-2AO1ef7WBCdo+1LnR8vWuF2w2gkJE8DaMmCbcvPz5sxLhn2rs1FT9jxr5kJa5oj+vONODX+OfRtDOlVr3UOrhQ==",
           "license": "Apache-2.0",
-          "resolved": "https://registry.npmjs.org/@ibm/tekton-lint/-/tekton-lint-1.2.4.tgz",
-          "version": "1.2.4"
+          "resolved": "https://registry.npmjs.org/@ibm/tekton-lint/-/tekton-lint-1.3.0.tgz",
+          "version": "1.3.0"
         },
         "node_modules/@nodelib/fs.scandir": {
           "dependencies": {
@@ -1059,5 +1059,5 @@
   "generator": 2,
   "linter": "TEKTON_TEKTON_LINT",
   "method": "npm",
-  "spec_hash": "5f9239c0a00d1130138dcb3cc5bb60cbc3f3ba1d6496d52a292082c057227955"
+  "spec_hash": "daec094736506e4db7127a2f7f0a1dd504899c755a13ba86abe3619c02f3946b"
 }

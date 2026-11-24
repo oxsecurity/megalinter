@@ -122,7 +122,7 @@ def build_provisioning_matrix(platforms):
     return {"include": include}
 
 
-def build_matrix(shard_size, platforms="all"):
+def build_matrix(shard_size, platforms="all", only_keys=None):
     catalog = load_runtime_catalog()
     modules = test_modules()
     specs = load_native_specs()
@@ -131,6 +131,8 @@ def build_matrix(shard_size, platforms="all"):
         entries = []
         for spec in specs:
             if spec.linter.get("disabled") is True:
+                continue
+            if only_keys is not None and spec.key not in only_keys:
                 continue
             supported, resolved = supported_on(spec, runner["platform"])
             if not supported:

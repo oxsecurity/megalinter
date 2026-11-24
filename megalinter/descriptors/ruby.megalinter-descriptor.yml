@@ -37,6 +37,12 @@ linters:
       - list_of_files
       - project
     cli_lint_fix_arg_name: "--safe-auto-correct"
+    can_output_sarif: true
+    cli_sarif_args:
+      - "--format"
+      - "sarif"
+      - "--out"
+      - "{{SARIF_OUTPUT_FILE}}"
     common_linter_errors:
       - identifier: RUBY_RUBOCOP_ERROR_UNABLE_TO_LOAD_PLUGIN
         regex: "unable to load plugin|cannot load such file -- rubocop-[a-z]+"

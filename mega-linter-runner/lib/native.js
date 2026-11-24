@@ -3,7 +3,7 @@
 //
 // The runner does not lint anything itself: it installs the `megalinter` Python package of the
 // requested channel from PyPI in ~/.megalinter/core/<version>, then hands over to its `megalinter`
-// command (`megalinter run`, `megalinter install-linters`).
+// command (`megalinter run`, `megalinter install-linters`, `megalinter doctor`...).
 //
 // The package is verified before it is installed:
 //   1. its sha256 must match the PyPI metadata
@@ -29,6 +29,10 @@ const VERIFIER_LOCK = path.join(
   "native-verifier.requirements.lock",
 );
 const NATIVE_DEFAULT_RELEASE = "beta";
+// The latest beta found on PyPI is remembered for an hour: frequent runs (pre-commit hooks)
+// do not download the list of all the releases of the project from PyPI each time
+const LATEST_BETA_CHECK_FILE = ".latest-beta.json";
+const LATEST_BETA_CHECK_INTERVAL_MS = 60 * 60 * 1000;
 const RUNTIME_POLICIES = ["ask", "auto", "never"];
 // Options that only make sense with a container
 const DOCKER_ONLY_OPTIONS = [
@@ -40,6 +44,16 @@ const DOCKER_ONLY_OPTIONS = [
   ["userMap", "--user-map"],
   ["noUserMap", "--no-user-map"],
   ["flavor", "--flavor"],
+];
+// Options that each select one command of the `megalinter` Python CLI (`--native` is `run`)
+const LEGACY_COMMAND_KEYS = ["nativeSetup", "installLinters"];
+const NATIVE_COMMAND_OPTIONS = [
+  ["nativeSetup", "--native-setup"],
+  ["installLinters", "--install-linters"],
+  ["uninstallLinters", "--uninstall-linters"],
+  ["listLinters", "--list-linters"],
+  ["doctor", "--doctor"],
+  ["pruneCache", "--prune-cache"],
 ];
 const UV_INSTALL_HELP = {
   win32: "winget install --id astral-sh.uv -e",
@@ -54,8 +68,17 @@ function devTimestamp(version) {
 }
 
 export class NativeRunner {
-  constructor({ spawnSyncFn, fetchFn, whichFn, home, platform, arch } = {}) {
+  constructor({
+    spawnSyncFn,
+    fetchFn,
+    whichFn,
+    home,
+    platform,
+    arch,
+    nowFn,
+  } = {}) {
     this.spawnSyncFn = spawnSyncFn || spawnSync;
+    this.nowFn = nowFn || Date.now;
     this.fetchFn = fetchFn || globalThis.fetch;
     this.whichFn = whichFn || which;
     this.platform = platform || process.platform;
@@ -102,11 +125,43 @@ export class NativeRunner {
         "--container-engine is only available with Docker: it can not be used with --native or --install-linters",
       );
     }
+    // --native-setup and --install-linters keep their precedence when combined with each other
+    // or with --native: only the newer commands are strict
+    const commands = NATIVE_COMMAND_OPTIONS.filter(
+      ([key]) => options[key] === true,
+    );
+    if (
+      commands.length > 1 &&
+      commands.some(([key]) => !LEGACY_COMMAND_KEYS.includes(key))
+    ) {
+      throw new Error(
+        `${commands.map(([, flag]) => flag).join(" and ")} can not be combined: run them one after the other`,
+      );
+    }
+    if (options.uninstallLinters === true && (options._ || []).length === 0) {
+      throw new Error(
+        "--uninstall-linters needs the keys of the linters to remove (example: --uninstall-linters PYTHON_BLACK)",
+      );
+    }
+    if (options.nativeSetup === true && options.trustRepoCommands === true) {
+      throw new Error(
+        "--trust-repo-commands is not available with --native-setup: set up native mode, then run `--native --trust-repo-commands`",
+      );
+    }
     if (options.runtimes && !RUNTIME_POLICIES.includes(options.runtimes)) {
       throw new Error(
         `Invalid --runtimes value: ${options.runtimes}. Allowed values: ${RUNTIME_POLICIES.join(", ")}`,
       );
     }
+  }
+
+  // The positional arguments of these commands are linter keys, not files to lint
+  isLinterManagement(options) {
+    return (
+      options.installLinters === true ||
+      options.nativeSetup === true ||
+      options.uninstallLinters === true
+    );
   }
 
   buildEnvironment(options) {
@@ -120,6 +175,12 @@ export class NativeRunner {
     if (options.debug === true) {
       env.LOG_LEVEL = "DEBUG";
     }
+    if (options.json === true) {
+      env.JSON_REPORTER = "true";
+    }
+    if (options.sarif === true) {
+      env.SARIF_REPORTER = "true";
+    }
     if (options.linter) {
       env.NATIVE_LINTERS = options.linter.toUpperCase();
     }
@@ -127,7 +188,11 @@ export class NativeRunner {
       env.NATIVE_TRUST_REPO_COMMANDS = "true";
     }
     // Files given as arguments (pre-commit hooks), relative to the workspace
-    if (options.installLinters !== true && (options._ || []).length > 0) {
+    if (
+      !this.isLinterManagement(options) &&
+      options.prerun !== true &&
+      (options._ || []).length > 0
+    ) {
       env.MEGALINTER_FILES_TO_LINT = options._.map(String).join(",");
     }
     for (const rawEntry of expandEnvEntries(options.env || [])) {
@@ -148,14 +213,37 @@ export class NativeRunner {
     if (options.runtimes) {
       common.push("--runtimes", options.runtimes);
     }
+    const keys = (options._ || []).map(String);
+    // These commands work on the native install folder, not on a workspace
+    if (options.uninstallLinters === true) {
+      return ["uninstall-linters", ...keys];
+    }
+    if (options.listLinters === true) {
+      return ["list-linters", ...(options.json === true ? ["--json"] : [])];
+    }
+    if (options.doctor === true) {
+      return ["doctor"];
+    }
+    if (options.pruneCache === true) {
+      return ["cache", "prune"];
+    }
     if (options.installLinters === true) {
-      const keys = (options._ || []).map(String);
       return [
         "install-linters",
         ...keys,
         ...(options.all === true ? ["--all"] : []),
         ...common,
       ];
+    }
+    if (options.nativeSetup === true) {
+      return [
+        "setup",
+        ...(keys.length > 0 ? ["--linters", keys.join(",")] : []),
+        ...common,
+      ];
+    }
+    if (options.prerun === true) {
+      return ["prerun", ...common];
     }
     return [
       "run",
@@ -325,17 +413,68 @@ export class NativeRunner {
       .filter((version) => fs.existsSync(path.join(coreRoot, version, ".ok")));
   }
 
+  latestBetaCheckPath() {
+    return path.join(this.home, "core", LATEST_BETA_CHECK_FILE);
+  }
+
+  // The latest beta found less than an hour ago, if it is installed
+  rememberedLatestBeta(installed) {
+    let check;
+    try {
+      check = JSON.parse(fs.readFileSync(this.latestBetaCheckPath(), "utf8"));
+    } catch {
+      return null;
+    }
+    const age = this.nowFn() - check.checkedAt;
+    if (
+      typeof check.version === "string" &&
+      typeof check.checkedAt === "number" &&
+      age >= 0 &&
+      age < LATEST_BETA_CHECK_INTERVAL_MS &&
+      installed.includes(check.version)
+    ) {
+      return check.version;
+    }
+    return null;
+  }
+
+  rememberLatestBeta(version) {
+    try {
+      fs.mkdirSync(path.join(this.home, "core"), {
+        recursive: true,
+        mode: 0o700,
+      });
+      fs.writeFileSync(
+        this.latestBetaCheckPath(),
+        JSON.stringify({ version, checkedAt: this.nowFn() }),
+      );
+    } catch {
+      // Not remembered: PyPI is asked again on the next run
+    }
+  }
+
   // An exact version already installed needs no network access (pre-commit hooks pinned to
-  // a release). For beta, PyPI is asked for the latest one, and when it can not be reached
-  // the most recent installed beta keeps working offline
+  // a release). For beta, PyPI is asked for the latest one (at most once an hour when it is
+  // installed), and when it can not be reached the most recent installed beta keeps working
+  // offline
   async resolveCoreVersion(release) {
     const wanted = release || NATIVE_DEFAULT_RELEASE;
     const installed = this.installedCoreVersions();
     if (wanted !== "beta" && installed.includes(wanted)) {
       return wanted;
     }
+    if (wanted === "beta") {
+      const remembered = this.rememberedLatestBeta(installed);
+      if (remembered !== null) {
+        return remembered;
+      }
+    }
     try {
-      return await this.resolveVersion(release);
+      const version = await this.resolveVersion(release);
+      if (wanted === "beta") {
+        this.rememberLatestBeta(version);
+      }
+      return version;
     } catch (error) {
       const betas = installed
         .filter((version) => version.includes(".dev"))

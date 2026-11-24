@@ -1,7 +1,7 @@
 ---
 name: megalinter-setup
-description: Install or upgrade MegaLinter on a repository. Use when the user wants to add MegaLinter to a project, set up linting CI, update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks", "update megalinter skills". Always goes through npx mega-linter-runner (--install or --upgrade), then refines .mega-linter.yml. In upgrade mode it also refreshes the installed MegaLinter skills and sub-agents. Also sets up a MegaLinter custom flavor repository when the user explicitly asks for one.
-argument-hint: "[install|upgrade|custom-flavor] [flavor, e.g. python|javascript|all]"
+description: Install or upgrade MegaLinter on a repository, in CI, natively on the machine, or both. Use when the user wants to add MegaLinter to a project, set up linting CI, set up fast local checks or pre-commit hooks without Docker (native mode, beta), update MegaLinter configuration or version, or says "install megalinter", "setup linting", "add code quality checks", "update megalinter skills". Always goes through mega-linter-runner (--install, --upgrade, --native-setup), then refines .mega-linter.yml. In upgrade mode it also refreshes the installed MegaLinter skills and sub-agents. Also sets up a MegaLinter custom flavor repository when the user explicitly asks for one.
+argument-hint: "[install|upgrade|native|custom-flavor] [flavor, e.g. python|javascript|all]"
 allowed-tools: Bash, Read, Grep, Glob, Edit, Write, WebFetch, Skill, AskUserQuestion
 user-invocable: true
 license: MegaLinter by OX Security, Copyright 2026 - https://megalinter.io/
@@ -21,7 +21,25 @@ Gather what you need to answer the installer's options:
 - **CI system**: from existing config (`.github/` → `gitHubActions`, `.gitlab-ci.yml` → `gitLabCI`, `azure-pipelines.yml` → `azure`, `bitbucket-pipelines.yml` → `bitbucket`, `Jenkinsfile` → `jenkins`, `.drone.yml` → `droneCI`) or the git remote host. None → `other`.
 - **Default branch**: `git remote show origin` or the current repository default.
 
+## 1b. Choose where MegaLinter runs
+
+MegaLinter can run in CI (Docker, every active linter), natively on the user's machine (a fast subset of the linters, no Docker, beta), or both. Ask the user (a structured question when your platform has one), unless the request already says it:
+
+| Choice                               | Commands                                 | What runs where                                                                                                    |
+|:-------------------------------------|:-----------------------------------------|:-------------------------------------------------------------------------------------------------------------------|
+| **CI and native (recommended)**      | step 2 (`--install`), then "Native mode" | CI checks every active linter in Docker. The user's machine runs the `NATIVE_LINTERS` subset in seconds            |
+| **CI only**                          | step 2 (`--install`)                     | CI checks every active linter. Local runs use Docker                                                               |
+| **Native only** (no CI, or CI later) | "Native mode" alone, skip `--install`    | The user's machine runs the `NATIVE_LINTERS` subset. `--native-setup` creates `.mega-linter.yml` when it is absent |
+
+- Without an answer (non-interactive run, or a request that only says "install MegaLinter"), do **CI only**.
+- Always run `--install` **before** `--native-setup`: the installer backs up and overwrites `.mega-linter.yml`. When adding CI to a native-only repository, re-apply `NATIVE_LINTERS` from the `.megalinter-setup.bak` file.
+- `NATIVE_LINTERS` is a subset of what CI runs: never copy the CI list into it.
+- Native mode is the fast local path, not a replacement for Docker: it works next to CI and Docker, so do not offer it only to users without a container engine.
+- Docker commands follow `MEGALINTER_VERSION`. Native commands follow the "Runner command" rule of the Native mode section, whatever `MEGALINTER_VERSION` says.
+
 ## 2. Install or upgrade
+
+Skip this step for a **native-only** setup (go to the Native mode section), and for the other choices run it first.
 
 **No MegaLinter configuration yet** — run the installer non-interactively:
 
@@ -131,10 +149,105 @@ Once the runner has generated/upgraded the files, you may adjust `.mega-linter.y
 
 - Ensure `MEGALINTER_FLAVOR` and `MEGALINTER_VERSION` are set (the installer writes them; add them if upgrading an older config) — they drive which Docker image `mega-linter-runner` and these skills use.
 - Add `DISABLE` / `DISABLE_LINTERS` entries the user asks for.
-- When the user wants to lint locally without Docker (native mode, beta), add `NATIVE_LINTERS` with the linter keys they choose (only those run natively; never `all` without their informed consent). Native pre-commit hooks exist (`megalinter-native-incremental`, `megalinter-native-full`): see <https://megalinter.io/latest/install-native/>. Docker runs of a repository without `NATIVE_LINTERS` print a suggestion to try native mode, which points users to this skill; `NATIVE_SUGGESTIONS: false` hides it if they do not want native mode.
+- When the user chose native mode in step 1b (alone or with CI), follow "Native mode" below. Docker runs of a repository without `NATIVE_LINTERS` print a suggestion to try native mode, which points users to this skill; `NATIVE_SUGGESTIONS: false` hides it if they do not want native mode.
 - Add `FILTER_REGEX_EXCLUDE` for generated or vendored folders (e.g. `(dist/|build/|vendor/|node_modules/)`). Excluded directories (and folders identified from these regexes) are also automatically forwarded to project-mode linters through their native exclusion arguments or generated ignore/config files; if the repository already maintains its own up-to-date ignore/config files for a linter, that forwarding can be turned off with `FORWARD_EXCLUDED_DIRECTORIES: false` (global) or `<LINTER_KEY>_FORWARD_EXCLUDED_DIRECTORIES: false` (per linter).
 
 Validate the file against its JSON schema: <https://raw.githubusercontent.com/oxsecurity/megalinter/main/megalinter/descriptors/schemas/megalinter-configuration.jsonschema.json>
+
+### Native mode (beta)
+
+Native mode lints on the user's machine without Docker, and a run takes seconds. Recommend it next to CI (step 1b), and propose it when the user wants fast local checks, has no container engine, or asks for pre-commit hooks. For a **native-only** setup, run this section without `--install`.
+
+**`NATIVE_LINTERS` is a subset of what CI runs.** CI keeps running every active linter: the variable only scopes local runs. Slow linters (spell checkers, type checkers, link checkers) and the ones scanning the whole repository (`REPOSITORY_*`, copy-paste detection) are better left to CI, so never copy the CI list into it, and say so to the user.
+
+**Runner command**: use `mega-linter-runner` from `PATH` when its `--help` lists `--native-setup`, otherwise `npx mega-linter-runner@beta`. While native mode is in beta (until MegaLinter v11), a global runner installed before native mode lacks these options, so check `--help` instead of assuming. Never pass `--release` for native commands: `beta` is the default.
+
+1. **Analyze** (no linter is run, nothing is installed):
+
+   ```bash
+   <runner> --native --prerun
+   ```
+
+   Read `megalinter-reports/prerun-report.json`. The suggestion whose `variable` is `NATIVE_LINTERS` has the recommended keys in `values` and one row per active linter in `details`: `recommended`, `reason`, `cli_lint_mode`, `linter_speed`, `measured_seconds` (from the previous run), `native_status`.
+
+2. **Confirm with the user.** Show two lists, each linter with its `reason`: the ones proposed for native runs, and the ones left to CI. Let the user move linters between them. Never use `all` without their explicit, informed consent: it installs and trusts every matching linter.
+3. **Apply** with the confirmed keys. This writes `NATIVE_LINTERS` in `.mega-linter.yml`, installs the linters and runs a first lint:
+
+   ```bash
+   <runner> --native-setup PYTHON_BLACK MARKDOWN_MARKDOWNLINT --json
+   ```
+
+   Without the runner option (`--help` does not list it) or when the prerun fails because the installed core does not know it, add `NATIVE_LINTERS` to `.mega-linter.yml` yourself, choosing the linters from the technologies of the repository, then run `<runner> --install-linters`.
+
+   When the setup fails on a prerequisite (`uv`, Git Bash, a language runtime) and `--help` lists `--doctor`, run `<runner> --doctor` and relay its findings. Use `<runner>` for every native command: never call the `megalinter` engine or install it yourself, the runner is the only entry that verifies it.
+
+4. **Offer pre-commit hooks.** Native mode does not run on commits by itself. Unless the user already answered, ask (a structured question when your platform has one):
+
+   - **On commit only (recommended)**: `megalinter-native-incremental` lints the files of each commit
+   - **On commit and push**: `megalinter-native-incremental`, plus `megalinter-native-full` on push
+   - **No hooks**: skip the rest of this step
+
+   Say before they answer that the hooks run `NATIVE_LINTERS`, **apply fixes** to the committed files, block the commit or push on an error, and that each teammate has to run `pre-commit install` once.
+
+   If they accept:
+
+   1. Take the newest `vX.Y.Z` tag, and check that it ships the native hooks:
+
+      ```bash
+      git ls-remote --tags --refs --sort=-v:refname https://github.com/oxsecurity/megalinter 'v*'
+      curl -fsSL https://raw.githubusercontent.com/oxsecurity/megalinter/<tag>/.pre-commit-hooks.yaml | grep megalinter-native-incremental
+      ```
+
+   2. Add the hooks to `.pre-commit-config.yaml`. **Merge them into an existing file**, never replace it, and keep `megalinter-native-full` only for the commit and push choice. When the tag ships the hooks:
+
+      ```yaml
+      repos:
+        - repo: https://github.com/oxsecurity/megalinter
+          rev: vX.Y.Z
+          hooks:
+            - id: megalinter-native-incremental
+              stages:
+                - pre-commit
+            - id: megalinter-native-full
+              stages:
+                - pre-push
+      ```
+
+      Then install the linters with the same version, as a hook can not ask questions: `npx mega-linter-runner@X.Y.Z --install-linters --release X.Y.Z`.
+
+      When no release ships them yet, use local hooks on the beta runner instead (never `rev: main`, a moving reference):
+
+      ```yaml
+      repos:
+        - repo: local
+          hooks:
+            - id: megalinter-native-incremental
+              name: MegaLinter native (files of the commit)
+              entry: npx --yes mega-linter-runner@beta --native --fix --env CLEAR_REPORT_FOLDER=true --env LOG_LEVEL=warning --filesonly
+              language: system
+              require_serial: true
+              stages:
+                - pre-commit
+            - id: megalinter-native-full
+              name: MegaLinter native
+              entry: npx --yes mega-linter-runner@beta --native --fix --env CLEAR_REPORT_FOLDER=true --env LOG_LEVEL=warning
+              language: system
+              require_serial: true
+              stages:
+                - pre-push
+      ```
+
+   3. Make sure `megalinter-reports/` is in `.gitignore`.
+   4. Activate the hooks, adding `--hook-type pre-push` for the commit and push choice. When `pre-commit` is missing, install it first with `uv tool install pre-commit`:
+
+      ```bash
+      pre-commit validate-config
+      pre-commit install --hook-type pre-commit
+      ```
+
+   See <https://megalinter.io/latest/install-native/#pre-commit-hook>.
+
+Requirements: `uv` and Node.js, plus Git Bash on Windows. Linters run with the user's privileges: native mode is for repositories the user trusts, and `--trust-repo-commands` is never passed on your own initiative.
 
 ## 4. Install or refresh the MegaLinter sub-agents (if your platform supports them)
 

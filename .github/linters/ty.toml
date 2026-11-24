@@ -6,6 +6,8 @@ include = [
     ".automation/build.py",
     ".automation/validate_agent_plugins.py",
     "megalinter/llm_provider/**",
+    "megalinter/native/spec.py",
+    "megalinter/tests/test_megalinter/sarif_schema.py",
     "server/**",
 ]
 

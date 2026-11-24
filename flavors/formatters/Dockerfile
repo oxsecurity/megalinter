@@ -17,7 +17,7 @@ ARG CARGO_SARIF_FMT_VERSION=0.8.0
 # renovate: datasource=docker depName=mvdan/shfmt
 ARG BASH_SHFMT_VERSION=v3.14.1-alpine
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.1
 # renovate: datasource=docker depName=ghcr.io/opentofu/opentofu
 ARG TERRAFORM_TOFU_FMT_VERSION=1.13.2-minimal
 #ARGTOP__END
@@ -90,7 +90,7 @@ ARG NPM_TYPESCRIPT_VERSION=6.0.3
 # renovate: datasource=nuget depName=csharpier
 ARG CSHARP_CSHARPIER_VERSION=1.2.6
 # renovate: datasource=nuget depName=roslynator.dotnet.cli
-ARG CSHARP_ROSLYNATOR_VERSION=0.13.0
+ARG CSHARP_ROSLYNATOR_VERSION=1.0.1
 # renovate: datasource=npm depName=prettier
 ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=npm depName=markdownlint-cli
@@ -107,15 +107,17 @@ ARG PIP_BLACK_VERSION=26.10.1
 # renovate: datasource=pypi depName=isort
 ARG PIP_ISORT_VERSION=9.0.2
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.17.2
+ARG PIP_RUFF_VERSION=0.17.4
 # renovate: datasource=pypi depName=rstfmt
 ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
+# renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
+ARG SPELL_TYPOS_VERSION=1.52.0
 # renovate: datasource=pypi depName=pip
-ARG PIP_PIP_VERSION=26.2.2
+ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv
-ARG PIP_VIRTUALENV_VERSION=21.15.2
+ARG PIP_VIRTUALENV_VERSION=21.15.6
 
 ARG CARGO_SARIF_FMT_VERSION
 ARG BASH_SHFMT_VERSION
@@ -331,12 +333,21 @@ esac \
 # markdown-table-formatter installation
 # rumdl installation
 # powershell_formatter installation
-    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force -ErrorAction Stop'
+    && pwsh -c 'Install-Module -Name PSScriptAnalyzer -RequiredVersion ${PSSA_VERSION} -Scope AllUsers -Force -ErrorAction Stop' \
 # black installation
 # isort installation
 # ruff-format installation
 # rstfmt installation
 # snakefmt installation
+# typos installation
+    && case "${TARGETARCH}" in \
+      amd64) TYPOS_ARCH="x86_64" ;; \
+      arm64) TYPOS_ARCH="aarch64" ;; \
+      *) echo "Unsupported TARGETARCH: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    curl -fsSL "https://github.com/crate-ci/typos/releases/download/v${SPELL_TYPOS_VERSION}/typos-v${SPELL_TYPOS_VERSION}-${TYPOS_ARCH}-unknown-linux-musl.tar.gz" \
+    | tar -xz -C /usr/local/bin ./typos && \
+    chmod +x /usr/local/bin/typos
 # terraform-fmt installation
 # Managed with COPY --link --from=terragrunt /bin/terraform /usr/bin/
 # tofu-fmt installation

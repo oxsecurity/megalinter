@@ -3,7 +3,7 @@
   "common": {
     "package_json": {
       "dependencies": {
-        "npm-groovy-lint": "19.0.0"
+        "npm-groovy-lint": "19.0.1"
       },
       "name": "megalinter-native-groovy_npm_groovy_lint",
       "private": true,
@@ -15,7 +15,7 @@
       "packages": {
         "": {
           "dependencies": {
-            "npm-groovy-lint": "19.0.0"
+            "npm-groovy-lint": "19.0.1"
           },
           "name": "megalinter-native-groovy_npm_groovy_lint",
           "version": "0.0.0"
@@ -182,10 +182,10 @@
           "engines": {
             "node": ">=22.13.0"
           },
-          "integrity": "sha512-WY/ZnMmQ1izqOYGcSwlgGll25os5HRrwp3D2lx4/JBI57GmgP50VPvV9ubG2rTSdE6noCTHIQ6ue3KpHa3eiAg==",
+          "integrity": "sha512-xfDTbuIk6xe8k8X3g75uHCr5DaJcn32bpKUB4l7ktdIoh9h56SjUDjBSEoGpiTdcehCqTTBu5xxITBTLmlZnIw==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/npm-groovy-lint/-/npm-groovy-lint-19.0.0.tgz",
-          "version": "19.0.0"
+          "resolved": "https://registry.npmjs.org/npm-groovy-lint/-/npm-groovy-lint-19.0.1.tgz",
+          "version": "19.0.1"
         },
         "node_modules/optionator": {
           "dependencies": {
@@ -242,10 +242,10 @@
           "engines": {
             "node": ">=18"
           },
-          "integrity": "sha512-MFO/QzvtAOmJbkhOaCTvbGcFN9L9b+JunIsDwaKljSOdcLMea3NJ1k9Usz/rjdfSXTq4dfzfeS7W4p4YOAAHeA==",
+          "integrity": "sha512-lkukzdoGngZHJZXxW4S/E4Fp9ghTDlyZXrQGRNoJ/LXvDKcXUTq2sg5yQe74po7Voea6n/IN09+wE/QvJMiifA==",
           "license": "BlueOak-1.0.0",
-          "resolved": "https://registry.npmjs.org/tar/-/tar-7.5.22.tgz",
-          "version": "7.5.22"
+          "resolved": "https://registry.npmjs.org/tar/-/tar-7.5.23.tgz",
+          "version": "7.5.23"
         },
         "node_modules/type-check": {
           "dependencies": {
@@ -298,5 +298,5 @@
   "generator": 2,
   "linter": "GROOVY_NPM_GROOVY_LINT",
   "method": "npm",
-  "spec_hash": "2655c070556c2de60ceac67ddec3b58f781ba3f43876bc8b5bfd4607807bc96a"
+  "spec_hash": "bc513baee9782ab68568768ebf1b98197c22039400178317c5b2901d6126eeda"
 }

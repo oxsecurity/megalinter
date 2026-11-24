@@ -35,6 +35,7 @@ def build_linter(request_id, workspace="."):
     linter.sarif_output_file = None
     linter.sarif_default_output_file = None
     linter.unsecured_env_variables = []
+    linter.tips = []
     linter.timeout_seconds = None
     linter.timeout_config_var = None
     # Pre-computed env so execute_lint_command doesn't call config.build_env
@@ -149,6 +150,9 @@ class LinterTimeoutExecutionTest(unittest.TestCase):
         self.assertIn("REPOSITORY_CHECKOV_TIMEOUT_SECONDS=1", return_stdout)
         self.assertIn("I/O stall", return_stdout)
         self.assertIn("partial-marker", return_stdout)
+        # The JSON report relays it to coding agents
+        self.assertEqual([tip["category"] for tip in linter.tips], ["timeout"])
+        self.assertIn("Timed out after 1 seconds", linter.tips[0]["message"])
 
     def test_disabled_timeout_runs_subprocess_without_timeout(self):
         # Timeout disabled (explicit 0 -> timeout_seconds None) must keep the

@@ -12,6 +12,10 @@ linters:
   # Raku internal linter
   - class: RakuLinter
     linter_name: raku
+    can_output_sarif: true
+    sarif_text_regex: '(?s)===SORRY!=== Error while compiling (?P<path>[^\n]+)\n(?P<message>.+?)\nat [^\n]+?:(?P<line>\d+)'
+    sarif_text_rule_id: raku-compile-error
+    sarif_whole_output: true
     linter_text: |
       **Raku** compiler provides comprehensive built-in syntax checking and validation through its compile-check mode (`-c` flag). It performs thorough code analysis without execution, ensuring Raku programs are syntactically correct and semantically valid.
 

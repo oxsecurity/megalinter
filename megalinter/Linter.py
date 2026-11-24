@@ -20,7 +20,9 @@ The following list of items can/must be overridden on custom linter local class:
 
 """
 
+import copy
 import errno
+import hashlib
 import json
 import logging
 import os
@@ -29,16 +31,31 @@ import shutil
 import signal
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 from time import perf_counter
 
 import yaml
-from megalinter import config, pre_post_factory, utils, utils_reporter, utils_sarif
+from megalinter import (
+    config,
+    pre_post_factory,
+    sarif_builder,
+    utils,
+    utils_reporter,
+    utils_sarif,
+)
 from megalinter.constants import DEFAULT_DOCKER_WORKSPACE_DIR
 from megalinter.llm_advisor import LLMAdvisor
+from megalinter.native import long_command
 from megalinter.native import toolchain as native_toolchain
-from megalinter.native.context import find_git_bash, is_native_mode
+from megalinter.native.context import (
+    cache_dir,
+    find_git_bash,
+    is_native_mode,
+    megalinter_home,
+)
+from megalinter.native.results_cache import ResultsCache, is_results_cache_enabled
 
 # Default maximum duration of a single linter command. Far above any legitimate
 # single-linter runtime (the slowest project scanners take minutes), so false
@@ -59,6 +76,10 @@ class Linter:
     TEMPLATES_DIR = "/action/lib/.automation/"
     # Native mode (MegaLinter without Docker): toolchain of the installed linter
     native_toolchain = None
+    # Windows: state of a list of files too long for the command line
+    windows_launch_failed = False
+    windows_files_not_linted = ()
+    windows_truncation_message = None
 
     # Constructor: Initialize Linter instance with name and config variables
     def __init__(self, params=None, linter_config=None):
@@ -138,8 +159,29 @@ class Linter:
         self.cli_sarif_args = []
         self.sarif_output_file = None
         self.sarif_default_output_file = None
+        # Findings read from the SARIF output (JSON report), None without SARIF
+        self.sarif_findings = None
+        # Actionable advice met while linting: [{"category": ..., "message": ...}]
+        self.tips = []
+        self.merged_sarif = None
+        self.sarif_text_regex = None
+        self.sarif_text_levels = {}
+        self.sarif_text_default_level = sarif_builder.LEVEL_ERROR
+        self.sarif_text_rule_id = None
+        self.sarif_text_default_message = None
+        self.sarif_unified_diff = False
+        self.sarif_whole_output = False
+        self.last_return_code = None
         self.no_config_if_fix = False
         self.cli_lint_extra_args = []  # Extra arguments to send to cli every time
+        # Native mode: arguments enabling the linter's own cache ({{LINTER_CACHE_DIR}})
+        self.cli_lint_cache_args = []
+        # Native mode: the files linted without any problem are not linted again while
+        # unchanged ({config_files: [...]}: files the linter finds by itself)
+        self.native_results_cache = None
+        # Native mode: True when this run is the first one of the installed linter, which
+        # is much slower than the next ones (fresh install being scanned and compiled)
+        self.native_first_run = None
         self.cli_command_remove_args = (
             []
         )  # Arguments to remove in case fix argument is sent
@@ -237,8 +279,12 @@ class Linter:
         else:
             params = {**default_params, **params}
 
-        # Initialize with configuration data
+        # Initialize with configuration data. Lists and dicts are copied: the
+        # definition of a shared linter (extends) is the same object for all the
+        # linters extending it, and linter classes can extend them in place
         for key, value in linter_config.items():
+            if isinstance(value, (list, dict)):
+                value = copy.copy(value)
             self.__setattr__(key, value)
         self.descriptor_cli_lint_mode = self.cli_lint_mode
         if "request_id" in params:
@@ -1043,6 +1089,18 @@ class Linter:
             self.master, self, run_commands_before_linters
         )
 
+        first_run_marker = self.native_first_run_marker()
+        if first_run_marker is not None:
+            self.native_first_run = not os.path.isfile(first_run_marker)
+
+        # Native mode: the files unchanged since they were linted without any problem
+        # are not linted again
+        results_cache = None
+        all_files = self.files
+        if is_results_cache_enabled(self):
+            results_cache = ResultsCache(self)
+            self.files = results_cache.select_files_to_lint(all_files)
+
         # Lint each file one by one
         if self.cli_lint_mode == "file":
             index = 0
@@ -1054,6 +1112,12 @@ class Linter:
                 file_warnings_number = 0
                 file_warnings_number = self.get_total_number_warnings(stdout)
                 self.total_number_warnings += file_warnings_number
+                if (
+                    results_cache is not None
+                    and return_code == 0
+                    and file_warnings_number == 0
+                ):
+                    results_cache.record_successful_run([file], stdout)
                 if return_code != 0:
                     file_status = "error"
                     self.status = "warning" if self.disable_errors is True else "error"
@@ -1078,9 +1142,10 @@ class Linter:
             # line builds an invalid command (ex: "checkov --file" with no value
             # after it), and the linter would fail on its own arguments instead
             # of reporting a lint result
-            logging.info(
-                f"{self.name} has no file to lint, so its command has not been run"
-            )
+            if results_cache is None or len(results_cache.unchanged_files) == 0:
+                logging.info(
+                    f"{self.name} has no file to lint, so its command has not been run"
+                )
         else:
             # Lint all workspace in one command
             return_code, stdout = self.process_linter()
@@ -1092,11 +1157,41 @@ class Linter:
                 self.return_code = 0 if self.disable_errors is True else 1
                 self.number_errors += 1
                 self.total_number_errors += self.get_total_number_errors(stdout)
-            elif self.total_number_warnings > 0:
+            elif self.total_number_warnings > 0 or self.windows_files_not_linted:
                 self.status = "warning"
+            if results_cache is not None:
+                if return_code == 0 and self.total_number_warnings == 0:
+                    results_cache.record_successful_run(self.files, stdout)
+                else:
+                    results_cache.record_files_absent_from_output(self.files, stdout)
             # Build result for list of files
             if self.cli_lint_mode == "list_of_files":
                 self.update_files_lint_results(self.files, None, None, None, None, None)
+
+        if results_cache is not None:
+            self.update_files_lint_results(
+                results_cache.unchanged_files, 0, "success", "", 0, 0
+            )
+            not_linted = set(self.windows_files_not_linted)
+            self.files = [file for file in all_files if file not in not_linted]
+            if len(not_linted) > 0:
+                self.files_number = len(self.files)
+            try:
+                results_cache.save()
+            except OSError as e:
+                logging.warning(f"[Results cache] Unable to save {self.name}: {e}")
+
+        self.after_lint_files()
+        if self.native_first_run is True:
+            try:
+                with open(first_run_marker, "w", encoding="utf-8") as marker_file:
+                    marker_file.write("")
+            except OSError as e:
+                logging.warning(f"Unable to write {first_run_marker}: {e}")
+        if self.output_sarif is True:
+            self.sarif_findings = utils_sarif.extract_findings(
+                self.sarif_output_file, self.workspace
+            )
 
         # Set return code to 0 if failures in this linter must not make the MegaLinter run fail
         if self.return_code != 0:
@@ -1201,6 +1296,10 @@ class Linter:
             "{{REPORT_FOLDER}}": self.report_folder,
             "{{WORKSPACE}}": self.workspace,
         }
+        if any("{{DEFAULT_RULES_LOCATION}}" in txt for txt in args):
+            default_variables["{{DEFAULT_RULES_LOCATION}}"] = os.path.abspath(
+                utils.get_default_rules_location()
+            )
         merged_map = default_variables
         if additional_variables is not None:
             merged_map.update(additional_variables)
@@ -1324,14 +1423,205 @@ class Linter:
             os.remove(self.sarif_output_file)
         # Build command using method locally defined on Linter class
         command = self.build_lint_command(file)
+        if file is None:
+            command = self.fit_files_in_windows_limit(command)
         # Output command if debug mode
         logging.debug(f"[{self.linter_name}] command: {str(command)}")
         # Run command via CLI
+        self.stdout_human = None
         return_code, return_output = self.execute_lint_command(command)
+        if self.windows_launch_failed:
+            return_code, return_output = self.retry_with_fewer_files(
+                command, return_code, return_output
+            )
         logging.debug(
             f"[{self.linter_name}] result: {str(return_code)} {return_output}"
         )
+        if self.cli_lint_mode == "file" and self.output_sarif is True:
+            # Each file overwrites the SARIF of the previous one: gather them
+            self.merge_file_sarif()
+            # The log of the file is the readable version of its SARIF
+            if self.stdout_human:
+                return_output = self.stdout_human
         return return_code, return_output
+
+    # Windows: a linter always runs in one command. When no route can pass all its
+    # files, native mode lints the ones that fit and says which ones were left out
+    def fit_files_in_windows_limit(self, command):
+        if (
+            sys.platform != "win32"
+            or self.cli_lint_mode != "list_of_files"
+            or not isinstance(command, list)
+            or len(subprocess.list2cmdline(command))
+            <= long_command.WINDOWS_SCRIPT_COMMAND_LINE_MAX_CHARS
+        ):
+            return command
+        executable = self.find_windows_executable(command)
+        if executable is None:
+            return command
+        route = long_command.find_route([executable, *command[1:]])
+        if route != long_command.ROUTE_TOO_LONG:
+            return command
+        return self.truncate_files_to_windows_limit(command, executable)
+
+    def find_windows_executable(self, command):
+        return shutil.which(
+            command[0],
+            path=self.native_search_path(getattr(self, "_cached_subprocess_env", None)),
+        )
+
+    def truncate_files_to_windows_limit(self, command, executable):
+        if not is_native_mode(self.request_id) or len(self.files) < 2:
+            self.report_windows_command_limit()
+            return command
+        all_files = self.files
+        fitted_command, kept = self.shrink_files(
+            command, executable, long_command.max_chars_for(executable)
+        )
+        if fitted_command is None or len(kept) == len(all_files):
+            self.files = all_files
+            self.report_windows_command_limit()
+            return command
+        self.record_files_not_linted(all_files, kept)
+        return fitted_command
+
+    # Removes files from the end of the list until the command fits in max_chars
+    def shrink_files(self, command, executable, max_chars):
+        kept = list(self.files)
+        fitted_command = command
+        while len(kept) > 1:
+            overflow = (
+                len(subprocess.list2cmdline([executable, *fitted_command[1:]]))
+                - max_chars
+            )
+            if overflow <= 0:
+                break
+            removed_chars = 0
+            while len(kept) > 1 and removed_chars < overflow:
+                removed_chars += len(subprocess.list2cmdline([kept.pop()])) + 1
+            self.files = list(kept)
+            fitted_command = self.build_lint_command()
+        if len(subprocess.list2cmdline([executable, *fitted_command[1:]])) > max_chars:
+            return None, kept
+        return fitted_command, kept
+
+    def record_files_not_linted(self, all_files, kept):
+        self.windows_files_not_linted = all_files[len(kept) :]
+        self.files_number = len(kept)
+        not_linted_file = self.write_report_generated_file(
+            f"{self.name}-files-not-linted.txt", self.windows_files_not_linted
+        )
+        self.windows_truncation_message = (
+            f"[{self.linter_name}] Windows command line limit: linted {len(kept)} of "
+            f"{len(all_files)} files. {len(self.windows_files_not_linted)} files were "
+            f"NOT linted, they are listed in {not_linted_file}. Lint fewer files with "
+            "FILTER_REGEX_EXCLUDE, or use Docker to lint them all"
+        )
+        self.log_linter_notice(self.windows_truncation_message)
+        self.tips.append(
+            {
+                "category": "windows_command_line",
+                "message": self.windows_truncation_message,
+            }
+        )
+
+    # The tool started, but could not start the program it wraps with all the files.
+    # That program can receive a longer command than the tool (ex: nbqa adds temporary
+    # paths), so the list is halved until it starts
+    def retry_with_fewer_files(self, command, return_code, return_output):
+        self.windows_launch_failed = False
+        executable = self.find_windows_executable(command)
+        if (
+            executable is None
+            or not is_native_mode(self.request_id)
+            or len(self.files) < 2
+        ):
+            self.report_windows_command_limit()
+            return return_code, return_output
+        all_files = self.files
+        max_chars = long_command.max_chars_for(executable)
+        while max_chars >= long_command.WINDOWS_MIN_RETRY_CHARS:
+            files_before = len(self.files)
+            fitted_command, kept = self.shrink_files(command, executable, max_chars)
+            max_chars //= 2
+            if fitted_command is None or len(kept) == files_before:
+                continue
+            command = fitted_command
+            self.lint_command_log.pop()
+            if self.sarif_output_file is not None and os.path.isfile(
+                self.sarif_output_file
+            ):
+                os.remove(self.sarif_output_file)
+            self.stdout_human = None
+            return_code, return_output = self.execute_lint_command(fitted_command)
+            if not self.windows_launch_failed:
+                self.record_files_not_linted(all_files, kept)
+                return return_code, return_output
+            self.windows_launch_failed = False
+        self.files = all_files
+        self.report_windows_command_limit()
+        return return_code, return_output
+
+    # No file could be linted: that must fail the run, even for a non-blocking linter
+    def report_windows_command_limit(self):
+        message = (
+            f"[{self.linter_name}] The {len(self.files)} files to lint exceed the "
+            "Windows command line limit, and MegaLinter can not pass them to this tool. "
+            "Lint fewer files with FILTER_REGEX_EXCLUDE, or use Docker"
+        )
+        logging.error(message)
+        self.tips.append({"category": "windows_command_line", "message": message})
+        self.disable_errors = False
+        self.disable_errors_if_less_than = None
+
+    def run_windows_lint_subprocess(self, command, subprocess_env, cwd):
+        route = long_command.find_route(command)
+        if route in (long_command.ROUTE_DIRECT, long_command.ROUTE_TOO_LONG):
+            return_code, return_stdout = self._run_lint_subprocess(
+                command, {"env": subprocess_env, "cwd": cwd}
+            )
+            self.detect_windows_launch_failure(command, return_code, return_stdout)
+            return return_code, return_stdout
+        logging.info(
+            f"[{self.linter_name}] Command line too long for Windows: "
+            f"passing its arguments through a file ({route})"
+        )
+        # A background process of the tool can keep the folder open after the run
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as folder:
+            launch_command, launch_env = long_command.build_launch(
+                route, command, subprocess_env, folder, self.files
+            )
+            return_code, return_stdout = self._run_lint_subprocess(
+                launch_command, {"env": launch_env, "cwd": cwd}
+            )
+        self.detect_windows_launch_failure(command, return_code, return_stdout)
+        return return_code, return_stdout
+
+    # A tool can start, then fail to start the program it wraps with its arguments
+    def detect_windows_launch_failure(self, command, return_code, return_stdout):
+        if (
+            return_code != 0
+            and long_command.is_launch_failure(return_stdout)
+            and self.cli_lint_mode == "list_of_files"
+            and len(subprocess.list2cmdline(command))
+            > long_command.WINDOWS_MIN_RETRY_CHARS
+        ):
+            self.windows_launch_failed = True
+
+    def merge_file_sarif(self):
+        if self.sarif_output_file is None or not os.path.isfile(self.sarif_output_file):
+            return
+        try:
+            # utf-8-sig: some linters (ex: .NET ones) write a BOM
+            with open(self.sarif_output_file, "r", encoding="utf-8-sig") as file:
+                file_sarif = json.load(file)
+        except ValueError as e:
+            logging.warning(f"[SARIF] Unable to merge {self.sarif_output_file}: {e}")
+            return
+        if self.merged_sarif is None:
+            self.merged_sarif = file_sarif
+        else:
+            utils_sarif.merge_sarif_logs(self.merged_sarif, file_sarif)
 
     def native_environment(self, env):
         if self.native_toolchain is None:
@@ -1404,13 +1694,18 @@ class Linter:
             self.lint_command_log.append(" ".join(command))
             # Call linter with a sub-process (RECOMMENDED: with a list of strings corresponding to the command)
             try:
-                return_code, return_stdout = self._run_lint_subprocess(
-                    command,
-                    {
-                        "env": subprocess_env,
-                        "cwd": cwd,
-                    },
-                )
+                if sys.platform == "win32":
+                    return_code, return_stdout = self.run_windows_lint_subprocess(
+                        command, subprocess_env, cwd
+                    )
+                else:
+                    return_code, return_stdout = self._run_lint_subprocess(
+                        command,
+                        {
+                            "env": subprocess_env,
+                            "cwd": cwd,
+                        },
+                    )
             except FileNotFoundError as err:
                 return_code = 999
                 return_stdout = (
@@ -1424,6 +1719,7 @@ class Linter:
         return_code, return_stdout = self.apply_common_linter_errors(
             return_code, return_stdout
         )
+        self.last_return_code = return_code
         self.manage_sarif_output(return_stdout)
         # Return linter result
         return return_code, return_stdout
@@ -1500,6 +1796,7 @@ class Linter:
                 "Windows into a WSL2-backed container engine)."
             )
             logging.error(timeout_message)
+            self.tips.append({"category": "timeout", "message": timeout_message})
             if partial_output.strip() != "":
                 return 124, partial_output + "\n\n" + timeout_message
             return 124, timeout_message
@@ -1516,11 +1813,37 @@ class Linter:
             if re.search(pattern, return_stdout or ""):
                 block = f"[{identifier}] {message}" if identifier else message
                 return_stdout = (return_stdout or "") + "\n\n" + block
-                logging.warning(f"[{self.linter_name}] {block}")
         return return_code, return_stdout
 
     def manage_sarif_output(self, return_stdout):
         sarif_confirmed = False
+        keep_raw_output = False
+        # Build the SARIF file from the output of the linters that can not output SARIF
+        if (
+            self.can_output_sarif is True
+            and self.output_sarif is True
+            and self.sarif_output_file is not None
+            and not os.path.isfile(self.sarif_output_file)
+        ):
+            # pylint: disable=assignment-from-none
+            sarif_log = self.convert_output_to_sarif(return_stdout)
+            # pylint: enable=assignment-from-none
+            if sarif_log is not None:
+                if self.sarif_whole_output is True:
+                    sarif_builder.add_whole_output_result(
+                        sarif_log,
+                        return_stdout,
+                        self.last_return_code,
+                        self.get_sarif_rule_id(),
+                        self.sarif_text_default_level,
+                    )
+                with open(self.sarif_output_file, "w", encoding="utf-8") as file:
+                    file.write(sarif_log.build_sarif_json_string())
+                # Without any result, the linter output may be an error message
+                # (ex: invalid configuration) that must stay visible in the logs
+                keep_raw_output = not any(
+                    len(run.results) > 0 for run in sarif_log.runs
+                )
         # Move SARIF file if necessary if generated in a fixed place by the linter
         if (
             self.can_output_sarif is True
@@ -1578,7 +1901,11 @@ class Linter:
             utils_sarif.normalize_sarif_files(self)
 
         # Convert SARIF into human readable text for Console & Text reporters
-        if sarif_confirmed is True and self.master.sarif_to_human is True:
+        if (
+            sarif_confirmed is True
+            and keep_raw_output is False
+            and self.master.sarif_to_human is True
+        ):
             with open(self.sarif_output_file, "r", encoding="utf-8") as file:
                 sarif_text = utils_sarif.remove_suppressed_results_from_text(
                     file.read()
@@ -1621,6 +1948,12 @@ class Linter:
             )
             self.linter_version_cache = "ERROR"
         return self.linter_version_cache
+
+    def native_first_run_marker(self):
+        toolchain = self.native_toolchain
+        if toolchain is None or toolchain.install_dir is None or toolchain.host_tool:
+            return None
+        return os.path.join(toolchain.install_dir, ".megalinter-first-run")
 
     # Native mode: a linter installed by MegaLinter never changes inside its install folder
     # (one folder per resolved install), so its version is read once and kept there, like
@@ -1779,6 +2112,39 @@ class Linter:
     def before_lint_files(self):
         pass
 
+    # Writes the SARIF merged from the results of each file (linter in file lint mode)
+    def after_lint_files(self):
+        if self.merged_sarif is not None:
+            with open(self.sarif_output_file, "w", encoding="utf-8") as sarif_file:
+                json.dump(self.merged_sarif, sarif_file, sort_keys=True, indent=2)
+
+    # To override in the linters that can not output SARIF: returns a
+    # sarif_builder.SarifBuilder built from the output of the linter, or None.
+    # By default, the findings are the matches of the descriptor sarif_text_regex,
+    # and the files of the unified diff printed by the linter (sarif_unified_diff)
+    def convert_output_to_sarif(self, return_stdout):
+        if (
+            self.sarif_text_regex is None
+            and self.sarif_unified_diff is not True
+            and self.sarif_whole_output is not True
+        ):
+            return None
+        return sarif_builder.regex_output_to_sarif(
+            return_stdout,
+            self.workspace,
+            self.linter_name,
+            self.sarif_text_regex,
+            self.get_sarif_rule_id(),
+            self.sarif_text_default_level,
+            self.sarif_text_levels,
+            self.linter_url,
+            self.sarif_text_default_message,
+            self.sarif_unified_diff,
+        )
+
+    def get_sarif_rule_id(self):
+        return self.sarif_text_rule_id or self.linter_name
+
     # Build the CLI command to call to lint a file (can be overridden)
     def build_lint_command(self, file=None) -> list:
         cmd = [*self.cli_executable]
@@ -1792,6 +2158,9 @@ class Linter:
             self.cli_lint_extra_args, additional_replace_variables
         )
         cmd += self.cli_lint_extra_args
+
+        # Native mode: let the linter keep its cache of results between runs
+        cmd += self.get_native_cache_arguments()
 
         # Add fix argument if defined
         if self.apply_fixes is True and (
@@ -1923,6 +2292,43 @@ class Linter:
                 cmd += self.files
         return cmd
 
+    # Native mode keeps the linters caches between runs, outside the analyzed sources:
+    # one folder per linter and workspace, under MEGALINTER_HOME/cache/linters
+    def get_native_cache_arguments(self) -> list:
+        if (
+            len(self.cli_lint_cache_args) == 0
+            or not is_native_mode(self.request_id)
+            or not self.is_native_cache_enabled()
+            or any(
+                arg.split("=")[0] in ("--cache", "--no-cache", "--cache-location")
+                for arg in self.cli_lint_user_args
+            )
+        ):
+            return []
+        linter_cache_dir = self.get_native_cache_dir()
+        os.makedirs(linter_cache_dir, mode=0o700, exist_ok=True)
+        return [
+            arg.replace("{{LINTER_CACHE_DIR}}", linter_cache_dir)
+            for arg in self.cli_lint_cache_args
+        ]
+
+    def is_native_cache_enabled(self) -> bool:
+        linter_value = config.get(self.request_id, f"{self.name}_NATIVE_CACHE", "")
+        if linter_value != "":
+            return linter_value == "true"
+        return config.get(self.request_id, "NATIVE_LINTER_CACHE", "true") == "true"
+
+    def get_native_cache_dir(self) -> str:
+        workspace_key = hashlib.sha256(
+            os.path.abspath(self.workspace).encode("utf-8")
+        ).hexdigest()[:16]
+        return os.path.join(
+            cache_dir(megalinter_home(self.request_id)),
+            "linters",
+            self.name,
+            workspace_key,
+        )
+
     # Remove arguments listed in <LINTER_NAME>_COMMAND_REMOVE_ARGUMENTS.
     # Arguments that are not in the command line are just ignored, as they can be
     # conditionally added (or not) by linter subclasses
@@ -1967,6 +2373,13 @@ class Linter:
             == "true"
         )
 
+    # Notices raised while a linter builds or runs its command are displayed
+    # within the linter section of the console log (not at the moment they are
+    # raised, where they would appear out of context), and only once each
+    def log_linter_notice(self, message):
+        if message not in self.log_lines_pre:
+            self.log_lines_pre += [message]
+
     def is_project_paths_defined_in_config(self):
         if (
             self.cli_lint_mode_project_config_paths_regex is None
@@ -2007,9 +2420,7 @@ class Linter:
         )
 
     def log_project_exclude_forwarding(self, message):
-        log_line = f"[Excluded directories] {message}"
-        if log_line not in self.log_lines_pre:
-            self.log_lines_pre += [log_line]
+        self.log_linter_notice(f"[Excluded directories] {message}")
 
     # Directories forwarded to project-mode linters: EXCLUDED_DIRECTORIES +
     # ADDITIONAL_EXCLUDED_DIRECTORIES + directories identified from
@@ -2603,7 +3014,10 @@ class Linter:
                         count_results = True
 
                     if count_results is True:
-                        total_result += len(result["locations"])
+                        # A result may have no location (ex: roslynator compiler diagnostics)
+                        total_result += (
+                            len(result["locations"]) if "locations" in result else 1
+                        )
 
             return total_result
         except Exception as e:

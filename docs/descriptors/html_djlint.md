@@ -11,7 +11,7 @@ description: How to use djlint (configure, ignore files, ignore errors, help & v
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/djlint/djLint?sort=semver)](https://github.com/djlint/djLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/djlint/djLint)](https://github.com/djlint/djLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/djlint/djLint)](https://github.com/djlint/djLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/djlint/djLint)](https://github.com/djlint/djLint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/djlint/djLint?cacheSeconds=3600)](https://github.com/djlint/djLint) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/djlint/djLint?sort=semver)](https://github.com/djlint/djLint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/djlint/djLint)](https://github.com/djlint/djLint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/djlint/djLint)](https://github.com/djlint/djLint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/djlint/djLint)](https://github.com/djlint/djLint/graphs/contributors/)
 
 **djLint** is a comprehensive linter and formatter for HTML templates that supports multiple template languages. Originally created for use in the Atlas projects, it helps you find common syntax errors and reformat your HTML templates to make them shine.
 
@@ -29,13 +29,13 @@ For example, define `HTML_DJLINT_ARGUMENTS: ["--profile", "django"]` to select d
 
 ## djlint documentation
 
-- Version in MegaLinter: **1.49.2**
+- Version in MegaLinter: **1.49.10**
 - Visit [Official Web Site](https://djlint.com/){target=_blank}
 - See [How to configure djlint rules](https://djlint.com/docs/configuration/){target=_blank}
 - See [How to disable djlint rules in files](https://djlint.com/docs/ignoring-code/){target=_blank}
 - See [Index of problems detected by djlint](https://djlint.com/docs/linter/){target=_blank}
 
-[![djlint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=djlint&repo=djLint&show_owner=true)](https://github.com/djlint/djLint){target=_blank}
+[![djLint - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=djlint&repo=djLint&show_owner=true)](https://github.com/djlint/djLint){target=_blank}
 
 ## Configuration in MegaLinter
 
@@ -75,22 +75,22 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       134        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        59        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       135        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        60        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |       100        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        81        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        54        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        57        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        68        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        57        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        70        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        58        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        53        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        57        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        67        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        82        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        55        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        58        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        69        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        58        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        71        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        58        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -121,105 +121,154 @@ Usage: djlint [OPTIONS] SRC ...
 
   djLint · HTML template linter and formatter.
 
-Options:
-  --version                       Show the version and exit.
+Modes:
+  --lint                          Lint the files. This is the default when
+                                  neither --reformat nor --check is given.
+  --reformat                      Format the files in place.
+  --check                         Show what formatting would change, without
+                                  changing the files.
   --lsp                           Run as a language server over stdio, for
                                   editors.
-  -e, --extension TEXT            File extension to check [default: html]
-  -i, --ignore TEXT               Codes to ignore. ex: "H014,H017"
-  --reformat                      Reformat the file(s).
-  --check                         Check formatting on the file(s).
-  --stdin-filename TEXT           Filename to use for per-file-ignores and
-                                  messages when reading from stdin. [default:
-                                  -]
-  --indent INTEGER                Indent spacing. [default: 4]
-  --quiet                         Do not print diff when reformatting.
-  --profile TEXT                  Enable defaults by template language. ops:
-                                  django, jinja, nunjucks, handlebars, liquid,
-                                  golang, angular, tera, askama, html
-                                  [default: html]
-  --require-pragma                Only format or lint files that starts with a
-                                  comment with the text 'djlint:on'
-  --lint                          Lint for common issues. [default option]
-  --use-gitignore                 Use .gitignore file to extend excludes.
+
+Files:
+  -e, --extension EXT             Extension of the files to look for in
+                                  folders. [default: html]
+  --exclude PATHS                 Paths to skip, comma-separated, in place of
+                                  the default list.
+  --extend-exclude PATHS          Paths to skip on top of the default list,
+                                  comma-separated.
+  --use-gitignore                 Also skip the paths that .gitignore lists.
+  --require-pragma                Only format or lint files whose first line
+                                  is a djlint:on comment.
+  --stdin-filename PATH           Path that stands for stdin in messages,
+                                  excludes and per-file ignores. [default: -]
   --allow-empty-input             Exit with 0 instead of 2 when the given
                                   paths match no files.
-  --warn                          Return errors as warnings.
-  --preserve-leading-space        Attempt to preserve leading space on text.
-  --preserve-blank-lines          Attempt to preserve blank lines.
-  --preserve-class-newlines       Preserve line breaks inside multiline class
-                                  attributes.
-  --format-css                    Also format contents of <style> tags.
-  --format-js                     Also format contents of <script> tags.
-  --format-attribute-js-json      Also format JavaScript/JSON inside HTML
-                                  attributes.
-  --format-attribute-js-json-pattern TEXT
-                                  Regex pattern to match JavaScript
-                                  attributes.
-  --format-attribute-js-json-min-props INTEGER
-                                  Minimum number of properties to treat
-                                  attribute content as JS/JSON.
-  --configuration FILE            Path to global configuration file in
-                                  djlint.toml, .djlint.toml, or .djlintrc
-                                  format
-  --prefer-configuration          Let --configuration override the project's
-                                  own config file, rather than the other way
-                                  round.
-  --rules FILE                    Path to custom rules file in
-                                  .djlint_rules.yaml format
-  --statistics                    Count the number of occurrences of each
-                                  error/warning code.
-  --include TEXT                  Codes to include. ex: "H014,H017"
-  --ignore-case                   Do not fix case on known html tags.
-  --ignore-blocks TEXT            Comma list of template blocks to not indent.
-  --blank-line-after-tag TEXT     Add an additional blank line after {% <tag>
-                                  ... %} tag groups.
-  --blank-line-before-tag TEXT    Add an additional blank line before {% <tag>
-                                  ... %} tag groups.
-  --line-break-after-multiline-tag
-                                  Do not condense the content of multi-line
-                                  tags into the line of the last attribute.
-  --custom-blocks TEXT            Indent custom template blocks. For example
-                                  {% toc %}...{% endtoc %}
-  --custom-html TEXT              Indent custom HTML tags. For example <mjml>
-  --exclude TEXT                  Override the default exclude paths.
-  --extend-exclude TEXT           Add additional paths to the default exclude.
-  --linter-output-format TEXT     Customize order of linter output message.
-  --max-line-length INTEGER       Max line length. [default: 120]
-  --max-attribute-length INTEGER  Max attribute length. [default: 70]
-  --format-attribute-template-tags
-                                  Attempt to format template syntax inside of
-                                  tag attributes.
+
+Configuration:
+  --profile NAME                  Template language: html, django, jinja,
+                                  nunjucks, handlebars, liquid, golang,
+                                  angular, tera, askama, mako or all. It
+                                  decides which linter rules run and how
+                                  template syntax is formatted. [default:
+                                  html]
+  --configuration FILE            Global config file: a pyproject.toml,
+                                  djlint.toml or .djlintrc. The project's own
+                                  config file wins where both set an option.
+  --prefer-configuration          Let the --configuration file win over the
+                                  project's own config file.
+
+Linter:
+  -i, --ignore CODES              Linter codes to skip, comma-separated, for
+                                  example H014,H017.
+  --include CODES                 Linter codes to turn on that are off by
+                                  default, comma-separated, for example H017.
+  --per-file-ignores <PATTERN CODES>...
+                                  Skip linter codes in the files whose path
+                                  matches a regex. Can be repeated.
+  --rules FILE                    Custom linter rules, in the
+                                  .djlint_rules.yaml format.
+
+Output:
+  --quiet                         Do not print diffs, the progress bar or the
+                                  summary.
+  --warn                          Exit with 0 instead of 1 when there are lint
+                                  errors or files to reformat.
+  --statistics                    After linting, print how many times each
+                                  code was found.
+  --linter-output-format FORMAT   Layout of each lint message, from
+                                  {filename}, {line}, {end}, {code}, {message}
+                                  and {match}. [default: {code} {line}
+                                  {message} {match}]
+  --github-output / --no-github-output
+                                  Print results as GitHub Actions annotations.
+                                  On by default inside GitHub Actions.
+  --sarif                         Print findings as a SARIF 2.1.0 JSON
+                                  document, for GitHub code scanning and other
+                                  tools.
+
+Layout:
+  --indent N                      Spaces per indent level. [default: 4, or
+                                  indent_size from .editorconfig]
+  --max-line-length N             Join tags onto one line only when the line
+                                  fits within this length. [default: 120, or
+                                  max_line_length from .editorconfig]
+  --max-attribute-length N        Spread a tag's attributes over lines once
+                                  they are longer than this. [default: 70]
   --single-attribute-per-line     When an opening tag wraps, put each
                                   attribute on its own line.
-  --per-file-ignores <TEXT TEXT>...
-                                  Ignore linter rules on a per-file basis.
-  --indent-css INTEGER            Set CSS indent level.
-  --indent-js INTEGER             Set JS indent level.
-  --close-void-tags               Add closing mark on known void tags. Ex:
-                                  <img> becomes <img />
-  --no-line-after-yaml            Do not add a blank line after yaml front
+  --line-break-after-multiline-tag
+                                  When a tag's attributes are spread over
+                                  lines, start its content on a new line.
+  --no-indent-inner-html          Do not indent <head> and <body> inside
+                                  <html>.
+  --keep-br-inline                Keep <br> on the line of the text it breaks.
+  --custom-blocks TAGS            Names of the custom template blocks to
+                                  indent, comma-separated, for example toc.
+  --custom-html TAGS              Names of the custom HTML tags to indent,
+                                  comma-separated, for example mjml.
+  --ignore-blocks TAGS            Template blocks that do not indent their
+                                  contents, comma-separated.
+  --blank-line-after-tag TAGS     Template tags to follow with a blank line,
+                                  comma-separated, for example load,extends.
+  --blank-line-before-tag TAGS    Template tags to precede with a blank line,
+                                  comma-separated, for example load,extends.
+  --max-blank-lines N             Keep at most this many blank lines in a row.
+                                  Has no effect with --preserve-blank-lines.
+                                  [default: 0]
+  --preserve-blank-lines          Keep blank lines where possible.
+  --preserve-leading-space        Keep the leading spaces of text lines where
+                                  possible.
+  --no-line-after-yaml            Do not add a blank line after YAML front
                                   matter.
-  --name-endblocks                Name the endblock of a block written across
-                                  lines.
+
+Rewrites:
+  --close-void-tags               Close void tags with a slash, so <img>
+                                  becomes <img />.
+  --ignore-case                   Do not fix the case of known HTML tags.
   --sort-attributes               Sort attributes by name, with id first and
                                   class second.
-  --sort-load-tags                Sort the libraries in {% load %} tags.
-  --no-indent-inner-html          Do not indent <head> and <body> below
-                                  <html>.
-  --no-function-formatting        Do not attempt to format function contents.
-  --no-set-formatting             Do not attempt to format set contents.
-  --keep-br-inline                Keep <br> on the line of the text it breaks.
-  --no-entity-formatting          Do not rewrite entity references as
-                                  characters.
-  --quote-style [double|single]   Quotes to use for strings inside template
-                                  tags. [default: double]
-  --max-blank-lines INTEGER       Consolidate blank lines down to x lines.
-                                  [default: 0]
-  --github-output / --no-github-output
-                                  Output GitHub-compatible formatting.
-  --sarif                         Output findings as SARIF 2.1.0 json, for
-                                  GitHub code scanning and other tools.
+  --sort-load-tags                Sort the libraries in {% load %} tags and
+                                  drop repeated ones.
+  --name-endblocks                Name the block in its {% endblock %} when
+                                  the block spans lines.
+  --quote-style [double|single]   Quotes for strings inside template tags.
+                                  [default: double]
+  --no-entity-formatting          Do not rewrite entity references such as
+                                  &copy; as the characters they name.
+  --no-function-formatting        Do not format the arguments of function
+                                  calls inside {{ }}.
+  --no-set-formatting             Do not format the contents of {% set %}
+                                  tags.
+  --preserve-class-newlines       Keep the line breaks in class attributes
+                                  written across lines.
+  --format-attribute-template-tags
+                                  Format template syntax inside tag
+                                  attributes.
+
+CSS and JavaScript:
+  --format-css                    Also format the contents of <style> tags,
+                                  with css-beautify.
+  --indent-css N                  Indent width inside <style> tags, for
+                                  --format-css. [default: 4]
+  --format-js                     Also format JavaScript and JSON in <script>
+                                  tags, with js-beautify.
+  --indent-js N                   Indent width inside <script> tags, for
+                                  --format-js. [default: 4]
+  --format-attribute-js-json      Also format JavaScript and JSON in
+                                  attributes such as onclick and x-data.
+  --format-attribute-js-json-pattern REGEX
+                                  Regex for the names of the attributes to
+                                  format as JavaScript or JSON. [default: on*
+                                  event handlers and Alpine, Vue, Angular and
+                                  Aurelia bindings]
+  --format-attribute-js-json-min-props N
+                                  Format an object only when it has at least
+                                  this many properties. [default: 2]
+
+Other:
+  --version                       Show the version and exit.
+  SRC ...
   -h, --help                      Show this message and exit.
 ```
 
@@ -228,11 +277,11 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=djlint
-ARG PIP_DJLINT_VERSION=1.49.2
+ARG PIP_DJLINT_VERSION=1.49.10
 ```
 
 - PIP packages (Python):
-  - [djlint==1.49.2](https://pypi.org/project/djlint/1.49.2)
+  - [djlint==1.49.10](https://pypi.org/project/djlint/1.49.10)
 
 ### Installation without Docker (native mode)
 
@@ -258,7 +307,7 @@ NATIVE_LINTERS: [HTML_DJLINT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/HTML_DJLINT"
     uv venv "$INSTALL_DIR" --python ">=3.11"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "djlint==1.49.2"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "djlint==1.49.10"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -267,7 +316,7 @@ NATIVE_LINTERS: [HTML_DJLINT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/HTML_DJLINT"
     uv venv "$INSTALL_DIR" --python ">=3.11"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "djlint==1.49.2"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "djlint==1.49.10"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

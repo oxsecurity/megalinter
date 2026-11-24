@@ -11,7 +11,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600)](https://github.com/hashicorp/terraform) ![formatter](https://shields.io/badge/-format-yellow) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hashicorp/terraform?sort=semver)](https://github.com/hashicorp/terraform/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hashicorp/terraform)](https://github.com/hashicorp/terraform/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/hashicorp/terraform)](https://github.com/hashicorp/terraform/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/hashicorp/terraform?cacheSeconds=3600)](https://github.com/hashicorp/terraform) ![formatter](https://shields.io/badge/-format-yellow) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hashicorp/terraform?sort=semver)](https://github.com/hashicorp/terraform/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/hashicorp/terraform)](https://github.com/hashicorp/terraform/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/hashicorp/terraform)](https://github.com/hashicorp/terraform/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/hashicorp/terraform)](https://github.com/hashicorp/terraform/graphs/contributors/)
 
 **terraform fmt** is the built-in Terraform command for automatically formatting Terraform configuration files to ensure consistent style and formatting. It rewrites Terraform configuration files to a canonical format and style, making code more readable and maintainable, following HashiCorp's official style conventions.
 
@@ -30,7 +30,7 @@ description: How to use terraform-fmt (configure, ignore files, ignore errors, h
 
 ## terraform-fmt documentation
 
-- Version in MegaLinter: **1.17.0**
+- Version in MegaLinter: **1.17.1**
 - Visit [Official Web Site](https://developer.hashicorp.com/terraform/cli/commands/fmt){target=_blank}
 
 [![terraform - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=hashicorp&repo=terraform&show_owner=true)](https://github.com/hashicorp/terraform){target=_blank}
@@ -75,10 +75,10 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                       | Description                                     | Embedded linters |                                                                                                                                                                                             Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------|:------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       134        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)         | Default MegaLinter Flavor                       |       135        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)       | MegaLinter for the most commonly used languages |       100        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        20        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)   | Optimized for TERRAFORM based projects          |        57        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/formatters.ico" alt="" height="32px" class="megalinter-icon"></a>      | [formatters](https://megalinter.io/beta/flavors/formatters/) | Contains only formatters                        |        21        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-formatters/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-formatters) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)   | Optimized for TERRAFORM based projects          |        58        |   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -151,7 +151,7 @@ Global options (use these before the subcommand, if any):
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=docker depName=alpine/terragrunt
-ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.0
+ARG TERRAFORM_TERRAGRUNT_VERSION=1.17.1
 FROM alpine/terragrunt:${TERRAFORM_TERRAGRUNT_VERSION} AS terragrunt
 COPY --link --from=terragrunt /bin/terraform /usr/bin/
 ```
@@ -180,9 +180,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_amd64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_linux_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_linux_amd64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_amd64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_linux_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_linux_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -191,9 +191,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_linux_arm64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_linux_arm64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_linux_arm64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_linux_arm64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_linux_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_linux_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -202,9 +202,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_amd64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_darwin_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_darwin_amd64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_darwin_amd64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_darwin_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_darwin_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -213,9 +213,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_darwin_arm64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_darwin_arm64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_darwin_arm64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_darwin_arm64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_darwin_arm64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_darwin_arm64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -224,9 +224,9 @@ NATIVE_LINTERS: [TERRAFORM_TERRAFORM_FMT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TERRAFORM_TERRAFORM_FMT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" https://releases.hashicorp.com/terraform/1.17.0/terraform_1.17.0_windows_amd64.zip &&
-      unzip -q "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/terraform_1.17.0_windows_amd64.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/terraform_1.17.1_windows_amd64.zip" https://releases.hashicorp.com/terraform/1.17.1/terraform_1.17.1_windows_amd64.zip &&
+      unzip -q "$INSTALL_DIR/terraform_1.17.1_windows_amd64.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/terraform_1.17.1_windows_amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

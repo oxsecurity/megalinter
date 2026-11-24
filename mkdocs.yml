@@ -379,6 +379,7 @@ nav:
               - "vale": "descriptors/spell_vale.md"
               - "lychee": "descriptors/spell_lychee.md"
               - "codespell": "descriptors/spell_codespell.md"
+              - "typos": "descriptors/spell_typos.md"
 # other-end
   - "Observability":
       - "Observability home": "observability.md"

@@ -56,6 +56,10 @@ class TextReporter(Reporter):
             "-----------------------------------------------",
             "",
         ]
+        truncation_message = self.master.windows_truncation_message
+        is_truncated = isinstance(truncation_message, str)
+        if is_truncated:
+            text_report_lines += [f"⚠️ {truncation_message}", ""]
         # Files lines
         if self.master.cli_lint_mode == "file":
             for file_result in self.master.files_lint_results:
@@ -81,6 +85,8 @@ class TextReporter(Reporter):
         elif self.master.cli_lint_mode in ["project", "list_of_files"]:
             workspace_nm = utils.normalize_log_string(self.master.workspace)
             status = "✅ [SUCCESS]" if self.master.status == "success" else "❌ [ERROR]"
+            if is_truncated and self.master.number_errors == 0:
+                status = "⚠️ [PARTIAL]"
             text_report_lines += [f"{status} for workspace {workspace_nm}"]
             if self.report_type == "detailed" or self.master.status != "success":
                 stdout = utils.normalize_log_string(

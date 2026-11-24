@@ -11,7 +11,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
   </a>
 </div>
 
-[![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver)](https://github.com/stylelint/stylelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/contributors/)
+[![GitHub stars](https://img.shields.io/github/stars/stylelint/stylelint?cacheSeconds=3600)](https://github.com/stylelint/stylelint) ![autofix](https://shields.io/badge/-autofix-green) ![sarif](https://shields.io/badge/-SARIF-orange) [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/stylelint/stylelint?sort=semver)](https://github.com/stylelint/stylelint/releases) [![GitHub last commit](https://img.shields.io/github/last-commit/stylelint/stylelint)](https://github.com/stylelint/stylelint/commits) [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/commit-activity/) [![GitHub contributors](https://img.shields.io/github/contributors/stylelint/stylelint)](https://github.com/stylelint/stylelint/graphs/contributors/)
 
 **Stylelint** is a mighty CSS linter that helps you avoid errors and enforce coding conventions in your stylesheets. It's designed to catch both syntax errors and problematic patterns while maintaining code consistency across projects.
 
@@ -28,7 +28,7 @@ description: How to use stylelint (configure, ignore files, ignore errors, help 
 
 ## stylelint documentation
 
-- Version in MegaLinter: **17.16.0**
+- Version in MegaLinter: **18.0.0**
 - Visit [Official Web Site](https://stylelint.io){target=_blank}
 - See [How to configure stylelint rules](https://stylelint.io/user-guide/configure){target=_blank}
   - If custom `.stylelintrc.json` config file isn't found, [.stylelintrc.json](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.stylelintrc.json){target=_blank} will be used
@@ -82,22 +82,22 @@ This linter is available in the following flavors
 
 |                                                                         <!-- -->                                                                         | Flavor                                                             | Description                                              | Embedded linters |                                                                                                                                                                                                   Info |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------|:---------------------------------------------------------|:----------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       134        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        59        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/images/mega-linter-square.png" alt="" height="32px" class="megalinter-icon"></a> | [all](https://megalinter.io/beta/supported-linters/)               | Default MegaLinter Flavor                                |       135        |                             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/c_cpp.ico" alt="" height="32px" class="megalinter-icon"></a>        | [c_cpp](https://megalinter.io/beta/flavors/c_cpp/)                 | Optimized for pure C/C++ projects                        |        60        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-c_cpp/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-c_cpp) |
 |       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/cupcake.ico" alt="" height="32px" class="megalinter-icon"></a>       | [cupcake](https://megalinter.io/beta/flavors/cupcake/)             | MegaLinter for the most commonly used languages          |       100        |             ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-cupcake/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-cupcake) |
-|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        52        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        66        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        81        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        54        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        57        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        68        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
-|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        57        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
-|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        70        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        53        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
-|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        58        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
-|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        53        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
-|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        57        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
+|    <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/documentation.ico" alt="" height="32px" class="megalinter-icon"></a>    | [documentation](https://megalinter.io/beta/flavors/documentation/) | MegaLinter for documentation projects                    |        53        | ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-documentation/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-documentation) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnet.ico" alt="" height="32px" class="megalinter-icon"></a>        | [dotnet](https://megalinter.io/beta/flavors/dotnet/)               | Optimized for C, C++, C# or VB based projects            |        67        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnet/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnet) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/dotnetweb.ico" alt="" height="32px" class="megalinter-icon"></a>      | [dotnetweb](https://megalinter.io/beta/flavors/dotnetweb/)         | Optimized for C, C++, C# or VB based projects with JS/TS |        82        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-dotnetweb/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-dotnetweb) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/go.ico" alt="" height="32px" class="megalinter-icon"></a>          | [go](https://megalinter.io/beta/flavors/go/)                       | Optimized for GO based projects                          |        55        |                       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-go/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-go) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/java.ico" alt="" height="32px" class="megalinter-icon"></a>         | [java](https://megalinter.io/beta/flavors/java/)                   | Optimized for JAVA based projects                        |        58        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-java/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-java) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/javascript.ico" alt="" height="32px" class="megalinter-icon"></a>      | [javascript](https://megalinter.io/beta/flavors/javascript/)       | Optimized for JAVASCRIPT or TYPESCRIPT based projects    |        69        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-javascript/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-javascript) |
+|         <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/php.ico" alt="" height="32px" class="megalinter-icon"></a>         | [php](https://megalinter.io/beta/flavors/php/)                     | Optimized for PHP based projects                         |        58        |                     ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-php/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-php) |
+|       <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/python.ico" alt="" height="32px" class="megalinter-icon"></a>        | [python](https://megalinter.io/beta/flavors/python/)               | Optimized for PYTHON based projects                      |        71        |               ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-python/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-python) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/ruby.ico" alt="" height="32px" class="megalinter-icon"></a>         | [ruby](https://megalinter.io/beta/flavors/ruby/)                   | Optimized for RUBY based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-ruby/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-ruby) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/rust.ico" alt="" height="32px" class="megalinter-icon"></a>         | [rust](https://megalinter.io/beta/flavors/rust/)                   | Optimized for RUST based projects                        |        54        |                   ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-rust/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-rust) |
+|     <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/salesforce.ico" alt="" height="32px" class="megalinter-icon"></a>      | [salesforce](https://megalinter.io/beta/flavors/salesforce/)       | Optimized for Salesforce based projects                  |        59        |       ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-salesforce/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-salesforce) |
+|        <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/swift.ico" alt="" height="32px" class="megalinter-icon"></a>        | [swift](https://megalinter.io/beta/flavors/swift/)                 | Optimized for SWIFT based projects                       |        54        |                 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-swift/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-swift) |
+|      <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/terraform.ico" alt="" height="32px" class="megalinter-icon"></a>      | [terraform](https://megalinter.io/beta/flavors/terraform/)         | Optimized for TERRAFORM based projects                   |        58        |         ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/oxsecurity/megalinter-terraform/beta) ![Docker Pulls](https://img.shields.io/docker/pulls/oxsecurity/megalinter-terraform) |
 
 ## Behind the scenes
 
@@ -139,13 +139,13 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
   Input: Files(s), glob(s), or nothing to use stdin.
 
-    If an input argument is wrapped in quotation marks, it will be passed to
-    globby for cross-platform glob support. "node_modules" are always ignored.
+    If an input argument is wrapped in quotation marks, it will be expanded
+    as a glob for cross-platform support. "node_modules" are always ignored.
     You can also pass no input and use stdin, instead.
 
   Options:
 
-    --config, -c <path_or_module>
+    -c <path_or_module>, --config=<path_or_module>
 
       A path to a specific configuration file (JSON, YAML, CommonJS, or ES module),
       or a module name in "node_modules" that points to one. If no argument is
@@ -160,7 +160,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
       The search will begin in the working directory and move up the directory
       tree until a configuration file is found.
 
-    --config-basedir <path>
+    --config-basedir=<path>
 
       An absolute path to the directory that relative paths defining "extends",
       "plugins", and "customSyntax" are *relative to*. Only necessary if these
@@ -170,30 +170,30 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
       Print the configuration for the given input file path. Globs are unsupported.
 
-    --ignore-path, -i <path>
+    -i <path>, --ignore-path=<path>
 
       A path to a file containing patterns that describe files to ignore. The
       path can be absolute or relative to "process.cwd()". You can repeat the
       option to provide multiple paths. By default, Stylelint looks for
       ".stylelintignore" in "process.cwd()". Multiple can be set.
 
-    --ignore-pattern, --ip <pattern>
+    --ignore-pattern=<pattern>
 
       A pattern of files to ignore (in addition to those in ".stylelintignore").
       Multiple can be set.
 
-    --fix [<mode>]
+    --fix[=<mode>]
 
       Automatically fix problems of certain rules. The modes are as follows:
 
         strict       only fixing when there are no syntax errors (default)
         lax          attempting to fix as much as possible even with syntax errors
 
-    --compute-edit-info, --cei
+    --compute-edit-info
 
       Compute edit information for fixable problems.
 
-    --custom-syntax <name_or_path>
+    --custom-syntax=<name_or_path>
 
       A module name or path to a JS file exporting a PostCSS-compatible syntax.
 
@@ -201,15 +201,15 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
       Accept stdin input even if it is empty.
 
-    --stdin-filename <name>
+    --stdin-filename=<name>
 
       A filename to assign stdin input.
 
-    --ignore-disables, --id
+    --ignore-disables
 
       Ignore "stylelint-disable" comments.
 
-    --disable-default-ignores, --di
+    --disable-default-ignores
 
       Allow linting of "node_modules".
 
@@ -220,7 +220,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
       stored in "./.stylelintcache". To adjust this, use "--cache-location".
       Cache is disabled by default.
 
-    --cache-location <path>
+    --cache-location=<path>
 
       A path to a file or directory to be used for the cache location. If a
       directory is specified, a cache file will be created inside the specified
@@ -230,7 +230,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
       on *nix systems or "\" on Windows. Otherwise the path will be assumed to
       be a file.
 
-    --cache-strategy <strategy>
+    --cache-strategy=<strategy>
 
       A strategy for the cache to use for detecting changed files. Either one of:
 
@@ -242,7 +242,7 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
       happen during git operations like "git clone" because git does not track file
       modification time.
 
-    --formatter, -f <formatter>
+    -f <formatter>, --formatter=<formatter>
 
       An output formatter. The variants are as follows:
 
@@ -253,11 +253,11 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
         unix         C compiler-like format
         verbose      extend "string" to include a file list and a tally
 
-    --custom-formatter <path_or_module>
+    --custom-formatter=<path_or_module>
 
       A path to a JS file or module name exporting a custom formatting function.
 
-    --quiet, -q
+    -q, --quiet
 
       Only register problems for rules with an "error"-level severity (ignore
       "warning"-level).
@@ -274,60 +274,62 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 
       Force enable/disable the validation of the rules' options.
 
-    --report-needless-disables, --rd
+    --report-needless-disables
 
       Also report errors for "stylelint-disable" comments that are not blocking
       a lint warning. The process will exit with code 2 if needless disables are found.
 
-    --report-invalid-scope-disables, --risd
+    --report-invalid-scope-disables
 
       Report "stylelint-disable" comments that used for rules that don't exist
       within the configuration object. The process will exit with code 2 if invalid
       scope disables are found.
 
-    --report-descriptionless-disables, --rdd
+    --report-descriptionless-disables
 
       Report "stylelint-disable" comments without a description. The process will
       exit with code 2 if descriptionless disables are found.
 
-    --max-warnings, --mw <number>
+    --max-warnings=<number>
 
       The number of warnings above which the process will exit with code 2.
       Useful when setting "defaultSeverity" to "warning" and expecting the process
       to fail on warnings (e.g. CI build).
 
-    --output-file, -o <path>
+    -o <path>, --output-file=<path>
 
       A file path to write a report.
 
-    --allow-empty-input, --aei
+    --allow-empty-input
 
       When a glob pattern matches no files, the process will exit without throwing an error.
 
-    --suppress [<rule>]
+    --suppress[=<rule>]
+
       Suppress problems and record them in a file. If no rule is specified,
       all problems are suppressed. Otherwise, only problems with the given
-      rules are suppressed, e.g., "--suppress rule1 --suppress rule2".
+      rules are suppressed, e.g., "--suppress=rule1 --suppress=rule2".
       See also "--suppress-location".
 
-    --suppress-location <path>
+    --suppress-location=<path>
 
       A path to a file or directory to be used for the suppressions file location. If a
       directory is specified, a suppressions file will be created inside the specified
       folder, with the name "stylelint-suppressions.json".
 
-    --globby-options, --go <json>
+    --globby-options=<json>
 
-      Options in JSON format passed to globby.
+      Options in JSON format used to match the input globs. Supported options are
+      "braceExpansion", "caseSensitiveMatch", "dot", "extglob", "followSymbolicLinks"
+      and "ignore".
 
-    --version, -v
+    -v, --version
 
       Show the version.
 
-    --help, -h
+    -h, --help
 
       Show the help.
-
 ```
 
 ### Installation on mega-linter Docker image
@@ -335,20 +337,17 @@ stylelint --fix --config .stylelintrc.json myfile.css myfile2.css myfile3.css
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=stylelint
-ARG NPM_STYLELINT_VERSION=17.16.0
+ARG NPM_STYLELINT_VERSION=18.0.0
 # renovate: datasource=npm depName=stylelint-config-standard
-ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=40.0.0
-# renovate: datasource=npm depName=stylelint-config-sass-guidelines
-ARG NPM_STYLELINT_CONFIG_SASS_GUIDELINES_VERSION=13.0.0
+ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
-ARG NPM_STYLELINT_SCSS_VERSION=7.4.0
+ARG NPM_STYLELINT_SCSS_VERSION=7.5.0
 ```
 
 - NPM packages (node.js):
-  - [stylelint@17.16.0](https://www.npmjs.com/package/stylelint/v/17.16.0)
-  - [stylelint-config-standard@40.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/40.0.0)
-  - [stylelint-config-sass-guidelines@13.0.0](https://www.npmjs.com/package/stylelint-config-sass-guidelines/v/13.0.0)
-  - [stylelint-scss@7.4.0](https://www.npmjs.com/package/stylelint-scss/v/7.4.0)
+  - [stylelint@18.0.0](https://www.npmjs.com/package/stylelint/v/18.0.0)
+  - [stylelint-config-standard@41.0.0](https://www.npmjs.com/package/stylelint-config-standard/v/41.0.0)
+  - [stylelint-scss@7.5.0](https://www.npmjs.com/package/stylelint-scss/v/7.5.0)
 
 ### Installation without Docker (native mode)
 
@@ -373,7 +372,7 @@ NATIVE_LINTERS: [CSS_STYLELINT]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/CSS_STYLELINT"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "stylelint@17.16.0" "stylelint-config-standard@40.0.0" "stylelint-config-sass-guidelines@13.0.0" "stylelint-scss@7.4.0"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "stylelint@18.0.0" "stylelint-config-standard@41.0.0" "stylelint-scss@7.5.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```
@@ -401,7 +400,7 @@ Resolutions:
         - command: "npm install stylelint-order"
           cwd: "root"
           continue_if_failed: false
-  - Note: `stylelint-scss` and `stylelint-config-sass-guidelines` are already bundled and do not need to be re-installed.
+  - Note: `stylelint-scss` is already bundled and does not need to be re-installed. `stylelint-config-sass-guidelines` is no longer bundled (it does not support stylelint 18): install it yourself if you still need it.
   - Or install your project's dependencies and run stylelint from the workspace binary:
       CSS_STYLELINT_PRE_COMMANDS:
         - command: yarn install --frozen-lockfile --ignore-scripts
@@ -428,7 +427,7 @@ Resolutions:
         - command: "npm install stylelint-config-recommended"
           cwd: "root"
           continue_if_failed: false
-  - Note: `stylelint-config-standard` and `stylelint-config-sass-guidelines` are already bundled.
+  - Note: `stylelint-config-standard` is already bundled. `stylelint-config-sass-guidelines` is no longer bundled (it does not support stylelint 18).
   - Verify the config name in `.stylelintrc.*` matches the published npm package name exactly.
 ```
 

@@ -1,0 +1,147 @@
+---
+name: "Test native long command lines"
+# Runs every native linter working on a list of files with a list above the Windows command line
+# limit, and reports which ones receive all the files, which ones lint a reported part of them,
+# and which ones are broken. Windows runners are expensive: only when this code changes, and weekly
+on:
+  pull_request:
+    paths:
+      - "megalinter/native/long_command.py"
+      - ".automation/native_long_command.py"
+      - ".github/workflows/test-native-long-command.yml"
+  schedule:
+    - cron: "43 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      shard_size:
+        description: "Number of linters tested per job"
+        default: "8"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  matrix:
+    name: Compute the matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Install MegaLinter
+        run: python -m pip install -e .
+      - name: Compute matrix
+        id: matrix
+        env:
+          SHARD_SIZE: ${{ inputs.shard_size || '8' }}
+        run: echo "matrix=$(python .automation/native_long_command.py matrix --shard-size "$SHARD_SIZE")" >> "$GITHUB_OUTPUT"
+
+  linters:
+    name: ${{ matrix.name }}
+    needs: [matrix]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
+    defaults:
+      run:
+        shell: bash
+    env:
+      MEGALINTER_NATIVE: "true"
+      NATIVE_INSTALL_RUNTIMES: auto
+      VERSION_GET_AT_RUNTIME: "true"
+      PYTHONUTF8: "1"
+      LOG_LEVEL: WARNING
+      LINTERS: ${{ matrix.linters }}
+      HOST_LINTERS: ${{ matrix.host_linters }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set the native install folder
+        run: echo "MEGALINTER_HOME=${RUNNER_TEMP}/megalinter-home" >> "${GITHUB_ENV}"
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Setup uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - name: Install MegaLinter
+        run: python -m pip install -e . jsonschema
+      - name: Setup Ruby
+        if: contains(matrix.host_runtimes, 'ruby')
+        uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
+        with:
+          ruby-version: "3.4"
+      - name: Setup R
+        if: contains(matrix.host_runtimes, 'r')
+        uses: r-lib/actions/setup-r@f9a764fea8d5c63df6ef9a5c7795bf7deb5d7e05 # v2
+      - name: Setup PHP
+        if: contains(matrix.host_runtimes, 'php')
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: "8.4"
+      - name: Add the Rust clippy component
+        if: contains(matrix.host_runtimes, 'rust')
+        run: rustup component add clippy
+      - name: Install host-provided tools
+        run: python .automation/native_ci.py prepare --linters "$LINTERS,$HOST_LINTERS"
+      - name: Install linters
+        if: env.LINTERS != ''
+        run: |
+          read -ra keys <<< "${LINTERS//,/ }"
+          megalinter install-linters "${keys[@]}" --runtimes auto
+      - name: Register host-provided linters
+        if: env.HOST_LINTERS != ''
+        run: |
+          read -ra keys <<< "${HOST_LINTERS//,/ }"
+          megalinter install-linters "${keys[@]}" --runtimes auto || echo "::warning::Some host-provided tools are not available on this runner, they are skipped"
+      # GITHUB_WORKSPACE would make MegaLinter use the repository's own .github/linters configurations
+      - name: Run linters on a list above the limit
+        run: env -u GITHUB_WORKSPACE python .automation/native_long_command.py run --linters "$LINTERS,$HOST_LINTERS" --output "$RUNNER_TEMP/long-command-results"
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: long-command-${{ strategy.job-index }}
+          path: ${{ runner.temp }}/long-command-results
+          if-no-files-found: ignore
+
+  summary:
+    name: Results of all linters
+    needs: [matrix, linters]
+    if: ${{ always() && needs.matrix.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Install MegaLinter
+        run: python -m pip install -e .
+      - name: Download results
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: long-command-*
+          path: long-command-results
+      - name: Summarize, and fail if a linter is broken
+        run: python .automation/native_long_command.py summary --input long-command-results

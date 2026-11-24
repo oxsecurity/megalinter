@@ -52,6 +52,19 @@ describe("mega-linter-runner native mode", () => {
       }
     });
 
+    it("does not silently drop --trust-repo-commands with --native-setup", () => {
+      const runner = makeRunner(async () => {});
+      assert.throws(
+        () =>
+          runner.assertSupportedOptions({
+            nativeSetup: true,
+            trustRepoCommands: true,
+          }),
+        /--native --trust-repo-commands/,
+      );
+      runner.assertSupportedOptions({ trustRepoCommands: true });
+    });
+
     // Options as parsed from the command line, with their defaults: a Docker-only option with a
     // default value would make every native command fail
     it("accepts the parsed options of a native command", () => {
@@ -60,6 +73,10 @@ describe("mega-linter-runner native mode", () => {
         ["--native", "--release", "beta"],
         ["--install-linters", "--release", "beta"],
         ["--native", "--fix", "--filesonly", "src/app.py"],
+        ["--doctor"],
+        ["--list-linters", "--json"],
+        ["--prune-cache"],
+        ["--uninstall-linters", "PYTHON_BLACK"],
       ]) {
         const options = optionsDefinition.parse([
           "node",
@@ -186,6 +203,131 @@ describe("mega-linter-runner native mode", () => {
         _: ["PYTHON_BLACK"],
       });
       assert.strictEqual(installEnv.MEGALINTER_FILES_TO_LINT, undefined);
+      const setupEnv = runner.buildEnvironment({
+        nativeSetup: true,
+        _: ["PYTHON_BLACK"],
+      });
+      assert.strictEqual(setupEnv.MEGALINTER_FILES_TO_LINT, undefined);
+      const prerunEnv = runner.buildEnvironment({
+        prerun: true,
+        _: ["src/a.py"],
+      });
+      assert.strictEqual(prerunEnv.MEGALINTER_FILES_TO_LINT, undefined);
+    });
+
+    it("enables the JSON and SARIF reports", () => {
+      const runner = makeRunner(async () => {});
+      const none = runner.buildEnvironment({});
+      assert.strictEqual(none.JSON_REPORTER, process.env.JSON_REPORTER);
+      assert.strictEqual(none.SARIF_REPORTER, process.env.SARIF_REPORTER);
+      const env = runner.buildEnvironment({ json: true, sarif: true });
+      assert.strictEqual(env.JSON_REPORTER, "true");
+      assert.strictEqual(env.SARIF_REPORTER, "true");
+    });
+
+    it("builds the prerun command", () => {
+      const runner = makeRunner(async () => {});
+      assert.deepStrictEqual(
+        runner.buildArguments({ prerun: true, path: "/work" }),
+        ["prerun", "--input", path.resolve("/work")],
+      );
+    });
+
+    it("builds the maintenance commands without a workspace", () => {
+      const runner = makeRunner(async () => {});
+      assert.deepStrictEqual(
+        runner.buildArguments({
+          uninstallLinters: true,
+          _: ["PYTHON_BLACK"],
+          path: "/work",
+        }),
+        ["uninstall-linters", "PYTHON_BLACK"],
+      );
+      assert.deepStrictEqual(runner.buildArguments({ listLinters: true }), [
+        "list-linters",
+      ]);
+      assert.deepStrictEqual(
+        runner.buildArguments({ listLinters: true, json: true }),
+        ["list-linters", "--json"],
+      );
+      assert.deepStrictEqual(runner.buildArguments({ doctor: true }), [
+        "doctor",
+      ]);
+      assert.deepStrictEqual(runner.buildArguments({ pruneCache: true }), [
+        "cache",
+        "prune",
+      ]);
+      const env = runner.buildEnvironment({
+        uninstallLinters: true,
+        _: ["PYTHON_BLACK"],
+      });
+      assert.strictEqual(env.MEGALINTER_FILES_TO_LINT, undefined);
+    });
+
+    it("runs one native command at a time, and --uninstall-linters needs linter keys", () => {
+      const runner = makeRunner(async () => {});
+      assert.throws(
+        () =>
+          runner.assertSupportedOptions({ doctor: true, listLinters: true }),
+        /--list-linters and --doctor can not be combined|--doctor and --list-linters can not be combined/,
+      );
+      assert.throws(
+        () =>
+          runner.assertSupportedOptions({ doctor: true, installLinters: true }),
+        /can not be combined/,
+      );
+      // Combinations that were accepted before keep working
+      runner.assertSupportedOptions({ native: true, installLinters: true });
+      runner.assertSupportedOptions({
+        nativeSetup: true,
+        installLinters: true,
+      });
+      runner.assertSupportedOptions({ native: true, doctor: true });
+      assert.throws(
+        () => runner.assertSupportedOptions({ uninstallLinters: true }),
+        /needs the keys/,
+      );
+      runner.assertSupportedOptions({
+        uninstallLinters: true,
+        _: ["PYTHON_BLACK"],
+      });
+    });
+
+    it("builds the native-setup command, with or without linter keys", () => {
+      const runner = makeRunner(async () => {});
+      assert.deepStrictEqual(
+        runner.buildArguments({ nativeSetup: true, path: "/work" }),
+        ["setup", "--input", path.resolve("/work")],
+      );
+      assert.deepStrictEqual(
+        runner.buildArguments({
+          nativeSetup: true,
+          _: ["PYTHON_BLACK", "JAVASCRIPT_ES"],
+          runtimes: "never",
+          path: "/work",
+        }),
+        [
+          "setup",
+          "--linters",
+          "PYTHON_BLACK,JAVASCRIPT_ES",
+          "--input",
+          path.resolve("/work"),
+          "--runtimes",
+          "never",
+        ],
+      );
+    });
+  });
+
+  describe("startup", () => {
+    it("does not load yeoman-environment unless --install needs it", () => {
+      const source = fs.readFileSync(
+        new URL("../lib/runner.js", import.meta.url),
+        "utf8",
+      );
+      assert.ok(!/^import .*from "yeoman-environment"/m.test(source));
+      assert.ok(!/^import .*from "\.\/(upgrade|codetotal)\.js"/m.test(source));
+      assert.ok(source.includes('await import("yeoman-environment")'));
     });
   });
 
@@ -270,6 +412,78 @@ describe("mega-linter-runner native mode", () => {
         runner.resolveCoreVersion("10.2.0.post0.dev20261101000000"),
         /fetch failed/,
       );
+    });
+
+    function countingFetch() {
+      const fetchFn = async () => {
+        fetchFn.calls += 1;
+        return jsonResponse(project(releases));
+      };
+      fetchFn.calls = 0;
+      return fetchFn;
+    }
+
+    it("remembers the latest installed beta for an hour", async () => {
+      let now = Date.parse("2026-11-22T10:00:00Z");
+      const fetchFn = countingFetch();
+      const runner = makeRunner(fetchFn, { nowFn: () => now });
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      for (const minutes of [0, 30, 59]) {
+        now = Date.parse("2026-11-22T10:00:00Z") + minutes * 60 * 1000;
+        assert.strictEqual(
+          await runner.resolveCoreVersion("beta"),
+          "10.2.0.post0.dev20261110000000",
+        );
+      }
+      assert.strictEqual(fetchFn.calls, 1);
+      now = Date.parse("2026-11-22T11:00:00Z");
+      await runner.resolveCoreVersion("beta");
+      assert.strictEqual(fetchFn.calls, 2);
+    });
+
+    it("asks PyPI again when the remembered beta is not installed", async () => {
+      const fetchFn = countingFetch();
+      const runner = makeRunner(fetchFn);
+      assert.strictEqual(
+        await runner.resolveCoreVersion("beta"),
+        "10.2.0.post0.dev20261110000000",
+      );
+      assert.strictEqual(
+        await runner.resolveCoreVersion("beta"),
+        "10.2.0.post0.dev20261110000000",
+      );
+      assert.strictEqual(fetchFn.calls, 2);
+    });
+
+    it("ignores a remembered beta from the future or unreadable", async () => {
+      const now = Date.parse("2026-11-22T10:00:00Z");
+      const fetchFn = countingFetch();
+      const runner = makeRunner(fetchFn, { nowFn: () => now });
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      fs.writeFileSync(
+        path.join(runner.home, "core", ".latest-beta.json"),
+        JSON.stringify({
+          version: "10.2.0.post0.dev20261110000000",
+          checkedAt: now + 1000,
+        }),
+      );
+      await runner.resolveCoreVersion("beta");
+      assert.strictEqual(fetchFn.calls, 1);
+      fs.writeFileSync(
+        path.join(runner.home, "core", ".latest-beta.json"),
+        "not json",
+      );
+      await runner.resolveCoreVersion("beta");
+      assert.strictEqual(fetchFn.calls, 2);
+    });
+
+    it("does not list the remembered beta as an installed version", async () => {
+      const runner = makeRunner(countingFetch());
+      installCore(runner, "10.2.0.post0.dev20261110000000");
+      await runner.resolveCoreVersion("beta");
+      assert.deepStrictEqual(runner.installedCoreVersions(), [
+        "10.2.0.post0.dev20261110000000",
+      ]);
     });
 
     it("fails clearly when no beta was published", async () => {
