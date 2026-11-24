@@ -1813,7 +1813,6 @@ class Linter:
             if re.search(pattern, return_stdout or ""):
                 block = f"[{identifier}] {message}" if identifier else message
                 return_stdout = (return_stdout or "") + "\n\n" + block
-                logging.warning(f"[{self.linter_name}] {block}")
         return return_code, return_stdout
 
     def manage_sarif_output(self, return_stdout):
