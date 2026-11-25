@@ -224,7 +224,7 @@ ARG NPM_STYLELINT_CONFIG_STANDARD_VERSION=41.0.0
 # renovate: datasource=npm depName=stylelint-scss
 ARG NPM_STYLELINT_SCSS_VERSION=7.5.0
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.6.6
+ARG NPM_BIOMEJS_BIOME_VERSION=2.6.7
 # renovate: datasource=dart-version depName=dart
 ARG DART_VERSION='3.12.2'
 # renovate: datasource=github-releases depName=dotenv-linter/dotenv-linter extractVersion=^v(?<version>.+)$
