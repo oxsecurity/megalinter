@@ -321,6 +321,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.4.2 to **5.4.3** on 2026-11-22
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.17.0 to **1.17.1** on 2026-11-23
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 19.0.0 to **19.0.1** on 2026-11-23
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.29 to **3.95.30** on 2026-11-25
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

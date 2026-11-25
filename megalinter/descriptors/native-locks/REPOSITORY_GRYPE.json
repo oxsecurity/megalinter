@@ -9,72 +9,72 @@
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "1a748df28f72e841dea5c6a19c736b61a79c3e81dc376e0c18e1ab0d274cfe08",
-          "size": 32220794,
-          "url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_darwin_amd64.tar.gz",
+          "sha256": "65bfb1b3b30d32e9dab156a60003c7146e619f649992be227bf09c9ccbf44f7e",
+          "size": 32190865,
+          "url": "https://github.com/anchore/grype/releases/download/v0.121.3/grype_0.121.3_darwin_amd64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/grype@v0.121.2"
+            "github_release_attestation:anchore/grype@v0.121.3"
           ]
         }
       ],
-      "version": "0.121.2"
+      "version": "0.121.3"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "3633c113d81ec1460b0520e23633d72a25caae62875fd48a8b0e4f22dcc7c704",
-          "size": 29435294,
-          "url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_darwin_arm64.tar.gz",
+          "sha256": "54336f2cd8cdee8b3d8ea83462561ff7fa9293498054c7c53a193db44bfea4c8",
+          "size": 29409096,
+          "url": "https://github.com/anchore/grype/releases/download/v0.121.3/grype_0.121.3_darwin_arm64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/grype@v0.121.2"
+            "github_release_attestation:anchore/grype@v0.121.3"
           ]
         }
       ],
-      "version": "0.121.2"
+      "version": "0.121.3"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "9c8965ced9df657e5e851c14021bae838802f711edd7a48f9bc3c923a8d28f12",
-          "size": 32668934,
-          "url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_linux_amd64.tar.gz",
+          "sha256": "e9da18cc1429e786722e32161288103600efffd8e483c90761f90485bd1bec85",
+          "size": 32643999,
+          "url": "https://github.com/anchore/grype/releases/download/v0.121.3/grype_0.121.3_linux_amd64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/grype@v0.121.2"
+            "github_release_attestation:anchore/grype@v0.121.3"
           ]
         }
       ],
-      "version": "0.121.2"
+      "version": "0.121.3"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "d7d2e160255b0f087280feabf6f213cf4c45d475690f3f1fe5dc336eb1037bf0",
-          "size": 29759546,
-          "url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_linux_arm64.tar.gz",
+          "sha256": "b7815598d48da78bfd16f5b98ef28e1bb09c03d34fc8c3e350f99b6ccb3c7cba",
+          "size": 29732927,
+          "url": "https://github.com/anchore/grype/releases/download/v0.121.3/grype_0.121.3_linux_arm64.tar.gz",
           "verification": [
-            "github_release_attestation:anchore/grype@v0.121.2"
+            "github_release_attestation:anchore/grype@v0.121.3"
           ]
         }
       ],
-      "version": "0.121.2"
+      "version": "0.121.3"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "zip",
-          "sha256": "27d5ce85c7c90900b10a6e61baf2b0729fd6246e32c0ca70e91c913f86644cf7",
-          "size": 31559761,
-          "url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_windows_amd64.zip",
+          "sha256": "3007a5afea25c60030a49d6c24d4e5abb6c94c0dbeed7ea303eb26df8e900c18",
+          "size": 31540314,
+          "url": "https://github.com/anchore/grype/releases/download/v0.121.3/grype_0.121.3_windows_amd64.zip",
           "verification": [
-            "github_release_attestation:anchore/grype@v0.121.2"
+            "github_release_attestation:anchore/grype@v0.121.3"
           ]
         }
       ],
-      "version": "0.121.2"
+      "version": "0.121.3"
     }
   },
-  "spec_hash": "a639ec66ac3d29bd479b28def4adc1ec243b3ca57b18440a3d32c909c32d0592"
+  "spec_hash": "7434c8af87b9b7b0c762cbe41b98318e06aeae13560cf8b3046602d65ecaad7d"
 }

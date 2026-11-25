@@ -10,76 +10,76 @@
         {
           "archive": "none",
           "name": "php-cs-fixer.phar",
-          "sha256": "5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c",
-          "size": 3750294,
-          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar",
+          "sha256": "401607e17017f42929f075f4eaf56d78ebe9f9aef9c9d328979756d6d3b64b9a",
+          "size": 3750299,
+          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.30/php-cs-fixer.phar",
           "verification": [
             "unverified: PHP-CS-Fixer publishes a GPG signature (php-cs-fixer.phar.asc) but its signing key is not retrievable with a user ID from any public keyserver, so it cannot be verified: the sha256 is pinned on first download by the lock"
           ]
         }
       ],
-      "version": "v3.95.29"
+      "version": "v3.95.30"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "none",
           "name": "php-cs-fixer.phar",
-          "sha256": "5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c",
-          "size": 3750294,
-          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar",
+          "sha256": "401607e17017f42929f075f4eaf56d78ebe9f9aef9c9d328979756d6d3b64b9a",
+          "size": 3750299,
+          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.30/php-cs-fixer.phar",
           "verification": [
             "unverified: PHP-CS-Fixer publishes a GPG signature (php-cs-fixer.phar.asc) but its signing key is not retrievable with a user ID from any public keyserver, so it cannot be verified: the sha256 is pinned on first download by the lock"
           ]
         }
       ],
-      "version": "v3.95.29"
+      "version": "v3.95.30"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "none",
           "name": "php-cs-fixer.phar",
-          "sha256": "5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c",
-          "size": 3750294,
-          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar",
+          "sha256": "401607e17017f42929f075f4eaf56d78ebe9f9aef9c9d328979756d6d3b64b9a",
+          "size": 3750299,
+          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.30/php-cs-fixer.phar",
           "verification": [
             "unverified: PHP-CS-Fixer publishes a GPG signature (php-cs-fixer.phar.asc) but its signing key is not retrievable with a user ID from any public keyserver, so it cannot be verified: the sha256 is pinned on first download by the lock"
           ]
         }
       ],
-      "version": "v3.95.29"
+      "version": "v3.95.30"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "none",
           "name": "php-cs-fixer.phar",
-          "sha256": "5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c",
-          "size": 3750294,
-          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar",
+          "sha256": "401607e17017f42929f075f4eaf56d78ebe9f9aef9c9d328979756d6d3b64b9a",
+          "size": 3750299,
+          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.30/php-cs-fixer.phar",
           "verification": [
             "unverified: PHP-CS-Fixer publishes a GPG signature (php-cs-fixer.phar.asc) but its signing key is not retrievable with a user ID from any public keyserver, so it cannot be verified: the sha256 is pinned on first download by the lock"
           ]
         }
       ],
-      "version": "v3.95.29"
+      "version": "v3.95.30"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "none",
           "name": "php-cs-fixer.phar",
-          "sha256": "5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c",
-          "size": 3750294,
-          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar",
+          "sha256": "401607e17017f42929f075f4eaf56d78ebe9f9aef9c9d328979756d6d3b64b9a",
+          "size": 3750299,
+          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.30/php-cs-fixer.phar",
           "verification": [
             "unverified: PHP-CS-Fixer publishes a GPG signature (php-cs-fixer.phar.asc) but its signing key is not retrievable with a user ID from any public keyserver, so it cannot be verified: the sha256 is pinned on first download by the lock"
           ]
         }
       ],
-      "version": "v3.95.29"
+      "version": "v3.95.30"
     }
   },
-  "spec_hash": "0f8aff67ec7042ef4ae4260b0c8c2fc084c964e40f7f171fbc1ee310053beaa4"
+  "spec_hash": "fb57692bf5a0505adef1a28d0b7b3991859b4cf46c69800c0965ce3ebcc014a0"
 }
