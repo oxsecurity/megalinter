@@ -22,7 +22,7 @@ description: How to use phplint (configure, ignore files, ignore errors, help & 
 
 ## phplint documentation
 
-- Version in MegaLinter: **9.8.0**
+- Version in MegaLinter: **9.8.3**
 - Visit [Official Web Site](https://github.com/overtrue/phplint#readme){target=_blank}
 - See [How to configure phplint rules](https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration){target=_blank}
   - If custom `.phplint.yml` config file isn't found, [.phplint.yml](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml){target=_blank} will be used
@@ -118,8 +118,6 @@ Options:
       --memory-limit=MEMORY-LIMIT        Memory limit for analysis
       --ignore-exit-code                 Ignore exit codes so there are no "failure" exit code even when no files processed
       --dry-run                          Only shows which files would have been analysed
-      --output-format=OUTPUT-FORMAT       (multiple values allowed)
-      --output-file=OUTPUT-FILE
   -h, --help                             Display help for the given command. When no command is given display help for the list command
       --silent                           Do not output any message
   -q, --quiet                            Only errors are displayed. All other output is suppressed
@@ -145,7 +143,7 @@ ENV COMPOSER_HOME=/usr/local/composer
 ENV PATH="/usr/local/composer/vendor/bin:${PATH}"
 # Linter install
 # renovate: datasource=packagist depName=overtrue/phplint
-ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
+ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.3
 # renovate: datasource=packagist depName=bartlett/sarif-php-converters
 ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.2
 RUN GITHUB_AUTH_TOKEN="$(cat /run/secrets/GITHUB_TOKEN)" && export GITHUB_AUTH_TOKEN && composer global require overtrue/phplint:${PHP_OVERTRUE_PHPLINT_VERSION} bartlett/sarif-php-converters:${PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION}
@@ -179,7 +177,7 @@ NATIVE_LINTERS: [PHP_PHPLINT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPLINT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
+    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.3/phplint.phar &&
       chmod +x "$INSTALL_DIR/phplint.phar" &&
       export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
@@ -191,7 +189,7 @@ NATIVE_LINTERS: [PHP_PHPLINT]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PHP_PHPLINT"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar &&
+    curl -fsSL -o "$INSTALL_DIR/phplint.phar" https://github.com/overtrue/phplint/releases/download/9.8.3/phplint.phar &&
       export PATH="$INSTALL_DIR:$PATH"
     # phplint: run php "$INSTALL_DIR/phplint.phar"
     export PLINT_MODE="legacy"

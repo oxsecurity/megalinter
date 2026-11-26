@@ -323,6 +323,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 19.0.0 to **19.0.1** on 2026-11-23
   - [php-cs-fixer](https://cs.symfony.com/) from 3.95.29 to **3.95.30** on 2026-11-25
   - [biome](https://biomejs.dev) from 2.6.6 to **2.6.7** on 2026-11-26
+  - [phplint](https://github.com/overtrue/phplint) from 9.8.0 to **9.8.3** on 2026-11-26
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.9 to **7.6.10** on 2026-11-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.9 to **7.6.10** on 2026-11-26
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.17.4 to **0.17.5** on 2026-11-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.17.4 to **0.17.5** on 2026-11-26
+  - [typos](https://github.com/crate-ci/typos) from 1.52.0 to **1.52.2** on 2026-11-26
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31

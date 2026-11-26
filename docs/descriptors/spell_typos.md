@@ -20,7 +20,7 @@ To be active within MegaLinter, a configuration file (`typos.toml`, `_typos.toml
 
 ## typos documentation
 
-- Version in MegaLinter: **1.52.0**
+- Version in MegaLinter: **1.52.2**
 - Visit [Official Web Site](https://github.com/crate-ci/typos#readme){target=_blank}
 - See [How to configure typos rules](https://github.com/crate-ci/typos/blob/main/docs/reference.md#configuration){target=_blank}
 - See [How to disable typos rules in files](https://github.com/crate-ci/typos/blob/main/docs/reference.md#defaultextend-ignore-re){target=_blank}
@@ -177,7 +177,7 @@ Output:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
-ARG SPELL_TYPOS_VERSION=1.52.0
+ARG SPELL_TYPOS_VERSION=1.52.2
 RUN case "${TARGETARCH}" in \
       amd64) TYPOS_ARCH="x86_64" ;; \
       arm64) TYPOS_ARCH="aarch64" ;; \
@@ -212,9 +212,9 @@ NATIVE_LINTERS: [SPELL_TYPOS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/SPELL_TYPOS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.0-x86_64-unknown-linux-musl.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-unknown-linux-musl.tar.gz &&
-      tar -xzf "$INSTALL_DIR/typos-v1.52.0-x86_64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/typos-v1.52.0-x86_64-unknown-linux-musl.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz &&
+      tar -xzf "$INSTALL_DIR/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -223,9 +223,9 @@ NATIVE_LINTERS: [SPELL_TYPOS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/SPELL_TYPOS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.0-aarch64-unknown-linux-musl.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-aarch64-unknown-linux-musl.tar.gz &&
-      tar -xzf "$INSTALL_DIR/typos-v1.52.0-aarch64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/typos-v1.52.0-aarch64-unknown-linux-musl.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.2-aarch64-unknown-linux-musl.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-aarch64-unknown-linux-musl.tar.gz &&
+      tar -xzf "$INSTALL_DIR/typos-v1.52.2-aarch64-unknown-linux-musl.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/typos-v1.52.2-aarch64-unknown-linux-musl.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -234,9 +234,9 @@ NATIVE_LINTERS: [SPELL_TYPOS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/SPELL_TYPOS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.0-x86_64-apple-darwin.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-apple-darwin.tar.gz &&
-      tar -xzf "$INSTALL_DIR/typos-v1.52.0-x86_64-apple-darwin.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/typos-v1.52.0-x86_64-apple-darwin.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.2-x86_64-apple-darwin.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-apple-darwin.tar.gz &&
+      tar -xzf "$INSTALL_DIR/typos-v1.52.2-x86_64-apple-darwin.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/typos-v1.52.2-x86_64-apple-darwin.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -245,9 +245,9 @@ NATIVE_LINTERS: [SPELL_TYPOS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/SPELL_TYPOS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.0-aarch64-apple-darwin.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-aarch64-apple-darwin.tar.gz &&
-      tar -xzf "$INSTALL_DIR/typos-v1.52.0-aarch64-apple-darwin.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/typos-v1.52.0-aarch64-apple-darwin.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.2-aarch64-apple-darwin.tar.gz" https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-aarch64-apple-darwin.tar.gz &&
+      tar -xzf "$INSTALL_DIR/typos-v1.52.2-aarch64-apple-darwin.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/typos-v1.52.2-aarch64-apple-darwin.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -256,9 +256,9 @@ NATIVE_LINTERS: [SPELL_TYPOS]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/SPELL_TYPOS"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.0-x86_64-pc-windows-msvc.zip" https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-pc-windows-msvc.zip &&
-      unzip -q "$INSTALL_DIR/typos-v1.52.0-x86_64-pc-windows-msvc.zip" -d "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/typos-v1.52.0-x86_64-pc-windows-msvc.zip" &&
+    curl -fsSL -o "$INSTALL_DIR/typos-v1.52.2-x86_64-pc-windows-msvc.zip" https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-pc-windows-msvc.zip &&
+      unzip -q "$INSTALL_DIR/typos-v1.52.2-x86_64-pc-windows-msvc.zip" -d "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/typos-v1.52.2-x86_64-pc-windows-msvc.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
