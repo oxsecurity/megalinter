@@ -12509,7 +12509,7 @@
 </ul>
 <h2 id="phplint-documentation">phplint documentation</h2>
 <ul>
-<li>Version in MegaLinter: <strong>9.8.0</strong></li>
+<li>Version in MegaLinter: <strong>9.8.3</strong></li>
 <li>Visit <a href="https://github.com/overtrue/phplint#readme" target="_blank">Official Web Site</a></li>
 <li>See <a href="https://github.com/overtrue/phplint/blob/main/docs/configuration.md#configuration" target="_blank">How to configure phplint rules</a><ul>
 <li>If custom <code>.phplint.yml</code> config file isn't found, <a href="https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.phplint.yml" target="_blank">.phplint.yml</a> will be used</li>
@@ -12694,8 +12694,6 @@ Options:
 <span class="w">      </span>--memory-limit<span class="o">=</span>MEMORY-LIMIT<span class="w">        </span>Memory<span class="w"> </span>limit<span class="w"> </span><span class="k">for</span><span class="w"> </span>analysis
 <span class="w">      </span>--ignore-exit-code<span class="w">                 </span>Ignore<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>codes<span class="w"> </span>so<span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>no<span class="w"> </span><span class="s2">"failure"</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span>even<span class="w"> </span>when<span class="w"> </span>no<span class="w"> </span>files<span class="w"> </span>processed
 <span class="w">      </span>--dry-run<span class="w">                          </span>Only<span class="w"> </span>shows<span class="w"> </span>which<span class="w"> </span>files<span class="w"> </span>would<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>analysed
-<span class="w">      </span>--output-format<span class="o">=</span>OUTPUT-FORMAT<span class="w">       </span><span class="o">(</span>multiple<span class="w"> </span>values<span class="w"> </span>allowed<span class="o">)</span>
-<span class="w">      </span>--output-file<span class="o">=</span>OUTPUT-FILE
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">                             </span>Display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>given<span class="w"> </span>command.<span class="w"> </span>When<span class="w"> </span>no<span class="w"> </span><span class="nb">command</span><span class="w"> </span>is<span class="w"> </span>given<span class="w"> </span>display<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span><span class="nb">command</span>
 <span class="w">      </span>--silent<span class="w">                           </span>Do<span class="w"> </span>not<span class="w"> </span>output<span class="w"> </span>any<span class="w"> </span>message
 <span class="w">  </span>-q,<span class="w"> </span>--quiet<span class="w">                            </span>Only<span class="w"> </span>errors<span class="w"> </span>are<span class="w"> </span>displayed.<span class="w"> </span>All<span class="w"> </span>other<span class="w"> </span>output<span class="w"> </span>is<span class="w"> </span>suppressed
@@ -12719,7 +12717,7 @@ Options:
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"/usr/local/composer/vendor/bin:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
 <span class="c"># Linter install</span>
 <span class="c"># renovate: datasource=packagist depName=overtrue/phplint</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_OVERTRUE_PHPLINT_VERSION</span><span class="o">=</span><span class="m">9</span>.8.0
+<span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_OVERTRUE_PHPLINT_VERSION</span><span class="o">=</span><span class="m">9</span>.8.3
 <span class="c"># renovate: datasource=packagist depName=bartlett/sarif-php-converters</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="o">=</span><span class="m">1</span>.8.2
 <span class="k">RUN</span><span class="w"> </span><span class="nv">GITHUB_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>/run/secrets/GITHUB_TOKEN<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span>GITHUB_AUTH_TOKEN<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>composer<span class="w"> </span>global<span class="w"> </span>require<span class="w"> </span>overtrue/phplint:<span class="si">${</span><span class="nv">PHP_OVERTRUE_PHPLINT_VERSION</span><span class="si">}</span><span class="w"> </span>bartlett/sarif-php-converters:<span class="si">${</span><span class="nv">PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION</span><span class="si">}</span>
@@ -12771,7 +12769,7 @@ Options:
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PHP_PHPLINT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/phplint.phar"</span><span class="w"> </span>https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/phplint.phar"</span><span class="w"> </span>https://github.com/overtrue/phplint/releases/download/9.8.3/phplint.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/phplint.phar"</span><span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="c1"># phplint: run php "$INSTALL_DIR/phplint.phar"</span>
@@ -12781,7 +12779,7 @@ curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </sp
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nv">INSTALL_DIR</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.megalinter/linters/PHP_PHPLINT"</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">"</span>
-curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/phplint.phar"</span><span class="w"> </span>https://github.com/overtrue/phplint/releases/download/9.8.0/phplint.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">/phplint.phar"</span><span class="w"> </span>https://github.com/overtrue/phplint/releases/download/9.8.3/phplint.phar<span class="w"> </span><span class="o">&amp;&amp;</span>
 <span class="w">  </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$INSTALL_DIR</span><span class="s2">:</span><span class="nv">$PATH</span><span class="s2">"</span>
 <span class="c1"># phplint: run php "$INSTALL_DIR/phplint.phar"</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">PLINT_MODE</span><span class="o">=</span><span class="s2">"legacy"</span>
