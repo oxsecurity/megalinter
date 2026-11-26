@@ -234,7 +234,7 @@ ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.3
 # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
-ARG SPELL_TYPOS_VERSION=1.52.0
+ARG SPELL_TYPOS_VERSION=1.52.2
 # renovate: datasource=pypi depName=sqlfluff
 ARG PIP_SQLFLUFF_VERSION=4.5.0
 # renovate: datasource=npm depName=@ibm/tekton-lint
