@@ -113,7 +113,7 @@ ARG PIP_RSTFMT_VERSION=0.0.14
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
-ARG SPELL_TYPOS_VERSION=1.52.0
+ARG SPELL_TYPOS_VERSION=1.52.2
 # renovate: datasource=pypi depName=pip
 ARG PIP_PIP_VERSION=26.3
 # renovate: datasource=pypi depName=virtualenv

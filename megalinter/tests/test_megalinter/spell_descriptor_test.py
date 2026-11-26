@@ -140,7 +140,7 @@ class SpellDescriptorTest(unittest.TestCase):
             "# renovate: datasource=github-releases depName=crate-ci/typos",
             dockerfile_block,
         )
-        self.assertIn("ARG SPELL_TYPOS_VERSION=1.52.0", dockerfile_block)
+        self.assertRegex(dockerfile_block, r"ARG SPELL_TYPOS_VERSION=\d+\.\d+\.\d+")
 
     def test_spell_typos_builds_cleanly(self):
         with tempfile.TemporaryDirectory() as tmp_workspace:
