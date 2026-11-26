@@ -322,6 +322,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.17.0 to **1.17.1** on 2026-11-23
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 19.0.0 to **19.0.1** on 2026-11-23
   - [php-cs-fixer](https://cs.symfony.com/) from 3.95.29 to **3.95.30** on 2026-11-25
+  - [biome](https://biomejs.dev) from 2.6.6 to **2.6.7** on 2026-11-26
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
