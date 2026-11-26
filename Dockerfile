@@ -336,7 +336,7 @@ ARG PIP_NBQA_VERSION=1.9.1
 # renovate: datasource=npm depName=pyright
 ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
-ARG PIP_RUFF_VERSION=0.17.4
+ARG PIP_RUFF_VERSION=0.17.5
 # renovate: datasource=pypi depName=ty
 ARG PIP_TY_VERSION=0.0.100
 # renovate: datasource=github-tags depName=nxadm/rakudo-pkg extractVersion=^v(?<version>.+)$
