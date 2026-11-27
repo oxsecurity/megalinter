@@ -1240,7 +1240,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=pypi depName=ty
-          ARG PIP_TY_VERSION=0.0.100
+          ARG PIP_TY_VERSION=0.0.102
       pip:
         - ty==${PIP_TY_VERSION}
     native_install:
