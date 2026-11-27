@@ -239,6 +239,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
 
+  - **Renovate** now creates PRs for dependencies it can not date: images from `ghcr.io` and the `git-refs` / `git-tags` datasources, which stayed pending forever
+  - **Renovate release cooldown**: a check fails these Renovate pull requests until the release is as old as `minimumReleaseAge` (14 days)
+    - The release date comes from the GitHub release, the pinned commit or the image creation date (the most recent one counts)
+    - A daily run re-runs the failed checks whose cooldown is over, so they turn green
+    - Security updates are not delayed, and maintainers can accept an update earlier with the `skip-release-cooldown` label
+  - **No more automerge** of dependency updates: Renovate and Auto-Update Linters pull requests are all merged by a maintainer
   - **Test native long command lines**: runs every native linter on Windows with a file list above the command line limit, and reports which ones receive all the files, lint a reported part of them, or are broken
   - The **Benchmark native mode** workflow has an **Agent loop** job on the 5 native platforms: it measures the commands of a coding agent that sets up native mode, lints and re-checks a fixed file, with the published beta and with this checkout, and adds the table to the summary (`benchmark_native.py agent-loop`)
   - **Test native mode**: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled `native-full-matrix`. **Native locks** regenerates the install locks after descriptor changes. **Deploy MegaLinter to PyPI** publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the `release-runner` environment
@@ -249,7 +255,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Benchmark native mode**: manual workflow comparing native and Docker runs (install, run times, npx overhead, disk, memory, per-linter times and errors) on the 5 native platforms, with the published beta packages and a demo repository with planted problems
   - Stale **native locks** no longer fail pull requests: a warning, and the native install tests are skipped until the locks are refreshed. They block the alpha, beta and release deploys instead (Docker images, mega-linter-runner, PyPI), through the reusable `check-native-locks.yml` workflow, and `/prepare-release` checks them before tagging
   - `native_lock.py --check` also checks the **runtime locks** (`native-locks/runtimes/`), shipped in the PyPI package too
-  - **Auto-Update Linters** now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both (without automerge when the locks changed, so pinned hashes are reviewed). **Native locks** only runs on feature branches and on manual runs; both share the `native-lock-setup` composite action
+  - **Auto-Update Linters** now also refreshes the native locks on main, in a job running in parallel with the versions and docs update, and opens a single pull request for both (a maintainer reviews the pinned hashes when the locks changed). **Native locks** only runs on feature branches and on manual runs; both share the `native-lock-setup` composite action
   - The Auto-Update Linters container now gets a read-only token: only the pull request job writes
   - ty no longer reports `jsonschema` as an unresolved import in `megalinter/native/spec.py` and `sarif_schema.py`: like `build.py`, they use this build/test dependency that the MegaLinter image does not ship
 

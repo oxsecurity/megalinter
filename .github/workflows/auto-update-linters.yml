@@ -253,9 +253,9 @@ jobs:
           body: |
             [automation] Auto-update linters version, help, documentation and native locks
             ${{ steps.stage.outputs.locks_changed == '1' && '
-            Native install locks changed: review the diff of `megalinter/descriptors/native-locks/` before merging (no automerge). Every artifact was verified with its declared provenance before being pinned, except the `unverified` ones, pinned on first download.' || '' }}
-          # Pinned hashes are reviewed by a maintainer: no automerge when the locks changed
-          labels: ${{ steps.stage.outputs.locks_changed == '1' && 'dependencies' || 'dependencies,automerge' }}
+            Native install locks changed: review the diff of `megalinter/descriptors/native-locks/` before merging. Every artifact was verified with its declared provenance before being pinned, except the `unverified` ones, pinned on first download.' || '' }}
+          # No automerge in this repository: a maintainer reviews and merges the pull request
+          labels: dependencies
       - name: Display Pull Request Info
         if: steps.cpr.outcome == 'success'
         run: |

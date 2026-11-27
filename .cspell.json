@@ -1807,6 +1807,7 @@
         "unparser",
         "unpicklable",
         "unserialize",
+        "untimestamped",
         "untracked",
         "untrusted",
         "updaterm",

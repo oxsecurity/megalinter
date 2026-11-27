@@ -11,14 +11,16 @@
     'preview:dockerVersions',
     'group:unitTestNonMajor',
     ':enableVulnerabilityAlerts',
-    ':automergePr', // Still raise a PR for automerges
-    ':automergeDigest', // enable for PRs updating digests
-    ':automergePatch', // enable for lock files, patch and pin
   ],
+  // No automerge: a maintainer reviews and merges every dependency update
+  automerge: false,
   // Supply-chain hardening: wait until a release is at least 14 days old before
   // proposing it, so compromised releases can be caught and yanked by the
   // community first. Replaces the npm-only 'security:minimumReleaseAgeNpm'
   // preset (3 days) with a stricter setting covering every datasource.
+  // Renovate can not date every release (images outside Docker Hub, git-refs,
+  // git-tags): .github/workflows/renovate-release-cooldown.yml enforces the same
+  // age on those pull requests, and reads this value.
   minimumReleaseAge: '14 days',
   vulnerabilityAlerts: {
     enabled: true,
@@ -81,6 +83,35 @@
       schedule: [
         'before 4am on Monday',
       ],
+    },
+    {
+      // Renovate's Docker datasource only supports release timestamps from Docker Hub.
+      // These packages are hosted on ghcr.io, so Renovate cannot extract timestamps and
+      // marks all versions as 'pending'. This is a documented Renovate limitation:
+      // https://docs.renovatebot.com/modules/datasource/docker/#release-timestamp-support
+      // The pull request is opened right away, and the "Renovate release cooldown" check
+      // (.github/workflows/renovate-release-cooldown.yml) fails it until the release is
+      // minimumReleaseAge old. Dev container features are left out: that check can not read
+      // them from devcontainer.json, so they keep waiting for a release timestamp.
+      matchPackageNames: [
+        '/^ghcr\\.io\\//',
+        '!/^ghcr\\.io\\/devcontainers(-extra)?\\/features\\//',
+      ],
+      minimumReleaseAgeBehaviour: 'timestamp-optional',
+    },
+    {
+      // Renovate's git datasource does not support release timestamps. Leaving updates
+      // pending indefinitely. Keep the exception scoped to those datasources;
+      // releases with timestamps still use the configured age gate.
+      // The "Renovate release cooldown" check dates the commit or tag instead.
+      // This is a documented Renovate limitation:
+      // https://docs.renovatebot.com/modules/datasource/git-refs/#table-of-values
+      // https://docs.renovatebot.com/modules/datasource/git-tags/#table-of-values
+      matchDatasources: [
+        'git-refs',
+        'git-tags',
+      ],
+      minimumReleaseAgeBehaviour: 'timestamp-optional',
     },
     {
       // One Python version for every MegaLinter context: .python-version (local uv,
