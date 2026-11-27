@@ -26,7 +26,7 @@
       
       
       <link rel="icon" href="../assets/images/mega-linter-square.png">
-      <meta name="generator" content="zensical-0.1.0">
+      <meta name="generator" content="zensical-0.1.1">
     
     
       
@@ -37,7 +37,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.4ab2de0c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
       
         
           
@@ -16757,7 +16757,7 @@
 <li>The generated linter guides in <code>skills/megalinter-fix/linters/</code> are excluded from the markdown linters: their error-format regexes end with a significant space that <code>markdownlint --fix</code> strips, which corrupted the documented regex and left the working tree dirty, failing the auto-fix commit step on every pull request (#8848)</li>
 <li><strong>Supply-chain hardening of dependency updates</strong>: Renovate (<code>minimumReleaseAge</code>) and Dependabot (<code>cooldown</code>) now wait until a release is at least <strong>7 days old</strong> before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately (#8710)</li>
 <li>New <strong>Check agent plugins manifests</strong> workflow validating the agent plugin manifests on every change to them or to <code>skills/</code>: <code>.automation/validate_agent_plugins.py</code> checks the root <code>plugin.json</code> against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then <code>claude plugin validate ./ --strict</code> checks the Claude Code marketplace and plugin manifests (#8791)</li>
-<li>The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>) (#8791)</li>
+<li>The auto-update workflow patch-bumps the agent plugin version only when the plugin content (<code>skills/</code>, <code>com.github.copilot/</code>) changed, so a linter version upgrade alone no longer releases a new plugin version: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. <code>plugin.json</code> is the single source of truth, mirrored into the per-vendor manifests by <code>.automation/agent_plugin_manifests.py</code> (called by <code>build.py</code>) (#8791)</li>
 <li>The test workflows forward the <strong><code>SFDX_AUTH_URL</code></strong> repository secret to the test container, so the <strong>SALESFORCE_CODE_ANALYZER_APEXGURU</strong> lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves (#8820)</li>
 <li>The <strong>Auto-Update Linters</strong> workflow is fixed: <code>entrypoint.sh</code> still installed the MkDocs documentation stack, so <code>build.sh</code> aborted with <code>zensical: command not found</code> since the Zensical migration and no linter version update pull request could be created (#8901)</li>
 </ul>
@@ -24961,7 +24961,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","navigation.instant","navigation.footer"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":"latest","provider":"mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d31f0ffa.min.js"></script>
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
