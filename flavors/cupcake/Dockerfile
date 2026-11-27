@@ -266,7 +266,7 @@ ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.17.5
 # renovate: datasource=pypi depName=ty
-ARG PIP_TY_VERSION=0.0.102
+ARG PIP_TY_VERSION=0.0.103
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=github-tags depName=anchore/grype
