@@ -294,7 +294,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-          ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
+          ARG KUBERNETES_KUBESCAPE_VERSION=4.0.21
         - |-
           RUN set -eu; \
               case "$TARGETPLATFORM" in \
