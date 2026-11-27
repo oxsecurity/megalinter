@@ -201,7 +201,7 @@ linters:
     native_install:
       method: binary
       # renovate: datasource=github-releases depName=helm/helm extractVersion=^v(?<version>.+)$
-      version: "4.3.1"
+      version: "4.3.2"
       # helm 4 requires the chart path (helm 3 defaulted to the current folder)
       linter_overrides:
         cli_lint_mode_project_extra_args_after:
