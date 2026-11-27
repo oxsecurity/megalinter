@@ -374,6 +374,11 @@
     "image": null,
     "title": "npm-package-json-lint | npm-package-json-lint"
   },
+  "onpush-census": {
+    "description": "A static reading of 31,531 components in 225 open-source Angular apps: which components could drop the Eager stamp under OnPush by default, and what breaks.",
+    "image": "https://frontendatlas.com/assets/images/frontend-atlas-logo.png",
+    "title": "OnPush by default: how much real Angular code is ready?"
+  },
   "osv-scanner": {
     "description": "Use OSV-Scanner to find existing vulnerabilities affecting your project\u2019s dependencies.",
     "image": null,

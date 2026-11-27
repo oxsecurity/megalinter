@@ -100,6 +100,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
   - Add [ty](https://docs.astral.sh/ty/) linter for PYTHON — fast Python type checker and language server written in Rust
 
+  - **[onpush-census](https://frontendatlas.com/research/angular-onpush-readiness)**, a static check that tells which Angular components are ready for `ChangeDetectionStrategy.OnPush` and which would show stale views, with the line of code behind every verdict, available as **TYPESCRIPT_ONPUSH_CENSUS**
+    - Active only in workspaces holding an `angular.json` or `nx.json`, fails on `blocked` components by default (tighten it with `TYPESCRIPT_ONPUSH_CENSUS_ARGUMENTS`), forwards `EXCLUDED_DIRECTORIES` in project lint mode and outputs **SARIF** with `SARIF_REPORTER: true`
+
 - Disabled linters
 
 - Re-enabled linters

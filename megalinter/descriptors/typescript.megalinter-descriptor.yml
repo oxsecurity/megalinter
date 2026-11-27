@@ -380,3 +380,83 @@ linters:
       - "biome check myfile.ts"
       - "biome check --config-path biome.json myfile.ts"
       - "biome check --write myfile.ts"
+  # ONPUSH-CENSUS
+  - linter_name: onpush-census
+    name: TYPESCRIPT_ONPUSH_CENSUS
+    descriptor_flavors:
+      - dotnetweb
+      - javascript
+    active_only_if_file_found:
+      - angular.json
+      - nx.json
+    can_output_sarif: true
+    linter_text: |
+      **onpush-census** reads every Angular component of a workspace and says whether it is ready for `ChangeDetectionStrategy.OnPush`, the default since Angular 22. Each component gets one verdict, and every verdict other than ready comes with the lines of code behind it. It is a static reading, made with the TypeScript compiler API and Angular's own template parser: nothing in the workspace is executed.
+
+      **Key Features:**
+
+      - **One verdict per component**: `ready`, `probable`, `blocked` or `unknown`; components that already declare OnPush are listed, not judged
+      - **Evidence, not scores**: a blocked verdict names the rule (an asynchronous write of rendered state, a parent mutating a child input, manual change detection...) and the `file:line` where it happens
+      - **Child propagation**: a container is no readier than the children its template renders
+      - **Validated rules**: the six rules are checked against 203 documented patterns, blind readings of real components and runtime runs, all described in [the report](https://frontendatlas.com/research/angular-onpush-readiness) and reproducible from the repository
+      - **CI gate**: `--fail-on blocked` (the default arguments) fails the run when a component would show stale views under OnPush; add `probable` or `unknown` to tighten it
+      - **SARIF output**: blocked components as errors, probable as warnings, unknown as notes, so they reach code scanning with `SARIF_REPORTER: true`
+
+      The linter runs in project mode on the whole workspace and is active only when the repository holds an `angular.json` or `nx.json`. Test files (`*.spec.ts`, `test/`, `e2e/`...) are skipped unless `--include-tests` is given.
+
+      ```yaml
+      TYPESCRIPT_ONPUSH_CENSUS_ARGUMENTS:
+        - --fail-on
+        - blocked,probable
+      ```
+    linter_url: https://frontendatlas.com/research/angular-onpush-readiness
+    linter_repo: https://github.com/MuslumYilmaz/onpush-census
+    linter_spdx_license: MIT
+    linter_speed: 3
+    linter_rules_url: https://github.com/MuslumYilmaz/onpush-census#the-rules
+    linter_rules_configuration_url: https://github.com/MuslumYilmaz/onpush-census#command-line
+    linter_rules_ignore_config_url: https://github.com/MuslumYilmaz/onpush-census#command-line
+    linter_banner_image_url: https://raw.githubusercontent.com/MuslumYilmaz/onpush-census/main/docs/terminal-preview.png
+    cli_lint_mode: project
+    supported_cli_lint_modes:
+      - project
+    cli_lint_extra_args:
+      - "--fail-on"
+      - "blocked"
+    cli_lint_mode_project_exclude_arg_name: "--exclude"
+    cli_version_arg_name: "--version"
+    cli_help_arg_name: "--help"
+    cli_lint_errors_count: regex_number
+    cli_lint_errors_regex: "Gate --fail-on [a-z,]+: ([0-9]+) component"
+    cli_sarif_args:
+      - --format
+      - sarif
+      - --out
+      - "{{SARIF_OUTPUT_FILE}}"
+    test_folder: typescript_onpush_census
+    examples:
+      - "onpush-census"
+      - "onpush-census --fail-on blocked,probable"
+      - "onpush-census --format sarif --out onpush-census.sarif"
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=npm depName=onpush-census
+          ARG NPM_ONPUSH_CENSUS_VERSION=0.2.0
+      npm:
+        - onpush-census@${NPM_ONPUSH_CENSUS_VERSION}
+    native_install:
+      method: npm
+      requires:
+        - runtime: node
+          version: ">=22"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64
+    supported_platforms:
+      platform:
+        - linux/amd64
+        - linux/arm64

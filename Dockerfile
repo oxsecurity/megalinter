@@ -428,6 +428,8 @@ ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.1
 ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.1
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
+# renovate: datasource=npm depName=onpush-census
+ARG NPM_ONPUSH_CENSUS_VERSION=0.2.0
 # renovate: datasource=pypi depName=yamllint
 ARG PIP_YAMLLINT_VERSION=1.38.0
 # renovate: datasource=pypi depName=pip
@@ -788,7 +790,8 @@ RUN npm config set prefix /usr/local \
                 @typescript-eslint/eslint-plugin@${NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION} \
                 @typescript-eslint/parser@${NPM_TYPESCRIPT_ESLINT_PARSER_VERSION} \
                 typescript-eslint@${NPM_TYPESCRIPT_ESLINT_VERSION} \
-                ts-standard@${NPM_TS_STANDARD_VERSION} && \
+                ts-standard@${NPM_TS_STANDARD_VERSION} \
+                onpush-census@${NPM_ONPUSH_CENSUS_VERSION} && \
     echo "Cleaning npm cache…" \
     && (npm cache clean --force || true) \
     && echo "Changing owner of node_modules files…" \
@@ -1348,6 +1351,7 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/refs/tags/v${REPOS
 # ts-standard installation
 # prettier installation
 # biome installation
+# onpush-census installation
 # prettier installation
 # yamllint installation
 # v8r installation

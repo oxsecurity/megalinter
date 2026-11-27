@@ -6790,6 +6790,28 @@
         "    $ npmPkgJsonLint . -mw 10",
         ""
     ],
+    "onpush-census": [
+        "Usage: onpush-census [path] [options]",
+        "",
+        "Reads every @Component under <path> (default: the current directory) and prints one OnPush verdict per",
+        "component: ready, probable, blocked or unknown. Components already on OnPush are listed, not judged.",
+        "",
+        "Options:",
+        "  --format <text|json|sarif>  Output format (default: text). --json is short for --format json.",
+        "  --out <file>                Write the output to a file instead of stdout.",
+        "  --fail-on <verdicts>        Exit with code 1 when any component has one of these verdicts, comma-separated",
+        "                              from blocked, probable and unknown. Without it the exit code is always 0.",
+        "  --exclude <dir>             Skip a directory: a name matched at any depth (vendor) or a path from <path>",
+        "                              (src/legacy). Repeatable. node_modules, dist, coverage and friends are always skipped.",
+        "  --major <n>                 Angular major version, when package.json does not name @angular/core.",
+        "  --include-tests             Also judge components declared in test files.",
+        "  --classify-onpush           Judge components that already declare OnPush as if they did not.",
+        "  --version                   Print the version and exit.",
+        "  --help                      Print this help and exit.",
+        "",
+        "Exit codes: 0 done, 1 a verdict listed in --fail-on occurred, 2 wrong usage.",
+        "Rules, verdicts and validation: https://github.com/MuslumYilmaz/onpush-census"
+    ],
     "osv-scanner": [
         "",
         "NAME:",
