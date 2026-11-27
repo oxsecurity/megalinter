@@ -9,77 +9,77 @@
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "f77c01a484eb8ba7ce5a17ec08ef72d3c6398ff0513b4c7b7dc480c50d8e5176",
-          "size": 79613498,
-          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_darwin_amd64.tar.gz",
+          "sha256": "1f18f69a49a8cfb9d59e730bace971722dfdf79266d9b8cf71e59ac161eb19ae",
+          "size": 80126609,
+          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_darwin_amd64.tar.gz",
           "verification": [
             "checksums_url",
-            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.8"
+            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.9"
           ]
         }
       ],
-      "version": "3.99.8"
+      "version": "3.99.9"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "85724f221bc390f6e0bdf65df245468c8426350de85aa9290ea5491c6d4ec35a",
-          "size": 75456660,
-          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_darwin_arm64.tar.gz",
+          "sha256": "1d85e5c9c7eddbf12ae2714eb89317ba2cbbbf59be4e161e4b2ff396adbaa3a8",
+          "size": 75911687,
+          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_darwin_arm64.tar.gz",
           "verification": [
             "checksums_url",
-            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.8"
+            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.9"
           ]
         }
       ],
-      "version": "3.99.8"
+      "version": "3.99.9"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "7c3b02f160f28929a467e29e20fba98746e0729f6e37c3c25761e4f8789abe08",
-          "size": 36051943,
-          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_linux_amd64.tar.gz",
+          "sha256": "12050095c8063bf4d34f9f6cbce6ba9fa8d0deea9d503d0570364feba093658e",
+          "size": 36283707,
+          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_linux_amd64.tar.gz",
           "verification": [
             "checksums_url",
-            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.8"
+            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.9"
           ]
         }
       ],
-      "version": "3.99.8"
+      "version": "3.99.9"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "a0382d83dd58c967af5dd0175cc732c62c836ab1d15dc9ae71b01a2d3f0911b2",
-          "size": 30281585,
-          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_linux_arm64.tar.gz",
+          "sha256": "778b1913196dc9b9234e8fd366f64387efeb08c01930a1d2110dcb2ffd07e68b",
+          "size": 30473247,
+          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_linux_arm64.tar.gz",
           "verification": [
             "checksums_url",
-            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.8"
+            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.9"
           ]
         }
       ],
-      "version": "3.99.8"
+      "version": "3.99.9"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "89415ee864cf343bd37633645ef04f87493aed3a52fc4529ae8f25828f4004d2",
-          "size": 77065695,
-          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.8/trufflehog_3.99.8_windows_amd64.tar.gz",
+          "sha256": "da6754ea6f16be84fbda9860bdc49492edfa7a141eddc3ac900047fe88d16648",
+          "size": 77546391,
+          "url": "https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_windows_amd64.tar.gz",
           "verification": [
             "checksums_url",
-            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.8"
+            "cosign:https://github.com/trufflesecurity/trufflehog/.github/workflows/release.yml@refs/tags/v3.99.9"
           ]
         }
       ],
-      "version": "3.99.8"
+      "version": "3.99.9"
     }
   },
-  "spec_hash": "1c7a45da02948a21c7aa4c21a490e824e04aab722d6d0718aba5a9b9302452ca"
+  "spec_hash": "5f9cc28eb89782e4db9158a5cf79151b1285ba746b29a2990a4ef2f87b0986e6"
 }

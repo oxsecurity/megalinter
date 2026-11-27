@@ -329,6 +329,12 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [ruff-format](https://github.com/astral-sh/ruff) from 0.17.4 to **0.17.5** on 2026-11-26
   - [ruff](https://github.com/astral-sh/ruff) from 0.17.4 to **0.17.5** on 2026-11-26
   - [typos](https://github.com/crate-ci/typos) from 1.52.0 to **1.52.2** on 2026-11-26
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.20 to **4.0.21** on 2026-11-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.3.2 to **0.3.4** on 2026-11-27
+  - [ty](https://docs.astral.sh/ty/) from 0.0.100 to **0.0.103** on 2026-11-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.8 to **3.99.9** on 2026-11-27
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.3.0 to **6.3.1** on 2026-11-27
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.9 to **0.14.10** on 2026-11-27
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
