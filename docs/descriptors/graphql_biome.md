@@ -28,7 +28,7 @@ description: How to use biome (configure, ignore files, ignore errors, help & ve
 
 ## biome documentation
 
-- Version in MegaLinter: **2.6.6**
+- Version in MegaLinter: **2.6.7**
 - Visit [Official Web Site](https://biomejs.dev){target=_blank}
 - See [How to configure biome rules](https://biomejs.dev/reference/configuration/){target=_blank}
 - See [How to disable biome rules in files](https://biomejs.dev/analyzer/suppressions/){target=_blank}
@@ -159,11 +159,11 @@ Available commands:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=npm depName=@biomejs/biome
-ARG NPM_BIOMEJS_BIOME_VERSION=2.6.6
+ARG NPM_BIOMEJS_BIOME_VERSION=2.6.7
 ```
 
 - NPM packages (node.js):
-  - [@biomejs/biome@2.6.6](https://www.npmjs.com/package/@biomejs/biome/v/2.6.6)
+  - [@biomejs/biome@2.6.7](https://www.npmjs.com/package/@biomejs/biome/v/2.6.7)
 
 ### Installation without Docker (native mode)
 
@@ -188,7 +188,7 @@ NATIVE_LINTERS: [GRAPHQL_BIOME]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/GRAPHQL_BIOME"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@biomejs/biome@2.6.6"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "@biomejs/biome@2.6.7"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```
