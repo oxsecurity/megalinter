@@ -23,9 +23,40 @@ concurrency:
 ###############
 jobs:
 
+  # Audits the community plugins of .automation/plugins.yml: build_help_versions generates their
+  # documentation pages from the results. Read-only and without secrets: it only downloads the
+  # public plugin descriptors. When it fails, the committed results are used
+  plugins_audit:
+    name: Audit community plugins
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter'
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Install MegaLinter
+        run: python -m pip install -e . jsonschema
+      - name: Audit plugins
+        run: python .automation/plugins_audit.py
+      - name: Upload audit results
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: plugins-audit
+          path: .automation/generated/plugins-audit.json
+          if-no-files-found: error
+
   build_help_versions:
     # Name the Job
     name: Auto-Update Linters
+    needs: [plugins_audit]
     # Set the agent to run on
     runs-on: ubuntu-latest
     # Read-only: the token goes into the container that runs every linter. The pull_request job
@@ -34,8 +65,9 @@ jobs:
       contents: read
     environment:
       name: auto-update
-    # Prevent duplicate run from happening when a forked push is committed
-    if: (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter'
+    # Prevent duplicate run from happening when a forked push is committed. Runs even when the
+    # plugins audit failed
+    if: ${{ !cancelled() && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository) && github.repository == 'oxsecurity/megalinter' }}
     # Set max build time for the job
     timeout-minutes: 60
     outputs:
@@ -51,6 +83,14 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
+
+      # Results of the plugins audit, read by build.py to generate the plugin pages
+      - name: Download plugins audit
+        continue-on-error: true
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: plugins-audit
+          path: .automation/generated
 
       # Free disk space
       - name: Free Disk space

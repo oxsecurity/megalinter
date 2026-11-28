@@ -15,9 +15,9 @@ from datetime import datetime, timezone
 
 from megalinter import Reporter, config, utils, utils_sarif
 from megalinter.api_providers import PROVIDER_CLASSES
-from megalinter.constants import ML_DOC_URL_DESCRIPTORS_ROOT, ML_VERSION
+from megalinter.constants import ML_VERSION
 from megalinter.utils import get_git_context_info
-from megalinter.utils_reporter import get_linter_status_icon
+from megalinter.utils_reporter import get_linter_doc_url, get_linter_status_icon
 
 PAYLOAD_VERSION = 2
 TOP_BREAKDOWN_SIZE = 20
@@ -111,11 +111,7 @@ class ApiReporter(Reporter):
         )
         for linter in self.master.linters:
             if linter.is_active is True:
-                lang_lower = linter.descriptor_id.lower()
-                linter_name_lower = linter.linter_name.lower().replace("-", "_")
-                linter_doc_url = (
-                    f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
-                )
+                linter_doc_url = get_linter_doc_url(linter)
                 linter_payload = {
                     "descriptor": linter.descriptor_id,
                     "linter": linter.linter_name,

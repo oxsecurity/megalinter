@@ -1,0 +1,12 @@
+descriptor_id: MINIMALTEST
+descriptor_type: format
+file_extensions:
+  - ".minimal"
+linters:
+  - linter_name: minimal-lint
+    linter_url: https://example.com/minimal-lint
+    examples:
+      - "minimal-lint myfile.minimal"
+    install:
+      dockerfile:
+        - RUN pip install minimal-lint

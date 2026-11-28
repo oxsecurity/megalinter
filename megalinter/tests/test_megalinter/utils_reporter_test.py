@@ -18,8 +18,10 @@ from megalinter.utils_reporter import (
     build_markdown_summary,
     build_markdown_summary_header,
     build_native_suggestion,
+    get_linter_doc_url,
     get_linter_status_icon,
     get_linter_summary_data,
+    linter_display_name,
 )
 
 
@@ -338,4 +340,23 @@ class utils_reporter_test(unittest.TestCase):
         self.assertEqual(
             "No output available",
             _build_missing_output_message(linter, "", "No output available"),
+        )
+
+    # A plugin has no page in the MegaLinter documentation, and is maintained by its author
+    def test_plugin_linter_link(self):
+        linter = FakeLinter(linter_name="plugin-lint")
+        linter.is_plugin = True
+        linter.linter_url = "https://example.com/plugin-lint"
+        self.assertEqual("plugin-lint (plugin)", linter_display_name(linter))
+        self.assertEqual("https://example.com/plugin-lint", get_linter_doc_url(linter))
+        self.assertEqual(
+            "[plugin-lint (plugin)](https://example.com/plugin-lint)",
+            get_linter_summary_data(linter)["linter_link"],
+        )
+
+    def test_core_linter_link(self):
+        linter = FakeLinter(linter_name="core-lint")
+        self.assertEqual("core-lint", linter_display_name(linter))
+        self.assertTrue(
+            get_linter_doc_url(linter).endswith("/descriptors/fake_core_lint")
         )

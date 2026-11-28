@@ -170,10 +170,7 @@ def get_linter_summary_data(linter, action_run_url=""):
     linter_status = get_linter_status_icon(linter)
 
     # Build linter documentation link
-    lang_lower = linter.descriptor_id.lower()
-    linter_name_lower = linter.linter_name.lower().replace("-", "_")
-    linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
-    linter_link = f"[{linter.linter_name}]({linter_doc_url})"
+    linter_link = f"[{linter_display_name(linter)}]({get_linter_doc_url(linter)})"
 
     # Calculate files/fixes/errors/warnings
     nb_fixed_cell = str(linter.number_fixed) if linter.try_fix is True else ""
@@ -418,7 +415,16 @@ def log_link(label, url):
         return f"[{label}]({url})"
 
 
+def linter_display_name(linter):
+    if getattr(linter, "is_plugin", False) is True:
+        return f"{linter.linter_name} (plugin)"
+    return linter.linter_name
+
+
+# A plugin has no page in the MegaLinter documentation: link to the tool of its community author
 def get_linter_doc_url(linter):
+    if getattr(linter, "is_plugin", False) is True:
+        return linter.linter_url
     lang_lower = linter.descriptor_id.lower()
     linter_name_lower = linter.linter_name.lower().replace("-", "_")
     linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
@@ -565,9 +571,7 @@ def build_linter_reporter_external_result(reporter, redis_stream=False) -> dict:
 
 
 def get_linter_infos(linter):
-    lang_lower = linter.descriptor_id.lower()
-    linter_name_lower = linter.linter_name.lower().replace("-", "_")
-    linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"
+    linter_doc_url = get_linter_doc_url(linter)
     linter_infos = {
         "descriptorId": linter.descriptor_id,
         "linterId": linter.linter_name,

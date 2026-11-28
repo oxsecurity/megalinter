@@ -1973,7 +1973,11 @@ For performance and security reasons, we cannot embed every linter in MegaLinter
 
 But our core architecture allows building and publishing MegaLinter plugins!
 
+> **Plugins are maintained by their community authors, not by the MegaLinter team. Using a plugin means trusting its author.** MegaLinter checks the descriptor of each plugin listed below (native mode support, SARIF output, main properties), but it does not review the plugins nor the tools they run. Report the problems of a plugin to its author.
+
 ### External Plugins Catalog
+
+Each plugin has a page showing the results of these checks. They are refreshed every day.
 
 <!-- plugins-table-start -->
 | Name                                                                                                       | Description                                                                                                                                                                             |                        Author                        | Raw URL                                                                                                                                                       |
@@ -1993,9 +1997,7 @@ But our core architecture allows building and publishing MegaLinter plugins!
 | [**glsec**](https://github.com/glsec/glsec#megalinter)                                                     | Static security linter for GitLab CI/CD configuration files (GITLAB_GLSEC)                                                                                                              | [Nicolai Ehrhardt](https://github.com/predictor2718) | [Descriptor](https://raw.githubusercontent.com/glsec/glsec/main/mega-linter-plugin-glsec/glsec.megalinter-descriptor.yml)                                     |
 <!-- plugins-table-end -->
 
-> Note: Using an external plugin means you trust its author.
-
-Submit a Pull Request if you want your plugin to appear here :)
+Submit a Pull Request adding your plugin to [plugins.yml](https://github.com/oxsecurity/megalinter/blob/main/.automation/plugins.yml) if you want it to appear here :)
 
 ### Use external plugins
 
@@ -2020,9 +2022,25 @@ You can implement your own descriptors and load them as plugins during MegaLinte
 - Plugins must be hosted in a URL containing **\*\*/mega-linter-plugin-\*\*/**
 - File URLs must conform to the same directory and file naming criteria as defined above.
 
+#### Requirements checked by MegaLinter
+
+MegaLinter checks every plugin of the catalog each day, and shows the results on the page of the plugin.
+
+Required:
+
+- The descriptor URL follows the rules above
+- The descriptor is valid against the [MegaLinter descriptor JSON schema](https://github.com/oxsecurity/megalinter/blob/main/megalinter/descriptors/schemas/megalinter-descriptor.jsonschema.json)
+- The descriptor file name and the linter keys are different from the ones of MegaLinter (a plugin may reuse a MegaLinter `descriptor_id`, like `PYTHON`, to add a linter to that language)
+- Each linter declares `native_install`, so that it can run in [native mode](https://megalinter.io/latest/install-native/), with each of the 5 native platforms (`linux/amd64`, `linux/arm64`, `darwin/amd64`, `darwin/arm64`, `windows/amd64`) listed in `platforms` or in `unsupported` with a reason
+- Each linter produces SARIF: `can_output_sarif: true` with `cli_sarif_args` when the tool outputs SARIF, otherwise `sarif_text_regex` (one finding per line of text) or `sarif_unified_diff: true` (formatters printing a diff)
+- Each linter declares `linter_url`, `examples` and `cli_lint_mode`
+
+Recommended: the documentation URLs of the rules (`linter_rules_url`, `linter_rules_configuration_url`, `linter_rules_inline_disable_url`, `linter_rules_ignore_config_url`), `linter_spdx_license`, `linter_speed`, `linter_icon_png_url`, `ide`, `supported_cli_lint_modes`, `cli_lint_errors_count` with `cli_lint_errors_regex`, `config_file_name` and `test_folder`.
+
 #### Limitations
 
-- For now, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
+- In Docker, the only `install` attributes managed are `dockerfile` instructions starting by `RUN`
+- Native mode never runs the `install` commands of plugins
 
 ### Community Tools
 

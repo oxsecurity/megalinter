@@ -7,6 +7,7 @@ import sys
 
 import yaml
 from megalinter import config, linter_factory, utils
+from megalinter.constants import PLUGIN_TRUST_DISCLAIMER
 
 
 def list_plugins(request_id):
@@ -71,6 +72,10 @@ def load_plugin(plugin):
                 yaml.dump(plugin_descriptor, outfile)
             logging.info(
                 f"[Plugins] Loaded plugin descriptor {descriptor_file} from {plugin}"
+            )
+            logging.warning(
+                f"[Plugins] {plugin_descriptor.get('descriptor_id')} loaded from {plugin}: "
+                + PLUGIN_TRUST_DISCLAIMER
             )
         except Exception as e:
             raise Exception(

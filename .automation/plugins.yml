@@ -1,4 +1,13 @@
 ---
+# Catalog of the community plugins shown in the MegaLinter documentation.
+# Plugins are maintained by their community authors, not by the MegaLinter team.
+# Using a plugin means trusting its author.
+#
+# Each entry: name, description, docUrl, pluginUrl (descriptor URL), author.
+# Optional:
+# - skip_issue: true   the plugin audit never opens issues on the plugin repository
+# - issueRepo: owner/repo   repository receiving the audit issues (default: the one of pluginUrl)
+# .automation/plugins_audit.py audits each descriptor into .automation/generated/plugins-audit.json
 plugins:
   # Jupyfmt
   - name: jupyfmt

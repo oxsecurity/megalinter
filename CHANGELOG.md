@@ -140,6 +140,10 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Notes are counted as warnings, so the **error count** shown with SARIF enabled is lower than the number of unformatted files
     - **powershell formatter** has no check mode and never fails, so its SARIF report holds no result
 
+  - **Plugin pages**: each plugin of the [plugins catalog](https://megalinter.io/latest/plugins/) now has its own page showing whether it supports **native mode** and **SARIF**, and which required or recommended properties are missing. The checks are refreshed every day
+    - Plugins are maintained by their **community authors**, not by the MegaLinter team: **using a plugin means trusting its author**. The catalog, each plugin page and the logs of every run loading a plugin now say so
+    - Plugin authors: see [Requirements checked by MegaLinter](https://megalinter.io/latest/plugins/#requirements-checked-by-megalinter)
+
 - Fixes
 
   - Restore the **GitHub repository cards** on linter documentation pages and on the users page, after the `gh-card.dev` service shut down (#9433)
@@ -158,6 +162,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Reporters
 
+  - Plugin linters show **(plugin)** after their name in the console and pull request summaries, and link to the tool of their author instead of a missing MegaLinter documentation page
   - The **JSON report** (`JSON_REPORTER: true`) gives coding agents and tools what they need without parsing logs. Existing fields are unchanged
     - Each linter has a **`blocking`** flag, and its **`findings`** (file, line, column, rule, level, message) when the **SARIF** report is enabled (`SARIF_REPORTER: true`)
     - New **`skipped_linters`** with the reason of each linter that did not run, and **`tips`**: the performance, activation, deprecation and timeout advice met during the run
@@ -204,6 +209,11 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - Dev
 
+  - **Plugins audit**: new module `megalinter/plugin_audit.py` and script `.automation/plugins_audit.py` (`--check-added <base ref>` for pull requests), writing `.automation/generated/plugins-audit.json`
+    - Each descriptor of `.automation/plugins.yml` (and its optional `<name>.megalinter-native-lock.json`) is checked against the descriptor schema, `megalinter.native.spec.validate_spec`, the SARIF properties, the core linter keys and descriptor file names, and the required / recommended properties
+    - An unreachable descriptor keeps its last results, so an outage is never reported as a gap
+    - `build.py` generates `docs/plugins/<name>.md`, the catalog table and the navigation between `# plugins-start` / `# plugins-end` in `mkdocs.yml`
+    - `plugins.yml` accepts `skip_issue` and `issueRepo`, the trust disclaimer is `constants.PLUGIN_TRUST_DISCLAIMER`, covered by `plugin_audit_test.py`
   - The JSON report fields come from `JsonReporter.add_computed_fields`: findings are read from the SARIF of each linter by `utils_sarif.extract_findings` once it has been merged (a file lint mode linter writes one SARIF per file), and `Megalinter.tips` / `skipped_linters_details` are filled by `add_tip` and the native selection
   - `megalinter/native/suggest.py` builds the `NATIVE_LINTERS` suggestion of the prerun report (rules: unsupported, missing host tool, project mode, measured time, then `linter_speed`), and `megalinter/native/config_writer.py` edits `NATIVE_LINTERS` as text then parses the file again, restoring it when the result is not the expected list. `config.CONFIG_FILE_CANDIDATES` is now shared with it
   - A native prerun skips the native selection, so it never installs a linter. `Linter.native_first_run_marker` keeps a marker in the install folder to flag the first run
@@ -239,6 +249,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
 
 - CI
 
+  - **Check plugins catalog**: pull requests changing `.automation/plugins.yml` fail when an added or changed plugin descriptor is unreachable or breaks the plugin URL rules, and report its missing required and recommended properties as annotations. **Auto-Update Linters** audits the whole catalog (read-only job, no secrets) before generating the documentation
   - **Test native long command lines**: runs every native linter on Windows with a file list above the command line limit, and reports which ones receive all the files, lint a reported part of them, or are broken
   - The **Benchmark native mode** workflow has an **Agent loop** job on the 5 native platforms: it measures the commands of a coding agent that sets up native mode, lints and re-checks a fixed file, with the published beta and with this checkout, and adds the table to the summary (`benchmark_native.py agent-loop`)
   - **Test native mode**: installs every linter natively, then runs the usual linter tests against the native installs: on Linux x86-64 for pull requests and pushes to main, on the 5 native platforms (Linux x86-64 and ARM64, macOS Intel and Apple Silicon, Windows) nightly, on manual runs and for pull requests labeled `native-full-matrix`. **Native locks** regenerates the install locks after descriptor changes. **Deploy MegaLinter to PyPI** publishes the package with Trusted Publishing and attestations, like mega-linter-runner: beta on each push to main, release on each GitHub release, both approved in the `release-runner` environment

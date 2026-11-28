@@ -32,7 +32,7 @@ from bs4 import BeautifulSoup
 from docker_pulls_chart import generate_docker_pulls_chart
 from docker_stats import update_docker_pulls_counter
 from giturlparse import parse
-from megalinter import config, utils
+from megalinter import config, plugin_audit, utils
 from megalinter.constants import (
     DEFAULT_DOCKERFILE_APK_PACKAGES,
     DEFAULT_DOCKERFILE_ARGS,
@@ -55,9 +55,11 @@ from megalinter.constants import (
     ML_DOCKER_IMAGE_WITH_HOST,
     ML_REPO,
     ML_REPO_URL,
+    PLUGIN_TRUST_DISCLAIMER,
 )
 from megalinter.native.catalog import load_native_specs
 from megalinter.native.manual_install import manual_install_groups
+from megalinter.native.resolve import NATIVE_PLATFORMS
 from megalinter.native.spec import validate_all
 from megalinter.removed_linters import (
     REMOVED_DESCRIPTORS,
@@ -119,6 +121,8 @@ USERS_FILE = REPO_HOME + "/.automation/generated/megalinter-users.json"
 HELPS_FILE = REPO_HOME + "/.automation/generated/linter-helps.json"
 LINKS_PREVIEW_FILE = REPO_HOME + "/.automation/generated/linter-links-previews.json"
 PLUGINS_FILE = REPO_HOME + "/.automation/plugins.yml"
+PLUGINS_AUDIT_FILE = REPO_HOME + "/.automation/generated/plugins-audit.json"
+DOCS_PLUGINS_DIR = REPO_HOME + "/docs/plugins"
 FLAVORS_DIR = REPO_HOME + "/flavors"
 LINTERS_DIR = REPO_HOME + "/linters"
 GLOBAL_FLAVORS_FILE = REPO_HOME + "/megalinter/descriptors/all_flavors.json"
@@ -1118,6 +1122,7 @@ def generate_documentation():
         "<!-- plugins-table-end -->",
         plugins_table_md_str,
     )
+    generate_plugins_documentation()
 
     # Generate flavors individual documentations
     flavors = megalinter.flavor_factory.get_all_flavors()
@@ -2552,22 +2557,255 @@ def build_flavors_md_table(filter_linter_name=None, replace_link=False):
     return md_table
 
 
-# Build plugins table from YML file in .automation/plugins.yml
-def build_plugins_md_table():
+PLUGIN_STATUS_LABELS = {
+    "ok": "✅ Complete",
+    "incomplete": "⚠️ Incomplete",
+    "invalid": "❌ Invalid",
+    "unreachable": "❔ Unreachable",
+}
+PLUGIN_SARIF_LABELS = {
+    "native": "✅ Output by the tool",
+    "text": "✅ Converted from the text output",
+    "unified_diff": "✅ Converted from the diff output",
+    "whole_output": "✅ One result per failed run",
+}
+PLUGIN_LOCK_LABELS = {
+    "fresh": "✅ Verified native install (lock shipped by the plugin author)",
+    "stale": "❌ The lock shipped by the plugin does not match its descriptor",
+    "none": "⚠️ No lock shipped by the plugin author",
+}
+
+
+def read_plugins_catalog():
     with open(PLUGINS_FILE, "r", encoding="utf-8") as f:
-        plugins_file_data = yaml.safe_load(f)
-    plugins = plugins_file_data["plugins"]
+        return yaml.safe_load(f)["plugins"]
+
+
+def plugin_page_url(plugin):
+    return f"{MKDOCS_URL_ROOT}/plugins/{plugin_audit.plugin_slug(plugin['name'])}/"
+
+
+def plugin_native_cell(result):
+    linters = list(result.get("linters", {}).values())
+    statuses = [linter["native"]["status"] for linter in linters]
+    if not linters or all(status == "missing" for status in statuses):
+        return "❌ Not supported"
+    if any(status in ["missing", "invalid"] for status in statuses):
+        return "❌ Invalid"
+    platforms = min(len(linter["native"]["platforms"]) for linter in linters)
+    icon = "✅" if platforms == len(NATIVE_PLATFORMS) else "⚠️"
+    return f"{icon} {platforms}/{len(NATIVE_PLATFORMS)} platforms"
+
+
+def plugin_sarif_cell(result):
+    linters = list(result.get("linters", {}).values())
+    if linters and all(linter["sarif"] is not None for linter in linters):
+        return "✅"
+    return "❌"
+
+
+# Build plugins table from .automation/plugins.yml and the results of the plugins audit
+def build_plugins_md_table():
+    plugins = read_plugins_catalog()
+    audit = plugin_audit.load_audit_file(PLUGINS_AUDIT_FILE)
     md_table = [
-        "| Name | Description | Author | Raw URL |",
-        "| :----- | :---------- | :--------------: | :--- |",
+        "| Name | Description | Maintainer (community) | Native | SARIF | Checks | Descriptor |",
+        "| :----- | :---------- | :--------------: | :---: | :---: | :---: | :--- |",
     ]
     for plugin in plugins:
+        result = audit.get(plugin["name"])
+        if result is None:
+            name_cell = f"[**{plugin['name']}**]({plugin['docUrl']})"
+            native_cell = sarif_cell = status_cell = ""
+        else:
+            name_cell = f"[**{plugin['name']}**]({plugin_page_url(plugin)})"
+            native_cell = plugin_native_cell(result)
+            sarif_cell = plugin_sarif_cell(result)
+            status_cell = PLUGIN_STATUS_LABELS[result["status"]]
         md_table += [
-            f"| [**{plugin['name']}**]({plugin['docUrl']}) | "
-            f"{plugin['description']} | {plugin['author']} | "
+            f"| {name_cell} | {plugin['description']} | {plugin['author']} | "
+            f"{native_cell} | {sarif_cell} | {status_cell} | "
             f"[Descriptor]({plugin['pluginUrl']}) |",
         ]
     return md_table
+
+
+def plugin_requirement_lines(missing, with_fix):
+    lines = []
+    for scope, item in missing:
+        scope_text = f" (`{scope}`)" if scope else ""
+        line = f"- **{plugin_audit.requirement_label(item)}**{scope_text}"
+        check = plugin_audit.REQUIRED_CHECKS.get(item)
+        if with_fix and check is not None:
+            line += f": {check['impact']}. {check['fix']}"
+        lines.append(line)
+    return lines
+
+
+def plugin_linter_md(key, linter):
+    native = linter["native"]
+    sarif = PLUGIN_SARIF_LABELS.get(linter["sarif"], "❌ Not available")
+    lines = [
+        f"### {key}",
+        "",
+        (
+            f"- Tool: [{linter['linter_name']}]({linter['linter_url']})"
+            if linter.get("linter_url")
+            else f"- Tool: {linter['linter_name']}"
+        ),
+        f"- SARIF output: {sarif}",
+        "",
+        "| Platform | Native mode |",
+        "| :------- | :---------- |",
+    ]
+    for platform in NATIVE_PLATFORMS:
+        if platform in native["platforms"] and native["status"] != "invalid":
+            cell = "✅ Supported"
+        elif platform in native["unsupported"]:
+            cell = "❌ " + native["unsupported"][platform].replace("|", "\\|")
+        else:
+            cell = "❌ Not declared"
+        lines.append(f"| {platform} | {cell} |")
+    lines.append("")
+    if native["errors"]:
+        lines += ["Errors in `native_install`:", "", "```text"]
+        lines += native["errors"]
+        lines += ["```", ""]
+    return lines
+
+
+def build_plugin_doc_md(plugin, result):
+    name = plugin["name"]
+    repository = result.get("repository") if result else None
+    report_link = (
+        f"[its repository](https://github.com/{repository}/issues)"
+        if repository
+        else f"[its documentation]({plugin['docUrl']})"
+    )
+    lines = [
+        "---",
+        f"title: {json.dumps(name + ' MegaLinter plugin')}",
+        f"description: {json.dumps(md_to_text(plugin['description']).strip())}",
+        "---",
+        "<!-- markdownlint-disable MD013 -->",
+        "<!-- Generated by .automation/build.py, please do not update manually -->",
+        f"# {name}",
+        "",
+        f"> **Community plugin**: {PLUGIN_TRUST_DISCLAIMER} "
+        f"This plugin is maintained by {plugin['author']}: report its problems on "
+        f"{report_link}, not to MegaLinter.",
+        "",
+        plugin["description"],
+        "",
+        f"- Documentation: [{plugin['docUrl']}]({plugin['docUrl']})",
+        f"- Descriptor: [{plugin['pluginUrl']}]({plugin['pluginUrl']})",
+        f"- Maintainer: {plugin['author']}",
+        "",
+        "## Use this plugin",
+        "",
+        "Add the descriptor URL to `PLUGINS` in `.mega-linter.yml`:",
+        "",
+        "```yaml",
+        "PLUGINS:",
+        f"  - {result.get('raw_url') if result and result.get('raw_url') else plugin['pluginUrl']}",
+        "```",
+        "",
+    ]
+    if result is None:
+        lines += [
+            "## MegaLinter checks",
+            "",
+            "This plugin has not been checked yet.",
+            "",
+        ]
+        return "\n".join(lines)
+    lines += [
+        "## MegaLinter checks",
+        "",
+        f"Checked by MegaLinter on {result['checked_at']}. These checks only look at the "
+        "descriptor of the plugin: they do not review the plugin, nor the tool it runs.",
+        "",
+    ]
+    if result["status"] == "unreachable":
+        last_check = (
+            f"the results below are the ones of {result['last_success_at']}"
+            if result.get("last_success_at")
+            else "it has never been checked"
+        )
+        lines += [
+            f"> **The descriptor could not be fetched** ({result.get('fetch_error')}): "
+            f"{last_check}.",
+            "",
+        ]
+    lines += [
+        "| Check | Result |",
+        "| :---- | :----- |",
+        f"| Descriptor | {PLUGIN_STATUS_LABELS[result['status']]} |",
+        f"| Native mode | {plugin_native_cell(result)} |",
+        f"| SARIF output | {plugin_sarif_cell(result)} |",
+        f"| Native lock | {PLUGIN_LOCK_LABELS.get(result.get('lock'), '')} |",
+        "",
+        "### Required",
+        "",
+    ]
+    required = plugin_audit.missing_requirements(result)
+    lines += (
+        ["Missing required items:", ""] + plugin_requirement_lines(required, True)
+        if required
+        else ["All required items are present."]
+    )
+    lines += ["", "### Recommended", ""]
+    recommended = plugin_audit.missing_recommendations(result)
+    lines += (
+        ["Missing recommended items:", ""]
+        + plugin_requirement_lines(recommended, False)
+        if recommended
+        else ["All recommended items are present."]
+    )
+    lines.append("")
+    if result.get("errors"):
+        lines += ["### Descriptor errors", "", "```text"]
+        lines += result["errors"]
+        lines += ["```", ""]
+    if result.get("linters"):
+        lines += ["## Linters", ""]
+        for key, linter in sorted(result["linters"].items()):
+            lines += plugin_linter_md(key, linter)
+    lines += [
+        "## Plugin authors",
+        "",
+        "The requirements and how to fix them are described in "
+        "[Create your own plugin](../plugins.md#create-your-own-plugin).",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+# One documentation page per plugin, listed in the navigation under the plugins catalog
+def generate_plugins_documentation():
+    plugins = read_plugins_catalog()
+    audit = plugin_audit.load_audit_file(PLUGINS_AUDIT_FILE)
+    os.makedirs(DOCS_PLUGINS_DIR, exist_ok=True)
+    page_names = set()
+    nav_lines = []
+    for plugin in plugins:
+        slug = plugin_audit.plugin_slug(plugin["name"])
+        page_names.add(f"{slug}.md")
+        with open(
+            f"{DOCS_PLUGINS_DIR}/{slug}.md", "w", encoding="utf-8", newline="\n"
+        ) as f:
+            f.write(build_plugin_doc_md(plugin, audit.get(plugin["name"])))
+        nav_lines.append(f'      - "{plugin["name"]}": "plugins/{slug}.md"')
+    for page in glob.glob(f"{DOCS_PLUGINS_DIR}/*.md"):
+        if os.path.basename(page) not in page_names:
+            os.remove(page)
+    replace_in_file(
+        f"{REPO_HOME}/mkdocs.yml",
+        "# plugins-start",
+        "# plugins-end",
+        "\n".join(nav_lines),
+    )
+    logging.info(f"Generated {len(nav_lines)} plugin pages in {DOCS_PLUGINS_DIR}")
 
 
 def update_mkdocs_and_workflow_yml_with_flavors():
