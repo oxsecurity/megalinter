@@ -20,6 +20,7 @@ from megalinter.utils_reporter import (
     build_native_suggestion_lines,
     build_user_notifications,
     get_linter_status_icon,
+    linter_display_name,
     log_section_end,
 )
 
@@ -56,7 +57,7 @@ class ConsoleReporter(Reporter):
                 table_data += [
                     [
                         linter.descriptor_id,
-                        linter.linter_name,
+                        linter_display_name(linter),
                         "|".join(all_criteria),
                         files_col,
                         fixes_col,
@@ -101,7 +102,7 @@ class ConsoleReporter(Reporter):
                     found = str(len(linter.files))
                 table_line = [
                     status + " " + linter.descriptor_id,
-                    linter.linter_name,
+                    linter_display_name(linter),
                     linter.cli_lint_mode,
                     found,
                     nb_fixed_cell,

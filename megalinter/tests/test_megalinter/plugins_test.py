@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 from git import Repo
 from megalinter import utilstest
-from megalinter.constants import ML_REPO
+from megalinter.constants import ML_REPO, PLUGIN_TRUST_DISCLAIMER
 
 
 def _get_branch_from_ci_env() -> str | None:
@@ -187,6 +187,7 @@ class plugins_test(unittest.TestCase):
         self._assert_test_plugin_linted(output)
         self.assertIn("[Plugins] Loaded plugin descriptor", output)
         self.assertIn("[Plugins] Successful initialization of TEST", output)
+        self.assertIn(PLUGIN_TRUST_DISCLAIMER, output)
 
     def test_load_local_plugin_fail(self):
         try:

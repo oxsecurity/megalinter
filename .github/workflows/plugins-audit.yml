@@ -1,0 +1,43 @@
+---
+# Checks the community plugins added or changed in .automation/plugins.yml by a pull request:
+# their descriptor must be reachable and follow the plugin URL rules. Missing required or
+# recommended items are reported as annotations: an incomplete plugin can still be listed, its
+# page shows what is missing. The whole catalog is audited by "Auto-Update Linters".
+name: "Check plugins catalog"
+on:
+  pull_request:
+    paths:
+      - ".automation/plugins.yml"
+      - ".automation/plugins_audit.py"
+      - "megalinter/plugin_audit.py"
+      - ".github/workflows/plugins-audit.yml"
+
+permissions: {}
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  check-plugins:
+    name: Check added or changed plugins
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version-file: .python-version
+      - name: Install MegaLinter
+        run: python -m pip install -e . jsonschema
+      - name: Fetch the base branch
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: git fetch --no-tags --depth=1 "https://github.com/${GITHUB_REPOSITORY}.git" "${BASE_REF}"
+      - name: Check plugins
+        run: python .automation/plugins_audit.py --check-added FETCH_HEAD

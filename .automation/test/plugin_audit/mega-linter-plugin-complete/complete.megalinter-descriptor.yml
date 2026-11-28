@@ -1,0 +1,51 @@
+descriptor_id: AUDIT_TEST
+descriptor_type: format
+descriptor_flavors:
+  - all_flavors
+file_extensions:
+  - ".audit"
+linters:
+  - linter_name: audit-lint
+    name: AUDIT_TEST_AUDIT_LINT
+    linter_url: https://example.com/audit-lint
+    linter_rules_url: https://example.com/audit-lint/rules
+    linter_rules_configuration_url: https://example.com/audit-lint/configuration
+    linter_rules_inline_disable_url: https://example.com/audit-lint/disable
+    linter_rules_ignore_config_url: https://example.com/audit-lint/ignore
+    linter_spdx_license: MIT
+    linter_speed: 4
+    linter_icon_png_url: https://example.com/audit-lint/icon.png
+    config_file_name: .audit-lint.yml
+    test_folder: audit_test
+    cli_lint_mode: list_of_files
+    supported_cli_lint_modes:
+      - file
+      - list_of_files
+    cli_lint_errors_count: regex_count
+    cli_lint_errors_regex: "^[^:]+:[0-9]+: "
+    can_output_sarif: true
+    sarif_text_regex: "^(?P<path>[^:]+):(?P<line>[0-9]+): (?P<message>.+)$"
+    examples:
+      - "audit-lint myfile.audit"
+    ide:
+      vscode:
+        - name: audit-lint
+          url: https://example.com/audit-lint/vscode
+    install:
+      dockerfile:
+        - |-
+          # renovate: datasource=pypi depName=audit-lint
+          ARG PIP_AUDIT_LINT_VERSION=1.2.3
+      pip:
+        - audit-lint==${PIP_AUDIT_LINT_VERSION}
+    native_install:
+      method: pip
+      requires:
+        - runtime: python
+          version: ">=3.10"
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - darwin/amd64
+        - darwin/arm64
+        - windows/amd64

@@ -446,7 +446,23 @@ nav:
   - "They talk about MegaLinter": "articles.md"
   - "They use MegaLinter": "used-by-stats.md"
   - "List of linters": "all_linters.md"
-  - "Linter Plugins": "plugins.md"
+  - "Linter Plugins":
+      - "Plugins catalog": "plugins.md"
+      # plugins-start
+      - "jupyfmt": "plugins/jupyfmt.md"
+      - "linkcheck": "plugins/linkcheck.md"
+      - "nitpick": "plugins/nitpick.md"
+      - "mustache": "plugins/mustache.md"
+      - "salt-lint": "plugins/salt-lint.md"
+      - "docker-compose-linter": "plugins/docker-compose-linter.md"
+      - "repolinter": "plugins/repolinter.md"
+      - "j2lint": "plugins/j2lint.md"
+      - "fmlint": "plugins/fmlint.md"
+      - "gawk": "plugins/gawk.md"
+      - "lintlang": "plugins/lintlang.md"
+      - "blinter": "plugins/blinter.md"
+      - "glsec": "plugins/glsec.md"
+# plugins-end
   - "Special thanks": "special-thanks.md"
   - "Sponsoring": 'sponsor.md'
   - "Badge": "badge.md"

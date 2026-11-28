@@ -1,6 +1,7 @@
 {
     "ignorePaths": [
         "**/.automation/generated/**",
+        "**/docs/plugins/**",
         "**/skills/megalinter-fix/linters/**",
         "**/.cspell.json",
         "**/.gitignore",

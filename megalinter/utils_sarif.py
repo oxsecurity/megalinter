@@ -157,6 +157,8 @@ def fix_sarif(linter_sarif_obj, linter):
                 "docUrl": get_linter_doc_url(linter),
                 "linterVersion": linter.get_linter_version(),
             }
+            if getattr(linter, "is_plugin", False) is True:
+                run_properties["megalinter"]["plugin"] = True
             run["properties"] = run_properties
 
             # Update linter name in case there are duplicates
