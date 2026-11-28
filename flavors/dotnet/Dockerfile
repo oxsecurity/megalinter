@@ -142,7 +142,7 @@ ARG ARM_TTK_VERSION=20250401
 ARG ARM_TTK_NAME='arm-ttk.zip'
 ARG ARM_TTK_DIRECTORY='/opt/microsoft'
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.48.1
+ARG BICEP_VERSION=0.49.2
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 # renovate: datasource=pypi depName=cpplint
@@ -186,7 +186,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.21
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -224,7 +224,7 @@ ARG PIP_SNAKEMAKE_VERSION=9.27.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.1
+ARG NPM_CSPELL_VERSION=10.5.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell

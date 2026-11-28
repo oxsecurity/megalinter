@@ -15,7 +15,7 @@
         "prettier": "3.9.10",
         "prettyjson": "1.2.5",
         "typescript": "6.0.3",
-        "typescript-eslint": "8.72.1"
+        "typescript-eslint": "8.72.2"
       },
       "name": "megalinter-native-typescript_es",
       "private": true,
@@ -39,7 +39,7 @@
             "prettier": "3.9.10",
             "prettyjson": "1.2.5",
             "typescript": "6.0.3",
-            "typescript-eslint": "8.72.1"
+            "typescript-eslint": "8.72.2"
           },
           "name": "megalinter-native-typescript_es",
           "version": "0.0.0"
@@ -110,24 +110,40 @@
           "engines": {
             "node": "^12.0.0 || ^14.0.0 || >=16.0.0"
           },
-          "integrity": "sha512-R76UKbvsqI68DJJVTVyqFKqU98CN4+B+acxNfEA2IFarSzP0SjtKf/3+fFiXzTyv5Fj3PxLkGHe2wnVWWMxobQ==",
+          "integrity": "sha512-1qH3WeISXHFS8P3QI0lntHlMrlfTh1OarxlRbPNDEkSCqoyXC3apBE7MDyRKOL8HpuW48aQtff30wvEFww/4ww==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.3.tgz",
-          "version": "4.12.3"
+          "resolved": "https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.4.tgz",
+          "version": "4.12.4"
         },
         "node_modules/@eslint/config-array": {
           "dependencies": {
             "@eslint/object-schema": "^3.0.5",
             "debug": "^4.3.1",
-            "minimatch": "^10.2.4"
+            "minimatch": "^11.0.5"
           },
           "engines": {
             "node": "^20.19.0 || ^22.13.0 || >=24"
           },
-          "integrity": "sha512-Y3kKLvC1dvTOT+oGlqNQ1XLqK6D1HU2YXPc52NmAlJZbMMWDzGYXMiPRJ8TYD39muD/OTjlZmNJ4ib7dvSrMBA==",
+          "integrity": "sha512-Ix1tmZjA7/OmE7ROAfORe83hVnqlDzLpZVHFjHQt5mvLm1U03qMexpaxKqFIL362QV32SoPaZqmKQr3tdqFY2w==",
           "license": "Apache-2.0",
-          "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.5.tgz",
-          "version": "0.23.5"
+          "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.23.7.tgz",
+          "version": "0.23.7"
+        },
+        "node_modules/@eslint/config-array/node_modules/minimatch": {
+          "dependencies": {
+            "@isaacs/nonrecursive-glob-match": "^1.1.0",
+            "brace-expansion": "^5.0.12"
+          },
+          "engines": {
+            "node": "20 || >=22"
+          },
+          "funding": {
+            "url": "https://github.com/sponsors/isaacs"
+          },
+          "integrity": "sha512-KCFkfyjqerNlSstjlhIGNXIKZGA/6O4V4RlhZ+Dsr621SPPw0mzlypE9D9ZOoPiVefHID+j7/XuMMlqfD/F60Q==",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-11.0.9.tgz",
+          "version": "11.0.9"
         },
         "node_modules/@eslint/config-helpers": {
           "dependencies": {
@@ -428,6 +444,12 @@
           "license": "Apache-2.0",
           "resolved": "https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz",
           "version": "0.4.3"
+        },
+        "node_modules/@isaacs/nonrecursive-glob-match": {
+          "integrity": "sha512-GPm/Dbvk5RLmhRnxXIa7nTpK0xtl4E0wj0MslsuNiJ1FIROU+2+9lgUC/dgF7Ey4QCWhfEsgxilMRMCdHPfDfw==",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/@isaacs/nonrecursive-glob-match/-/nonrecursive-glob-match-1.1.0.tgz",
+          "version": "1.1.0"
         },
         "node_modules/@keyv/bigmap": {
           "dependencies": {
@@ -736,10 +758,10 @@
           "version": "4.3.1"
         },
         "node_modules/@types/estree": {
-          "integrity": "sha512-lTyOMnOcmRBzdCv6/4zUZCrEhV0xrqQiUZBZtVcbmLHBXKLnN8q89v/wKRF/Q0HbwVsqbIG3o5HDoFl9sduM+g==",
+          "integrity": "sha512-YBdNe5JcjYR0sPhJW1QIeRCmI11YhYvaRuGCs9+WCeTTb+Yhb2BE2XMe5/wAqF10FK5g3+q1PDhQABfT7aX0gg==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.10.tgz",
-          "version": "1.0.10"
+          "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.11.tgz",
+          "version": "1.0.11"
         },
         "node_modules/@types/json-schema": {
           "integrity": "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==",
@@ -750,10 +772,10 @@
         "node_modules/@typescript-eslint/eslint-plugin": {
           "dependencies": {
             "@eslint-community/regexpp": "^4.12.2",
-            "@typescript-eslint/scope-manager": "8.72.1",
-            "@typescript-eslint/type-utils": "8.72.1",
-            "@typescript-eslint/utils": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1",
+            "@typescript-eslint/scope-manager": "8.72.2",
+            "@typescript-eslint/type-utils": "8.72.2",
+            "@typescript-eslint/utils": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2",
             "ignore": "^7.0.5",
             "natural-compare": "^1.4.0",
             "ts-api-utils": "^2.5.0"
@@ -765,295 +787,17 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-5CokTWXpmbylfFabsbvHC0CAw3XLaGnoa+nFJX5FR592h/LoZsENUE6p/rg5xvkKrFEXz6pYmgI29AgXc2N3BQ==",
+          "integrity": "sha512-222PKFXKihmFpi/pS5njoBgdAqsPhj2/GBmFbrNw8Tq8gEG9Sv+kSlKFy4u2q+mJv9ZzJgM2Gkv/bUzRZwZw5g==",
           "license": "MIT",
           "peerDependencies": {
-            "@typescript-eslint/parser": "^8.72.1",
+            "@typescript-eslint/parser": "^8.72.2",
             "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
             "typescript": ">=4.8.4 <6.1.0"
           },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/project-service": {
-          "dependencies": {
-            "@typescript-eslint/tsconfig-utils": "^8.72.1",
-            "@typescript-eslint/types": "^8.72.1",
-            "debug": "^4.4.3"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-fAuVMkwdO/huI8nyo/WKnNKf6Gag93S56Rh3Ts5mGcavwSdaN8tRg1gCeIGX8PF+nzp1BjGfO4gHhGzW1J6jTg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/scope-manager": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-lC/t6eMCZZQAAKZEYGL6RDVSuFehpdmMT6h+nJIjIa6oylN/PwDgDVtEIbB7O9xFfZYtZAYLoLlDNWKJhtF+uQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/tsconfig-utils": {
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-e4D5R5vpeAEPBxT2BAzsFQL3sbwyeeeo5+aczgNSRK1V734jE7pTqaGFU+fXapWEQwnZbpFaTn32+Z8DwS6OTg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/types": {
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-LmE5IhQet1BWOWEXqBrVtBPsMAOQ6Nzk35d+WLh3mk4EUF33sqlfxjio1MdYeSvKSG5skactKKuixBIKXhL4Rw==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/typescript-estree": {
-          "dependencies": {
-            "@typescript-eslint/project-service": "8.72.1",
-            "@typescript-eslint/tsconfig-utils": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1",
-            "debug": "^4.4.3",
-            "minimatch": "^10.2.2",
-            "semver": "^7.7.3",
-            "tinyglobby": "^0.2.15",
-            "ts-api-utils": "^2.5.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-DAlUoUV93hIvrtIQLwCbmZQYVZwOMhiHJrOVUUIWicFZaIYjTRqlY3I/NZevfkLmSqkNHRu2qYDcq9lrn16oOQ==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/utils": {
-          "dependencies": {
-            "@eslint-community/eslint-utils": "^4.9.1",
-            "@typescript-eslint/scope-manager": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/typescript-estree": "8.72.1"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-5v5liypurJBFHCBNqh/RjsymAD+VWcE0djuGY/BUqp5fC3Qn+luWDEksjuTtWjPn6i5zQlUtkZCRG/CYG0yCkA==",
-          "license": "MIT",
-          "peerDependencies": {
-            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/visitor-keys": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "eslint-visitor-keys": "^5.0.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-SB8xqipSzZHUePCCLNeYxqnxq83X61/qzNhjQGbTfjxGZIeOEP7tBgWYX05Tcd6CgE02WdTJnh5b8kMZJ/+bnQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore": {
-          "engines": {
-            "node": ">= 4"
-          },
-          "integrity": "sha512-wCBiZ77u1tuWde6G/nfOtLaCTYcFDU5yCzARzK10y+rLhzYoL7a7yEemcopcc2Mzow7gZOIjnV2ym1NYmdiJOQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/ignore/-/ignore-7.0.14.tgz",
-          "version": "7.0.14"
-        },
-        "node_modules/@typescript-eslint/parser": {
-          "dependencies": {
-            "@typescript-eslint/scope-manager": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/typescript-estree": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1",
-            "debug": "^4.4.3"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-ZGwZP4OCfyA0AQTpEAMWz+rtX01DRhQWW5hB0ucKDEIX5U7jdmPSaMx94rQfaPAQzIYz2BimOgKOJtjfpRFQ9g==",
-          "license": "MIT",
-          "peerDependencies": {
-            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/project-service": {
-          "dependencies": {
-            "@typescript-eslint/tsconfig-utils": "^8.72.1",
-            "@typescript-eslint/types": "^8.72.1",
-            "debug": "^4.4.3"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-fAuVMkwdO/huI8nyo/WKnNKf6Gag93S56Rh3Ts5mGcavwSdaN8tRg1gCeIGX8PF+nzp1BjGfO4gHhGzW1J6jTg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/scope-manager": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-lC/t6eMCZZQAAKZEYGL6RDVSuFehpdmMT6h+nJIjIa6oylN/PwDgDVtEIbB7O9xFfZYtZAYLoLlDNWKJhtF+uQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/tsconfig-utils": {
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-e4D5R5vpeAEPBxT2BAzsFQL3sbwyeeeo5+aczgNSRK1V734jE7pTqaGFU+fXapWEQwnZbpFaTn32+Z8DwS6OTg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/types": {
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-LmE5IhQet1BWOWEXqBrVtBPsMAOQ6Nzk35d+WLh3mk4EUF33sqlfxjio1MdYeSvKSG5skactKKuixBIKXhL4Rw==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/typescript-estree": {
-          "dependencies": {
-            "@typescript-eslint/project-service": "8.72.1",
-            "@typescript-eslint/tsconfig-utils": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1",
-            "debug": "^4.4.3",
-            "minimatch": "^10.2.2",
-            "semver": "^7.7.3",
-            "tinyglobby": "^0.2.15",
-            "ts-api-utils": "^2.5.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-DAlUoUV93hIvrtIQLwCbmZQYVZwOMhiHJrOVUUIWicFZaIYjTRqlY3I/NZevfkLmSqkNHRu2qYDcq9lrn16oOQ==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/visitor-keys": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "eslint-visitor-keys": "^5.0.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-SB8xqipSzZHUePCCLNeYxqnxq83X61/qzNhjQGbTfjxGZIeOEP7tBgWYX05Tcd6CgE02WdTJnh5b8kMZJ/+bnQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/project-service": {
           "dependencies": {
             "@typescript-eslint/tsconfig-utils": "^8.72.2",
             "@typescript-eslint/types": "^8.72.2",
@@ -1074,7 +818,7 @@
           "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.2.tgz",
           "version": "8.72.2"
         },
-        "node_modules/@typescript-eslint/scope-manager": {
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/scope-manager": {
           "dependencies": {
             "@typescript-eslint/types": "8.72.2",
             "@typescript-eslint/visitor-keys": "8.72.2"
@@ -1091,7 +835,7 @@
           "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.2.tgz",
           "version": "8.72.2"
         },
-        "node_modules/@typescript-eslint/tsconfig-utils": {
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/tsconfig-utils": {
           "engines": {
             "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
           },
@@ -1107,165 +851,7 @@
           "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.2.tgz",
           "version": "8.72.2"
         },
-        "node_modules/@typescript-eslint/type-utils": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/typescript-estree": "8.72.1",
-            "@typescript-eslint/utils": "8.72.1",
-            "debug": "^4.4.3",
-            "ts-api-utils": "^2.5.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-iY2wlmyrXJmx4yxUGP3aYCFF3cA/6ShddOKmLU2dx7LnEykbAM8WThlxZEfd1NddqceF6eJmZUayxx9oKIYNlg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/project-service": {
-          "dependencies": {
-            "@typescript-eslint/tsconfig-utils": "^8.72.1",
-            "@typescript-eslint/types": "^8.72.1",
-            "debug": "^4.4.3"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-fAuVMkwdO/huI8nyo/WKnNKf6Gag93S56Rh3Ts5mGcavwSdaN8tRg1gCeIGX8PF+nzp1BjGfO4gHhGzW1J6jTg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/scope-manager": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-lC/t6eMCZZQAAKZEYGL6RDVSuFehpdmMT6h+nJIjIa6oylN/PwDgDVtEIbB7O9xFfZYtZAYLoLlDNWKJhtF+uQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/tsconfig-utils": {
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-e4D5R5vpeAEPBxT2BAzsFQL3sbwyeeeo5+aczgNSRK1V734jE7pTqaGFU+fXapWEQwnZbpFaTn32+Z8DwS6OTg==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/types": {
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-LmE5IhQet1BWOWEXqBrVtBPsMAOQ6Nzk35d+WLh3mk4EUF33sqlfxjio1MdYeSvKSG5skactKKuixBIKXhL4Rw==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/typescript-estree": {
-          "dependencies": {
-            "@typescript-eslint/project-service": "8.72.1",
-            "@typescript-eslint/tsconfig-utils": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1",
-            "debug": "^4.4.3",
-            "minimatch": "^10.2.2",
-            "semver": "^7.7.3",
-            "tinyglobby": "^0.2.15",
-            "ts-api-utils": "^2.5.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-DAlUoUV93hIvrtIQLwCbmZQYVZwOMhiHJrOVUUIWicFZaIYjTRqlY3I/NZevfkLmSqkNHRu2qYDcq9lrn16oOQ==",
-          "license": "MIT",
-          "peerDependencies": {
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/utils": {
-          "dependencies": {
-            "@eslint-community/eslint-utils": "^4.9.1",
-            "@typescript-eslint/scope-manager": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/typescript-estree": "8.72.1"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-5v5liypurJBFHCBNqh/RjsymAD+VWcE0djuGY/BUqp5fC3Qn+luWDEksjuTtWjPn6i5zQlUtkZCRG/CYG0yCkA==",
-          "license": "MIT",
-          "peerDependencies": {
-            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
-            "typescript": ">=4.8.4 <6.1.0"
-          },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/visitor-keys": {
-          "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "eslint-visitor-keys": "^5.0.0"
-          },
-          "engines": {
-            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
-          },
-          "funding": {
-            "type": "opencollective",
-            "url": "https://opencollective.com/typescript-eslint"
-          },
-          "integrity": "sha512-SB8xqipSzZHUePCCLNeYxqnxq83X61/qzNhjQGbTfjxGZIeOEP7tBgWYX05Tcd6CgE02WdTJnh5b8kMZJ/+bnQ==",
-          "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.1.tgz",
-          "version": "8.72.1"
-        },
-        "node_modules/@typescript-eslint/types": {
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/types": {
           "engines": {
             "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
           },
@@ -1278,7 +864,7 @@
           "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.2.tgz",
           "version": "8.72.2"
         },
-        "node_modules/@typescript-eslint/typescript-estree": {
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/typescript-estree": {
           "dependencies": {
             "@typescript-eslint/project-service": "8.72.2",
             "@typescript-eslint/tsconfig-utils": "8.72.2",
@@ -1305,7 +891,7 @@
           "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.2.tgz",
           "version": "8.72.2"
         },
-        "node_modules/@typescript-eslint/utils": {
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/utils": {
           "dependencies": {
             "@eslint-community/eslint-utils": "^4.9.1",
             "@typescript-eslint/scope-manager": "8.72.2",
@@ -1328,7 +914,7 @@
           "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.72.2.tgz",
           "version": "8.72.2"
         },
-        "node_modules/@typescript-eslint/visitor-keys": {
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/@typescript-eslint/visitor-keys": {
           "dependencies": {
             "@typescript-eslint/types": "8.72.2",
             "eslint-visitor-keys": "^5.0.0"
@@ -1344,6 +930,464 @@
           "license": "MIT",
           "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.2.tgz",
           "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/eslint-plugin/node_modules/ignore": {
+          "engines": {
+            "node": ">= 4"
+          },
+          "integrity": "sha512-0c3zcBRlWmcKhcIQWckzkYncJRv5HHB8O32wO/FcWL8DDXWDJgiEF6SX9ThbTv5h/eZ+xJK+VvDjjQ+cQJhp3Q==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/ignore/-/ignore-7.0.17.tgz",
+          "version": "7.0.17"
+        },
+        "node_modules/@typescript-eslint/parser": {
+          "dependencies": {
+            "@typescript-eslint/scope-manager": "8.72.2",
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/typescript-estree": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2",
+            "debug": "^4.4.3"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-llP+T1YuJOLlxEciP6OyQGtz5SMxyn+9LA2BvZw5RmToGVa1y4beEDVQL6Gje7T5WFYh19WREjDCN9Ev4gm5AA==",
+          "license": "MIT",
+          "peerDependencies": {
+            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/project-service": {
+          "dependencies": {
+            "@typescript-eslint/tsconfig-utils": "^8.72.2",
+            "@typescript-eslint/types": "^8.72.2",
+            "debug": "^4.4.3"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-6y5dLTZdHhI8Eh3yIQ/bfQhRKwn5e+TpJj64o18Cngc0iW/BCrVvrr6zGYqXPnYH31u6YXAYiFh0+qxX5mybJw==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/scope-manager": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-iIoMJ6/8c1/QpFNyFjU0d1YzPco4MsZjQw0k3V+vfzNWAFmUmvhlyMoYEoYYDQZXc+J6Gi1X5XcxlzW2taIIGQ==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/tsconfig-utils": {
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-+h3iCgZXuTNtoLXcnnjP12ZUHLMqoUcIHPfQrFEXTUqvb9dF8QK9b5nv5VtSo5fLkdHuks8ehbTzZj3rImAm9w==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/types": {
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-Xfn37OLZx03+PCU7qWx9DTv2FCRh1E6fk2+wONeNY15HXIwtcwuveaSwVpGAUptkNmPQegRxW5JyRel9T7wrog==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/typescript-estree": {
+          "dependencies": {
+            "@typescript-eslint/project-service": "8.72.2",
+            "@typescript-eslint/tsconfig-utils": "8.72.2",
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2",
+            "debug": "^4.4.3",
+            "minimatch": "^10.2.2",
+            "semver": "^7.7.3",
+            "tinyglobby": "^0.2.15",
+            "ts-api-utils": "^2.5.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-pQEGqIK/cqEvKivVWaFLYpe7XYejFxfuAOi4mu1oAWFvIo36aRHI9esRFTUxcIy/z8N482RJyH+LpZB0ZIU7Ow==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/parser/node_modules/@typescript-eslint/visitor-keys": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.72.2",
+            "eslint-visitor-keys": "^5.0.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-NAGrjn0Pitjqzq/GkgMC4kBYm233PQ8GffyQ9+kTA3AlNQYEzOf25EIM02BAHZv5FRJSpHpJk+OGUxVkOB93GQ==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/project-service": {
+          "dependencies": {
+            "@typescript-eslint/tsconfig-utils": "^8.74.0",
+            "@typescript-eslint/types": "^8.74.0",
+            "debug": "^4.4.3"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-z/mymuE+JlEeSFIv3Mo70EvgG1Zz74Hl0IDfExfXutARAP834bt+MppTD7mVAwmZO0GdxdOAi0jbTam749eH6g==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.74.0.tgz",
+          "version": "8.74.0"
+        },
+        "node_modules/@typescript-eslint/scope-manager": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.74.0",
+            "@typescript-eslint/visitor-keys": "8.74.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-kpOdpu4CpWN5U38ox3f727DwWRBtUAVhyUJtqTBYe5gf2wYoxac7PgKP14txrxN7ICVtcjlLdzjqfRgpSnDKvQ==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.74.0.tgz",
+          "version": "8.74.0"
+        },
+        "node_modules/@typescript-eslint/tsconfig-utils": {
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-p07wAuaS6BjCYgOSXKJi4YhvTnAf7fiG37e9THcpnYaQEt2QiTTYZWKwUFNgeRiywiMudazhzgddAirZ0GgHtQ==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.74.0.tgz",
+          "version": "8.74.0"
+        },
+        "node_modules/@typescript-eslint/type-utils": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/typescript-estree": "8.72.2",
+            "@typescript-eslint/utils": "8.72.2",
+            "debug": "^4.4.3",
+            "ts-api-utils": "^2.5.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-STfkR38qIdhfkLpgtXnUjAzsNy4xouqiBO0lrVc/Wpk9Kem5/aHXUx1J8dGC16zpdYN1+yc2ILQ28er1kXX7ag==",
+          "license": "MIT",
+          "peerDependencies": {
+            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/type-utils/-/type-utils-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/project-service": {
+          "dependencies": {
+            "@typescript-eslint/tsconfig-utils": "^8.72.2",
+            "@typescript-eslint/types": "^8.72.2",
+            "debug": "^4.4.3"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-6y5dLTZdHhI8Eh3yIQ/bfQhRKwn5e+TpJj64o18Cngc0iW/BCrVvrr6zGYqXPnYH31u6YXAYiFh0+qxX5mybJw==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/scope-manager": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-iIoMJ6/8c1/QpFNyFjU0d1YzPco4MsZjQw0k3V+vfzNWAFmUmvhlyMoYEoYYDQZXc+J6Gi1X5XcxlzW2taIIGQ==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/tsconfig-utils": {
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-+h3iCgZXuTNtoLXcnnjP12ZUHLMqoUcIHPfQrFEXTUqvb9dF8QK9b5nv5VtSo5fLkdHuks8ehbTzZj3rImAm9w==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/types": {
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-Xfn37OLZx03+PCU7qWx9DTv2FCRh1E6fk2+wONeNY15HXIwtcwuveaSwVpGAUptkNmPQegRxW5JyRel9T7wrog==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/typescript-estree": {
+          "dependencies": {
+            "@typescript-eslint/project-service": "8.72.2",
+            "@typescript-eslint/tsconfig-utils": "8.72.2",
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2",
+            "debug": "^4.4.3",
+            "minimatch": "^10.2.2",
+            "semver": "^7.7.3",
+            "tinyglobby": "^0.2.15",
+            "ts-api-utils": "^2.5.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-pQEGqIK/cqEvKivVWaFLYpe7XYejFxfuAOi4mu1oAWFvIo36aRHI9esRFTUxcIy/z8N482RJyH+LpZB0ZIU7Ow==",
+          "license": "MIT",
+          "peerDependencies": {
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/utils": {
+          "dependencies": {
+            "@eslint-community/eslint-utils": "^4.9.1",
+            "@typescript-eslint/scope-manager": "8.72.2",
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/typescript-estree": "8.72.2"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-hv3eRYbpPbbpezuax1EfGrzpa3C4ySgNZkPUkLOWOAjU8HsOKowEDAr8C7nsNl1C+SBSKDpvno6VKHnlhvp9iA==",
+          "license": "MIT",
+          "peerDependencies": {
+            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/type-utils/node_modules/@typescript-eslint/visitor-keys": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.72.2",
+            "eslint-visitor-keys": "^5.0.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-NAGrjn0Pitjqzq/GkgMC4kBYm233PQ8GffyQ9+kTA3AlNQYEzOf25EIM02BAHZv5FRJSpHpJk+OGUxVkOB93GQ==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.2.tgz",
+          "version": "8.72.2"
+        },
+        "node_modules/@typescript-eslint/types": {
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-MpnMrJCVNpP1iVL8NiHkQZgQqIMBH5ewDGUPBh1pqQXwFtMFjsl1M03QcYPXmv6stCKEiF0PN7CGbU1ZbXFzEA==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.74.0.tgz",
+          "version": "8.74.0"
+        },
+        "node_modules/@typescript-eslint/typescript-estree": {
+          "dependencies": {
+            "@typescript-eslint/project-service": "8.74.0",
+            "@typescript-eslint/tsconfig-utils": "8.74.0",
+            "@typescript-eslint/types": "8.74.0",
+            "@typescript-eslint/visitor-keys": "8.74.0",
+            "debug": "^4.4.3",
+            "minimatch": "^11.0.1",
+            "semver": "^7.7.3",
+            "tinyglobby": "^0.2.15",
+            "ts-api-utils": "^2.5.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-wL348k6l92DNG+kPP5rVpKwNBoz7a3xRZy3TPKc1uymQttd7u7gcMv3eENmcuh4CjC4mO3FTM0DYstFXMyDLuw==",
+          "license": "MIT",
+          "peerDependencies": {
+            "@typescript/native": "npm:typescript@>=7.1.0-dev.20261009.1 || >=7.1.0-beta <7.1.0-dev",
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "peerDependenciesMeta": {
+            "@typescript/native": {
+              "optional": true
+            }
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.74.0.tgz",
+          "version": "8.74.0"
+        },
+        "node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch": {
+          "dependencies": {
+            "@isaacs/nonrecursive-glob-match": "^1.1.0",
+            "brace-expansion": "^5.0.12"
+          },
+          "engines": {
+            "node": "20 || >=22"
+          },
+          "funding": {
+            "url": "https://github.com/sponsors/isaacs"
+          },
+          "integrity": "sha512-KCFkfyjqerNlSstjlhIGNXIKZGA/6O4V4RlhZ+Dsr621SPPw0mzlypE9D9ZOoPiVefHID+j7/XuMMlqfD/F60Q==",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-11.0.9.tgz",
+          "version": "11.0.9"
+        },
+        "node_modules/@typescript-eslint/utils": {
+          "dependencies": {
+            "@eslint-community/eslint-utils": "^4.9.1",
+            "@typescript-eslint/scope-manager": "8.74.0",
+            "@typescript-eslint/types": "8.74.0",
+            "@typescript-eslint/typescript-estree": "8.74.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-IpWXPxXXomzxyTcvjhZJexgdvtTR1TooLAPpuxzaGqQ8BHll1lf4Ysp/BTE/l0U5TJ+x1j7B4bEM8pLRrvY+XA==",
+          "license": "MIT",
+          "peerDependencies": {
+            "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
+            "typescript": ">=4.8.4 <6.1.0"
+          },
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.74.0.tgz",
+          "version": "8.74.0"
+        },
+        "node_modules/@typescript-eslint/visitor-keys": {
+          "dependencies": {
+            "@typescript-eslint/types": "8.74.0",
+            "eslint-visitor-keys": "^5.0.0"
+          },
+          "engines": {
+            "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+          },
+          "funding": {
+            "type": "opencollective",
+            "url": "https://opencollective.com/typescript-eslint"
+          },
+          "integrity": "sha512-XSZmOtMUbWCBIM+2BK134FyMFxmll1mW2mPLk/PSwYQYzGIPMgJAqL929U4qXVizLv7Xq5b7r41/o7Ombuwk0g==",
+          "license": "MIT",
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.74.0.tgz",
+          "version": "8.74.0"
         },
         "node_modules/@ungap/structured-clone": {
           "integrity": "sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==",
@@ -1747,10 +1791,10 @@
           "engines": {
             "node": "20 || >=22"
           },
-          "integrity": "sha512-Vh3dmFbc4wZeox7M9I/0L9GfFd83Su4+yCck/OF9Gi/P/dAHn0RT7X4K9R7gMNMhDck3DvhR6QXsnQdjjgwNvQ==",
+          "integrity": "sha512-aa11Dv491GKnYqxaul3aRJ0szew7yMJMfZPnqD44NjGrZXoj62l41OEDDpdpC4eE2P88vBFfLuSyRhpG91NUvg==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.13.tgz",
-          "version": "5.0.13"
+          "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.1.0.tgz",
+          "version": "5.1.0"
         },
         "node_modules/cacheable": {
           "dependencies": {
@@ -1821,10 +1865,10 @@
           "engines": {
             "node": ">= 12.0.0"
           },
-          "integrity": "sha512-+2AvZKjJaNq9GQljm3tr0utwrig5BL+jgJGvz5rDpGKNIp+ojcRXWUwBbh/sGIi1QCprR6PsKFakub+w1v+4hQ==",
+          "integrity": "sha512-bZMt5Mw4GgsMmnOZ5mHsHzyexC5JgzDbyMk5P0/RMqVPbK9sL+qOQyTGO95xCWQ8VhUzCbTdKkgcgGuofaVjuw==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/comment-parser/-/comment-parser-1.4.9.tgz",
-          "version": "1.4.9"
+          "resolved": "https://registry.npmjs.org/comment-parser/-/comment-parser-1.4.11.tgz",
+          "version": "1.4.11"
         },
         "node_modules/concat-map": {
           "integrity": "sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==",
@@ -1889,10 +1933,10 @@
           "engines": {
             "node": ">=10.13.0"
           },
-          "integrity": "sha512-PPnnSJq3azKOIewXR/uppBV/6h98dprBJ/WaQ9Qgj10xX1lJLNfg+XShpbsrSqcDSy2yYYyhfXM1wWhftqgyzw==",
+          "integrity": "sha512-Do6BB2xzlcc/odFg+XEYyneAx4T/WfywO71yw9ePS2tVfRsf7JVR4mUeELadIeHzixkzbG5DpluiEFPi2WGfYQ==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.26.1.tgz",
-          "version": "5.26.1"
+          "resolved": "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.27.0.tgz",
+          "version": "5.27.0"
         },
         "node_modules/escape-string-regexp": {
           "engines": {
@@ -2467,10 +2511,10 @@
           "version": "0.1.2"
         },
         "node_modules/graceful-fs": {
-          "integrity": "sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==",
-          "license": "ISC",
-          "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz",
-          "version": "4.2.11"
+          "integrity": "sha512-iuyGF2E4oafQfPsRrG2wtY2ILupMhvtdrhzrxB+0VcjsPpSPttpfYdjnGFGsTi5MaJFjI1jOKHPQ6UTbTj9TAw==",
+          "license": "BlueOak-1.0.0",
+          "resolved": "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.12.tgz",
+          "version": "4.2.12"
         },
         "node_modules/graphemer": {
           "integrity": "sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==",
@@ -3117,10 +3161,10 @@
             "type": "opencollective",
             "url": "https://opencollective.com/webpack"
           },
-          "integrity": "sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==",
+          "integrity": "sha512-NHFiWnAbMJxNNpBwiO7jJVGDuqMxT9/oV8v57RR+fgBQShkJil5inGD8/xWy0hjLyHQyX1tu27QANhlz3KBqCg==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/tapable/-/tapable-2.3.3.tgz",
-          "version": "2.3.3"
+          "resolved": "https://registry.npmjs.org/tapable/-/tapable-2.3.4.tgz",
+          "version": "2.3.4"
         },
         "node_modules/text-table": {
           "integrity": "sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==",
@@ -3195,10 +3239,10 @@
         },
         "node_modules/typescript-eslint": {
           "dependencies": {
-            "@typescript-eslint/eslint-plugin": "8.72.1",
-            "@typescript-eslint/parser": "8.72.1",
-            "@typescript-eslint/typescript-estree": "8.72.1",
-            "@typescript-eslint/utils": "8.72.1"
+            "@typescript-eslint/eslint-plugin": "8.72.2",
+            "@typescript-eslint/parser": "8.72.2",
+            "@typescript-eslint/typescript-estree": "8.72.2",
+            "@typescript-eslint/utils": "8.72.2"
           },
           "engines": {
             "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
@@ -3207,19 +3251,19 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-3Li9FfPmQp45nxEtFD1ZCrYFI3cYK5kpyNtmm1H7lMagm8u9sy6PTjy3ytwQZs7KNukOyKFHAZ6z6GjYFeaeXw==",
+          "integrity": "sha512-c/+AKMW1KB81r28Sp0AAdcyXj5dzNmAsZFcsrxKbZTKmcBK2xIwBR31dcSYSDu3bKmzXe8GKrSxO+eDQ401Uzg==",
           "license": "MIT",
           "peerDependencies": {
             "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
             "typescript": ">=4.8.4 <6.1.0"
           },
-          "resolved": "https://registry.npmjs.org/typescript-eslint/-/typescript-eslint-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/typescript-eslint/-/typescript-eslint-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/project-service": {
           "dependencies": {
-            "@typescript-eslint/tsconfig-utils": "^8.72.1",
-            "@typescript-eslint/types": "^8.72.1",
+            "@typescript-eslint/tsconfig-utils": "^8.72.2",
+            "@typescript-eslint/types": "^8.72.2",
             "debug": "^4.4.3"
           },
           "engines": {
@@ -3229,18 +3273,18 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-fAuVMkwdO/huI8nyo/WKnNKf6Gag93S56Rh3Ts5mGcavwSdaN8tRg1gCeIGX8PF+nzp1BjGfO4gHhGzW1J6jTg==",
+          "integrity": "sha512-6y5dLTZdHhI8Eh3yIQ/bfQhRKwn5e+TpJj64o18Cngc0iW/BCrVvrr6zGYqXPnYH31u6YXAYiFh0+qxX5mybJw==",
           "license": "MIT",
           "peerDependencies": {
             "typescript": ">=4.8.4 <6.1.0"
           },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/project-service/-/project-service-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/scope-manager": {
           "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1"
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2"
           },
           "engines": {
             "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
@@ -3249,10 +3293,10 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-lC/t6eMCZZQAAKZEYGL6RDVSuFehpdmMT6h+nJIjIa6oylN/PwDgDVtEIbB7O9xFfZYtZAYLoLlDNWKJhtF+uQ==",
+          "integrity": "sha512-iIoMJ6/8c1/QpFNyFjU0d1YzPco4MsZjQw0k3V+vfzNWAFmUmvhlyMoYEoYYDQZXc+J6Gi1X5XcxlzW2taIIGQ==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/scope-manager/-/scope-manager-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/tsconfig-utils": {
           "engines": {
@@ -3262,13 +3306,13 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-e4D5R5vpeAEPBxT2BAzsFQL3sbwyeeeo5+aczgNSRK1V734jE7pTqaGFU+fXapWEQwnZbpFaTn32+Z8DwS6OTg==",
+          "integrity": "sha512-+h3iCgZXuTNtoLXcnnjP12ZUHLMqoUcIHPfQrFEXTUqvb9dF8QK9b5nv5VtSo5fLkdHuks8ehbTzZj3rImAm9w==",
           "license": "MIT",
           "peerDependencies": {
             "typescript": ">=4.8.4 <6.1.0"
           },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/types": {
           "engines": {
@@ -3278,17 +3322,17 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-LmE5IhQet1BWOWEXqBrVtBPsMAOQ6Nzk35d+WLh3mk4EUF33sqlfxjio1MdYeSvKSG5skactKKuixBIKXhL4Rw==",
+          "integrity": "sha512-Xfn37OLZx03+PCU7qWx9DTv2FCRh1E6fk2+wONeNY15HXIwtcwuveaSwVpGAUptkNmPQegRxW5JyRel9T7wrog==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/typescript-estree": {
           "dependencies": {
-            "@typescript-eslint/project-service": "8.72.1",
-            "@typescript-eslint/tsconfig-utils": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/visitor-keys": "8.72.1",
+            "@typescript-eslint/project-service": "8.72.2",
+            "@typescript-eslint/tsconfig-utils": "8.72.2",
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/visitor-keys": "8.72.2",
             "debug": "^4.4.3",
             "minimatch": "^10.2.2",
             "semver": "^7.7.3",
@@ -3302,20 +3346,20 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-DAlUoUV93hIvrtIQLwCbmZQYVZwOMhiHJrOVUUIWicFZaIYjTRqlY3I/NZevfkLmSqkNHRu2qYDcq9lrn16oOQ==",
+          "integrity": "sha512-pQEGqIK/cqEvKivVWaFLYpe7XYejFxfuAOi4mu1oAWFvIo36aRHI9esRFTUxcIy/z8N482RJyH+LpZB0ZIU7Ow==",
           "license": "MIT",
           "peerDependencies": {
             "typescript": ">=4.8.4 <6.1.0"
           },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/typescript-estree/-/typescript-estree-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/utils": {
           "dependencies": {
             "@eslint-community/eslint-utils": "^4.9.1",
-            "@typescript-eslint/scope-manager": "8.72.1",
-            "@typescript-eslint/types": "8.72.1",
-            "@typescript-eslint/typescript-estree": "8.72.1"
+            "@typescript-eslint/scope-manager": "8.72.2",
+            "@typescript-eslint/types": "8.72.2",
+            "@typescript-eslint/typescript-estree": "8.72.2"
           },
           "engines": {
             "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
@@ -3324,18 +3368,18 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-5v5liypurJBFHCBNqh/RjsymAD+VWcE0djuGY/BUqp5fC3Qn+luWDEksjuTtWjPn6i5zQlUtkZCRG/CYG0yCkA==",
+          "integrity": "sha512-hv3eRYbpPbbpezuax1EfGrzpa3C4ySgNZkPUkLOWOAjU8HsOKowEDAr8C7nsNl1C+SBSKDpvno6VKHnlhvp9iA==",
           "license": "MIT",
           "peerDependencies": {
             "eslint": "^8.57.0 || ^9.0.0 || ^10.0.0",
             "typescript": ">=4.8.4 <6.1.0"
           },
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/utils/-/utils-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/typescript-eslint/node_modules/@typescript-eslint/visitor-keys": {
           "dependencies": {
-            "@typescript-eslint/types": "8.72.1",
+            "@typescript-eslint/types": "8.72.2",
             "eslint-visitor-keys": "^5.0.0"
           },
           "engines": {
@@ -3345,10 +3389,10 @@
             "type": "opencollective",
             "url": "https://opencollective.com/typescript-eslint"
           },
-          "integrity": "sha512-SB8xqipSzZHUePCCLNeYxqnxq83X61/qzNhjQGbTfjxGZIeOEP7tBgWYX05Tcd6CgE02WdTJnh5b8kMZJ/+bnQ==",
+          "integrity": "sha512-NAGrjn0Pitjqzq/GkgMC4kBYm233PQ8GffyQ9+kTA3AlNQYEzOf25EIM02BAHZv5FRJSpHpJk+OGUxVkOB93GQ==",
           "license": "MIT",
-          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.1.tgz",
-          "version": "8.72.1"
+          "resolved": "https://registry.npmjs.org/@typescript-eslint/visitor-keys/-/visitor-keys-8.72.2.tgz",
+          "version": "8.72.2"
         },
         "node_modules/unrs-resolver": {
           "dependencies": {
@@ -3451,5 +3495,5 @@
   "generator": 2,
   "linter": "TYPESCRIPT_ES",
   "method": "npm",
-  "spec_hash": "89b1b62ef6cb285f4f3ef7a4fd909529e04bfad355262cec8040d363c0480ab4"
+  "spec_hash": "1562e1aff04c1ecf190dfcea291108e546d7477fde1393701ea952a7e6f1418f"
 }

@@ -9,72 +9,72 @@
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "d38a0f0706c4f9c8ccba22f6c821ff85022e9a3a8bf1802983fd13cb8ff08ea7",
-          "size": 129081810,
-          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_darwin_amd64.tar.gz",
+          "sha256": "e7a2e5db699e098a72a6ba4fce1435c70d722141d540d00e2ccdff3494243983",
+          "size": 130809907,
+          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_darwin_amd64.tar.gz",
           "verification": [
             "github_attestation:kubescape/kubescape"
           ]
         }
       ],
-      "version": "4.0.20"
+      "version": "4.0.21"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "b3e54c96a33e8950e9e3f6c3aa67a7bcc272887d249c502fc00423e6b3e296f3",
-          "size": 122426560,
-          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_darwin_arm64.tar.gz",
+          "sha256": "cf9ff1364050923a98377a750436abff5bea41f3d6293593bbbddb1e0f4fa011",
+          "size": 124048792,
+          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_darwin_arm64.tar.gz",
           "verification": [
             "github_attestation:kubescape/kubescape"
           ]
         }
       ],
-      "version": "4.0.20"
+      "version": "4.0.21"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "6586bb94b9a250ad1353df743e65008802da1515bd4eb3c80eb3c5ce40a16672",
-          "size": 123566752,
-          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_linux_amd64.tar.gz",
+          "sha256": "f901b27b3143441eff8a1c57216794b0765df6e322fd62fb82f81c1c314086ae",
+          "size": 125406125,
+          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_linux_amd64.tar.gz",
           "verification": [
             "github_attestation:kubescape/kubescape"
           ]
         }
       ],
-      "version": "4.0.20"
+      "version": "4.0.21"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "a20a52f061c5fc3de0d7ffea133a8110bf051d15960618ab36a7430717ac6489",
-          "size": 114010591,
-          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_linux_arm64.tar.gz",
+          "sha256": "ebb3e2793c7e5a42c3fceff17b9541e4046fa5cd914c4a5fc6c15f42034de039",
+          "size": 115734668,
+          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_linux_arm64.tar.gz",
           "verification": [
             "github_attestation:kubescape/kubescape"
           ]
         }
       ],
-      "version": "4.0.20"
+      "version": "4.0.21"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "f16e842990921bf63f6717afa260868cad1875d33a1bf83a5ad29970d404c3ca",
-          "size": 124324382,
-          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_windows_amd64.tar.gz",
+          "sha256": "eb69559b8557effe6d339c99d32fbef26f5dbc32835c7a000ec60ad16ebb4130",
+          "size": 126108162,
+          "url": "https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_windows_amd64.tar.gz",
           "verification": [
             "github_attestation:kubescape/kubescape"
           ]
         }
       ],
-      "version": "4.0.20"
+      "version": "4.0.21"
     }
   },
-  "spec_hash": "478fe5bc6db0bbadb96830c165d62e3b356d53d11a695c925a487d44a30174e5"
+  "spec_hash": "b4615f5acf4860527c9045effe74831688007d98b93c10358816f1b80a0b6834"
 }

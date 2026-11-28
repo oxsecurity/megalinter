@@ -19,7 +19,7 @@ description: How to use ty (configure, ignore files, ignore errors, help & versi
 
 ## ty documentation
 
-- Version in MegaLinter: **0.0.100**
+- Version in MegaLinter: **0.0.103**
 - Visit [Official Web Site](https://docs.astral.sh/ty/){target=_blank}
 - See [How to configure ty rules](https://docs.astral.sh/ty/configuration/){target=_blank}
 - See [How to disable ty rules in files](https://docs.astral.sh/ty/configuration/#suppression){target=_blank}
@@ -123,11 +123,11 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=ty
-ARG PIP_TY_VERSION=0.0.100
+ARG PIP_TY_VERSION=0.0.103
 ```
 
 - PIP packages (Python):
-  - [ty==0.0.100](https://pypi.org/project/ty/0.0.100)
+  - [ty==0.0.103](https://pypi.org/project/ty/0.0.103)
 
 ### Installation without Docker (native mode)
 
@@ -153,7 +153,7 @@ NATIVE_LINTERS: [PYTHON_TY]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PYTHON_TY"
     uv venv "$INSTALL_DIR" --python ">=3.8"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "ty==0.0.100"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "ty==0.0.103"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -162,7 +162,7 @@ NATIVE_LINTERS: [PYTHON_TY]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/PYTHON_TY"
     uv venv "$INSTALL_DIR" --python ">=3.8"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "ty==0.0.100"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "ty==0.0.103"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

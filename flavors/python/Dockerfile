@@ -163,7 +163,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.21
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -193,7 +193,7 @@ ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.17.5
 # renovate: datasource=pypi depName=ty
-ARG PIP_TY_VERSION=0.0.102
+ARG PIP_TY_VERSION=0.0.103
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=github-tags depName=anchore/grype
@@ -232,7 +232,7 @@ ARG PIP_SNAKEMAKE_VERSION=9.27.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.1
+ARG NPM_CSPELL_VERSION=10.5.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell

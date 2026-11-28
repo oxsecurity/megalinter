@@ -247,9 +247,9 @@ NATIVE_LINTERS: [KUBERNETES_HELM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_HELM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" https://get.helm.sh/helm-v4.3.1-linux-amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
-      rm "$INSTALL_DIR/helm-v4.3.1-linux-amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.2-linux-amd64.tar.gz" https://get.helm.sh/helm-v4.3.2-linux-amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.2-linux-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.2-linux-amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -258,9 +258,9 @@ NATIVE_LINTERS: [KUBERNETES_HELM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_HELM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" https://get.helm.sh/helm-v4.3.1-linux-arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
-      rm "$INSTALL_DIR/helm-v4.3.1-linux-arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.2-linux-arm64.tar.gz" https://get.helm.sh/helm-v4.3.2-linux-arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.2-linux-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.2-linux-arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -269,9 +269,9 @@ NATIVE_LINTERS: [KUBERNETES_HELM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_HELM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" https://get.helm.sh/helm-v4.3.1-darwin-amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
-      rm "$INSTALL_DIR/helm-v4.3.1-darwin-amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.2-darwin-amd64.tar.gz" https://get.helm.sh/helm-v4.3.2-darwin-amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.2-darwin-amd64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.2-darwin-amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -280,9 +280,9 @@ NATIVE_LINTERS: [KUBERNETES_HELM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_HELM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" https://get.helm.sh/helm-v4.3.1-darwin-arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
-      rm "$INSTALL_DIR/helm-v4.3.1-darwin-arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.2-darwin-arm64.tar.gz" https://get.helm.sh/helm-v4.3.2-darwin-arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/helm-v4.3.2-darwin-arm64.tar.gz" -C "$INSTALL_DIR" --strip-components=1 &&
+      rm "$INSTALL_DIR/helm-v4.3.2-darwin-arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -291,11 +291,11 @@ NATIVE_LINTERS: [KUBERNETES_HELM]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_HELM"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" https://get.helm.sh/helm-v4.3.1-windows-amd64.zip &&
-      unzip -q "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" -d "$INSTALL_DIR/extract" &&
+    curl -fsSL -o "$INSTALL_DIR/helm-v4.3.2-windows-amd64.zip" https://get.helm.sh/helm-v4.3.2-windows-amd64.zip &&
+      unzip -q "$INSTALL_DIR/helm-v4.3.2-windows-amd64.zip" -d "$INSTALL_DIR/extract" &&
       mv "$INSTALL_DIR/extract"/*/* "$INSTALL_DIR"/ &&
       rm -r "$INSTALL_DIR/extract" &&
-      rm "$INSTALL_DIR/helm-v4.3.1-windows-amd64.zip" &&
+      rm "$INSTALL_DIR/helm-v4.3.2-windows-amd64.zip" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

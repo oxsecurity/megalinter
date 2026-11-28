@@ -185,7 +185,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.28.8
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.30.2
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -193,7 +193,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.21
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -228,7 +228,7 @@ ARG PIP_SNAKEMAKE_VERSION=9.27.1
 # renovate: datasource=pypi depName=snakefmt
 ARG PIP_SNAKEFMT_VERSION=2.1.0
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.1
+ARG NPM_CSPELL_VERSION=10.5.0
 # renovate: datasource=pypi depName=proselint
 ARG PIP_PROSELINT_VERSION=0.16.0
 # renovate: datasource=pypi depName=codespell
@@ -242,11 +242,11 @@ ARG NPM_IBM_TEKTON_LINT_VERSION=1.3.0
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.72.2
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.2
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.2
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint

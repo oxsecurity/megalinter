@@ -318,7 +318,7 @@ ARG NPM_PRETTIER_VERSION=3.9.10
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.2
 # renovate: datasource=npm depName=@microsoft/eslint-formatter-sarif
 ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
 ```
@@ -335,7 +335,7 @@ ARG NPM_MICROSOFT_ESLINT_FORMATTER_SARIF_VERSION=3.1.0
   - [eslint-plugin-promise@7.3.0](https://www.npmjs.com/package/eslint-plugin-promise/v/7.3.0)
   - [prettier@3.9.10](https://www.npmjs.com/package/prettier/v/3.9.10)
   - [prettyjson@1.2.5](https://www.npmjs.com/package/prettyjson/v/1.2.5)
-  - [typescript-eslint@8.72.1](https://www.npmjs.com/package/typescript-eslint/v/8.72.1)
+  - [typescript-eslint@8.72.2](https://www.npmjs.com/package/typescript-eslint/v/8.72.2)
   - [@microsoft/eslint-formatter-sarif@3.1.0](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif/v/3.1.0)
 
 ### Installation without Docker (native mode)
@@ -361,7 +361,7 @@ NATIVE_LINTERS: [TYPESCRIPT_ES]
 
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/TYPESCRIPT_ES"
-    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "typescript@6.0.3" "eslint@10.14.0" "@eslint/js@10.0.1" "eslint-config-prettier@10.1.8" "eslint-plugin-import-x@4.17.1" "eslint-plugin-jest@29.17.0" "eslint-plugin-n@18.5.0" "eslint-plugin-prettier@5.5.7" "eslint-plugin-promise@7.3.0" "prettier@3.9.10" "prettyjson@1.2.5" "typescript-eslint@8.72.1" "@microsoft/eslint-formatter-sarif@3.1.0"
+    npm install --prefix "$INSTALL_DIR" --ignore-scripts --no-audit --no-fund "typescript@6.0.3" "eslint@10.14.0" "@eslint/js@10.0.1" "eslint-config-prettier@10.1.8" "eslint-plugin-import-x@4.17.1" "eslint-plugin-jest@29.17.0" "eslint-plugin-n@18.5.0" "eslint-plugin-prettier@5.5.7" "eslint-plugin-promise@7.3.0" "prettier@3.9.10" "prettyjson@1.2.5" "typescript-eslint@8.72.2" "@microsoft/eslint-formatter-sarif@3.1.0"
     export PATH="$INSTALL_DIR/node_modules/.bin:$PATH"
     export NODE_PATH="$INSTALL_DIR/node_modules"
     ```

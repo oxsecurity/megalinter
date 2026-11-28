@@ -22,7 +22,7 @@ description: How to use scalafix (configure, ignore files, ignore errors, help &
 
 ## scalafix documentation
 
-- Version in MegaLinter: **0.14.9**
+- Version in MegaLinter: **0.14.10**
 - Visit [Official Web Site](https://scalacenter.github.io/scalafix/){target=_blank}
 - See [How to configure scalafix rules](https://scalacenter.github.io/scalafix/docs/users/configuration.html){target=_blank}
   - If custom `.scalafix.conf` config file isn't found, [.scalafix.conf](https://github.com/oxsecurity/megalinter/tree/main/TEMPLATES/.scalafix.conf){target=_blank} will be used
@@ -97,7 +97,7 @@ scalafix --config .scalafix.conf myfile.scala
 ### Help content
 
 ```shell
-Scalafix 0.14.9
+Scalafix 0.14.10
 Usage: scalafix [options] [<path> ...]
 
 Scalafix is a refactoring and linting tool. Scalafix supports both syntactic and
@@ -138,7 +138,7 @@ Common options:
     If set, only apply scalafix to added and edited files in git diff against a
     provided branch, commit or tag.
 
-  --scala-version ScalaVersion (default: "3.9.0")
+  --scala-version ScalaVersion (default: "3.10.0")
     The major or binary Scala version that the provided files are targeting, or the
     full version that was used to compile them when a classpath is provided.
 
@@ -255,7 +255,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 # Linter install
 # renovate: datasource=github-tags depName=scalacenter/scalafix
-ARG SCALA_SCALAFIX_VERSION=0.14.9
+ARG SCALA_SCALAFIX_VERSION=0.14.10
 # renovate: datasource=github-tags depName=coursier/coursier
 ARG SCALA_COURSIER_VERSION=2.1.26
 RUN curl --retry-all-errors --retry 10 -fLo /tmp/coursier https://github.com/coursier/coursier/releases/download/v${SCALA_COURSIER_VERSION}/coursier.jar && \

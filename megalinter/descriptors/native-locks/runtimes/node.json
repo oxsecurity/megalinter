@@ -6,83 +6,83 @@
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "525c9b29bb0263d687de60a4cec0e2a6db876a8eb032369e5795eca71e7c358e",
-          "size": 59802926,
+          "sha256": "82bb96078a24ca50b9c9a38f2379e6be6d87171fcd400fc14c8934b3bce96e2f",
+          "size": 59799324,
           "strip_components": 1,
-          "url": "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-x64.tar.gz",
+          "url": "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-x64.tar.gz",
           "verification": [
             "checksums_url",
             "gpg:nodejs.asc"
           ]
         }
       ],
-      "version": "26.13.0"
+      "version": "26.13.1"
     },
     "darwin/arm64": {
       "assets": [
         {
           "archive": "tar.gz",
-          "sha256": "d38bd5e5a2ddce6bbb5ce45e46e208337da4d51fffe611e567fd32073d6439f6",
-          "size": 58334661,
+          "sha256": "aec2514ea1ceb2ba52455e9ec65986f6749a06dd759e5db2a72e6889668c9735",
+          "size": 58340590,
           "strip_components": 1,
-          "url": "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz",
+          "url": "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-arm64.tar.gz",
           "verification": [
             "checksums_url",
             "gpg:nodejs.asc"
           ]
         }
       ],
-      "version": "26.13.0"
+      "version": "26.13.1"
     },
     "linux/amd64": {
       "assets": [
         {
           "archive": "tar.xz",
-          "sha256": "d28a96af6c38596f6d9d97c0ee531c13d238d757742387d1928de822d959e997",
-          "size": 34083252,
+          "sha256": "5c063e46bab0fbc1c17cc445d7ff129cbdcd0471be6ed83b6ab864f8143bc864",
+          "size": 34093052,
           "strip_components": 1,
-          "url": "https://nodejs.org/dist/v26.13.0/node-v26.13.0-linux-x64.tar.xz",
+          "url": "https://nodejs.org/dist/v26.13.1/node-v26.13.1-linux-x64.tar.xz",
           "verification": [
             "checksums_url",
             "gpg:nodejs.asc"
           ]
         }
       ],
-      "version": "26.13.0"
+      "version": "26.13.1"
     },
     "linux/arm64": {
       "assets": [
         {
           "archive": "tar.xz",
-          "sha256": "406fe3fbde1c054adff8b297c16fdb5af6659db327c1ac8acd46b56ef1af9a92",
-          "size": 33049732,
+          "sha256": "89e1853138db51e8b82d3e98ba9c0d3f2956a28e5e55ea1b7e12d25aae92d5dd",
+          "size": 33053848,
           "strip_components": 1,
-          "url": "https://nodejs.org/dist/v26.13.0/node-v26.13.0-linux-arm64.tar.xz",
+          "url": "https://nodejs.org/dist/v26.13.1/node-v26.13.1-linux-arm64.tar.xz",
           "verification": [
             "checksums_url",
             "gpg:nodejs.asc"
           ]
         }
       ],
-      "version": "26.13.0"
+      "version": "26.13.1"
     },
     "windows/amd64": {
       "assets": [
         {
           "archive": "zip",
-          "sha256": "dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b59150a",
-          "size": 41157375,
+          "sha256": "e2edda75bfb089654705cf65a13b58933bfd5f57148e8ebda916f58a2474f1f7",
+          "size": 41166246,
           "strip_components": 1,
-          "url": "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip",
+          "url": "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip",
           "verification": [
             "checksums_url",
             "gpg:nodejs.asc"
           ]
         }
       ],
-      "version": "26.13.0"
+      "version": "26.13.1"
     }
   },
   "runtime": "node",
-  "spec_hash": "81865a9b467333a7932e7c92340d81c106e0a5c84f29f0c3703c19e928c7d50f"
+  "spec_hash": "a2cb7282bb1c65b34298a699a69dae3c4745d877afe775ac0a6f3a8454aab2fa"
 }

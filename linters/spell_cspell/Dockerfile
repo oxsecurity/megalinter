@@ -66,7 +66,7 @@ RUN python -c 'import sys; assert sys.version_info >= (3, 14, 7), "Python 3.14.7
 ARG TARGETPLATFORM
 ARG TARGETARCH
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.1
+ARG NPM_CSPELL_VERSION=10.5.0
 #ARG__END
 
 ####################

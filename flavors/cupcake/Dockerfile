@@ -159,7 +159,7 @@ ARG CLJ_KONDO_VERSION=2026.10.26
 # renovate: datasource=github-tags depName=greglook/cljstyle
 ARG CLJ_STYLE_VERSION=0.17.642
 # renovate: datasource=pypi depName=cfn-lint
-ARG PIP_CFN_LINT_VERSION=1.59.0
+ARG PIP_CFN_LINT_VERSION=1.60.1
 # renovate: datasource=npm depName=jscpd
 ARG NPM_JSCPD_VERSION=5.4.3
 # renovate: datasource=npm depName=stylelint
@@ -218,7 +218,7 @@ ARG NPM_PACKAGE_JSON_LINT_VERSION=11.0.1
 # renovate: datasource=npm depName=npm-package-json-lint-config-default
 ARG NPM_PACKAGE_JSON_LINT_CONFIG_DEFAULT_VERSION=10.0.0
 # renovate: datasource=npm depName=@eslint-react/eslint-plugin
-ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.28.8
+ARG NPM_ESLINT_REACT_ESLINT_PLUGIN_VERSION=5.30.2
 # renovate: datasource=github-tags depName=pinterest/ktlint
 ARG KTLINT_VERSION=1.8.0
 
@@ -226,7 +226,7 @@ ARG KTLINT_VERSION=1.8.0
 ARG DETEKT_VERSION=1.23.8
 
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.21
 # renovate: datasource=npm depName=markdownlint-cli
 ARG NPM_MARKDOWNLINT_CLI_VERSION=0.50.0
 # renovate: datasource=npm depName=markdown-table-formatter
@@ -266,7 +266,7 @@ ARG NPM_PYRIGHT_VERSION=1.1.414
 # renovate: datasource=pypi depName=ruff
 ARG PIP_RUFF_VERSION=0.17.5
 # renovate: datasource=pypi depName=ty
-ARG PIP_TY_VERSION=0.0.102
+ARG PIP_TY_VERSION=0.0.103
 # renovate: datasource=pypi depName=checkov
 ARG PIP_CHECKOV_VERSION=3.4.3
 # renovate: datasource=github-tags depName=anchore/grype
@@ -315,7 +315,7 @@ ARG GEM_RUBOCOP_RAKE_VERSION=0.7.1
 # renovate: datasource=rubygems depName=rubocop-rspec
 ARG GEM_RUBOCOP_RSPEC_VERSION=3.10.2
 # renovate: datasource=npm depName=cspell
-ARG NPM_CSPELL_VERSION=10.4.1
+ARG NPM_CSPELL_VERSION=10.5.0
 # renovate: datasource=pypi depName=codespell
 ARG PIP_CODESPELL_VERSION=2.4.3
 # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
@@ -327,11 +327,11 @@ ARG SWIFT_SWIFTLINT_VERSION=0.65.1
 # renovate: datasource=npm depName=prettyjson
 ARG NPM_PRETTYJSON_VERSION=1.2.5
 # renovate: datasource=npm depName=@typescript-eslint/eslint-plugin
-ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_ESLINT_PLUGIN_VERSION=8.72.2
 # renovate: datasource=npm depName=@typescript-eslint/parser
-ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_PARSER_VERSION=8.72.2
 # renovate: datasource=npm depName=typescript-eslint
-ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.1
+ARG NPM_TYPESCRIPT_ESLINT_VERSION=8.72.2
 # renovate: datasource=npm depName=ts-standard
 ARG NPM_TS_STANDARD_VERSION=12.0.2
 # renovate: datasource=pypi depName=yamllint
