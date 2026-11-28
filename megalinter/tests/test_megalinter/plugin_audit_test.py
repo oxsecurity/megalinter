@@ -5,18 +5,13 @@ import tempfile
 import unittest
 
 import yaml
-from megalinter import plugin_audit
+from megalinter import plugin_audit, utilstest
 from megalinter.native.lock import LOCK_FORMAT_VERSION, compute_spec_hash
 from megalinter.native.resolve import NativeLinterSpec, resolve_native_install
 
+# The repository root: /tmp/lint in the Docker test image, the git checkout locally
 FIXTURES_DIR = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "..",
-    "..",
-    "..",
-    ".automation",
-    "test",
-    "plugin_audit",
+    utilstest.get_root_dir(), ".automation", "test", "plugin_audit"
 )
 BASE_URL = "https://raw.githubusercontent.com/owner/repo/main"
 COMPLETE_URL = (
