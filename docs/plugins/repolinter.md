@@ -29,23 +29,23 @@ Plugin to run TODO Group's repolinter to look for repository best practices (dep
 - Enable repolinter by adding `REPOSITORY_REPOLINTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable repolinter by adding `REPOSITORY_REPOLINTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| REPOSITORY_REPOLINTER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| REPOSITORY_REPOLINTER_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
-| REPOSITORY_REPOLINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_REPOLINTER_CLI_LINT_MODE = project | Exclude no file |
-| REPOSITORY_REPOLINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_REPOLINTER_CLI_LINT_MODE = project | Exclude no file |
-| REPOSITORY_REPOLINTER_CLI_LINT_MODE | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project | `project` |
-| REPOSITORY_REPOLINTER_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true` |
-| REPOSITORY_REPOLINTER_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| REPOSITORY_REPOLINTER_POST_COMMANDS | List of bash commands to run after the linter| None |
-| REPOSITORY_REPOLINTER_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling REPOSITORY_REPOLINTER and its pre/post commands| None |
-| REPOSITORY_REPOLINTER_CONFIG_FILE | repolinter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `repolinter.json` |
-| REPOSITORY_REPOLINTER_RULES_PATH | Path where to find linter configuration file | Workspace folder |
-| REPOSITORY_REPOLINTER_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| REPOSITORY_REPOLINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| REPOSITORY_REPOLINTER_TIMEOUT_SECONDS | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300` |
-| REPOSITORY_REPOLINTER_CLI_EXECUTABLE | Override CLI executable | `['repolinter']` |
+| Variable                                           | Description                                                                                                                                                                                                                                                             | Default value     |
+|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|
+| REPOSITORY_REPOLINTER_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                   |
+| REPOSITORY_REPOLINTER_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                   |
+| REPOSITORY_REPOLINTER_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with REPOSITORY_REPOLINTER_CLI_LINT_MODE = project                                                                                                                                              | Exclude no file   |
+| REPOSITORY_REPOLINTER_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with REPOSITORY_REPOLINTER_CLI_LINT_MODE = project                                                                                                                                        | Exclude no file   |
+| REPOSITORY_REPOLINTER_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `project`: Call the linter from the root of the project                                                                                                                                                                            | `project`         |
+| REPOSITORY_REPOLINTER_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`            |
+| REPOSITORY_REPOLINTER_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None              |
+| REPOSITORY_REPOLINTER_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None              |
+| REPOSITORY_REPOLINTER_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling REPOSITORY_REPOLINTER and its pre/post commands                                                                                                                                                            | None              |
+| REPOSITORY_REPOLINTER_CONFIG_FILE                  | repolinter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                   | `repolinter.json` |
+| REPOSITORY_REPOLINTER_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder  |
+| REPOSITORY_REPOLINTER_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`           |
+| REPOSITORY_REPOLINTER_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`               |
+| REPOSITORY_REPOLINTER_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`             |
+| REPOSITORY_REPOLINTER_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['repolinter']`  |
 
 ## Use this plugin
 
@@ -100,12 +100,12 @@ Not available: see the MegaLinter checks of the plugin.
 
 These results last changed on 2026-11-28, and MegaLinter checks the plugins every day. The checks only look at the descriptor of the plugin: they do not review the plugin, nor the tool it runs.
 
-| Check | Result |
-| :---- | :----- |
-| Descriptor | ⚠️ Incomplete |
-| Native mode | ❌ Not supported |
-| SARIF output | ❌ |
-| Native lock | ⚠️ No lock shipped by the plugin author |
+| Check        | Result                                  |
+|:-------------|:----------------------------------------|
+| Descriptor   | ⚠️ Incomplete                           |
+| Native mode  | ❌ Not supported                        |
+| SARIF output | ❌                                      |
+| Native lock  | ⚠️ No lock shipped by the plugin author |
 
 ### Required
 

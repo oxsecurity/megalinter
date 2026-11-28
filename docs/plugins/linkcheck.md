@@ -30,22 +30,22 @@ Plugin to check and validate markdown links exist and working
 
 - Enable **autofixes** by adding `MDLINKCHECK_LINKCHECK` in [APPLY_FIXES variable](https://megalinter.io/beta/configuration/#apply-fixes)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| MDLINKCHECK_LINKCHECK_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| MDLINKCHECK_LINKCHECK_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
-| MDLINKCHECK_LINKCHECK_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Exclude no file |
-| MDLINKCHECK_LINKCHECK_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
-| MDLINKCHECK_LINKCHECK_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file | `list_of_files` |
-| MDLINKCHECK_LINKCHECK_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| MDLINKCHECK_LINKCHECK_POST_COMMANDS | List of bash commands to run after the linter| None |
-| MDLINKCHECK_LINKCHECK_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling MDLINKCHECK_LINKCHECK and its pre/post commands| None |
-| MDLINKCHECK_LINKCHECK_CONFIG_FILE | linkcheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `linkcheck.json` |
-| MDLINKCHECK_LINKCHECK_RULES_PATH | Path where to find linter configuration file | Workspace folder |
-| MDLINKCHECK_LINKCHECK_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| MDLINKCHECK_LINKCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| MDLINKCHECK_LINKCHECK_TIMEOUT_SECONDS | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300` |
-| MDLINKCHECK_LINKCHECK_CLI_EXECUTABLE | Override CLI executable | `['linkcheck']` |
+| Variable                                          | Description                                                                                                                                                                                                         | Default value    |
+|---------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| MDLINKCHECK_LINKCHECK_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                  |
+| MDLINKCHECK_LINKCHECK_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                  |
+| MDLINKCHECK_LINKCHECK_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Exclude no file  |
+| MDLINKCHECK_LINKCHECK_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file  |
+| MDLINKCHECK_LINKCHECK_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                                         | `list_of_files`  |
+| MDLINKCHECK_LINKCHECK_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None             |
+| MDLINKCHECK_LINKCHECK_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None             |
+| MDLINKCHECK_LINKCHECK_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling MDLINKCHECK_LINKCHECK and its pre/post commands                                                                                                        | None             |
+| MDLINKCHECK_LINKCHECK_CONFIG_FILE                 | linkcheck configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                | `linkcheck.json` |
+| MDLINKCHECK_LINKCHECK_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder |
+| MDLINKCHECK_LINKCHECK_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`          |
+| MDLINKCHECK_LINKCHECK_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`              |
+| MDLINKCHECK_LINKCHECK_TIMEOUT_SECONDS             | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`            |
+| MDLINKCHECK_LINKCHECK_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['linkcheck']`  |
 
 ## Use this plugin
 
@@ -107,12 +107,12 @@ Not available: see the MegaLinter checks of the plugin.
 
 These results last changed on 2026-11-28, and MegaLinter checks the plugins every day. The checks only look at the descriptor of the plugin: they do not review the plugin, nor the tool it runs.
 
-| Check | Result |
-| :---- | :----- |
-| Descriptor | ⚠️ Incomplete |
-| Native mode | ❌ Not supported |
-| SARIF output | ❌ |
-| Native lock | ⚠️ No lock shipped by the plugin author |
+| Check        | Result                                  |
+|:-------------|:----------------------------------------|
+| Descriptor   | ⚠️ Incomplete                           |
+| Native mode  | ❌ Not supported                        |
+| SARIF output | ❌                                      |
+| Native lock  | ⚠️ No lock shipped by the plugin author |
 
 ### Required
 

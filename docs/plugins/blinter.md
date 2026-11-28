@@ -34,25 +34,25 @@ Error and Security findings fail the run. Warning, Style, and Performance findin
 - Enable blinter by adding `BATCH_BLINTER` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable blinter by adding `BATCH_BLINTER` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| BATCH_BLINTER_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| BATCH_BLINTER_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
-| BATCH_BLINTER_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with BATCH_BLINTER_CLI_LINT_MODE = project | Exclude no file |
-| BATCH_BLINTER_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with BATCH_BLINTER_CLI_LINT_MODE = project | Exclude no file |
-| BATCH_BLINTER_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project | `file` |
-| BATCH_BLINTER_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true` |
-| BATCH_BLINTER_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".bat", ".cmd"]` |
-| BATCH_BLINTER_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| BATCH_BLINTER_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| BATCH_BLINTER_POST_COMMANDS | List of bash commands to run after the linter| None |
-| BATCH_BLINTER_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling BATCH_BLINTER and its pre/post commands| None |
-| BATCH_BLINTER_CONFIG_FILE | blinter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `blinter.ini` |
-| BATCH_BLINTER_RULES_PATH | Path where to find linter configuration file | Workspace folder |
-| BATCH_BLINTER_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| BATCH_BLINTER_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| BATCH_BLINTER_TIMEOUT_SECONDS | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300` |
-| BATCH_BLINTER_CLI_EXECUTABLE | Override CLI executable | `['blinter']` |
+| Variable                                   | Description                                                                                                                                                                                                                                                             | Default value      |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| BATCH_BLINTER_ARGUMENTS                    | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                                                                                |                    |
+| BATCH_BLINTER_COMMAND_REMOVE_ARGUMENTS     | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                                                                    |                    |
+| BATCH_BLINTER_FILTER_REGEX_INCLUDE         | Custom regex including filter<br/>Ex: `(src\|lib)`<br/>⚠️ Not available with BATCH_BLINTER_CLI_LINT_MODE = project                                                                                                                                                      | Exclude no file    |
+| BATCH_BLINTER_FILTER_REGEX_EXCLUDE         | Custom regex excluding filter<br/>Ex: `(test\|examples)`<br/>⚠️ Not available with BATCH_BLINTER_CLI_LINT_MODE = project                                                                                                                                                | Exclude no file    |
+| BATCH_BLINTER_CLI_LINT_MODE                | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `project`: Call the linter from the root of the project                                                                                                                               | `file`             |
+| BATCH_BLINTER_FORWARD_EXCLUDED_DIRECTORIES | In project CLI lint mode, forward excluded directories (EXCLUDED_DIRECTORIES + ADDITIONAL_EXCLUDED_DIRECTORIES, and .gitignored directories when IGNORE_GITIGNORED_FILES is true) to the linter through its native exclusion arguments or generated ignore/config files | `true`             |
+| BATCH_BLINTER_FILE_EXTENSIONS              | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                                                                                 | `[".bat", ".cmd"]` |
+| BATCH_BLINTER_FILE_NAMES_REGEX             | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                                                                            | Include every file |
+| BATCH_BLINTER_PRE_COMMANDS                 | List of bash commands to run before the linter                                                                                                                                                                                                                          | None               |
+| BATCH_BLINTER_POST_COMMANDS                | List of bash commands to run after the linter                                                                                                                                                                                                                           | None               |
+| BATCH_BLINTER_UNSECURED_ENV_VARIABLES      | List of env variables explicitly not filtered before calling BATCH_BLINTER and its pre/post commands                                                                                                                                                                    | None               |
+| BATCH_BLINTER_CONFIG_FILE                  | blinter configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                                                                      | `blinter.ini`      |
+| BATCH_BLINTER_RULES_PATH                   | Path where to find linter configuration file                                                                                                                                                                                                                            | Workspace folder   |
+| BATCH_BLINTER_DISABLE_ERRORS               | Run linter but consider errors as warnings                                                                                                                                                                                                                              | `false`            |
+| BATCH_BLINTER_DISABLE_ERRORS_IF_LESS_THAN  | Maximum number of errors allowed                                                                                                                                                                                                                                        | `0`                |
+| BATCH_BLINTER_TIMEOUT_SECONDS              | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout                                                     | `300`              |
+| BATCH_BLINTER_CLI_EXECUTABLE               | Override CLI executable                                                                                                                                                                                                                                                 | `['blinter']`      |
 
 ## Use this plugin
 
@@ -111,12 +111,12 @@ Not available: see the MegaLinter checks of the plugin.
 
 These results last changed on 2026-11-28, and MegaLinter checks the plugins every day. The checks only look at the descriptor of the plugin: they do not review the plugin, nor the tool it runs.
 
-| Check | Result |
-| :---- | :----- |
-| Descriptor | ⚠️ Incomplete |
-| Native mode | ❌ Not supported |
-| SARIF output | ✅ |
-| Native lock | ⚠️ No lock shipped by the plugin author |
+| Check        | Result                                  |
+|:-------------|:----------------------------------------|
+| Descriptor   | ⚠️ Incomplete                           |
+| Native mode  | ❌ Not supported                        |
+| SARIF output | ✅                                      |
+| Native lock  | ⚠️ No lock shipped by the plugin author |
 
 ### Required
 

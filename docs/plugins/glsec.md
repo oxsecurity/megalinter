@@ -35,22 +35,22 @@ It runs offline and needs no GitLab API token.
 - Enable glsec by adding `GITLAB_GLSEC` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable glsec by adding `GITLAB_GLSEC` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| GITLAB_GLSEC_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| GITLAB_GLSEC_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
-| GITLAB_GLSEC_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Exclude no file |
-| GITLAB_GLSEC_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
-| GITLAB_GLSEC_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument | `list_of_files` |
-| GITLAB_GLSEC_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | Exclude every file |
-| GITLAB_GLSEC_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | `["\\.gitlab-ci\\.ya?ml", ".+\\.gitlab-ci\\.ya?ml"]` |
-| GITLAB_GLSEC_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| GITLAB_GLSEC_POST_COMMANDS | List of bash commands to run after the linter| None |
-| GITLAB_GLSEC_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling GITLAB_GLSEC and its pre/post commands| None |
-| GITLAB_GLSEC_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| GITLAB_GLSEC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| GITLAB_GLSEC_TIMEOUT_SECONDS | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300` |
-| GITLAB_GLSEC_CLI_EXECUTABLE | Override CLI executable | `['glsec']` |
+| Variable                                 | Description                                                                                                                                                                                                         | Default value                                        |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| GITLAB_GLSEC_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                                                      |
+| GITLAB_GLSEC_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                                                      |
+| GITLAB_GLSEC_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Exclude no file                                      |
+| GITLAB_GLSEC_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file                                      |
+| GITLAB_GLSEC_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file<br/>- `list_of_files`: Call the linter with the list of files as argument                                                               | `list_of_files`                                      |
+| GITLAB_GLSEC_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | Exclude every file                                   |
+| GITLAB_GLSEC_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | `["\\.gitlab-ci\\.ya?ml", ".+\\.gitlab-ci\\.ya?ml"]` |
+| GITLAB_GLSEC_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None                                                 |
+| GITLAB_GLSEC_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None                                                 |
+| GITLAB_GLSEC_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling GITLAB_GLSEC and its pre/post commands                                                                                                                 | None                                                 |
+| GITLAB_GLSEC_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`                                              |
+| GITLAB_GLSEC_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                                                  |
+| GITLAB_GLSEC_TIMEOUT_SECONDS             | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`                                                |
+| GITLAB_GLSEC_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['glsec']`                                          |
 
 ## Use this plugin
 
@@ -114,12 +114,12 @@ Not available: see the MegaLinter checks of the plugin.
 
 These results last changed on 2026-11-28, and MegaLinter checks the plugins every day. The checks only look at the descriptor of the plugin: they do not review the plugin, nor the tool it runs.
 
-| Check | Result |
-| :---- | :----- |
-| Descriptor | ⚠️ Incomplete |
-| Native mode | ❌ Not supported |
-| SARIF output | ✅ |
-| Native lock | ⚠️ No lock shipped by the plugin author |
+| Check        | Result                                  |
+|:-------------|:----------------------------------------|
+| Descriptor   | ⚠️ Incomplete                           |
+| Native mode  | ❌ Not supported                        |
+| SARIF output | ✅                                      |
+| Native lock  | ⚠️ No lock shipped by the plugin author |
 
 ### Required
 

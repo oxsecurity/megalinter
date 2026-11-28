@@ -30,34 +30,34 @@ Checks Salt State files (SLS) for best practices and behavior that could potenti
 - Enable saltlint by adding `SALT_SALTLINT` in [ENABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 - Disable saltlint by adding `SALT_SALTLINT` in [DISABLE_LINTERS variable](https://megalinter.io/beta/configuration/#activation-and-deactivation)
 
-| Variable | Description | Default value |
-| ----------------- | -------------- | -------------- |
-| SALT_SALTLINT_ARGUMENTS | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"` |  |
-| SALT_SALTLINT_COMMAND_REMOVE_ARGUMENTS | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"` |  |
-| SALT_SALTLINT_FILTER_REGEX_INCLUDE | Custom regex including filter<br/>Ex: `(src\|lib)` | Exclude no file |
-| SALT_SALTLINT_FILTER_REGEX_EXCLUDE | Custom regex excluding filter<br/>Ex: `(test\|examples)` | Exclude no file |
-| SALT_SALTLINT_CLI_LINT_MODE | Override default CLI lint mode<br/>- `file`: Calls the linter for each file | `list_of_files` |
-| SALT_SALTLINT_FILE_EXTENSIONS | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]` | `[".sls"]` |
-| SALT_SALTLINT_FILE_NAMES_REGEX | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]` | Include every file |
-| SALT_SALTLINT_PRE_COMMANDS | List of bash commands to run before the linter| None |
-| SALT_SALTLINT_POST_COMMANDS | List of bash commands to run after the linter| None |
-| SALT_SALTLINT_UNSECURED_ENV_VARIABLES  | List of env variables explicitly not filtered before calling SALT_SALTLINT and its pre/post commands| None |
-| SALT_SALTLINT_CONFIG_FILE | saltlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it | `.salt-lint` |
-| SALT_SALTLINT_RULES_PATH | Path where to find linter configuration file | Workspace folder |
-| SALT_SALTLINT_DISABLE_ERRORS | Run linter but consider errors as warnings | `false` |
-| SALT_SALTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed | `0` |
-| SALT_SALTLINT_TIMEOUT_SECONDS | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300` |
-| SALT_SALTLINT_CLI_EXECUTABLE | Override CLI executable | `['salt-lint']` |
+| Variable                                  | Description                                                                                                                                                                                                         | Default value      |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| SALT_SALTLINT_ARGUMENTS                   | User custom arguments to add in linter CLI call<br/>Ex: `-s --foo "bar"`                                                                                                                                            |                    |
+| SALT_SALTLINT_COMMAND_REMOVE_ARGUMENTS    | User custom arguments to remove from command line before calling the linter<br/>Ex: `-s --foo "bar"`                                                                                                                |                    |
+| SALT_SALTLINT_FILTER_REGEX_INCLUDE        | Custom regex including filter<br/>Ex: `(src\|lib)`                                                                                                                                                                  | Exclude no file    |
+| SALT_SALTLINT_FILTER_REGEX_EXCLUDE        | Custom regex excluding filter<br/>Ex: `(test\|examples)`                                                                                                                                                            | Exclude no file    |
+| SALT_SALTLINT_CLI_LINT_MODE               | Override default CLI lint mode<br/>- `file`: Calls the linter for each file                                                                                                                                         | `list_of_files`    |
+| SALT_SALTLINT_FILE_EXTENSIONS             | Allowed file extensions. `"*"` matches any extension, `""` matches empty extension. Empty list excludes all files<br/>Ex: `[".py", ""]`                                                                             | `[".sls"]`         |
+| SALT_SALTLINT_FILE_NAMES_REGEX            | File name regex filters. Regular expression list for filtering files by their base names using regex full match. Empty list includes all files<br/>Ex: `["Dockerfile(-.+)?", "Jenkinsfile"]`                        | Include every file |
+| SALT_SALTLINT_PRE_COMMANDS                | List of bash commands to run before the linter                                                                                                                                                                      | None               |
+| SALT_SALTLINT_POST_COMMANDS               | List of bash commands to run after the linter                                                                                                                                                                       | None               |
+| SALT_SALTLINT_UNSECURED_ENV_VARIABLES     | List of env variables explicitly not filtered before calling SALT_SALTLINT and its pre/post commands                                                                                                                | None               |
+| SALT_SALTLINT_CONFIG_FILE                 | saltlint configuration file name</br>Use `LINTER_DEFAULT` to let the linter find it                                                                                                                                 | `.salt-lint`       |
+| SALT_SALTLINT_RULES_PATH                  | Path where to find linter configuration file                                                                                                                                                                        | Workspace folder   |
+| SALT_SALTLINT_DISABLE_ERRORS              | Run linter but consider errors as warnings                                                                                                                                                                          | `false`            |
+| SALT_SALTLINT_DISABLE_ERRORS_IF_LESS_THAN | Maximum number of errors allowed                                                                                                                                                                                    | `0`                |
+| SALT_SALTLINT_TIMEOUT_SECONDS             | Maximum duration in seconds of the linter run, after which the linter process and its child processes are killed and reported as an error (exit code 124). Overrides LINTER_TIMEOUT_SECONDS. 0 disables the timeout | `300`              |
+| SALT_SALTLINT_CLI_EXECUTABLE              | Override CLI executable                                                                                                                                                                                             | `['salt-lint']`    |
 
 ## IDE Integration
 
 Use saltlint in your favorite IDE to catch errors before MegaLinter !
 
-| <!-- --> | IDE | Extension Name | Install |
-| :--: | ----------------- | -------------- | :------: |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/) | [plugin](https://github.com/warpnet/SublimeLinter-salt-lint) | [Visit Web Site](https://github.com/warpnet/SublimeLinter-salt-lint){target=_blank} |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a> | [vim](https://www.vim.org/) | [ale](https://github.com/dense-analysis/ale) | [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank} |
-| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a> | [Visual Studio Code](https://code.visualstudio.com/) | [native support](https://code.visualstudio.com/) | [Visit Web Site](https://code.visualstudio.com/){target=_blank} |
+|                                                                   <!-- -->                                                                   | IDE                                                  | Extension Name                                               |                                       Install                                       |
+|:--------------------------------------------------------------------------------------------------------------------------------------------:|------------------------------------------------------|--------------------------------------------------------------|:-----------------------------------------------------------------------------------:|
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/sublime.ico" alt="" height="32px" class="megalinter-icon"></a> | [Sublime Text](https://www.sublimetext.com/)         | [plugin](https://github.com/warpnet/SublimeLinter-salt-lint) | [Visit Web Site](https://github.com/warpnet/SublimeLinter-salt-lint){target=_blank} |
+|   <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vim.ico" alt="" height="32px" class="megalinter-icon"></a>   | [vim](https://www.vim.org/)                          | [ale](https://github.com/dense-analysis/ale)                 |       [Visit Web Site](https://github.com/dense-analysis/ale){target=_blank}        |
+| <img src="https://github.com/oxsecurity/megalinter/raw/main/docs/assets/icons/vscode.ico" alt="" height="32px" class="megalinter-icon"></a>  | [Visual Studio Code](https://code.visualstudio.com/) | [native support](https://code.visualstudio.com/)             |           [Visit Web Site](https://code.visualstudio.com/){target=_blank}           |
 
 ## Use this plugin
 
@@ -105,12 +105,12 @@ Not available: see the MegaLinter checks of the plugin.
 
 These results last changed on 2026-11-28, and MegaLinter checks the plugins every day. The checks only look at the descriptor of the plugin: they do not review the plugin, nor the tool it runs.
 
-| Check | Result |
-| :---- | :----- |
-| Descriptor | ⚠️ Incomplete |
-| Native mode | ❌ Not supported |
-| SARIF output | ❌ |
-| Native lock | ⚠️ No lock shipped by the plugin author |
+| Check        | Result                                  |
+|:-------------|:----------------------------------------|
+| Descriptor   | ⚠️ Incomplete                           |
+| Native mode  | ❌ Not supported                        |
+| SARIF output | ❌                                      |
+| Native lock  | ⚠️ No lock shipped by the plugin author |
 
 ### Required
 
