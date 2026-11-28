@@ -335,6 +335,9 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.8 to **3.99.9** on 2026-11-27
   - [rstcheck](https://github.com/myint/rstcheck) from 6.3.0 to **6.3.1** on 2026-11-27
   - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.9 to **0.14.10** on 2026-11-27
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.48.1 to **0.49.2** on 2026-11-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.59.0 to **1.60.1** on 2026-11-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.4.1 to **10.5.0** on 2026-11-27
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
