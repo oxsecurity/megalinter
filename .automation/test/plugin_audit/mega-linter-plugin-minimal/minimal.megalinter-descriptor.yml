@@ -1,4 +1,4 @@
-descriptor_id: MINIMALTEST
+descriptor_id: MINIMAL_TEST
 descriptor_type: format
 file_extensions:
   - ".minimal"

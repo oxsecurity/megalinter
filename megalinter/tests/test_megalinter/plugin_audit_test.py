@@ -53,6 +53,16 @@ def entry(name, url):
     }
 
 
+# Audit of the complete fixture, with one change in its descriptor
+def audit_complete_variant(old, new):
+    text = read_fixture(
+        "mega-linter-plugin-complete", "complete.megalinter-descriptor.yml"
+    ).replace(old, new)
+    return plugin_audit.audit_plugin(
+        entry("complete", COMPLETE_URL), get=fake_get({COMPLETE_URL: (200, text)})
+    )
+
+
 def complete_lock(descriptor_text, spec_hash=None):
     descriptor = yaml.safe_load(descriptor_text)
     linter = descriptor["linters"][0]
@@ -81,7 +91,7 @@ class plugin_audit_test(unittest.TestCase):
         self.assertEqual(result["status"], "ok", result)
         self.assertEqual(result["errors"], [])
         self.assertEqual(plugin_audit.missing_requirements(result), [])
-        linter = result["linters"]["AUDITTEST_AUDIT_LINT"]
+        linter = result["linters"]["AUDIT_TEST_AUDIT_LINT"]
         self.assertEqual(linter["native"]["status"], "ok")
         self.assertEqual(linter["sarif"], "text")
         self.assertEqual(linter["recommended_missing"], [])
@@ -100,7 +110,7 @@ class plugin_audit_test(unittest.TestCase):
             entry("minimal", MINIMAL_URL), get=fake_get({MINIMAL_URL: (200, text)})
         )
         self.assertEqual(result["status"], "incomplete")
-        linter = result["linters"]["MINIMALTEST_MINIMAL_LINT"]
+        linter = result["linters"]["MINIMAL_TEST_MINIMAL_LINT"]
         self.assertEqual(
             linter["required_missing"], ["native_install", "sarif", "cli_lint_mode"]
         )
@@ -171,14 +181,8 @@ class plugin_audit_test(unittest.TestCase):
         self.assertIn("schema", result["required_missing"])
 
     def test_invalid_native_install(self):
-        text = read_fixture(
-            "mega-linter-plugin-complete", "complete.megalinter-descriptor.yml"
-        )
-        text = text.replace("        - windows/amd64\n", "")
-        result = plugin_audit.audit_plugin(
-            entry("complete", COMPLETE_URL), get=fake_get({COMPLETE_URL: (200, text)})
-        )
-        linter = result["linters"]["AUDITTEST_AUDIT_LINT"]
+        result = audit_complete_variant("        - windows/amd64\n", "")
+        linter = result["linters"]["AUDIT_TEST_AUDIT_LINT"]
         self.assertEqual(linter["native"]["status"], "invalid")
         self.assertIn("native_install", linter["required_missing"])
         self.assertTrue(
@@ -186,17 +190,11 @@ class plugin_audit_test(unittest.TestCase):
         )
 
     def test_partial_native_platforms(self):
-        text = read_fixture(
-            "mega-linter-plugin-complete", "complete.megalinter-descriptor.yml"
-        )
-        text = text.replace(
+        result = audit_complete_variant(
             "        - windows/amd64\n",
             "      unsupported:\n        windows/amd64: No Windows build. Use Docker.\n",
         )
-        result = plugin_audit.audit_plugin(
-            entry("complete", COMPLETE_URL), get=fake_get({COMPLETE_URL: (200, text)})
-        )
-        linter = result["linters"]["AUDITTEST_AUDIT_LINT"]
+        linter = result["linters"]["AUDIT_TEST_AUDIT_LINT"]
         self.assertEqual(linter["native"]["status"], "partial")
         self.assertEqual(
             linter["native"]["unsupported"],
@@ -234,7 +232,7 @@ class plugin_audit_test(unittest.TestCase):
         self.assertEqual(stale["status"], "incomplete")
         self.assertIn(
             "native_lock_fresh",
-            stale["linters"]["AUDITTEST_AUDIT_LINT"]["required_missing"],
+            stale["linters"]["AUDIT_TEST_AUDIT_LINT"]["required_missing"],
         )
 
     def test_url_rules(self):
