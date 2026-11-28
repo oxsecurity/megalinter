@@ -24,7 +24,7 @@ By default, Bicep linter errors are set as warnings. To customize linter setting
 
 ## bicep_linter documentation
 
-- Version in MegaLinter: **0.48.1**
+- Version in MegaLinter: **0.49.2**
 - Visit [Official Web Site](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter){target=_blank}
 - See [How to configure bicep_linter rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-config){target=_blank}
 - See [How to disable bicep_linter rules in files](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter#silencing-false-positives){target=_blank}
@@ -140,7 +140,7 @@ Commands:
 ```dockerfile
 ARG TARGETPLATFORM
 # renovate: datasource=github-tags depName=Azure/bicep
-ARG BICEP_VERSION=0.48.1
+ARG BICEP_VERSION=0.49.2
 ARG BICEP_EXE='bicep'
 ARG BICEP_DIR='/usr/local/bin'
 RUN case ${TARGETPLATFORM} in \
@@ -179,7 +179,7 @@ NATIVE_LINTERS: [BICEP_BICEP_LINTER]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/BICEP_BICEP_LINTER"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-linux-x64 &&
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.49.2/bicep-linux-x64 &&
       chmod +x "$INSTALL_DIR/bicep" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -189,7 +189,7 @@ NATIVE_LINTERS: [BICEP_BICEP_LINTER]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/BICEP_BICEP_LINTER"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-linux-arm64 &&
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.49.2/bicep-linux-arm64 &&
       chmod +x "$INSTALL_DIR/bicep" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -199,7 +199,7 @@ NATIVE_LINTERS: [BICEP_BICEP_LINTER]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/BICEP_BICEP_LINTER"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-osx-x64 &&
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.49.2/bicep-osx-x64 &&
       chmod +x "$INSTALL_DIR/bicep" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -209,7 +209,7 @@ NATIVE_LINTERS: [BICEP_BICEP_LINTER]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/BICEP_BICEP_LINTER"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-osx-arm64 &&
+    curl -fsSL -o "$INSTALL_DIR/bicep" https://github.com/Azure/bicep/releases/download/v0.49.2/bicep-osx-arm64 &&
       chmod +x "$INSTALL_DIR/bicep" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
@@ -219,7 +219,7 @@ NATIVE_LINTERS: [BICEP_BICEP_LINTER]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/BICEP_BICEP_LINTER"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/bicep.exe" https://github.com/Azure/bicep/releases/download/v0.48.1/bicep-win-x64.exe &&
+    curl -fsSL -o "$INSTALL_DIR/bicep.exe" https://github.com/Azure/bicep/releases/download/v0.49.2/bicep-win-x64.exe &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

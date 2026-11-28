@@ -69,7 +69,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=npm depName=cspell
-          ARG NPM_CSPELL_VERSION=10.4.1
+          ARG NPM_CSPELL_VERSION=10.5.0
       npm:
         - "cspell@${NPM_CSPELL_VERSION}"
     native_install:
@@ -627,7 +627,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=github-releases depName=crate-ci/typos extractVersion=^v(?<version>.+)$
-          ARG SPELL_TYPOS_VERSION=1.52.0
+          ARG SPELL_TYPOS_VERSION=1.52.2
         - |-
           RUN case "${TARGETARCH}" in \
                 amd64) TYPOS_ARCH="x86_64" ;; \

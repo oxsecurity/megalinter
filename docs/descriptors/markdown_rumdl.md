@@ -23,7 +23,7 @@ description: How to use rumdl (configure, ignore files, ignore errors, help & ve
 
 ## rumdl documentation
 
-- Version in MegaLinter: **0.3.2**
+- Version in MegaLinter: **0.3.4**
 - Visit [Official Web Site](https://github.com/rvben/rumdl#readme){target=_blank}
 - See [How to configure rumdl rules](https://github.com/rvben/rumdl/blob/main/docs/global-settings.md){target=_blank}
 - See [How to disable rumdl rules in files](https://github.com/rvben/rumdl/blob/main/docs/inline-configuration.md){target=_blank}
@@ -159,11 +159,11 @@ Options:
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rumdl
-ARG PIP_RUMDL_VERSION=0.3.2
+ARG PIP_RUMDL_VERSION=0.3.4
 ```
 
 - PIP packages (Python):
-  - [rumdl==0.3.2](https://pypi.org/project/rumdl/0.3.2)
+  - [rumdl==0.3.4](https://pypi.org/project/rumdl/0.3.4)
 
 ### Installation without Docker (native mode)
 
@@ -189,7 +189,7 @@ NATIVE_LINTERS: [MARKDOWN_RUMDL]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/MARKDOWN_RUMDL"
     uv venv "$INSTALL_DIR" --python ">=3.9"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "rumdl==0.3.2"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "rumdl==0.3.4"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -198,7 +198,7 @@ NATIVE_LINTERS: [MARKDOWN_RUMDL]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/MARKDOWN_RUMDL"
     uv venv "$INSTALL_DIR" --python ">=3.9"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "rumdl==0.3.2"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "rumdl==0.3.4"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

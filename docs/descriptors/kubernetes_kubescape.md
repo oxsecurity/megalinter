@@ -29,7 +29,7 @@ description: How to use kubescape (configure, ignore files, ignore errors, help 
 
 ## kubescape documentation
 
-- Version in MegaLinter: **4.0.20**
+- Version in MegaLinter: **4.0.21**
 - Visit [Official Web Site](https://github.com/kubescape/kubescape#readme){target=_blank}
 
 [![kubescape - GitHub](https://github-stats-extended.vercel.app/api/pin/?username=kubescape&repo=kubescape&show_owner=true)](https://github.com/kubescape/kubescape){target=_blank}
@@ -160,7 +160,7 @@ Available Commands:
 
 Flags:
       --cache-dir string      Cache directory [$KS_CACHE_DIR] (default "/root/.kubescape")
-  -h, --help                  help for kubescape
+  -h, --help[=true|false]     help for kubescape
       --kube-context string   Kube context. Default will use the current-context
   -l, --logger string         Logger level. Supported: debug/info/success/warning/error/fatal [$KS_LOGGER] (default "info")
       --server string         Backend discovery server URL
@@ -173,7 +173,7 @@ Use "kubescape [command] --help" for more information about a command.
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=github-releases depName=kubescape/kubescape extractVersion=^v(?<version>.+)$
-ARG KUBERNETES_KUBESCAPE_VERSION=4.0.20
+ARG KUBERNETES_KUBESCAPE_VERSION=4.0.21
 RUN set -eu; \
     case "$TARGETPLATFORM" in \
       linux/amd64) ARCH=amd64 ;; \
@@ -212,9 +212,9 @@ NATIVE_LINTERS: [KUBERNETES_KUBESCAPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBESCAPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.20_linux_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_linux_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/kubescape_4.0.20_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/kubescape_4.0.20_linux_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.21_linux_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_linux_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.21_linux_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.21_linux_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -223,9 +223,9 @@ NATIVE_LINTERS: [KUBERNETES_KUBESCAPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBESCAPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.20_linux_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_linux_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/kubescape_4.0.20_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/kubescape_4.0.20_linux_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.21_linux_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_linux_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.21_linux_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.21_linux_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -234,9 +234,9 @@ NATIVE_LINTERS: [KUBERNETES_KUBESCAPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBESCAPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.20_darwin_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_darwin_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/kubescape_4.0.20_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/kubescape_4.0.20_darwin_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.21_darwin_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_darwin_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.21_darwin_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.21_darwin_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -245,9 +245,9 @@ NATIVE_LINTERS: [KUBERNETES_KUBESCAPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBESCAPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.20_darwin_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_darwin_arm64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/kubescape_4.0.20_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/kubescape_4.0.20_darwin_arm64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.21_darwin_arm64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_darwin_arm64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.21_darwin_arm64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.21_darwin_arm64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 
@@ -256,9 +256,9 @@ NATIVE_LINTERS: [KUBERNETES_KUBESCAPE]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/KUBERNETES_KUBESCAPE"
     mkdir -p "$INSTALL_DIR"
-    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.20_windows_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_windows_amd64.tar.gz &&
-      tar -xzf "$INSTALL_DIR/kubescape_4.0.20_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
-      rm "$INSTALL_DIR/kubescape_4.0.20_windows_amd64.tar.gz" &&
+    curl -fsSL -o "$INSTALL_DIR/kubescape_4.0.21_windows_amd64.tar.gz" https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_windows_amd64.tar.gz &&
+      tar -xzf "$INSTALL_DIR/kubescape_4.0.21_windows_amd64.tar.gz" -C "$INSTALL_DIR" &&
+      rm "$INSTALL_DIR/kubescape_4.0.21_windows_amd64.tar.gz" &&
       export PATH="$INSTALL_DIR:$PATH"
     ```
 

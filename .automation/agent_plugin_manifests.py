@@ -2,6 +2,7 @@
 import json
 import logging
 import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -39,6 +40,8 @@ SHARED_ENTRY_FIELDS = ["name", "description", "license", "homepage", "repository
 AGENT_SOURCE_DIR = "skills/megalinter-setup/agents"
 AGENT_NAMES = ["megalinter-watcher", "megalinter-runner", "megalinter-fixer"]
 COPILOT_AGENTS_DIR = "com.github.copilot/agents"
+# Folders shipped by the plugin: a change inside them is a change of the plugin content
+PLUGIN_CONTENT_PATHS = ["skills", "com.github.copilot"]
 COPILOT_DROPPED_FRONTMATTER_KEYS = ["model"]
 COPILOT_GENERATED_NOTICE = (
     f"<!-- @generated from {AGENT_SOURCE_DIR}/<name>.md "
@@ -116,6 +119,18 @@ def sync_copilot_agents() -> None:
             logging.info(f"Updated Copilot agent {COPILOT_AGENTS_DIR}/{name}.agent.md")
 
 
+def plugin_content_changed() -> bool:
+    status = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=all", "--"]
+        + PLUGIN_CONTENT_PATHS,
+        cwd=REPO_HOME,
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    return status.stdout.strip() != ""
+
+
 def bump_patch() -> str:
     reference = read_manifest(REFERENCE_MANIFEST)
     major, minor, patch = reference["version"].split(".")
@@ -127,7 +142,10 @@ def bump_patch() -> str:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(message)s")
-    if "--bump" in sys.argv:
-        logging.info(f"Agent plugin version bumped to {bump_patch()}")
+    if "--bump-if-changed" in sys.argv:
+        if plugin_content_changed() is True:
+            logging.info(f"Agent plugin version bumped to {bump_patch()}")
+        else:
+            logging.info("Agent plugin content unchanged: version not bumped")
     else:
         sync()

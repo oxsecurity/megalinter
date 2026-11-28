@@ -334,6 +334,23 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - [jscpd](https://github.com/kucherenko/jscpd/tree/master/apps/jscpd) from 5.4.2 to **5.4.3** on 2026-11-22
   - [terraform-fmt](https://developer.hashicorp.com/terraform/cli/commands/fmt) from 1.17.0 to **1.17.1** on 2026-11-23
   - [npm-groovy-lint](https://nvuillam.github.io/npm-groovy-lint/) from 19.0.0 to **19.0.1** on 2026-11-23
+  - [php-cs-fixer](https://cs.symfony.com/) from 3.95.29 to **3.95.30** on 2026-11-25
+  - [biome](https://biomejs.dev) from 2.6.6 to **2.6.7** on 2026-11-26
+  - [phplint](https://github.com/overtrue/phplint) from 9.8.0 to **9.8.3** on 2026-11-26
+  - [powershell_formatter](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.9 to **7.6.10** on 2026-11-26
+  - [powershell](https://github.com/PowerShell/PSScriptAnalyzer) from 7.6.9 to **7.6.10** on 2026-11-26
+  - [ruff-format](https://github.com/astral-sh/ruff) from 0.17.4 to **0.17.5** on 2026-11-26
+  - [ruff](https://github.com/astral-sh/ruff) from 0.17.4 to **0.17.5** on 2026-11-26
+  - [typos](https://github.com/crate-ci/typos) from 1.52.0 to **1.52.2** on 2026-11-26
+  - [kubescape](https://github.com/kubescape/kubescape) from 4.0.20 to **4.0.21** on 2026-11-27
+  - [rumdl](https://github.com/rvben/rumdl) from 0.3.2 to **0.3.4** on 2026-11-27
+  - [ty](https://docs.astral.sh/ty/) from 0.0.100 to **0.0.103** on 2026-11-27
+  - [trufflehog](https://github.com/trufflesecurity/trufflehog) from 3.99.8 to **3.99.9** on 2026-11-27
+  - [rstcheck](https://github.com/myint/rstcheck) from 6.3.0 to **6.3.1** on 2026-11-27
+  - [scalafix](https://scalacenter.github.io/scalafix/) from 0.14.9 to **0.14.10** on 2026-11-27
+  - [bicep_linter](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/linter) from 0.48.1 to **0.49.2** on 2026-11-27
+  - [cfn-lint](https://github.com/aws-cloudformation/cfn-lint) from 1.59.0 to **1.60.1** on 2026-11-27
+  - [cspell](https://github.com/streetsidesoftware/cspell/tree/master/packages/cspell) from 10.4.1 to **10.5.0** on 2026-11-27
 <!-- linter-versions-end -->
 
 ## [v10.2.0] - 2026-10-31
@@ -682,7 +699,7 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - The generated linter guides in `skills/megalinter-fix/linters/` are excluded from the markdown linters: their error-format regexes end with a significant space that `markdownlint --fix` strips, which corrupted the documented regex and left the working tree dirty, failing the auto-fix commit step on every pull request (#8848)
   - **Supply-chain hardening of dependency updates**: Renovate (`minimumReleaseAge`) and Dependabot (`cooldown`) now wait until a release is at least **7 days old** before proposing an upgrade, so compromised releases can be caught by the community first. Security fixes are not delayed and still open immediately (#8710)
   - New **Check agent plugins manifests** workflow validating the agent plugin manifests on every change to them or to `skills/`: `.automation/validate_agent_plugins.py` checks the root `plugin.json` against the published Agent Plugins 1.0 schema and keeps the per-vendor manifests consistent with it, then `claude plugin validate ./ --strict` checks the Claude Code marketplace and plugin manifests (#8791)
-  - The auto-update workflow patch-bumps the agent plugin version when it regenerates the skills: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`) (#8791)
+  - The auto-update workflow patch-bumps the agent plugin version only when the plugin content (`skills/`, `com.github.copilot/`) changed, so a linter version upgrade alone no longer releases a new plugin version: the plugin follows its own release train, since its fix guides change far more often than MegaLinter is released. `plugin.json` is the single source of truth, mirrored into the per-vendor manifests by `.automation/agent_plugin_manifests.py` (called by `build.py`) (#8791)
   - The test workflows forward the **`SFDX_AUTH_URL`** repository secret to the test container, so the **SALESFORCE_CODE_ANALYZER_APEXGURU** lint tests can reach a connected org. The secret is not exposed on pull requests from forked repositories, where those tests skip themselves (#8820)
   - The **Auto-Update Linters** workflow is fixed: `entrypoint.sh` still installed the MkDocs documentation stack, so `build.sh` aborted with `zensical: command not found` since the Zensical migration and no linter version update pull request could be created (#8901)
 

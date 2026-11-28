@@ -25,7 +25,7 @@ description: How to use rstcheck (configure, ignore files, ignore errors, help &
 
 ## rstcheck documentation
 
-- Version in MegaLinter: **6.3.0**
+- Version in MegaLinter: **6.3.1**
 - Visit [Official Web Site](https://github.com/myint/rstcheck#readme){target=_blank}
 - See [How to configure rstcheck rules](https://github.com/myint/rstcheck#configuration-file){target=_blank}
 - See [How to disable rstcheck rules in files](https://github.com/myint/rstcheck#ignore-specific-errors){target=_blank}
@@ -171,14 +171,14 @@ rstcheck -c .rstcheck.cfg myfile.rst
 - Dockerfile commands :
 ```dockerfile
 # renovate: datasource=pypi depName=rstcheck
-ARG PIP_RSTCHECK_VERSION=6.3.0
+ARG PIP_RSTCHECK_VERSION=6.3.1
 # renovate: datasource=pypi depName=click
 ARG PIP_RSTCHECK_CLICK_VERSION=8.5.1
 ```
 
 - PIP packages (Python):
   - [click==8.5.1](https://pypi.org/project/click/8.5.1)
-  - [rstcheck[toml,sphinx]==6.3.0](https://pypi.org/project/rstcheck[toml,sphinx]/6.3.0)
+  - [rstcheck[toml,sphinx]==6.3.1](https://pypi.org/project/rstcheck[toml,sphinx]/6.3.1)
 
 ### Installation without Docker (native mode)
 
@@ -204,7 +204,7 @@ NATIVE_LINTERS: [RST_RSTCHECK]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/RST_RSTCHECK"
     uv venv "$INSTALL_DIR" --python ">=3.10"
-    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "click==8.5.1" "rstcheck[toml,sphinx]==6.3.0"
+    uv pip install --python "$INSTALL_DIR/bin/python" --only-binary :all: "click==8.5.1" "rstcheck[toml,sphinx]==6.3.1"
     export PATH="$INSTALL_DIR/bin:$PATH"
     ```
 
@@ -213,7 +213,7 @@ NATIVE_LINTERS: [RST_RSTCHECK]
     ```shell
     INSTALL_DIR="$HOME/.megalinter/linters/RST_RSTCHECK"
     uv venv "$INSTALL_DIR" --python ">=3.10"
-    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "click==8.5.1" "rstcheck[toml,sphinx]==6.3.0"
+    uv pip install --python "$INSTALL_DIR/Scripts/python.exe" --only-binary :all: "click==8.5.1" "rstcheck[toml,sphinx]==6.3.1"
     export PATH="$INSTALL_DIR/Scripts:$PATH"
     ```
 

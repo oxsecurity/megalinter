@@ -406,8 +406,8 @@ linters:
     cli_lint_mode_project_exclude_arg_name: "--exclude"
     cli_lint_mode_project_exclude_config_key: "exclude"
     cli_sarif_args:
-      - "--format=\\Overtrue\\PHPLint\\Output\\SarifOutput"
-      - "--output={{SARIF_OUTPUT_FILE}}"
+      - "--output-format=sarif"
+      - "--output-file={{SARIF_OUTPUT_FILE}}"
     examples:
       - "phplint myfile.php"
       - "phplint mydir"
@@ -447,7 +447,7 @@ linters:
       dockerfile:
         - |-
           # renovate: datasource=packagist depName=overtrue/phplint
-          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.0
+          ARG PHP_OVERTRUE_PHPLINT_VERSION=9.8.3
         - |-
           # renovate: datasource=packagist depName=bartlett/sarif-php-converters
           ARG PHP_BARTLETT_SARIF_PHP_CONVERTERS_VERSION=1.8.2
