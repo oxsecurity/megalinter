@@ -78,6 +78,12 @@ plugins:
     docUrl: https://github.com/glsec/glsec#megalinter
     pluginUrl: https://raw.githubusercontent.com/glsec/glsec/main/mega-linter-plugin-glsec/glsec.megalinter-descriptor.yml
     author: "[Nicolai Ehrhardt](https://github.com/predictor2718)"
+  # onpush-census for Angular OnPush readiness
+  - name: onpush-census
+    description: Angular OnPush readiness check, one verdict per component with the line of code behind it, from the [OnPush readiness census](https://frontendatlas.com/research/angular-onpush-readiness) (ANGULAR_ONPUSH_CENSUS)
+    docUrl: https://github.com/MuslumYilmaz/onpush-census#megalinter-plugin
+    pluginUrl: https://raw.githubusercontent.com/MuslumYilmaz/onpush-census/main/mega-linter-plugin-onpush-census/onpush-census.megalinter-descriptor.yml
+    author: "[Müslim Yılmaz](https://github.com/MuslumYilmaz)"
   # compose-lint for Docker Compose security
   - name: compose-lint
     description: Security linter for Docker Compose files (COMPOSE_COMPOSE_LINT)
