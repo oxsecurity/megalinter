@@ -78,3 +78,9 @@ plugins:
     docUrl: https://github.com/glsec/glsec#megalinter
     pluginUrl: https://raw.githubusercontent.com/glsec/glsec/main/mega-linter-plugin-glsec/glsec.megalinter-descriptor.yml
     author: "[Nicolai Ehrhardt](https://github.com/predictor2718)"
+  # compose-lint for Docker Compose security
+  - name: compose-lint
+    description: Security linter for Docker Compose files (COMPOSE_COMPOSE_LINT)
+    docUrl: https://tmatens.github.io/compose-lint/megalinter/
+    pluginUrl: https://raw.githubusercontent.com/tmatens/compose-lint/main/mega-linter-plugin-compose-lint/compose-lint.megalinter-descriptor.yml
+    author: "[Todd Matens](https://github.com/tmatens)"
