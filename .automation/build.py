@@ -2079,7 +2079,12 @@ def build_linter_doc_body(linter, plugin=None):
             f"Use `LINTER_DEFAULT` to let the linter find it | "
             f"`{linter.config_file_name}` |",
             f"| {linter.name}_RULES_PATH | Path where to find linter configuration file | "
-            "Workspace folder, then MegaLinter default rules |",
+            + (
+                # MegaLinter has no default configuration file for the linters of plugins
+                "Workspace folder |"
+                if is_plugin
+                else "Workspace folder, then MegaLinter default rules |"
+            ),
         ]
         add_schema(
             [
@@ -2600,22 +2605,25 @@ def read_plugins_catalog():
         return yaml.safe_load(f)["plugins"]
 
 
+# Like the other tables of README.md: a link to the docs file, made relative in /docs
 def plugin_page_url(plugin):
-    return f"{MKDOCS_URL_ROOT}/plugins/{plugin_audit.plugin_slug(plugin['name'])}/"
+    return f"{DOCS_URL_ROOT}/plugins/{plugin_audit.plugin_slug(plugin['name'])}.md"
 
 
-def plugin_native_cell(result):
+# compact: short cell of the catalog table, which has many columns
+def plugin_native_cell(result, compact=False):
     linters = list(result.get("linters", {}).values())
     if not linters and result.get("status") == "unreachable":
-        return "❔ Not checked yet"
+        return "❔" if compact else "❔ Not checked yet"
     statuses = [linter["native"]["status"] for linter in linters]
     if not linters or all(status == "missing" for status in statuses):
-        return "❌ Not supported"
+        return "❌" if compact else "❌ Not supported"
     if any(status in ["missing", "invalid"] for status in statuses):
-        return "❌ Invalid"
+        return "❌" if compact else "❌ Invalid"
     platforms = min(len(linter["native"]["platforms"]) for linter in linters)
     icon = "✅" if platforms == len(NATIVE_PLATFORMS) else "⚠️"
-    return f"{icon} {platforms}/{len(NATIVE_PLATFORMS)} platforms"
+    count = f"{platforms}/{len(NATIVE_PLATFORMS)}"
+    return f"{icon} {count}" if compact else f"{icon} {count} platforms"
 
 
 def plugin_sarif_cell(result):
@@ -2632,8 +2640,8 @@ def build_plugins_md_table():
     plugins = read_plugins_catalog()
     audit = plugin_audit.load_audit_file(PLUGINS_AUDIT_FILE)
     md_table = [
-        "| Name | Description | Maintainer (community) | Native | SARIF | Checks | Descriptor |",
-        "| :----- | :---------- | :--------------: | :---: | :---: | :---: | :--- |",
+        "| Name | Description | Maintainer (community) | Native | SARIF | Checks |",
+        "| :----- | :---------- | :--------------: | :---: | :---: | :---: |",
     ]
     for plugin in plugins:
         result = audit.get(plugin["name"])
@@ -2642,13 +2650,12 @@ def build_plugins_md_table():
             native_cell = sarif_cell = status_cell = ""
         else:
             name_cell = f"[**{plugin['name']}**]({plugin_page_url(plugin)})"
-            native_cell = plugin_native_cell(result)
+            native_cell = plugin_native_cell(result, compact=True)
             sarif_cell = plugin_sarif_cell(result)
             status_cell = PLUGIN_STATUS_LABELS[result["status"]]
         md_table += [
             f"| {name_cell} | {plugin['description']} | {plugin['author']} | "
-            f"{native_cell} | {sarif_cell} | {status_cell} | "
-            f"[Descriptor]({plugin['pluginUrl']}) |",
+            f"{native_cell} | {sarif_cell} | {status_cell} |",
         ]
     return md_table
 
@@ -2660,7 +2667,8 @@ def plugin_md_text(value):
 
 
 def plugin_md_url(value):
-    if isinstance(value, str) and re.match(r"^https?://[^\s()<>\[\]`]+$", value):
+    # No quote: the URL also goes into HTML attributes (logo, banner, links)
+    if isinstance(value, str) and re.match(r"^https?://[^\s()<>\[\]`\"']+$", value):
         return value
     return None
 
@@ -2736,6 +2744,9 @@ PLUGIN_CODE_KEYS = [
     "cli_executable",
     "cli_lint_extra_args",
     "sarif_text_regex",
+    # common_linter_errors entries, rendered in ```text blocks
+    "regex",
+    "message",
 ]
 PLUGIN_MULTILINE_KEYS = [
     "linter_text",
@@ -2744,6 +2755,8 @@ PLUGIN_MULTILINE_KEYS = [
     "dockerfile",
 ]
 PLUGIN_IDENTIFIER_REGEX = re.compile(r"^[A-Za-z0-9_]+$")
+# Keys of a plugin descriptor (properties, IDE names, platforms, variables): some are rendered as is
+PLUGIN_KEY_REGEX = re.compile(r"^[A-Za-z0-9_./-]+$")
 
 
 # Values of a community plugin descriptor, before they reach the generator of linter pages:
@@ -2752,7 +2765,11 @@ def sanitize_plugin_value(value, key="", in_code=False):
     if isinstance(value, dict):
         sanitized = {}
         for child_key, child_value in value.items():
-            if not isinstance(child_key, str) or child_key == "class":
+            if (
+                not isinstance(child_key, str)
+                or child_key == "class"
+                or not PLUGIN_KEY_REGEX.match(child_key)
+            ):
                 continue
             child = sanitize_plugin_value(
                 child_value, child_key, in_code or child_key in PLUGIN_CODE_KEYS
@@ -2772,8 +2789,11 @@ def sanitize_plugin_value(value, key="", in_code=False):
         text = re.sub(r"\s+", " ", text).strip()
     if in_code:
         return text
-    text = html_escape(text, quote=False)
-    return re.sub(r"\]\(\s*(?!https?://)[^)]*\)", "]", text)
+    # Quotes escaped too: values like linter_name go into HTML attributes (alt of the logo)
+    text = html_escape(text, quote=True)
+    text = re.sub(r"\]\(\s*(?!https?://)[^)]*\)", "]", text)
+    # Reference-style link definitions to anything else than http(s) are made plain text
+    return re.sub(r"(?m)^([ \t]*)\[(?=[^\]\n]*\]:(?!\s*https?://))", r"\1\\[", text)
 
 
 # Linters of a plugin, built from its descriptor stored by the plugins audit
@@ -2926,10 +2946,11 @@ def plugin_checks_md(result):
     return lines
 
 
-# Same sections as the pages of the MegaLinter linters, or [] when the descriptor of the plugin
-# can not be documented this way (the page then lists the results of its checks only)
-def build_plugin_linters_md(plugin, result):
-    lines = []
+# (linter, page body) of each linter of a plugin, with the same sections as the pages of the
+# MegaLinter linters, or [] when the descriptor of the plugin can not be documented this way
+# (the page then lists the results of its checks only)
+def build_plugin_linter_bodies(plugin, result):
+    bodies = []
     for linter in build_plugin_linters(plugin, result):
         try:
             body = build_linter_doc_body(
@@ -2944,8 +2965,23 @@ def build_plugin_linters_md(plugin, result):
                 f"Plugin {plugin['name']}: unable to document {linter.name}: {e}"
             )
             return []
-        lines += shift_md_headings(body) + [""]
-    return lines
+        bodies.append((linter, body))
+    return bodies
+
+
+def plugin_missing_notice(result):
+    missing = []
+    for _scope, item in plugin_audit.missing_requirements(result):
+        short = plugin_audit.REQUIRED_CHECKS[item]["short"]
+        if short not in missing:
+            missing.append(short)
+    if not missing:
+        return []
+    return [
+        f"> ⚠️ **Required items are missing in this plugin** ({', '.join(missing)}): "
+        "see [MegaLinter checks](#megalinter-checks).",
+        "",
+    ]
 
 
 def build_plugin_doc_md(plugin, result):
@@ -2963,8 +2999,8 @@ def build_plugin_doc_md(plugin, result):
         "---",
         "<!-- markdownlint-disable MD013 MD033 MD041 MD046 -->",
         "<!-- Generated by .automation/build.py, please do not update manually -->",
-        f"# {name}",
-        "",
+    ]
+    intro = [
         f"> **Community plugin**: {PLUGIN_TRUST_DISCLAIMER} "
         f"This plugin is maintained by {plugin['author']}: report its problems on "
         f"{report_link}, not to MegaLinter.",
@@ -2977,6 +3013,7 @@ def build_plugin_doc_md(plugin, result):
         "",
     ]
     if result is None:
+        lines += [f"# {name}", ""] + intro
         lines += ["## Use this plugin", ""] + plugin_usage_md(plugin, result) + [""]
         lines += [
             "## MegaLinter checks",
@@ -2985,18 +3022,31 @@ def build_plugin_doc_md(plugin, result):
             "",
         ]
         return "\n".join(lines)
-    lines += plugin_checks_md(result)
-    linters_md = build_plugin_linters_md(plugin, result)
-    if linters_md:
-        lines += linters_md
+    # The details of the checks are at the bottom of the page: a notice links to them
+    intro += plugin_missing_notice(result)
+    bodies = build_plugin_linter_bodies(plugin, result)
+    if len(bodies) == 1:
+        # The header of the linter (title, banner, badges) is the title of the page
+        linter, body = bodies[0]
+        header_size = 2 if getattr(linter, "linter_banner_image_url", None) else 1
+        rest = body[header_size:]
+        if rest and rest[0] == "":
+            rest = rest[1:]
+        lines += body[:header_size] + [""] + intro + rest + [""]
     else:
-        lines += ["## Use this plugin", ""] + plugin_usage_md(plugin, result) + [""]
-        if result.get("linters"):
-            lines += ["## Linters", ""]
-            for key, linter in sorted(result["linters"].items()):
-                lines += plugin_linter_md(key, linter)
+        lines += [f"# {name}", ""] + intro
+        for _linter, body in bodies:
+            lines += shift_md_headings(body) + [""]
+        if not bodies:
+            lines += ["## Use this plugin", ""] + plugin_usage_md(plugin, result)
+            lines += [""]
+            if result.get("linters"):
+                lines += ["## Linters", ""]
+                for key, linter in sorted(result["linters"].items()):
+                    lines += plugin_linter_md(key, linter)
+    lines += plugin_checks_md(result)
     lines += [
-        "## Plugin authors",
+        "### Plugin authors",
         "",
         "The requirements and how to fix them are described in "
         "[Create your own plugin](../plugins.md#create-your-own-plugin).",
@@ -3019,7 +3069,7 @@ def generate_plugins_documentation():
             f"{DOCS_PLUGINS_DIR}/{slug}.md", "w", encoding="utf-8", newline="\n"
         ) as f:
             f.write(build_plugin_doc_md(plugin, audit.get(plugin["name"])))
-        nav_lines.append(f'      - "{plugin["name"]}": "plugins/{slug}.md"')
+        nav_lines.append(f'      - {json.dumps(plugin["name"])}: "plugins/{slug}.md"')
     for page in glob.glob(f"{DOCS_PLUGINS_DIR}/*.md"):
         if os.path.basename(page) not in page_names:
             os.remove(page)
@@ -4114,6 +4164,51 @@ def validate_sarif_support():
         )
 
 
+# README.md sections copied into their own page of /docs
+README_DOC_SECTIONS = [
+    "quick-start",
+    "coding-agents",
+    "supported-linters",
+    # 'languages',
+    # 'format',
+    # 'tooling-formats',
+    # 'other',
+    "install-agent-skills",
+    "agent-plugins",
+    "install-assisted",
+    "install-version",
+    "install-github",
+    "install-gitlab",
+    "install-azure",
+    "install-bitbucket",
+    "install-jenkins",
+    "install-concourse",
+    "install-drone",
+    "install-docker",
+    "install-locally",
+    "config-file",
+    "config-variables",
+    "config-activation",
+    "config-filtering",
+    "config-apply-fixes",
+    "config-linters",
+    "config-precommands",
+    "config-postcommands",
+    "config-variables-security",
+    "config-cli-lint-mode",
+    "reporters",
+    "flavors",
+    "badge",
+    "plugins",
+    "articles",
+    "frequently-asked-questions",
+    "how-to-contribute",
+    "special-thanks",
+    "license",
+    "mega-linter-vs-super-linter",
+]
+
+
 def finalize_doc_build():
     # Copy README.md into /docs/index.md
     target_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}index.md"
@@ -4129,48 +4224,7 @@ def finalize_doc_build():
         f.truncate()
         f.write(f"---\ntitle: Home\n---\n{index_content}")
     # Split README sections into individual files
-    moves = [
-        "quick-start",
-        "coding-agents",
-        "supported-linters",
-        # 'languages',
-        # 'format',
-        # 'tooling-formats',
-        # 'other',
-        "install-agent-skills",
-        "agent-plugins",
-        "install-assisted",
-        "install-version",
-        "install-github",
-        "install-gitlab",
-        "install-azure",
-        "install-bitbucket",
-        "install-jenkins",
-        "install-concourse",
-        "install-drone",
-        "install-docker",
-        "install-locally",
-        "config-file",
-        "config-variables",
-        "config-activation",
-        "config-filtering",
-        "config-apply-fixes",
-        "config-linters",
-        "config-precommands",
-        "config-postcommands",
-        "config-variables-security",
-        "config-cli-lint-mode",
-        "reporters",
-        "flavors",
-        "badge",
-        "plugins",
-        "articles",
-        "frequently-asked-questions",
-        "how-to-contribute",
-        "special-thanks",
-        "license",
-        "mega-linter-vs-super-linter",
-    ]
+    moves = README_DOC_SECTIONS
     for move in moves:
         section_page_md_file = f"{REPO_HOME}{os.path.sep}docs{os.path.sep}{move}.md"
         move_to_file(

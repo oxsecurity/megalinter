@@ -41,27 +41,32 @@ GITHUB_REPOSITORY_URL_REGEX = re.compile(
 # Missing required items make the plugin "incomplete" (or "invalid" for url and schema)
 REQUIRED_CHECKS = {
     "url": {
+        "short": "descriptor URL",
         "label": "Descriptor URL following the plugin rules",
         "impact": "MegaLinter refuses to load the plugin",
         "fix": "Host the descriptor in a folder whose name starts with `mega-linter-plugin-`, "
         "in a file named `<name>.megalinter-descriptor.yml`, served over https",
     },
     "schema": {
+        "short": "valid descriptor",
         "label": "Descriptor valid against the MegaLinter descriptor JSON schema",
         "impact": "MegaLinter may fail to load the plugin, or ignore some of its properties",
         "fix": "Fix the schema errors listed for the descriptor",
     },
     "descriptor_file_unique": {
+        "short": "unique descriptor file name",
         "label": "Descriptor file name different from the descriptors of MegaLinter",
         "impact": "In Docker, the plugin file replaces the MegaLinter descriptor of the same name",
         "fix": "Rename the descriptor file",
     },
     "linter_key_unique": {
+        "short": "unique linter key",
         "label": "Linter key different from the linters of MegaLinter",
         "impact": "The plugin linter conflicts with a MegaLinter linter",
         "fix": "Set a unique `name`, or rename `descriptor_id` / `linter_name`",
     },
     "native_install": {
+        "short": "native mode",
         "label": "`native_install` declared and valid for the 5 native platforms",
         "impact": "Native mode (MegaLinter without Docker) can not install the linter",
         "fix": "Declare `native_install`, listing each of linux/amd64, linux/arm64, "
@@ -69,6 +74,7 @@ REQUIRED_CHECKS = {
         "(with a reason)",
     },
     "sarif": {
+        "short": "SARIF output",
         "label": "SARIF output",
         "impact": "The findings are missing from SARIF reports (GitHub code scanning, "
         "SARIF viewers, coding agents)",
@@ -77,21 +83,25 @@ REQUIRED_CHECKS = {
         "`sarif_unified_diff: true` (formatters printing a diff)",
     },
     "linter_url": {
+        "short": "`linter_url`",
         "label": "`linter_url`",
         "impact": "Users can not find the documentation of the tool",
         "fix": "Set `linter_url` to the home page of the tool",
     },
     "examples": {
+        "short": "`examples`",
         "label": "`examples`",
         "impact": "The plugin page shows no command example",
         "fix": "List one or more command lines in `examples`",
     },
     "cli_lint_mode": {
+        "short": "`cli_lint_mode`",
         "label": "`cli_lint_mode`",
         "impact": "MegaLinter calls the tool once per file, which may not be how it works",
         "fix": "Set `cli_lint_mode` to `file`, `list_of_files` or `project`",
     },
     "native_lock_fresh": {
+        "short": "native lock matching the descriptor",
         "label": "Native lock matching the descriptor",
         "impact": "The lock shipped with the plugin is ignored: the native install is not "
         "verified against it",
@@ -439,7 +449,9 @@ def unreachable_result(base, previous, error):
     result = dict(previous or {})
     result.update(base)
     result["status"] = "unreachable"
-    result["fetch_error"] = shorten(error)
+    # Without the memory addresses of the requests errors ("object at 0x7f..."), that change at
+    # each run: the audit file would change every day while the plugin stays unreachable
+    result["fetch_error"] = shorten(re.sub(r" at 0x[0-9a-fA-F]+", "", error))
     for name, default in [
         ("errors", []),
         ("required_missing", []),

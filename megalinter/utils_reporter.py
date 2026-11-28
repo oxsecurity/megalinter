@@ -427,7 +427,9 @@ def linter_display_name(linter):
 def get_linter_doc_url(linter):
     if getattr(linter, "is_plugin", False) is True:
         linter_url = getattr(linter, "linter_url", None)
-        if isinstance(linter_url, str) and re.match(r"^https?://\S+$", linter_url):
+        if isinstance(linter_url, str) and re.match(
+            r"^https?://[^\s()<>\[\]`\"']+$", linter_url
+        ):
             return linter_url
         return f"{ML_DOC_URL}/plugins/"
     lang_lower = linter.descriptor_id.lower()

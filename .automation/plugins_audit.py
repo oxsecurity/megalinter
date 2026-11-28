@@ -65,8 +65,20 @@ def changed_plugins(plugins, base_ref):
     return [plugin for plugin in plugins if base_by_name.get(plugin["name"]) != plugin]
 
 
+# GitHub workflow commands: escaped data, else a multi-line message is cut at its first line
+def escape_annotation_data(value):
+    return str(value).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+
+
+def escape_annotation_property(value):
+    return escape_annotation_data(value).replace(":", "%3A").replace(",", "%2C")
+
+
 def annotation(level, title, message):
-    return f"::{level} title={title}::{message}"
+    return (
+        f"::{level} title={escape_annotation_property(title)}::"
+        f"{escape_annotation_data(message)}"
+    )
 
 
 def report_plugin(name, result):
