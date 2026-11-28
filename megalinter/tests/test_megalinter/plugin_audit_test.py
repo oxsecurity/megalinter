@@ -76,7 +76,7 @@ class plugin_audit_test(unittest.TestCase):
         result = plugin_audit.audit_plugin(
             entry("complete", COMPLETE_URL),
             get=fake_get({COMPLETE_URL: (200, text)}),
-            checked_at="2026-01-01",
+            date="2026-01-01",
         )
         self.assertEqual(result["status"], "ok", result)
         self.assertEqual(result["errors"], [])
@@ -264,17 +264,17 @@ class plugin_audit_test(unittest.TestCase):
         previous = plugin_audit.audit_plugin(
             entry("minimal", MINIMAL_URL),
             get=fake_get({MINIMAL_URL: (200, text)}),
-            checked_at="2026-01-01",
+            date="2026-01-01",
         )
         result = plugin_audit.audit_plugin(
             entry("minimal", MINIMAL_URL),
             previous,
             get=fake_get({MINIMAL_URL: (503, "")}),
-            checked_at="2026-01-02",
+            date="2026-01-02",
         )
         self.assertEqual(result["status"], "unreachable")
         self.assertIn("HTTP 503", result["fetch_error"])
-        self.assertEqual(result["checked_at"], "2026-01-02")
+        self.assertEqual(result["changed_at"], "2026-01-02")
         self.assertEqual(result["last_success_at"], "2026-01-01")
         self.assertEqual(result["linters"], previous["linters"])
 
@@ -310,3 +310,48 @@ class plugin_audit_test(unittest.TestCase):
         self.assertEqual(
             plugin_audit.plugin_slug("Docker Compose_Linter"), "docker-compose-linter"
         )
+
+    def test_unchanged_results_keep_their_dates(self):
+        text = read_fixture(
+            "mega-linter-plugin-minimal", "minimal.megalinter-descriptor.yml"
+        )
+        get = fake_get({MINIMAL_URL: (200, text)})
+        first = plugin_audit.audit_plugin(
+            entry("minimal", MINIMAL_URL), get=get, date="2026-01-01"
+        )
+        second = plugin_audit.audit_plugin(
+            entry("minimal", MINIMAL_URL), first, get=get, date="2026-01-02"
+        )
+        self.assertEqual(second["changed_at"], "2026-01-01")
+        changed = plugin_audit.audit_plugin(
+            entry("minimal", MINIMAL_URL),
+            first,
+            get=fake_get(
+                {MINIMAL_URL: (200, text.replace("minimal-lint myfile", "other"))}
+            ),
+            date="2026-01-03",
+        )
+        self.assertEqual(changed["changed_at"], "2026-01-03")
+
+    # The lock is optional: a failure to fetch it does not make the plugin unreachable
+    def test_lock_fetch_failure(self):
+        text = read_fixture(
+            "mega-linter-plugin-complete", "complete.megalinter-descriptor.yml"
+        )
+        lock_url = plugin_audit.plugin_lock_url(COMPLETE_URL)
+        get = fake_get({COMPLETE_URL: (200, text), lock_url: (503, "")})
+        result = plugin_audit.audit_plugin(entry("complete", COMPLETE_URL), get=get)
+        self.assertEqual(result["status"], "ok")
+        self.assertEqual(result["lock"], "unknown")
+        self.assertEqual(plugin_audit.missing_recommendations(result), [])
+        self.assertEqual(get.calls, [COMPLETE_URL, lock_url])
+
+    def test_descriptor_is_stored(self):
+        text = read_fixture(
+            "mega-linter-plugin-minimal", "minimal.megalinter-descriptor.yml"
+        )
+        result = plugin_audit.audit_plugin(
+            entry("minimal", MINIMAL_URL), get=fake_get({MINIMAL_URL: (200, text)})
+        )
+        self.assertEqual(result["descriptor"], yaml.safe_load(text))
+        json.dumps(result, sort_keys=True)

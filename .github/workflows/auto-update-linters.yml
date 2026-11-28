@@ -72,6 +72,7 @@ jobs:
     timeout-minutes: 60
     outputs:
       has_updated_versions: ${{ steps.compute_versions.outputs.has_updated_versions }}
+      plugins_changed: ${{ steps.plugins_changes.outputs.changed }}
     ##################
     # Load all steps #
     ##################
@@ -145,6 +146,16 @@ jobs:
         run: docker run -e UPGRADE_LINTERS_VERSION=true -e GITHUB_SHA=${{ github.sha }} -e GITHUB_TOKEN="${GITHUB_TOKEN}" -e GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }} -e GITHUB_OUTPUT="${GITHUB_OUTPUT}" -e MEGALINTER_VOLUME_ROOT="${GITHUB_WORKSPACE}" -v "/var/run/docker.sock:/var/run/docker.sock:rw" -v "/home/runner/work/_temp/_runner_file_commands":"/github/file_commands" -v "${GITHUB_WORKSPACE}:/tmp/lint" oxsecurity/megalinter:auto_update_${{ github.sha }}
         timeout-minutes: 60
 
+      # The plugins audit keeps the date of unchanged results: its file changes only when the
+      # results of a plugin do, and the plugin pages are then exported even without a new
+      # linter version
+      - name: Detect plugins audit changes
+        id: plugins_changes
+        run: |
+          if [ -n "$(git status --porcelain -- .automation/generated/plugins-audit.json)" ]; then
+            echo "changed=1" >> "${GITHUB_OUTPUT}"
+          fi
+
       # Format markdown tables
       - name: Format Markdown tables
         id: format-md-tables
@@ -176,8 +187,16 @@ jobs:
           git add -A
           git status --short
           git diff --cached --binary > "${RUNNER_TEMP}/auto-update.patch"
+      # Only the plugins documentation when no linter version changed (the agent plugin version is
+      # not bumped, so the other generated changes are dropped as above)
+      - name: Export plugins documentation changes
+        if: (github.event_name != 'workflow_dispatch' && steps.compute_versions.outputs.has_updated_versions != 1 && steps.plugins_changes.outputs.changed == '1')
+        run: |
+          git add -- .automation/generated/plugins-audit.json docs/plugins docs/plugins.md README.md docs/index.md mkdocs.yml
+          git status --short
+          git diff --cached --binary > "${RUNNER_TEMP}/auto-update.patch"
       - name: Upload generated changes
-        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1)
+        if: (github.event_name == 'workflow_dispatch' || steps.compute_versions.outputs.has_updated_versions == 1 || steps.plugins_changes.outputs.changed == '1')
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: auto-update-patch
@@ -273,7 +292,7 @@ jobs:
       # Create pull request if there are updates or if the workflow has been launched manually
       - name: Create Pull Request
         id: cpr
-        if: (github.event_name == 'workflow_dispatch' || needs.build_help_versions.outputs.has_updated_versions == '1' || steps.stage.outputs.locks_changed == '1')
+        if: (github.event_name == 'workflow_dispatch' || needs.build_help_versions.outputs.has_updated_versions == '1' || needs.build_help_versions.outputs.plugins_changed == '1' || steps.stage.outputs.locks_changed == '1')
         uses: peter-evans/create-pull-request@15733dbdfeedb4f7fdb73d13c6f5ac83b710fab8 # v8
         with:
           # SECURITY NOTE: A Personal Access Token (PAT) is used here so the

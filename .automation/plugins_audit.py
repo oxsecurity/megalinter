@@ -34,6 +34,7 @@ def read_plugins():
 def catalog_errors(plugins):
     errors = []
     names = set()
+    slugs = set()
     for index, plugin in enumerate(plugins):
         missing = [key for key in REQUIRED_ENTRY_KEYS if not plugin.get(key)]
         if missing:
@@ -41,6 +42,14 @@ def catalog_errors(plugins):
         if plugin.get("name") in names:
             errors.append(f"plugins[{index}]: duplicate name {plugin.get('name')}")
         names.add(plugin.get("name"))
+        # Each plugin gets the page docs/plugins/<slug>.md
+        slug = plugin_audit.plugin_slug(str(plugin.get("name") or ""))
+        if slug in ["", "index"] or slug in slugs:
+            errors.append(
+                f"plugins[{index}]: name {plugin.get('name')} gives the documentation page "
+                f"name '{slug}', empty, reserved or already used"
+            )
+        slugs.add(slug)
     return errors
 
 

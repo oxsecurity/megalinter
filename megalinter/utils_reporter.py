@@ -2,6 +2,7 @@
 import json
 import logging
 import os
+import re
 import subprocess
 
 from megalinter import ci_providers, config, utils
@@ -421,10 +422,14 @@ def linter_display_name(linter):
     return linter.linter_name
 
 
-# A plugin has no page in the MegaLinter documentation: link to the tool of its community author
+# A plugin has no page in the MegaLinter documentation: link to the tool of its community author,
+# or to the plugins page when its descriptor gives no valid URL (SARIF requires a URI)
 def get_linter_doc_url(linter):
     if getattr(linter, "is_plugin", False) is True:
-        return linter.linter_url
+        linter_url = getattr(linter, "linter_url", None)
+        if isinstance(linter_url, str) and re.match(r"^https?://\S+$", linter_url):
+            return linter_url
+        return f"{ML_DOC_URL}/plugins/"
     lang_lower = linter.descriptor_id.lower()
     linter_name_lower = linter.linter_name.lower().replace("-", "_")
     linter_doc_url = f"{ML_DOC_URL_DESCRIPTORS_ROOT}/{lang_lower}_{linter_name_lower}"

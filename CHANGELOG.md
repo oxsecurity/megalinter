@@ -140,7 +140,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
     - Notes are counted as warnings, so the **error count** shown with SARIF enabled is lower than the number of unformatted files
     - **powershell formatter** has no check mode and never fails, so its SARIF report holds no result
 
-  - **Plugin pages**: each plugin of the [plugins catalog](https://megalinter.io/latest/plugins/) now has its own page showing whether it supports **native mode** and **SARIF**, and which required or recommended properties are missing. The checks are refreshed every day
+  - **Plugin pages**: each plugin of the [plugins catalog](https://megalinter.io/latest/plugins/) now has its **own documentation page, like the MegaLinter linters**: configuration variables, IDE extensions, files analyzed, example calls and installation
+    - Each page also shows whether the plugin supports **native mode** and **SARIF**, and which required or recommended properties are missing. MegaLinter checks the plugins every day
     - Plugins are maintained by their **community authors**, not by the MegaLinter team: **using a plugin means trusting its author**. The catalog, each plugin page and the logs of every run loading a plugin now say so
     - Plugin authors: see [Requirements checked by MegaLinter](https://megalinter.io/latest/plugins/#requirements-checked-by-megalinter)
 
@@ -212,7 +213,8 @@ Note: Can be used with `oxsecurity/megalinter@beta` in your GitHub Action mega-l
   - **Plugins audit**: new module `megalinter/plugin_audit.py` and script `.automation/plugins_audit.py` (`--check-added <base ref>` for pull requests), writing `.automation/generated/plugins-audit.json`
     - Each descriptor of `.automation/plugins.yml` (and its optional `<name>.megalinter-native-lock.json`) is checked against the descriptor schema, `megalinter.native.spec.validate_spec`, the SARIF properties, the core linter keys and descriptor file names, and the required / recommended properties
     - An unreachable descriptor keeps its last results, so an outage is never reported as a gap
-    - `build.py` generates `docs/plugins/<name>.md`, the catalog table and the navigation between `# plugins-start` / `# plugins-end` in `mkdocs.yml`
+    - The audit stores each descriptor and keeps the dates of unchanged results, so `plugins-audit.json` changes only with the results
+    - `build.py` generates `docs/plugins/<name>.md`, the catalog table and the navigation between `# plugins-start` / `# plugins-end` in `mkdocs.yml`. The linter sections come from `build_linter_doc_body()`, extracted from `process_type()` and shared with the MegaLinter linter pages (unchanged output). In plugin mode it does not update the configuration JSON schema and skips the sections built from MegaLinter files. Descriptor values are sanitized first (`sanitize_plugin_value`: http(s) URLs only, HTML escaped, no backticks)
     - `plugins.yml` accepts `skip_issue` and `issueRepo`, the trust disclaimer is `constants.PLUGIN_TRUST_DISCLAIMER`, covered by `plugin_audit_test.py`
   - The JSON report fields come from `JsonReporter.add_computed_fields`: findings are read from the SARIF of each linter by `utils_sarif.extract_findings` once it has been merged (a file lint mode linter writes one SARIF per file), and `Megalinter.tips` / `skipped_linters_details` are filled by `add_tip` and the native selection
   - `megalinter/native/suggest.py` builds the `NATIVE_LINTERS` suggestion of the prerun report (rules: unsupported, missing host tool, project mode, measured time, then `linter_speed`), and `megalinter/native/config_writer.py` edits `NATIVE_LINTERS` as text then parses the file again, restoring it when the result is not the expected list. `config.CONFIG_FILE_CANDIDATES` is now shared with it
